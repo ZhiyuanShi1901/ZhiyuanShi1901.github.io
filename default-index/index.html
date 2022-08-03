@@ -215,7 +215,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-08-03 16:57:34 / Modified: 22:06:22" itemprop="dateCreated datePublished" datetime="2022-08-03T16:57:34+08:00">2022-08-03</time>
+      <time title="Created: 2022-08-03 16:57:34 / Modified: 22:08:41" itemprop="dateCreated datePublished" datetime="2022-08-03T16:57:34+08:00">2022-08-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -237,10 +237,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="1、-创建、挂载、卸载文件系统"><a href="#1、-创建、挂载、卸载文件系统" class="headerlink" title="1、 创建、挂载、卸载文件系统"></a>1、 创建、挂载、卸载文件系统</h1><p>由于不常用，因此忽略。</p>
-<h1 id="2、-Linux常用命令"><a href="#2、-Linux常用命令" class="headerlink" title="2、 Linux常用命令"></a>2、 Linux常用命令</h1><h2 id="2-1-Linux命令"><a href="#2-1-Linux命令" class="headerlink" title="2.1 Linux命令"></a>2.1 Linux命令</h2><h3 id="Shell程序启动"><a href="#Shell程序启动" class="headerlink" title="Shell程序启动"></a>Shell程序启动</h3><p>Ctrl+Alt+T 混合键启动</p>
+          <h1 id="创建、挂载、卸载文件系统"><a href="#创建、挂载、卸载文件系统" class="headerlink" title="创建、挂载、卸载文件系统"></a>创建、挂载、卸载文件系统</h1><p>由于不常用，因此忽略。</p>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h2 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h2><h3 id="Shell程序启动"><a href="#Shell程序启动" class="headerlink" title="Shell程序启动"></a>Shell程序启动</h3><p>Ctrl+Alt+T 混合键启动</p>
 <h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p>命令名 [-选项…][参数…]</p>
-<h2 id="2-2-目录操作基本命令"><a href="#2-2-目录操作基本命令" class="headerlink" title="2.2 目录操作基本命令"></a>2.2 目录操作基本命令</h2><h3 id="ls命令：-显示目录下的列表"><a href="#ls命令：-显示目录下的列表" class="headerlink" title="ls命令： 显示目录下的列表"></a>ls命令： 显示目录下的列表</h3><pre><code>ls //当前目录下所有文件及子目录
+<h2 id="目录操作基本命令"><a href="#目录操作基本命令" class="headerlink" title="目录操作基本命令"></a>目录操作基本命令</h2><h3 id="ls命令：-显示目录下的列表"><a href="#ls命令：-显示目录下的列表" class="headerlink" title="ls命令： 显示目录下的列表"></a>ls命令： 显示目录下的列表</h3><pre><code>ls //当前目录下所有文件及子目录
 ls 文件名 //显示文件的信息
 ls [-l] 文件名 //显示文件的详细信息
 ls /home //显示目录home下的内容
@@ -262,7 +262,7 @@ ls /home //显示目录home下的内容
 </code></pre>
 <h3 id="rmdir命令：-删除一个空目录"><a href="#rmdir命令：-删除一个空目录" class="headerlink" title="rmdir命令： 删除一个空目录"></a>rmdir命令： 删除一个空目录</h3><pre><code>rmdir [-p] 目录名 // -p指递归删除各级空目录
 </code></pre>
-<h2 id="2-3-文件操作基本命令"><a href="#2-3-文件操作基本命令" class="headerlink" title="2.3 文件操作基本命令"></a>2.3 文件操作基本命令</h2><h3 id="touch命令：-创建空文件"><a href="#touch命令：-创建空文件" class="headerlink" title="touch命令： 创建空文件"></a>touch命令： 创建空文件</h3><pre><code>touch 文件名
+<h2 id="文件操作基本命令"><a href="#文件操作基本命令" class="headerlink" title="文件操作基本命令"></a>文件操作基本命令</h2><h3 id="touch命令：-创建空文件"><a href="#touch命令：-创建空文件" class="headerlink" title="touch命令： 创建空文件"></a>touch命令： 创建空文件</h3><pre><code>touch 文件名
 </code></pre>
 <h3 id="cat命令：-显示文件内容、合并文件"><a href="#cat命令：-显示文件内容、合并文件" class="headerlink" title="cat命令： 显示文件内容、合并文件"></a>cat命令： 显示文件内容、合并文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat [选项] [文件名]</span><br><span class="line">-A 显示所有字符</span><br><span class="line">-n 所有行编号并显示行号</span><br><span class="line">-b 除了空行不编号，对文件中其他行都进行编号并显示行号</span><br><span class="line">-s 将连续的空行压缩为一个空行</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; 新文件名  //重导向，将键盘输入文本保存到文件</span><br><span class="line">cat 文件名1 文件名2 &gt; 文件名3  //将1、2文件合并到3文件</span><br><span class="line">cat 文件名2 &gt;&gt; 文件名1  //把文件2的全部内容追加到文件1末尾 </span><br></pre></td></tr></table></figure>
@@ -307,7 +307,7 @@ ls /home //显示目录home下的内容
 chomd 777 filename 
 </code></pre>
 <p>二者等价</p>
-<h2 id="2-4-文件处理命令"><a href="#2-4-文件处理命令" class="headerlink" title="2.4 文件处理命令"></a>2.4 文件处理命令</h2><h3 id="grep命令：-制定的文件中查找某个特定的字符串"><a href="#grep命令：-制定的文件中查找某个特定的字符串" class="headerlink" title="grep命令： 制定的文件中查找某个特定的字符串"></a>grep命令： 制定的文件中查找某个特定的字符串</h3><pre><code>grep [选项] 关键字 文件名
+<h2 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h2><h3 id="grep命令：-制定的文件中查找某个特定的字符串"><a href="#grep命令：-制定的文件中查找某个特定的字符串" class="headerlink" title="grep命令： 制定的文件中查找某个特定的字符串"></a>grep命令： 制定的文件中查找某个特定的字符串</h3><pre><code>grep [选项] 关键字 文件名
 -i  //不区分大小写
 </code></pre>
 <h3 id="head命令：-查看文件开头部分的内容"><a href="#head命令：-查看文件开头部分的内容" class="headerlink" title="head命令： 查看文件开头部分的内容"></a>head命令： 查看文件开头部分的内容</h3><pre><code>head [数字选项] 文件名 //数字表示显示几行
@@ -336,7 +336,7 @@ chomd 777 filename
 </code></pre>
 <h3 id="locate命令：所有与被查询的文件名相同的文件查找出来"><a href="#locate命令：所有与被查询的文件名相同的文件查找出来" class="headerlink" title="locate命令：所有与被查询的文件名相同的文件查找出来"></a>locate命令：所有与被查询的文件名相同的文件查找出来</h3><pre><code>locate 文件名
 </code></pre>
-<h2 id="2-5-压缩备份基本命令"><a href="#2-5-压缩备份基本命令" class="headerlink" title="2.5 压缩备份基本命令"></a>2.5 压缩备份基本命令</h2><h3 id="bzip2和bunzip2命令：-压缩与解压-bz2"><a href="#bzip2和bunzip2命令：-压缩与解压-bz2" class="headerlink" title="bzip2和bunzip2命令： 压缩与解压 .bz2"></a>bzip2和bunzip2命令： 压缩与解压 .bz2</h3><pre><code>bzip2 文件名1 [文件名2] ……
+<h2 id="压缩备份基本命令"><a href="#压缩备份基本命令" class="headerlink" title="压缩备份基本命令"></a>压缩备份基本命令</h2><h3 id="bzip2和bunzip2命令：-压缩与解压-bz2"><a href="#bzip2和bunzip2命令：-压缩与解压-bz2" class="headerlink" title="bzip2和bunzip2命令： 压缩与解压 .bz2"></a>bzip2和bunzip2命令： 压缩与解压 .bz2</h3><pre><code>bzip2 文件名1 [文件名2] ……
 bunzip2 文件名1 [文件名2] ……
 </code></pre>
 <p>压缩文件后，拓展名为.bz2，且必须用<code>bunzip2</code>命令解压。</p>
@@ -362,14 +362,14 @@ bzcat 文件名  //查看.bz2
 -f //使用文件或设备
 -v //打包或解包后将文件的详细清单显示出来
 </code></pre>
-<h2 id="2-6-磁盘操作命令"><a href="#2-6-磁盘操作命令" class="headerlink" title="2.6 磁盘操作命令"></a>2.6 磁盘操作命令</h2><p>由于在图形界面下不常用，因此不进行详细记录。具体参考相关书籍</p>
+<h2 id="磁盘操作命令"><a href="#磁盘操作命令" class="headerlink" title="磁盘操作命令"></a>磁盘操作命令</h2><p>由于在图形界面下不常用，因此不进行详细记录。具体参考相关书籍</p>
 <h3 id="mount命令：-挂载"><a href="#mount命令：-挂载" class="headerlink" title="mount命令： 挂载"></a>mount命令： 挂载</h3><h3 id="umount命令：-卸载一个文件系统"><a href="#umount命令：-卸载一个文件系统" class="headerlink" title="umount命令： 卸载一个文件系统"></a>umount命令： 卸载一个文件系统</h3><h3 id="df命令：-查看当前硬盘的分区信息"><a href="#df命令：-查看当前硬盘的分区信息" class="headerlink" title="df命令： 查看当前硬盘的分区信息"></a>df命令： 查看当前硬盘的分区信息</h3><pre><code>df [选项]
 </code></pre>
 <h3 id="du命令：-查看当前目录下的所有文件及目录信息"><a href="#du命令：-查看当前目录下的所有文件及目录信息" class="headerlink" title="du命令： 查看当前目录下的所有文件及目录信息"></a>du命令： 查看当前目录下的所有文件及目录信息</h3><pre><code>du [选项]
 </code></pre>
 <h3 id="fsk命令：-硬盘检测，只能由root用户执行"><a href="#fsk命令：-硬盘检测，只能由root用户执行" class="headerlink" title="fsk命令： 硬盘检测，只能由root用户执行"></a>fsk命令： 硬盘检测，只能由root用户执行</h3><pre><code>fsk 分区名
 </code></pre>
-<h2 id="2-7-关机重启"><a href="#2-7-关机重启" class="headerlink" title="2.7 关机重启"></a>2.7 关机重启</h2><h3 id="shutdown命令：-安全关机"><a href="#shutdown命令：-安全关机" class="headerlink" title="shutdown命令： 安全关机"></a>shutdown命令： 安全关机</h3><pre><code>shutdown [选项] [时间] [警告信息]
+<h2 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h2><h3 id="shutdown命令：-安全关机"><a href="#shutdown命令：-安全关机" class="headerlink" title="shutdown命令： 安全关机"></a>shutdown命令： 安全关机</h3><pre><code>shutdown [选项] [时间] [警告信息]
 -h // 停止系统服务
 -k // 不真正关机，发出警告信息
 -r // 停止系统服务，然后安全重启
@@ -381,7 +381,7 @@ bzcat 文件名  //查看.bz2
 <h3 id="poweroff命令：关机"><a href="#poweroff命令：关机" class="headerlink" title="poweroff命令：关机"></a>poweroff命令：关机</h3><h3 id="reboot命令：-重启"><a href="#reboot命令：-重启" class="headerlink" title="reboot命令： 重启"></a>reboot命令： 重启</h3><h3 id="init命令：切换Ubuntu的运行级别"><a href="#init命令：切换Ubuntu的运行级别" class="headerlink" title="init命令：切换Ubuntu的运行级别"></a>init命令：切换Ubuntu的运行级别</h3><pre><code>init [运行级别]
 </code></pre>
 <p>运行级别共有7级：0为关机，6为重启。</p>
-<h2 id="2-8-其他命令"><a href="#2-8-其他命令" class="headerlink" title="2.8 其他命令"></a>2.8 其他命令</h2><h3 id="echo命令：-显示命令行中的字符串，用于输出提示信息"><a href="#echo命令：-显示命令行中的字符串，用于输出提示信息" class="headerlink" title="echo命令： 显示命令行中的字符串，用于输出提示信息"></a>echo命令： 显示命令行中的字符串，用于输出提示信息</h3><pre><code>echo [选项] [字符串]
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="echo命令：-显示命令行中的字符串，用于输出提示信息"><a href="#echo命令：-显示命令行中的字符串，用于输出提示信息" class="headerlink" title="echo命令： 显示命令行中的字符串，用于输出提示信息"></a>echo命令： 显示命令行中的字符串，用于输出提示信息</h3><pre><code>echo [选项] [字符串]
 -n //表示输出字符串后光标不换行
 </code></pre>
 <h3 id="more、less命令：将文件内容或者查询结果分屏显示"><a href="#more、less命令：将文件内容或者查询结果分屏显示" class="headerlink" title="more、less命令：将文件内容或者查询结果分屏显示"></a>more、less命令：将文件内容或者查询结果分屏显示</h3><pre><code>more [选项] 文件名 
