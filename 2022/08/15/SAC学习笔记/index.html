@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_35708970&#x2F;article&#x2F;details&#x2F;124853492 在安装ubuntu和windows双系统后，默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。 打开终端，输入： 1sudo gedit &#x2F;etc&#x2F;default&#x2F;grub  将第6行的  1GTUB_DEFAULT&#x3D;0 后面">
+    <meta name="description" content="参考[seisman]https:&#x2F;&#x2F;seisman.github.io&#x2F;SAC_Docs_zh&#x2F; SAC入门启动与退出启动SAC在控制端输入sac 退出SAC在SAC控制端输入quit 样本数据SAC支持生成样本数据进行学习，即使手头没有SAC数据也可以进行学习使用。 funcgen（fg）funcgen（function generator），该命令可以生成一些特定的函数，例如脉冲函数、阶跃函">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu与windows双系统设置windows默认启动">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/index.html">
+<meta property="og:title" content="SAC学习笔记">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="史致远">
-<meta property="og:description" content="参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_35708970&#x2F;article&#x2F;details&#x2F;124853492 在安装ubuntu和windows双系统后，默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。 打开终端，输入： 1sudo gedit &#x2F;etc&#x2F;default&#x2F;grub  将第6行的  1GTUB_DEFAULT&#x3D;0 后面">
+<meta property="og:description" content="参考[seisman]https:&#x2F;&#x2F;seisman.github.io&#x2F;SAC_Docs_zh&#x2F; SAC入门启动与退出启动SAC在控制端输入sac 退出SAC在SAC控制端输入quit 样本数据SAC支持生成样本数据进行学习，即使手头没有SAC数据也可以进行学习使用。 funcgen（fg）funcgen（function generator），该命令可以生成一些特定的函数，例如脉冲函数、阶跃函">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-13T03:07:53.000Z">
-<meta property="article:modified_time" content="2022-08-13T03:19:24.506Z">
-<meta property="article:tag" content="Linux学习">
+<meta property="article:published_time" content="2022-08-15T12:17:53.000Z">
+<meta property="article:modified_time" content="2022-08-15T13:21:52.336Z">
+<meta property="article:tag" content="SAC">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/">
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/","path":"2022/08/13/Ubuntu设置windows默认启动/","title":"Ubuntu与windows双系统设置windows默认启动"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2022/08/15/SAC学习笔记/","title":"SAC学习笔记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Ubuntu与windows双系统设置windows默认启动 | 史致远</title>
+<title>SAC学习笔记 | 史致远</title>
   
 
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAC%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">SAC入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%80%80%E5%87%BA"><span class="nav-number">2.1.</span> <span class="nav-text">启动与退出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8SAC"><span class="nav-number">2.1.1.</span> <span class="nav-text">启动SAC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BASAC"><span class="nav-number">2.1.2.</span> <span class="nav-text">退出SAC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">样本数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#funcgen%EF%BC%88fg%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">funcgen（fg）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datagen%EF%BC%88dg%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">datagen（dg）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">读写数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.2.</span> <span class="nav-text">读取数据</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -233,12 +233,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Ubuntu与windows双系统设置windows默认启动 | 史致远">
+      <meta itemprop="name" content="SAC学习笔记 | 史致远">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Ubuntu与windows双系统设置windows默认启动
+          SAC学习笔记
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-08-13 11:07:53 / Modified: 11:19:24" itemprop="dateCreated datePublished" datetime="2022-08-13T11:07:53+08:00">2022-08-13</time>
+      <time title="Created: 2022-08-15 20:17:53 / Modified: 21:21:52" itemprop="dateCreated datePublished" datetime="2022-08-15T20:17:53+08:00">2022-08-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +258,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
         </span>
     </span>
 
@@ -272,18 +272,40 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
+        <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
+<h1 id="SAC入门"><a href="#SAC入门" class="headerlink" title="SAC入门"></a>SAC入门</h1><h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><h3 id="启动SAC"><a href="#启动SAC" class="headerlink" title="启动SAC"></a>启动SAC</h3><p>在控制端输入<br><code>sac</code></p>
+<h3 id="退出SAC"><a href="#退出SAC" class="headerlink" title="退出SAC"></a>退出SAC</h3><p>在SAC控制端输入<code>quit</code></p>
+<h2 id="样本数据"><a href="#样本数据" class="headerlink" title="样本数据"></a>样本数据</h2><p>SAC支持生成样本数据进行学习，即使手头没有SAC数据也可以进行学习使用。</p>
+<h3 id="funcgen（fg）"><a href="#funcgen（fg）" class="headerlink" title="funcgen（fg）"></a>funcgen（fg）</h3><p>funcgen（function generator），该命令可以生成一些特定的函数，例如脉冲函数、阶跃函数、正弦函数等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fg impluse  # 生成脉冲函数</span><br><span class="line">plot  # 绘图，将上面的脉冲函数绘制出来</span><br><span class="line">fg seismogram  # 生成地震波形样本 使用该命令会在内存中删除上面生成的脉冲信号。</span><br></pre></td></tr></table></figure>
 
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
+<h3 id="datagen（dg）"><a href="#datagen（dg）" class="headerlink" title="datagen（dg）"></a>datagen（dg）</h3><p>datagen（data generator）。该命令用于生成数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dg sub local cdv.?  # 生成了CDV台站记录到的近震三分量波形数据，共有三个波形</span><br><span class="line">pl  # plot的简写</span><br></pre></td></tr></table></figure>
+
+<h2 id="读写数据"><a href="#读写数据" class="headerlink" title="读写数据"></a>读写数据</h2><h3 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h3><p>读取数据之前需要拥有SAC数据。除了申请获取之外，换可以通过生成样本数据的方式获取SAC数据。</p>
+<p>在SAC中进行下列输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">datagen sub local cdv.n cdv.e cdv.z  # 生成三个SAC数据</span><br><span class="line">write cdv.n cdv.e cdv.z  # 写入磁盘中</span><br><span class="line">ls  # SAC中调用的linux系统命令，表示显示当前文件夹下的目录</span><br></pre></td></tr></table></figure>
+
+<p>写入数据的步骤如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w test.n test.e test.z  # 将内存中的三组数据分别写入到三个新的文件中</span><br><span class="line">w over    # 覆盖原来的文件</span><br><span class="line">w append .new  # 在原来的文件名后面加上后缀.new</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><p>通配符与Linux相同。</p>
+<ol>
+<li><code>*</code> 匹配任意长度字符串</li>
+<li><code>?</code> 匹配任意单个非空字符</li>
+<li><code>[]</code> 匹配从a到g范围内的任意单个字符<ul>
+<li><code>[ABC]</code>或者<code>A,B,C</code>匹配单个字符A或B或C</li>
+<li><code>[0-9]</code>匹配任意一位数字</li>
+<li><code>[a-g]</code>匹配a到g范围内任意单个字符</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">read cdv.n cdv.e cdv.z  # 读取这三个文件，分别指定这三个文件的文件名</span><br><span class="line">read cdv.?  # 读取cdv.开头的所有文件，但是.后面只有一个字符。</span><br><span class="line">read cdv.[nez] # 匹配这三个字符的cdv.开头的文件</span><br><span class="line">r *  # 读取该目录下的所有文件</span><br></pre></td></tr></table></figure>
+<p> ！！！注意：数据读取到内存中时，每次读取都会清空内存，因此只会保留一次<code>read</code>的数据。<br>使用<code>more</code>进行追加。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read more 文件名（绝对地址）</span><br></pre></td></tr></table></figure>
+
+
+
 
     </div>
 
@@ -293,21 +315,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Linux%E5%AD%A6%E4%B9%A0/" rel="tag"># Linux学习</a>
+              <a href="/tags/SAC/" rel="tag"># SAC</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Obspy学习笔记">
-                  <i class="fa fa-chevron-left"></i> Obspy学习笔记
+                <a href="/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Rdseed学习笔记">
+                  <i class="fa fa-chevron-left"></i> Rdseed学习笔记
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Rdseed学习笔记">
-                  Rdseed学习笔记 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
