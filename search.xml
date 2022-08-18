@@ -1,201 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GMT学习笔记</title>
-    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>参考：</p>
-<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
-<pre><code>conda install gmt -c conda-forge
-gmt --version  //进行测试
-</code></pre>
-<p>升级：</p>
-<pre><code>conda update gmt
-</code></pre>
-<p>卸载：</p>
-<pre><code>conda remove gmt
-</code></pre>
-<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
-<pre><code>gmt  //开始使用gmt
-gmt --new-script &gt; 文件名 //创建一个.sh文件
-gedit 文件名 //使用gedit文本编辑器编辑脚本文件
-bash 文件名  //执行该脚本
-</code></pre>
-<p>建立的gmt文件内容为：</p>
-<p>文件内容：</p>
-<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
-# pdf为格式。
-    # Place modern session commands here
-    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
-gmt end show  # show表示自动打开生成的图片文件
-</code></pre>
-<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
-<p>gmt+模块名+[-选项+参数]</p>
-<p>coast 表示绘制海岸线</p>
-<p>-R指选项，g为参数</p>
-<p>+t为-B的子选项</p>
-<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
-<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
-<ul>
-<li>H：hammer投影</li>
-<li>M：墨卡托投影</li>
-</ul>
-</li>
-<li><p>-R 表示指定绘图范围。格式为：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
-<p>  或者使用国家代码表示区域范围</p>
-<ul>
-<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
-<li>CN：中国国家代码。</li>
-</ul>
-</li>
-<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
-<ul>
-<li>a：annotation 增加标注，即经纬度数字等</li>
-<li>f：frame 刻度线，周边的刻度线</li>
-<li>g：grid 网格线</li>
-<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
-<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
-<li>+t“标题内容”：增加标题</li>
-</ul>
-</li>
-<li><p>-W 表示绘制海岸线</p>
-<ul>
-<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
-<li>颜色有：黑色black，浅红色lightred</li>
-</ul>
-</li>
-<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
-</ul>
-</li>
-<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
-</li>
-<li><p>-G 设置陆地填充色</p>
-</li>
-<li><p>-S 设置水体颜色</p>
-</li>
-<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
-</li>
-<li><p>-N 绘制国界、省界等，</p>
-<ul>
-<li>-N1 表示国界</li>
-<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
-</ul>
-<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
-<pre><code>
-</code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>GMT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obspy学习笔记</title>
-    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Git学习笔记</title>
-    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
-git config --global user.email &quot;你的邮箱&quot;
-ssh-keygen -t rsa -C &quot;你的邮箱&quot;
-</code></pre>
-<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
-<pre><code>ssh -T git@github.com
-</code></pre>
-<p>确认已经完成连接</p>
-<span id="more"></span>
-<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
-cd (仓库名)
-git init
-</code></pre>
-<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
-</code></pre>
-<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
-</code></pre>
-<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
-git add . (将所有文件添加到暂存区)
-</code></pre>
-<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
-git commit  //打开编辑器详细编辑信息
-</code></pre>
-<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
-git log --pretty=short  //只显示第一行的简述信息
-git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
-git diff                //查看当前工作树与暂存区的差别
-git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
-</code></pre>
-<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
-git checkout -b   //创建、切换分支
-git log --graph   //图表形式查看分支
-</code></pre>
-<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
-//同样效果的命令
-git branch (需要切换的分支名)
-git checkout (需要切换的分支名)
-
-git checkout -    //切换回上一个分支
-</code></pre>
-<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
-git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
-</code></pre>
-<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
-</code></pre>
-<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
-git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
-</code></pre>
-<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
-</code></pre>
-<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
-//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
-</code></pre>
-<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
-//使用编辑器修改
-</code></pre>
-<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
-</code></pre>
-<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
-git push -b (分支名)   //创建并推送分支
-</code></pre>
-<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
-git clone (SSH)  //将网络仓库克隆到本地
-git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
-git push  //直接推送处于该情况下的分支
-</code></pre>
-<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
-</code></pre>
-<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
-git remote add (原仓库新名称) (原仓库SSH)
-git fetch (原仓库新名称)       //获取最新数据
-git merge (原仓库新名称)/master   //合并
-</code></pre>
-<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
-git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
-git checkout -b pr1  //创建用于检查的分支
-git merge PR发送者/workname   //合并分支
-git branch -D pr1   //删除分支
-</code></pre>
-<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
-git merge PR发送者/work
-git diff origin/(主分支名)
-git push     //推送
-</code></pre>
-]]></content>
-      <categories>
-        <category>Git学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Rdseed学习笔记</title>
     <url>/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
@@ -351,6 +156,196 @@ git push     //推送
       </tags>
   </entry>
   <entry>
+    <title>GMT学习笔记</title>
+    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>参考：</p>
+<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
+<pre><code>conda install gmt -c conda-forge
+gmt --version  //进行测试
+</code></pre>
+<p>升级：</p>
+<pre><code>conda update gmt
+</code></pre>
+<p>卸载：</p>
+<pre><code>conda remove gmt
+</code></pre>
+<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
+<pre><code>gmt  //开始使用gmt
+gmt --new-script &gt; 文件名 //创建一个.sh文件
+gedit 文件名 //使用gedit文本编辑器编辑脚本文件
+bash 文件名  //执行该脚本
+</code></pre>
+<p>建立的gmt文件内容为：</p>
+<p>文件内容：</p>
+<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
+# pdf为格式。
+    # Place modern session commands here
+    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
+gmt end show  # show表示自动打开生成的图片文件
+</code></pre>
+<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
+<p>gmt+模块名+[-选项+参数]</p>
+<p>coast 表示绘制海岸线</p>
+<p>-R指选项，g为参数</p>
+<p>+t为-B的子选项</p>
+<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
+<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
+<ul>
+<li>H：hammer投影</li>
+<li>M：墨卡托投影</li>
+</ul>
+</li>
+<li><p>-R 表示指定绘图范围。格式为：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
+<p>  或者使用国家代码表示区域范围</p>
+<ul>
+<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
+<li>CN：中国国家代码。</li>
+</ul>
+</li>
+<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
+<ul>
+<li>a：annotation 增加标注，即经纬度数字等</li>
+<li>f：frame 刻度线，周边的刻度线</li>
+<li>g：grid 网格线</li>
+<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
+<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
+<li>+t“标题内容”：增加标题</li>
+</ul>
+</li>
+<li><p>-W 表示绘制海岸线</p>
+<ul>
+<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
+<li>颜色有：黑色black，浅红色lightred</li>
+</ul>
+</li>
+<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
+</ul>
+</li>
+<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
+</li>
+<li><p>-G 设置陆地填充色</p>
+</li>
+<li><p>-S 设置水体颜色</p>
+</li>
+<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
+</li>
+<li><p>-N 绘制国界、省界等，</p>
+<ul>
+<li>-N1 表示国界</li>
+<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
+</ul>
+<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
+<pre><code>
+</code></pre>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>GMT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记</title>
+    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;你的邮箱&quot;
+ssh-keygen -t rsa -C &quot;你的邮箱&quot;
+</code></pre>
+<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>确认已经完成连接</p>
+<span id="more"></span>
+<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
+cd (仓库名)
+git init
+</code></pre>
+<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
+</code></pre>
+<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
+</code></pre>
+<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
+git add . (将所有文件添加到暂存区)
+</code></pre>
+<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
+git commit  //打开编辑器详细编辑信息
+</code></pre>
+<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
+git log --pretty=short  //只显示第一行的简述信息
+git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
+git diff                //查看当前工作树与暂存区的差别
+git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
+</code></pre>
+<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
+git checkout -b   //创建、切换分支
+git log --graph   //图表形式查看分支
+</code></pre>
+<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
+//同样效果的命令
+git branch (需要切换的分支名)
+git checkout (需要切换的分支名)
+
+git checkout -    //切换回上一个分支
+</code></pre>
+<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
+git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
+</code></pre>
+<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
+</code></pre>
+<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
+git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
+</code></pre>
+<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
+</code></pre>
+<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
+//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
+</code></pre>
+<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
+//使用编辑器修改
+</code></pre>
+<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
+</code></pre>
+<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
+git push -b (分支名)   //创建并推送分支
+</code></pre>
+<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
+git clone (SSH)  //将网络仓库克隆到本地
+git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
+git push  //直接推送处于该情况下的分支
+</code></pre>
+<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
+</code></pre>
+<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
+git remote add (原仓库新名称) (原仓库SSH)
+git fetch (原仓库新名称)       //获取最新数据
+git merge (原仓库新名称)/master   //合并
+</code></pre>
+<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
+git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
+git checkout -b pr1  //创建用于检查的分支
+git merge PR发送者/workname   //合并分支
+git branch -D pr1   //删除分支
+</code></pre>
+<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
+git merge PR发送者/work
+git diff origin/(主分支名)
+git push     //推送
+</code></pre>
+]]></content>
+      <categories>
+        <category>Git学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SAC学习笔记</title>
     <url>/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
@@ -385,14 +380,168 @@ git push     //推送
 <p> ！！！注意：数据读取到内存中时，每次读取都会清空内存，因此只会保留一次<code>read</code>的数据。<br>使用<code>more</code>进行追加。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read more 文件名（绝对地址）</span><br></pre></td></tr></table></figure>
 
+<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><p>绘图在上文中已经提及，使用<code>plot</code>进行绘制。此外，还有<br><code>plot1</code>、<code>plot2</code>、<code>plotpk</code>命令。</p>
+<p>同时绘制多个波形时，先显示一个波形，在命令行界面显示<code>Waiting</code><br>。使用回车显示下一个波形。如果不想显示，可以使用<code>kill</code>命令，简写<code>k</code>杀死进程。</p>
+<h2 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h2><h3 id="头段变量"><a href="#头段变量" class="headerlink" title="头段变量"></a>头段变量</h3><h4 id="基本变量"><a href="#基本变量" class="headerlink" title="基本变量"></a>基本变量</h4><h5 id="nvhdr"><a href="#nvhdr" class="headerlink" title="nvhdr"></a><code>nvhdr</code></h5><ul>
+<li>nzyear 年</li>
+<li>nzjday 一年的第几天 </li>
+<li>kzdate（由上面两个变量构成）</li>
+<li>kztime（由下面两个变量构成）</li>
+<li>nzhour 时</li>
+<li>nzmin 分</li>
+<li>nzsec 秒</li>
+<li>nzmsec 毫秒</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fg seis</span><br><span class="line">lh nzyear nzjday nzhour # 显示头段变量信息</span><br></pre></td></tr></table></figure>
 
-
+<h5 id="iztype"><a href="#iztype" class="headerlink" title="iztype"></a><code>iztype</code></h5><p>等效参考时刻。</p>
+<ul>
+<li>IUNKN 未知</li>
+<li>IB 文件开始时刻为参考时间</li>
+<li>IDAY 参考日期当天午夜为参考时间</li>
+<li>IO 事件发生时间为参考时间</li>
+<li>IA 初动到时为参考时间</li>
+<li>ITn 用户自定义时间Tn为参考时间，n可取0-9</li>
+</ul>
+<p><code>iztype=IO</code>表示数据以发震时刻作为参考时刻，此时头段变量o的值为0</p>
+<h5 id="iftype"><a href="#iftype" class="headerlink" title="iftype"></a><code>iftype</code></h5><p>SAC文件类型，决定了头段区之后有几个数据区</p>
+<ul>
+<li>ITIME 时间序列文件 即Y数据，一般的地震波形数据</li>
+<li>IRLIM 频谱文件 格式为实部-虚部</li>
+<li>IAMPH 频谱文件 格式为 振幅-相位</li>
+<li>IXY 一般的X-Y数据</li>
+<li>IXYZ 一般的XYZ 3D文件</li>
+</ul>
+<h5 id="idep"><a href="#idep" class="headerlink" title="idep"></a><code>idep</code></h5><p>因变量（Y）类型。该头段变量可以不定义</p>
+<ul>
+<li>IUNKN 未知类型</li>
+<li>IDISP 位移量 单位：nm</li>
+<li>IVEL 速度量 单位：nm&#x2F;s</li>
+<li>IVOLTS 速度量 单位：V（未知含义）</li>
+<li>IACC 加速度量 单位：nm&#x2F;s2</li>
+</ul>
+<h4 id="数据相关变量"><a href="#数据相关变量" class="headerlink" title="数据相关变量"></a>数据相关变量</h4><h5 id="npts"><a href="#npts" class="headerlink" title="npts"></a><code>npts</code></h5><p>数据点数，决定了数据区有多少个数据点。</p>
+<h5 id="delta"><a href="#delta" class="headerlink" title="delta"></a><code>delta</code></h5><p>等间隔数据的数据点采样周期 （标称值）。</p>
+<h5 id="odelta"><a href="#odelta" class="headerlink" title="odelta"></a><code>odelta</code></h5><p>采样周期的实际值。如果实际值与标称值不同则有值。<br>一般来说都是未定义的。</p>
+<h5 id="b-e"><a href="#b-e" class="headerlink" title="b, e"></a><code>b, e</code></h5><p>文件的起始时间和结束时间，相对于参考时刻的秒数</p>
+<h5 id="leven"><a href="#leven" class="headerlink" title="leven"></a><code>leven</code></h5><p>数据为等间隔则为True，否则为False</p>
+<h5 id="depmin-depmax-depmen"><a href="#depmin-depmax-depmen" class="headerlink" title="depmin depmax depmen"></a><code>depmin depmax depmen</code></h5><p>因变量Y的最小值、最大值、均值。在读入SAC文件以及对数据进行处理时，这三个头段变量的值会被自动计算并更新。</p>
+<h5 id="scale"><a href="#scale" class="headerlink" title="scale"></a><code>scale</code></h5><p>因变量比例因子，即真实物理场被乘以该比例因子而得到现有数据。<br><code>scale=1.0e20</code> 指乘10^20转换量级</p>
+<h5 id="xmininum-xmaximum-yminimum-ymaximum"><a href="#xmininum-xmaximum-yminimum-ymaximum" class="headerlink" title="xmininum xmaximum yminimum ymaximum "></a><code>xmininum xmaximum yminimum ymaximum </code></h5><p>仅用于3D文件中，记录X、Y的最小、最大值。</p>
+<h5 id="nxsize-nysize"><a href="#nxsize-nysize" class="headerlink" title="nxsize nysize"></a><code>nxsize nysize</code></h5><p>仅用于3D文件中，记录X、Y方向的数据点数。</p>
+<h5 id="iqual"><a href="#iqual" class="headerlink" title="iqual"></a><code>iqual</code></h5><p>iqual标识数据质量，可以取如下值：</p>
+<ul>
+<li>IGOOD 高质量数据</li>
+<li>IGLCH 数据中有毛刺 glitches</li>
+<li>IDROP 数据有丢失 dropouts</li>
+<li>ILOWSN 低信噪比数据</li>
+<li>IOTHER 其他</li>
+</ul>
+<h5 id="isynth"><a href="#isynth" class="headerlink" title="isynth"></a><code>isynth</code></h5><p>合成数地震图标识<br><code>IRLDTA</code> 真实数据</p>
+<h4 id="事件相关变量"><a href="#事件相关变量" class="headerlink" title="事件相关变量"></a>事件相关变量</h4><h5 id="kevnm"><a href="#kevnm" class="headerlink" title="kevnm"></a><code>kevnm</code></h5><p>事件名，长度为16个字节</p>
+<h5 id="evla-evlo-evel-evdp"><a href="#evla-evlo-evel-evdp" class="headerlink" title="evla evlo evel evdp"></a><code>evla evlo evel evdp</code></h5><p>分别代表事件发生的 纬度（-90<del>90） 经度（-180</del>180） 高程（m）和深度（km）</p>
+<h5 id="ievreg"><a href="#ievreg" class="headerlink" title="ievreg"></a><code>ievreg</code></h5><p>事件发生的地理区域</p>
+<p>Flinn-Engdahl Regions: <a href="http://en.wikipedia.org/wiki/Flinn-Engdahl_regions">http://en.wikipedia.org/wiki/Flinn-Engdahl_regions</a></p>
+<h5 id="ievtyp"><a href="#ievtyp" class="headerlink" title="ievtyp"></a><code>ievtyp</code></h5><p>事件类型</p>
+<ul>
+<li>IUNKN 未知事件</li>
+<li>INUCL 核事件</li>
+<li>IEQ 地震</li>
+<li>IOTHER 其他</li>
+</ul>
+<h5 id="mag"><a href="#mag" class="headerlink" title="mag"></a><code>mag</code></h5><p>震级</p>
+<h5 id="imagsrc"><a href="#imagsrc" class="headerlink" title="imagsrc"></a><code>imagsrc</code></h5><p>震级信息来源</p>
+<ul>
+<li>INEIC：<a href="http://earthquake.usgs.gov/earthquakes/search/">http://earthquake.usgs.gov/earthquakes/search/</a></li>
+<li>IPDE：<a href="https://earthquake.usgs.gov/data/comcat/catalog/us/">https://earthquake.usgs.gov/data/comcat/catalog/us/</a></li>
+<li>IISC：<a href="http://www.isc.ac.uk/iscbulletin/search/catalogue/">http://www.isc.ac.uk/iscbulletin/search/catalogue/</a></li>
+<li>IREB：人工检查过的事件目录</li>
+<li>IUSGS ：USGS</li>
+<li>IBRK ：UC Berkeley</li>
+<li>ICALTECH：California Institute of Technology</li>
+<li>ILLNL：Lawrence Livermore National Laboratory</li>
+<li>IEVLOC：Event Location</li>
+<li>IJSOP：Joint Seismic Observation Program</li>
+<li>IUSER：The individual using SAC2000</li>
+<li>IUNKNOWN：未知</li>
+</ul>
+<h5 id="imagtyp"><a href="#imagtyp" class="headerlink" title="imagtyp"></a><code>imagtyp</code></h5><p>震级类型</p>
+<ul>
+<li>IMB：体波震级</li>
+<li>IMS：面波震级</li>
+<li>IML：区域震级</li>
+<li>IMW：矩震级</li>
+<li>IMD：持续时间震级</li>
+<li>IMX：用户自定义震级</li>
+</ul>
+<h5 id="grarc"><a href="#grarc" class="headerlink" title="grarc"></a><code>grarc</code></h5><p>全称Great Circle Arc；震中距，震中到台站大圆弧的长度，单位为度</p>
+<h5 id="dist"><a href="#dist" class="headerlink" title="dist"></a><code>dist</code></h5><p>震中与台站之间的距离，单位为km</p>
+<h5 id="az"><a href="#az" class="headerlink" title="az"></a><code>az</code></h5><p>方位角，震中到台站的连线与地理北向的夹角，单位为度</p>
+<h5 id="baz"><a href="#baz" class="headerlink" title="baz"></a><code>baz</code></h5><p>反方位角，台站到震中的连线与地理北向的夹角，单位为度</p>
+<h5 id="o-ko"><a href="#o-ko" class="headerlink" title="o ko"></a><code>o ko</code></h5><ul>
+<li>o 事件发生时刻相对于参考时刻的秒数</li>
+<li>ko 绘图时时间变量o的标识符</li>
+</ul>
+<h5 id="khole"><a href="#khole" class="headerlink" title="khole"></a><code>khole</code></h5><p>若为核爆事件，为孔眼标识；如果是其他事件为位置标识</p>
+<h5 id="nevid-norid-nwfid"><a href="#nevid-norid-nwfid" class="headerlink" title="nevid norid nwfid"></a><code>nevid norid nwfid</code></h5><p>标识事件ID、 起始时间ID、 波形ID</p>
+<h4 id="台站相关变量"><a href="#台站相关变量" class="headerlink" title="台站相关变量"></a>台站相关变量</h4><h5 id="knetwk-kstnm"><a href="#knetwk-kstnm" class="headerlink" title="knetwk kstnm"></a><code>knetwk kstnm</code></h5><p>地震台网名、台站名</p>
+<h5 id="istreg"><a href="#istreg" class="headerlink" title="istreg"></a><code>istreg</code></h5><p>台站地理区域</p>
+<h5 id="stla-stlo-stel-stdp"><a href="#stla-stlo-stel-stdp" class="headerlink" title="stla stlo stel stdp"></a><code>stla stlo stel stdp</code></h5><p>台站纬度、精度、高程（地震仪与海平面之间高程差（m））和深度（地震仪相对于当地地表的深度（m））</p>
+<h5 id="cmpaz-cmpinc-kcmpnm-kstcmp"><a href="#cmpaz-cmpinc-kcmpnm-kstcmp" class="headerlink" title="cmpaz cmpinc kcmpnm kstcmp"></a><code>cmpaz cmpinc kcmpnm kstcmp</code></h5><p>方位角、入射角、通道名和辅助型变量（表示台站分量）<br>前两者详见<a href="https://zhiyuanshi1901.github.io/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rdseed学习笔记</a></p>
+<p>kcmpnm 通道名（component name），用于存储通道的信息。包含三个英文字符，包括：<br>频带码（Band Code）、仪器码（Instrument Code）和方位码（Orientation Code）。</p>
+<h5 id="lpspol"><a href="#lpspol" class="headerlink" title="lpspol"></a><code>lpspol</code></h5><p>如图，左手坐标系下，三通道都是正极性为真，否则为假</p>
+<h4 id="震相相关变量"><a href="#震相相关变量" class="headerlink" title="震相相关变量"></a>震相相关变量</h4><h5 id="a-f-tn"><a href="#a-f-tn" class="headerlink" title="a f tn"></a><code>a f tn</code></h5><p>a、f存储事件初动、结束时刻相对于参考时刻的秒数<br>Tn：n&#x3D;0-9 存储用户自定义的时刻相对于参考时刻的秒数，常用存储震相到时</p>
+<h5 id="ka-kf-ktn"><a href="#ka-kf-ktn" class="headerlink" title="ka kf ktn"></a><code>ka kf ktn</code></h5><p>头段变量a、f、tn都有一个对应的k开头的字符型头段变量，称之为时间标识。<br>时间标识用于说明对应的时间头段变量中所包含时间的含义。</p>
+<p>a中包含P波到时，ka&#x3D;P；</p>
+<p>t1中包含PcP震相的到时，则kt1设置为PcP</p>
+<p>在绘图时，若时间头段变量中有值，则默认会在该时刻处绘制一条垂线，若相应的时间标记有定义，则将时间标记的值显示在垂线附近。</p>
+<h5 id="Xmarker"><a href="#Xmarker" class="headerlink" title="Xmarker"></a><code>Xmarker</code></h5><p>震相相关的变量可以构成一个辅助型变量。<br><code>a</code>和<code>ka</code>可以构成<code>amarker</code>,<code>f</code>和<code>kf</code>可以构成<code>fmarker</code>，<br><code>o</code>和<code>ko</code>可以构成<code>omarker</code>，<code>tn</code>和<code>ktn</code>可以构成<code>tnmarker</code>(n&#x3D;0-9)。</p>
+<h4 id="仪器相关变量"><a href="#仪器相关变量" class="headerlink" title="仪器相关变量"></a>仪器相关变量</h4><h5 id="kinst"><a href="#kinst" class="headerlink" title="kinst"></a><code>kinst</code></h5><p>记录仪器的通用名称</p>
+<h5 id="iinst"><a href="#iinst" class="headerlink" title="iinst"></a><code>iinst</code></h5><p>记录仪器的类型</p>
+<h5 id="respn"><a href="#respn" class="headerlink" title="respn"></a><code>respn</code></h5><p>仪器相应参数</p>
+<h4 id="其它变量"><a href="#其它变量" class="headerlink" title="其它变量"></a>其它变量</h4><h5 id="usern"><a href="#usern" class="headerlink" title="usern"></a><code>usern</code></h5><p>n&#x3D;0-9 用于存储用户自定义的浮点型数值</p>
+<h5 id="kusern"><a href="#kusern" class="headerlink" title="kusern"></a><code>kusern</code></h5><p>n&#x3D;0-2 用于存储用户自定义字符型值</p>
+<h5 id="lovrok"><a href="#lovrok" class="headerlink" title="lovrok"></a><code>lovrok</code></h5><p>若为真，则磁盘里的原始数据可以被覆盖；</p>
+<p>若为假，则原始数据不可被覆盖。</p>
+<p>用于保护原始数据。建议先做好备份再操作原始数据。</p>
+<h5 id="lcalda"><a href="#lcalda" class="headerlink" title="lcalda"></a><code>lcalda</code></h5><p>全称：Calculate Distance and Azimuth。如果为真，则当事件和台站<br>的坐标被写入或被修改时，头段变量<code>dist</code> <code>gcarc</code> <code>az</code> <code>baz</code>将自动计算，否则不会被自动计算，SAC头段中存在信息的不兼容。</p>
+<h5 id="kdatrd"><a href="#kdatrd" class="headerlink" title="kdatrd"></a><code>kdatrd</code></h5><p>数据被读入计算机的日期。</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
       </categories>
       <tags>
         <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Obspy学习笔记</title>
+    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Ubuntu安装firefox中国版</title>
+    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
+    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
+<p>参考：</p>
+<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
+<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
+</code></pre>
+<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
+</code></pre>
+<p>使用vi编辑器编辑该文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
+</code></pre>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
       </tags>
   </entry>
   <entry>
@@ -577,29 +726,25 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu安装firefox中国版</title>
-    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
-    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
+    <title>博客增加搜索功能</title>
+    <url>/2022/08/06/%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<p>hexo博客可以使用本地搜索实现搜索服务。</p>
 <p>参考：</p>
-<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
-<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
+<p><a href="https://blog.csdn.net/zyq55917/article/details/125278500">https://blog.csdn.net/zyq55917/article/details/125278500</a></p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在blog根目录下git bash：</p>
+<pre><code>npm install hexo-generator-searchdb
 </code></pre>
-<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
-</code></pre>
-<p>使用vi编辑器编辑该文件，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
+<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><p>在blog根目录下的_config.yml中增加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    content: true</span><br><span class="line">    format: html</span><br></pre></td></tr></table></figure>
 
-<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
-</code></pre>
+<h1 id="next配置"><a href="#next配置" class="headerlink" title="next配置"></a>next配置</h1><p>在主题之下的_config.yml文件中启用search服务。</p>
+<p>只要将<code>enable</code>修改为<code>true</code>即可。</p>
+<p>可以选择auto自动搜索或者manual按回车搜索。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Linux学习</category>
+        <category>博客创建</category>
       </categories>
-      <tags>
-        <tag>Linux学习</tag>
-      </tags>
   </entry>
   <entry>
     <title>Ubuntu与windows双系统设置windows默认启动</title>
@@ -623,105 +768,6 @@ man 命令名  //使用范围更广
       <tags>
         <tag>Linux学习</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>博客创建笔记</title>
-    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
-<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
-<li>安装 Git</li>
-<li>安装Nodejs</li>
-</ul>
-<p>安装包在<a href>此处</a>可以找到。</p>
-<ul>
-<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
-根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
-最后进行测试，显示对应的版本信息即可。</li>
-</ul>
-<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
-<blockquote>
-<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
-<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
-<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
-</blockquote>
-<p>经过该方法后，问题应该得到了解决。</p>
-<ul>
-<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-查看版本信息后，显示正常为安装成功</li>
-</ul>
-<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
-<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
-<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
-<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
-<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
-<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
-<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
-<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
-<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
-<p>然后安装插件：</p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre>
-<p>最后执行以下命令：</p>
-<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
-</code></pre>
-<p>进行缓存清空、生成html文件、部署到github。</p>
-<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
-<pre><code>hexo new &quot;文章名&quot;
-</code></pre>
-<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
-<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
-<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
-<pre><code>npm install hexo-asset-image --save
-</code></pre>
-<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
-<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
-</code></pre>
-<p>修改为：</p>
-<pre><code>$(this).attr(&#39;src&#39;, src);
-</code></pre>
-<p>保存文件。</p>
-<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
-<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
-<p>使用方式:  ![图片名] ( 图片位置 )</p>
-<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
-]]></content>
-      <categories>
-        <category>博客创建</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客增加搜索功能</title>
-    <url>/2022/08/06/%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<p>hexo博客可以使用本地搜索实现搜索服务。</p>
-<p>参考：</p>
-<p><a href="https://blog.csdn.net/zyq55917/article/details/125278500">https://blog.csdn.net/zyq55917/article/details/125278500</a></p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在blog根目录下git bash：</p>
-<pre><code>npm install hexo-generator-searchdb
-</code></pre>
-<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><p>在blog根目录下的_config.yml中增加内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    content: true</span><br><span class="line">    format: html</span><br></pre></td></tr></table></figure>
-
-<h1 id="next配置"><a href="#next配置" class="headerlink" title="next配置"></a>next配置</h1><p>在主题之下的_config.yml文件中启用search服务。</p>
-<p>只要将<code>enable</code>修改为<code>true</code>即可。</p>
-<p>可以选择auto自动搜索或者manual按回车搜索。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>博客创建</category>
-      </categories>
   </entry>
   <entry>
     <title>层状介质时间场模拟与报告</title>
@@ -803,6 +849,84 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>常用网站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客创建笔记</title>
+    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
+<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
+<li>安装 Git</li>
+<li>安装Nodejs</li>
+</ul>
+<p>安装包在<a href>此处</a>可以找到。</p>
+<ul>
+<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
+根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
+最后进行测试，显示对应的版本信息即可。</li>
+</ul>
+<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
+<blockquote>
+<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
+<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
+<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
+</blockquote>
+<p>经过该方法后，问题应该得到了解决。</p>
+<ul>
+<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+查看版本信息后，显示正常为安装成功</li>
+</ul>
+<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
+<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
+<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
+<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
+<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
+<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
+<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
+<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
+<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
+<p>然后安装插件：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre>
+<p>最后执行以下命令：</p>
+<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+</code></pre>
+<p>进行缓存清空、生成html文件、部署到github。</p>
+<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
+<pre><code>hexo new &quot;文章名&quot;
+</code></pre>
+<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
+<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
+<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
+<pre><code>npm install hexo-asset-image --save
+</code></pre>
+<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
+<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
+</code></pre>
+<p>修改为：</p>
+<pre><code>$(this).attr(&#39;src&#39;, src);
+</code></pre>
+<p>保存文件。</p>
+<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
+<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
+<p>使用方式:  ![图片名] ( 图片位置 )</p>
+<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
+]]></content>
+      <categories>
+        <category>博客创建</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
 </search>

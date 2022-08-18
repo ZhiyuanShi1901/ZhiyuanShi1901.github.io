@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考[seisman]https:&#x2F;&#x2F;seisman.github.io&#x2F;SAC_Docs_zh&#x2F; SAC入门启动与退出启动SAC在控制端输入sac 退出SAC在SAC控制端输入quit 样本数据SAC支持生成样本数据进行学习，即使手头没有SAC数据也可以进行学习使用。 funcgen（fg）funcgen（function generator），该命令可以生成一些特定的函数，例如脉冲函数、阶跃函">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-15T12:17:53.000Z">
-<meta property="article:modified_time" content="2022-08-15T13:21:52.336Z">
+<meta property="article:modified_time" content="2022-08-18T13:00:16.634Z">
 <meta property="article:tag" content="SAC">
 <meta name="twitter:card" content="summary">
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAC%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">SAC入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%80%80%E5%87%BA"><span class="nav-number">2.1.</span> <span class="nav-text">启动与退出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8SAC"><span class="nav-number">2.1.1.</span> <span class="nav-text">启动SAC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BASAC"><span class="nav-number">2.1.2.</span> <span class="nav-text">退出SAC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">样本数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#funcgen%EF%BC%88fg%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">funcgen（fg）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datagen%EF%BC%88dg%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">datagen（dg）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">读写数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.2.</span> <span class="nav-text">读取数据</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SAC%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">SAC入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%80%80%E5%87%BA"><span class="nav-number">2.1.</span> <span class="nav-text">启动与退出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8SAC"><span class="nav-number">2.1.1.</span> <span class="nav-text">启动SAC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BASAC"><span class="nav-number">2.1.2.</span> <span class="nav-text">退出SAC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.</span> <span class="nav-text">样本数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#funcgen%EF%BC%88fg%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">funcgen（fg）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datagen%EF%BC%88dg%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">datagen（dg）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">读写数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.2.</span> <span class="nav-text">读取数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%9B%BE"><span class="nav-number">2.4.</span> <span class="nav-text">绘图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.5.</span> <span class="nav-text">文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B4%E6%AE%B5%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">头段变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">基本变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#nvhdr"><span class="nav-number">2.5.1.1.1.</span> <span class="nav-text">nvhdr</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#iztype"><span class="nav-number">2.5.1.1.2.</span> <span class="nav-text">iztype</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#iftype"><span class="nav-number">2.5.1.1.3.</span> <span class="nav-text">iftype</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#idep"><span class="nav-number">2.5.1.1.4.</span> <span class="nav-text">idep</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.2.</span> <span class="nav-text">数据相关变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#npts"><span class="nav-number">2.5.1.2.1.</span> <span class="nav-text">npts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#delta"><span class="nav-number">2.5.1.2.2.</span> <span class="nav-text">delta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#odelta"><span class="nav-number">2.5.1.2.3.</span> <span class="nav-text">odelta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b-e"><span class="nav-number">2.5.1.2.4.</span> <span class="nav-text">b, e</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#leven"><span class="nav-number">2.5.1.2.5.</span> <span class="nav-text">leven</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#depmin-depmax-depmen"><span class="nav-number">2.5.1.2.6.</span> <span class="nav-text">depmin depmax depmen</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#scale"><span class="nav-number">2.5.1.2.7.</span> <span class="nav-text">scale</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xmininum-xmaximum-yminimum-ymaximum"><span class="nav-number">2.5.1.2.8.</span> <span class="nav-text">xmininum xmaximum yminimum ymaximum </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nxsize-nysize"><span class="nav-number">2.5.1.2.9.</span> <span class="nav-text">nxsize nysize</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#iqual"><span class="nav-number">2.5.1.2.10.</span> <span class="nav-text">iqual</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isynth"><span class="nav-number">2.5.1.2.11.</span> <span class="nav-text">isynth</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.3.</span> <span class="nav-text">事件相关变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kevnm"><span class="nav-number">2.5.1.3.1.</span> <span class="nav-text">kevnm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#evla-evlo-evel-evdp"><span class="nav-number">2.5.1.3.2.</span> <span class="nav-text">evla evlo evel evdp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ievreg"><span class="nav-number">2.5.1.3.3.</span> <span class="nav-text">ievreg</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ievtyp"><span class="nav-number">2.5.1.3.4.</span> <span class="nav-text">ievtyp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mag"><span class="nav-number">2.5.1.3.5.</span> <span class="nav-text">mag</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#imagsrc"><span class="nav-number">2.5.1.3.6.</span> <span class="nav-text">imagsrc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#imagtyp"><span class="nav-number">2.5.1.3.7.</span> <span class="nav-text">imagtyp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#grarc"><span class="nav-number">2.5.1.3.8.</span> <span class="nav-text">grarc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dist"><span class="nav-number">2.5.1.3.9.</span> <span class="nav-text">dist</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#az"><span class="nav-number">2.5.1.3.10.</span> <span class="nav-text">az</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#baz"><span class="nav-number">2.5.1.3.11.</span> <span class="nav-text">baz</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#o-ko"><span class="nav-number">2.5.1.3.12.</span> <span class="nav-text">o ko</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#khole"><span class="nav-number">2.5.1.3.13.</span> <span class="nav-text">khole</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nevid-norid-nwfid"><span class="nav-number">2.5.1.3.14.</span> <span class="nav-text">nevid norid nwfid</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B0%E7%AB%99%E7%9B%B8%E5%85%B3%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.4.</span> <span class="nav-text">台站相关变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#knetwk-kstnm"><span class="nav-number">2.5.1.4.1.</span> <span class="nav-text">knetwk kstnm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#istreg"><span class="nav-number">2.5.1.4.2.</span> <span class="nav-text">istreg</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stla-stlo-stel-stdp"><span class="nav-number">2.5.1.4.3.</span> <span class="nav-text">stla stlo stel stdp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cmpaz-cmpinc-kcmpnm-kstcmp"><span class="nav-number">2.5.1.4.4.</span> <span class="nav-text">cmpaz cmpinc kcmpnm kstcmp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lpspol"><span class="nav-number">2.5.1.4.5.</span> <span class="nav-text">lpspol</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%87%E7%9B%B8%E7%9B%B8%E5%85%B3%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.5.</span> <span class="nav-text">震相相关变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-f-tn"><span class="nav-number">2.5.1.5.1.</span> <span class="nav-text">a f tn</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ka-kf-ktn"><span class="nav-number">2.5.1.5.2.</span> <span class="nav-text">ka kf ktn</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Xmarker"><span class="nav-number">2.5.1.5.3.</span> <span class="nav-text">Xmarker</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%AA%E5%99%A8%E7%9B%B8%E5%85%B3%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.6.</span> <span class="nav-text">仪器相关变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kinst"><span class="nav-number">2.5.1.6.1.</span> <span class="nav-text">kinst</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#iinst"><span class="nav-number">2.5.1.6.2.</span> <span class="nav-text">iinst</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#respn"><span class="nav-number">2.5.1.6.3.</span> <span class="nav-text">respn</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.5.1.7.</span> <span class="nav-text">其它变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#usern"><span class="nav-number">2.5.1.7.1.</span> <span class="nav-text">usern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kusern"><span class="nav-number">2.5.1.7.2.</span> <span class="nav-text">kusern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lovrok"><span class="nav-number">2.5.1.7.3.</span> <span class="nav-text">lovrok</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lcalda"><span class="nav-number">2.5.1.7.4.</span> <span class="nav-text">lcalda</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kdatrd"><span class="nav-number">2.5.1.7.5.</span> <span class="nav-text">kdatrd</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -248,9 +248,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-08-15 20:17:53 / Modified: 21:21:52" itemprop="dateCreated datePublished" datetime="2022-08-15T20:17:53+08:00">2022-08-15</time>
+      <time title="Created: 2022-08-15 20:17:53" itemprop="dateCreated datePublished" datetime="2022-08-15T20:17:53+08:00">2022-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-18 21:00:16" itemprop="dateModified" datetime="2022-08-18T21:00:16+08:00">2022-08-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,8 +310,132 @@
 <p> ！！！注意：数据读取到内存中时，每次读取都会清空内存，因此只会保留一次<code>read</code>的数据。<br>使用<code>more</code>进行追加。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read more 文件名（绝对地址）</span><br></pre></td></tr></table></figure>
 
+<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><p>绘图在上文中已经提及，使用<code>plot</code>进行绘制。此外，还有<br><code>plot1</code>、<code>plot2</code>、<code>plotpk</code>命令。</p>
+<p>同时绘制多个波形时，先显示一个波形，在命令行界面显示<code>Waiting</code><br>。使用回车显示下一个波形。如果不想显示，可以使用<code>kill</code>命令，简写<code>k</code>杀死进程。</p>
+<h2 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h2><h3 id="头段变量"><a href="#头段变量" class="headerlink" title="头段变量"></a>头段变量</h3><h4 id="基本变量"><a href="#基本变量" class="headerlink" title="基本变量"></a>基本变量</h4><h5 id="nvhdr"><a href="#nvhdr" class="headerlink" title="nvhdr"></a><code>nvhdr</code></h5><ul>
+<li>nzyear 年</li>
+<li>nzjday 一年的第几天 </li>
+<li>kzdate（由上面两个变量构成）</li>
+<li>kztime（由下面两个变量构成）</li>
+<li>nzhour 时</li>
+<li>nzmin 分</li>
+<li>nzsec 秒</li>
+<li>nzmsec 毫秒</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fg seis</span><br><span class="line">lh nzyear nzjday nzhour # 显示头段变量信息</span><br></pre></td></tr></table></figure>
 
-
+<h5 id="iztype"><a href="#iztype" class="headerlink" title="iztype"></a><code>iztype</code></h5><p>等效参考时刻。</p>
+<ul>
+<li>IUNKN 未知</li>
+<li>IB 文件开始时刻为参考时间</li>
+<li>IDAY 参考日期当天午夜为参考时间</li>
+<li>IO 事件发生时间为参考时间</li>
+<li>IA 初动到时为参考时间</li>
+<li>ITn 用户自定义时间Tn为参考时间，n可取0-9</li>
+</ul>
+<p><code>iztype=IO</code>表示数据以发震时刻作为参考时刻，此时头段变量o的值为0</p>
+<h5 id="iftype"><a href="#iftype" class="headerlink" title="iftype"></a><code>iftype</code></h5><p>SAC文件类型，决定了头段区之后有几个数据区</p>
+<ul>
+<li>ITIME 时间序列文件 即Y数据，一般的地震波形数据</li>
+<li>IRLIM 频谱文件 格式为实部-虚部</li>
+<li>IAMPH 频谱文件 格式为 振幅-相位</li>
+<li>IXY 一般的X-Y数据</li>
+<li>IXYZ 一般的XYZ 3D文件</li>
+</ul>
+<h5 id="idep"><a href="#idep" class="headerlink" title="idep"></a><code>idep</code></h5><p>因变量（Y）类型。该头段变量可以不定义</p>
+<ul>
+<li>IUNKN 未知类型</li>
+<li>IDISP 位移量 单位：nm</li>
+<li>IVEL 速度量 单位：nm&#x2F;s</li>
+<li>IVOLTS 速度量 单位：V（未知含义）</li>
+<li>IACC 加速度量 单位：nm&#x2F;s2</li>
+</ul>
+<h4 id="数据相关变量"><a href="#数据相关变量" class="headerlink" title="数据相关变量"></a>数据相关变量</h4><h5 id="npts"><a href="#npts" class="headerlink" title="npts"></a><code>npts</code></h5><p>数据点数，决定了数据区有多少个数据点。</p>
+<h5 id="delta"><a href="#delta" class="headerlink" title="delta"></a><code>delta</code></h5><p>等间隔数据的数据点采样周期 （标称值）。</p>
+<h5 id="odelta"><a href="#odelta" class="headerlink" title="odelta"></a><code>odelta</code></h5><p>采样周期的实际值。如果实际值与标称值不同则有值。<br>一般来说都是未定义的。</p>
+<h5 id="b-e"><a href="#b-e" class="headerlink" title="b, e"></a><code>b, e</code></h5><p>文件的起始时间和结束时间，相对于参考时刻的秒数</p>
+<h5 id="leven"><a href="#leven" class="headerlink" title="leven"></a><code>leven</code></h5><p>数据为等间隔则为True，否则为False</p>
+<h5 id="depmin-depmax-depmen"><a href="#depmin-depmax-depmen" class="headerlink" title="depmin depmax depmen"></a><code>depmin depmax depmen</code></h5><p>因变量Y的最小值、最大值、均值。在读入SAC文件以及对数据进行处理时，这三个头段变量的值会被自动计算并更新。</p>
+<h5 id="scale"><a href="#scale" class="headerlink" title="scale"></a><code>scale</code></h5><p>因变量比例因子，即真实物理场被乘以该比例因子而得到现有数据。<br><code>scale=1.0e20</code> 指乘10^20转换量级</p>
+<h5 id="xmininum-xmaximum-yminimum-ymaximum"><a href="#xmininum-xmaximum-yminimum-ymaximum" class="headerlink" title="xmininum xmaximum yminimum ymaximum "></a><code>xmininum xmaximum yminimum ymaximum </code></h5><p>仅用于3D文件中，记录X、Y的最小、最大值。</p>
+<h5 id="nxsize-nysize"><a href="#nxsize-nysize" class="headerlink" title="nxsize nysize"></a><code>nxsize nysize</code></h5><p>仅用于3D文件中，记录X、Y方向的数据点数。</p>
+<h5 id="iqual"><a href="#iqual" class="headerlink" title="iqual"></a><code>iqual</code></h5><p>iqual标识数据质量，可以取如下值：</p>
+<ul>
+<li>IGOOD 高质量数据</li>
+<li>IGLCH 数据中有毛刺 glitches</li>
+<li>IDROP 数据有丢失 dropouts</li>
+<li>ILOWSN 低信噪比数据</li>
+<li>IOTHER 其他</li>
+</ul>
+<h5 id="isynth"><a href="#isynth" class="headerlink" title="isynth"></a><code>isynth</code></h5><p>合成数地震图标识<br><code>IRLDTA</code> 真实数据</p>
+<h4 id="事件相关变量"><a href="#事件相关变量" class="headerlink" title="事件相关变量"></a>事件相关变量</h4><h5 id="kevnm"><a href="#kevnm" class="headerlink" title="kevnm"></a><code>kevnm</code></h5><p>事件名，长度为16个字节</p>
+<h5 id="evla-evlo-evel-evdp"><a href="#evla-evlo-evel-evdp" class="headerlink" title="evla evlo evel evdp"></a><code>evla evlo evel evdp</code></h5><p>分别代表事件发生的 纬度（-90<del>90） 经度（-180</del>180） 高程（m）和深度（km）</p>
+<h5 id="ievreg"><a href="#ievreg" class="headerlink" title="ievreg"></a><code>ievreg</code></h5><p>事件发生的地理区域</p>
+<p>Flinn-Engdahl Regions: <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Flinn-Engdahl_regions">http://en.wikipedia.org/wiki/Flinn-Engdahl_regions</a></p>
+<h5 id="ievtyp"><a href="#ievtyp" class="headerlink" title="ievtyp"></a><code>ievtyp</code></h5><p>事件类型</p>
+<ul>
+<li>IUNKN 未知事件</li>
+<li>INUCL 核事件</li>
+<li>IEQ 地震</li>
+<li>IOTHER 其他</li>
+</ul>
+<h5 id="mag"><a href="#mag" class="headerlink" title="mag"></a><code>mag</code></h5><p>震级</p>
+<h5 id="imagsrc"><a href="#imagsrc" class="headerlink" title="imagsrc"></a><code>imagsrc</code></h5><p>震级信息来源</p>
+<ul>
+<li>INEIC：<a target="_blank" rel="noopener" href="http://earthquake.usgs.gov/earthquakes/search/">http://earthquake.usgs.gov/earthquakes/search/</a></li>
+<li>IPDE：<a target="_blank" rel="noopener" href="https://earthquake.usgs.gov/data/comcat/catalog/us/">https://earthquake.usgs.gov/data/comcat/catalog/us/</a></li>
+<li>IISC：<a target="_blank" rel="noopener" href="http://www.isc.ac.uk/iscbulletin/search/catalogue/">http://www.isc.ac.uk/iscbulletin/search/catalogue/</a></li>
+<li>IREB：人工检查过的事件目录</li>
+<li>IUSGS ：USGS</li>
+<li>IBRK ：UC Berkeley</li>
+<li>ICALTECH：California Institute of Technology</li>
+<li>ILLNL：Lawrence Livermore National Laboratory</li>
+<li>IEVLOC：Event Location</li>
+<li>IJSOP：Joint Seismic Observation Program</li>
+<li>IUSER：The individual using SAC2000</li>
+<li>IUNKNOWN：未知</li>
+</ul>
+<h5 id="imagtyp"><a href="#imagtyp" class="headerlink" title="imagtyp"></a><code>imagtyp</code></h5><p>震级类型</p>
+<ul>
+<li>IMB：体波震级</li>
+<li>IMS：面波震级</li>
+<li>IML：区域震级</li>
+<li>IMW：矩震级</li>
+<li>IMD：持续时间震级</li>
+<li>IMX：用户自定义震级</li>
+</ul>
+<h5 id="grarc"><a href="#grarc" class="headerlink" title="grarc"></a><code>grarc</code></h5><p>全称Great Circle Arc；震中距，震中到台站大圆弧的长度，单位为度</p>
+<h5 id="dist"><a href="#dist" class="headerlink" title="dist"></a><code>dist</code></h5><p>震中与台站之间的距离，单位为km</p>
+<h5 id="az"><a href="#az" class="headerlink" title="az"></a><code>az</code></h5><p>方位角，震中到台站的连线与地理北向的夹角，单位为度</p>
+<h5 id="baz"><a href="#baz" class="headerlink" title="baz"></a><code>baz</code></h5><p>反方位角，台站到震中的连线与地理北向的夹角，单位为度</p>
+<h5 id="o-ko"><a href="#o-ko" class="headerlink" title="o ko"></a><code>o ko</code></h5><ul>
+<li>o 事件发生时刻相对于参考时刻的秒数</li>
+<li>ko 绘图时时间变量o的标识符</li>
+</ul>
+<h5 id="khole"><a href="#khole" class="headerlink" title="khole"></a><code>khole</code></h5><p>若为核爆事件，为孔眼标识；如果是其他事件为位置标识</p>
+<h5 id="nevid-norid-nwfid"><a href="#nevid-norid-nwfid" class="headerlink" title="nevid norid nwfid"></a><code>nevid norid nwfid</code></h5><p>标识事件ID、 起始时间ID、 波形ID</p>
+<h4 id="台站相关变量"><a href="#台站相关变量" class="headerlink" title="台站相关变量"></a>台站相关变量</h4><h5 id="knetwk-kstnm"><a href="#knetwk-kstnm" class="headerlink" title="knetwk kstnm"></a><code>knetwk kstnm</code></h5><p>地震台网名、台站名</p>
+<h5 id="istreg"><a href="#istreg" class="headerlink" title="istreg"></a><code>istreg</code></h5><p>台站地理区域</p>
+<h5 id="stla-stlo-stel-stdp"><a href="#stla-stlo-stel-stdp" class="headerlink" title="stla stlo stel stdp"></a><code>stla stlo stel stdp</code></h5><p>台站纬度、精度、高程（地震仪与海平面之间高程差（m））和深度（地震仪相对于当地地表的深度（m））</p>
+<h5 id="cmpaz-cmpinc-kcmpnm-kstcmp"><a href="#cmpaz-cmpinc-kcmpnm-kstcmp" class="headerlink" title="cmpaz cmpinc kcmpnm kstcmp"></a><code>cmpaz cmpinc kcmpnm kstcmp</code></h5><p>方位角、入射角、通道名和辅助型变量（表示台站分量）<br>前两者详见<a href="https://zhiyuanshi1901.github.io/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rdseed学习笔记</a></p>
+<p>kcmpnm 通道名（component name），用于存储通道的信息。包含三个英文字符，包括：<br>频带码（Band Code）、仪器码（Instrument Code）和方位码（Orientation Code）。</p>
+<h5 id="lpspol"><a href="#lpspol" class="headerlink" title="lpspol"></a><code>lpspol</code></h5><p>如图，左手坐标系下，三通道都是正极性为真，否则为假</p>
+<h4 id="震相相关变量"><a href="#震相相关变量" class="headerlink" title="震相相关变量"></a>震相相关变量</h4><h5 id="a-f-tn"><a href="#a-f-tn" class="headerlink" title="a f tn"></a><code>a f tn</code></h5><p>a、f存储事件初动、结束时刻相对于参考时刻的秒数<br>Tn：n&#x3D;0-9 存储用户自定义的时刻相对于参考时刻的秒数，常用存储震相到时</p>
+<h5 id="ka-kf-ktn"><a href="#ka-kf-ktn" class="headerlink" title="ka kf ktn"></a><code>ka kf ktn</code></h5><p>头段变量a、f、tn都有一个对应的k开头的字符型头段变量，称之为时间标识。<br>时间标识用于说明对应的时间头段变量中所包含时间的含义。</p>
+<p>a中包含P波到时，ka&#x3D;P；</p>
+<p>t1中包含PcP震相的到时，则kt1设置为PcP</p>
+<p>在绘图时，若时间头段变量中有值，则默认会在该时刻处绘制一条垂线，若相应的时间标记有定义，则将时间标记的值显示在垂线附近。</p>
+<h5 id="Xmarker"><a href="#Xmarker" class="headerlink" title="Xmarker"></a><code>Xmarker</code></h5><p>震相相关的变量可以构成一个辅助型变量。<br><code>a</code>和<code>ka</code>可以构成<code>amarker</code>,<code>f</code>和<code>kf</code>可以构成<code>fmarker</code>，<br><code>o</code>和<code>ko</code>可以构成<code>omarker</code>，<code>tn</code>和<code>ktn</code>可以构成<code>tnmarker</code>(n&#x3D;0-9)。</p>
+<h4 id="仪器相关变量"><a href="#仪器相关变量" class="headerlink" title="仪器相关变量"></a>仪器相关变量</h4><h5 id="kinst"><a href="#kinst" class="headerlink" title="kinst"></a><code>kinst</code></h5><p>记录仪器的通用名称</p>
+<h5 id="iinst"><a href="#iinst" class="headerlink" title="iinst"></a><code>iinst</code></h5><p>记录仪器的类型</p>
+<h5 id="respn"><a href="#respn" class="headerlink" title="respn"></a><code>respn</code></h5><p>仪器相应参数</p>
+<h4 id="其它变量"><a href="#其它变量" class="headerlink" title="其它变量"></a>其它变量</h4><h5 id="usern"><a href="#usern" class="headerlink" title="usern"></a><code>usern</code></h5><p>n&#x3D;0-9 用于存储用户自定义的浮点型数值</p>
+<h5 id="kusern"><a href="#kusern" class="headerlink" title="kusern"></a><code>kusern</code></h5><p>n&#x3D;0-2 用于存储用户自定义字符型值</p>
+<h5 id="lovrok"><a href="#lovrok" class="headerlink" title="lovrok"></a><code>lovrok</code></h5><p>若为真，则磁盘里的原始数据可以被覆盖；</p>
+<p>若为假，则原始数据不可被覆盖。</p>
+<p>用于保护原始数据。建议先做好备份再操作原始数据。</p>
+<h5 id="lcalda"><a href="#lcalda" class="headerlink" title="lcalda"></a><code>lcalda</code></h5><p>全称：Calculate Distance and Azimuth。如果为真，则当事件和台站<br>的坐标被写入或被修改时，头段变量<code>dist</code> <code>gcarc</code> <code>az</code> <code>baz</code>将自动计算，否则不会被自动计算，SAC头段中存在信息的不兼容。</p>
+<h5 id="kdatrd"><a href="#kdatrd" class="headerlink" title="kdatrd"></a><code>kdatrd</code></h5><p>数据被读入计算机的日期。</p>
 
     </div>
 
