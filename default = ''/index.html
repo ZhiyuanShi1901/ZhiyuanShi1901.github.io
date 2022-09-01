@@ -590,7 +590,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-21 15:41:52" itemprop="dateModified" datetime="2022-08-21T15:41:52+08:00">2022-08-21</time>
+      <time title="Modified: 2022-09-01 17:24:19" itemprop="dateModified" datetime="2022-09-01T17:24:19+08:00">2022-09-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -662,6 +662,31 @@
 
 <h4 id="plotsp"><a href="#plotsp" class="headerlink" title="plotsp"></a>plotsp</h4><p>用于绘制不同格式的谱文件，可以绘制“振幅+相位”或者“实部+虚部”，可以任意指定X、Y轴为线性轴或者对数轴。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fg seis</span><br><span class="line">fft  # 进行fft快速傅里叶变换</span><br><span class="line">plotsp am loglog  # 绘制振幅谱。</span><br></pre></td></tr></table></figure>
+<h3 id="图像外观元素"><a href="#图像外观元素" class="headerlink" title="图像外观元素"></a>图像外观元素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fg seis                # 生成数据</span><br><span class="line">qdp on                 # qdp选项指采样绘制数据点。由于计算机性能不佳使用采样的方式绘制数据点提高绘制速度。现在可以使用off选项。</span><br><span class="line">grid on                # 显示网格</span><br><span class="line">title &#x27;Seismic Trace&#x27;  # 设置标题</span><br><span class="line">xlabel &quot;Time(s)&quot;       # 设置x轴标签</span><br><span class="line">ylabel &quot;Amplitude&quot;     # 设置y轴标签</span><br><span class="line">filenumber on          # 显示文件号</span><br><span class="line">axes only left bottom  # left和bottom显示axes</span><br><span class="line">ticks only right       # right显示ticks</span><br><span class="line">border on              # top显示border</span><br><span class="line">p                      # 绘图</span><br></pre></td></tr></table></figure>
+<p>此外，可以使用以下命令控制坐标轴和坐标系。</p>
+<ul>
+<li>xlim 控制绘图的X轴范围</li>
+<li>xdiv 控制X轴刻度间隔</li>
+<li>xfudge 设定fudge因子，根据数据极值扩展X轴范围</li>
+<li>linlin</li>
+<li>linlog</li>
+<li>loglin</li>
+<li>loglog</li>
+<li>xlin</li>
+<li>xlog</li>
+<li>ylin</li>
+<li>ylog<br>对数坐标轴可以使用以下命令控制外观：</li>
+<li>xfull</li>
+<li>loglab</li>
+<li>floor</li>
+</ul>
+<h3 id="线条属性控制"><a href="#线条属性控制" class="headerlink" title="线条属性控制"></a>线条属性控制</h3><p>使用line命令进行线条属性控制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">line 4  # 线型为4</span><br><span class="line">width 2  # 线宽为2</span><br><span class="line">color red # 红色</span><br><span class="line">p  # 绘制</span><br></pre></td></tr></table></figure>
+<p>可以对波形数据进行颜色填充</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fg seis  # 创建一个数据</span><br><span class="line">qdp on  # qdp选项指采样绘制数据点。由于计算机性能不佳使用采样的方式绘制数据点提高绘制速度。现在可以使用off选项。</span><br><span class="line">rmean; rtr; taper</span><br><span class="line">line 0 fill red/blue  # 线型为0 负振幅为blue 正振幅为red</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制组合图"><a href="#绘制组合图" class="headerlink" title="绘制组合图"></a>绘制组合图</h3><p>典型组合图示例：<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/graphics/composite-plots/">源自seisman</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">fg seis                        # 生成数据</span><br><span class="line">beginframe                     # 打开 frame，开始绘制组合图</span><br><span class="line">xvport 0.1 0.9                 # 设定第一个绘图命令的 viewport</span><br><span class="line">yvport 0.7 0.9</span><br><span class="line">title &#x27;Seismic Trace&#x27;          # 设定标题</span><br><span class="line">fileid off                     # 不显示文件 id</span><br><span class="line">qdp off</span><br><span class="line">p</span><br><span class="line">fft wmean                      # FFT</span><br><span class="line">xvport .1 .45                  # 设定第二个绘图命令的 viewport</span><br><span class="line">yvport .15 .55</span><br><span class="line">title &#x27;Amplitude Response (linlog)&#x27;</span><br><span class="line">ylim 1e-5 1                    # Y 轴范围</span><br><span class="line">psp am linlog                  # 绘制振幅谱</span><br><span class="line">xvport .55 .9                  # 设定第三个绘图命令的 viewport</span><br><span class="line">title &#x27;Amplitude Response (loglog)&#x27;</span><br><span class="line">xlim 1 60</span><br><span class="line">psp am loglog                  # 绘制振幅谱</span><br><span class="line">endframe                       # 关闭 frame</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="图形设备"><a href="#图形设备" class="headerlink" title="图形设备"></a>图形设备</h3><p>可以使用<code>begindevices</code>和<code>enddevices</code>命令开启、关闭指定的图形设备。<br>使用<code>setdevice</code>命令设置默认的图形设备。</p>
 <h4 id="xwindows"><a href="#xwindows" class="headerlink" title="xwindows"></a>xwindows</h4><p>以位图方式显示的软件窗口系统。</p>
