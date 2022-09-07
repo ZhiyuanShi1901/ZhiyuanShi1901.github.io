@@ -1,101 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GMT学习笔记</title>
-    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>参考：</p>
-<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
-<pre><code>conda install gmt -c conda-forge
-gmt --version  //进行测试
-</code></pre>
-<p>升级：</p>
-<pre><code>conda update gmt
-</code></pre>
-<p>卸载：</p>
-<pre><code>conda remove gmt
-</code></pre>
-<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
-<pre><code>gmt  //开始使用gmt
-gmt --new-script &gt; 文件名 //创建一个.sh文件
-gedit 文件名 //使用gedit文本编辑器编辑脚本文件
-bash 文件名  //执行该脚本
-</code></pre>
-<p>建立的gmt文件内容为：</p>
-<p>文件内容：</p>
-<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
-# pdf为格式。
-    # Place modern session commands here
-    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
-gmt end show  # show表示自动打开生成的图片文件
-</code></pre>
-<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
-<p>gmt+模块名+[-选项+参数]</p>
-<p>coast 表示绘制海岸线</p>
-<p>-R指选项，g为参数</p>
-<p>+t为-B的子选项</p>
-<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
-<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
-<ul>
-<li>H：hammer投影</li>
-<li>M：墨卡托投影</li>
-</ul>
-</li>
-<li><p>-R 表示指定绘图范围。格式为：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
-<p>  或者使用国家代码表示区域范围</p>
-<ul>
-<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
-<li>CN：中国国家代码。</li>
-</ul>
-</li>
-<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
-<ul>
-<li>a：annotation 增加标注，即经纬度数字等</li>
-<li>f：frame 刻度线，周边的刻度线</li>
-<li>g：grid 网格线</li>
-<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
-<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
-<li>+t“标题内容”：增加标题</li>
-</ul>
-</li>
-<li><p>-W 表示绘制海岸线</p>
-<ul>
-<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
-<li>颜色有：黑色black，浅红色lightred</li>
-</ul>
-</li>
-<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
-</ul>
-</li>
-<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
-</li>
-<li><p>-G 设置陆地填充色</p>
-</li>
-<li><p>-S 设置水体颜色</p>
-</li>
-<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
-</li>
-<li><p>-N 绘制国界、省界等，</p>
-<ul>
-<li>-N1 表示国界</li>
-<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
-</ul>
-<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
-<pre><code>
-</code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>GMT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git学习笔记</title>
     <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
@@ -188,6 +93,106 @@ git push     //推送
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Obspy学习笔记</title>
+    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>GMT学习笔记</title>
+    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>参考：</p>
+<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
+<pre><code>conda install gmt -c conda-forge
+gmt --version  //进行测试
+</code></pre>
+<p>升级：</p>
+<pre><code>conda update gmt
+</code></pre>
+<p>卸载：</p>
+<pre><code>conda remove gmt
+</code></pre>
+<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
+<pre><code>gmt  //开始使用gmt
+gmt --new-script &gt; 文件名 //创建一个.sh文件
+gedit 文件名 //使用gedit文本编辑器编辑脚本文件
+bash 文件名  //执行该脚本
+</code></pre>
+<p>建立的gmt文件内容为：</p>
+<p>文件内容：</p>
+<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
+# pdf为格式。
+    # Place modern session commands here
+    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
+gmt end show  # show表示自动打开生成的图片文件
+</code></pre>
+<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
+<p>gmt+模块名+[-选项+参数]</p>
+<p>coast 表示绘制海岸线</p>
+<p>-R指选项，g为参数</p>
+<p>+t为-B的子选项</p>
+<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
+<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
+<ul>
+<li>H：hammer投影</li>
+<li>M：墨卡托投影</li>
+</ul>
+</li>
+<li><p>-R 表示指定绘图范围。格式为：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
+<p>  或者使用国家代码表示区域范围</p>
+<ul>
+<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
+<li>CN：中国国家代码。</li>
+</ul>
+</li>
+<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
+<ul>
+<li>a：annotation 增加标注，即经纬度数字等</li>
+<li>f：frame 刻度线，周边的刻度线</li>
+<li>g：grid 网格线</li>
+<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
+<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
+<li>+t“标题内容”：增加标题</li>
+</ul>
+</li>
+<li><p>-W 表示绘制海岸线</p>
+<ul>
+<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
+<li>颜色有：黑色black，浅红色lightred</li>
+</ul>
+</li>
+<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
+</ul>
+</li>
+<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
+</li>
+<li><p>-G 设置陆地填充色</p>
+</li>
+<li><p>-S 设置水体颜色</p>
+</li>
+<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
+</li>
+<li><p>-N 绘制国界、省界等，</p>
+<ul>
+<li>-N1 表示国界</li>
+<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
+</ul>
+<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
+<pre><code>
+</code></pre>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>GMT</tag>
       </tags>
   </entry>
   <entry>
@@ -651,133 +656,6 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu安装firefox中国版</title>
-    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
-    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
-<p>参考：</p>
-<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
-<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
-</code></pre>
-<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
-</code></pre>
-<p>使用vi编辑器编辑该文件，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
-
-<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
-</code></pre>
-]]></content>
-      <categories>
-        <category>Linux学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu与windows双系统设置windows默认启动</title>
-    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
-
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
-]]></content>
-      <categories>
-        <category>Linux学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vista地震剖面简单处理顺序</title>
-    <url>/2022/08/21/Vista%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F/</url>
-    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://max.book118.com/html/2016/0128/34253742.shtm">Vista Windows 7.0 浅层地震反射波法处理流程分解讲义 -李澎</a><br>在下文中简称为PDF。</p>
-<p><a href="https://wenku.baidu.com/view/54062b0a2c60ddccda38376baf1ffc4ffe47e2d0.html">地震数据处理vista软件使用手册</a></p>
-<h1 id="注意！-一定要及时保存工程文件！"><a href="#注意！-一定要及时保存工程文件！" class="headerlink" title="注意！ 一定要及时保存工程文件！"></a>注意！ 一定要及时保存工程文件！</h1><h1 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h1><h1 id="创建一个2D空白数据"><a href="#创建一个2D空白数据" class="headerlink" title="创建一个2D空白数据"></a>创建一个2D空白数据</h1><p><img src="%E5%9B%BE%E7%89%871.png" alt="空白数据"></p>
-<h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><p><img src="%E5%9B%BE%E7%89%872.png" alt="空白数据"></p>
-<p>点击相应数据点OK窗口，出现一个弹窗，关掉即可。</p>
-<p><img src="%E5%9B%BE%E7%89%873.png" alt="空白数据"></p>
-<p>出现该页面。</p>
-<p><img src="%E5%9B%BE%E7%89%874.png" alt="空白数据"></p>
-<h1 id="点击第二个按钮，打开观测系统进行设置"><a href="#点击第二个按钮，打开观测系统进行设置" class="headerlink" title="点击第二个按钮，打开观测系统进行设置"></a>点击第二个按钮，打开观测系统进行设置</h1><p><img src="%E5%9B%BE%E7%89%875.png" alt="空白数据"></p>
-<p>第一个为炮点设置，第二个为检波器设置。</p>
-<p>炮点设置如下：</p>
-<p><img src="%E5%9B%BE%E7%89%876.png" alt="空白数据"></p>
-<p>红色一行填好，蓝色填好第一行，点击</p>
-<p><img src="%E5%9B%BE%E7%89%877.png" alt="空白数据"></p>
-<p>添加对应的行数即可。</p>
-<p>检波器设置如下：</p>
-<p><img src="%E5%9B%BE%E7%89%878.png" alt="空白数据"></p>
-<p>然后设置：</p>
-<p><img src="%E5%9B%BE%E7%89%879.png" alt="空白数据"></p>
-<p>点击第一个按钮，出现如下界面：</p>
-<p><img src="%E5%9B%BE%E7%89%8710.png" alt="空白数据"></p>
-<p>第二个、第三个按钮，如下界面（一般默认不需要更改）：</p>
-<p><img src="%E5%9B%BE%E7%89%8711.png" alt="空白数据"></p>
-<p>点击上面第四个按钮，点击auto calculate：</p>
-<p><img src="%E5%9B%BE%E7%89%8712.png" alt="空白数据"></p>
-<p>然后点击第六个按钮f∑。</p>
-<p><img src="%E5%9B%BE%E7%89%8713.png" alt="空白数据"></p>
-<p>第三、四、五、六检查观测系统，截个图和这个一样就可以了。</p>
-<p><img src="%E5%9B%BE%E7%89%8714.png" alt="空白数据"></p>
-<p><img src="%E5%9B%BE%E7%89%8715.png" alt="空白数据"></p>
-<p>点击保存按钮（保存下第一个），保存geom文件，在之后需要调用这个文件。</p>
-<p>然后再点击右边保存到道头（保存下第二个）。</p>
-<p>在interactive栏中找到如下，点击后检查道头文件。</p>
-<p><img src="%E5%9B%BE%E7%89%8716.png" alt="空白数据"></p>
-<h1 id="进行道均衡"><a href="#进行道均衡" class="headerlink" title="进行道均衡"></a>进行道均衡</h1><p><img src="%E5%9B%BE%E7%89%8717.png" alt="空白数据"></p>
-<p>点击job flow的第一个、第二个按钮，然后点击window下的tile vertically，界面显示为垂直多列。</p>
-<p>道均衡流程图件PDF讲义P1。</p>
-<p>记得在下面图片中对准流程标记点击右键，点击该按钮，流程块左侧变绿之后，再点击GO。</p>
-<p><img src="%E5%9B%BE%E7%89%8718.png" alt="空白数据"></p>
-<h1 id="频谱分析"><a href="#频谱分析" class="headerlink" title="频谱分析"></a>频谱分析</h1><p><img src="%E5%9B%BE%E7%89%8719.png" alt="空白数据"></p>
-<p>得到的输出左边，点击第一个按钮，得到剖面界面</p>
-<p><img src="%E5%9B%BE%E7%89%8720.png" alt="空白数据"></p>
-<p>点击第六个按钮，顶部栏变化，出现如下界面：</p>
-<p><img src="%E5%9B%BE%E7%89%8721.png" alt="空白数据"></p>
-<p>最右侧一栏选择如上。点击绿色+号，点击OK。也可以在显示OK这个界面调节频谱显示范围，一般选择0-100即可，默认也可以。</p>
-<p><img src="%E5%9B%BE%E7%89%8722.png" alt="空白数据"></p>
-<p>在这个界面，左边使用鼠标指针放置在对应噪音的位置，可以看到右边振幅谱的变化情况。记住噪音的频率范围，<br>一般为40HZ以下。<br>关闭这个页面。</p>
-<p><img src="%E5%9B%BE%E7%89%8723.png" alt="空白数据"></p>
-<p>最右边一栏选择如上。再次单击+号，进入FK频谱分析界面。</p>
-<p>先使用鼠标左键选中放大下方频谱范围。</p>
-<p><img src="%E5%9B%BE%E7%89%8724.png" alt="空白数据"><br><img src="%E5%9B%BE%E7%89%8725.png" alt="空白数据"></p>
-<p>选择中间红色第四个按钮，可以使用某种形状的范围选择。<br>这里使用长条形，可以直接选择滤掉的频率范围。点击后，在频谱界面拖拽出去除部分。<br>斜线区域就是去除部分。然后点击保存按钮，保存的fkl文件作为滤波文件，在之后会进行使用。</p>
-<p>参考PDF P2 一维滤波和二维滤波进行滤波处理，然后保存文件。</p>
-<h1 id="抽道集"><a href="#抽道集" class="headerlink" title="抽道集"></a>抽道集</h1><p>抽取CMP道集，参考PDF P2 抽道集。</p>
-<h1 id="速度分析"><a href="#速度分析" class="headerlink" title="速度分析"></a>速度分析</h1><p>参考 PDF P3速度分析。注意一定使用抽道集后的数据作为输入。</p>
-<h1 id="速度拾取"><a href="#速度拾取" class="headerlink" title="速度拾取"></a>速度拾取</h1><p>参考PDF P7 速度拾取。点击<img src="%E5%9B%BE%E7%89%8726.png" alt="空白数据">之后，从最左边图像选取最红的位置，使得最右边的同相轴尽可能平直。<br>中间的同相轴呈现一定规律。（这里的选择方式不确定是否正确）</p>
-<p><img src="%E5%9B%BE%E7%89%8727.png" alt="空白数据"></p>
-<p>点击后，左边会有一个圆圈，多点几个位置会有连线。具体意义不明，目前认为是拾取了这几个点处的速度。</p>
-<p>点击保存按钮，保存速度分析文件，之后会使用。</p>
-<h1 id="时间剖面"><a href="#时间剖面" class="headerlink" title="时间剖面"></a>时间剖面</h1><p>参考PDF P7之后的NMO, P8的水平叠加、P9的混波和P13的信号增强。流程图可参考如下：输入数据为一维、<br>二维滤波后的数据，选择CMP_NO格式。</p>
-<p><img src="%E5%9B%BE%E7%89%8728.png" alt="空白数据"><br><img src="%E5%9B%BE%E7%89%8729.png" alt="空白数据"></p>
-<p>得到的结果就是水平叠加剖面。</p>
-<h1 id="偏移剖面"><a href="#偏移剖面" class="headerlink" title="偏移剖面"></a>偏移剖面</h1><p>参考PDF P10 FK偏移，最后得到偏移剖面。</p>
-]]></content>
-      <categories>
-        <category>地震勘探</category>
-      </categories>
-      <tags>
-        <tag>Vista</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obspy学习笔记</title>
-    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Ubuntu学习笔记</title>
     <url>/2022/08/03/Ubuntu%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>参考：</p>
@@ -959,11 +837,59 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu与windows双系统设置windows默认启动</title>
+    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
+<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
+<p>打开终端，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
+
+<p>将第6行的 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
+<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
+<p>保存后，运行以下命令更新grub文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<p>重启系统即可。</p>
+<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu安装firefox中国版</title>
+    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
+    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
+<p>参考：</p>
+<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
+<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
+</code></pre>
+<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
+</code></pre>
+<p>使用vi编辑器编辑该文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
+</code></pre>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>专业名词</title>
     <url>/2022/09/07/%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
 <p>大标题表示词汇来源。</p>
-<h1 id="地震学相关论文"><a href="#地震学相关论文" class="headerlink" title="地震学相关论文"></a>地震学相关论文</h1><p>inversion 反演</p>
+<h1 id="地震学相关论文"><a href="#地震学相关论文" class="headerlink" title="地震学相关论文"></a>地震学相关论文</h1><h2 id="来源-参考文献-1"><a href="#来源-参考文献-1" class="headerlink" title="来源 参考文献[1]"></a>来源 参考文献[1]</h2><p>inversion 反演</p>
 <p>triplication 波的重叠（多震相）</p>
 <p>thermal 热的</p>
 <p>dynamic 动力学的</p>
@@ -1029,7 +955,7 @@ man 命令名  //使用范围更广
 <p>routine 常规的</p>
 <p>constrain 约束</p>
 <p>assuming 假设</p>
-<h1 id="地震学相关网站"><a href="#地震学相关网站" class="headerlink" title="地震学相关网站"></a>地震学相关网站</h1><p>inner-core bondary 内核边界（ICB）</p>
+<h1 id="地震学相关网站"><a href="#地震学相关网站" class="headerlink" title="地震学相关网站"></a>地震学相关网站</h1><h2 id="来源-参考文献-2"><a href="#来源-参考文献-2" class="headerlink" title="来源 参考文献[2]"></a>来源 参考文献[2]</h2><p>inner-core bondary 内核边界（ICB）</p>
 <p>core-mantle boundary 核幔边界（CMB）</p>
 <p>moho discontinuity 莫霍间断面</p>
 <p>Conrad discontinuity 康拉德界面</p>
@@ -1069,7 +995,7 @@ man 命令名  //使用范围更广
 <p>fetch 获取</p>
 <p>processing 处理</p>
 <p>analysis 分析</p>
-<h1 id="地震学（地震勘探）相关书籍"><a href="#地震学（地震勘探）相关书籍" class="headerlink" title="地震学（地震勘探）相关书籍"></a>地震学（地震勘探）相关书籍</h1><p>seismic exploration 地震勘探</p>
+<h1 id="地震学（地震勘探）相关书籍"><a href="#地震学（地震勘探）相关书籍" class="headerlink" title="地震学（地震勘探）相关书籍"></a>地震学（地震勘探）相关书籍</h1><h2 id="来源-参考文献-3"><a href="#来源-参考文献-3" class="headerlink" title="来源 参考文献[3]"></a>来源 参考文献[3]</h2><p>seismic exploration 地震勘探</p>
 <p>acquisition 采集（地震勘探）</p>
 <p>interpretation 解释（地震勘探）</p>
 <p>seismic data 地震资料</p>
@@ -1080,20 +1006,206 @@ man 命令名  //使用范围更广
 <p>viscoelastic body 黏弹性体</p>
 <p>isotropy 各向同性</p>
 <p>anisotropy 各向异性</p>
-<p>AVO(amplitude variation with angle) 振幅随偏移距变化</p>
+<p>AVO(amplitude variation with angle)振幅随偏移距变化；(amplitude versus offset ) 振幅与炮检距关系</p>
 <p>homogeneous medium 均匀介质</p>
 <p>heterogeneous medium 非均匀介质</p>
 <p>single-phase medium 单相介质</p>
 <p>double-phase medium 双相介质</p>
 <p>elastomer 弹性体</p>
 <p>elastic wave 弹性波</p>
-<h1 id="词汇来源："><a href="#词汇来源：" class="headerlink" title="词汇来源："></a>词汇来源：</h1><p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X15006275">Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis</a><br><a href="https://seismo-learn.org/seismology101/">地震’学’网站</a><br>[曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10]</p>
+<p>wave equation 波动方程</p>
+<p>Fermat principle 费马原理</p>
+<p>Huygens-Fresnel principle 惠更斯-菲涅尔原理</p>
+<p>Snell’s law 斯奈尔定律</p>
+<p>reflected wave 反射波</p>
+<p>transmitted wave 透射波</p>
+<p>wave seismology 波动地震学</p>
+<p>geometric seismology 集合地震学</p>
+<p>eikonal equation 程函方程</p>
+<p>geometry 观测系统</p>
+<p>CDP(common depth point) 共深度点</p>
+<p>xline 横向方向</p>
+<p>inline 测线方向</p>
+<p>CMP(common mid point) 共中心点</p>
+<p>OVT(offset vector tile) 炮检距向量片（域偏移技术）</p>
+<p>Kirchhoff 克其霍夫</p>
+<p>convolution 褶积</p>
+<p>reflection coefficient 反射系数</p>
+<p>reflectivity 反射率</p>
+<p>resolving power 分辨能力</p>
+<p>resolution 分辨率</p>
+<p>vertical 垂向</p>
+<p>lateral 横向</p>
+<p>first fresnel zone 第一菲涅尔带</p>
+<p>Rayleigh 瑞利准则</p>
+<p>Ricker 雷克准则</p>
+<p>Widess 怀德斯准则</p>
+<p>AVA(amplitude variation with incident angle) 振幅随入射角变化</p>
+<p>AVP(amplitude variation with ray-parameter) 振幅随射线参数的变化</p>
+<p>Zoeppritz 佐普里兹</p>
+<p>gradient 梯度</p>
+<p>rock physics 岩石物理</p>
+<p>seismic rock physics 地震岩石物理</p>
+<p>seismic petrophysics 地震岩石物理</p>
+<h1 id="词汇来源："><a href="#词汇来源：" class="headerlink" title="词汇来源："></a>词汇来源：</h1><p>[1].<a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X15006275">Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis</a><br>[2].<a href="https://seismo-learn.org/seismology101/">地震’学’网站</a><br>[3].[曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10]</p>
 ]]></content>
       <categories>
         <category>专业英语名词</category>
       </categories>
       <tags>
         <tag>英语</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客创建笔记</title>
+    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
+<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
+<li>安装 Git</li>
+<li>安装Nodejs</li>
+</ul>
+<p>安装包在<a href>此处</a>可以找到。</p>
+<ul>
+<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
+根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
+最后进行测试，显示对应的版本信息即可。</li>
+</ul>
+<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
+<blockquote>
+<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
+<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
+<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
+</blockquote>
+<p>经过该方法后，问题应该得到了解决。</p>
+<ul>
+<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+查看版本信息后，显示正常为安装成功</li>
+</ul>
+<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
+<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
+<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
+<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
+<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
+<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
+<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
+<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
+<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
+<p>然后安装插件：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre>
+<p>最后执行以下命令：</p>
+<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+</code></pre>
+<p>进行缓存清空、生成html文件、部署到github。</p>
+<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
+<pre><code>hexo new &quot;文章名&quot;
+</code></pre>
+<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
+<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
+<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
+<pre><code>npm install hexo-asset-image --save
+</code></pre>
+<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
+<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
+</code></pre>
+<p>修改为：</p>
+<pre><code>$(this).attr(&#39;src&#39;, src);
+</code></pre>
+<p>保存文件。</p>
+<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
+<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
+<p>使用方式:  ![图片名] ( 图片位置 )</p>
+<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
+]]></content>
+      <categories>
+        <category>博客创建</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vista地震剖面简单处理顺序</title>
+    <url>/2022/08/21/Vista%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F/</url>
+    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://max.book118.com/html/2016/0128/34253742.shtm">Vista Windows 7.0 浅层地震反射波法处理流程分解讲义 -李澎</a><br>在下文中简称为PDF。</p>
+<p><a href="https://wenku.baidu.com/view/54062b0a2c60ddccda38376baf1ffc4ffe47e2d0.html">地震数据处理vista软件使用手册</a></p>
+<h1 id="注意！-一定要及时保存工程文件！"><a href="#注意！-一定要及时保存工程文件！" class="headerlink" title="注意！ 一定要及时保存工程文件！"></a>注意！ 一定要及时保存工程文件！</h1><h1 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h1><h1 id="创建一个2D空白数据"><a href="#创建一个2D空白数据" class="headerlink" title="创建一个2D空白数据"></a>创建一个2D空白数据</h1><p><img src="%E5%9B%BE%E7%89%871.png" alt="空白数据"></p>
+<h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><p><img src="%E5%9B%BE%E7%89%872.png" alt="空白数据"></p>
+<p>点击相应数据点OK窗口，出现一个弹窗，关掉即可。</p>
+<p><img src="%E5%9B%BE%E7%89%873.png" alt="空白数据"></p>
+<p>出现该页面。</p>
+<p><img src="%E5%9B%BE%E7%89%874.png" alt="空白数据"></p>
+<h1 id="点击第二个按钮，打开观测系统进行设置"><a href="#点击第二个按钮，打开观测系统进行设置" class="headerlink" title="点击第二个按钮，打开观测系统进行设置"></a>点击第二个按钮，打开观测系统进行设置</h1><p><img src="%E5%9B%BE%E7%89%875.png" alt="空白数据"></p>
+<p>第一个为炮点设置，第二个为检波器设置。</p>
+<p>炮点设置如下：</p>
+<p><img src="%E5%9B%BE%E7%89%876.png" alt="空白数据"></p>
+<p>红色一行填好，蓝色填好第一行，点击</p>
+<p><img src="%E5%9B%BE%E7%89%877.png" alt="空白数据"></p>
+<p>添加对应的行数即可。</p>
+<p>检波器设置如下：</p>
+<p><img src="%E5%9B%BE%E7%89%878.png" alt="空白数据"></p>
+<p>然后设置：</p>
+<p><img src="%E5%9B%BE%E7%89%879.png" alt="空白数据"></p>
+<p>点击第一个按钮，出现如下界面：</p>
+<p><img src="%E5%9B%BE%E7%89%8710.png" alt="空白数据"></p>
+<p>第二个、第三个按钮，如下界面（一般默认不需要更改）：</p>
+<p><img src="%E5%9B%BE%E7%89%8711.png" alt="空白数据"></p>
+<p>点击上面第四个按钮，点击auto calculate：</p>
+<p><img src="%E5%9B%BE%E7%89%8712.png" alt="空白数据"></p>
+<p>然后点击第六个按钮f∑。</p>
+<p><img src="%E5%9B%BE%E7%89%8713.png" alt="空白数据"></p>
+<p>第三、四、五、六检查观测系统，截个图和这个一样就可以了。</p>
+<p><img src="%E5%9B%BE%E7%89%8714.png" alt="空白数据"></p>
+<p><img src="%E5%9B%BE%E7%89%8715.png" alt="空白数据"></p>
+<p>点击保存按钮（保存下第一个），保存geom文件，在之后需要调用这个文件。</p>
+<p>然后再点击右边保存到道头（保存下第二个）。</p>
+<p>在interactive栏中找到如下，点击后检查道头文件。</p>
+<p><img src="%E5%9B%BE%E7%89%8716.png" alt="空白数据"></p>
+<h1 id="进行道均衡"><a href="#进行道均衡" class="headerlink" title="进行道均衡"></a>进行道均衡</h1><p><img src="%E5%9B%BE%E7%89%8717.png" alt="空白数据"></p>
+<p>点击job flow的第一个、第二个按钮，然后点击window下的tile vertically，界面显示为垂直多列。</p>
+<p>道均衡流程图件PDF讲义P1。</p>
+<p>记得在下面图片中对准流程标记点击右键，点击该按钮，流程块左侧变绿之后，再点击GO。</p>
+<p><img src="%E5%9B%BE%E7%89%8718.png" alt="空白数据"></p>
+<h1 id="频谱分析"><a href="#频谱分析" class="headerlink" title="频谱分析"></a>频谱分析</h1><p><img src="%E5%9B%BE%E7%89%8719.png" alt="空白数据"></p>
+<p>得到的输出左边，点击第一个按钮，得到剖面界面</p>
+<p><img src="%E5%9B%BE%E7%89%8720.png" alt="空白数据"></p>
+<p>点击第六个按钮，顶部栏变化，出现如下界面：</p>
+<p><img src="%E5%9B%BE%E7%89%8721.png" alt="空白数据"></p>
+<p>最右侧一栏选择如上。点击绿色+号，点击OK。也可以在显示OK这个界面调节频谱显示范围，一般选择0-100即可，默认也可以。</p>
+<p><img src="%E5%9B%BE%E7%89%8722.png" alt="空白数据"></p>
+<p>在这个界面，左边使用鼠标指针放置在对应噪音的位置，可以看到右边振幅谱的变化情况。记住噪音的频率范围，<br>一般为40HZ以下。<br>关闭这个页面。</p>
+<p><img src="%E5%9B%BE%E7%89%8723.png" alt="空白数据"></p>
+<p>最右边一栏选择如上。再次单击+号，进入FK频谱分析界面。</p>
+<p>先使用鼠标左键选中放大下方频谱范围。</p>
+<p><img src="%E5%9B%BE%E7%89%8724.png" alt="空白数据"><br><img src="%E5%9B%BE%E7%89%8725.png" alt="空白数据"></p>
+<p>选择中间红色第四个按钮，可以使用某种形状的范围选择。<br>这里使用长条形，可以直接选择滤掉的频率范围。点击后，在频谱界面拖拽出去除部分。<br>斜线区域就是去除部分。然后点击保存按钮，保存的fkl文件作为滤波文件，在之后会进行使用。</p>
+<p>参考PDF P2 一维滤波和二维滤波进行滤波处理，然后保存文件。</p>
+<h1 id="抽道集"><a href="#抽道集" class="headerlink" title="抽道集"></a>抽道集</h1><p>抽取CMP道集，参考PDF P2 抽道集。</p>
+<h1 id="速度分析"><a href="#速度分析" class="headerlink" title="速度分析"></a>速度分析</h1><p>参考 PDF P3速度分析。注意一定使用抽道集后的数据作为输入。</p>
+<h1 id="速度拾取"><a href="#速度拾取" class="headerlink" title="速度拾取"></a>速度拾取</h1><p>参考PDF P7 速度拾取。点击<img src="%E5%9B%BE%E7%89%8726.png" alt="空白数据">之后，从最左边图像选取最红的位置，使得最右边的同相轴尽可能平直。<br>中间的同相轴呈现一定规律。（这里的选择方式不确定是否正确）</p>
+<p><img src="%E5%9B%BE%E7%89%8727.png" alt="空白数据"></p>
+<p>点击后，左边会有一个圆圈，多点几个位置会有连线。具体意义不明，目前认为是拾取了这几个点处的速度。</p>
+<p>点击保存按钮，保存速度分析文件，之后会使用。</p>
+<h1 id="时间剖面"><a href="#时间剖面" class="headerlink" title="时间剖面"></a>时间剖面</h1><p>参考PDF P7之后的NMO, P8的水平叠加、P9的混波和P13的信号增强。流程图可参考如下：输入数据为一维、<br>二维滤波后的数据，选择CMP_NO格式。</p>
+<p><img src="%E5%9B%BE%E7%89%8728.png" alt="空白数据"><br><img src="%E5%9B%BE%E7%89%8729.png" alt="空白数据"></p>
+<p>得到的结果就是水平叠加剖面。</p>
+<h1 id="偏移剖面"><a href="#偏移剖面" class="headerlink" title="偏移剖面"></a>偏移剖面</h1><p>参考PDF P10 FK偏移，最后得到偏移剖面。</p>
+]]></content>
+      <categories>
+        <category>地震勘探</category>
+      </categories>
+      <tags>
+        <tag>Vista</tag>
       </tags>
   </entry>
   <entry>
@@ -1197,84 +1309,6 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>常用网站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客创建笔记</title>
-    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
-<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
-<li>安装 Git</li>
-<li>安装Nodejs</li>
-</ul>
-<p>安装包在<a href>此处</a>可以找到。</p>
-<ul>
-<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
-根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
-最后进行测试，显示对应的版本信息即可。</li>
-</ul>
-<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
-<blockquote>
-<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
-<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
-<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
-</blockquote>
-<p>经过该方法后，问题应该得到了解决。</p>
-<ul>
-<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-查看版本信息后，显示正常为安装成功</li>
-</ul>
-<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
-<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
-<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
-<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
-<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
-<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
-<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
-<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
-<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
-<p>然后安装插件：</p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre>
-<p>最后执行以下命令：</p>
-<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
-</code></pre>
-<p>进行缓存清空、生成html文件、部署到github。</p>
-<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
-<pre><code>hexo new &quot;文章名&quot;
-</code></pre>
-<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
-<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
-<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
-<pre><code>npm install hexo-asset-image --save
-</code></pre>
-<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
-<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
-</code></pre>
-<p>修改为：</p>
-<pre><code>$(this).attr(&#39;src&#39;, src);
-</code></pre>
-<p>保存文件。</p>
-<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
-<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
-<p>使用方式:  ![图片名] ( 图片位置 )</p>
-<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
-]]></content>
-      <categories>
-        <category>博客创建</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
 </search>
