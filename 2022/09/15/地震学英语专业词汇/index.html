@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考SAC数据格式及转换[] 数据格式SEED：存储多台站多分量的波形数据和台站元数据。miniSEED：仅包含波形数据。datalessSEED：仅包含台站元数据。CSS3.0：为数据库设计。 格式转换使用Rdseed进行格式转换： 从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件： 1rdseed -Rdf file.seed  从SEED数据中提取SAC格式的波形数据以">
+    <meta name="description" content="简介这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。 来源[1].Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SAC数据格式与数据合并">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/index.html">
+<meta property="og:title" content="地震学英语专业词汇">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/index.html">
 <meta property="og:site_name" content="Zhiyuan Shi">
-<meta property="og:description" content="参考SAC数据格式及转换[] 数据格式SEED：存储多台站多分量的波形数据和台站元数据。miniSEED：仅包含波形数据。datalessSEED：仅包含台站元数据。CSS3.0：为数据库设计。 格式转换使用Rdseed进行格式转换： 从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件： 1rdseed -Rdf file.seed  从SEED数据中提取SAC格式的波形数据以">
+<meta property="og:description" content="简介这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。 来源[1].Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-21T01:28:38.000Z">
-<meta property="article:modified_time" content="2022-08-21T07:03:11.653Z">
-<meta property="article:tag" content="SAC">
+<meta property="article:published_time" content="2022-09-15T12:07:36.000Z">
+<meta property="article:modified_time" content="2022-09-15T12:36:28.085Z">
+<meta property="article:tag" content="英语词汇">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/">
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/","path":"2022/08/21/SAC数据格式与数据合并/","title":"SAC数据格式与数据合并"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/","path":"2022/09/15/地震学英语专业词汇/","title":"地震学英语专业词汇"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SAC数据格式与数据合并 | Zhiyuan Shi</title>
+<title>地震学英语专业词汇 | Zhiyuan Shi</title>
   
 
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">格式转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6"><span class="nav-number">4.</span> <span class="nav-text">数据合并</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">来源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90-1-%E9%B8%A3%E9%9C%87%E7%A1%AE%E5%AE%9A%E6%B5%B7%E6%B4%8B%E5%9C%B0%E9%9C%87%E7%9A%84%E5%87%86%E7%A1%AE%E6%B7%B1%E5%BA%A6%E5%8F%8A%E6%9D%BF%E5%9D%97%E6%94%B6%E7%BC%A9%E5%81%87%E8%AF%B4"><span class="nav-number">2.1.</span> <span class="nav-text">来源 [1] 鸣震确定海洋地震的准确深度及板块收缩假说</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90-3-%E3%80%8A%E7%8E%B0%E4%BB%A3%E5%9C%B0%E9%9C%87%E5%AD%A6%E6%95%99%E7%A8%8B%E3%80%8B"><span class="nav-number">3.</span> <span class="nav-text">来源 [3]《现代地震学教程》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90-2-%E5%9C%B0%E9%9C%87%E2%80%9C%E5%AD%A6%E2%80%9D%E7%BD%91%E7%AB%99"><span class="nav-number">4.</span> <span class="nav-text">来源 [2] 地震“学”网站</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -233,12 +233,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="SAC数据格式与数据合并 | Zhiyuan Shi">
+      <meta itemprop="name" content="地震学英语专业词汇 | Zhiyuan Shi">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SAC数据格式与数据合并
+          地震学英语专业词汇
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-08-21 09:28:38 / Modified: 15:03:11" itemprop="dateCreated datePublished" datetime="2022-08-21T09:28:38+08:00">2022-08-21</time>
+      <time title="Created: 2022-09-15 20:07:36 / Modified: 20:36:28" itemprop="dateCreated datePublished" datetime="2022-09-15T20:07:36+08:00">2022-09-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +258,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+          <a href="/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url" rel="index"><span itemprop="name">专业英语词汇</span></a>
         </span>
     </span>
 
@@ -272,24 +272,154 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
-<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
-<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
-<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
-
-<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
-<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
-<p>如果出现数据间断或者数据重叠的情况：</p>
-<ul>
-<li>存在间断，可以直接补零或者线性插值；</li>
-<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
-</ul>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X15006275">Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis</a></p>
+<p>[2].<a target="_blank" rel="noopener" href="https://seismo-learn.org/seismology101/">地震’学’网站</a></p>
+<p>[3].[现代地震学教程&#x2F;周仕勇，许忠怀等编著.-2版.-北京：北京大学出版社,2018.2]</p>
+<h2 id="来源-1-鸣震确定海洋地震的准确深度及板块收缩假说"><a href="#来源-1-鸣震确定海洋地震的准确深度及板块收缩假说" class="headerlink" title="来源 [1] 鸣震确定海洋地震的准确深度及板块收缩假说"></a>来源 [1] 鸣震确定海洋地震的准确深度及板块收缩假说</h2><p>inversion 反演</p>
+<p>triplication 波的重叠（多震相）</p>
+<p>thermal 热的</p>
+<p>dynamic 动力学的</p>
+<p>oceanic 海洋的</p>
+<p>lithosphere 岩石层</p>
+<p>lithospheric 岩石圈的</p>
+<p>hypocentral 震中</p>
+<p>reverberations 多次波</p>
+<p>estimate 测定</p>
+<p>simultaneous 同时发生的</p>
+<p>alternative 可选的</p>
+<p>located 近震</p>
+<p>tension 拉张</p>
+<p>horizontal 水平的</p>
+<p>stress 应力</p>
+<p>strain 应变</p>
+<p>hypothesis 假说</p>
+<p>thrust faulting 逆断层</p>
+<p>normal faulting 正断层</p>
+<p>indicating 指示</p>
+<p>deviatoric stress 偏应力</p>
+<p>tensor 张量</p>
+<p>compression 压缩</p>
+<p>consistent 一致的</p>
+<p>prediction 预言</p>
+<p>investigated 调查</p>
+<p>perpendicular 垂直的 直立的</p>
+<p>tectonophysics 构造物理</p>
+<p>intraplate 板块内</p>
+<p>settings 背景，环境</p>
+<p>correspond 符合，一致</p>
+<p>ridge 山脊</p>
+<p>mid-ocean ridges 洋中脊</p>
+<p>nucleate 有核的，产生</p>
+<p>transform faults 转换断层</p>
+<p>trench 海沟</p>
+<p>infer 推断，推论，反演</p>
+<p>P-wave first motion P波初动</p>
+<p>coupling 耦合的</p>
+<p>compressive 压缩</p>
+<p>mechanisms 机制</p>
+<p>interperted 被解释为……</p>
+<p>depth-dependent 深度相关的</p>
+<p>numerical modeling 数值模拟</p>
+<p>competent </p>
+<p>respectively</p>
+<p>investigations 观测结果</p>
+<p>establish 建立</p>
+<p>measurable 可测量的</p>
+<p>non-rigidity 非刚性的</p>
+<p>plates 板块</p>
+<p>accumulate 积累</p>
+<p>displacement 位移</p>
+<p>non-negligible 不可忽略的</p>
+<p>manifested 显然的</p>
+<p>centroid-moment tensors 中心矩张量</p>
+<p>event 事件（地震学）；同相轴（地震勘探）</p>
+<p>tradeoff 具有相关性的，互相制约的，一般用作 The tradeoff between A and B</p>
+<p>identify 标识，识别，标定</p>
+<p>depth phases 深度震相</p>
+<p>arrival time 到时</p>
+<p>sophisticated 复杂有效的</p>
+<p>routine 常规的</p>
+<p>constrain 约束</p>
+<p>assuming 假设</p>
+<p>source time function 震源时间函数</p>
+<p>iterative 迭代的</p>
+<p>fitting 拟合</p>
+<p>determine 测定</p>
+<p>teleseismic 远震</p>
+<p>intermediate-size earthquakes 中等大小地震（5-6级）</p>
+<p>increasingly challenging </p>
+<p>isolate 分离</p>
+<p>CAP (cut-and-paste) 剪切粘贴</p>
+<p>optimum 相对来说的最优解</p>
+<p>swell-generated</p>
+<p>periodically 周期性地</p>
+<p>shallow 浅的</p>
+<p>systematically 系统性地</p>
+<p>investigate 观察</p>
+<p>grid-search vased algorithm 基于网格搜索的算法</p>
+<p>summed 叠加的</p>
+<p>stack 叠加（地震勘探）</p>
+<p>relocated 重定位</p>
+<p>deformation 变形</p>
+<h1 id="来源-3-《现代地震学教程》"><a href="#来源-3-《现代地震学教程》" class="headerlink" title="来源 [3]《现代地震学教程》"></a>来源 [3]《现代地震学教程》</h1><p>potential function 势函数</p>
+<p>angular frequency 角频率</p>
+<p>wave number 波数</p>
+<p>plane wave 平面波</p>
+<p>wavefront 波阵面 </p>
+<p>slowness 慢度</p>
+<p>fast direction 快方向（横波分裂）</p>
+<p>wave front 波前</p>
+<p>seismic ray 射线</p>
+<p>Eikonal equation 程函方程</p>
+<p>Snell 斯奈尔</p>
+<p>Fermat 费马</p>
+<p>Hugens 惠更斯</p>
+<p>apparent slowness 水平慢度，视慢度</p>
+<p>head wave 首波</p>
+<p>coda 尾波</p>
+<p>regional event 区域地震（&lt;1000km或10°）</p>
+<p>local event 地方震</p>
+<h1 id="来源-2-地震“学”网站"><a href="#来源-2-地震“学”网站" class="headerlink" title="来源 [2] 地震“学”网站"></a>来源 [2] 地震“学”网站</h1><p>inner-core bondary 内核边界（ICB）</p>
+<p>core-mantle boundary 核幔边界（CMB）</p>
+<p>moho discontinuity 莫霍间断面</p>
+<p>Conrad discontinuity 康拉德界面</p>
+<p>mantle transition zone 地幔转换带（410-660km）</p>
+<p>seismic phase 震相</p>
+<p>seismic source 震源</p>
+<p>seismic event 地震事件</p>
+<p>seismic wave 地震波</p>
+<p>seismograph 地震仪</p>
+<p>seismic station 地震台</p>
+<p>seismogram 地震图</p>
+<p>Hooke’s law 胡克定律</p>
+<p>origin time 发震时刻</p>
+<p>hypocenter 震源位置</p>
+<p>epicenter 震中</p>
+<p>magnitude 震级</p>
+<p>body wave 体波</p>
+<p>surface wave 面波</p>
+<p>primary wave(P-wave) P波</p>
+<p>secondary wave(S-wave) S波</p>
+<p>compression wave 压缩波</p>
+<p>shear wave 剪切波</p>
+<p>Rayleigh wave 瑞利波</p>
+<p>Love wave 勒夫波</p>
+<p>longitudinal wave 纵波</p>
+<p>transverse wave 横波</p>
+<p>seismic waveform 地震波形</p>
+<p>metadata 元数据</p>
+<p>catalog 地震目录</p>
+<p>crust 地壳</p>
+<p>mantle 地幔</p>
+<p>core 地核</p>
+<p>outer core 外核</p>
+<p>inner core 内核</p>
+<p>SAC(seismic analysis codes)</p>
+<p>miniSEED(standard for the exchange of earthquake data)</p>
+<p>fetch 获取</p>
+<p>processing 处理</p>
+<p>analysis 分析</p>
 
     </div>
 
@@ -299,20 +429,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/SAC/" rel="tag"># SAC</a>
+              <a href="/tags/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" rel="tag"># 英语词汇</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/" rel="prev" title="SAC时间变量">
-                  <i class="fa fa-chevron-left"></i> SAC时间变量
+                <a href="/2022/09/07/%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D/" rel="prev" title="专业名词">
+                  <i class="fa fa-chevron-left"></i> 专业名词
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/08/21/Vista%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F/" rel="next" title="Vista地震剖面简单处理顺序">
-                  Vista地震剖面简单处理顺序 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/09/15/%E3%80%8A%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" rel="next" title="《地震资料解释基础》英语词汇">
+                  《地震资料解释基础》英语词汇 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
