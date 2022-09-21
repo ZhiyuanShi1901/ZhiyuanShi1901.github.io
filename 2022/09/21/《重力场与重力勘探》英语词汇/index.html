@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考SAC数据格式及转换[] 数据格式SEED：存储多台站多分量的波形数据和台站元数据。miniSEED：仅包含波形数据。datalessSEED：仅包含台站元数据。CSS3.0：为数据库设计。 格式转换使用Rdseed进行格式转换： 从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件： 1rdseed -Rdf file.seed  从SEED数据中提取SAC格式的波形数据以">
+    <meta name="description" content="简介这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。 来源[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6] 词汇Gravity Field and Gravity Exploration 重力场与重力勘探 Gravity 重力 acceleration 加速度 conc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SAC数据格式与数据合并">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/index.html">
+<meta property="og:title" content="《重力场与重力勘探》英语词汇">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/index.html">
 <meta property="og:site_name" content="Zhiyuan Shi">
-<meta property="og:description" content="参考SAC数据格式及转换[] 数据格式SEED：存储多台站多分量的波形数据和台站元数据。miniSEED：仅包含波形数据。datalessSEED：仅包含台站元数据。CSS3.0：为数据库设计。 格式转换使用Rdseed进行格式转换： 从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件： 1rdseed -Rdf file.seed  从SEED数据中提取SAC格式的波形数据以">
+<meta property="og:description" content="简介这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。 来源[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6] 词汇Gravity Field and Gravity Exploration 重力场与重力勘探 Gravity 重力 acceleration 加速度 conc">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-21T01:28:38.000Z">
-<meta property="article:modified_time" content="2022-08-21T07:03:11.653Z">
-<meta property="article:tag" content="SAC">
+<meta property="article:published_time" content="2022-09-21T13:40:33.000Z">
+<meta property="article:modified_time" content="2022-09-21T13:43:13.671Z">
+<meta property="article:tag" content="重力勘探">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/">
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/","path":"2022/08/21/SAC数据格式与数据合并/","title":"SAC数据格式与数据合并"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/","path":"2022/09/21/《重力场与重力勘探》英语词汇/","title":"《重力场与重力勘探》英语词汇"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SAC数据格式与数据合并 | Zhiyuan Shi</title>
+<title>《重力场与重力勘探》英语词汇 | Zhiyuan Shi</title>
   
 
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">格式转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6"><span class="nav-number">4.</span> <span class="nav-text">数据合并</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A5%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">来源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%8D%E6%B1%87"><span class="nav-number">3.</span> <span class="nav-text">词汇</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -233,12 +233,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="SAC数据格式与数据合并 | Zhiyuan Shi">
+      <meta itemprop="name" content="《重力场与重力勘探》英语词汇 | Zhiyuan Shi">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SAC数据格式与数据合并
+          《重力场与重力勘探》英语词汇
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-08-21 09:28:38 / Modified: 15:03:11" itemprop="dateCreated datePublished" datetime="2022-08-21T09:28:38+08:00">2022-08-21</time>
+      <time title="Created: 2022-09-21 21:40:33 / Modified: 21:43:13" itemprop="dateCreated datePublished" datetime="2022-09-21T21:40:33+08:00">2022-09-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +258,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+          <a href="/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url" rel="index"><span itemprop="name">专业英语词汇</span></a>
         </span>
     </span>
 
@@ -272,24 +272,86 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
-<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
-<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
-<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
-
-<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
-<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
-<p>如果出现数据间断或者数据重叠的情况：</p>
-<ul>
-<li>存在间断，可以直接补零或者线性插值；</li>
-<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
-</ul>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
+<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
+<p>Gravity 重力</p>
+<p>acceleration 加速度</p>
+<p>concept 概念</p>
+<p>Gravitational field 引力场</p>
+<p>Gravitational potential 引力位</p>
+<p>Gravity potential 重力位</p>
+<p>anomaly 异常</p>
+<p>formulae 公式</p>
+<p>gravitational force caused by density contrast 剩余质量引力</p>
+<p>Free air anomolies 自由空气重力异常</p>
+<p>Bougure gravity anomolies 布格重力异常</p>
+<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
+<p>instruments for relative gravity measurements 相对重力测量仪</p>
+<p>Land gravity metres 地面测量仪器</p>
+<p>marine 海洋</p>
+<p>areo 航空</p>
+<p>borehole 井中</p>
+<p>calibration 标定</p>
+<p>coincidence 一致性</p>
+<p>scale 格值</p>
+<p>basis-points net 基点网</p>
+<p>arrangement 布置</p>
+<p>combination measurements 联测</p>
+<p>Gravity points 普通点</p>
+<p>points for monltor 检查点</p>
+<p>additional measurements 补充观测</p>
+<p>Geodesy 测地工作</p>
+<p>Airlome gravity surcey 航空重力测量</p>
+<p>gravity gradients 重力梯度</p>
+<p>torsion balance gradiometre 扭秤</p>
+<p>satellite 卫星</p>
+<p>reduction 整理</p>
+<p>adjustments 平差</p>
+<p>closer error 闭合差</p>
+<p>condition adjustment 条件平差</p>
+<p>Terrain correction 地形校正</p>
+<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
+<p>Free-air coorection 自由空气（高度）矫正</p>
+<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
+<p>Normal correction 正常场（纬度）校正</p>
+<p>gravity anomolies 重力异常</p>
+<p>illustration of gravity anomalies 异常的图示</p>
+<p>contour map 异常平面图</p>
+<p>profile 剖面图</p>
+<p>profiles on a plane 异常平剖图</p>
+<p>isostasy 均衡</p>
+<p>isostatic gravity anomaly 均衡重力异常</p>
+<p>principle 原理</p>
+<p>estimation 估计</p>
+<p>illutration 表示方法，插图</p>
+<p>least-square method 最小二乘法</p>
+<p>forward calculation 证问题</p>
+<p>irregular 不规则</p>
+<p>interfaces 分界面</p>
+<p>multi-interfaces 多分界面</p>
+<p>characteristic point method 特征点法</p>
+<p>Optimization 选择法</p>
+<p>Interactive method 人机交互式反演方法</p>
+<p>Linear regression 线性回归法</p>
+<p>interation 迭代法</p>
+<p>frequency domain 频率域反演方法</p>
+<p>Ambiguity 多解性问题</p>
+<p>effect 效应</p>
+<p>Separation 分离 </p>
+<p>deep structures 深部的因素</p>
+<p>Regional gravity anomaly 区域异常</p>
+<p>local gravity anomaly 局部异常</p>
+<p>average field method (Grids) 平均场法</p>
+<p>Polygon method 圆周法（多边形法）</p>
+<p>Grid calulation 网格法</p>
+<p>continuation 延拓</p>
+<p>filtering in spatial frequency demain 频率域滤波法</p>
+<p>faults 断裂构造（断层）</p>
+<p>paleo-burial hill 古潜山</p>
+<p>oil trap 封闭</p>
+<p>salt 盐矿</p>
+<p>ore 金属矿</p>
 
     </div>
 
@@ -299,21 +361,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/SAC/" rel="tag"># SAC</a>
+              <a href="/tags/%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2/" rel="tag"># 重力勘探</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/" rel="prev" title="SAC时间变量">
-                  <i class="fa fa-chevron-left"></i> SAC时间变量
+                <a href="/2022/09/15/%E3%80%8A%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" rel="prev" title="《信号分析与处理》英语词汇">
+                  <i class="fa fa-chevron-left"></i> 《信号分析与处理》英语词汇
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/08/21/Vista%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F/" rel="next" title="Vista地震剖面简单处理顺序">
-                  Vista地震剖面简单处理顺序 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

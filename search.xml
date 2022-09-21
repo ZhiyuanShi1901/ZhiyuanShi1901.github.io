@@ -96,161 +96,6 @@ gmt end show  # show表示自动打开生成的图片文件
       </tags>
   </entry>
   <entry>
-    <title>Rdseed学习笔记</title>
-    <url>/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
-<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
-<p>[2] <a href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
-<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
-<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
-<p>The following options may be selected:</p>
-<ul>
-<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
-</li>
-<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
-</li>
-<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
-</li>
-<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
-</li>
-<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
-</li>
-<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
-</li>
-<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
-</li>
-<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
-</li>
-<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
-<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
-<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
-</li>
-<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
-</li>
-<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
-</li>
-<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
-</li>
-<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
-</li>
-<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
-<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
-</li>
-<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
-</li>
-<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
-</li>
-<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
-<ul>
-<li>E： 全部质量的波形数据 </li>
-<li>D： 不确定状态的数据</li>
-<li>M： 已合并的数据</li>
-<li>R： 原始波形数据</li>
-<li>Q： 经过质量控制的数据</li>
-</ul>
-</li>
-<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
-</li>
-<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
-</li>
-<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
-<p>[检索站摘要信息]</p>
-</li>
-<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
-<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
-</li>
-<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
-</li>
-<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
-<ul>
-<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
-</ul>
-</li>
-<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
-</li>
-<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
-<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
-</li>
-</ul>
-<p>(请参阅下面选项部分的逆转检查)]</p>
-<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
-<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
-<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
-<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
-<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
-<p>下列方向对应的方位角和入射角参数：</p>
-<table>
-<thead>
-<tr>
-<th align="center">方向</th>
-<th align="center">cmpaz（方位角）</th>
-<th align="center">cmpinc（入射角）</th>
-<th align="center">方位码</th>
-<th align="center">极性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">垂直向上</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;Z</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">垂直向下</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;180</td>
-<td align="center">&gt;Z</td>
-<td align="center">&gt;负</td>
-</tr>
-<tr>
-<td align="center">正北</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;N</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">正南</td>
-<td align="center">&gt;180</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;N</td>
-<td align="center">&gt;负</td>
-</tr>
-<tr>
-<td align="center">正东</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;E</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">正西</td>
-<td align="center">&gt;270</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;E</td>
-<td align="center">&gt;负</td>
-</tr>
-</tbody></table>
-<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
-<ul>
-<li>n&#x3D;0  不检测极性</li>
-<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
-<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
-<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
-</ul>
-<p>注意：两个参数指cmpaz和cmpnic</p>
-<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Rdseed</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git学习笔记</title>
     <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
@@ -349,6 +194,35 @@ git push     //推送
     <title>Obspy学习笔记</title>
     <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>SAC数据格式与数据合并</title>
+    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
+<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
+<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
+<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
+
+<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
+<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
+<p>如果出现数据间断或者数据重叠的情况：</p>
+<ul>
+<li>存在间断，可以直接补零或者线性插值；</li>
+<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
   </entry>
   <entry>
     <title>SAC学习笔记</title>
@@ -590,6 +464,161 @@ git push     //推送
       </tags>
   </entry>
   <entry>
+    <title>Rdseed学习笔记</title>
+    <url>/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
+<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
+<p>[2] <a href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
+<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
+<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
+<p>The following options may be selected:</p>
+<ul>
+<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
+</li>
+<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
+</li>
+<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
+</li>
+<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
+</li>
+<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
+</li>
+<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
+</li>
+<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
+</li>
+<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
+</li>
+<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
+<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
+<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
+</li>
+<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
+</li>
+<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
+</li>
+<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
+</li>
+<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
+</li>
+<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
+<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
+</li>
+<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
+</li>
+<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
+</li>
+<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
+<ul>
+<li>E： 全部质量的波形数据 </li>
+<li>D： 不确定状态的数据</li>
+<li>M： 已合并的数据</li>
+<li>R： 原始波形数据</li>
+<li>Q： 经过质量控制的数据</li>
+</ul>
+</li>
+<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
+</li>
+<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
+</li>
+<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
+<p>[检索站摘要信息]</p>
+</li>
+<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
+<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
+</li>
+<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
+</li>
+<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
+<ul>
+<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
+</ul>
+</li>
+<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
+</li>
+<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
+<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
+</li>
+</ul>
+<p>(请参阅下面选项部分的逆转检查)]</p>
+<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
+<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
+<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
+<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
+<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
+<p>下列方向对应的方位角和入射角参数：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">cmpaz（方位角）</th>
+<th align="center">cmpinc（入射角）</th>
+<th align="center">方位码</th>
+<th align="center">极性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">垂直向上</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">垂直向下</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正北</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正南</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正东</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正西</td>
+<td align="center">&gt;270</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;负</td>
+</tr>
+</tbody></table>
+<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
+<ul>
+<li>n&#x3D;0  不检测极性</li>
+<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
+<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
+<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
+</ul>
+<p>注意：两个参数指cmpaz和cmpnic</p>
+<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Rdseed</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu安装firefox中国版</title>
     <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
     <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
@@ -615,32 +644,26 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>SAC数据格式与数据合并</title>
-    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
-<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
-<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
-<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
+    <title>Ubuntu与windows双系统设置windows默认启动</title>
+    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
+<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
+<p>打开终端，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
 
-<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
-<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
-<p>如果出现数据间断或者数据重叠的情况：</p>
-<ul>
-<li>存在间断，可以直接补零或者线性插值；</li>
-<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
-</ul>
+<p>将第6行的 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
+<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
+<p>保存后，运行以下命令更新grub文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<p>重启系统即可。</p>
+<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
 ]]></content>
       <categories>
-        <category>地震学常用软件</category>
+        <category>Linux学习</category>
       </categories>
       <tags>
-        <tag>SAC</tag>
+        <tag>Linux学习</tag>
       </tags>
   </entry>
   <entry>
@@ -853,29 +876,6 @@ man 命令名  //使用范围更广
 <h3 id="date命令：显示及设定系统时间"><a href="#date命令：显示及设定系统时间" class="headerlink" title="date命令：显示及设定系统时间"></a>date命令：显示及设定系统时间</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">date [选项]+显示时间的格式</span><br><span class="line">-u //使用格林尼治时间</span><br><span class="line">-r //最后一次修改文件的时间</span><br></pre></td></tr></table></figure>
 <p>date命令常用的时间格式参考书。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">date 设定的系统时间 //修改系统时间时，采用MMDDhhmmYYYY.ss的格式</span><br><span class="line">clock -w //将系统时间写入CMOS，系统重启后会显示正确时间</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu与windows双系统设置windows默认启动</title>
-    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
-
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
 ]]></content>
       <categories>
         <category>Linux学习</category>
@@ -1183,6 +1183,97 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>地震勘探</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《重力场与重力勘探》英语词汇</title>
+    <url>/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
+<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
+<p>Gravity 重力</p>
+<p>acceleration 加速度</p>
+<p>concept 概念</p>
+<p>Gravitational field 引力场</p>
+<p>Gravitational potential 引力位</p>
+<p>Gravity potential 重力位</p>
+<p>anomaly 异常</p>
+<p>formulae 公式</p>
+<p>gravitational force caused by density contrast 剩余质量引力</p>
+<p>Free air anomolies 自由空气重力异常</p>
+<p>Bougure gravity anomolies 布格重力异常</p>
+<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
+<p>instruments for relative gravity measurements 相对重力测量仪</p>
+<p>Land gravity metres 地面测量仪器</p>
+<p>marine 海洋</p>
+<p>areo 航空</p>
+<p>borehole 井中</p>
+<p>calibration 标定</p>
+<p>coincidence 一致性</p>
+<p>scale 格值</p>
+<p>basis-points net 基点网</p>
+<p>arrangement 布置</p>
+<p>combination measurements 联测</p>
+<p>Gravity points 普通点</p>
+<p>points for monltor 检查点</p>
+<p>additional measurements 补充观测</p>
+<p>Geodesy 测地工作</p>
+<p>Airlome gravity surcey 航空重力测量</p>
+<p>gravity gradients 重力梯度</p>
+<p>torsion balance gradiometre 扭秤</p>
+<p>satellite 卫星</p>
+<p>reduction 整理</p>
+<p>adjustments 平差</p>
+<p>closer error 闭合差</p>
+<p>condition adjustment 条件平差</p>
+<p>Terrain correction 地形校正</p>
+<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
+<p>Free-air coorection 自由空气（高度）矫正</p>
+<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
+<p>Normal correction 正常场（纬度）校正</p>
+<p>gravity anomolies 重力异常</p>
+<p>illustration of gravity anomalies 异常的图示</p>
+<p>contour map 异常平面图</p>
+<p>profile 剖面图</p>
+<p>profiles on a plane 异常平剖图</p>
+<p>isostasy 均衡</p>
+<p>isostatic gravity anomaly 均衡重力异常</p>
+<p>principle 原理</p>
+<p>estimation 估计</p>
+<p>illutration 表示方法，插图</p>
+<p>least-square method 最小二乘法</p>
+<p>forward calculation 证问题</p>
+<p>irregular 不规则</p>
+<p>interfaces 分界面</p>
+<p>multi-interfaces 多分界面</p>
+<p>characteristic point method 特征点法</p>
+<p>Optimization 选择法</p>
+<p>Interactive method 人机交互式反演方法</p>
+<p>Linear regression 线性回归法</p>
+<p>interation 迭代法</p>
+<p>frequency domain 频率域反演方法</p>
+<p>Ambiguity 多解性问题</p>
+<p>effect 效应</p>
+<p>Separation 分离 </p>
+<p>deep structures 深部的因素</p>
+<p>Regional gravity anomaly 区域异常</p>
+<p>local gravity anomaly 局部异常</p>
+<p>average field method (Grids) 平均场法</p>
+<p>Polygon method 圆周法（多边形法）</p>
+<p>Grid calulation 网格法</p>
+<p>continuation 延拓</p>
+<p>filtering in spatial frequency demain 频率域滤波法</p>
+<p>faults 断裂构造（断层）</p>
+<p>paleo-burial hill 古潜山</p>
+<p>oil trap 封闭</p>
+<p>salt 盐矿</p>
+<p>ore 金属矿</p>
+]]></content>
+      <categories>
+        <category>专业英语词汇</category>
+      </categories>
+      <tags>
+        <tag>重力勘探</tag>
       </tags>
   </entry>
   <entry>
