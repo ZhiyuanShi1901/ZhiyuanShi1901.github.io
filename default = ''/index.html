@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -243,90 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-30 19:38:00 / Modified: 19:39:19" itemprop="dateCreated datePublished" datetime="2022-09-30T19:38:00+08:00">2022-09-30</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MATLAB进行图像绘制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
-<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/09/29/%E9%A2%91%E8%B0%B1%E6%B7%B7%E5%8F%A0%E4%BD%9C%E4%B8%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/29/%E9%A2%91%E8%B0%B1%E6%B7%B7%E5%8F%A0%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">频谱混叠作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-29 20:29:24" itemprop="dateCreated datePublished" datetime="2022-09-29T20:29:24+08:00">2022-09-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-30 19:39:19" itemprop="dateModified" datetime="2022-09-30T19:39:19+08:00">2022-09-30</time>
+      <time title="Created: 2022-09-30 19:38:00 / Modified: 19:41:35" itemprop="dateCreated datePublished" datetime="2022-09-30T19:38:00+08:00">2022-09-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1835,8 +1752,236 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Rdseed学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-14 09:49:38" itemprop="dateCreated datePublished" datetime="2022-08-14T09:49:38+08:00">2022-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-21 20:20:23" itemprop="dateModified" datetime="2022-08-21T20:20:23+08:00">2022-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
+<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a target="_blank" rel="noopener" href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
+<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
+<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
+<p>The following options may be selected:</p>
+<ul>
+<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
+</li>
+<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
+</li>
+<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
+</li>
+<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
+</li>
+<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
+</li>
+<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
+</li>
+<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
+</li>
+<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
+</li>
+<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
+<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
+<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
+</li>
+<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
+</li>
+<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
+</li>
+<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
+</li>
+<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
+</li>
+<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
+<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
+</li>
+<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
+</li>
+<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
+</li>
+<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
+<ul>
+<li>E： 全部质量的波形数据 </li>
+<li>D： 不确定状态的数据</li>
+<li>M： 已合并的数据</li>
+<li>R： 原始波形数据</li>
+<li>Q： 经过质量控制的数据</li>
+</ul>
+</li>
+<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
+</li>
+<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
+</li>
+<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
+<p>[检索站摘要信息]</p>
+</li>
+<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
+<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
+</li>
+<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
+</li>
+<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
+<ul>
+<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
+</ul>
+</li>
+<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
+</li>
+<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
+<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
+</li>
+</ul>
+<p>(请参阅下面选项部分的逆转检查)]</p>
+<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
+<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
+<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
+<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
+<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
+<p>下列方向对应的方位角和入射角参数：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">cmpaz（方位角）</th>
+<th align="center">cmpinc（入射角）</th>
+<th align="center">方位码</th>
+<th align="center">极性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">垂直向上</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">垂直向下</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正北</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正南</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正东</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正西</td>
+<td align="center">&gt;270</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;负</td>
+</tr>
+</tbody></table>
+<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
+<ul>
+<li>n&#x3D;0  不检测极性</li>
+<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
+<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
+<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
+</ul>
+<p>注意：两个参数指cmpaz和cmpnic</p>
+<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/default%20=%20''/page/2/">2</a><a class="page-number" href="/default%20=%20''/page/3/">3</a><a class="extend next" rel="next" href="/default%20=%20''/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/default%20=%20''/page/2/">2</a><a class="extend next" rel="next" href="/default%20=%20''/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
