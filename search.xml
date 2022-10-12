@@ -220,48 +220,6 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>Obspy学习笔记</title>
-    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>SAC时间变量</title>
-    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
-<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
-<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
-<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
-<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
-<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
-
-
-<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
-<p>使用注意事项：</p>
-<ul>
-<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
-<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
-</ul>
-<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
-<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
-
-<p>处理大量数据时：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
-
-<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
-<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SAC学习笔记</title>
     <url>/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
@@ -656,6 +614,11 @@ git push     //推送
       </tags>
   </entry>
   <entry>
+    <title>Obspy学习笔记</title>
+    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Ubuntu安装firefox中国版</title>
     <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
     <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
@@ -882,6 +845,43 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC时间变量</title>
+    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+
+
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
+<ul>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+</ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
       </tags>
   </entry>
   <entry>
@@ -1522,6 +1522,54 @@ man 命令名  //使用范围更广
 <p>scenario 现象</p>
 <p>underlying 根本的 潜在的</p>
 <p>bound 标记</p>
+<p>slab 厚片，平板</p>
+<p>subducting slab 俯冲带</p>
+<p>high-velocity anomalies HVA 高速异常</p>
+<p>global tomography models 全球层析成像模型</p>
+<p>distinguish 辨别</p>
+<p>lateral resolution 空间分辨率</p>
+<p>coverage 覆盖范围</p>
+<p>slopes 斜率</p>
+<p>Clapeyron slopes 克拉贝龙斜率</p>
+<p>phase transition 相变</p>
+<p>map out 成像</p>
+<p>up to 高达</p>
+<p>it was generally believed that 所有人认为</p>
+<p>anhydrous 脱水</p>
+<p>portion 部分</p>
+<p>mineral assemblages 矿物重整</p>
+<p>water content 水含量</p>
+<p>crucial 重要的</p>
+<p>around the Pacific subduction zones 环太平洋俯冲地震带</p>
+<p>mineral physic studies 矿物物理研究</p>
+<p>water storage capacity 储水能力（化学式）</p>
+<p>receiver function 接收函数</p>
+<p>long-standing debate 长期存在的争议</p>
+<p>primary goal （motivition）最初的目标</p>
+<p>temporary 流动台站</p>
+<p>permanent 永久台站</p>
+<p>aperture 孔径</p>
+<p>peak deployment 峰值数量部署（部署的数量较多）</p>
+<p>dense 密集</p>
+<p>national seismic network 国家地震台网</p>
+<p>ocean bottom seismographs 海底地震仪</p>
+<p>radial 径向</p>
+<p>transverse 横向（与大圆面垂直的方向）</p>
+<p>azimuth 方位角</p>
+<p>water level 灌水深度</p>
+<p>first arrival 初至</p>
+<p>simple pulse 简单的脉冲</p>
+<p>manually 人工的</p>
+<p>corner frequency 角频率</p>
+<p>inset 图中的小图</p>
+<p>CCP common-conversion-point </p>
+<p>arrow 箭头</p>
+<p>respect 方向</p>
+<p>3D travel-time anomalies 3D速度校正</p>
+<p>equivalent 等价于</p>
+<p>overlaps 有交集的</p>
+<p>by 乘</p>
+<p>study area 研究区</p>
 ]]></content>
       <categories>
         <category>专业英语词汇</category>
@@ -1613,6 +1661,25 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
+    <title>吉布斯现象作业</title>
+    <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MATLAB进行图像绘制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
+<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>地震资料数字处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客创建笔记</title>
     <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
@@ -1688,25 +1755,6 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>吉布斯现象作业</title>
-    <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MATLAB进行图像绘制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
-<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>地震资料数字处理</tag>
       </tags>
   </entry>
 </search>
