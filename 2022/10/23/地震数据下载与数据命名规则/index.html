@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：[Seisman数据命名规则]https:&#x2F;&#x2F;seisman.github.io&#x2F;SAC_Docs_zh&#x2F;appendix&#x2F;naming-convections&#x2F;#id3 [地震学笔记]https:&#x2F;&#x2F;seismology.gitee.io&#x2F;seisnote&#x2F;obspydoc&#x2F;plot_5_retrieving_data&#x2F; 数据获取数据获取有多种方式，例如脚本或者直接网页申请。在这里记录使用">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-23T13:35:54.000Z">
-<meta property="article:modified_time" content="2022-10-24T10:29:57.400Z">
+<meta property="article:modified_time" content="2022-10-28T13:39:46.564Z">
 <meta property="article:tag" content="Obspy">
 <meta name="twitter:card" content="summary">
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-24 18:29:57" itemprop="dateModified" datetime="2022-10-24T18:29:57+08:00">2022-10-24</time>
+      <time title="Modified: 2022-10-28 21:39:46" itemprop="dateModified" datetime="2022-10-28T21:39:46+08:00">2022-10-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -339,8 +339,9 @@
 <p>常见H 高增益仪器。</p>
 <h4 id="方位码（Orientation-Code）"><a href="#方位码（Orientation-Code）" class="headerlink" title="方位码（Orientation Code）"></a>方位码（Orientation Code）</h4><ul>
 <li>N E Z 南北向、东西向、垂向</li>
-<li>1 2 3 3为垂向，1、2为正交的水平向，但并非南北东西向</li>
+<li>1 2 3（Z） 3（Z）为垂向，1、2为正交的水平向，但并非南北东西向</li>
 <li>T R Z 切向、径向、垂向</li>
+<li>方位码 U V W 未知，可能与1 2 Z（3）相同</li>
 </ul>
 <p>注意：N、E、Z并非指正北等方向，与正北夹角2度以内的均可取N。以头段变量cmpaz和cmpinc为准（cmpaz也可能产生一定误差）。</p>
 <h3 id="Quality-波形质量"><a href="#Quality-波形质量" class="headerlink" title="Quality 波形质量"></a>Quality 波形质量</h3><ul>
@@ -382,6 +383,8 @@
 </ul>
 <p>申请多组数据：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line">t2 = t1 + 60</span><br><span class="line">bult = [[&quot;IU&quot;, &quot;ANMO&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2], [&quot;IU&quot;, &quot;AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2]]</span><br><span class="line">waveform = client.get_waveforms_bulk(bult)</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
+
+
 
 <h3 id="服务器下载地震目录-catalog"><a href="#服务器下载地震目录-catalog" class="headerlink" title="服务器下载地震目录(catalog)"></a>服务器下载地震目录(catalog)</h3><p>get_events() 申请地震目录。</p>
 <h4 id="使用-eventid-获取地震目录"><a href="#使用-eventid-获取地震目录" class="headerlink" title="使用 eventid 获取地震目录"></a>使用 eventid 获取地震目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = Client(&quot;IRIS&quot;)</span><br></pre></td></tr></table></figure>
@@ -430,6 +433,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/" rel="next" title="地震数据下载进阶">
+                  地震数据下载进阶 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
