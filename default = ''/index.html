@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -204,6 +204,163 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/" class="post-title-link" itemprop="url">从零开始的Obspy</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-29 16:30:27 / Modified: 16:33:14" itemprop="dateCreated datePublished" datetime="2022-10-29T16:30:27+08:00">2022-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="读取地震数据"><a href="#读取地震数据" class="headerlink" title="读取地震数据"></a>读取地震数据</h1><h2 id="访问元信息"><a href="#访问元信息" class="headerlink" title="访问元信息"></a>访问元信息</h2><pre><code>from obspy import read
+waves = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10.mseed&#39;)
+print(waves)  # 输出波形名称
+</code></pre>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.HH1 | 2014-10-28T01:29:59.388393Z - 2014-10-28T01:34:00.158393Z | 100.0 Hz, 24078 samples</span><br><span class="line">IU.ADK.10.HH2 | 2014-10-28T01:30:02.058394Z - 2014-10-28T01:33:59.158394Z | 100.0 Hz, 23711 samples</span><br><span class="line">IU.ADK.10.HHZ | 2014-10-28T01:29:41.818393Z - 2014-10-28T01:34:00.778393Z | 100.0 Hz, 25897 samples</span><br><span class="line">IU.ADK.10.LH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.VH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VMU | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMV | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMW | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(waves))  # waves中含有15个波形
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>输出最前面的波形名称</p>
+<pre><code>tra1 = waves[0]
+print(tra1)  # 输出最前面的波形名称
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<p>输出元信息，即地震数据的台站信息等:</p>
+<pre><code>print(tra1.stats)  # 输出元信息，即地震数据的台站信息等
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">      network: IU</span><br><span class="line">      station: ADK</span><br><span class="line">     location: 10</span><br><span class="line">      channel: BH1</span><br><span class="line">    starttime: 2014-10-28T00:00:00.019500Z</span><br><span class="line">      endtime: 2014-10-28T23:59:59.994500Z</span><br><span class="line">sampling_rate: 40.0</span><br><span class="line">        delta: 0.025</span><br><span class="line">         npts: 3456000</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: MSEED</span><br><span class="line">        mseed: AttribDict(&#123;&#x27;dataquality&#x27;: &#x27;M&#x27;, &#x27;number_of_records&#x27;: 14448, &#x27;encoding&#x27;: &#x27;STEIM2&#x27;, &#x27;byteorder&#x27;: &#x27;&gt;&#x27;, &#x27;record_length&#x27;: 512, &#x27;filesize&#x27;: 22335488&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>print(tra1.stats.station)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADK</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问波形数据"><a href="#访问波形数据" class="headerlink" title="访问波形数据"></a>访问波形数据</h2><p>使用data关键词对实际波形数据进行检索</p>
+<pre><code>print(tra1.data)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-4017 -3853 -3594 ...  1167   807  1231]</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(tra1.data))
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3456000   # 与上面的波形中npts相对应</span><br></pre></td></tr></table></figure>
+
+<pre><code>tra1.plot()  # 浏览数据
+</code></pre>
+<h1 id="波形绘制"><a href="#波形绘制" class="headerlink" title="波形绘制"></a>波形绘制</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><pre><code>from obspy.core import read
+
+# 读取一个数据
+signalchannel = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+# 读取三个数据
+threechannels = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B01.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B02.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+print(signalchannel)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(&quot;\n&quot;)
+print(threechannels)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+<h2 id="基本绘制与保存"><a href="#基本绘制与保存" class="headerlink" title="基本绘制与保存"></a>基本绘制与保存</h2><p>signalchannel.plot()  # 基本绘制，默认大小800*250，可以通过size属性调整.</p>
+<p>size属性使用方法：size&#x3D;(1920,1080)</p>
+<pre><code>signalsstarttime = signalchannel[0].stats.starttime
+signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
+signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
+</code></pre>
+<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel.png"></p>
+<h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
+</code></pre>
+<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080.png"></p>
+<h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
+</code></pre>
+<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday.png"></p>
+<pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
+signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
+                   type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
+                   vertical_scaling_range=5e3, one_tick_per_line=True,
+                   color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
+                   events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
+</code></pre>
+<h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
+</code></pre>
+<h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
+<li>疑问：signalchannel 需要取read到的内容的[0]项，具体未知为何如此。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">fig = plt.figure()  # 创建一个画布</span><br><span class="line">ax = fig.add_subplot(1, 1, 1) # 创建组合图，如subplot()</span><br><span class="line">ax.plot(signalchannel[0].times(&quot;matplotlib&quot;), signalchannel[0].data, &#x27;b-&#x27;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<img src="matplot_signalchannel.png" alt="matplotlib绘图"></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1729,220 +1886,6 @@ sudo apt install ffmpeg
 <p>A&#x2F;D (analog&#x2F;digital) 模数转换</p>
 <p>TDM ( time-division multiplexing) 时分复用</p>
 <p>GML (group mapping law) 组映射规则</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/09/15/%E3%80%8A%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/15/%E3%80%8A%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" class="post-title-link" itemprop="url">《地震资料解释基础》英语词汇</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-15 20:07:56 / Modified: 20:26:06" itemprop="dateCreated datePublished" datetime="2022-09-15T20:07:56+08:00">2022-09-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url" rel="index"><span itemprop="name">专业英语词汇</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
-<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10]</p>
-<h1 id="来源-1-《地震资料解释基础》"><a href="#来源-1-《地震资料解释基础》" class="headerlink" title="来源 [1]《地震资料解释基础》"></a>来源 [1]《地震资料解释基础》</h1><h2 id="第一章-三维地震资料解释基础"><a href="#第一章-三维地震资料解释基础" class="headerlink" title="第一章 三维地震资料解释基础"></a>第一章 三维地震资料解释基础</h2><p>seismic exploration 地震勘探</p>
-<p>acquisition 采集（地震勘探）</p>
-<p>interpretation 解释（地震勘探）</p>
-<p>seismic data 地震资料</p>
-<p>reservoir 储层</p>
-<p>density 密度</p>
-<p>medium 介质</p>
-<p>medium model for seismic wave propagation 地震波传播介质模型</p>
-<p>viscoelastic body 黏弹性体</p>
-<p>isotropy 各向同性</p>
-<p>anisotropy 各向异性</p>
-<p>AVO(amplitude variation with angle)振幅随偏移距变化；(amplitude versus offset ) 振幅与炮检距关系</p>
-<p>homogeneous medium 均匀介质</p>
-<p>heterogeneous medium 非均匀介质</p>
-<p>single-phase medium 单相介质</p>
-<p>double-phase medium 双相介质</p>
-<p>elastomer 弹性体</p>
-<p>elastic wave 弹性波</p>
-<p>wave equation 波动方程</p>
-<p>Fermat principle 费马原理</p>
-<p>Huygens-Fresnel principle 惠更斯-菲涅尔原理</p>
-<p>Snell’s law 斯奈尔定律</p>
-<p>reflected wave 反射波</p>
-<p>transmitted wave 透射波</p>
-<p>wave seismology 波动地震学</p>
-<p>geometric seismology 集合地震学</p>
-<p>eikonal equation 程函方程</p>
-<p>geometry 观测系统</p>
-<p>CDP(common depth point) 共深度点</p>
-<p>xline 横向方向</p>
-<p>inline 测线方向</p>
-<p>CMP(common mid point) 共中心点</p>
-<p>OVT(offset vector tile) 炮检距向量片（域偏移技术）</p>
-<p>Kirchhoff 克其霍夫</p>
-<p>convolution 褶积</p>
-<p>reflection coefficient 反射系数</p>
-<p>reflectivity 反射率</p>
-<p>resolving power 分辨能力</p>
-<p>resolution 分辨率</p>
-<p>vertical 垂向</p>
-<p>lateral 横向</p>
-<p>first fresnel zone 第一菲涅尔带</p>
-<p>Rayleigh 瑞利准则</p>
-<p>Ricker 雷克准则</p>
-<p>Widess 怀德斯准则</p>
-<p>AVA(amplitude variation with incident angle) 振幅随入射角变化</p>
-<p>AVP(amplitude variation with ray-parameter) 振幅随射线参数的变化</p>
-<p>Zoeppritz 佐普里兹</p>
-<p>gradient 梯度</p>
-<p>rock physics 岩石物理</p>
-<p>seismic rock physics 地震岩石物理</p>
-<p>seismic petrophysics 地震岩石物理</p>
-<h2 id="第二章-三维地震数据与计算机可视化"><a href="#第二章-三维地震数据与计算机可视化" class="headerlink" title="第二章 三维地震数据与计算机可视化"></a>第二章 三维地震数据与计算机可视化</h2><p>3D seismic data volume 三维地震数据体</p>
-<p>seismic trace 地震记录道</p>
-<p>seismic section&#x2F;seismic cross-section&#x2F; seismic profile&#x2F;proflie 地震剖面</p>
-<p>trace space &#x2F; group interval 道间距</p>
-<p>sample interval 采样间隔</p>
-<p>sample rate 采样率</p>
-<p>seismic recording length 地震记录长度</p>
-<p>inline&#x2F;line 主测线&#x2F;主测线剖面</p>
-<p>crossline&#x2F;xline 横测线&#x2F;联络测线</p>
-<p>arbitrary line 任意线</p>
-<p>horizontal sections&#x2F;horizontal slice 水平切片</p>
-<p>time slice 时间切片</p>
-<p>depth slice 深度切片</p>
-<p>seiscrop section 水平切片（起源于seiscrop公司）</p>
-<p>horizon slice 沿层切片&#x2F;层位切片</p>
-<p>fault slice 断面切片</p>
-<p>vertical sections 垂直剖面</p>
-<p>stratal slice 地层切片</p>
-<p>wave peak &#x2F; wave crest 波峰</p>
-<p>wave trough 波谷</p>
-<p>scaling 缩放</p>
-<p>digital clipping 数字限幅</p>
-<p>spectrum 谱</p>
-<p>bandwidth 带宽</p>
-<p>zero phase wavelet 零相位子波</p>
-<p>minimum phase wavelet 最小相位子波</p>
-<p>polarity 极性</p>
-<p>positive 正(反射)</p>
-<p>hard 硬(反射)</p>
-<p>normal polarity 正常极性（正极性）</p>
-<p>reverse polarity 反极性 negative polarity 负极性</p>
-<p>American polarity 美洲极性</p>
-<p>European polarity 欧洲极性</p>
-<p>primary color 原色&#x2F;基色</p>
-<p>magenta 品红</p>
-<p>cyan 青</p>
-<p>hue 色调</p>
-<p>saturation 饱和度</p>
-<p>lightness 亮度</p>
-<p>color scheme 色标</p>
-<p>color bar 色棒</p>
-<p>contrasting color scheme 对比配色法</p>
-<p>gradational color scheme 渐变配色法</p>
-<p>single-gradational color scheme 单向渐变色标</p>
-<p>single-graditional gray scale 单向渐变灰色色标（灰度色标）</p>
-<p>double-gradational color scheme 双向渐变色标</p>
-<p>enhanced dynamic range double-gradational color scheme 增强动态范围的双向渐变色标</p>
-<p>contrasting spectral color scheme 对比色色标（彩虹色标）</p>
-<p>composite color scheme 复合色标</p>
-<p>1D cyclical color scheme 一维周期性色标</p>
-<p>2D color scheme 二维色标</p>
-<p>3D color scheme 三维色标</p>
-<p>cross-section display 剖面显示</p>
-<p>WT (wiggle trace) 波形曲线显示</p>
-<p>VA (variable area) 变面积显示</p>
-<p>D-VA (dual polarity variable area) 双极性变面积显示</p>
-<p>VD (variable density) 变密度（灰度）显示</p>
-<p>VI (variable intensity) 彩色变密度显示</p>
-<p>VI-WT &#x2F; VD-WT 波形加变密度显示</p>
-<p>VA-VD 变面积加变密度叠合显示</p>
-<p>seismic overlays 叠合显示</p>
-<p>blended or mixed displays 叠合显示</p>
-<p>surface visualization 平面可视化（计数）</p>
-<p>composite display 复合显示</p>
-<p>cube display 立方体显示</p>
-<p>chair display 椅状显示</p>
-<p>seismic data 3D visualization 地震数据三维可视化</p>
-<p>volume visualization 三维体可视化</p>
-<p>voxel 体元</p>
-<p>visual integration 可视化集成</p>
-<p>virtual reality 虚拟现实</p>
-<p>immersive visualization 浸入式可视化</p>
-<p>full 3D interpretation of seismic data 地震资料全三维解释</p>
-<p>autotracking 自动追踪</p>
-<p>autopicking 自动拾取</p>
-<p>seed voxel 种子点</p>
-<p>seismic interpretation system 地震解释系统</p>
-<p>interactive interpretation system of seismic data 地震资料（人机）交互解释系统</p>
-<p>results of seismic data interpretation 地震资料解释成果</p>
-<p>CGM (computer graphics metafile) 计算机图形元文件</p>
-<p>PPI (pixel per inch) 每英寸像素</p>
-<p>DPI (dot per inch) 每英寸点</p>
 
       
     </div>

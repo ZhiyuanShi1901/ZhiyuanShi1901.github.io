@@ -1,101 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git学习笔记</title>
-    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
-git config --global user.email &quot;你的邮箱&quot;
-ssh-keygen -t rsa -C &quot;你的邮箱&quot;
-</code></pre>
-<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
-<pre><code>ssh -T git@github.com
-</code></pre>
-<p>确认已经完成连接</p>
-<span id="more"></span>
-<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
-cd (仓库名)
-git init
-</code></pre>
-<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
-</code></pre>
-<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
-</code></pre>
-<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
-git add . (将所有文件添加到暂存区)
-</code></pre>
-<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
-git commit  //打开编辑器详细编辑信息
-</code></pre>
-<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
-git log --pretty=short  //只显示第一行的简述信息
-git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
-git diff                //查看当前工作树与暂存区的差别
-git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
-</code></pre>
-<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
-git checkout -b   //创建、切换分支
-git log --graph   //图表形式查看分支
-</code></pre>
-<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
-//同样效果的命令
-git branch (需要切换的分支名)
-git checkout (需要切换的分支名)
-
-git checkout -    //切换回上一个分支
-</code></pre>
-<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
-git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
-</code></pre>
-<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
-</code></pre>
-<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
-git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
-</code></pre>
-<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
-</code></pre>
-<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
-//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
-</code></pre>
-<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
-//使用编辑器修改
-</code></pre>
-<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
-</code></pre>
-<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
-git push -b (分支名)   //创建并推送分支
-</code></pre>
-<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
-git clone (SSH)  //将网络仓库克隆到本地
-git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
-git push  //直接推送处于该情况下的分支
-</code></pre>
-<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
-</code></pre>
-<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
-git remote add (原仓库新名称) (原仓库SSH)
-git fetch (原仓库新名称)       //获取最新数据
-git merge (原仓库新名称)/master   //合并
-</code></pre>
-<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
-git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
-git checkout -b pr1  //创建用于检查的分支
-git merge PR发送者/workname   //合并分支
-git branch -D pr1   //删除分支
-</code></pre>
-<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
-git merge PR发送者/work
-git diff origin/(主分支名)
-git push     //推送
-</code></pre>
-]]></content>
-      <categories>
-        <category>Git学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GMT学习笔记</title>
     <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>参考：</p>
@@ -188,6 +93,101 @@ gmt end show  # show表示自动打开生成的图片文件
       </categories>
       <tags>
         <tag>GMT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记</title>
+    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;你的邮箱&quot;
+ssh-keygen -t rsa -C &quot;你的邮箱&quot;
+</code></pre>
+<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>确认已经完成连接</p>
+<span id="more"></span>
+<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
+cd (仓库名)
+git init
+</code></pre>
+<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
+</code></pre>
+<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
+</code></pre>
+<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
+git add . (将所有文件添加到暂存区)
+</code></pre>
+<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
+git commit  //打开编辑器详细编辑信息
+</code></pre>
+<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
+git log --pretty=short  //只显示第一行的简述信息
+git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
+git diff                //查看当前工作树与暂存区的差别
+git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
+</code></pre>
+<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
+git checkout -b   //创建、切换分支
+git log --graph   //图表形式查看分支
+</code></pre>
+<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
+//同样效果的命令
+git branch (需要切换的分支名)
+git checkout (需要切换的分支名)
+
+git checkout -    //切换回上一个分支
+</code></pre>
+<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
+git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
+</code></pre>
+<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
+</code></pre>
+<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
+git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
+</code></pre>
+<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
+</code></pre>
+<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
+//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
+</code></pre>
+<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
+//使用编辑器修改
+</code></pre>
+<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
+</code></pre>
+<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
+git push -b (分支名)   //创建并推送分支
+</code></pre>
+<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
+git clone (SSH)  //将网络仓库克隆到本地
+git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
+git push  //直接推送处于该情况下的分支
+</code></pre>
+<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
+</code></pre>
+<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
+git remote add (原仓库新名称) (原仓库SSH)
+git fetch (原仓库新名称)       //获取最新数据
+git merge (原仓库新名称)/master   //合并
+</code></pre>
+<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
+git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
+git checkout -b pr1  //创建用于检查的分支
+git merge PR发送者/workname   //合并分支
+git branch -D pr1   //删除分支
+</code></pre>
+<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
+git merge PR发送者/work
+git diff origin/(主分支名)
+git push     //推送
+</code></pre>
+]]></content>
+      <categories>
+        <category>Git学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -492,299 +492,6 @@ gmt end show  # show表示自动打开生成的图片文件
       </tags>
   </entry>
   <entry>
-    <title>SAC数据处理笔记</title>
-    <url>/2022/10/21/SAC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="SAC数据处理流程"><a href="#SAC数据处理流程" class="headerlink" title="SAC数据处理流程"></a>SAC数据处理流程</h1><p>命令：</p>
-<ul>
-<li>全称 简写 参数 介绍</li>
-<li>&#x2F;表示未知，如简写未知则在此处填写 &#x2F;。<br>参考:</li>
-</ul>
-<p><a href="https://seisman.github.io/SAC_Docs_zh/">Seisman-SAC参考手册</a></p>
-<h1 id="滤波操作"><a href="#滤波操作" class="headerlink" title="滤波操作"></a>滤波操作</h1><p>参考：<a href="https://seisman.github.io/SAC_Docs_zh/data-process/filter/">滤波</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fg impulse delta 0.01 npts 1000   # 生成脉冲函数, delta和npts可调</span><br><span class="line">bp c 0.2 2 n 2 p 1                # 要查看的滤波参数</span><br><span class="line">beginframe</span><br><span class="line">xvport 0.1 0.9; yvport 0.7 0.9</span><br><span class="line">fileid off</span><br><span class="line">qdp off</span><br><span class="line">title &#x27;Time Domain Response&#x27;</span><br><span class="line">p                                # 绘制时间域响应</span><br><span class="line">fft</span><br><span class="line">xvport .1 .45; yvport .15 .55</span><br><span class="line">title &#x27;Amplitude Response&#x27;</span><br><span class="line">psp am loglog                    # 振幅响应</span><br><span class="line">xvport .55 .9</span><br><span class="line">title &#x27;Phase Response&#x27;</span><br><span class="line">psp ph linlin                    # 相位响应</span><br><span class="line">endframe</span><br></pre></td></tr></table></figure>
-
-<h2 id="bandpass-bp-无限脉冲带通滤波"><a href="#bandpass-bp-无限脉冲带通滤波" class="headerlink" title="bandpass bp 无限脉冲带通滤波"></a>bandpass bp 无限脉冲带通滤波</h2><pre><code>bp c 0.2 2 n 2 p 1
-</code></pre>
-<ul>
-<li>&#x2F; &#x2F; butter|bessel|c1|c2 使用butterworth、bessel、切比雪夫I型、切比雪夫II型滤波器。 默认使用巴特沃兹滤波器。</li>
-<li>corners c v1 v2 拐角频率设置，如上面的命令中，为0.2HZ和2HZ</li>
-<li>Npoles n v 极数，为1-10之间的整数 </li>
-<li>PASSES p v 通道数，取值为1或2</li>
-<li>tranbw &#x2F; v 设置切比雪夫滤波器转换带宽</li>
-<li>atten &#x2F; v 设置切比雪夫滤波器衰减因子</li>
-</ul>
-<h2 id="lowpass"><a href="#lowpass" class="headerlink" title="lowpass"></a>lowpass</h2><h2 id="highpass"><a href="#highpass" class="headerlink" title="highpass"></a>highpass</h2><h2 id="bandrej"><a href="#bandrej" class="headerlink" title="bandrej"></a>bandrej</h2><h1 id="震相理论到时"><a href="#震相理论到时" class="headerlink" title="震相理论到时"></a>震相理论到时</h1><p>保存震相到时信息的头段包括：a、f、tn，(n取值1-9)<br>相应的震相名信息：ka、kf、ktn。</p>
-<h2 id="chnhdr-ch-手动标记"><a href="#chnhdr-ch-手动标记" class="headerlink" title="chnhdr(ch) 手动标记"></a>chnhdr(ch) 手动标记</h2><pre><code>ch t0 400 t1 799 kt0 P kt1 S
-ch allt -123 iztype i0 
-# 例如第二行表示从所有的偏移时间减去123，同时改变描述参考时间类型的字段iztype
-</code></pre>
-<ul>
-<li>file &#x2F; n1 n2 修改指定文件的头段变量，n指内存中文件的文件号</li>
-<li>&#x2F; &#x2F; v vname SAC头段变量名、变量名对应的值</li>
-<li>allt &#x2F; v 将所有已定义的时间相关头段变量的值加v秒，同时参考时刻减去v秒</li>
-</ul>
-<h2 id="traveltime命令-根据预定义的速度模型计算指定震相的走时"><a href="#traveltime命令-根据预定义的速度模型计算指定震相的走时" class="headerlink" title="traveltime命令 根据预定义的速度模型计算指定震相的走时"></a>traveltime命令 根据预定义的速度模型计算指定震相的走时</h2><p>命令默认值：</p>
-<pre><code>traveltime MODEL iasp91 KM PHASE P S Pn Pg Sn Sg
-</code></pre>
-<ul>
-<li>model &#x2F; v 指定的速度模型，可以为iasp91和ak135</li>
-<li>picks &#x2F; v v取值0-9，表示第一个震相的到时存储在对应头段变量tn中，若未指定不写入头段</li>
-<li>phase &#x2F; vlist 要计算或标记的震相列表，如P、S、Pn</li>
-<li>verbose|quiet &#x2F; &#x2F; 前者在终端输出震相走时以及相对于文件参考时刻的描述，后者不显示震相走时信息</li>
-<li>m|km &#x2F; &#x2F; 头段变量evdp的单位为m或者km</li>
-</ul>
-<h2 id="taup-setsac命令"><a href="#taup-setsac命令" class="headerlink" title="taup_setsac命令"></a>taup_setsac命令</h2><p>Taup软件提供的命令，用于计算震相理论到时并保存到SAC文件中</p>
-<h1 id="波形排序"><a href="#波形排序" class="headerlink" title="波形排序"></a>波形排序</h1><h2 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h2><ul>
-<li>&#x2F; &#x2F; v v指头段变量名，即按照该变量名的值进行排序，最多输入5个，优先按照前面的变量排序</li>
-<li>ascend|descend &#x2F; &#x2F; 前者按照升序排列，后者按照降序。默认升序。每一个变量名都需要指定升序或者降序。</li>
-</ul>
-<h1 id="质量控制（标记或删除信噪比低或者不合适的波形）"><a href="#质量控制（标记或删除信噪比低或者不合适的波形）" class="headerlink" title="质量控制（标记或删除信噪比低或者不合适的波形）"></a>质量控制（标记或删除信噪比低或者不合适的波形）</h1><p>人工挑选坏的波形。</p>
-<pre><code>ppk p 5 # plot 每次绘制5个波形
-# 如果波形的质量很差，使用t9标记
-wh #将标记的t9保存到头段中
-q
-</code></pre>
-<p>t9标记后一般都是正值，而好的波形为未定义状态，值为-12345.0。在命令行使用下面的命令删除定义的波形：</p>
-<pre><code>saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;rm&quot;,$1&#125;&#39; | sh
-</code></pre>
-<p>也可以用如下命令将不好的波形移动到专门的文件夹下：</p>
-<pre><code>mkdir BADWAVE
-saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;mv&quot;,$1,&quot;BAD/&quot;&#125;&#39; | sh
-</code></pre>
-<h2 id="whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区"><a href="#whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区" class="headerlink" title="whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区"></a>whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区</h2><p>直接使用，不需要任何参数。</p>
-<p>注意：</p>
-<p>write命令的over选项可以用内存中头段区和数据区覆盖磁盘文件中的头段区<br>和数据区。该命令用内存中头段区覆盖磁盘文件中的头段区，数据区不会被覆盖。<br>如果使用了cut命令，读取数据时将仅读入部分数据，内存中的头段区将会做<br>相应修改以反映cut命令的效果，但是磁盘中的数据并没有被修改，因而此时<br>不能使用writehdr命令。对被cut的数据使用writehdr命令将可能导致磁<br>盘中的数据产生类似于平移或截断的效果。</p>
-<h1 id="震相拾取（到时标定）"><a href="#震相拾取（到时标定）" class="headerlink" title="震相拾取（到时标定）"></a>震相拾取（到时标定）</h1><h2 id="plotpk-ppk-命令（模式）"><a href="#plotpk-ppk-命令（模式）" class="headerlink" title="plotpk(ppk)命令（模式）"></a>plotpk(ppk)命令（模式）</h2><pre><code>ppk # 进入ppk模式，进入后终端不在提示sac&gt;；
-# 如果之前打开过绘图，需要鼠标点击一下绘图窗口。
-</code></pre>
-<p>直接按下q，即可退出ppk模式。</p>
-<p>注意：进入ppk模式所有键盘输入会解释为ppk命令。当焦点转移到终端时，键盘输入显示在<br>终端中，退出ppk模式时sac依次解释终端中的命令。</p>
-<h2 id="ppk模式下拾取震相"><a href="#ppk模式下拾取震相" class="headerlink" title="ppk模式下拾取震相"></a>ppk模式下拾取震相</h2><p>在绘图窗口，移动鼠标到标记到时位置，依次按下t、0，在标记处出现T0标记，并保存到相应名称头段变量中。</p>
-<p>按q退出ppk模式。</p>
-<pre><code>wh # 保存头段变量
-</code></pre>
-<p>全局变量SAC_PPK_USE_CROSSHAIRS可以控制ppk下鼠标形态。0为十字，1为全图十型。</p>
-<h2 id="关闭快速绘图（显示图形时降采显示）"><a href="#关闭快速绘图（显示图形时降采显示）" class="headerlink" title="关闭快速绘图（显示图形时降采显示）"></a>关闭快速绘图（显示图形时降采显示）</h2><p>现代计算机性能足够，通常关闭快速绘图已获得最佳观感。qdp控制快速绘图开启与关闭。</p>
-<pre><code>qdp off # 关闭快速绘图
-</code></pre>
-<h2 id="放大与缩小"><a href="#放大与缩小" class="headerlink" title="放大与缩小"></a>放大与缩小</h2><p>光标移动到某一位置按下x键，再移动到另一个位置按下x键。两次键入确定了一个时间窗，<br>只显示该时间窗内的波形。</p>
-<p>在窗口某位置按下左键拖动到另一位置实现框内波形放大。</p>
-<p>键入o缩小图幅，但是只能回退5次。</p>
-<h2 id="同时标记三分量"><a href="#同时标记三分量" class="headerlink" title="同时标记三分量"></a>同时标记三分量</h2><p>使用命令：</p>
-<pre><code>ppk p 3 a m
-</code></pre>
-<p>显示三个波形数据。在ppk模式下：</p>
-<p>键入 n 可以依次显示接下来的3个波形。波形显示完成后自动退出ppk模式。</p>
-<p>键入 b 可以显示前3个波形。</p>
-<p>注意：三个分量波形数据参考时刻必须相同；内存中存储的数据顺序需要符合需求。</p>
-<h2 id="ppk命令"><a href="#ppk命令" class="headerlink" title="ppk命令"></a>ppk命令</h2><p>详见<a href="https://seisman.github.io/SAC_Docs_zh/data-process/picking-phase/#id7">ppk命令</a></p>
-<pre><code>plotpk 
-</code></pre>
-<ul>
-<li>perplot &#x2F; n|ON|OFF  一张图绘制n个文件，on表示使用旧值，off表示绘制所有文件</li>
-<li>bell &#x2F; on|off 绘图区内击键时是否响铃</li>
-<li>absolute|relative &#x2F; &#x2F; 绝对&#x2F;相对绘图模式</li>
-<li>reference &#x2F; v|on|off v表示参考线的参考值，on|off是否显示参考线</li>
-<li>markall &#x2F; on|off 一次标记一张图上所有文件到时|指标及光标位置对应的震相到时</li>
-<li>sacelocs &#x2F; on|off 是否将L命令拾取的位置保存到黑板变量中</li>
-</ul>
-<h2 id="标定P、S波"><a href="#标定P、S波" class="headerlink" title="标定P、S波"></a>标定P、S波</h2><p>ppk模式可以键入：</p>
-<ul>
-<li><p>p 标定P波到时，到时信息保存到头段变量A中</p>
-</li>
-<li><p>s 标定S波到时，到时信息保存到头段变量T0中。</p>
-</li>
-<li><p>键入e，震相onset类型，震相方向、震相质量等信息仅用于标记P、S波，这些信息会保留在头段变量KA或者KTO中。<br>例如：进入ppk模式，按下ed1p，KA中的值为EPD1，表示Emergent和极性向下的P波，震相质量为1表示震相清晰。</p>
-</li>
-</ul>
-<h2 id="ppk修改版"><a href="#ppk修改版" class="headerlink" title="ppk修改版"></a>ppk修改版</h2><p>详见<a href="https://blog.seisman.info/faster-ppk/">faster-ppk</a></p>
-<h1 id="信号叠加"><a href="#信号叠加" class="headerlink" title="信号叠加"></a>信号叠加</h1><p>SAC提供Signal Stack Subprocess（简称SSS）来实现。</p>
-<h2 id="进入和退出sss"><a href="#进入和退出sss" class="headerlink" title="进入和退出sss"></a>进入和退出sss</h2><pre><code>sss # 键入sss进入子程序
-quitsub # 退出子程序
-quit # 退出sac
-</code></pre>
-<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><pre><code>sss # 进入子程序
-addstack a.sac weight 1 delay 20 seconds
-</code></pre>
-<ul>
-<li><p>addstack 读入文件a.sac。</p>
-</li>
-<li><p>weight 设置文件在叠加中的权重，值为0-1。</p>
-</li>
-<li><p>delay 波形向后延迟。</p>
-<p>  liststack # 列出叠加文件列表中的文件属性</p>
-</li>
-</ul>
-<h2 id="叠加文件"><a href="#叠加文件" class="headerlink" title="叠加文件"></a>叠加文件</h2><pre><code>zerostack # 清除之前添加的文件和设置
-addstack # 添加文件
-timewindow 0 19 # 选定时窗，这里为0-19秒
-sumstack # 叠加波形
-</code></pre>
-<p>注意：波形按照相对时刻对齐；叠加后会做归一化。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rdseed学习笔记</title>
-    <url>/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
-<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
-<p>[2] <a href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
-<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
-<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
-<p>The following options may be selected:</p>
-<ul>
-<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
-</li>
-<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
-</li>
-<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
-</li>
-<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
-</li>
-<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
-</li>
-<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
-</li>
-<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
-</li>
-<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
-</li>
-<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
-<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
-<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
-</li>
-<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
-</li>
-<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
-</li>
-<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
-</li>
-<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
-</li>
-<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
-<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
-</li>
-<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
-</li>
-<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
-</li>
-<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
-<ul>
-<li>E： 全部质量的波形数据 </li>
-<li>D： 不确定状态的数据</li>
-<li>M： 已合并的数据</li>
-<li>R： 原始波形数据</li>
-<li>Q： 经过质量控制的数据</li>
-</ul>
-</li>
-<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
-</li>
-<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
-</li>
-<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
-<p>[检索站摘要信息]</p>
-</li>
-<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
-<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
-</li>
-<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
-</li>
-<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
-<ul>
-<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
-</ul>
-</li>
-<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
-</li>
-<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
-<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
-</li>
-</ul>
-<p>(请参阅下面选项部分的逆转检查)]</p>
-<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
-<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
-<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
-<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
-<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
-<p>下列方向对应的方位角和入射角参数：</p>
-<table>
-<thead>
-<tr>
-<th align="center">方向</th>
-<th align="center">cmpaz（方位角）</th>
-<th align="center">cmpinc（入射角）</th>
-<th align="center">方位码</th>
-<th align="center">极性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">垂直向上</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;Z</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">垂直向下</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;180</td>
-<td align="center">&gt;Z</td>
-<td align="center">&gt;负</td>
-</tr>
-<tr>
-<td align="center">正北</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;N</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">正南</td>
-<td align="center">&gt;180</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;N</td>
-<td align="center">&gt;负</td>
-</tr>
-<tr>
-<td align="center">正东</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;E</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">正西</td>
-<td align="center">&gt;270</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;E</td>
-<td align="center">&gt;负</td>
-</tr>
-</tbody></table>
-<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
-<ul>
-<li>n&#x3D;0  不检测极性</li>
-<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
-<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
-<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
-</ul>
-<p>注意：两个参数指cmpaz和cmpnic</p>
-<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Rdseed</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SAC学习笔记</title>
     <url>/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
@@ -1024,6 +731,144 @@ sumstack # 叠加波形
       </tags>
   </entry>
   <entry>
+    <title>SAC数据处理笔记</title>
+    <url>/2022/10/21/SAC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="SAC数据处理流程"><a href="#SAC数据处理流程" class="headerlink" title="SAC数据处理流程"></a>SAC数据处理流程</h1><p>命令：</p>
+<ul>
+<li>全称 简写 参数 介绍</li>
+<li>&#x2F;表示未知，如简写未知则在此处填写 &#x2F;。<br>参考:</li>
+</ul>
+<p><a href="https://seisman.github.io/SAC_Docs_zh/">Seisman-SAC参考手册</a></p>
+<h1 id="滤波操作"><a href="#滤波操作" class="headerlink" title="滤波操作"></a>滤波操作</h1><p>参考：<a href="https://seisman.github.io/SAC_Docs_zh/data-process/filter/">滤波</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fg impulse delta 0.01 npts 1000   # 生成脉冲函数, delta和npts可调</span><br><span class="line">bp c 0.2 2 n 2 p 1                # 要查看的滤波参数</span><br><span class="line">beginframe</span><br><span class="line">xvport 0.1 0.9; yvport 0.7 0.9</span><br><span class="line">fileid off</span><br><span class="line">qdp off</span><br><span class="line">title &#x27;Time Domain Response&#x27;</span><br><span class="line">p                                # 绘制时间域响应</span><br><span class="line">fft</span><br><span class="line">xvport .1 .45; yvport .15 .55</span><br><span class="line">title &#x27;Amplitude Response&#x27;</span><br><span class="line">psp am loglog                    # 振幅响应</span><br><span class="line">xvport .55 .9</span><br><span class="line">title &#x27;Phase Response&#x27;</span><br><span class="line">psp ph linlin                    # 相位响应</span><br><span class="line">endframe</span><br></pre></td></tr></table></figure>
+
+<h2 id="bandpass-bp-无限脉冲带通滤波"><a href="#bandpass-bp-无限脉冲带通滤波" class="headerlink" title="bandpass bp 无限脉冲带通滤波"></a>bandpass bp 无限脉冲带通滤波</h2><pre><code>bp c 0.2 2 n 2 p 1
+</code></pre>
+<ul>
+<li>&#x2F; &#x2F; butter|bessel|c1|c2 使用butterworth、bessel、切比雪夫I型、切比雪夫II型滤波器。 默认使用巴特沃兹滤波器。</li>
+<li>corners c v1 v2 拐角频率设置，如上面的命令中，为0.2HZ和2HZ</li>
+<li>Npoles n v 极数，为1-10之间的整数 </li>
+<li>PASSES p v 通道数，取值为1或2</li>
+<li>tranbw &#x2F; v 设置切比雪夫滤波器转换带宽</li>
+<li>atten &#x2F; v 设置切比雪夫滤波器衰减因子</li>
+</ul>
+<h2 id="lowpass"><a href="#lowpass" class="headerlink" title="lowpass"></a>lowpass</h2><h2 id="highpass"><a href="#highpass" class="headerlink" title="highpass"></a>highpass</h2><h2 id="bandrej"><a href="#bandrej" class="headerlink" title="bandrej"></a>bandrej</h2><h1 id="震相理论到时"><a href="#震相理论到时" class="headerlink" title="震相理论到时"></a>震相理论到时</h1><p>保存震相到时信息的头段包括：a、f、tn，(n取值1-9)<br>相应的震相名信息：ka、kf、ktn。</p>
+<h2 id="chnhdr-ch-手动标记"><a href="#chnhdr-ch-手动标记" class="headerlink" title="chnhdr(ch) 手动标记"></a>chnhdr(ch) 手动标记</h2><pre><code>ch t0 400 t1 799 kt0 P kt1 S
+ch allt -123 iztype i0 
+# 例如第二行表示从所有的偏移时间减去123，同时改变描述参考时间类型的字段iztype
+</code></pre>
+<ul>
+<li>file &#x2F; n1 n2 修改指定文件的头段变量，n指内存中文件的文件号</li>
+<li>&#x2F; &#x2F; v vname SAC头段变量名、变量名对应的值</li>
+<li>allt &#x2F; v 将所有已定义的时间相关头段变量的值加v秒，同时参考时刻减去v秒</li>
+</ul>
+<h2 id="traveltime命令-根据预定义的速度模型计算指定震相的走时"><a href="#traveltime命令-根据预定义的速度模型计算指定震相的走时" class="headerlink" title="traveltime命令 根据预定义的速度模型计算指定震相的走时"></a>traveltime命令 根据预定义的速度模型计算指定震相的走时</h2><p>命令默认值：</p>
+<pre><code>traveltime MODEL iasp91 KM PHASE P S Pn Pg Sn Sg
+</code></pre>
+<ul>
+<li>model &#x2F; v 指定的速度模型，可以为iasp91和ak135</li>
+<li>picks &#x2F; v v取值0-9，表示第一个震相的到时存储在对应头段变量tn中，若未指定不写入头段</li>
+<li>phase &#x2F; vlist 要计算或标记的震相列表，如P、S、Pn</li>
+<li>verbose|quiet &#x2F; &#x2F; 前者在终端输出震相走时以及相对于文件参考时刻的描述，后者不显示震相走时信息</li>
+<li>m|km &#x2F; &#x2F; 头段变量evdp的单位为m或者km</li>
+</ul>
+<h2 id="taup-setsac命令"><a href="#taup-setsac命令" class="headerlink" title="taup_setsac命令"></a>taup_setsac命令</h2><p>Taup软件提供的命令，用于计算震相理论到时并保存到SAC文件中</p>
+<h1 id="波形排序"><a href="#波形排序" class="headerlink" title="波形排序"></a>波形排序</h1><h2 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h2><ul>
+<li>&#x2F; &#x2F; v v指头段变量名，即按照该变量名的值进行排序，最多输入5个，优先按照前面的变量排序</li>
+<li>ascend|descend &#x2F; &#x2F; 前者按照升序排列，后者按照降序。默认升序。每一个变量名都需要指定升序或者降序。</li>
+</ul>
+<h1 id="质量控制（标记或删除信噪比低或者不合适的波形）"><a href="#质量控制（标记或删除信噪比低或者不合适的波形）" class="headerlink" title="质量控制（标记或删除信噪比低或者不合适的波形）"></a>质量控制（标记或删除信噪比低或者不合适的波形）</h1><p>人工挑选坏的波形。</p>
+<pre><code>ppk p 5 # plot 每次绘制5个波形
+# 如果波形的质量很差，使用t9标记
+wh #将标记的t9保存到头段中
+q
+</code></pre>
+<p>t9标记后一般都是正值，而好的波形为未定义状态，值为-12345.0。在命令行使用下面的命令删除定义的波形：</p>
+<pre><code>saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;rm&quot;,$1&#125;&#39; | sh
+</code></pre>
+<p>也可以用如下命令将不好的波形移动到专门的文件夹下：</p>
+<pre><code>mkdir BADWAVE
+saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;mv&quot;,$1,&quot;BAD/&quot;&#125;&#39; | sh
+</code></pre>
+<h2 id="whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区"><a href="#whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区" class="headerlink" title="whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区"></a>whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区</h2><p>直接使用，不需要任何参数。</p>
+<p>注意：</p>
+<p>write命令的over选项可以用内存中头段区和数据区覆盖磁盘文件中的头段区<br>和数据区。该命令用内存中头段区覆盖磁盘文件中的头段区，数据区不会被覆盖。<br>如果使用了cut命令，读取数据时将仅读入部分数据，内存中的头段区将会做<br>相应修改以反映cut命令的效果，但是磁盘中的数据并没有被修改，因而此时<br>不能使用writehdr命令。对被cut的数据使用writehdr命令将可能导致磁<br>盘中的数据产生类似于平移或截断的效果。</p>
+<h1 id="震相拾取（到时标定）"><a href="#震相拾取（到时标定）" class="headerlink" title="震相拾取（到时标定）"></a>震相拾取（到时标定）</h1><h2 id="plotpk-ppk-命令（模式）"><a href="#plotpk-ppk-命令（模式）" class="headerlink" title="plotpk(ppk)命令（模式）"></a>plotpk(ppk)命令（模式）</h2><pre><code>ppk # 进入ppk模式，进入后终端不在提示sac&gt;；
+# 如果之前打开过绘图，需要鼠标点击一下绘图窗口。
+</code></pre>
+<p>直接按下q，即可退出ppk模式。</p>
+<p>注意：进入ppk模式所有键盘输入会解释为ppk命令。当焦点转移到终端时，键盘输入显示在<br>终端中，退出ppk模式时sac依次解释终端中的命令。</p>
+<h2 id="ppk模式下拾取震相"><a href="#ppk模式下拾取震相" class="headerlink" title="ppk模式下拾取震相"></a>ppk模式下拾取震相</h2><p>在绘图窗口，移动鼠标到标记到时位置，依次按下t、0，在标记处出现T0标记，并保存到相应名称头段变量中。</p>
+<p>按q退出ppk模式。</p>
+<pre><code>wh # 保存头段变量
+</code></pre>
+<p>全局变量SAC_PPK_USE_CROSSHAIRS可以控制ppk下鼠标形态。0为十字，1为全图十型。</p>
+<h2 id="关闭快速绘图（显示图形时降采显示）"><a href="#关闭快速绘图（显示图形时降采显示）" class="headerlink" title="关闭快速绘图（显示图形时降采显示）"></a>关闭快速绘图（显示图形时降采显示）</h2><p>现代计算机性能足够，通常关闭快速绘图已获得最佳观感。qdp控制快速绘图开启与关闭。</p>
+<pre><code>qdp off # 关闭快速绘图
+</code></pre>
+<h2 id="放大与缩小"><a href="#放大与缩小" class="headerlink" title="放大与缩小"></a>放大与缩小</h2><p>光标移动到某一位置按下x键，再移动到另一个位置按下x键。两次键入确定了一个时间窗，<br>只显示该时间窗内的波形。</p>
+<p>在窗口某位置按下左键拖动到另一位置实现框内波形放大。</p>
+<p>键入o缩小图幅，但是只能回退5次。</p>
+<h2 id="同时标记三分量"><a href="#同时标记三分量" class="headerlink" title="同时标记三分量"></a>同时标记三分量</h2><p>使用命令：</p>
+<pre><code>ppk p 3 a m
+</code></pre>
+<p>显示三个波形数据。在ppk模式下：</p>
+<p>键入 n 可以依次显示接下来的3个波形。波形显示完成后自动退出ppk模式。</p>
+<p>键入 b 可以显示前3个波形。</p>
+<p>注意：三个分量波形数据参考时刻必须相同；内存中存储的数据顺序需要符合需求。</p>
+<h2 id="ppk命令"><a href="#ppk命令" class="headerlink" title="ppk命令"></a>ppk命令</h2><p>详见<a href="https://seisman.github.io/SAC_Docs_zh/data-process/picking-phase/#id7">ppk命令</a></p>
+<pre><code>plotpk 
+</code></pre>
+<ul>
+<li>perplot &#x2F; n|ON|OFF  一张图绘制n个文件，on表示使用旧值，off表示绘制所有文件</li>
+<li>bell &#x2F; on|off 绘图区内击键时是否响铃</li>
+<li>absolute|relative &#x2F; &#x2F; 绝对&#x2F;相对绘图模式</li>
+<li>reference &#x2F; v|on|off v表示参考线的参考值，on|off是否显示参考线</li>
+<li>markall &#x2F; on|off 一次标记一张图上所有文件到时|指标及光标位置对应的震相到时</li>
+<li>sacelocs &#x2F; on|off 是否将L命令拾取的位置保存到黑板变量中</li>
+</ul>
+<h2 id="标定P、S波"><a href="#标定P、S波" class="headerlink" title="标定P、S波"></a>标定P、S波</h2><p>ppk模式可以键入：</p>
+<ul>
+<li><p>p 标定P波到时，到时信息保存到头段变量A中</p>
+</li>
+<li><p>s 标定S波到时，到时信息保存到头段变量T0中。</p>
+</li>
+<li><p>键入e，震相onset类型，震相方向、震相质量等信息仅用于标记P、S波，这些信息会保留在头段变量KA或者KTO中。<br>例如：进入ppk模式，按下ed1p，KA中的值为EPD1，表示Emergent和极性向下的P波，震相质量为1表示震相清晰。</p>
+</li>
+</ul>
+<h2 id="ppk修改版"><a href="#ppk修改版" class="headerlink" title="ppk修改版"></a>ppk修改版</h2><p>详见<a href="https://blog.seisman.info/faster-ppk/">faster-ppk</a></p>
+<h1 id="信号叠加"><a href="#信号叠加" class="headerlink" title="信号叠加"></a>信号叠加</h1><p>SAC提供Signal Stack Subprocess（简称SSS）来实现。</p>
+<h2 id="进入和退出sss"><a href="#进入和退出sss" class="headerlink" title="进入和退出sss"></a>进入和退出sss</h2><pre><code>sss # 键入sss进入子程序
+quitsub # 退出子程序
+quit # 退出sac
+</code></pre>
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><pre><code>sss # 进入子程序
+addstack a.sac weight 1 delay 20 seconds
+</code></pre>
+<ul>
+<li><p>addstack 读入文件a.sac。</p>
+</li>
+<li><p>weight 设置文件在叠加中的权重，值为0-1。</p>
+</li>
+<li><p>delay 波形向后延迟。</p>
+<p>  liststack # 列出叠加文件列表中的文件属性</p>
+</li>
+</ul>
+<h2 id="叠加文件"><a href="#叠加文件" class="headerlink" title="叠加文件"></a>叠加文件</h2><pre><code>zerostack # 清除之前添加的文件和设置
+addstack # 添加文件
+timewindow 0 19 # 选定时窗，这里为0-19秒
+sumstack # 叠加波形
+</code></pre>
+<p>注意：波形按照相对时刻对齐；叠加后会做归一化。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Obspy学习笔记</title>
     <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
@@ -1042,6 +887,227 @@ sumstack # 叠加波形
       </categories>
       <tags>
         <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC时间变量</title>
+    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+
+
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
+<ul>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+</ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC数据格式与数据合并</title>
+    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
+<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
+<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
+<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
+
+<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
+<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
+<p>如果出现数据间断或者数据重叠的情况：</p>
+<ul>
+<li>存在间断，可以直接补零或者线性插值；</li>
+<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rdseed学习笔记</title>
+    <url>/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
+<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
+<p>[2] <a href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
+<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
+<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
+<p>The following options may be selected:</p>
+<ul>
+<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
+</li>
+<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
+</li>
+<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
+</li>
+<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
+</li>
+<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
+</li>
+<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
+</li>
+<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
+</li>
+<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
+</li>
+<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
+<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
+<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
+</li>
+<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
+</li>
+<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
+</li>
+<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
+</li>
+<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
+</li>
+<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
+<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
+</li>
+<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
+</li>
+<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
+</li>
+<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
+<ul>
+<li>E： 全部质量的波形数据 </li>
+<li>D： 不确定状态的数据</li>
+<li>M： 已合并的数据</li>
+<li>R： 原始波形数据</li>
+<li>Q： 经过质量控制的数据</li>
+</ul>
+</li>
+<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
+</li>
+<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
+</li>
+<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
+<p>[检索站摘要信息]</p>
+</li>
+<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
+<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
+</li>
+<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
+</li>
+<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
+<ul>
+<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
+</ul>
+</li>
+<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
+</li>
+<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
+<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
+</li>
+</ul>
+<p>(请参阅下面选项部分的逆转检查)]</p>
+<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
+<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
+<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
+<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
+<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
+<p>下列方向对应的方位角和入射角参数：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">cmpaz（方位角）</th>
+<th align="center">cmpinc（入射角）</th>
+<th align="center">方位码</th>
+<th align="center">极性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">垂直向上</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">垂直向下</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正北</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正南</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正东</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正西</td>
+<td align="center">&gt;270</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;负</td>
+</tr>
+</tbody></table>
+<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
+<ul>
+<li>n&#x3D;0  不检测极性</li>
+<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
+<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
+<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
+</ul>
+<p>注意：两个参数指cmpaz和cmpnic</p>
+<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Rdseed</tag>
       </tags>
   </entry>
   <entry>
@@ -1116,72 +1182,6 @@ sudo apt install ffmpeg
       </tags>
   </entry>
   <entry>
-    <title>SAC时间变量</title>
-    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
-<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
-<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
-<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
-<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
-<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
-
-
-<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
-<p>使用注意事项：</p>
-<ul>
-<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
-<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
-</ul>
-<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
-<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
-
-<p>处理大量数据时：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
-
-<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
-<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SAC数据格式与数据合并</title>
-    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
-<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
-<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
-<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
-
-<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
-<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
-<p>如果出现数据间断或者数据重叠的情况：</p>
-<ul>
-<li>存在间断，可以直接补零或者线性插值；</li>
-<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu安装firefox中国版</title>
     <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
     <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
@@ -1198,6 +1198,29 @@ sudo apt install ffmpeg
 
 <h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
 </code></pre>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu与windows双系统设置windows默认启动</title>
+    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
+<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
+<p>打开终端，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
+
+<p>将第6行的 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
+<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
+<p>保存后，运行以下命令更新grub文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<p>重启系统即可。</p>
+<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
 ]]></content>
       <categories>
         <category>Linux学习</category>
@@ -1388,29 +1411,6 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu与windows双系统设置windows默认启动</title>
-    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
-
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
-]]></content>
-      <categories>
-        <category>Linux学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vista地震剖面简单处理顺序</title>
     <url>/2022/08/21/Vista%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F/</url>
     <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://max.book118.com/html/2016/0128/34253742.shtm">Vista Windows 7.0 浅层地震反射波法处理流程分解讲义 -李澎</a><br>在下文中简称为PDF。</p>
@@ -1565,118 +1565,6 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>《重力场与重力勘探》英语词汇</title>
-    <url>/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
-<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
-<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
-<p>Gravity 重力</p>
-<p>acceleration 加速度</p>
-<p>concept 概念</p>
-<p>Gravitational field 引力场</p>
-<p>Gravitational potential 引力位</p>
-<p>Gravity potential 重力位</p>
-<p>anomaly 异常</p>
-<p>formulae 公式</p>
-<p>gravitational force caused by density contrast 剩余质量引力</p>
-<p>Free air anomolies 自由空气重力异常</p>
-<p>Bougure gravity anomolies 布格重力异常</p>
-<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
-<p>instruments for relative gravity measurements 相对重力测量仪</p>
-<p>Land gravity metres 地面测量仪器</p>
-<p>marine 海洋</p>
-<p>areo 航空</p>
-<p>borehole 井中</p>
-<p>calibration 标定</p>
-<p>coincidence 一致性</p>
-<p>scale 格值</p>
-<p>basis-points net 基点网</p>
-<p>arrangement 布置</p>
-<p>combination measurements 联测</p>
-<p>Gravity points 普通点</p>
-<p>points for monltor 检查点</p>
-<p>additional measurements 补充观测</p>
-<p>Geodesy 测地工作</p>
-<p>Airlome gravity surcey 航空重力测量</p>
-<p>gravity gradients 重力梯度</p>
-<p>torsion balance gradiometre 扭秤</p>
-<p>satellite 卫星</p>
-<p>reduction 整理</p>
-<p>adjustments 平差</p>
-<p>closer error 闭合差</p>
-<p>condition adjustment 条件平差</p>
-<p>Terrain correction 地形校正</p>
-<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
-<p>Free-air coorection 自由空气（高度）矫正</p>
-<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
-<p>Normal correction 正常场（纬度）校正</p>
-<p>gravity anomolies 重力异常</p>
-<p>illustration of gravity anomalies 异常的图示</p>
-<p>contour map 异常平面图</p>
-<p>profile 剖面图</p>
-<p>profiles on a plane 异常平剖图</p>
-<p>isostasy 均衡</p>
-<p>isostatic gravity anomaly 均衡重力异常</p>
-<p>principle 原理</p>
-<p>estimation 估计</p>
-<p>illutration 表示方法，插图</p>
-<p>least-square method 最小二乘法</p>
-<p>forward calculation 证问题</p>
-<p>irregular 不规则</p>
-<p>interfaces 分界面</p>
-<p>multi-interfaces 多分界面</p>
-<p>characteristic point method 特征点法</p>
-<p>Optimization 选择法</p>
-<p>Interactive method 人机交互式反演方法</p>
-<p>Linear regression 线性回归法</p>
-<p>interation 迭代法</p>
-<p>frequency domain 频率域反演方法</p>
-<p>Ambiguity 多解性问题</p>
-<p>effect 效应</p>
-<p>Separation 分离 </p>
-<p>deep structures 深部的因素</p>
-<p>Regional gravity anomaly 区域异常</p>
-<p>local gravity anomaly 局部异常</p>
-<p>average field method (Grids) 平均场法</p>
-<p>Polygon method 圆周法（多边形法）</p>
-<p>Grid calulation 网格法</p>
-<p>continuation 延拓</p>
-<p>filtering in spatial frequency demain 频率域滤波法</p>
-<p>faults 断裂构造（断层）</p>
-<p>paleo-burial hill 古潜山</p>
-<p>oil trap 封闭</p>
-<p>salt 盐矿</p>
-<p>ore 金属矿</p>
-]]></content>
-      <categories>
-        <category>专业英语词汇</category>
-      </categories>
-      <tags>
-        <tag>重力勘探</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客增加搜索功能</title>
-    <url>/2022/08/06/%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<p>hexo博客可以使用本地搜索实现搜索服务。</p>
-<p>参考：</p>
-<p><a href="https://blog.csdn.net/zyq55917/article/details/125278500">https://blog.csdn.net/zyq55917/article/details/125278500</a></p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在blog根目录下git bash：</p>
-<pre><code>npm install hexo-generator-searchdb
-</code></pre>
-<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><p>在blog根目录下的_config.yml中增加内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    content: true</span><br><span class="line">    format: html</span><br></pre></td></tr></table></figure>
-
-<h1 id="next配置"><a href="#next配置" class="headerlink" title="next配置"></a>next配置</h1><p>在主题之下的_config.yml文件中启用search服务。</p>
-<p>只要将<code>enable</code>修改为<code>true</code>即可。</p>
-<p>可以选择auto自动搜索或者manual按回车搜索。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>博客创建</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《地震资料解释基础》英语词汇</title>
     <url>/2022/09/15/%E3%80%8A%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
@@ -1824,82 +1712,206 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>博客创建笔记</title>
-    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
-<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
-<li>安装 Git</li>
-<li>安装Nodejs</li>
-</ul>
-<p>安装包在<a href>此处</a>可以找到。</p>
-<ul>
-<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
-根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
-最后进行测试，显示对应的版本信息即可。</li>
-</ul>
-<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
-<blockquote>
-<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
-<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
-<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
-</blockquote>
-<p>经过该方法后，问题应该得到了解决。</p>
-<ul>
-<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-查看版本信息后，显示正常为安装成功</li>
-</ul>
-<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
-<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
+    <title>《重力场与重力勘探》英语词汇</title>
+    <url>/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
+<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
+<p>Gravity 重力</p>
+<p>acceleration 加速度</p>
+<p>concept 概念</p>
+<p>Gravitational field 引力场</p>
+<p>Gravitational potential 引力位</p>
+<p>Gravity potential 重力位</p>
+<p>anomaly 异常</p>
+<p>formulae 公式</p>
+<p>gravitational force caused by density contrast 剩余质量引力</p>
+<p>Free air anomolies 自由空气重力异常</p>
+<p>Bougure gravity anomolies 布格重力异常</p>
+<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
+<p>instruments for relative gravity measurements 相对重力测量仪</p>
+<p>Land gravity metres 地面测量仪器</p>
+<p>marine 海洋</p>
+<p>areo 航空</p>
+<p>borehole 井中</p>
+<p>calibration 标定</p>
+<p>coincidence 一致性</p>
+<p>scale 格值</p>
+<p>basis-points net 基点网</p>
+<p>arrangement 布置</p>
+<p>combination measurements 联测</p>
+<p>Gravity points 普通点</p>
+<p>points for monltor 检查点</p>
+<p>additional measurements 补充观测</p>
+<p>Geodesy 测地工作</p>
+<p>Airlome gravity surcey 航空重力测量</p>
+<p>gravity gradients 重力梯度</p>
+<p>torsion balance gradiometre 扭秤</p>
+<p>satellite 卫星</p>
+<p>reduction 整理</p>
+<p>adjustments 平差</p>
+<p>closer error 闭合差</p>
+<p>condition adjustment 条件平差</p>
+<p>Terrain correction 地形校正</p>
+<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
+<p>Free-air coorection 自由空气（高度）矫正</p>
+<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
+<p>Normal correction 正常场（纬度）校正</p>
+<p>gravity anomolies 重力异常</p>
+<p>illustration of gravity anomalies 异常的图示</p>
+<p>contour map 异常平面图</p>
+<p>profile 剖面图</p>
+<p>profiles on a plane 异常平剖图</p>
+<p>isostasy 均衡</p>
+<p>isostatic gravity anomaly 均衡重力异常</p>
+<p>principle 原理</p>
+<p>estimation 估计</p>
+<p>illutration 表示方法，插图</p>
+<p>least-square method 最小二乘法</p>
+<p>forward calculation 证问题</p>
+<p>irregular 不规则</p>
+<p>interfaces 分界面</p>
+<p>multi-interfaces 多分界面</p>
+<p>characteristic point method 特征点法</p>
+<p>Optimization 选择法</p>
+<p>Interactive method 人机交互式反演方法</p>
+<p>Linear regression 线性回归法</p>
+<p>interation 迭代法</p>
+<p>frequency domain 频率域反演方法</p>
+<p>Ambiguity 多解性问题</p>
+<p>effect 效应</p>
+<p>Separation 分离 </p>
+<p>deep structures 深部的因素</p>
+<p>Regional gravity anomaly 区域异常</p>
+<p>local gravity anomaly 局部异常</p>
+<p>average field method (Grids) 平均场法</p>
+<p>Polygon method 圆周法（多边形法）</p>
+<p>Grid calulation 网格法</p>
+<p>continuation 延拓</p>
+<p>filtering in spatial frequency demain 频率域滤波法</p>
+<p>faults 断裂构造（断层）</p>
+<p>paleo-burial hill 古潜山</p>
+<p>oil trap 封闭</p>
+<p>salt 盐矿</p>
+<p>ore 金属矿</p>
+]]></content>
+      <categories>
+        <category>专业英语词汇</category>
+      </categories>
+      <tags>
+        <tag>重力勘探</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始的Obspy</title>
+    <url>/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/</url>
+    <content><![CDATA[<h1 id="读取地震数据"><a href="#读取地震数据" class="headerlink" title="读取地震数据"></a>读取地震数据</h1><h2 id="访问元信息"><a href="#访问元信息" class="headerlink" title="访问元信息"></a>访问元信息</h2><pre><code>from obspy import read
+waves = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10.mseed&#39;)
+print(waves)  # 输出波形名称
+</code></pre>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.HH1 | 2014-10-28T01:29:59.388393Z - 2014-10-28T01:34:00.158393Z | 100.0 Hz, 24078 samples</span><br><span class="line">IU.ADK.10.HH2 | 2014-10-28T01:30:02.058394Z - 2014-10-28T01:33:59.158394Z | 100.0 Hz, 23711 samples</span><br><span class="line">IU.ADK.10.HHZ | 2014-10-28T01:29:41.818393Z - 2014-10-28T01:34:00.778393Z | 100.0 Hz, 25897 samples</span><br><span class="line">IU.ADK.10.LH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.VH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VMU | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMV | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMW | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br></pre></td></tr></table></figure>
 
-<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
-<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
-<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
-<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
-<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
-<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>print(len(waves))  # waves中含有15个波形
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
 
-<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
-<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
-<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
-<p>然后安装插件：</p>
-<pre><code>npm install hexo-deployer-git --save
+<p>输出最前面的波形名称</p>
+<pre><code>tra1 = waves[0]
+print(tra1)  # 输出最前面的波形名称
 </code></pre>
-<p>最后执行以下命令：</p>
-<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<p>输出元信息，即地震数据的台站信息等:</p>
+<pre><code>print(tra1.stats)  # 输出元信息，即地震数据的台站信息等
 </code></pre>
-<p>进行缓存清空、生成html文件、部署到github。</p>
-<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
-<pre><code>hexo new &quot;文章名&quot;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      network: IU</span><br><span class="line">      station: ADK</span><br><span class="line">     location: 10</span><br><span class="line">      channel: BH1</span><br><span class="line">    starttime: 2014-10-28T00:00:00.019500Z</span><br><span class="line">      endtime: 2014-10-28T23:59:59.994500Z</span><br><span class="line">sampling_rate: 40.0</span><br><span class="line">        delta: 0.025</span><br><span class="line">         npts: 3456000</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: MSEED</span><br><span class="line">        mseed: AttribDict(&#123;&#x27;dataquality&#x27;: &#x27;M&#x27;, &#x27;number_of_records&#x27;: 14448, &#x27;encoding&#x27;: &#x27;STEIM2&#x27;, &#x27;byteorder&#x27;: &#x27;&gt;&#x27;, &#x27;record_length&#x27;: 512, &#x27;filesize&#x27;: 22335488&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>print(tra1.stats.station)
 </code></pre>
-<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
-<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
-<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
-<pre><code>npm install hexo-asset-image --save
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ADK</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问波形数据"><a href="#访问波形数据" class="headerlink" title="访问波形数据"></a>访问波形数据</h2><p>使用data关键词对实际波形数据进行检索</p>
+<pre><code>print(tra1.data)
 </code></pre>
-<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
-<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[-4017 -3853 -3594 ...  1167   807  1231]</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(tra1.data))
 </code></pre>
-<p>修改为：</p>
-<pre><code>$(this).attr(&#39;src&#39;, src);
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3456000   # 与上面的波形中npts相对应</span><br></pre></td></tr></table></figure>
+
+<pre><code>tra1.plot()  # 浏览数据
 </code></pre>
-<p>保存文件。</p>
-<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
-<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
-<p>使用方式:  ![图片名] ( 图片位置 )</p>
-<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
+<h1 id="波形绘制"><a href="#波形绘制" class="headerlink" title="波形绘制"></a>波形绘制</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><pre><code>from obspy.core import read
+
+# 读取一个数据
+signalchannel = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+# 读取三个数据
+threechannels = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B01.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B02.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+print(signalchannel)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(&quot;\n&quot;)
+print(threechannels)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+<h2 id="基本绘制与保存"><a href="#基本绘制与保存" class="headerlink" title="基本绘制与保存"></a>基本绘制与保存</h2><p>signalchannel.plot()  # 基本绘制，默认大小800*250，可以通过size属性调整.</p>
+<p>size属性使用方法：size&#x3D;(1920,1080)</p>
+<pre><code>signalsstarttime = signalchannel[0].stats.starttime
+signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
+signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
+</code></pre>
+<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel.png"></p>
+<h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
+</code></pre>
+<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080.png"></p>
+<h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
+</code></pre>
+<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday.png"></p>
+<pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
+signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
+                   type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
+                   vertical_scaling_range=5e3, one_tick_per_line=True,
+                   color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
+                   events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
+</code></pre>
+<h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
+</code></pre>
+<h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
+<li>疑问：signalchannel 需要取read到的内容的[0]项，具体未知为何如此。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">fig = plt.figure()  # 创建一个画布</span><br><span class="line">ax = fig.add_subplot(1, 1, 1) # 创建组合图，如subplot()</span><br><span class="line">ax.plot(signalchannel[0].times(&quot;matplotlib&quot;), signalchannel[0].data, &#x27;b-&#x27;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<img src="matplot_signalchannel.png" alt="matplotlib绘图"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客增加搜索功能</title>
+    <url>/2022/08/06/%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<p>hexo博客可以使用本地搜索实现搜索服务。</p>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/zyq55917/article/details/125278500">https://blog.csdn.net/zyq55917/article/details/125278500</a></p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在blog根目录下git bash：</p>
+<pre><code>npm install hexo-generator-searchdb
+</code></pre>
+<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><p>在blog根目录下的_config.yml中增加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    content: true</span><br><span class="line">    format: html</span><br></pre></td></tr></table></figure>
+
+<h1 id="next配置"><a href="#next配置" class="headerlink" title="next配置"></a>next配置</h1><p>在主题之下的_config.yml文件中启用search服务。</p>
+<p>只要将<code>enable</code>修改为<code>true</code>即可。</p>
+<p>可以选择auto自动搜索或者manual按回车搜索。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>博客创建</category>
       </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
   </entry>
   <entry>
     <title>地震学英语专业词汇</title>
@@ -2340,45 +2352,6 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>吉布斯现象作业</title>
-    <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MATLAB进行图像绘制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
-<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>地震资料数字处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>子波提取与反褶积方法综述作业</title>
-    <url>/2022/10/21/%E5%AD%90%E6%B3%A2%E6%8F%90%E5%8F%96%E4%B8%8E%E5%8F%8D%E8%A4%B6%E7%A7%AF%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<h1 id="作业内容："><a href="#作业内容：" class="headerlink" title="作业内容："></a>作业内容：</h1><p>1、子波提取方法综述</p>
-<p>2、反褶积方法综述</p>
-<h1 id="1、子波提取方法综述"><a href="#1、子波提取方法综述" class="headerlink" title="1、子波提取方法综述"></a>1、子波提取方法综述</h1><p><img src="1.jpg" alt="子波提取1"><br><img src="2.jpg" alt="子波提取2"><br><img src="3.jpg" alt="子波提取3"><br><img src="4.jpg" alt="子波提取4"></p>
-<h1 id="2、反褶积方法综述"><a href="#2、反褶积方法综述" class="headerlink" title="2、反褶积方法综述"></a>2、反褶积方法综述</h1><p><img src="5.jpg" alt="反褶积1"><br><img src="6.jpg" alt="反褶积1"><br><img src="7.jpg" alt="反褶积1"><br><img src="8.jpg" alt="反褶积1"><br><img src="9.jpg" alt="反褶积1"><br><img src="10.jpg" alt="反褶积1"><br><img src="11.jpg" alt="反褶积1"></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1].地震数据处理方法&#x2F;李振春主编.东营：中国石油大学出版社,2004.8</p>
-<p>[2].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2021&filename=SYWT202103001&uniplatform=NZKPT&v=liXv2Ktkr-qoFNjs2QWU_1b4pEln1lZ5Hrco92p293ijIRm_jNubFA6N2d96X_s5">张杰,陈学华,蒋伟.深度域地震子波提取方法综述[J].石油物探,2021,60(03):353-365.</a></p>
-<p>[3].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=SYWT202002003&uniplatform=NZKPT&v=BZuqgJiH9TQE73RcRZBU7Bs8TIBa0xNgAGahye8PMzALPV4TDMWXOP0z5AzXWFv5">戴永寿,张彧豪,张鹏,张红倩,王春娴.时变地震子波提取研究方法综述[J].石油物探,2020,59(02):169-176.</a></p>
-<p>[4].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CMFD&dbname=CMFD201501&filename=1014071870.nh&uniplatform=NZKPT&v=KhCh68wjCJByE2_y8PTjV8Qs0ol6C9vPxGpz1CQ0TCO54ehSnYIKaiCFztYaYZQ9">陈文立. 浅析一种提高地震分辨率的方法_反褶积[D].长安大学,2014.</a></p>
-<p>[5].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFD2013&filename=SYXB201301011&uniplatform=NZKPT&v=hRmteNsrv1Go2RCT86X9oWnHpLopL8H-vHJ1zfK1Gg_YegmzNBGPrtoi8vHc8GgM">孟大江,王德利,冯飞,黄飞,朱恒.基于Curvelet变换的稀疏反褶积[J].石油学报,2013,34(01):107-114.</a></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>seismic exploration</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>地震数据下载进阶</title>
     <url>/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/">https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/">https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/</a></p>
@@ -2441,6 +2414,146 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
+    <title>子波提取与反褶积方法综述作业</title>
+    <url>/2022/10/21/%E5%AD%90%E6%B3%A2%E6%8F%90%E5%8F%96%E4%B8%8E%E5%8F%8D%E8%A4%B6%E7%A7%AF%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h1 id="作业内容："><a href="#作业内容：" class="headerlink" title="作业内容："></a>作业内容：</h1><p>1、子波提取方法综述</p>
+<p>2、反褶积方法综述</p>
+<h1 id="1、子波提取方法综述"><a href="#1、子波提取方法综述" class="headerlink" title="1、子波提取方法综述"></a>1、子波提取方法综述</h1><p><img src="1.jpg" alt="子波提取1"><br><img src="2.jpg" alt="子波提取2"><br><img src="3.jpg" alt="子波提取3"><br><img src="4.jpg" alt="子波提取4"></p>
+<h1 id="2、反褶积方法综述"><a href="#2、反褶积方法综述" class="headerlink" title="2、反褶积方法综述"></a>2、反褶积方法综述</h1><p><img src="5.jpg" alt="反褶积1"><br><img src="6.jpg" alt="反褶积1"><br><img src="7.jpg" alt="反褶积1"><br><img src="8.jpg" alt="反褶积1"><br><img src="9.jpg" alt="反褶积1"><br><img src="10.jpg" alt="反褶积1"><br><img src="11.jpg" alt="反褶积1"></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1].地震数据处理方法&#x2F;李振春主编.东营：中国石油大学出版社,2004.8</p>
+<p>[2].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2021&filename=SYWT202103001&uniplatform=NZKPT&v=liXv2Ktkr-qoFNjs2QWU_1b4pEln1lZ5Hrco92p293ijIRm_jNubFA6N2d96X_s5">张杰,陈学华,蒋伟.深度域地震子波提取方法综述[J].石油物探,2021,60(03):353-365.</a></p>
+<p>[3].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=SYWT202002003&uniplatform=NZKPT&v=BZuqgJiH9TQE73RcRZBU7Bs8TIBa0xNgAGahye8PMzALPV4TDMWXOP0z5AzXWFv5">戴永寿,张彧豪,张鹏,张红倩,王春娴.时变地震子波提取研究方法综述[J].石油物探,2020,59(02):169-176.</a></p>
+<p>[4].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CMFD&dbname=CMFD201501&filename=1014071870.nh&uniplatform=NZKPT&v=KhCh68wjCJByE2_y8PTjV8Qs0ol6C9vPxGpz1CQ0TCO54ehSnYIKaiCFztYaYZQ9">陈文立. 浅析一种提高地震分辨率的方法_反褶积[D].长安大学,2014.</a></p>
+<p>[5].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFD2013&filename=SYXB201301011&uniplatform=NZKPT&v=hRmteNsrv1Go2RCT86X9oWnHpLopL8H-vHJ1zfK1Gg_YegmzNBGPrtoi8vHc8GgM">孟大江,王德利,冯飞,黄飞,朱恒.基于Curvelet变换的稀疏反褶积[J].石油学报,2013,34(01):107-114.</a></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>seismic exploration</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>层状介质时间场模拟与报告</title>
+    <url>/2022/07/31/%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E6%97%B6%E9%97%B4%E5%9C%BA%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8A%A5%E5%91%8A/</url>
+    <content><![CDATA[<h2 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h2><p>已知一个简单的二维层状介质模型，模型横向长3500m，纵向深1000m。一水平界面的埋深为500m，界面上、下介质的速度分别是v1&#x3D;2000m&#x2F;s，v2&#x3D;4000m&#x2F;s。震源位于地表、距离左边界（400+你的学号后三位数X10）m处。 要求完成以下工作：</p>
+<p>（1）设计一定的方法计算直达波、反射波、透射波、滑行波、折射波的时间场，按照0.05s间隔绘制时间场的等时线。</p>
+<p>（2）根据各等时线到达地面各点的时间绘制直达波、反射波和折射波的时距曲线。<br>注意：距离比例尺为1:10000，即1cm代表100m；时间比例尺为1cm代表0.1s。</p>
+<p>（3）编写《层状介质时间场模拟》研究报告，详细阐述所使用的方法原理、计算过程。要求至少阅读5篇相关的文献，并在研究报告中加以引用。</p>
+<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p><img src="timeline.jpg" alt="时间场模拟"></p>
+<h2 id="已知BUG"><a href="#已知BUG" class="headerlink" title="已知BUG"></a>已知BUG</h2><ul>
+<li>震源点坐标为100的整数倍时，会有左半部分直达波时距曲线缺失。</li>
+<li>提高或降低时间场绘制精度时，出现绘制错误。</li>
+</ul>
+<h2 id="MATLAB代码"><a href="#MATLAB代码" class="headerlink" title="MATLAB代码"></a>MATLAB代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">clc</span><br><span class="line">clear</span><br><span class="line"></span><br><span class="line">v1 = 2000;</span><br><span class="line">v2 = 4000;</span><br><span class="line">h1 = 500;  % 第一个界面深度</span><br><span class="line">h2 = 1000;  % 最终深度</span><br><span class="line">x1 = 2000;   % 震源点的横坐标</span><br><span class="line">xmax = 3500; % 显示边界最大横坐标</span><br><span class="line">xmin = 0;   % 显示边界最小横坐标</span><br><span class="line">dangle = 0.01;</span><br><span class="line">dt = 0.05;</span><br><span class="line">sigma_C = asin(v1/v2);  % 存在透射波边界下的入射角</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t_all = [ 0:dt:1.5];</span><br><span class="line">N_t_all = length(t_all);</span><br><span class="line">N = 180/dangle+1;</span><br><span class="line">angle = zeros(1, N);</span><br><span class="line">k = 0;</span><br><span class="line">angle(1) = 0;</span><br><span class="line">for i = 2:N  % 创建角度序列angle</span><br><span class="line">    k = k + dangle;</span><br><span class="line">    angle(i) = k;</span><br><span class="line">end</span><br><span class="line">angle = angle./180.*pi;</span><br><span class="line"></span><br><span class="line">% 求取时间场有效点</span><br><span class="line">[DW_x, DW_y, direct_time, k_dir]=direct_wave_count(angle, t_all, N_t_all, N, v1, h1, x1);%直达波</span><br><span class="line">[tran_x,tran_y,one_tran_t] = transform_wave_count(angle, sigma_C, dt, N, v1,v2,h1,x1,xmax,xmin, direct_time, k_dir );%透射波</span><br><span class="line">[reflect_x,reflect_y] = reflect_wave_count(angle, N, t_all, N_t_all, v1,h1,x1, direct_time, k_dir);%反射波</span><br><span class="line">[refract_x_ri, refract_x_le,refract_y_ri, refract_y_le, refract_x, refract_y] = refract_wave_count(sigma_C, dt, t_all, N_t_all, v1,v2,h1,x1,xmax,xmin);%折射波</span><br><span class="line">[slide_x, slide_y] = Slide__wave_count(t_all, N_t_all, v1, v2, h1, x1, sigma_C);</span><br><span class="line"></span><br><span class="line">% 时间场绘图</span><br><span class="line">h = figure(1);</span><br><span class="line">h.Position = [0 0 1000 600];% 设置图片在显示器上的位置</span><br><span class="line">hold on;</span><br><span class="line">ax1 = gca;</span><br><span class="line">set(ax1,&#x27;XColor&#x27;,&#x27;k&#x27;,&#x27;YColor&#x27;,&#x27;k&#x27;);</span><br><span class="line">INTERFACE = interface(xmax, xmin,h1);</span><br><span class="line">DWH = image( DW_x, DW_y,&#x27;r-&#x27;,&#x27;直达波时间场&#x27;);</span><br><span class="line">TRH = image( tran_x, tran_y,&#x27;g-&#x27;,&#x27;透射波时间场&#x27;);</span><br><span class="line">REFLH = image( reflect_x, reflect_y,&#x27;b-&#x27;,&#x27;反射波时间场&#x27;);   </span><br><span class="line">REFRH = image( refract_x_ri, refract_y_ri,&#x27;c-&#x27;, &#x27; &#x27;);</span><br><span class="line">REFRH = image( refract_x_le, refract_y_le,&#x27;c-&#x27;,&#x27;折射波时间场&#x27;);</span><br><span class="line">SLID=plot(slide_x, slide_y,&#x27;r--o&#x27;,&#x27;DisplayName&#x27;,&#x27;滑行波时间场&#x27;);</span><br><span class="line">set(gca, &#x27;XAxisLocation&#x27;, &#x27;origin&#x27;);</span><br><span class="line">legend([DWH(1), TRH(1), REFLH(1), REFRH(1), SLID, INTERFACE],&#x27;Location&#x27;,&#x27;NorthEastOutside&#x27;);</span><br><span class="line">xlabel(&#x27;x/m&#x27;);</span><br><span class="line">ylabel(&#x27;H/m&#x27;);</span><br><span class="line"></span><br><span class="line">title([&#x27;层状双层均匀介质模型时间场与时距曲线 震源点坐标：x=&#x27;,num2str(x1),&#x27;m&#x27;]);</span><br><span class="line"></span><br><span class="line">ax2 = axes(&#x27;Position&#x27;, get(ax1, &#x27;Position&#x27;), &#x27;YAxisLocation&#x27;, &#x27;right&#x27;, &#x27;Color&#x27;, &#x27;None&#x27;, &#x27;XColor&#x27;, &#x27;None&#x27;, &#x27;YColor&#x27;, &#x27;k&#x27;);</span><br><span class="line">set(ax2);</span><br><span class="line">hold on</span><br><span class="line"></span><br><span class="line">% 时距曲线绘图</span><br><span class="line">DW_x_t = zeros(2,N_t_all);</span><br><span class="line">tran_x_t = zeros(2,N_t_all);</span><br><span class="line">reflect_x_t = zeros(2,N_t_all);</span><br><span class="line">refract_x_t = zeros(2,N_t_all);</span><br><span class="line">DW_x_t = t_x(DW_x, DW_y, DW_x_t, dangle);</span><br><span class="line">reflect_x_t = t_x(reflect_x, reflect_y, reflect_x_t,dangle);</span><br><span class="line">refract_x_t = t_x(refract_x, refract_y, refract_x_t,dangle);</span><br><span class="line">axis([0,3500,-1.0,1.5]);</span><br><span class="line"></span><br><span class="line">% 直达波拟合</span><br><span class="line">[DW_T_FIT1, DW_T_FIT1_E]= polyfit(DW_x_t(1,:), t_all, 1);  % 2表示为x1右侧的曲线</span><br><span class="line">DW_NEW_T = polyval(DW_T_FIT1, DW_x_t(1,:));</span><br><span class="line">DW_T_FIT1=vpa(poly2sym(DW_T_FIT1));</span><br><span class="line">plot(DW_x_t(1,:), DW_NEW_T, &#x27;k-&#x27;);</span><br><span class="line"></span><br><span class="line">[DW_T_FIT2, DW_T_FIT2_E]= polyfit(DW_x_t(2,:), t_all, 1);</span><br><span class="line">DW_NEW_T = polyval(DW_T_FIT2, DW_x_t(2,:));</span><br><span class="line">DW_T_FIT2=vpa(poly2sym(DW_T_FIT2));</span><br><span class="line">py1=plot(DW_x_t(2,:), DW_NEW_T, &#x27;k-&#x27;, &#x27;DisplayName&#x27;,&#x27;直达波拟合时距曲线&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% 折射波拟合</span><br><span class="line">x_effictive1 = [];</span><br><span class="line">t_effictive1 = [];</span><br><span class="line">x_effictive2 = [];</span><br><span class="line">t_effictive2 = [];</span><br><span class="line">[row, col]=size(refract_x_t);</span><br><span class="line">for i=1:col</span><br><span class="line">    if isnan(refract_x_t(1,i)) == 0</span><br><span class="line">        x_effictive1 = [x_effictive1, refract_x_t(1,i)];</span><br><span class="line">        t_effictive1 = [t_effictive1, t_all(i)];</span><br><span class="line">    else</span><br><span class="line">        continue</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">for i=1:col</span><br><span class="line">    if isnan(refract_x_t(2,i)) == 0</span><br><span class="line">        x_effictive2 = [x_effictive2, refract_x_t(2,i)];</span><br><span class="line">        t_effictive2 = [t_effictive2, t_all(i)];</span><br><span class="line">    else</span><br><span class="line">        continue</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">[RER_T_FIT2, RER_T_FIT2_E]= polyfit(x_effictive1, t_effictive1, 1);</span><br><span class="line">RER_NEW_T = polyval(RER_T_FIT2, x_effictive1);</span><br><span class="line">RER_T_FIT2=vpa(poly2sym(RER_T_FIT2));</span><br><span class="line">plot(x_effictive1, RER_NEW_T, &#x27;r-&#x27;);</span><br><span class="line"></span><br><span class="line">[RER_T_FIT1, RER_T_FIT1_E]= polyfit(x_effictive2, t_effictive2, 1);</span><br><span class="line">RER_NEW_T = polyval(RER_T_FIT1, x_effictive2);</span><br><span class="line">RER_T_FIT1=vpa(poly2sym(RER_T_FIT1));</span><br><span class="line">py2=plot(x_effictive2, RER_NEW_T, &#x27;r-&#x27;, &#x27;DisplayName&#x27;,&#x27;折射波拟合时距曲线&#x27;);</span><br><span class="line">legend([py1, py2],&#x27;Location&#x27;,&#x27;NorthEast&#x27;);</span><br><span class="line"></span><br><span class="line">% 有效点绘制</span><br><span class="line">plot([DW_x_t(2,:), DW_x_t(1,:)],[t_all, t_all], &#x27;b.&#x27;, &#x27;DisplayName&#x27;,&#x27;直达波时距曲线有效点&#x27;);</span><br><span class="line">plot([reflect_x_t(1,:), reflect_x_t(2,:)],[t_all,t_all], &#x27;k*&#x27;,&#x27;DisplayName&#x27;,&#x27;反射波时距曲线有效点&#x27;);</span><br><span class="line">plot([refract_x_t(1,:),refract_x_t(2,:)],[t_all, t_all], &#x27;r.&#x27;, &#x27;DisplayName&#x27;,&#x27;折射波时距曲线有效点&#x27;);</span><br><span class="line"></span><br><span class="line">% 拟合反射波时距曲线为双曲线</span><br><span class="line">[x_effictive, t_effictive, a, b]=reflect_wave_t_x([reflect_x_t(1,:), reflect_x_t(2,:)],[t_all,t_all], x1);</span><br><span class="line">a=1/a;</span><br><span class="line">b=1/b;</span><br><span class="line">reflect_x_nihe = [xmin+1:1:xmax];</span><br><span class="line">reflect_t_nihe = zeros(1,xmax);</span><br><span class="line">for i= xmin+1:1:xmax</span><br><span class="line">    reflect_t_nihe(i) = sqrt(a*(1+(reflect_x_nihe(i)-x1).^2/b));</span><br><span class="line">end</span><br><span class="line">plot(reflect_x_nihe, reflect_t_nihe, &#x27;k-&#x27;,&#x27;DisplayName&#x27;,&#x27;反射波拟合时距曲线&#x27;);</span><br><span class="line">xlabel(&#x27;x/m&#x27;);</span><br><span class="line">ylabel(&#x27;t/s&#x27;);</span><br><span class="line">legend(&quot;show&quot;,&#x27;Location&#x27;,&#x27;NorthEast&#x27;);</span><br><span class="line"></span><br><span class="line">% 特殊点计算</span><br><span class="line">fprintf(&quot;直达波拟合曲线方程：\n&quot;);</span><br><span class="line">DW_T_FIT1</span><br><span class="line">DW_T_FIT2</span><br><span class="line">fprintf(&quot;直达波拟合曲线震源点右侧曲线残差范数：%f\n直达波拟合曲线震源点左侧曲线残差范数：%f\n&quot;, DW_T_FIT1_E.normr, DW_T_FIT2_E.normr);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;折射波拟合曲线方程：\n&quot;);</span><br><span class="line">RER_T_FIT1</span><br><span class="line">RER_T_FIT2</span><br><span class="line">fprintf(&quot;折射波拟合曲线震源点右侧曲线残差范数：%f\n折射波拟合曲线震源点左侧曲线残差范数：%f\n&quot;, RER_T_FIT1_E.normr, RER_T_FIT2_E.normr);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;反射波拟合曲线方程：\n&quot;);</span><br><span class="line">P=a;Q=b;R=x1;</span><br><span class="line">REF_T_FIT=@(x)(P*(1+(x-R).^2/Q)).^(1/2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% 直达波与折射波震源点右侧交点</span><br><span class="line">DW_T_FIT1=matlabFunction(DW_T_FIT1);</span><br><span class="line">RER_T_FIT1=matlabFunction(RER_T_FIT1);</span><br><span class="line">DWRERZERO1=fsolve(@(x)(DW_T_FIT1(x)-RER_T_FIT1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;直达波拟合时距曲线与折射波拟合时距曲线 震源点右侧交点x坐标值: %6.3f\n&quot;, DWRERZERO1(1));</span><br><span class="line"></span><br><span class="line">% 直达波与折射波震源点左侧交点</span><br><span class="line">DW_T_FIT2=matlabFunction(DW_T_FIT2);</span><br><span class="line">RER_T_FIT2=matlabFunction(RER_T_FIT2);</span><br><span class="line">DWRERZERO2=fsolve(@(x)(DW_T_FIT2(x)-RER_T_FIT2(x)), [xmin, x1]);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;直达波拟合时距曲线与折射波拟合时距曲线 震源点左侧交点x坐标值: %6.3f\n&quot;, DWRERZERO2(1));</span><br><span class="line"></span><br><span class="line">% 折射波与震源点所在纵轴交点</span><br><span class="line">fprintf(&quot;折射波拟合时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, RER_T_FIT1(x1),RER_T_FIT2(x1));</span><br><span class="line">% 直达波与震源点所在纵轴交点</span><br><span class="line">fprintf(&quot;直达波拟合时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, DW_T_FIT1(x1),DW_T_FIT2(x1));</span><br><span class="line">% 反射波与震源点所在纵轴交点</span><br><span class="line">fprintf(&quot;反射波拟合时距曲线与震源点所在纵轴交点t坐标值: %f\n&quot;, REF_T_FIT(x1));</span><br><span class="line"></span><br><span class="line">% 折射波时距曲线与反射波时距曲线交点</span><br><span class="line">REFRERZERO1=fsolve(@(x)(REF_T_FIT(x)-RER_T_FIT2(x)), [xmin, x1]);</span><br><span class="line">REFERZERO2=fsolve(@(x)(REF_T_FIT(x)-RER_T_FIT1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;折射波拟合左侧时距曲线与反射波时距曲线交点x坐标值: [%f \t%f]\n折射波拟合右侧时距曲线与反射波时距曲线交点x坐标值:[%f \t%f]\n&quot;, REFRERZERO1(:),REFERZERO2(:));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DW_T_THEO1=@(x)((x-x1)/v1); % 直达波时距曲线理论方程震源点右侧</span><br><span class="line">DW_T_THEO2=@(x)(-(x-x1)/v1); % 直达波时距曲线理论方程震源点左侧</span><br><span class="line"></span><br><span class="line">RER_T_THEO1=@(x)((x-x1)/v2+2*h1*cos(sigma_C)/v1); % 折射波时距曲线理论方程震源点右侧</span><br><span class="line">RER_T_THEO2=@(x)(-(x-x1)/v2+2*h1*cos(sigma_C)/v1); % 折射波时距曲线理论方程震源点左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">REF_T_THEO=@(x)(((2*h1/v1).^2*(1+(x-x1).^2/((2*h1).^2))).^(1/2)); % 反射波时距曲线理论方程</span><br><span class="line"></span><br><span class="line">% 折射波理论时距曲线与直达波理论时距曲线交点</span><br><span class="line">DWRER_THEO_ZERO1=fsolve(@(x)(DW_T_THEO1(x)-RER_T_THEO1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点右侧交点x坐标值: %f\n&quot;, DWRER_THEO_ZERO1(1));</span><br><span class="line"></span><br><span class="line">DWRER_THEO_ZERO2=fsolve(@(x)(DW_T_THEO2(x)-RER_T_THEO2(x)), [xmin, x1]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点左侧交点x坐标值: %f\n&quot;, DWRER_THEO_ZERO2(1));</span><br><span class="line"></span><br><span class="line">% 折射波理论时距曲线与反射波理论时距曲线交点</span><br><span class="line">REF_THEO_ZERO1=fsolve(@(x)(REF_T_THEO(x)-RER_T_THEO1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点右侧交点x坐标值: %f %f\n&quot;, REF_THEO_ZERO1);</span><br><span class="line">REF_THEO_ZERO2=fsolve(@(x)(REF_T_THEO(x)-RER_T_THEO2(x)), [xmin, x1]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点左侧交点x坐标值: %f %f\n&quot;, REF_THEO_ZERO2);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;直达波理论时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, DW_T_THEO1(x1),DW_T_THEO2(x1));</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, RER_T_THEO1(x1),RER_T_THEO2(x1));</span><br><span class="line">fprintf(&quot;反射波理论时距曲线与震源点所在纵轴交点t坐标值: %f\n&quot;, REF_T_THEO(x1));</span><br><span class="line"></span><br><span class="line">%% 直达波时间场计算</span><br><span class="line">function [DW_x, DW_y, direct_time,k_dir] = direct_wave_count(angle, t_all, N_t_all, N, v1,h1,x1)</span><br><span class="line"></span><br><span class="line">    k_dir = tan(angle);   % 斜率计算</span><br><span class="line">    DW_x = zeros(N, N_t_all);  % 存储所有射线和时间的x值 纵坐标为angle，横坐标为time</span><br><span class="line">    DW_y = zeros(N, N_t_all);</span><br><span class="line">    for i = 1 : N  % angle循环</span><br><span class="line">        for j = 1 : N_t_all  % time循环</span><br><span class="line">            if angle(i) &lt; pi/2</span><br><span class="line">                x = x1 + ( (v1*t_all(j))^2/(1 + k_dir(i)^2))^0.5;</span><br><span class="line">                if k_dir(i)*(x - x1) &lt; h1 </span><br><span class="line">                    DW_x(i, j) = x;</span><br><span class="line">                    DW_y(i, j) = k_dir(i)*(x - x1);</span><br><span class="line">                else</span><br><span class="line">                    DW_x(i, j) = NaN;  % 将不需要的x值删去</span><br><span class="line">                    DW_y(i, j) = NaN;</span><br><span class="line">                end</span><br><span class="line">            elseif angle(i) &gt; pi/2</span><br><span class="line">                x = x1 - ((v1*t_all(j))^2/(1 + k_dir(i)^2))^0.5;</span><br><span class="line">                if k_dir(i)*(x - x1) &lt; h1</span><br><span class="line">                    DW_x(i, j) = x;</span><br><span class="line">                    DW_y(i, j) = k_dir(i)*(x - x1);</span><br><span class="line">                else</span><br><span class="line">                    DW_x(i, j) = NaN;</span><br><span class="line">                    DW_y(i,j) = NaN;</span><br><span class="line">                end</span><br><span class="line">            elseif angle(i) == pi/2</span><br><span class="line">                DW_x(i, j) = x1;</span><br><span class="line">                DW_y(i,j) = t_all(j)*v1;</span><br><span class="line">            end</span><br><span class="line">    </span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    direct_time = zeros(1, N);  % 计算各个角度波抵达h1边界的时间</span><br><span class="line">    for i = 1 : N</span><br><span class="line">        if angle(i) &gt;= 0 &amp;&amp; angle(i) &lt;= pi</span><br><span class="line">            direct_time(i) = h1 / v1 / abs(sin(angle(i)));</span><br><span class="line">        else</span><br><span class="line">            direct_time(i) = NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 透射波时间场计算</span><br><span class="line">function [tran_x,tran_y,one_tran_t] = transform_wave_count(angle, sigma_C, dt, N, v1,v2,h1,x1,xmax,xmin, direct_time, k_dir )</span><br><span class="line">    anglep = angle;</span><br><span class="line">    for i = 1 :N</span><br><span class="line">        if angle(i)&lt;= pi/2+sigma_C &amp;&amp; angle(i) &gt;= pi/2-sigma_C</span><br><span class="line">            anglep(i) = angle(i);</span><br><span class="line">        else</span><br><span class="line">            anglep(i) = NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    sigma = anglep - pi/2;   % sigma是边界之内的入射角</span><br><span class="line">    beta = asin(v2/v1.*sin(sigma)); % beta是入射角对应的透射角</span><br><span class="line">    </span><br><span class="line">    k_tran = zeros(1,N);  % 透射波射线斜率</span><br><span class="line">    for i = 1 :N</span><br><span class="line">        if beta(i) &lt;= pi/2</span><br><span class="line">            k_tran(i) = tan(pi/2-beta(i));</span><br><span class="line">        else</span><br><span class="line">            k_tran(i) = -tan(pi/2-beta(i));</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    t_min = h1/v1;      % 透射波出现时的最早时间</span><br><span class="line">    </span><br><span class="line">    N_tran = 10;</span><br><span class="line">    one_tran_t = zeros(1, N_tran);   % 透射波可以只画出几条曲线即可</span><br><span class="line">    for i=1:N_tran</span><br><span class="line">        one_tran_t(i) = floor(t_min/dt)*dt + dt * i;</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    tran_x = zeros(N, N_tran);</span><br><span class="line">    tran_y = zeros(N, N_tran);</span><br><span class="line">    for i=1 : N   % angle循环</span><br><span class="line">        if anglep(i)&lt;= pi/2+sigma_C &amp;&amp; anglep(i) &gt;= pi/2-sigma_C</span><br><span class="line">            for  j = 1 : N_tran  % 时间循环</span><br><span class="line">                if (one_tran_t(j) - direct_time(i)) &gt;= 0  </span><br><span class="line">                    if angle(i) ~= pi/2</span><br><span class="line">                        tran_x(i,j) = x1+h1/k_dir(i)-v2*sin(beta(i))*(one_tran_t(j)-direct_time(i));</span><br><span class="line">                        tran_y(i,j) = h1+v2*cos(beta(i))*(one_tran_t(j)-direct_time(i));</span><br><span class="line">                    else</span><br><span class="line">                        tran_x(i,j) = x1;</span><br><span class="line">                        tran_y(i,j) = h1+v2*(one_tran_t(j) - direct_time(i));</span><br><span class="line">                        continue</span><br><span class="line">                    end</span><br><span class="line">                else</span><br><span class="line">                    tran_x(i,j) = NaN;  % 当该点不符合要求时为NaN，绘图时不予考虑</span><br><span class="line">                    tran_y(i,j) = NaN;</span><br><span class="line">                end</span><br><span class="line">            end</span><br><span class="line">        else</span><br><span class="line">            tran_x(i,:) = NaN;</span><br><span class="line">            tran_y(i,:) = NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">%% 反射波时间场计算</span><br><span class="line">function [reflect_x,reflect_y] = reflect_wave_count(angle, N, t_all, N_t_all, v1, h1, x1, direct_time, k_dir )</span><br><span class="line">    rx = h1./k_dir+x1;</span><br><span class="line">    sigma = angle - pi/2;%重新设置sigma角度</span><br><span class="line">    alpha = -sigma; % 反射角</span><br><span class="line">    reflect_x = zeros(N, N_t_all);</span><br><span class="line">    reflect_y = zeros(N, N_t_all);</span><br><span class="line">    reflect_t = zeros(N, N_t_all);</span><br><span class="line">    for i = 1:N</span><br><span class="line">        for j = 1:N_t_all</span><br><span class="line">            reflect_t(i,j) = t_all(j);</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    for i = 1:N</span><br><span class="line">        for j = 1 :N_t_all</span><br><span class="line">            if (t_all(j)-direct_time(i))&gt;=0</span><br><span class="line">                reflect_x(i,j) = rx(i)+v1*sin(alpha(i))*(t_all(j)-direct_time(i));</span><br><span class="line">                reflect_y(i,j) = h1-v1*cos(alpha(i))*(t_all(j)-direct_time(i));</span><br><span class="line">                if reflect_y(i,j) &lt; 0  % 超过地表的反射波设置为NaN</span><br><span class="line">                    reflect_x(i,j)=NaN;</span><br><span class="line">                    reflect_y(i,j)=NaN;</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                reflect_x(i,j) = NaN;</span><br><span class="line">                reflect_y(i,j) = NaN;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">%% 折射波时间场计算</span><br><span class="line">function  [refract_x_ri, refract_x_le,refract_y_ri, refract_y_le, refract_x, refract_y]= refract_wave_count(sigma_C, dt, t_all, N_t_all, v1,v2,h1,x1,xmax,xmin)</span><br><span class="line">    xr_min_ri = x1+h1*tan(sigma_C);  % 出现折射波的x1点右侧最小x值</span><br><span class="line">    xr_max_le = x1-h1*tan(sigma_C); %出现折射波的x1点左侧最大x值</span><br><span class="line">    t_rmin = h1/v1/cos(sigma_C);</span><br><span class="line">    dx=1; % 所取射线的间隔   </span><br><span class="line">    % 重新构造每一条折射波射线所过的点 </span><br><span class="line">    N_refract_ri = ceil((xmax-x1-h1*tan(sigma_C))/dx)*10;</span><br><span class="line">    N_refract_le = ceil((x1-h1*tan(sigma_C)-xmin)/dx)*100;</span><br><span class="line">    xr_ri = zeros(1,N_refract_ri);</span><br><span class="line">    xr_le = zeros(1,N_refract_le);</span><br><span class="line">    for i=1:N_refract_ri</span><br><span class="line">        xr_ri(i) = xr_min_ri + dx*(i-1);</span><br><span class="line">    end</span><br><span class="line">    for i=1:N_refract_ri</span><br><span class="line">        xr_le(i) = xr_max_le - dx*(i-1);</span><br><span class="line">    end</span><br><span class="line">    % 求取每一条射线在一定时间时到达的点</span><br><span class="line">    refract_x_ri = zeros(N_refract_ri,N_t_all);</span><br><span class="line">    refract_x_le = zeros(N_refract_le,N_t_all);</span><br><span class="line">    refract_y_ri = zeros(N_refract_ri,N_t_all);</span><br><span class="line">    refract_y_le = zeros(N_refract_le,N_t_all);</span><br><span class="line">    for i = 1:N_refract_ri</span><br><span class="line">        for j = 1:N_t_all</span><br><span class="line">            if (t_all(j)-t_rmin-(xr_ri(i)-xr_min_ri)/v2)&gt;=0</span><br><span class="line">                refract_x_ri(i,j) = xr_ri(i)+v1*sin(sigma_C)*(t_all(j)-t_rmin-(xr_ri(i)-xr_min_ri)/v2);</span><br><span class="line">                refract_y_ri(i,j) = h1-v1*cos(sigma_C)*(t_all(j)-t_rmin-(xr_ri(i)-xr_min_ri)/v2);</span><br><span class="line">                 if refract_y_ri(i,j) &lt;0 || refract_y_ri(i,j)&gt;h1</span><br><span class="line">                    refract_x_ri(i,j) = NaN;</span><br><span class="line">                    refract_y_ri(i,j) = NaN;</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                refract_x_ri(i,j) = NaN;</span><br><span class="line">                refract_y_ri(i,j) = NaN;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    for i = 1:N_refract_le</span><br><span class="line">        for j = 1:N_t_all</span><br><span class="line">            if t_all(j)-t_rmin+(xr_le(i)-xr_max_le)/v2&gt;=0</span><br><span class="line">                refract_x_le(i,j) = xr_le(i)-v1*sin(sigma_C)*(t_all(j)-t_rmin+(xr_le(i)-xr_max_le)/v2);</span><br><span class="line">                refract_y_le(i,j) = h1-v1*cos(sigma_C)*(t_all(j)-t_rmin+(xr_le(i)-xr_max_le)/v2);</span><br><span class="line">                if refract_y_le(i,j) &lt;0 || refract_y_le(i,j)&gt;h1</span><br><span class="line">                    refract_x_le(i,j) = NaN;</span><br><span class="line">                    refract_y_le(i,j) = NaN;</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                refract_x_le(i,j) = NaN;</span><br><span class="line">                refract_y_le(i,j) = NaN;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    refract_x = [refract_x_le; refract_x_ri];  % 合并以方便绘图</span><br><span class="line">    refract_y = [refract_y_le; refract_y_ri];</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 滑行波时间场计算</span><br><span class="line">function [slide_x, slide_y] = Slide__wave_count(t_all, N_t_all, v1, v2, h1, x1, sigma_C)</span><br><span class="line">    slide_x_ri=zeros(1,N_t_all);</span><br><span class="line">    slide_x_le=zeros(1,N_t_all);</span><br><span class="line">    slide_y_ri=h1*ones(1,N_t_all);</span><br><span class="line">    slide_y_le=h1*ones(1,N_t_all);</span><br><span class="line">    for i = 1:N_t_all</span><br><span class="line">        if (t_all(i)-h1/(v1*cos(sigma_C)))&gt;=0</span><br><span class="line">            slide_x_ri(i)=x1+h1*tan(sigma_C)+v2*(t_all(i)-h1/(v1*cos(sigma_C)));</span><br><span class="line">            slide_x_le(i)=x1-h1*tan(sigma_C)-v2*(t_all(i)-h1/(v1*cos(sigma_C)));</span><br><span class="line">        else</span><br><span class="line">            slide_x_ri(i)=NaN;</span><br><span class="line">            slide_x_le(i)=NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    slide_x = [slide_x_le, slide_x_ri];</span><br><span class="line">    slide_y = [slide_y_le, slide_y_ri];</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 时间场绘图函数</span><br><span class="line">function H = image( x, y, color, Name)   </span><br><span class="line">    [~, N_all] = size(x);</span><br><span class="line">    H=zeros(1, N_all);</span><br><span class="line">    for i = 1 : N_all</span><br><span class="line">        x_dir = x(:,i).&#x27;;</span><br><span class="line">        y_dir = y(:,i).&#x27;;</span><br><span class="line">        H(i)=plot(x_dir, y_dir, color, &#x27;DisplayName&#x27;, Name);</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 时距曲线点计算</span><br><span class="line">function x_t = t_x(x,y,x_t,dangle)   % 计算时距曲线的相关点</span><br><span class="line">    [N,N_t_all]=size(x); </span><br><span class="line">    x_t(1,1)=x(1);</span><br><span class="line">    y_test=100*ones(2,N_t_all);  %设置一个测试值</span><br><span class="line">    for j=1:N_t_all</span><br><span class="line">        for i=1:floor(N/2)</span><br><span class="line">            if y(i,j)&lt;=18*dangle  % 由于精度问题，当y&lt;一定值的时候可以认为它出射地表</span><br><span class="line">                if abs(y(i,j))&lt;=abs(y_test(1,j)) % 如果有比它更优的点，择取最优值</span><br><span class="line">                    x_t(1,j)=x(i,j);  </span><br><span class="line">                    y_test(1,j) = y(i,j);</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                continue</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">        for i=floor(N/2)-1:N</span><br><span class="line">            if y(i,j)&lt;=20*dangle</span><br><span class="line">                if abs(y(i,j))&lt;=abs(y_test(2, j))</span><br><span class="line">                    x_t(2,j)=x(i,j);</span><br><span class="line">                    y_test(2, j) = y(i,j);</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">               continue</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    for j=1:N_t_all</span><br><span class="line">        for i=1:2</span><br><span class="line">            if x_t(i,j) == 0</span><br><span class="line">                x_t(i,j) = NaN;</span><br><span class="line">            else</span><br><span class="line">                continue</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 反射波拟合函数，对反射波进行双曲线拟合，得到一条光滑曲线</span><br><span class="line">function [x_effictive,t_effictive, a, b]=reflect_wave_t_x(x,t, x1)  </span><br><span class="line">    x_effictive = [];</span><br><span class="line">    t_effictive = [];</span><br><span class="line">    for i=1:length(x)</span><br><span class="line">        if isnan(x(i)) == 0</span><br><span class="line">            x_effictive = [x_effictive, x(i)];</span><br><span class="line">            t_effictive = [t_effictive, t(i)];</span><br><span class="line">        else</span><br><span class="line">            continue</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    K = floor(length(x_effictive)/2);</span><br><span class="line">    A=zeros(1,K);</span><br><span class="line">    B=zeros(1,K);</span><br><span class="line">    for i=1:K</span><br><span class="line">        A(i)=(-(x_effictive(i+K)-x1).^2+(x_effictive(i)-x1).^2)/(-(x_effictive(i+K)-x1).^2*t_effictive(i).^2+(x_effictive(i)-x1).^2*t_effictive(i+K).^2);</span><br><span class="line">        B(i)=(-t_effictive(i+K).^2+t_effictive(i).^2)/(-(x_effictive(i+K)-x1).^2*t_effictive(i).^2+(x_effictive(i)-x1).^2*t_effictive(i+K).^2);</span><br><span class="line">    end</span><br><span class="line">   a=mean(A);</span><br><span class="line">   b=mean(B);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 反射界面绘制函数</span><br><span class="line">function INTER = interface(xmax, xmin,h1)</span><br><span class="line">    xx = zeros(1,(xmax-xmin)/0.01);</span><br><span class="line">    for i = 1:(xmax-xmin)/0.01</span><br><span class="line">        xx(i) = i*0.01;</span><br><span class="line">    end</span><br><span class="line">    INTER = plot(xx, h1*ones(1,(xmax-xmin)/0.01), &#x27;r--&#x27;,&#x27;DisplayName&#x27;,&#x27;反射界面&#x27;);</span><br><span class="line">    set(gca,&#x27;YDir&#x27;,&#x27;reverse&#x27;, &#x27;XAxisLocation&#x27;, &#x27;top&#x27;);</span><br><span class="line">    axis([xmin,xmax,-1500,1000]);</span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="报告"><a href="#报告" class="headerlink" title="报告"></a>报告</h2><p><a href="https://github.com/ZhiyuanShi1901/seismic_exploration_homework/blob/main/%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E6%97%B6%E9%97%B4%E5%9C%BA%E6%A8%A1%E6%8B%9F.pdf">下载链接</a></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>seismic exploration</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>吉布斯现象作业</title>
+    <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MATLAB进行图像绘制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
+<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>地震资料数字处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客创建笔记</title>
+    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
+<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
+<li>安装 Git</li>
+<li>安装Nodejs</li>
+</ul>
+<p>安装包在<a href>此处</a>可以找到。</p>
+<ul>
+<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
+根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
+最后进行测试，显示对应的版本信息即可。</li>
+</ul>
+<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
+<blockquote>
+<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
+<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
+<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
+</blockquote>
+<p>经过该方法后，问题应该得到了解决。</p>
+<ul>
+<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+查看版本信息后，显示正常为安装成功</li>
+</ul>
+<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
+<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
+<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
+<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
+<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
+<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
+<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
+<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
+<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
+<p>然后安装插件：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre>
+<p>最后执行以下命令：</p>
+<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+</code></pre>
+<p>进行缓存清空、生成html文件、部署到github。</p>
+<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
+<pre><code>hexo new &quot;文章名&quot;
+</code></pre>
+<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
+<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
+<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
+<pre><code>npm install hexo-asset-image --save
+</code></pre>
+<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
+<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
+</code></pre>
+<p>修改为：</p>
+<pre><code>$(this).attr(&#39;src&#39;, src);
+</code></pre>
+<p>保存文件。</p>
+<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
+<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
+<p>使用方式:  ![图片名] ( 图片位置 )</p>
+<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
+]]></content>
+      <categories>
+        <category>博客创建</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用网站汇总</title>
     <url>/2022/07/31/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h1 id="地震学常用网站"><a href="#地震学常用网站" class="headerlink" title="地震学常用网站"></a>地震学常用网站</h1><ul>
@@ -2497,29 +2610,6 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>常用网站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>层状介质时间场模拟与报告</title>
-    <url>/2022/07/31/%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E6%97%B6%E9%97%B4%E5%9C%BA%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8A%A5%E5%91%8A/</url>
-    <content><![CDATA[<h2 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h2><p>已知一个简单的二维层状介质模型，模型横向长3500m，纵向深1000m。一水平界面的埋深为500m，界面上、下介质的速度分别是v1&#x3D;2000m&#x2F;s，v2&#x3D;4000m&#x2F;s。震源位于地表、距离左边界（400+你的学号后三位数X10）m处。 要求完成以下工作：</p>
-<p>（1）设计一定的方法计算直达波、反射波、透射波、滑行波、折射波的时间场，按照0.05s间隔绘制时间场的等时线。</p>
-<p>（2）根据各等时线到达地面各点的时间绘制直达波、反射波和折射波的时距曲线。<br>注意：距离比例尺为1:10000，即1cm代表100m；时间比例尺为1cm代表0.1s。</p>
-<p>（3）编写《层状介质时间场模拟》研究报告，详细阐述所使用的方法原理、计算过程。要求至少阅读5篇相关的文献，并在研究报告中加以引用。</p>
-<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p><img src="timeline.jpg" alt="时间场模拟"></p>
-<h2 id="已知BUG"><a href="#已知BUG" class="headerlink" title="已知BUG"></a>已知BUG</h2><ul>
-<li>震源点坐标为100的整数倍时，会有左半部分直达波时距曲线缺失。</li>
-<li>提高或降低时间场绘制精度时，出现绘制错误。</li>
-</ul>
-<h2 id="MATLAB代码"><a href="#MATLAB代码" class="headerlink" title="MATLAB代码"></a>MATLAB代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">clc</span><br><span class="line">clear</span><br><span class="line"></span><br><span class="line">v1 = 2000;</span><br><span class="line">v2 = 4000;</span><br><span class="line">h1 = 500;  % 第一个界面深度</span><br><span class="line">h2 = 1000;  % 最终深度</span><br><span class="line">x1 = 2000;   % 震源点的横坐标</span><br><span class="line">xmax = 3500; % 显示边界最大横坐标</span><br><span class="line">xmin = 0;   % 显示边界最小横坐标</span><br><span class="line">dangle = 0.01;</span><br><span class="line">dt = 0.05;</span><br><span class="line">sigma_C = asin(v1/v2);  % 存在透射波边界下的入射角</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t_all = [ 0:dt:1.5];</span><br><span class="line">N_t_all = length(t_all);</span><br><span class="line">N = 180/dangle+1;</span><br><span class="line">angle = zeros(1, N);</span><br><span class="line">k = 0;</span><br><span class="line">angle(1) = 0;</span><br><span class="line">for i = 2:N  % 创建角度序列angle</span><br><span class="line">    k = k + dangle;</span><br><span class="line">    angle(i) = k;</span><br><span class="line">end</span><br><span class="line">angle = angle./180.*pi;</span><br><span class="line"></span><br><span class="line">% 求取时间场有效点</span><br><span class="line">[DW_x, DW_y, direct_time, k_dir]=direct_wave_count(angle, t_all, N_t_all, N, v1, h1, x1);%直达波</span><br><span class="line">[tran_x,tran_y,one_tran_t] = transform_wave_count(angle, sigma_C, dt, N, v1,v2,h1,x1,xmax,xmin, direct_time, k_dir );%透射波</span><br><span class="line">[reflect_x,reflect_y] = reflect_wave_count(angle, N, t_all, N_t_all, v1,h1,x1, direct_time, k_dir);%反射波</span><br><span class="line">[refract_x_ri, refract_x_le,refract_y_ri, refract_y_le, refract_x, refract_y] = refract_wave_count(sigma_C, dt, t_all, N_t_all, v1,v2,h1,x1,xmax,xmin);%折射波</span><br><span class="line">[slide_x, slide_y] = Slide__wave_count(t_all, N_t_all, v1, v2, h1, x1, sigma_C);</span><br><span class="line"></span><br><span class="line">% 时间场绘图</span><br><span class="line">h = figure(1);</span><br><span class="line">h.Position = [0 0 1000 600];% 设置图片在显示器上的位置</span><br><span class="line">hold on;</span><br><span class="line">ax1 = gca;</span><br><span class="line">set(ax1,&#x27;XColor&#x27;,&#x27;k&#x27;,&#x27;YColor&#x27;,&#x27;k&#x27;);</span><br><span class="line">INTERFACE = interface(xmax, xmin,h1);</span><br><span class="line">DWH = image( DW_x, DW_y,&#x27;r-&#x27;,&#x27;直达波时间场&#x27;);</span><br><span class="line">TRH = image( tran_x, tran_y,&#x27;g-&#x27;,&#x27;透射波时间场&#x27;);</span><br><span class="line">REFLH = image( reflect_x, reflect_y,&#x27;b-&#x27;,&#x27;反射波时间场&#x27;);   </span><br><span class="line">REFRH = image( refract_x_ri, refract_y_ri,&#x27;c-&#x27;, &#x27; &#x27;);</span><br><span class="line">REFRH = image( refract_x_le, refract_y_le,&#x27;c-&#x27;,&#x27;折射波时间场&#x27;);</span><br><span class="line">SLID=plot(slide_x, slide_y,&#x27;r--o&#x27;,&#x27;DisplayName&#x27;,&#x27;滑行波时间场&#x27;);</span><br><span class="line">set(gca, &#x27;XAxisLocation&#x27;, &#x27;origin&#x27;);</span><br><span class="line">legend([DWH(1), TRH(1), REFLH(1), REFRH(1), SLID, INTERFACE],&#x27;Location&#x27;,&#x27;NorthEastOutside&#x27;);</span><br><span class="line">xlabel(&#x27;x/m&#x27;);</span><br><span class="line">ylabel(&#x27;H/m&#x27;);</span><br><span class="line"></span><br><span class="line">title([&#x27;层状双层均匀介质模型时间场与时距曲线 震源点坐标：x=&#x27;,num2str(x1),&#x27;m&#x27;]);</span><br><span class="line"></span><br><span class="line">ax2 = axes(&#x27;Position&#x27;, get(ax1, &#x27;Position&#x27;), &#x27;YAxisLocation&#x27;, &#x27;right&#x27;, &#x27;Color&#x27;, &#x27;None&#x27;, &#x27;XColor&#x27;, &#x27;None&#x27;, &#x27;YColor&#x27;, &#x27;k&#x27;);</span><br><span class="line">set(ax2);</span><br><span class="line">hold on</span><br><span class="line"></span><br><span class="line">% 时距曲线绘图</span><br><span class="line">DW_x_t = zeros(2,N_t_all);</span><br><span class="line">tran_x_t = zeros(2,N_t_all);</span><br><span class="line">reflect_x_t = zeros(2,N_t_all);</span><br><span class="line">refract_x_t = zeros(2,N_t_all);</span><br><span class="line">DW_x_t = t_x(DW_x, DW_y, DW_x_t, dangle);</span><br><span class="line">reflect_x_t = t_x(reflect_x, reflect_y, reflect_x_t,dangle);</span><br><span class="line">refract_x_t = t_x(refract_x, refract_y, refract_x_t,dangle);</span><br><span class="line">axis([0,3500,-1.0,1.5]);</span><br><span class="line"></span><br><span class="line">% 直达波拟合</span><br><span class="line">[DW_T_FIT1, DW_T_FIT1_E]= polyfit(DW_x_t(1,:), t_all, 1);  % 2表示为x1右侧的曲线</span><br><span class="line">DW_NEW_T = polyval(DW_T_FIT1, DW_x_t(1,:));</span><br><span class="line">DW_T_FIT1=vpa(poly2sym(DW_T_FIT1));</span><br><span class="line">plot(DW_x_t(1,:), DW_NEW_T, &#x27;k-&#x27;);</span><br><span class="line"></span><br><span class="line">[DW_T_FIT2, DW_T_FIT2_E]= polyfit(DW_x_t(2,:), t_all, 1);</span><br><span class="line">DW_NEW_T = polyval(DW_T_FIT2, DW_x_t(2,:));</span><br><span class="line">DW_T_FIT2=vpa(poly2sym(DW_T_FIT2));</span><br><span class="line">py1=plot(DW_x_t(2,:), DW_NEW_T, &#x27;k-&#x27;, &#x27;DisplayName&#x27;,&#x27;直达波拟合时距曲线&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% 折射波拟合</span><br><span class="line">x_effictive1 = [];</span><br><span class="line">t_effictive1 = [];</span><br><span class="line">x_effictive2 = [];</span><br><span class="line">t_effictive2 = [];</span><br><span class="line">[row, col]=size(refract_x_t);</span><br><span class="line">for i=1:col</span><br><span class="line">    if isnan(refract_x_t(1,i)) == 0</span><br><span class="line">        x_effictive1 = [x_effictive1, refract_x_t(1,i)];</span><br><span class="line">        t_effictive1 = [t_effictive1, t_all(i)];</span><br><span class="line">    else</span><br><span class="line">        continue</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">for i=1:col</span><br><span class="line">    if isnan(refract_x_t(2,i)) == 0</span><br><span class="line">        x_effictive2 = [x_effictive2, refract_x_t(2,i)];</span><br><span class="line">        t_effictive2 = [t_effictive2, t_all(i)];</span><br><span class="line">    else</span><br><span class="line">        continue</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">[RER_T_FIT2, RER_T_FIT2_E]= polyfit(x_effictive1, t_effictive1, 1);</span><br><span class="line">RER_NEW_T = polyval(RER_T_FIT2, x_effictive1);</span><br><span class="line">RER_T_FIT2=vpa(poly2sym(RER_T_FIT2));</span><br><span class="line">plot(x_effictive1, RER_NEW_T, &#x27;r-&#x27;);</span><br><span class="line"></span><br><span class="line">[RER_T_FIT1, RER_T_FIT1_E]= polyfit(x_effictive2, t_effictive2, 1);</span><br><span class="line">RER_NEW_T = polyval(RER_T_FIT1, x_effictive2);</span><br><span class="line">RER_T_FIT1=vpa(poly2sym(RER_T_FIT1));</span><br><span class="line">py2=plot(x_effictive2, RER_NEW_T, &#x27;r-&#x27;, &#x27;DisplayName&#x27;,&#x27;折射波拟合时距曲线&#x27;);</span><br><span class="line">legend([py1, py2],&#x27;Location&#x27;,&#x27;NorthEast&#x27;);</span><br><span class="line"></span><br><span class="line">% 有效点绘制</span><br><span class="line">plot([DW_x_t(2,:), DW_x_t(1,:)],[t_all, t_all], &#x27;b.&#x27;, &#x27;DisplayName&#x27;,&#x27;直达波时距曲线有效点&#x27;);</span><br><span class="line">plot([reflect_x_t(1,:), reflect_x_t(2,:)],[t_all,t_all], &#x27;k*&#x27;,&#x27;DisplayName&#x27;,&#x27;反射波时距曲线有效点&#x27;);</span><br><span class="line">plot([refract_x_t(1,:),refract_x_t(2,:)],[t_all, t_all], &#x27;r.&#x27;, &#x27;DisplayName&#x27;,&#x27;折射波时距曲线有效点&#x27;);</span><br><span class="line"></span><br><span class="line">% 拟合反射波时距曲线为双曲线</span><br><span class="line">[x_effictive, t_effictive, a, b]=reflect_wave_t_x([reflect_x_t(1,:), reflect_x_t(2,:)],[t_all,t_all], x1);</span><br><span class="line">a=1/a;</span><br><span class="line">b=1/b;</span><br><span class="line">reflect_x_nihe = [xmin+1:1:xmax];</span><br><span class="line">reflect_t_nihe = zeros(1,xmax);</span><br><span class="line">for i= xmin+1:1:xmax</span><br><span class="line">    reflect_t_nihe(i) = sqrt(a*(1+(reflect_x_nihe(i)-x1).^2/b));</span><br><span class="line">end</span><br><span class="line">plot(reflect_x_nihe, reflect_t_nihe, &#x27;k-&#x27;,&#x27;DisplayName&#x27;,&#x27;反射波拟合时距曲线&#x27;);</span><br><span class="line">xlabel(&#x27;x/m&#x27;);</span><br><span class="line">ylabel(&#x27;t/s&#x27;);</span><br><span class="line">legend(&quot;show&quot;,&#x27;Location&#x27;,&#x27;NorthEast&#x27;);</span><br><span class="line"></span><br><span class="line">% 特殊点计算</span><br><span class="line">fprintf(&quot;直达波拟合曲线方程：\n&quot;);</span><br><span class="line">DW_T_FIT1</span><br><span class="line">DW_T_FIT2</span><br><span class="line">fprintf(&quot;直达波拟合曲线震源点右侧曲线残差范数：%f\n直达波拟合曲线震源点左侧曲线残差范数：%f\n&quot;, DW_T_FIT1_E.normr, DW_T_FIT2_E.normr);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;折射波拟合曲线方程：\n&quot;);</span><br><span class="line">RER_T_FIT1</span><br><span class="line">RER_T_FIT2</span><br><span class="line">fprintf(&quot;折射波拟合曲线震源点右侧曲线残差范数：%f\n折射波拟合曲线震源点左侧曲线残差范数：%f\n&quot;, RER_T_FIT1_E.normr, RER_T_FIT2_E.normr);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;反射波拟合曲线方程：\n&quot;);</span><br><span class="line">P=a;Q=b;R=x1;</span><br><span class="line">REF_T_FIT=@(x)(P*(1+(x-R).^2/Q)).^(1/2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% 直达波与折射波震源点右侧交点</span><br><span class="line">DW_T_FIT1=matlabFunction(DW_T_FIT1);</span><br><span class="line">RER_T_FIT1=matlabFunction(RER_T_FIT1);</span><br><span class="line">DWRERZERO1=fsolve(@(x)(DW_T_FIT1(x)-RER_T_FIT1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;直达波拟合时距曲线与折射波拟合时距曲线 震源点右侧交点x坐标值: %6.3f\n&quot;, DWRERZERO1(1));</span><br><span class="line"></span><br><span class="line">% 直达波与折射波震源点左侧交点</span><br><span class="line">DW_T_FIT2=matlabFunction(DW_T_FIT2);</span><br><span class="line">RER_T_FIT2=matlabFunction(RER_T_FIT2);</span><br><span class="line">DWRERZERO2=fsolve(@(x)(DW_T_FIT2(x)-RER_T_FIT2(x)), [xmin, x1]);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;直达波拟合时距曲线与折射波拟合时距曲线 震源点左侧交点x坐标值: %6.3f\n&quot;, DWRERZERO2(1));</span><br><span class="line"></span><br><span class="line">% 折射波与震源点所在纵轴交点</span><br><span class="line">fprintf(&quot;折射波拟合时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, RER_T_FIT1(x1),RER_T_FIT2(x1));</span><br><span class="line">% 直达波与震源点所在纵轴交点</span><br><span class="line">fprintf(&quot;直达波拟合时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, DW_T_FIT1(x1),DW_T_FIT2(x1));</span><br><span class="line">% 反射波与震源点所在纵轴交点</span><br><span class="line">fprintf(&quot;反射波拟合时距曲线与震源点所在纵轴交点t坐标值: %f\n&quot;, REF_T_FIT(x1));</span><br><span class="line"></span><br><span class="line">% 折射波时距曲线与反射波时距曲线交点</span><br><span class="line">REFRERZERO1=fsolve(@(x)(REF_T_FIT(x)-RER_T_FIT2(x)), [xmin, x1]);</span><br><span class="line">REFERZERO2=fsolve(@(x)(REF_T_FIT(x)-RER_T_FIT1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;折射波拟合左侧时距曲线与反射波时距曲线交点x坐标值: [%f \t%f]\n折射波拟合右侧时距曲线与反射波时距曲线交点x坐标值:[%f \t%f]\n&quot;, REFRERZERO1(:),REFERZERO2(:));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DW_T_THEO1=@(x)((x-x1)/v1); % 直达波时距曲线理论方程震源点右侧</span><br><span class="line">DW_T_THEO2=@(x)(-(x-x1)/v1); % 直达波时距曲线理论方程震源点左侧</span><br><span class="line"></span><br><span class="line">RER_T_THEO1=@(x)((x-x1)/v2+2*h1*cos(sigma_C)/v1); % 折射波时距曲线理论方程震源点右侧</span><br><span class="line">RER_T_THEO2=@(x)(-(x-x1)/v2+2*h1*cos(sigma_C)/v1); % 折射波时距曲线理论方程震源点左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">REF_T_THEO=@(x)(((2*h1/v1).^2*(1+(x-x1).^2/((2*h1).^2))).^(1/2)); % 反射波时距曲线理论方程</span><br><span class="line"></span><br><span class="line">% 折射波理论时距曲线与直达波理论时距曲线交点</span><br><span class="line">DWRER_THEO_ZERO1=fsolve(@(x)(DW_T_THEO1(x)-RER_T_THEO1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点右侧交点x坐标值: %f\n&quot;, DWRER_THEO_ZERO1(1));</span><br><span class="line"></span><br><span class="line">DWRER_THEO_ZERO2=fsolve(@(x)(DW_T_THEO2(x)-RER_T_THEO2(x)), [xmin, x1]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点左侧交点x坐标值: %f\n&quot;, DWRER_THEO_ZERO2(1));</span><br><span class="line"></span><br><span class="line">% 折射波理论时距曲线与反射波理论时距曲线交点</span><br><span class="line">REF_THEO_ZERO1=fsolve(@(x)(REF_T_THEO(x)-RER_T_THEO1(x)), [x1, xmax]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点右侧交点x坐标值: %f %f\n&quot;, REF_THEO_ZERO1);</span><br><span class="line">REF_THEO_ZERO2=fsolve(@(x)(REF_T_THEO(x)-RER_T_THEO2(x)), [xmin, x1]);</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与直达波理论时距曲线震源点左侧交点x坐标值: %f %f\n&quot;, REF_THEO_ZERO2);</span><br><span class="line"></span><br><span class="line">fprintf(&quot;直达波理论时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, DW_T_THEO1(x1),DW_T_THEO2(x1));</span><br><span class="line">fprintf(&quot;折射波理论时距曲线与震源点所在纵轴交点t坐标值: %f、%f\n&quot;, RER_T_THEO1(x1),RER_T_THEO2(x1));</span><br><span class="line">fprintf(&quot;反射波理论时距曲线与震源点所在纵轴交点t坐标值: %f\n&quot;, REF_T_THEO(x1));</span><br><span class="line"></span><br><span class="line">%% 直达波时间场计算</span><br><span class="line">function [DW_x, DW_y, direct_time,k_dir] = direct_wave_count(angle, t_all, N_t_all, N, v1,h1,x1)</span><br><span class="line"></span><br><span class="line">    k_dir = tan(angle);   % 斜率计算</span><br><span class="line">    DW_x = zeros(N, N_t_all);  % 存储所有射线和时间的x值 纵坐标为angle，横坐标为time</span><br><span class="line">    DW_y = zeros(N, N_t_all);</span><br><span class="line">    for i = 1 : N  % angle循环</span><br><span class="line">        for j = 1 : N_t_all  % time循环</span><br><span class="line">            if angle(i) &lt; pi/2</span><br><span class="line">                x = x1 + ( (v1*t_all(j))^2/(1 + k_dir(i)^2))^0.5;</span><br><span class="line">                if k_dir(i)*(x - x1) &lt; h1 </span><br><span class="line">                    DW_x(i, j) = x;</span><br><span class="line">                    DW_y(i, j) = k_dir(i)*(x - x1);</span><br><span class="line">                else</span><br><span class="line">                    DW_x(i, j) = NaN;  % 将不需要的x值删去</span><br><span class="line">                    DW_y(i, j) = NaN;</span><br><span class="line">                end</span><br><span class="line">            elseif angle(i) &gt; pi/2</span><br><span class="line">                x = x1 - ((v1*t_all(j))^2/(1 + k_dir(i)^2))^0.5;</span><br><span class="line">                if k_dir(i)*(x - x1) &lt; h1</span><br><span class="line">                    DW_x(i, j) = x;</span><br><span class="line">                    DW_y(i, j) = k_dir(i)*(x - x1);</span><br><span class="line">                else</span><br><span class="line">                    DW_x(i, j) = NaN;</span><br><span class="line">                    DW_y(i,j) = NaN;</span><br><span class="line">                end</span><br><span class="line">            elseif angle(i) == pi/2</span><br><span class="line">                DW_x(i, j) = x1;</span><br><span class="line">                DW_y(i,j) = t_all(j)*v1;</span><br><span class="line">            end</span><br><span class="line">    </span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    direct_time = zeros(1, N);  % 计算各个角度波抵达h1边界的时间</span><br><span class="line">    for i = 1 : N</span><br><span class="line">        if angle(i) &gt;= 0 &amp;&amp; angle(i) &lt;= pi</span><br><span class="line">            direct_time(i) = h1 / v1 / abs(sin(angle(i)));</span><br><span class="line">        else</span><br><span class="line">            direct_time(i) = NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 透射波时间场计算</span><br><span class="line">function [tran_x,tran_y,one_tran_t] = transform_wave_count(angle, sigma_C, dt, N, v1,v2,h1,x1,xmax,xmin, direct_time, k_dir )</span><br><span class="line">    anglep = angle;</span><br><span class="line">    for i = 1 :N</span><br><span class="line">        if angle(i)&lt;= pi/2+sigma_C &amp;&amp; angle(i) &gt;= pi/2-sigma_C</span><br><span class="line">            anglep(i) = angle(i);</span><br><span class="line">        else</span><br><span class="line">            anglep(i) = NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    sigma = anglep - pi/2;   % sigma是边界之内的入射角</span><br><span class="line">    beta = asin(v2/v1.*sin(sigma)); % beta是入射角对应的透射角</span><br><span class="line">    </span><br><span class="line">    k_tran = zeros(1,N);  % 透射波射线斜率</span><br><span class="line">    for i = 1 :N</span><br><span class="line">        if beta(i) &lt;= pi/2</span><br><span class="line">            k_tran(i) = tan(pi/2-beta(i));</span><br><span class="line">        else</span><br><span class="line">            k_tran(i) = -tan(pi/2-beta(i));</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    t_min = h1/v1;      % 透射波出现时的最早时间</span><br><span class="line">    </span><br><span class="line">    N_tran = 10;</span><br><span class="line">    one_tran_t = zeros(1, N_tran);   % 透射波可以只画出几条曲线即可</span><br><span class="line">    for i=1:N_tran</span><br><span class="line">        one_tran_t(i) = floor(t_min/dt)*dt + dt * i;</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    tran_x = zeros(N, N_tran);</span><br><span class="line">    tran_y = zeros(N, N_tran);</span><br><span class="line">    for i=1 : N   % angle循环</span><br><span class="line">        if anglep(i)&lt;= pi/2+sigma_C &amp;&amp; anglep(i) &gt;= pi/2-sigma_C</span><br><span class="line">            for  j = 1 : N_tran  % 时间循环</span><br><span class="line">                if (one_tran_t(j) - direct_time(i)) &gt;= 0  </span><br><span class="line">                    if angle(i) ~= pi/2</span><br><span class="line">                        tran_x(i,j) = x1+h1/k_dir(i)-v2*sin(beta(i))*(one_tran_t(j)-direct_time(i));</span><br><span class="line">                        tran_y(i,j) = h1+v2*cos(beta(i))*(one_tran_t(j)-direct_time(i));</span><br><span class="line">                    else</span><br><span class="line">                        tran_x(i,j) = x1;</span><br><span class="line">                        tran_y(i,j) = h1+v2*(one_tran_t(j) - direct_time(i));</span><br><span class="line">                        continue</span><br><span class="line">                    end</span><br><span class="line">                else</span><br><span class="line">                    tran_x(i,j) = NaN;  % 当该点不符合要求时为NaN，绘图时不予考虑</span><br><span class="line">                    tran_y(i,j) = NaN;</span><br><span class="line">                end</span><br><span class="line">            end</span><br><span class="line">        else</span><br><span class="line">            tran_x(i,:) = NaN;</span><br><span class="line">            tran_y(i,:) = NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">%% 反射波时间场计算</span><br><span class="line">function [reflect_x,reflect_y] = reflect_wave_count(angle, N, t_all, N_t_all, v1, h1, x1, direct_time, k_dir )</span><br><span class="line">    rx = h1./k_dir+x1;</span><br><span class="line">    sigma = angle - pi/2;%重新设置sigma角度</span><br><span class="line">    alpha = -sigma; % 反射角</span><br><span class="line">    reflect_x = zeros(N, N_t_all);</span><br><span class="line">    reflect_y = zeros(N, N_t_all);</span><br><span class="line">    reflect_t = zeros(N, N_t_all);</span><br><span class="line">    for i = 1:N</span><br><span class="line">        for j = 1:N_t_all</span><br><span class="line">            reflect_t(i,j) = t_all(j);</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    for i = 1:N</span><br><span class="line">        for j = 1 :N_t_all</span><br><span class="line">            if (t_all(j)-direct_time(i))&gt;=0</span><br><span class="line">                reflect_x(i,j) = rx(i)+v1*sin(alpha(i))*(t_all(j)-direct_time(i));</span><br><span class="line">                reflect_y(i,j) = h1-v1*cos(alpha(i))*(t_all(j)-direct_time(i));</span><br><span class="line">                if reflect_y(i,j) &lt; 0  % 超过地表的反射波设置为NaN</span><br><span class="line">                    reflect_x(i,j)=NaN;</span><br><span class="line">                    reflect_y(i,j)=NaN;</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                reflect_x(i,j) = NaN;</span><br><span class="line">                reflect_y(i,j) = NaN;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">%% 折射波时间场计算</span><br><span class="line">function  [refract_x_ri, refract_x_le,refract_y_ri, refract_y_le, refract_x, refract_y]= refract_wave_count(sigma_C, dt, t_all, N_t_all, v1,v2,h1,x1,xmax,xmin)</span><br><span class="line">    xr_min_ri = x1+h1*tan(sigma_C);  % 出现折射波的x1点右侧最小x值</span><br><span class="line">    xr_max_le = x1-h1*tan(sigma_C); %出现折射波的x1点左侧最大x值</span><br><span class="line">    t_rmin = h1/v1/cos(sigma_C);</span><br><span class="line">    dx=1; % 所取射线的间隔   </span><br><span class="line">    % 重新构造每一条折射波射线所过的点 </span><br><span class="line">    N_refract_ri = ceil((xmax-x1-h1*tan(sigma_C))/dx)*10;</span><br><span class="line">    N_refract_le = ceil((x1-h1*tan(sigma_C)-xmin)/dx)*100;</span><br><span class="line">    xr_ri = zeros(1,N_refract_ri);</span><br><span class="line">    xr_le = zeros(1,N_refract_le);</span><br><span class="line">    for i=1:N_refract_ri</span><br><span class="line">        xr_ri(i) = xr_min_ri + dx*(i-1);</span><br><span class="line">    end</span><br><span class="line">    for i=1:N_refract_ri</span><br><span class="line">        xr_le(i) = xr_max_le - dx*(i-1);</span><br><span class="line">    end</span><br><span class="line">    % 求取每一条射线在一定时间时到达的点</span><br><span class="line">    refract_x_ri = zeros(N_refract_ri,N_t_all);</span><br><span class="line">    refract_x_le = zeros(N_refract_le,N_t_all);</span><br><span class="line">    refract_y_ri = zeros(N_refract_ri,N_t_all);</span><br><span class="line">    refract_y_le = zeros(N_refract_le,N_t_all);</span><br><span class="line">    for i = 1:N_refract_ri</span><br><span class="line">        for j = 1:N_t_all</span><br><span class="line">            if (t_all(j)-t_rmin-(xr_ri(i)-xr_min_ri)/v2)&gt;=0</span><br><span class="line">                refract_x_ri(i,j) = xr_ri(i)+v1*sin(sigma_C)*(t_all(j)-t_rmin-(xr_ri(i)-xr_min_ri)/v2);</span><br><span class="line">                refract_y_ri(i,j) = h1-v1*cos(sigma_C)*(t_all(j)-t_rmin-(xr_ri(i)-xr_min_ri)/v2);</span><br><span class="line">                 if refract_y_ri(i,j) &lt;0 || refract_y_ri(i,j)&gt;h1</span><br><span class="line">                    refract_x_ri(i,j) = NaN;</span><br><span class="line">                    refract_y_ri(i,j) = NaN;</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                refract_x_ri(i,j) = NaN;</span><br><span class="line">                refract_y_ri(i,j) = NaN;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    for i = 1:N_refract_le</span><br><span class="line">        for j = 1:N_t_all</span><br><span class="line">            if t_all(j)-t_rmin+(xr_le(i)-xr_max_le)/v2&gt;=0</span><br><span class="line">                refract_x_le(i,j) = xr_le(i)-v1*sin(sigma_C)*(t_all(j)-t_rmin+(xr_le(i)-xr_max_le)/v2);</span><br><span class="line">                refract_y_le(i,j) = h1-v1*cos(sigma_C)*(t_all(j)-t_rmin+(xr_le(i)-xr_max_le)/v2);</span><br><span class="line">                if refract_y_le(i,j) &lt;0 || refract_y_le(i,j)&gt;h1</span><br><span class="line">                    refract_x_le(i,j) = NaN;</span><br><span class="line">                    refract_y_le(i,j) = NaN;</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                refract_x_le(i,j) = NaN;</span><br><span class="line">                refract_y_le(i,j) = NaN;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    refract_x = [refract_x_le; refract_x_ri];  % 合并以方便绘图</span><br><span class="line">    refract_y = [refract_y_le; refract_y_ri];</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 滑行波时间场计算</span><br><span class="line">function [slide_x, slide_y] = Slide__wave_count(t_all, N_t_all, v1, v2, h1, x1, sigma_C)</span><br><span class="line">    slide_x_ri=zeros(1,N_t_all);</span><br><span class="line">    slide_x_le=zeros(1,N_t_all);</span><br><span class="line">    slide_y_ri=h1*ones(1,N_t_all);</span><br><span class="line">    slide_y_le=h1*ones(1,N_t_all);</span><br><span class="line">    for i = 1:N_t_all</span><br><span class="line">        if (t_all(i)-h1/(v1*cos(sigma_C)))&gt;=0</span><br><span class="line">            slide_x_ri(i)=x1+h1*tan(sigma_C)+v2*(t_all(i)-h1/(v1*cos(sigma_C)));</span><br><span class="line">            slide_x_le(i)=x1-h1*tan(sigma_C)-v2*(t_all(i)-h1/(v1*cos(sigma_C)));</span><br><span class="line">        else</span><br><span class="line">            slide_x_ri(i)=NaN;</span><br><span class="line">            slide_x_le(i)=NaN;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    slide_x = [slide_x_le, slide_x_ri];</span><br><span class="line">    slide_y = [slide_y_le, slide_y_ri];</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 时间场绘图函数</span><br><span class="line">function H = image( x, y, color, Name)   </span><br><span class="line">    [~, N_all] = size(x);</span><br><span class="line">    H=zeros(1, N_all);</span><br><span class="line">    for i = 1 : N_all</span><br><span class="line">        x_dir = x(:,i).&#x27;;</span><br><span class="line">        y_dir = y(:,i).&#x27;;</span><br><span class="line">        H(i)=plot(x_dir, y_dir, color, &#x27;DisplayName&#x27;, Name);</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 时距曲线点计算</span><br><span class="line">function x_t = t_x(x,y,x_t,dangle)   % 计算时距曲线的相关点</span><br><span class="line">    [N,N_t_all]=size(x); </span><br><span class="line">    x_t(1,1)=x(1);</span><br><span class="line">    y_test=100*ones(2,N_t_all);  %设置一个测试值</span><br><span class="line">    for j=1:N_t_all</span><br><span class="line">        for i=1:floor(N/2)</span><br><span class="line">            if y(i,j)&lt;=18*dangle  % 由于精度问题，当y&lt;一定值的时候可以认为它出射地表</span><br><span class="line">                if abs(y(i,j))&lt;=abs(y_test(1,j)) % 如果有比它更优的点，择取最优值</span><br><span class="line">                    x_t(1,j)=x(i,j);  </span><br><span class="line">                    y_test(1,j) = y(i,j);</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">                continue</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">        for i=floor(N/2)-1:N</span><br><span class="line">            if y(i,j)&lt;=20*dangle</span><br><span class="line">                if abs(y(i,j))&lt;=abs(y_test(2, j))</span><br><span class="line">                    x_t(2,j)=x(i,j);</span><br><span class="line">                    y_test(2, j) = y(i,j);</span><br><span class="line">                else</span><br><span class="line">                    continue</span><br><span class="line">                end</span><br><span class="line">            else</span><br><span class="line">               continue</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    for j=1:N_t_all</span><br><span class="line">        for i=1:2</span><br><span class="line">            if x_t(i,j) == 0</span><br><span class="line">                x_t(i,j) = NaN;</span><br><span class="line">            else</span><br><span class="line">                continue</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 反射波拟合函数，对反射波进行双曲线拟合，得到一条光滑曲线</span><br><span class="line">function [x_effictive,t_effictive, a, b]=reflect_wave_t_x(x,t, x1)  </span><br><span class="line">    x_effictive = [];</span><br><span class="line">    t_effictive = [];</span><br><span class="line">    for i=1:length(x)</span><br><span class="line">        if isnan(x(i)) == 0</span><br><span class="line">            x_effictive = [x_effictive, x(i)];</span><br><span class="line">            t_effictive = [t_effictive, t(i)];</span><br><span class="line">        else</span><br><span class="line">            continue</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">    K = floor(length(x_effictive)/2);</span><br><span class="line">    A=zeros(1,K);</span><br><span class="line">    B=zeros(1,K);</span><br><span class="line">    for i=1:K</span><br><span class="line">        A(i)=(-(x_effictive(i+K)-x1).^2+(x_effictive(i)-x1).^2)/(-(x_effictive(i+K)-x1).^2*t_effictive(i).^2+(x_effictive(i)-x1).^2*t_effictive(i+K).^2);</span><br><span class="line">        B(i)=(-t_effictive(i+K).^2+t_effictive(i).^2)/(-(x_effictive(i+K)-x1).^2*t_effictive(i).^2+(x_effictive(i)-x1).^2*t_effictive(i+K).^2);</span><br><span class="line">    end</span><br><span class="line">   a=mean(A);</span><br><span class="line">   b=mean(B);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%% 反射界面绘制函数</span><br><span class="line">function INTER = interface(xmax, xmin,h1)</span><br><span class="line">    xx = zeros(1,(xmax-xmin)/0.01);</span><br><span class="line">    for i = 1:(xmax-xmin)/0.01</span><br><span class="line">        xx(i) = i*0.01;</span><br><span class="line">    end</span><br><span class="line">    INTER = plot(xx, h1*ones(1,(xmax-xmin)/0.01), &#x27;r--&#x27;,&#x27;DisplayName&#x27;,&#x27;反射界面&#x27;);</span><br><span class="line">    set(gca,&#x27;YDir&#x27;,&#x27;reverse&#x27;, &#x27;XAxisLocation&#x27;, &#x27;top&#x27;);</span><br><span class="line">    axis([xmin,xmax,-1500,1000]);</span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="报告"><a href="#报告" class="headerlink" title="报告"></a>报告</h2><p><a href="https://github.com/ZhiyuanShi1901/seismic_exploration_homework/blob/main/%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E6%97%B6%E9%97%B4%E5%9C%BA%E6%A8%A1%E6%8B%9F.pdf">下载链接</a></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>seismic exploration</tag>
       </tags>
   </entry>
 </search>
