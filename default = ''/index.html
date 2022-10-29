@@ -243,7 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-10-29 16:30:27 / Modified: 16:33:14" itemprop="dateCreated datePublished" datetime="2022-10-29T16:30:27+08:00">2022-10-29</time>
+      <time title="Created: 2022-10-29 16:30:27 / Modified: 16:38:41" itemprop="dateCreated datePublished" datetime="2022-10-29T16:30:27+08:00">2022-10-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -324,13 +324,13 @@ print(threechannels)
 signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
 signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
 </code></pre>
-<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel.png"></p>
+<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel"></p>
 <h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
 </code></pre>
-<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080.png"></p>
+<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080"></p>
 <h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
 </code></pre>
-<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday.png"></p>
+<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday"></p>
 <pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
 signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
                    type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
@@ -338,6 +338,7 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
                    color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
                    events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
 </code></pre>
+<p><img src="signalchannel_oneday_filter.png" alt="signalchannel_oneday_filter"></p>
 <h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
 </code></pre>
 <h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
