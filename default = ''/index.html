@@ -213,6 +213,171 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/11/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/11/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/" class="post-title-link" itemprop="url">从零开始的Obspy</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-11 16:00:00 / Modified: 21:39:38" itemprop="dateCreated datePublished" datetime="2022-11-11T16:00:00+08:00">2022-11-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="读取地震数据"><a href="#读取地震数据" class="headerlink" title="读取地震数据"></a>读取地震数据</h1><h2 id="访问元信息"><a href="#访问元信息" class="headerlink" title="访问元信息"></a>访问元信息</h2><pre><code>from obspy import read
+waves = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10.mseed&#39;)
+print(waves)  # 输出波形名称
+</code></pre>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.HH1 | 2014-10-28T01:29:59.388393Z - 2014-10-28T01:34:00.158393Z | 100.0 Hz, 24078 samples</span><br><span class="line">IU.ADK.10.HH2 | 2014-10-28T01:30:02.058394Z - 2014-10-28T01:33:59.158394Z | 100.0 Hz, 23711 samples</span><br><span class="line">IU.ADK.10.HHZ | 2014-10-28T01:29:41.818393Z - 2014-10-28T01:34:00.778393Z | 100.0 Hz, 25897 samples</span><br><span class="line">IU.ADK.10.LH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.VH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VMU | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMV | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMW | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(waves))  # waves中含有15个波形
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>输出最前面的波形名称</p>
+<pre><code>tra1 = waves[0]
+print(tra1)  # 输出最前面的波形名称
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<p>输出元信息，即地震数据的台站信息等:</p>
+<pre><code>print(tra1.stats)  # 输出元信息，即地震数据的台站信息等
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">      network: IU</span><br><span class="line">      station: ADK</span><br><span class="line">     location: 10</span><br><span class="line">      channel: BH1</span><br><span class="line">    starttime: 2014-10-28T00:00:00.019500Z</span><br><span class="line">      endtime: 2014-10-28T23:59:59.994500Z</span><br><span class="line">sampling_rate: 40.0</span><br><span class="line">        delta: 0.025</span><br><span class="line">         npts: 3456000</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: MSEED</span><br><span class="line">        mseed: AttribDict(&#123;&#x27;dataquality&#x27;: &#x27;M&#x27;, &#x27;number_of_records&#x27;: 14448, &#x27;encoding&#x27;: &#x27;STEIM2&#x27;, &#x27;byteorder&#x27;: &#x27;&gt;&#x27;, &#x27;record_length&#x27;: 512, &#x27;filesize&#x27;: 22335488&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>print(tra1.stats.station)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADK</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问波形数据"><a href="#访问波形数据" class="headerlink" title="访问波形数据"></a>访问波形数据</h2><p>使用data关键词对实际波形数据进行检索</p>
+<pre><code>print(tra1.data)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-4017 -3853 -3594 ...  1167   807  1231]</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(tra1.data))
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3456000   # 与上面的波形中npts相对应</span><br></pre></td></tr></table></figure>
+
+<pre><code>tra1.plot()  # 浏览数据
+</code></pre>
+<h1 id="波形绘制"><a href="#波形绘制" class="headerlink" title="波形绘制"></a>波形绘制</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><pre><code>from obspy.core import read
+
+# 读取一个数据
+signalchannel = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+# 读取三个数据
+threechannels = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B01.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B02.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+print(signalchannel)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(&quot;\n&quot;)
+print(threechannels)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+<h2 id="基本绘制与保存"><a href="#基本绘制与保存" class="headerlink" title="基本绘制与保存"></a>基本绘制与保存</h2><p>signalchannel.plot()  # 基本绘制，默认大小800*250，可以通过size属性调整.</p>
+<p>size属性使用方法：size&#x3D;(1920,1080)</p>
+<pre><code>signalsstarttime = signalchannel[0].stats.starttime
+signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
+signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
+</code></pre>
+<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel"></p>
+<h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
+</code></pre>
+<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080"></p>
+<h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
+</code></pre>
+<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday"></p>
+<pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
+signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
+                   type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
+                   vertical_scaling_range=5e3, one_tick_per_line=True,
+                   color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
+                   events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
+</code></pre>
+<p><img src="signalchannel_oneday_filter.png" alt="signalchannel_oneday_filter"></p>
+<h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
+</code></pre>
+<h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
+<li>疑问：signalchannel 需要取read到的内容的[0]项，具体未知为何如此。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">fig = plt.figure()  # 创建一个画布</span><br><span class="line">ax = fig.add_subplot(1, 1, 1) # 创建组合图，如subplot()</span><br><span class="line">ax.plot(signalchannel[0].times(&quot;matplotlib&quot;), signalchannel[0].data, &#x27;b-&#x27;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<img src="matplot_signalchannel.png" alt="matplotlib绘图"></li>
+</ul>
+<h1 id="滤波"><a href="#滤波" class="headerlink" title="滤波"></a>滤波</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import obspy</span><br><span class="line">st = obspy.read(&quot;https://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">st.write(&quot;st.sac&quot;, format=&quot;sac&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line"></span><br><span class="line">print(st)</span><br><span class="line"># .RJOB..Z | 2005-10-06T07:21:59.850000Z - 2005-10-06T07:24:59.845000Z | 200.0 Hz, 36000 samples</span><br><span class="line">print(tr)</span><br><span class="line"># .RJOB..Z | 2005-10-06T07:21:59.850000Z - 2005-10-06T07:24:59.845000Z | 200.0 Hz, 36000 samples</span><br><span class="line"></span><br><span class="line">tr_filt = tr.copy() # 复制tr内容，保留原始数据</span><br><span class="line">tr_filt.filter(&#x27;lowpass&#x27;, freq=1.0, corners=2, zerophase=True)</span><br><span class="line"># freq指低通滤波的拐点频率，zerophase指零相位</span><br><span class="line"></span><br><span class="line"># 横坐标t，即time，</span><br><span class="line">t = np.arange(0, tr.stats.npts / tr.stats.sampling_rate, tr.stats.delta)</span><br><span class="line"># arange(初值，终止值，步长，数据类型)，此处，初始时间为0，终止值为数据点数/(采样率)?存疑，步长为delta，即数据点采样周期</span><br><span class="line"></span><br><span class="line"># matplot绘图</span><br><span class="line">plt.subplot(211)</span><br><span class="line">plt.plot(t, tr.data, &#x27;k&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Raw Data.&#x27;)</span><br><span class="line">plt.subplot(212)</span><br><span class="line">plt.plot(t, tr_filt.data, &#x27;k&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Lowpassed Data&#x27;)</span><br><span class="line">plt.xlabel(&#x27;TIME[S]&#x27;)</span><br><span class="line">plt.suptitle(tr.stats.starttime)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="filter.png" alt="filter"><br>采用低通滤波，波形变得稀疏了。滤除了高频成分，其中高频成分大多数可能是噪音。</p>
+<h1 id="下采样"><a href="#下采样" class="headerlink" title="下采样"></a>下采样</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">tr_new = tr.copy()</span><br><span class="line">tr_new.decimate(factor=4, strict_length=False)</span><br><span class="line"># 下采样时自动滤波，滤波角频率为 0.4*new sampling rate</span><br><span class="line">tr_filt = tr.copy()</span><br><span class="line">tr_filt.filter(&#x27;lowpass&#x27;, freq=0.4 * tr.stats.sampling_rate / 4.0)</span><br><span class="line"></span><br><span class="line">t = np.arange(0, tr.stats.npts / tr.stats.sampling_rate, tr.stats.delta)</span><br><span class="line">t_new = np.arange(0, tr_new.stats.npts / tr_new.stats.sampling_rate, tr_new.stats.delta)</span><br><span class="line"></span><br><span class="line">plt.plot(t, tr.data, &#x27;k&#x27;, label=&#x27;Raw&#x27;, alpha=0.3)  # alpha指点的不透明度</span><br><span class="line">plt.plot(t, tr_filt.data, &#x27;b&#x27;, label=&#x27;Lowpassed&#x27;, alpha=0.7)</span><br><span class="line">plt.plot(t_new, tr_new.data, &#x27;r&#x27;, label=&#x27;Lowpassed/Downsampled&#x27;, alpha=0.7)</span><br><span class="line">plt.xlabel(&#x27;Time[s]&#x27;)</span><br><span class="line">plt.xlim(82, 83.5)</span><br><span class="line">plt.suptitle(tr.stats.starttime)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="downsampling.png" alt="downsampling"><br>未了解下采样为何，从图像上感觉相位变化了？</p>
+<h1 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h1><p>合并绘制三个重叠的地震图。即这三个数据时间是重合的，而且是同一组数据。将其合并后时间最长的是最终结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">st = obspy.read(&quot;https://examples.obspy.org/dis.G.SCZ.__.BHE&quot;)</span><br><span class="line">st += obspy.read(&quot;https://examples.obspy.org/dis.G.SCZ.__.BHE.1&quot;)</span><br><span class="line">st += obspy.read(&quot;https://examples.obspy.org/dis.G.SCZ.__.BHE.2&quot;)</span><br><span class="line">print(st[0])</span><br><span class="line">print(st[1])</span><br><span class="line">print(st[2])</span><br><span class="line"># 输出：</span><br><span class="line"># G.SCZ..BHE | 2004-01-03T08:16:09.070990Z - 2004-01-03T09:22:36.120990Z | 20.0 Hz, 79742 samples</span><br><span class="line"># G.SCZ..BHE | 2004-01-03T08:19:52.371008Z - 2004-01-03T09:26:18.721008Z | 20.0 Hz, 79728 samples</span><br><span class="line"># G.SCZ..BHE | 2004-01-03T08:27:25.571021Z - 2004-01-03T09:37:27.521021Z | 20.0 Hz, 84040 samples</span><br><span class="line"></span><br><span class="line">st.sort([&#x27;starttime&#x27;])  # 排序</span><br><span class="line">dt = st[0].stats.starttime.timestamp</span><br><span class="line"></span><br><span class="line">ax = plt.subplot(4, 1, 1)</span><br><span class="line">for i in range(3):</span><br><span class="line">    plt.subplot(4, 1, i+1, sharex=ax)</span><br><span class="line">    t = np.linspace(st[i].stats.starttime.timestamp - dt, st[i].stats.endtime.timestamp - dt, st[i].stats.npts)</span><br><span class="line">    plt.plot(t, st[i].data)</span><br><span class="line"></span><br><span class="line"># 合并数据 merge the data</span><br><span class="line">st.merge(method=1)</span><br><span class="line">plt.subplot(4, 1, 4, sharex=ax)</span><br><span class="line">t = np.linspace(st[0].stats.starttime.timestamp - dt, st[0].stats.endtime.timestamp - dt, st[0].stats.npts)</span><br><span class="line">plt.plot(t, st[0].data, &#x27;r&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="merge.png" alt="merge"><br>第二个图的波形有些奇怪。震级饱和现象有些相似，但是它的振幅最大是1，其他的是20000，总之有些奇怪。<br>其它图像看起来很正常，最后一个图像时间轴填满了，看得出来是1、3图片的结合。合并就是将不同记录时间的同一地震波形合并为一个总的时间的地震波形，简而言之是时间上的合并。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1017,164 +1182,6 @@ enddo
 <p>out-of-phase stacking 相位错位叠加</p>
 <h1 id="来源-3-Sharp-Sides-to-the-African-Superplume"><a href="#来源-3-Sharp-Sides-to-the-African-Superplume" class="headerlink" title="来源[3]  Sharp Sides to the African Superplume"></a>来源[3]  Sharp Sides to the African Superplume</h1><h3 id="单词-2"><a href="#单词-2" class="headerlink" title="单词"></a>单词</h3><p>superplume 超级热柱<br>obliquely 斜的<br>fortuitous 偶然的<br>fit 拟合<br>dense 致密的<br>thermal structure 热结构<br>on geological time scales 在地质时间尺度上<br>be correlated with 与……相关<br>geoid anomaly 重力异常<br>bulk sound velocity 体波速度<br>laterally 横向的<br>lowermost mantle 下地幔底界<br>trade off 争议<br>patterns 样式、模式<br>African Low Velocity Structure （ALVS）非洲低速结构体<br>leans toward 倾斜<br>evident 明显的<br>multipathing 多路径<br>demonstrate 证明，线路<br>simultaneously 同时<br>plausible range 合理范围<br>Rayleigh number 瑞雷数<br>bouyancy number 浮力数</p>
 <h1 id="来源-4-The-Yellowstone-magmatic-system-from-the-mantle-plume-to-the-upper-crust"><a href="#来源-4-The-Yellowstone-magmatic-system-from-the-mantle-plume-to-the-upper-crust" class="headerlink" title="来源[4] The Yellowstone magmatic system from the mantle plume to the upper crust"></a>来源[4] The Yellowstone magmatic system from the mantle plume to the upper crust</h1><h3 id="单词-3"><a href="#单词-3" class="headerlink" title="单词"></a>单词</h3><p>supervolcano 超级火山<br>silicic 硅质的，含硅的<br>unveil 揭示<br>magma body 岩浆体<br>lower-crustal 下地壳<br>melt fraction 熔融系数<br>critical 重要的<br>bimodal basaltic-rhyolitic 双模式玄武-流纹岩<br>hazard assesment 灾害评估，风险评价<br>extensive earthquakes 剧烈的地震<br>episodic ground deformation 阵发性地面变形<br>flux 值，系数<br>continental hydrothermal system 大陆热释放系统<br>caldera 火山口<br>cataclysmic eruption 灾难性喷发（火山）<br>rhyolitic lava flows 流纹岩质熔岩流（流变熔岩流）<br>lava 熔岩，火山岩<br>account for 解释<br>distinctly 清楚地<br>evidence 假设<br>volcanic plumbing system 火山通道系统<br>framework 构架，结构<br>elucidated 阐明，解释<br>caldera 破火山口<br>basaltic 玄武岩的<br>dominance 起主导作用<br>depict 描述<br>notably 显著地<br>intrude 侵入<br>mafic 铁镁质的<br>silicic 含硅的<br>fractionate 分开，分馏</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/" class="post-title-link" itemprop="url">从零开始的Obspy</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-10-29 16:30:27 / Modified: 16:38:41" itemprop="dateCreated datePublished" datetime="2022-10-29T16:30:27+08:00">2022-10-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="读取地震数据"><a href="#读取地震数据" class="headerlink" title="读取地震数据"></a>读取地震数据</h1><h2 id="访问元信息"><a href="#访问元信息" class="headerlink" title="访问元信息"></a>访问元信息</h2><pre><code>from obspy import read
-waves = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10.mseed&#39;)
-print(waves)  # 输出波形名称
-</code></pre>
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.HH1 | 2014-10-28T01:29:59.388393Z - 2014-10-28T01:34:00.158393Z | 100.0 Hz, 24078 samples</span><br><span class="line">IU.ADK.10.HH2 | 2014-10-28T01:30:02.058394Z - 2014-10-28T01:33:59.158394Z | 100.0 Hz, 23711 samples</span><br><span class="line">IU.ADK.10.HHZ | 2014-10-28T01:29:41.818393Z - 2014-10-28T01:34:00.778393Z | 100.0 Hz, 25897 samples</span><br><span class="line">IU.ADK.10.LH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.VH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VMU | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMV | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMW | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br></pre></td></tr></table></figure>
-
-<pre><code>print(len(waves))  # waves中含有15个波形
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
-
-<p>输出最前面的波形名称</p>
-<pre><code>tra1 = waves[0]
-print(tra1)  # 输出最前面的波形名称
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
-
-<p>输出元信息，即地震数据的台站信息等:</p>
-<pre><code>print(tra1.stats)  # 输出元信息，即地震数据的台站信息等
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">      network: IU</span><br><span class="line">      station: ADK</span><br><span class="line">     location: 10</span><br><span class="line">      channel: BH1</span><br><span class="line">    starttime: 2014-10-28T00:00:00.019500Z</span><br><span class="line">      endtime: 2014-10-28T23:59:59.994500Z</span><br><span class="line">sampling_rate: 40.0</span><br><span class="line">        delta: 0.025</span><br><span class="line">         npts: 3456000</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: MSEED</span><br><span class="line">        mseed: AttribDict(&#123;&#x27;dataquality&#x27;: &#x27;M&#x27;, &#x27;number_of_records&#x27;: 14448, &#x27;encoding&#x27;: &#x27;STEIM2&#x27;, &#x27;byteorder&#x27;: &#x27;&gt;&#x27;, &#x27;record_length&#x27;: 512, &#x27;filesize&#x27;: 22335488&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>print(tra1.stats.station)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADK</span><br></pre></td></tr></table></figure>
-
-<h2 id="访问波形数据"><a href="#访问波形数据" class="headerlink" title="访问波形数据"></a>访问波形数据</h2><p>使用data关键词对实际波形数据进行检索</p>
-<pre><code>print(tra1.data)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-4017 -3853 -3594 ...  1167   807  1231]</span><br></pre></td></tr></table></figure>
-
-<pre><code>print(len(tra1.data))
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3456000   # 与上面的波形中npts相对应</span><br></pre></td></tr></table></figure>
-
-<pre><code>tra1.plot()  # 浏览数据
-</code></pre>
-<h1 id="波形绘制"><a href="#波形绘制" class="headerlink" title="波形绘制"></a>波形绘制</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><pre><code>from obspy.core import read
-
-# 读取一个数据
-signalchannel = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
-# 读取三个数据
-threechannels = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B01.sac&#39;)
-threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B02.sac&#39;)
-threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
-print(signalchannel)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
-
-<pre><code>print(&quot;\n&quot;)
-print(threechannels)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
-<h2 id="基本绘制与保存"><a href="#基本绘制与保存" class="headerlink" title="基本绘制与保存"></a>基本绘制与保存</h2><p>signalchannel.plot()  # 基本绘制，默认大小800*250，可以通过size属性调整.</p>
-<p>size属性使用方法：size&#x3D;(1920,1080)</p>
-<pre><code>signalsstarttime = signalchannel[0].stats.starttime
-signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
-signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
-</code></pre>
-<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel"></p>
-<h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
-</code></pre>
-<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080"></p>
-<h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
-</code></pre>
-<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday"></p>
-<pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
-signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
-                   type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
-                   vertical_scaling_range=5e3, one_tick_per_line=True,
-                   color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
-                   events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
-</code></pre>
-<p><img src="signalchannel_oneday_filter.png" alt="signalchannel_oneday_filter"></p>
-<h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
-</code></pre>
-<h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
-<li>疑问：signalchannel 需要取read到的内容的[0]项，具体未知为何如此。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">fig = plt.figure()  # 创建一个画布</span><br><span class="line">ax = fig.add_subplot(1, 1, 1) # 创建组合图，如subplot()</span><br><span class="line">ax.plot(signalchannel[0].times(&quot;matplotlib&quot;), signalchannel[0].data, &#x27;b-&#x27;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<img src="matplot_signalchannel.png" alt="matplotlib绘图"></li>
-</ul>
 
       
     </div>
