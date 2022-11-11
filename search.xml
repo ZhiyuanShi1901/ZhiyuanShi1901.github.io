@@ -1,6 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Fortran初探</title>
+    <url>/2022/11/01/Fortran%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[Fortran权威指南&#x2F;(英)奇弗斯(Chivers,I.),(英)斯莱索尔姆(Sleightholme,J.)著；陈宝国等译.–北京：人民邮电出版社，2009.10]</p>
+<p><a href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
+<h1 id="基础内容"><a href="#基础内容" class="headerlink" title="基础内容"></a>基础内容</h1><p>！ 作为注释标记</p>
+<h3 id="Fortran规则："><a href="#Fortran规则：" class="headerlink" title="Fortran规则："></a>Fortran规则：</h3><ul>
+<li>自由源格式</li>
+<li>不区分大小写</li>
+<li>存在语句顺序<ul>
+<li>PROGRAM</li>
+<li>类型声明语句</li>
+<li>处理与I&#x2F;O语句</li>
+<li>END PROGRAM</li>
+</ul>
+</li>
+<li>！用于引入注释</li>
+<li>变量名称长度最多31字符，包括_</li>
+<li>每行最多132个字符</li>
+<li>最多可以允许39个连续行</li>
+<li>如果不使用<code>IMPLICIT NONE</code>语句，则没有显式声明的变量被看成默认的类型。即：首个字符是A-H或O-Z，则默认为REAL型。若为I-N，则默认INTEGER型。</li>
+</ul>
+<h3 id="1、输出你的名字"><a href="#1、输出你的名字" class="headerlink" title="1、输出你的名字"></a>1、输出你的名字</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM ch0701      ！程序命名</span><br><span class="line">!</span><br><span class="line">! This program reads in and prints out a name</span><br><span class="line">!</span><br><span class="line">IMPLICIT NONE   ！ 表示使用的每个数据项的类型必须是显式的</span><br><span class="line">CHARACTER*20 :: First_Name ! 类型声明</span><br><span class="line">!</span><br><span class="line">	PRINT *,&#x27; Type in your first name.&#x27;     ！ 输出语句</span><br><span class="line">	PRINT *,&#x27; up to 20 characters&#x27;</span><br><span class="line">	READ *,First_Name       ！读取键盘输入的字符</span><br><span class="line">	PRINT *,First_Name</span><br><span class="line">!</span><br><span class="line">END PROGRAM ch0701   ！ 终止程序</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2、计算平均值"><a href="#2、计算平均值" class="headerlink" title="2、计算平均值"></a>2、计算平均值</h3><p>遵循的原则：声明所有变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">PROGRAM ch0702   ！程序命名</span><br><span class="line">!</span><br><span class="line">! This program reads in three numbers and sums</span><br><span class="line">! and averages them</span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">IMPLICIT NONE   ！ 表示使用的每个数据项的类型必须是显式的</span><br><span class="line">REAL :: N1,N2,N3,Average = 0.0,Total = 0.0</span><br><span class="line">INTEGER :: N = 3</span><br><span class="line">	PRINT *,&#x27; Type in three numbers.&#x27;</span><br><span class="line">	PRINT *,&#x27; Separated by spaces or commas&#x27;</span><br><span class="line">	READ *,N1,N2,N3</span><br><span class="line">	Total= N1 + N2 + N3   ! 三个变量值相加</span><br><span class="line">	AVERAGE=Total/N</span><br><span class="line">	PRINT *,&#x27;Average of the numbers is &#x27;,Average</span><br><span class="line">END PROGRAM ch0702</span><br></pre></td></tr></table></figure>
+
+<h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><p>运算法则与C或Python相同，但是需要注意：</p>
+<ul>
+<li>求幂运算：从右往左的顺序</li>
+<li>加减法：不需要注意运算顺序</li>
+<li>乘法除法：非整型运算不一定按照从左到右的顺序，需要加括号保证顺序<br>注意：使用时加括号时最好的方式。</li>
+</ul>
+<h3 id="截断"><a href="#截断" class="headerlink" title="截断"></a>截断</h3><p>注意截断。整型截断为舍入</p>
+<h3 id="PARAMETER-语句"><a href="#PARAMETER-语句" class="headerlink" title="PARAMETER 语句"></a>PARAMETER 语句</h3><pre><code>REAL , PARAMETER :: value=12
+</code></pre>
+<p>类似于C语言中的固定变量，即在类型声明语句之前将某个变量名与变量关联，从而不可更改该变量名的值。<br>类似于<code>#define</code>。</p>
+<h3 id="精度问题"><a href="#精度问题" class="headerlink" title="精度问题"></a>精度问题</h3><h3 id="变量状态"><a href="#变量状态" class="headerlink" title="变量状态"></a>变量状态</h3><ul>
+<li>已确定的状态 defined：已定义值</li>
+<li>未确定的状态 undefined：未定义值</li>
+</ul>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><h4 id="2、运行示例4"><a href="#2、运行示例4" class="headerlink" title="2、运行示例4"></a>2、运行示例4</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM ch0804</span><br><span class="line">implicit none</span><br><span class="line">real :: light_minute, distance, elapse</span><br><span class="line">integer :: minute, second </span><br><span class="line">real, parameter :: light_year=9.46*10**12</span><br><span class="line"></span><br><span class="line">light_minute = light_year/(365.25 * 24.0 * 60.0)</span><br><span class="line">distance = 150.0 * 10 ** 6</span><br><span class="line">elapse = distance / light_minute</span><br><span class="line">minute = elapse</span><br><span class="line">second = (elapse - minute) * 60</span><br><span class="line">print *,&#x27; light takes &#x27; , minute, &#x27; Minutes&#x27;</span><br><span class="line">print *,&#x27;             &#x27; , second, &#x27; seconds&#x27;</span><br><span class="line">print *,&#x27; To reach the earth from the sum&#x27;</span><br><span class="line">END PROGRAM ch0804</span><br></pre></td></tr></table></figure>
+
+<p>在运行ch0804出现错误：</p>
+<pre><code>Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)
+</code></pre>
+<p>表示结果超出整型范围。</p>
+<p>疑问：？？？ 未解决</p>
+<h4 id="计算摆的周期"><a href="#计算摆的周期" class="headerlink" title="计算摆的周期"></a>计算摆的周期</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM period_of_pendulum</span><br><span class="line">implicit none</span><br><span class="line">real :: length,T</span><br><span class="line">real , parameter :: pi = 3.1415926535</span><br><span class="line">print *,&#x27;Please input the length of pendulum:&#x27;</span><br><span class="line">read *, length</span><br><span class="line">T = 2 * Pi * (length / 9.81) ** .5</span><br><span class="line">print *,&#x27;The period is &#x27;, T, &#x27;seconds.&#x27;</span><br><span class="line">end program period_of_pendulum</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Please input the length of pendulum:</span><br><span class="line">1</span><br><span class="line"> The period is    2.00606656     seconds.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在计算器中的输出值为：2.006066681。</p>
+<h4 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program base_conversion</span><br><span class="line">real :: x1=1.0</span><br><span class="line">real :: x2=0.1</span><br><span class="line">real :: x3=0.01</span><br><span class="line">real :: x4=0.001</span><br><span class="line">real :: x5=0.0001</span><br><span class="line">	print *,&#x27; &#x27;,x1</span><br><span class="line">	print *,&#x27; &#x27;,x2</span><br><span class="line">	print *,&#x27; &#x27;,x3</span><br><span class="line">	print *,&#x27; &#x27;,x4</span><br><span class="line">	print *,&#x27; &#x27;,x5</span><br><span class="line">end program base_conversion</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> 1.00000000    </span><br><span class="line">0.100000001    </span><br><span class="line"> 9.99999978E-03</span><br><span class="line"> 1.00000005E-03</span><br><span class="line"> 9.99999975E-05</span><br></pre></td></tr></table></figure>
+<p>1.0保持不变，但是其他值均发生了改变。</p>
+<h4 id="简单减法"><a href="#简单减法" class="headerlink" title="简单减法"></a>简单减法</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program subtract</span><br><span class="line">real :: a=1.0002</span><br><span class="line">real :: b=1.0001</span><br><span class="line">real :: c</span><br><span class="line">	c=a-b</span><br><span class="line">	print *,a</span><br><span class="line">	print *,b</span><br><span class="line">	print *,c</span><br><span class="line">end program subtract</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.00020003    </span><br><span class="line">1.00010002    </span><br><span class="line">1.00016594E-04</span><br></pre></td></tr></table></figure>
+<p>理论结果为0.0001，但是结果输出不同了，而且a和b的值也发生了变化。这与十进制与二进制的转换有关。</p>
+<h4 id="fortran下的表达式等价原则"><a href="#fortran下的表达式等价原则" class="headerlink" title="fortran下的表达式等价原则"></a>fortran下的表达式等价原则</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program expression_equivalence</span><br><span class="line">real :: x=1.002</span><br><span class="line">real :: y=1.001</span><br><span class="line">real :: t1,t2,t3,t4,t5</span><br><span class="line">	t1=x-y</span><br><span class="line">	t2=x+y</span><br><span class="line">	print *,t1</span><br><span class="line">	print *,t2</span><br><span class="line">	t3=t1*t2</span><br><span class="line">	t4=x**2-y**2</span><br><span class="line">	t5=x*x-y*y</span><br><span class="line">	print *,t3</span><br><span class="line">	print *,t4</span><br><span class="line">	print *,t5</span><br><span class="line">end program expression_equivalence</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x-y=9.99927521E-04</span><br><span class="line">x+y=2.00300002    </span><br><span class="line">(x-y)*(x+y)=2.00285483E-03</span><br><span class="line">x^2-y^2=2.00295448E-03</span><br><span class="line">x*x-y*y=2.00295448E-03</span><br></pre></td></tr></table></figure>
+<p>计算器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x-y=0.001</span><br><span class="line">x+y=2.003  </span><br><span class="line">(x-y)*(x+y)=2.003E-3</span><br><span class="line">x^2-y^2=2.003E-3</span><br><span class="line">x*x-y*y=2.003E-3</span><br></pre></td></tr></table></figure>
+<p>LibreOffice：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x-y=0.001</span><br><span class="line">x+y=2.003  </span><br><span class="line">(x-y)*(x+y)=0.002003</span><br><span class="line">x^2-y^2=0.002003</span><br><span class="line">x*x-y*y=0.002003</span><br></pre></td></tr></table></figure>
+<h4 id="ch0804变形"><a href="#ch0804变形" class="headerlink" title="ch0804变形"></a>ch0804变形</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM ch0804changed</span><br><span class="line">implicit none</span><br><span class="line">real :: light_minute, distance, elapse</span><br><span class="line">integer :: minute, second </span><br><span class="line">real :: light_year  ! 改变的为这一句和下面一句，将其改变为可变变量</span><br><span class="line">light_year=9.46*10**12</span><br><span class="line">light_minute = light_year/(365.25 * 24.0 * 60.0)</span><br><span class="line">distance = 150.0 * 10 ** 6</span><br><span class="line">elapse = distance / light_minute</span><br><span class="line">minute = elapse</span><br><span class="line">second = (elapse - minute) * 60</span><br><span class="line">print *,&#x27; light takes &#x27; , minute, &#x27; Minutes&#x27;</span><br><span class="line">print *,&#x27;             &#x27; , second, &#x27; seconds&#x27;</span><br><span class="line">print *,&#x27; To reach the earth from the sum&#x27;</span><br><span class="line">END PROGRAM ch0804changed</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    6 | light_year=9.46*10**12</span><br><span class="line">      |                  1</span><br><span class="line">Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)</span><br></pre></td></tr></table></figure>
+<p>疑问： ？？？未解决</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="DIMENSION-属性"><a href="#DIMENSION-属性" class="headerlink" title="DIMENSION 属性"></a>DIMENSION 属性</h2><p>使用dimension属性将变量定义为数组：</p>
+<pre><code>real , dimension(1:100) :: wages
+integer , dimension(1:1000) :: sample
+</code></pre>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0901</span><br><span class="line">implicit none</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">real , dimension(1:12) :: rainfall</span><br><span class="line">integer :: month</span><br><span class="line"></span><br><span class="line">	print *,&#x27;Type in the rainfall values&#x27;</span><br><span class="line">	print *,&#x27;one per line&#x27;</span><br><span class="line">	do month=1,12   ! 使用do进行循环</span><br><span class="line">		read *, rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	do month=1,12</span><br><span class="line">		total = total + rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average = total / 12</span><br><span class="line">	print *,&#x27;average monthly rainfall was&#x27;</span><br><span class="line">	print *, average</span><br><span class="line">end program ch0901</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Type in the rainfall values</span><br><span class="line"> one per line</span><br><span class="line">23</span><br><span class="line">22</span><br><span class="line">24</span><br><span class="line">23</span><br><span class="line">21</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">12</span><br><span class="line">10</span><br><span class="line">45</span><br><span class="line">40</span><br><span class="line">44</span><br><span class="line"> average monthly rainfall was</span><br><span class="line">   24.2500000  </span><br></pre></td></tr></table></figure>
+<h2 id="do循环"><a href="#do循环" class="headerlink" title="do循环"></a>do循环</h2><pre><code>do counter = start, end, increment
+......  ！语句
+enddo
+</code></pre>
+<p>其中，increment默认为1，可以省略。</p>
+<h2 id="使用参数设置数组大小"><a href="#使用参数设置数组大小" class="headerlink" title="使用参数设置数组大小"></a>使用参数设置数组大小</h2><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0902</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight for person &#x27;, person</span><br><span class="line">		read *,weight(person)</span><br><span class="line">		total = total + weight(person)</span><br><span class="line">	enddo</span><br><span class="line">	average = total/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights were &#x27;</span><br><span class="line">	</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,weight(person)</span><br><span class="line">	enddo</span><br><span class="line">end program ch0902</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> type in the weight for person            1</span><br><span class="line">85</span><br><span class="line"> type in the weight for person            2</span><br><span class="line">76</span><br><span class="line"> type in the weight for person            3</span><br><span class="line">85</span><br><span class="line"> type in the weight for person            4</span><br><span class="line">90</span><br><span class="line"> type in the weight for person            5</span><br><span class="line">69</span><br><span class="line"> type in the weight for person            6</span><br><span class="line">83</span><br><span class="line"> type in the weight for person            7</span><br><span class="line">64</span><br><span class="line"> type in the weight for person            8</span><br><span class="line">57</span><br><span class="line"> type in the weight for person            9</span><br><span class="line">65</span><br><span class="line"> type in the weight for person           10</span><br><span class="line">76</span><br><span class="line"> the total of the weights is    750.000000    </span><br><span class="line"> average weight is    75.0000000    </span><br><span class="line">            10  weights were </span><br><span class="line">   85.0000000    </span><br><span class="line">   76.0000000    </span><br><span class="line">   85.0000000    </span><br><span class="line">   90.0000000    </span><br><span class="line">   69.0000000    </span><br><span class="line">   83.0000000    </span><br><span class="line">   64.0000000    </span><br><span class="line">   57.0000000    </span><br><span class="line">   65.0000000    </span><br><span class="line">   76.0000000   </span><br></pre></td></tr></table></figure>
+
+<p>语句：</p>
+<pre><code>real , dimension(number) :: weight
+</code></pre>
+<p>若下界未指定，则为1。</p>
+<h2 id="格式化输出形式"><a href="#格式化输出形式" class="headerlink" title="格式化输出形式"></a>格式化输出形式</h2><h3 id="format输出"><a href="#format输出" class="headerlink" title="format输出"></a>format输出</h3><p>常用描述符号与举例：<br>参考：<a href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
+<p>例句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print 100</span><br><span class="line">100 format (20x, &#x27;Length&#x27;, 20x,&#x27;period&#x27;)</span><br><span class="line"></span><br><span class="line">do number = 1,10</span><br><span class="line">	print 200, length(number), T(number)</span><br><span class="line">	200 format (20x, i5, 20x, f5.2)  </span><br><span class="line">	 ！ 输出为length和T，其中20x表示空间格数，i5指整数5个长度。f为实数。</span><br><span class="line">enddo</span><br></pre></td></tr></table></figure>
+
+<h2 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h2><h3 id="2、计算5个数的平均值"><a href="#2、计算5个数的平均值" class="headerlink" title="2、计算5个数的平均值"></a>2、计算5个数的平均值</h3><p>注意！ 定义数组时使用<code>:</code>分隔上下界，使用do循环使用<code>,</code>分隔上下界。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program average_5</span><br><span class="line"></span><br><span class="line">integer , parameter :: quantity=5</span><br><span class="line">real , dimension(1 : quantity) :: numbers</span><br><span class="line">real :: total=0.0, average=0.0</span><br><span class="line">integer :: range</span><br><span class="line">do range=1,quantity</span><br><span class="line">	print *,&#x27;Please input &#x27;,quantity,&#x27;numbers, the &#x27;, range,&#x27;one is:&#x27;</span><br><span class="line">	read *,numbers(range)</span><br><span class="line">	total = total + numbers(range)</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">average=total/quantity</span><br><span class="line">print *,&#x27;The average of &#x27;,quantity,&#x27;numbers is:&#x27;,average</span><br><span class="line"></span><br><span class="line">end program average_5</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Please input            5 numbers, the            1 one is:</span><br><span class="line">5</span><br><span class="line"> Please input            5 numbers, the            2 one is:</span><br><span class="line">3.4</span><br><span class="line"> Please input            5 numbers, the            3 one is:</span><br><span class="line">0.6</span><br><span class="line"> Please input            5 numbers, the            4 one is:</span><br><span class="line">2.8</span><br><span class="line"> Please input            5 numbers, the            5 one is:</span><br><span class="line">8.9</span><br><span class="line"> The average of            5 numbers is:   4.14000034    </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1、改写体重总数，计算身高总数和平均数"><a href="#3-1、改写体重总数，计算身高总数和平均数" class="headerlink" title="3-1、改写体重总数，计算身高总数和平均数"></a>3-1、改写体重总数，计算身高总数和平均数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0902</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total_weight=0.0, average_weight=0.0,total_height=0.0, average_height=0.0</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight, height</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight and height for person &#x27;, person, &#x27;use space as the interval:&#x27;</span><br><span class="line">		read *,weight(person), height(person)</span><br><span class="line">		total_weight = total_weight + weight(person)</span><br><span class="line">		total_height = total_height + height(person)</span><br><span class="line">	enddo</span><br><span class="line">	average_weight = total_weight/number_of_people</span><br><span class="line">	average_height = total_height/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total_weight, &#x27;the total of the heights is &#x27;, total_height</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average_weight, &#x27; average height is &#x27;, average_height</span><br><span class="line">	</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights and heights were &#x27;	</span><br><span class="line">	print *,&#x27;^I&#x27;,&#x27;number_of_people&#x27;, &#x27;^I weights&#x27;,&#x27; ^I heights&#x27;	</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,person,&#x27;^I&#x27;,weight(person),&#x27;^I&#x27;, height(person)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">end program ch0902</span><br></pre></td></tr></table></figure>
+<p>忘了改program名了，但是也证明了内部program的名称和外部文件名称可以不同，以外部文件名为准。<br>输出：<br>（ps：输出有些杂乱，因为还没有掌握输出书写的一些方式。）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> type in the weight and height for person            1 use space as the interval:</span><br><span class="line">85 1.85</span><br><span class="line"> type in the weight and height for person            2 use space as the interval:</span><br><span class="line">76 1.80</span><br><span class="line"> type in the weight and height for person            3 use space as the interval:</span><br><span class="line">85 1.85</span><br><span class="line"> type in the weight and height for person            4 use space as the interval:</span><br><span class="line">90 1.70</span><br><span class="line"> type in the weight and height for person            5 use space as the interval:</span><br><span class="line">69 1.75</span><br><span class="line"> type in the weight and height for person            6 use space as the interval:</span><br><span class="line">83 1.67</span><br><span class="line"> type in the weight and height for person            7 use space as the interval:</span><br><span class="line">64 1.55</span><br><span class="line"> type in the weight and height for person            8 use space as the interval:</span><br><span class="line">57 1.63</span><br><span class="line"> type in the weight and height for person            9 use space as the interval:</span><br><span class="line">65 1.79</span><br><span class="line"> type in the weight and height for person           10 use space as the interval:</span><br><span class="line">76 1.78</span><br><span class="line"> the total of the weights is    750.000000     the total of the heights is    17.3700008    </span><br><span class="line"> average weight is    75.0000000      average height is    1.73700011    </span><br><span class="line">            10  weights and heights were </span><br><span class="line"> ^Inumber_of_people^I weights ^I heights</span><br><span class="line">           1 ^I   85.0000000     ^I   1.85000002    </span><br><span class="line">           2 ^I   76.0000000     ^I   1.79999995    </span><br><span class="line">           3 ^I   85.0000000     ^I   1.85000002    </span><br><span class="line">           4 ^I   90.0000000     ^I   1.70000005    </span><br><span class="line">           5 ^I   69.0000000     ^I   1.75000000    </span><br><span class="line">           6 ^I   83.0000000     ^I   1.66999996    </span><br><span class="line">           7 ^I   64.0000000     ^I   1.54999995    </span><br><span class="line">           8 ^I   57.0000000     ^I   1.63000000    </span><br><span class="line">           9 ^I   65.0000000     ^I   1.78999996    </span><br><span class="line">          10 ^I   76.0000000     ^I   1.77999997 </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-计算BIM值"><a href="#3-2-计算BIM值" class="headerlink" title="3-2 计算BIM值"></a>3-2 计算BIM值</h3><p>使用语句：<br>    a.out &lt; data.dat &gt; results.txt</p>
+<p>实现文件的输入和输出操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch3_2</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total_weight=0.0, average_weight=0.0,total_height=0.0, average_height=0.0</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight, height, BMI</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight and height for person &#x27;, person, &#x27;use space as the interval:&#x27;</span><br><span class="line">		read *,weight(person), height(person)</span><br><span class="line">		total_weight = total_weight + weight(person)</span><br><span class="line">		total_height = total_height + height(person)</span><br><span class="line">		BMI(person)=weight(person)/(height(person)**2)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average_weight = total_weight/number_of_people</span><br><span class="line">	average_height = total_height/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total_weight, &#x27;the total of the heights is &#x27;, total_height</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average_weight, &#x27; average height is &#x27;, average_height</span><br><span class="line">	</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights and heights were &#x27;	</span><br><span class="line">	print *,&#x27;number_of_people&#x27;, &#x27;weights&#x27;,&#x27;heights&#x27;	,&#x27;BMI&#x27;</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,person ,weight(person), height(person), BMI(person)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">end program ch3_2</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">文件 result.txt</span><br><span class="line"> type in the weight and height for person            1 use space as the interval:</span><br><span class="line"> type in the weight and height for person            2 use space as the interval:</span><br><span class="line"> type in the weight and height for person            3 use space as the interval:</span><br><span class="line"> type in the weight and height for person            4 use space as the interval:</span><br><span class="line"> type in the weight and height for person            5 use space as the interval:</span><br><span class="line"> type in the weight and height for person            6 use space as the interval:</span><br><span class="line"> type in the weight and height for person            7 use space as the interval:</span><br><span class="line"> type in the weight and height for person            8 use space as the interval:</span><br><span class="line"> type in the weight and height for person            9 use space as the interval:</span><br><span class="line"> type in the weight and height for person           10 use space as the interval:</span><br><span class="line"> the total of the weights is    750.000000     the total of the heights is    17.3700008    </span><br><span class="line"> average weight is    75.0000000      average height is    1.73700011    </span><br><span class="line">            10  weights and heights were </span><br><span class="line"> number_of_peopleweightsheightsBMI</span><br><span class="line">           1   85.0000000       1.85000002       24.8356457    </span><br><span class="line">           2   76.0000000       1.79999995       23.4567909    </span><br><span class="line">           3   85.0000000       1.85000002       24.8356457    </span><br><span class="line">           4   90.0000000       1.70000005       31.1418667    </span><br><span class="line">           5   69.0000000       1.75000000       22.5306129    </span><br><span class="line">           6   83.0000000       1.66999996       29.7608395    </span><br><span class="line">           7   64.0000000       1.54999995       26.6389179    </span><br><span class="line">           8   57.0000000       1.63000000       21.4535751    </span><br><span class="line">           9   65.0000000       1.78999996       20.2865086    </span><br><span class="line">          10   76.0000000       1.77999997       23.9868717    </span><br></pre></td></tr></table></figure>
+
+<h3 id="6、计算摆的周期（制表）"><a href="#6、计算摆的周期（制表）" class="headerlink" title="6、计算摆的周期（制表）"></a>6、计算摆的周期（制表）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch6</span><br><span class="line">implicit none</span><br><span class="line">real , parameter :: pi = 3.1415926535</span><br><span class="line">integer ,dimension(1:10) :: length</span><br><span class="line">integer :: number</span><br><span class="line">real ,dimension(1:10) :: T</span><br><span class="line">do number = 1,10,1</span><br><span class="line">	length(number) = number</span><br><span class="line">enddo</span><br><span class="line">do number = 1,10</span><br><span class="line">	T(number) = 2 * pi * (length(number) / 9.81) ** .5</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">print 100</span><br><span class="line">100 format (20x, &#x27;Length&#x27;, 20x,&#x27;period&#x27;)</span><br><span class="line"></span><br><span class="line">do number = 1,10</span><br><span class="line">	print 200, length(number), T(number)</span><br><span class="line">	200 format (20x, i5, 20x, f5.2)  </span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">end program ch6</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Length                    period</span><br><span class="line">    1                     2.01</span><br><span class="line">    2                     2.84</span><br><span class="line">    3                     3.47</span><br><span class="line">    4                     4.01</span><br><span class="line">    5                     4.49</span><br><span class="line">    6                     4.91</span><br><span class="line">    7                     5.31</span><br><span class="line">    8                     5.67</span><br><span class="line">    9                     6.02</span><br><span class="line">   10                     6.34</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Fortran</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GMT学习笔记</title>
     <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>参考：</p>
@@ -96,20 +225,6 @@ gmt end show  # show表示自动打开生成的图片文件
       </tags>
   </entry>
   <entry>
-    <title>Introduction to Seismology习题</title>
-    <url>/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="这里整理课本习题"><a href="#这里整理课本习题" class="headerlink" title="这里整理课本习题"></a>这里整理课本习题</h1><p>有些习题未完成，之后会持续补充…</p>
-<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="1.1.jpg" alt="1"><br><img src="1.2.jpg" alt="1"><br><img src="1.3.jpg" alt="1"><br><img src="1.4.jpg" alt="1"></p>
-<h1 id="Chapter-2"><a href="#Chapter-2" class="headerlink" title="Chapter 2"></a>Chapter 2</h1><p><img src="2.1.jpg" alt="1"><br><img src="2.2.jpg" alt="1"><br><img src="2.3.jpg" alt="1"></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>Introduction to Seismology</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git学习笔记</title>
     <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
@@ -202,6 +317,20 @@ git push     //推送
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Introduction to Seismology习题</title>
+    <url>/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="这里整理课本习题"><a href="#这里整理课本习题" class="headerlink" title="这里整理课本习题"></a>这里整理课本习题</h1><p>有些习题未完成，之后会持续补充…</p>
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="1.1.jpg" alt="1"><br><img src="1.2.jpg" alt="1"><br><img src="1.3.jpg" alt="1"><br><img src="1.4.jpg" alt="1"></p>
+<h1 id="Chapter-2"><a href="#Chapter-2" class="headerlink" title="Chapter 2"></a>Chapter 2</h1><p><img src="2.1.jpg" alt="1"><br><img src="2.2.jpg" alt="1"><br><img src="2.3.jpg" alt="1"></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>Introduction to Seismology</tag>
       </tags>
   </entry>
   <entry>
@@ -684,27 +813,6 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>Obspy学习笔记</title>
-    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="数据中心检索数据"><a href="#数据中心检索数据" class="headerlink" title="数据中心检索数据"></a>数据中心检索数据</h2><h2 id="1-FDSN网络服务"><a href="#1-FDSN网络服务" class="headerlink" title="1 FDSN网络服务"></a>1 FDSN网络服务</h2><pre><code>import obspy.clients.fdsn
-</code></pre>
-<h2 id="2-Arclink网络服务"><a href="#2-Arclink网络服务" class="headerlink" title="2 Arclink网络服务"></a>2 Arclink网络服务</h2><h2 id="3-IRIS网络服务"><a href="#3-IRIS网络服务" class="headerlink" title="3 IRIS网络服务"></a>3 IRIS网络服务</h2><h2 id="4-Earthworm-wave服务"><a href="#4-Earthworm-wave服务" class="headerlink" title="4 Earthworm wave服务"></a>4 Earthworm wave服务</h2><pre><code>import obspy.clients.earthworm
-</code></pre>
-<h2 id="5-NEIC网络服务"><a href="#5-NEIC网络服务" class="headerlink" title="5 NEIC网络服务"></a>5 NEIC网络服务</h2><pre><code>import obspy.clients.neic
-</code></pre>
-<h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
-</code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Obspy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SAC学习笔记</title>
     <url>/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
@@ -944,135 +1052,6 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>Fortran初探</title>
-    <url>/2022/11/01/Fortran%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[Fortran权威指南&#x2F;(英)奇弗斯(Chivers,I.),(英)斯莱索尔姆(Sleightholme,J.)著；陈宝国等译.–北京：人民邮电出版社，2009.10]</p>
-<p><a href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
-<h1 id="基础内容"><a href="#基础内容" class="headerlink" title="基础内容"></a>基础内容</h1><p>！ 作为注释标记</p>
-<h3 id="Fortran规则："><a href="#Fortran规则：" class="headerlink" title="Fortran规则："></a>Fortran规则：</h3><ul>
-<li>自由源格式</li>
-<li>不区分大小写</li>
-<li>存在语句顺序<ul>
-<li>PROGRAM</li>
-<li>类型声明语句</li>
-<li>处理与I&#x2F;O语句</li>
-<li>END PROGRAM</li>
-</ul>
-</li>
-<li>！用于引入注释</li>
-<li>变量名称长度最多31字符，包括_</li>
-<li>每行最多132个字符</li>
-<li>最多可以允许39个连续行</li>
-<li>如果不使用<code>IMPLICIT NONE</code>语句，则没有显式声明的变量被看成默认的类型。即：首个字符是A-H或O-Z，则默认为REAL型。若为I-N，则默认INTEGER型。</li>
-</ul>
-<h3 id="1、输出你的名字"><a href="#1、输出你的名字" class="headerlink" title="1、输出你的名字"></a>1、输出你的名字</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM ch0701      ！程序命名</span><br><span class="line">!</span><br><span class="line">! This program reads in and prints out a name</span><br><span class="line">!</span><br><span class="line">IMPLICIT NONE   ！ 表示使用的每个数据项的类型必须是显式的</span><br><span class="line">CHARACTER*20 :: First_Name ! 类型声明</span><br><span class="line">!</span><br><span class="line">	PRINT *,&#x27; Type in your first name.&#x27;     ！ 输出语句</span><br><span class="line">	PRINT *,&#x27; up to 20 characters&#x27;</span><br><span class="line">	READ *,First_Name       ！读取键盘输入的字符</span><br><span class="line">	PRINT *,First_Name</span><br><span class="line">!</span><br><span class="line">END PROGRAM ch0701   ！ 终止程序</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="2、计算平均值"><a href="#2、计算平均值" class="headerlink" title="2、计算平均值"></a>2、计算平均值</h3><p>遵循的原则：声明所有变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">PROGRAM ch0702   ！程序命名</span><br><span class="line">!</span><br><span class="line">! This program reads in three numbers and sums</span><br><span class="line">! and averages them</span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">IMPLICIT NONE   ！ 表示使用的每个数据项的类型必须是显式的</span><br><span class="line">REAL :: N1,N2,N3,Average = 0.0,Total = 0.0</span><br><span class="line">INTEGER :: N = 3</span><br><span class="line">	PRINT *,&#x27; Type in three numbers.&#x27;</span><br><span class="line">	PRINT *,&#x27; Separated by spaces or commas&#x27;</span><br><span class="line">	READ *,N1,N2,N3</span><br><span class="line">	Total= N1 + N2 + N3   ! 三个变量值相加</span><br><span class="line">	AVERAGE=Total/N</span><br><span class="line">	PRINT *,&#x27;Average of the numbers is &#x27;,Average</span><br><span class="line">END PROGRAM ch0702</span><br></pre></td></tr></table></figure>
-
-<h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><p>运算法则与C或Python相同，但是需要注意：</p>
-<ul>
-<li>求幂运算：从右往左的顺序</li>
-<li>加减法：不需要注意运算顺序</li>
-<li>乘法除法：非整型运算不一定按照从左到右的顺序，需要加括号保证顺序<br>注意：使用时加括号时最好的方式。</li>
-</ul>
-<h3 id="截断"><a href="#截断" class="headerlink" title="截断"></a>截断</h3><p>注意截断。整型截断为舍入</p>
-<h3 id="PARAMETER-语句"><a href="#PARAMETER-语句" class="headerlink" title="PARAMETER 语句"></a>PARAMETER 语句</h3><pre><code>REAL , PARAMETER :: value=12
-</code></pre>
-<p>类似于C语言中的固定变量，即在类型声明语句之前将某个变量名与变量关联，从而不可更改该变量名的值。<br>类似于<code>#define</code>。</p>
-<h3 id="精度问题"><a href="#精度问题" class="headerlink" title="精度问题"></a>精度问题</h3><h3 id="变量状态"><a href="#变量状态" class="headerlink" title="变量状态"></a>变量状态</h3><ul>
-<li>已确定的状态 defined：已定义值</li>
-<li>未确定的状态 undefined：未定义值</li>
-</ul>
-<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><h4 id="2、运行示例4"><a href="#2、运行示例4" class="headerlink" title="2、运行示例4"></a>2、运行示例4</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM ch0804</span><br><span class="line">implicit none</span><br><span class="line">real :: light_minute, distance, elapse</span><br><span class="line">integer :: minute, second </span><br><span class="line">real, parameter :: light_year=9.46*10**12</span><br><span class="line"></span><br><span class="line">light_minute = light_year/(365.25 * 24.0 * 60.0)</span><br><span class="line">distance = 150.0 * 10 ** 6</span><br><span class="line">elapse = distance / light_minute</span><br><span class="line">minute = elapse</span><br><span class="line">second = (elapse - minute) * 60</span><br><span class="line">print *,&#x27; light takes &#x27; , minute, &#x27; Minutes&#x27;</span><br><span class="line">print *,&#x27;             &#x27; , second, &#x27; seconds&#x27;</span><br><span class="line">print *,&#x27; To reach the earth from the sum&#x27;</span><br><span class="line">END PROGRAM ch0804</span><br></pre></td></tr></table></figure>
-
-<p>在运行ch0804出现错误：</p>
-<pre><code>Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)
-</code></pre>
-<p>表示结果超出整型范围。</p>
-<p>疑问：？？？ 未解决</p>
-<h4 id="计算摆的周期"><a href="#计算摆的周期" class="headerlink" title="计算摆的周期"></a>计算摆的周期</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM period_of_pendulum</span><br><span class="line">implicit none</span><br><span class="line">real :: length,T</span><br><span class="line">real , parameter :: pi = 3.1415926535</span><br><span class="line">print *,&#x27;Please input the length of pendulum:&#x27;</span><br><span class="line">read *, length</span><br><span class="line">T = 2 * Pi * (length / 9.81) ** .5</span><br><span class="line">print *,&#x27;The period is &#x27;, T, &#x27;seconds.&#x27;</span><br><span class="line">end program period_of_pendulum</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Please input the length of pendulum:</span><br><span class="line">1</span><br><span class="line"> The period is    2.00606656     seconds.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在计算器中的输出值为：2.006066681。</p>
-<h4 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program base_conversion</span><br><span class="line">real :: x1=1.0</span><br><span class="line">real :: x2=0.1</span><br><span class="line">real :: x3=0.01</span><br><span class="line">real :: x4=0.001</span><br><span class="line">real :: x5=0.0001</span><br><span class="line">	print *,&#x27; &#x27;,x1</span><br><span class="line">	print *,&#x27; &#x27;,x2</span><br><span class="line">	print *,&#x27; &#x27;,x3</span><br><span class="line">	print *,&#x27; &#x27;,x4</span><br><span class="line">	print *,&#x27; &#x27;,x5</span><br><span class="line">end program base_conversion</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> 1.00000000    </span><br><span class="line">0.100000001    </span><br><span class="line"> 9.99999978E-03</span><br><span class="line"> 1.00000005E-03</span><br><span class="line"> 9.99999975E-05</span><br></pre></td></tr></table></figure>
-<p>1.0保持不变，但是其他值均发生了改变。</p>
-<h4 id="简单减法"><a href="#简单减法" class="headerlink" title="简单减法"></a>简单减法</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program subtract</span><br><span class="line">real :: a=1.0002</span><br><span class="line">real :: b=1.0001</span><br><span class="line">real :: c</span><br><span class="line">	c=a-b</span><br><span class="line">	print *,a</span><br><span class="line">	print *,b</span><br><span class="line">	print *,c</span><br><span class="line">end program subtract</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.00020003    </span><br><span class="line">1.00010002    </span><br><span class="line">1.00016594E-04</span><br></pre></td></tr></table></figure>
-<p>理论结果为0.0001，但是结果输出不同了，而且a和b的值也发生了变化。这与十进制与二进制的转换有关。</p>
-<h4 id="fortran下的表达式等价原则"><a href="#fortran下的表达式等价原则" class="headerlink" title="fortran下的表达式等价原则"></a>fortran下的表达式等价原则</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program expression_equivalence</span><br><span class="line">real :: x=1.002</span><br><span class="line">real :: y=1.001</span><br><span class="line">real :: t1,t2,t3,t4,t5</span><br><span class="line">	t1=x-y</span><br><span class="line">	t2=x+y</span><br><span class="line">	print *,t1</span><br><span class="line">	print *,t2</span><br><span class="line">	t3=t1*t2</span><br><span class="line">	t4=x**2-y**2</span><br><span class="line">	t5=x*x-y*y</span><br><span class="line">	print *,t3</span><br><span class="line">	print *,t4</span><br><span class="line">	print *,t5</span><br><span class="line">end program expression_equivalence</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x-y=9.99927521E-04</span><br><span class="line">x+y=2.00300002    </span><br><span class="line">(x-y)*(x+y)=2.00285483E-03</span><br><span class="line">x^2-y^2=2.00295448E-03</span><br><span class="line">x*x-y*y=2.00295448E-03</span><br></pre></td></tr></table></figure>
-<p>计算器：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x-y=0.001</span><br><span class="line">x+y=2.003  </span><br><span class="line">(x-y)*(x+y)=2.003E-3</span><br><span class="line">x^2-y^2=2.003E-3</span><br><span class="line">x*x-y*y=2.003E-3</span><br></pre></td></tr></table></figure>
-<p>LibreOffice：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x-y=0.001</span><br><span class="line">x+y=2.003  </span><br><span class="line">(x-y)*(x+y)=0.002003</span><br><span class="line">x^2-y^2=0.002003</span><br><span class="line">x*x-y*y=0.002003</span><br></pre></td></tr></table></figure>
-<h4 id="ch0804变形"><a href="#ch0804变形" class="headerlink" title="ch0804变形"></a>ch0804变形</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROGRAM ch0804changed</span><br><span class="line">implicit none</span><br><span class="line">real :: light_minute, distance, elapse</span><br><span class="line">integer :: minute, second </span><br><span class="line">real :: light_year  ! 改变的为这一句和下面一句，将其改变为可变变量</span><br><span class="line">light_year=9.46*10**12</span><br><span class="line">light_minute = light_year/(365.25 * 24.0 * 60.0)</span><br><span class="line">distance = 150.0 * 10 ** 6</span><br><span class="line">elapse = distance / light_minute</span><br><span class="line">minute = elapse</span><br><span class="line">second = (elapse - minute) * 60</span><br><span class="line">print *,&#x27; light takes &#x27; , minute, &#x27; Minutes&#x27;</span><br><span class="line">print *,&#x27;             &#x27; , second, &#x27; seconds&#x27;</span><br><span class="line">print *,&#x27; To reach the earth from the sum&#x27;</span><br><span class="line">END PROGRAM ch0804changed</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    6 | light_year=9.46*10**12</span><br><span class="line">      |                  1</span><br><span class="line">Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)</span><br></pre></td></tr></table></figure>
-<p>疑问： ？？？未解决</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="DIMENSION-属性"><a href="#DIMENSION-属性" class="headerlink" title="DIMENSION 属性"></a>DIMENSION 属性</h2><p>使用dimension属性将变量定义为数组：</p>
-<pre><code>real , dimension(1:100) :: wages
-integer , dimension(1:1000) :: sample
-</code></pre>
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0901</span><br><span class="line">implicit none</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">real , dimension(1:12) :: rainfall</span><br><span class="line">integer :: month</span><br><span class="line"></span><br><span class="line">	print *,&#x27;Type in the rainfall values&#x27;</span><br><span class="line">	print *,&#x27;one per line&#x27;</span><br><span class="line">	do month=1,12   ! 使用do进行循环</span><br><span class="line">		read *, rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	do month=1,12</span><br><span class="line">		total = total + rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average = total / 12</span><br><span class="line">	print *,&#x27;average monthly rainfall was&#x27;</span><br><span class="line">	print *, average</span><br><span class="line">end program ch0901</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Type in the rainfall values</span><br><span class="line"> one per line</span><br><span class="line">23</span><br><span class="line">22</span><br><span class="line">24</span><br><span class="line">23</span><br><span class="line">21</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">12</span><br><span class="line">10</span><br><span class="line">45</span><br><span class="line">40</span><br><span class="line">44</span><br><span class="line"> average monthly rainfall was</span><br><span class="line">   24.2500000  </span><br></pre></td></tr></table></figure>
-<h2 id="do循环"><a href="#do循环" class="headerlink" title="do循环"></a>do循环</h2><pre><code>do counter = start, end, increment
-......  ！语句
-enddo
-</code></pre>
-<p>其中，increment默认为1，可以省略。</p>
-<h2 id="使用参数设置数组大小"><a href="#使用参数设置数组大小" class="headerlink" title="使用参数设置数组大小"></a>使用参数设置数组大小</h2><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0902</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight for person &#x27;, person</span><br><span class="line">		read *,weight(person)</span><br><span class="line">		total = total + weight(person)</span><br><span class="line">	enddo</span><br><span class="line">	average = total/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights were &#x27;</span><br><span class="line">	</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,weight(person)</span><br><span class="line">	enddo</span><br><span class="line">end program ch0902</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> type in the weight for person            1</span><br><span class="line">85</span><br><span class="line"> type in the weight for person            2</span><br><span class="line">76</span><br><span class="line"> type in the weight for person            3</span><br><span class="line">85</span><br><span class="line"> type in the weight for person            4</span><br><span class="line">90</span><br><span class="line"> type in the weight for person            5</span><br><span class="line">69</span><br><span class="line"> type in the weight for person            6</span><br><span class="line">83</span><br><span class="line"> type in the weight for person            7</span><br><span class="line">64</span><br><span class="line"> type in the weight for person            8</span><br><span class="line">57</span><br><span class="line"> type in the weight for person            9</span><br><span class="line">65</span><br><span class="line"> type in the weight for person           10</span><br><span class="line">76</span><br><span class="line"> the total of the weights is    750.000000    </span><br><span class="line"> average weight is    75.0000000    </span><br><span class="line">            10  weights were </span><br><span class="line">   85.0000000    </span><br><span class="line">   76.0000000    </span><br><span class="line">   85.0000000    </span><br><span class="line">   90.0000000    </span><br><span class="line">   69.0000000    </span><br><span class="line">   83.0000000    </span><br><span class="line">   64.0000000    </span><br><span class="line">   57.0000000    </span><br><span class="line">   65.0000000    </span><br><span class="line">   76.0000000   </span><br></pre></td></tr></table></figure>
-
-<p>语句：</p>
-<pre><code>real , dimension(number) :: weight
-</code></pre>
-<p>若下界未指定，则为1。</p>
-<h2 id="格式化输出形式"><a href="#格式化输出形式" class="headerlink" title="格式化输出形式"></a>格式化输出形式</h2><h3 id="format输出"><a href="#format输出" class="headerlink" title="format输出"></a>format输出</h3><p>常用描述符号与举例：<br>参考：<a href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
-<p>例句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print 100</span><br><span class="line">100 format (20x, &#x27;Length&#x27;, 20x,&#x27;period&#x27;)</span><br><span class="line"></span><br><span class="line">do number = 1,10</span><br><span class="line">	print 200, length(number), T(number)</span><br><span class="line">	200 format (20x, i5, 20x, f5.2)  </span><br><span class="line">	 ！ 输出为length和T，其中20x表示空间格数，i5指整数5个长度。f为实数。</span><br><span class="line">enddo</span><br></pre></td></tr></table></figure>
-
-<h2 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h2><h3 id="2、计算5个数的平均值"><a href="#2、计算5个数的平均值" class="headerlink" title="2、计算5个数的平均值"></a>2、计算5个数的平均值</h3><p>注意！ 定义数组时使用<code>:</code>分隔上下界，使用do循环使用<code>,</code>分隔上下界。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program average_5</span><br><span class="line"></span><br><span class="line">integer , parameter :: quantity=5</span><br><span class="line">real , dimension(1 : quantity) :: numbers</span><br><span class="line">real :: total=0.0, average=0.0</span><br><span class="line">integer :: range</span><br><span class="line">do range=1,quantity</span><br><span class="line">	print *,&#x27;Please input &#x27;,quantity,&#x27;numbers, the &#x27;, range,&#x27;one is:&#x27;</span><br><span class="line">	read *,numbers(range)</span><br><span class="line">	total = total + numbers(range)</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">average=total/quantity</span><br><span class="line">print *,&#x27;The average of &#x27;,quantity,&#x27;numbers is:&#x27;,average</span><br><span class="line"></span><br><span class="line">end program average_5</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Please input            5 numbers, the            1 one is:</span><br><span class="line">5</span><br><span class="line"> Please input            5 numbers, the            2 one is:</span><br><span class="line">3.4</span><br><span class="line"> Please input            5 numbers, the            3 one is:</span><br><span class="line">0.6</span><br><span class="line"> Please input            5 numbers, the            4 one is:</span><br><span class="line">2.8</span><br><span class="line"> Please input            5 numbers, the            5 one is:</span><br><span class="line">8.9</span><br><span class="line"> The average of            5 numbers is:   4.14000034    </span><br></pre></td></tr></table></figure>
-
-<h3 id="3-1、改写体重总数，计算身高总数和平均数"><a href="#3-1、改写体重总数，计算身高总数和平均数" class="headerlink" title="3-1、改写体重总数，计算身高总数和平均数"></a>3-1、改写体重总数，计算身高总数和平均数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0902</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total_weight=0.0, average_weight=0.0,total_height=0.0, average_height=0.0</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight, height</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight and height for person &#x27;, person, &#x27;use space as the interval:&#x27;</span><br><span class="line">		read *,weight(person), height(person)</span><br><span class="line">		total_weight = total_weight + weight(person)</span><br><span class="line">		total_height = total_height + height(person)</span><br><span class="line">	enddo</span><br><span class="line">	average_weight = total_weight/number_of_people</span><br><span class="line">	average_height = total_height/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total_weight, &#x27;the total of the heights is &#x27;, total_height</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average_weight, &#x27; average height is &#x27;, average_height</span><br><span class="line">	</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights and heights were &#x27;	</span><br><span class="line">	print *,&#x27;^I&#x27;,&#x27;number_of_people&#x27;, &#x27;^I weights&#x27;,&#x27; ^I heights&#x27;	</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,person,&#x27;^I&#x27;,weight(person),&#x27;^I&#x27;, height(person)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">end program ch0902</span><br></pre></td></tr></table></figure>
-<p>忘了改program名了，但是也证明了内部program的名称和外部文件名称可以不同，以外部文件名为准。<br>输出：<br>（ps：输出有些杂乱，因为还没有掌握输出书写的一些方式。）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> type in the weight and height for person            1 use space as the interval:</span><br><span class="line">85 1.85</span><br><span class="line"> type in the weight and height for person            2 use space as the interval:</span><br><span class="line">76 1.80</span><br><span class="line"> type in the weight and height for person            3 use space as the interval:</span><br><span class="line">85 1.85</span><br><span class="line"> type in the weight and height for person            4 use space as the interval:</span><br><span class="line">90 1.70</span><br><span class="line"> type in the weight and height for person            5 use space as the interval:</span><br><span class="line">69 1.75</span><br><span class="line"> type in the weight and height for person            6 use space as the interval:</span><br><span class="line">83 1.67</span><br><span class="line"> type in the weight and height for person            7 use space as the interval:</span><br><span class="line">64 1.55</span><br><span class="line"> type in the weight and height for person            8 use space as the interval:</span><br><span class="line">57 1.63</span><br><span class="line"> type in the weight and height for person            9 use space as the interval:</span><br><span class="line">65 1.79</span><br><span class="line"> type in the weight and height for person           10 use space as the interval:</span><br><span class="line">76 1.78</span><br><span class="line"> the total of the weights is    750.000000     the total of the heights is    17.3700008    </span><br><span class="line"> average weight is    75.0000000      average height is    1.73700011    </span><br><span class="line">            10  weights and heights were </span><br><span class="line"> ^Inumber_of_people^I weights ^I heights</span><br><span class="line">           1 ^I   85.0000000     ^I   1.85000002    </span><br><span class="line">           2 ^I   76.0000000     ^I   1.79999995    </span><br><span class="line">           3 ^I   85.0000000     ^I   1.85000002    </span><br><span class="line">           4 ^I   90.0000000     ^I   1.70000005    </span><br><span class="line">           5 ^I   69.0000000     ^I   1.75000000    </span><br><span class="line">           6 ^I   83.0000000     ^I   1.66999996    </span><br><span class="line">           7 ^I   64.0000000     ^I   1.54999995    </span><br><span class="line">           8 ^I   57.0000000     ^I   1.63000000    </span><br><span class="line">           9 ^I   65.0000000     ^I   1.78999996    </span><br><span class="line">          10 ^I   76.0000000     ^I   1.77999997 </span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-计算BIM值"><a href="#3-2-计算BIM值" class="headerlink" title="3-2 计算BIM值"></a>3-2 计算BIM值</h3><p>使用语句：<br>    a.out &lt; data.dat &gt; results.txt</p>
-<p>实现文件的输入和输出操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch3_2</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total_weight=0.0, average_weight=0.0,total_height=0.0, average_height=0.0</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight, height, BMI</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight and height for person &#x27;, person, &#x27;use space as the interval:&#x27;</span><br><span class="line">		read *,weight(person), height(person)</span><br><span class="line">		total_weight = total_weight + weight(person)</span><br><span class="line">		total_height = total_height + height(person)</span><br><span class="line">		BMI(person)=weight(person)/(height(person)**2)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average_weight = total_weight/number_of_people</span><br><span class="line">	average_height = total_height/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total_weight, &#x27;the total of the heights is &#x27;, total_height</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average_weight, &#x27; average height is &#x27;, average_height</span><br><span class="line">	</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights and heights were &#x27;	</span><br><span class="line">	print *,&#x27;number_of_people&#x27;, &#x27;weights&#x27;,&#x27;heights&#x27;	,&#x27;BMI&#x27;</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,person ,weight(person), height(person), BMI(person)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">end program ch3_2</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">文件 result.txt</span><br><span class="line"> type in the weight and height for person            1 use space as the interval:</span><br><span class="line"> type in the weight and height for person            2 use space as the interval:</span><br><span class="line"> type in the weight and height for person            3 use space as the interval:</span><br><span class="line"> type in the weight and height for person            4 use space as the interval:</span><br><span class="line"> type in the weight and height for person            5 use space as the interval:</span><br><span class="line"> type in the weight and height for person            6 use space as the interval:</span><br><span class="line"> type in the weight and height for person            7 use space as the interval:</span><br><span class="line"> type in the weight and height for person            8 use space as the interval:</span><br><span class="line"> type in the weight and height for person            9 use space as the interval:</span><br><span class="line"> type in the weight and height for person           10 use space as the interval:</span><br><span class="line"> the total of the weights is    750.000000     the total of the heights is    17.3700008    </span><br><span class="line"> average weight is    75.0000000      average height is    1.73700011    </span><br><span class="line">            10  weights and heights were </span><br><span class="line"> number_of_peopleweightsheightsBMI</span><br><span class="line">           1   85.0000000       1.85000002       24.8356457    </span><br><span class="line">           2   76.0000000       1.79999995       23.4567909    </span><br><span class="line">           3   85.0000000       1.85000002       24.8356457    </span><br><span class="line">           4   90.0000000       1.70000005       31.1418667    </span><br><span class="line">           5   69.0000000       1.75000000       22.5306129    </span><br><span class="line">           6   83.0000000       1.66999996       29.7608395    </span><br><span class="line">           7   64.0000000       1.54999995       26.6389179    </span><br><span class="line">           8   57.0000000       1.63000000       21.4535751    </span><br><span class="line">           9   65.0000000       1.78999996       20.2865086    </span><br><span class="line">          10   76.0000000       1.77999997       23.9868717    </span><br></pre></td></tr></table></figure>
-
-<h3 id="6、计算摆的周期（制表）"><a href="#6、计算摆的周期（制表）" class="headerlink" title="6、计算摆的周期（制表）"></a>6、计算摆的周期（制表）</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch6</span><br><span class="line">implicit none</span><br><span class="line">real , parameter :: pi = 3.1415926535</span><br><span class="line">integer ,dimension(1:10) :: length</span><br><span class="line">integer :: number</span><br><span class="line">real ,dimension(1:10) :: T</span><br><span class="line">do number = 1,10,1</span><br><span class="line">	length(number) = number</span><br><span class="line">enddo</span><br><span class="line">do number = 1,10</span><br><span class="line">	T(number) = 2 * pi * (length(number) / 9.81) ** .5</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">print 100</span><br><span class="line">100 format (20x, &#x27;Length&#x27;, 20x,&#x27;period&#x27;)</span><br><span class="line"></span><br><span class="line">do number = 1,10</span><br><span class="line">	print 200, length(number), T(number)</span><br><span class="line">	200 format (20x, i5, 20x, f5.2)  </span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">end program ch6</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Length                    period</span><br><span class="line">    1                     2.01</span><br><span class="line">    2                     2.84</span><br><span class="line">    3                     3.47</span><br><span class="line">    4                     4.01</span><br><span class="line">    5                     4.49</span><br><span class="line">    6                     4.91</span><br><span class="line">    7                     5.31</span><br><span class="line">    8                     5.67</span><br><span class="line">    9                     6.02</span><br><span class="line">   10                     6.34</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Fortran</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SAC数据处理笔记</title>
     <url>/2022/10/21/SAC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="SAC数据处理流程"><a href="#SAC数据处理流程" class="headerlink" title="SAC数据处理流程"></a>SAC数据处理流程</h1><p>命令：</p>
@@ -1211,34 +1190,47 @@ sumstack # 叠加波形
       </tags>
   </entry>
   <entry>
-    <title>SAC时间变量</title>
-    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
-<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
-<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
-<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
-<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
-<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+    <title>Obspy学习笔记</title>
+    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="数据中心检索数据"><a href="#数据中心检索数据" class="headerlink" title="数据中心检索数据"></a>数据中心检索数据</h2><h2 id="1-FDSN网络服务"><a href="#1-FDSN网络服务" class="headerlink" title="1 FDSN网络服务"></a>1 FDSN网络服务</h2><pre><code>import obspy.clients.fdsn
+</code></pre>
+<h2 id="2-Arclink网络服务"><a href="#2-Arclink网络服务" class="headerlink" title="2 Arclink网络服务"></a>2 Arclink网络服务</h2><h2 id="3-IRIS网络服务"><a href="#3-IRIS网络服务" class="headerlink" title="3 IRIS网络服务"></a>3 IRIS网络服务</h2><h2 id="4-Earthworm-wave服务"><a href="#4-Earthworm-wave服务" class="headerlink" title="4 Earthworm wave服务"></a>4 Earthworm wave服务</h2><pre><code>import obspy.clients.earthworm
+</code></pre>
+<h2 id="5-NEIC网络服务"><a href="#5-NEIC网络服务" class="headerlink" title="5 NEIC网络服务"></a>5 NEIC网络服务</h2><pre><code>import obspy.clients.neic
+</code></pre>
+<h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
+</code></pre>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC数据格式与数据合并</title>
+    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
+<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
+<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
+<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
+
+<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
 
 
-<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
-<p>使用注意事项：</p>
+<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
+<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
+<p>如果出现数据间断或者数据重叠的情况：</p>
 <ul>
-<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
-<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+<li>存在间断，可以直接补零或者线性插值；</li>
+<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
 </ul>
-<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
-<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
-
-<p>处理大量数据时：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
-
-<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
-<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -1500,32 +1492,63 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>SAC数据格式与数据合并</title>
-    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
-<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
-<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
-<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
+    <title>SAC时间变量</title>
+    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
 
-<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
 
-
-<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
-<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
-<p>如果出现数据间断或者数据重叠的情况：</p>
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
 <ul>
-<li>存在间断，可以直接补零或者线性插值；</li>
-<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
 </ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
       </categories>
       <tags>
         <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu与windows双系统设置windows默认启动</title>
+    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
+<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
+<p>打开终端，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
+
+<p>将第6行的 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
+<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
+<p>保存后，运行以下命令更新grub文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<p>重启系统即可。</p>
+<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1625,29 +1648,6 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>Vista</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu与windows双系统设置windows默认启动</title>
-    <url>/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>参考：<br><a href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
-
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
-]]></content>
-      <categories>
-        <category>Linux学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1969,6 +1969,97 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
+    <title>从零开始的Obspy</title>
+    <url>/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/</url>
+    <content><![CDATA[<h1 id="读取地震数据"><a href="#读取地震数据" class="headerlink" title="读取地震数据"></a>读取地震数据</h1><h2 id="访问元信息"><a href="#访问元信息" class="headerlink" title="访问元信息"></a>访问元信息</h2><pre><code>from obspy import read
+waves = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10.mseed&#39;)
+print(waves)  # 输出波形名称
+</code></pre>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.HH1 | 2014-10-28T01:29:59.388393Z - 2014-10-28T01:34:00.158393Z | 100.0 Hz, 24078 samples</span><br><span class="line">IU.ADK.10.HH2 | 2014-10-28T01:30:02.058394Z - 2014-10-28T01:33:59.158394Z | 100.0 Hz, 23711 samples</span><br><span class="line">IU.ADK.10.HHZ | 2014-10-28T01:29:41.818393Z - 2014-10-28T01:34:00.778393Z | 100.0 Hz, 25897 samples</span><br><span class="line">IU.ADK.10.LH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.VH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VMU | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMV | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMW | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(waves))  # waves中含有15个波形
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>输出最前面的波形名称</p>
+<pre><code>tra1 = waves[0]
+print(tra1)  # 输出最前面的波形名称
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<p>输出元信息，即地震数据的台站信息等:</p>
+<pre><code>print(tra1.stats)  # 输出元信息，即地震数据的台站信息等
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      network: IU</span><br><span class="line">      station: ADK</span><br><span class="line">     location: 10</span><br><span class="line">      channel: BH1</span><br><span class="line">    starttime: 2014-10-28T00:00:00.019500Z</span><br><span class="line">      endtime: 2014-10-28T23:59:59.994500Z</span><br><span class="line">sampling_rate: 40.0</span><br><span class="line">        delta: 0.025</span><br><span class="line">         npts: 3456000</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: MSEED</span><br><span class="line">        mseed: AttribDict(&#123;&#x27;dataquality&#x27;: &#x27;M&#x27;, &#x27;number_of_records&#x27;: 14448, &#x27;encoding&#x27;: &#x27;STEIM2&#x27;, &#x27;byteorder&#x27;: &#x27;&gt;&#x27;, &#x27;record_length&#x27;: 512, &#x27;filesize&#x27;: 22335488&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>print(tra1.stats.station)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ADK</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问波形数据"><a href="#访问波形数据" class="headerlink" title="访问波形数据"></a>访问波形数据</h2><p>使用data关键词对实际波形数据进行检索</p>
+<pre><code>print(tra1.data)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[-4017 -3853 -3594 ...  1167   807  1231]</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(len(tra1.data))
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3456000   # 与上面的波形中npts相对应</span><br></pre></td></tr></table></figure>
+
+<pre><code>tra1.plot()  # 浏览数据
+</code></pre>
+<h1 id="波形绘制"><a href="#波形绘制" class="headerlink" title="波形绘制"></a>波形绘制</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><pre><code>from obspy.core import read
+
+# 读取一个数据
+signalchannel = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+# 读取三个数据
+threechannels = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B01.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B02.sac&#39;)
+threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
+print(signalchannel)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+
+<pre><code>print(&quot;\n&quot;)
+print(threechannels)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
+<h2 id="基本绘制与保存"><a href="#基本绘制与保存" class="headerlink" title="基本绘制与保存"></a>基本绘制与保存</h2><p>signalchannel.plot()  # 基本绘制，默认大小800*250，可以通过size属性调整.</p>
+<p>size属性使用方法：size&#x3D;(1920,1080)</p>
+<pre><code>signalsstarttime = signalchannel[0].stats.starttime
+signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
+signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
+</code></pre>
+<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel"></p>
+<h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
+</code></pre>
+<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080"></p>
+<h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
+</code></pre>
+<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday"></p>
+<pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
+signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
+                   type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
+                   vertical_scaling_range=5e3, one_tick_per_line=True,
+                   color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
+                   events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
+</code></pre>
+<p><img src="signalchannel_oneday_filter.png" alt="signalchannel_oneday_filter"></p>
+<h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
+</code></pre>
+<h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
+<li>疑问：signalchannel 需要取read到的内容的[0]项，具体未知为何如此。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">fig = plt.figure()  # 创建一个画布</span><br><span class="line">ax = fig.add_subplot(1, 1, 1) # 创建组合图，如subplot()</span><br><span class="line">ax.plot(signalchannel[0].times(&quot;matplotlib&quot;), signalchannel[0].data, &#x27;b-&#x27;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<img src="matplot_signalchannel.png" alt="matplotlib绘图"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客创建笔记</title>
     <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
@@ -2068,97 +2159,6 @@ man 命令名  //使用范围更广
       </categories>
   </entry>
   <entry>
-    <title>从零开始的Obspy</title>
-    <url>/2022/10/29/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/</url>
-    <content><![CDATA[<h1 id="读取地震数据"><a href="#读取地震数据" class="headerlink" title="读取地震数据"></a>读取地震数据</h1><h2 id="访问元信息"><a href="#访问元信息" class="headerlink" title="访问元信息"></a>访问元信息</h2><pre><code>from obspy import read
-waves = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10.mseed&#39;)
-print(waves)  # 输出波形名称
-</code></pre>
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.HH1 | 2014-10-28T01:29:59.388393Z - 2014-10-28T01:34:00.158393Z | 100.0 Hz, 24078 samples</span><br><span class="line">IU.ADK.10.HH2 | 2014-10-28T01:30:02.058394Z - 2014-10-28T01:33:59.158394Z | 100.0 Hz, 23711 samples</span><br><span class="line">IU.ADK.10.HHZ | 2014-10-28T01:29:41.818393Z - 2014-10-28T01:34:00.778393Z | 100.0 Hz, 25897 samples</span><br><span class="line">IU.ADK.10.LH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.LHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:59.069500Z | 1.0 Hz, 86400 samples</span><br><span class="line">IU.ADK.10.VH1 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VH2 | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VHZ | 2014-10-28T00:00:00.069500Z - 2014-10-28T23:59:50.069500Z | 0.1 Hz, 8640 samples</span><br><span class="line">IU.ADK.10.VMU | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMV | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br><span class="line">IU.ADK.10.VMW | 2014-10-28T00:00:00.000000Z - 2014-10-29T00:00:00.000000Z | 0.1 Hz, 8641 samples</span><br></pre></td></tr></table></figure>
-
-<pre><code>print(len(waves))  # waves中含有15个波形
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
-
-<p>输出最前面的波形名称</p>
-<pre><code>tra1 = waves[0]
-print(tra1)  # 输出最前面的波形名称
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
-
-<p>输出元信息，即地震数据的台站信息等:</p>
-<pre><code>print(tra1.stats)  # 输出元信息，即地震数据的台站信息等
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      network: IU</span><br><span class="line">      station: ADK</span><br><span class="line">     location: 10</span><br><span class="line">      channel: BH1</span><br><span class="line">    starttime: 2014-10-28T00:00:00.019500Z</span><br><span class="line">      endtime: 2014-10-28T23:59:59.994500Z</span><br><span class="line">sampling_rate: 40.0</span><br><span class="line">        delta: 0.025</span><br><span class="line">         npts: 3456000</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: MSEED</span><br><span class="line">        mseed: AttribDict(&#123;&#x27;dataquality&#x27;: &#x27;M&#x27;, &#x27;number_of_records&#x27;: 14448, &#x27;encoding&#x27;: &#x27;STEIM2&#x27;, &#x27;byteorder&#x27;: &#x27;&gt;&#x27;, &#x27;record_length&#x27;: 512, &#x27;filesize&#x27;: 22335488&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>print(tra1.stats.station)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ADK</span><br></pre></td></tr></table></figure>
-
-<h2 id="访问波形数据"><a href="#访问波形数据" class="headerlink" title="访问波形数据"></a>访问波形数据</h2><p>使用data关键词对实际波形数据进行检索</p>
-<pre><code>print(tra1.data)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[-4017 -3853 -3594 ...  1167   807  1231]</span><br></pre></td></tr></table></figure>
-
-<pre><code>print(len(tra1.data))
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3456000   # 与上面的波形中npts相对应</span><br></pre></td></tr></table></figure>
-
-<pre><code>tra1.plot()  # 浏览数据
-</code></pre>
-<h1 id="波形绘制"><a href="#波形绘制" class="headerlink" title="波形绘制"></a>波形绘制</h1><h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><pre><code>from obspy.core import read
-
-# 读取一个数据
-signalchannel = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
-# 读取三个数据
-threechannels = read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B01.sac&#39;)
-threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B02.sac&#39;)
-threechannels += read(&#39;/home/zhiyuanshi/Documents/Pythonworks/IU_ADK_10_B03.sac&#39;)
-print(signalchannel)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
-
-<pre><code>print(&quot;\n&quot;)
-print(threechannels)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 Trace(s) in Stream:</span><br><span class="line">IU.ADK.10.BH1 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BH2 | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br><span class="line">IU.ADK.10.BHZ | 2014-10-28T00:00:00.019500Z - 2014-10-28T23:59:59.994500Z | 40.0 Hz, 3456000 samples</span><br></pre></td></tr></table></figure>
-<h2 id="基本绘制与保存"><a href="#基本绘制与保存" class="headerlink" title="基本绘制与保存"></a>基本绘制与保存</h2><p>signalchannel.plot()  # 基本绘制，默认大小800*250，可以通过size属性调整.</p>
-<p>size属性使用方法：size&#x3D;(1920,1080)</p>
-<pre><code>signalsstarttime = signalchannel[0].stats.starttime
-signalchannel.plot(outfile=&#39;signalchannelred.png&#39;, color=&#39;red&#39;, number_of_ticks=7, tick_rotation=5, tick_format=&#39;%I:%M %p&#39;,starttime = signalsstarttime+60*60, endtime=signalsstarttime+60*60+120)
-signalchannel.plot(outfile=&#39;signalchannel.png&#39;)  # 保存波形文件
-</code></pre>
-<p><img src="signalchannelred.png" alt="signalchannelred"><br><img src="signalchannel.png" alt="signalchannel"></p>
-<h2 id="绘制多通道波形"><a href="#绘制多通道波形" class="headerlink" title="绘制多通道波形"></a>绘制多通道波形</h2><pre><code>threechannels.plot(outfile=&#39;threechannels1920_1080.png&#39;, size=(1920,1080))
-</code></pre>
-<p><img src="threechannels1920_1080.png" alt="threechannels1920_1080"></p>
-<h2 id="绘制一天的trace图像，one-day图像"><a href="#绘制一天的trace图像，one-day图像" class="headerlink" title="绘制一天的trace图像，one-day图像"></a>绘制一天的trace图像，one-day图像</h2><pre><code>signalchannel.plot(outfile=&#39;signalchannel_oneday.png&#39;, size = (3400,1440), type=&#39;dayplot&#39;)
-</code></pre>
-<p><img src="signalchannel_oneday.png" alt="signalchannel_oneday"></p>
-<pre><code>signalchannel.filter(&#39;lowpass&#39;, freq=0.1, corners=2)
-signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
-                   type=&#39;dayplot&#39;, interval=60, right_vertical_labels=False,
-                   vertical_scaling_range=5e3, one_tick_per_line=True,
-                   color=[&#39;k&#39;, &#39;r&#39;, &#39;b&#39;, &#39;g&#39;],  show_y_UTC_label=False,
-                   events=&#123;&#39;min_magnitude&#39;: 6.5&#125;, size=(3400, 1440))
-</code></pre>
-<p><img src="signalchannel_oneday_filter.png" alt="signalchannel_oneday_filter"></p>
-<h2 id="绘制一段记录-未完成，需要定义单位或者地理位置"><a href="#绘制一段记录-未完成，需要定义单位或者地理位置" class="headerlink" title="绘制一段记录 (未完成，需要定义单位或者地理位置)"></a>绘制一段记录 (未完成，需要定义单位或者地理位置)</h2><pre><code>threechannels.plot(outfile=&#39;section_threechannels&#39;, type=&#39;section&#39;)
-</code></pre>
-<h2 id="使用matplotlib自定义绘图"><a href="#使用matplotlib自定义绘图" class="headerlink" title="使用matplotlib自定义绘图"></a>使用matplotlib自定义绘图</h2><ul>
-<li>疑问：signalchannel 需要取read到的内容的[0]项，具体未知为何如此。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">fig = plt.figure()  # 创建一个画布</span><br><span class="line">ax = fig.add_subplot(1, 1, 1) # 创建组合图，如subplot()</span><br><span class="line">ax.plot(signalchannel[0].times(&quot;matplotlib&quot;), signalchannel[0].data, &#x27;b-&#x27;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<img src="matplot_signalchannel.png" alt="matplotlib绘图"></li>
-</ul>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Obspy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>吉布斯现象作业</title>
     <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
     <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
@@ -2175,230 +2175,6 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
       </categories>
       <tags>
         <tag>地震资料数字处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>地震学英语专业词汇</title>
-    <url>/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
-<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[现代地震学教程&#x2F;周仕勇，许忠怀等编著.-2版.-北京：北京大学出版社,2018.2]</p>
-<p>[2].<a href="https://seismo-learn.org/seismology101/">地震’学’网站</a></p>
-<h1 id="来源-1-《现代地震学教程》"><a href="#来源-1-《现代地震学教程》" class="headerlink" title="来源 [1]《现代地震学教程》"></a>来源 [1]《现代地震学教程》</h1><p>potential function 势函数</p>
-<p>angular frequency 角频率</p>
-<p>wave number 波数</p>
-<p>plane wave 平面波</p>
-<p>wavefront 波阵面 </p>
-<p>slowness 慢度</p>
-<p>fast direction 快方向（横波分裂）</p>
-<p>wave front 波前</p>
-<p>seismic ray 射线</p>
-<p>Eikonal equation 程函方程</p>
-<p>Snell 斯奈尔</p>
-<p>Fermat 费马</p>
-<p>Hugens 惠更斯</p>
-<p>apparent slowness 水平慢度，视慢度</p>
-<p>head wave 首波</p>
-<p>coda 尾波</p>
-<p>regional event 区域地震（&lt;1000km或10°）</p>
-<p>local event 地方震</p>
-<p>phase lag 相位滞后</p>
-<p>dispersion 频散 波散</p>
-<p>dynamic wave phase velocities 波场动态相速度</p>
-<p>structural phase velocities 结构相速度</p>
-<p>non-planar wavefield 非平面波场</p>
-<p>spheroidal oscillation 球型振荡</p>
-<p>torsional oscillation &#x2F; toroidal oscillation 环型震荡</p>
-<h1 id="来源-2-地震“学”网站"><a href="#来源-2-地震“学”网站" class="headerlink" title="来源 [2] 地震“学”网站"></a>来源 [2] 地震“学”网站</h1><p>inner-core bondary 内核边界（ICB）</p>
-<p>core-mantle boundary 核幔边界（CMB）</p>
-<p>moho discontinuity 莫霍间断面</p>
-<p>Conrad discontinuity 康拉德界面</p>
-<p>mantle transition zone 地幔转换带（410-660km）</p>
-<p>seismic phase 震相</p>
-<p>seismic source 震源</p>
-<p>seismic event 地震事件</p>
-<p>seismic wave 地震波</p>
-<p>seismograph 地震仪</p>
-<p>seismic station 地震台</p>
-<p>seismogram 地震图</p>
-<p>Hooke’s law 胡克定律</p>
-<p>origin time 发震时刻</p>
-<p>hypocenter 震源位置</p>
-<p>epicenter 震中</p>
-<p>magnitude 震级</p>
-<p>body wave 体波</p>
-<p>surface wave 面波</p>
-<p>primary wave(P-wave) P波</p>
-<p>secondary wave(S-wave) S波</p>
-<p>compression wave 压缩波</p>
-<p>shear wave 剪切波</p>
-<p>Rayleigh wave 瑞利波</p>
-<p>Love wave 勒夫波</p>
-<p>longitudinal wave 纵波</p>
-<p>transverse wave 横波</p>
-<p>seismic waveform 地震波形</p>
-<p>metadata 元数据</p>
-<p>catalog 地震目录</p>
-<p>crust 地壳</p>
-<p>mantle 地幔</p>
-<p>core 地核</p>
-<p>outer core 外核</p>
-<p>inner core 内核</p>
-<p>SAC(seismic analysis codes)</p>
-<p>miniSEED(standard for the exchange of earthquake data)</p>
-<p>fetch 获取</p>
-<p>processing 处理</p>
-<p>analysis 分析</p>
-]]></content>
-      <categories>
-        <category>专业英语词汇</category>
-      </categories>
-      <tags>
-        <tag>英语词汇</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>地震数据下载与数据命名规则</title>
-    <url>/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/</url>
-    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[Seisman数据命名规则]<a href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3</a></p>
-<p>[地震学笔记]<a href="https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/">https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/</a></p>
-<h1 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h1><p>数据获取有多种方式，例如脚本或者直接网页申请。在这里记录使用方法</p>
-<hr>
-<h2 id="获取数据需要的参数（数据命名规则）"><a href="#获取数据需要的参数（数据命名规则）" class="headerlink" title="获取数据需要的参数（数据命名规则）"></a>获取数据需要的参数（数据命名规则）</h2><p>标准SAC文件命名规则为：</p>
-<pre><code>yyyy.ddd.hh.mm.ss.ffff.NN.SSSSS.LL.CCC.Q.SAC
-</code></pre>
-<ul>
-<li>yyyy: 年份</li>
-<li>ddd: 年分中的第几天</li>
-<li>hh.mm.ss.ffff: 时、分、秒、毫秒</li>
-<li>NN: 台网代号</li>
-<li>SSSSS: 台站名（代号）</li>
-<li>LL: 位置码，台站中的地震仪编号</li>
-<li>CCC: 通道名</li>
-<li>Q: 质量控制标识</li>
-<li>SAC: 格式后缀</li>
-</ul>
-<h3 id="Network-台网"><a href="#Network-台网" class="headerlink" title="Network 台网"></a>Network 台网</h3><p>台网名如下：<br>所有永久或临时台网：<a href="http://www.fdsn.org/networks/">http://www.fdsn.org/networks/</a></p>
-<h3 id="Station-台站"><a href="#Station-台站" class="headerlink" title="Station 台站"></a>Station 台站</h3><h3 id="Location-位置码（同一台站的不同地震仪）"><a href="#Location-位置码（同一台站的不同地震仪）" class="headerlink" title="Location 位置码（同一台站的不同地震仪）"></a>Location 位置码（同一台站的不同地震仪）</h3><p>常见为空。</p>
-<h3 id="Channel-通道"><a href="#Channel-通道" class="headerlink" title="Channel 通道"></a>Channel 通道</h3><p>通道名有三个字符。三个字符分别表示：频带码、仪器码、方位码。</p>
-<h4 id="频带码（Band-Code）"><a href="#频带码（Band-Code）" class="headerlink" title="频带码（Band Code）"></a>频带码（Band Code）</h4><p>第一个字符表示仪器采样率以及响应频带等信息。</p>
-<p>参考：<a href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">Seisman频带码表</a></p>
-<h4 id="仪器码（Instrument-Code）"><a href="#仪器码（Instrument-Code）" class="headerlink" title="仪器码（Instrument Code）"></a>仪器码（Instrument Code）</h4><p>第二个字符表示不同的仪器传感器。</p>
-<table>
-<thead>
-<tr>
-<th>仪器码</th>
-<th>说明</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>H</td>
-<td>High Gain Seismometer</td>
-<td>高增益地震仪</td>
-</tr>
-<tr>
-<td>L</td>
-<td>Low Gain Seismometer</td>
-<td>低增益地震仪</td>
-</tr>
-<tr>
-<td>G</td>
-<td>Gravimeter</td>
-<td>重力仪</td>
-</tr>
-<tr>
-<td>M</td>
-<td>Mass position Seismometer</td>
-<td>质量位置地震仪</td>
-</tr>
-<tr>
-<td>N</td>
-<td>Accelerometer</td>
-<td>加速度计</td>
-</tr>
-</tbody></table>
-<p>常见H 高增益仪器。</p>
-<h4 id="方位码（Orientation-Code）"><a href="#方位码（Orientation-Code）" class="headerlink" title="方位码（Orientation Code）"></a>方位码（Orientation Code）</h4><ul>
-<li>N E Z 南北向、东西向、垂向</li>
-<li>1 2 3（Z） 3（Z）为垂向，1、2为正交的水平向，但并非南北东西向</li>
-<li>T R Z 切向、径向、垂向</li>
-<li>方位码 U V W 未知，可能与1 2 Z（3）相同</li>
-</ul>
-<p>注意：N、E、Z并非指正北等方向，与正北夹角2度以内的均可取N。以头段变量cmpaz和cmpinc为准（cmpaz也可能产生一定误差）。</p>
-<h3 id="Quality-波形质量"><a href="#Quality-波形质量" class="headerlink" title="Quality 波形质量"></a>Quality 波形质量</h3><ul>
-<li>D 不确定状态的数据</li>
-<li>M 已合并的数据</li>
-<li>R 原始波形数据</li>
-<li>Q 经过质量控制的数据<br>常见M与Q。</li>
-</ul>
-<h3 id="Format-格式"><a href="#Format-格式" class="headerlink" title="Format 格式"></a>Format 格式</h3><ul>
-<li>SAC格式</li>
-<li>mSeed格式</li>
-<li>miniSeed格式</li>
-</ul>
-<hr>
-<h2 id="Web-Services-网页获取"><a href="#Web-Services-网页获取" class="headerlink" title="Web Services 网页获取"></a>Web Services 网页获取</h2><hr>
-<h2 id="Obspy获取"><a href="#Obspy获取" class="headerlink" title="Obspy获取"></a>Obspy获取</h2><h3 id="服务器下载波形数据"><a href="#服务器下载波形数据" class="headerlink" title="服务器下载波形数据"></a>服务器下载波形数据</h3><p>使用get_waveforms()从服务器下载波形数据，<br>需要添加关键字参数自定义申请。</p>
-<h4 id="申请单个数据"><a href="#申请单个数据" class="headerlink" title="申请单个数据"></a>申请单个数据</h4><p>参数：</p>
-<pre><code>waveform = get_waveforms（台网名，台站名，位置码，通道名，波形开始时间，波形结束时间（s））
-</code></pre>
-<ul>
-<li><p>每个参数需要””，多个参数使用 , 隔开。</p>
-</li>
-<li><p>可以使用通配符，?和*</p>
-</li>
-<li><p>filename &#x3D; ‘文件名’waveform</p>
-</li>
-<li><p>attach_response&#x3D;True  添加仪器响应</p>
-<p>  waveform.remove_response(output&#x3D;’VEL’) 去除仪器响应</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy.clients.fdsn.header import URL_MAPPINGS # 数据中心列表</span><br><span class="line">from obspy import UTCDateTime # 时间模块</span><br><span class="line"></span><br><span class="line">client = Client(&quot;IRIS&quot;)  # 可以使用URL或者数据中心简写</span><br><span class="line"></span><br><span class="line">for key in sorted(URL_MAPPINGS): # 显示可用的数据中心列表</span><br><span class="line">    print(&quot;&#123;0:&lt;7&#125; &#123;1&#125;&quot;.format(key, URL_MAPPINGS[key]))</span><br><span class="line"></span><br><span class="line">t = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line"></span><br><span class="line"># 申请单个数据</span><br><span class="line">waveform = client.get_waveforms(&quot;IU&quot;, &quot;ANMO,AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t, t + 60 * 60)  # 多个参数使用逗号分隔</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
-
-<h4 id="申请多组数据"><a href="#申请多组数据" class="headerlink" title="申请多组数据"></a>申请多组数据</h4><p>get_waveforms_bulk()可以同时提交多个申请。</p>
-<ul>
-<li><p>多个列表组成的列表，每一个列表包含：台网名、台站名、位置码、通道名、开始时间和结束时间<br>bulk &#x3D; [[“IU”, “ANMO”, “0?”, “LH?”, t1, t2],(),……]</p>
-</li>
-<li><p>包含有效request（返回信息）的字符串、文件名或者已打开文件的句柄</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">字符串：</span><br><span class="line">bulk = &#x27;quality=B\n&#x27; + \</span><br><span class="line">     &#x27;longestonly=false\n&#x27; + \</span><br><span class="line">     &#x27;IU ANMO * BHZ 2010-02-27 2010-02-27T00:00:02\n&#x27; + \</span><br><span class="line">     &#x27;IU AFI 1? BHE 2010-02-27 2010-02-27T00:00:04\n&#x27; + \</span><br><span class="line">     &#x27;GR GRA1 * BH? 2010-02-27 2010-02-27T00:00:02\n&#x27;</span><br><span class="line">文件名：</span><br><span class="line">client.get_waveforms_bulk(&quot;request.txt&quot;, attach_response=True)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>申请多组数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line">t2 = t1 + 60</span><br><span class="line">bult = [[&quot;IU&quot;, &quot;ANMO&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2], [&quot;IU&quot;, &quot;AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2]]</span><br><span class="line">waveform = client.get_waveforms_bulk(bult)</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="服务器下载地震目录-catalog"><a href="#服务器下载地震目录-catalog" class="headerlink" title="服务器下载地震目录(catalog)"></a>服务器下载地震目录(catalog)</h3><p>get_events() 申请地震目录。</p>
-<h4 id="使用-eventid-获取地震目录"><a href="#使用-eventid-获取地震目录" class="headerlink" title="使用 eventid 获取地震目录"></a>使用 eventid 获取地震目录</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">client = Client(&quot;IRIS&quot;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用起止时间以及震级等条件筛选地震"><a href="#使用起止时间以及震级等条件筛选地震" class="headerlink" title="使用起止时间以及震级等条件筛选地震"></a>使用起止时间以及震级等条件筛选地震</h4><pre><code>get_events(starttime = 开始时间，endtime = 结束时间，minmagnitude = 震级，catalog = 地震目录来源)
-</code></pre>
-<ul>
-<li>starttime &#x3D; 开始时间</li>
-<li>endtime &#x3D; 结束时间</li>
-<li>minmagnitude &#x3D; 最小震级</li>
-<li>catalog &#x3D; “地震目录来源”</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2001-01-07T00:00:00&quot;)</span><br><span class="line">t2 = UTCDateTime(&quot;2001-01-07T03:00:00&quot;)</span><br><span class="line">catalogs = client.get_events(starttime=t1, endtime=t2, minmagnitude=4,</span><br><span class="line">                        catalog=&quot;ISC&quot;)</span><br><span class="line">catalogs.plot(projection=&quot;ortho&quot;)  # 绘制地图</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载台站信息数据"><a href="#下载台站信息数据" class="headerlink" title="下载台站信息数据"></a>下载台站信息数据</h3><p>get_stations() 可以得到台站数据，返回值为网络和台站等信息。</p>
-<p>可以通过这个方法查询到相关台网的台站信息、台站所有的位置码和通道等等信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inventory = client.get_stations(network=&quot;IU&quot;, station=&quot;A*&quot;,</span><br><span class="line">                                 starttime=t1,</span><br><span class="line">                                 endtime=t2, level=&quot;response&quot;)  # 申请所有台站的所有分量和仪器响应文件</span><br><span class="line"></span><br><span class="line">print(inventory)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="绘制仪器相应文件"><a href="#绘制仪器相应文件" class="headerlink" title="绘制仪器相应文件"></a>绘制仪器相应文件</h2><p>利用台站信息get_stations()的返回值的plot_response()获得仪器响应文件。</p>
-<pre><code>inventory.plot_response(min_freq=0.01, output=&quot;DISP&quot;, station=&quot;ADK&quot;, channel=&quot;BH?&quot;)
-</code></pre>
-<ul>
-<li>minfreq &#x3D; 最小频率</li>
-<li>output &#x3D; 输出形式? 仪器响应中内置仪器类型中BBDISP表示位移型地震仪，参照<a href="https://seisman.github.io/SAC_Docs_zh/appendix/resp/resp-file/">Seisman仪器响应文件-内置仪器响应</a></li>
-<li>station &#x3D; 台站名</li>
-<li>channel &#x3D; 通道号</li>
-</ul>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Obspy</tag>
       </tags>
   </entry>
   <entry>
@@ -2671,6 +2447,230 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
       </tags>
   </entry>
   <entry>
+    <title>地震学英语专业词汇</title>
+    <url>/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[现代地震学教程&#x2F;周仕勇，许忠怀等编著.-2版.-北京：北京大学出版社,2018.2]</p>
+<p>[2].<a href="https://seismo-learn.org/seismology101/">地震’学’网站</a></p>
+<h1 id="来源-1-《现代地震学教程》"><a href="#来源-1-《现代地震学教程》" class="headerlink" title="来源 [1]《现代地震学教程》"></a>来源 [1]《现代地震学教程》</h1><p>potential function 势函数</p>
+<p>angular frequency 角频率</p>
+<p>wave number 波数</p>
+<p>plane wave 平面波</p>
+<p>wavefront 波阵面 </p>
+<p>slowness 慢度</p>
+<p>fast direction 快方向（横波分裂）</p>
+<p>wave front 波前</p>
+<p>seismic ray 射线</p>
+<p>Eikonal equation 程函方程</p>
+<p>Snell 斯奈尔</p>
+<p>Fermat 费马</p>
+<p>Hugens 惠更斯</p>
+<p>apparent slowness 水平慢度，视慢度</p>
+<p>head wave 首波</p>
+<p>coda 尾波</p>
+<p>regional event 区域地震（&lt;1000km或10°）</p>
+<p>local event 地方震</p>
+<p>phase lag 相位滞后</p>
+<p>dispersion 频散 波散</p>
+<p>dynamic wave phase velocities 波场动态相速度</p>
+<p>structural phase velocities 结构相速度</p>
+<p>non-planar wavefield 非平面波场</p>
+<p>spheroidal oscillation 球型振荡</p>
+<p>torsional oscillation &#x2F; toroidal oscillation 环型震荡</p>
+<h1 id="来源-2-地震“学”网站"><a href="#来源-2-地震“学”网站" class="headerlink" title="来源 [2] 地震“学”网站"></a>来源 [2] 地震“学”网站</h1><p>inner-core bondary 内核边界（ICB）</p>
+<p>core-mantle boundary 核幔边界（CMB）</p>
+<p>moho discontinuity 莫霍间断面</p>
+<p>Conrad discontinuity 康拉德界面</p>
+<p>mantle transition zone 地幔转换带（410-660km）</p>
+<p>seismic phase 震相</p>
+<p>seismic source 震源</p>
+<p>seismic event 地震事件</p>
+<p>seismic wave 地震波</p>
+<p>seismograph 地震仪</p>
+<p>seismic station 地震台</p>
+<p>seismogram 地震图</p>
+<p>Hooke’s law 胡克定律</p>
+<p>origin time 发震时刻</p>
+<p>hypocenter 震源位置</p>
+<p>epicenter 震中</p>
+<p>magnitude 震级</p>
+<p>body wave 体波</p>
+<p>surface wave 面波</p>
+<p>primary wave(P-wave) P波</p>
+<p>secondary wave(S-wave) S波</p>
+<p>compression wave 压缩波</p>
+<p>shear wave 剪切波</p>
+<p>Rayleigh wave 瑞利波</p>
+<p>Love wave 勒夫波</p>
+<p>longitudinal wave 纵波</p>
+<p>transverse wave 横波</p>
+<p>seismic waveform 地震波形</p>
+<p>metadata 元数据</p>
+<p>catalog 地震目录</p>
+<p>crust 地壳</p>
+<p>mantle 地幔</p>
+<p>core 地核</p>
+<p>outer core 外核</p>
+<p>inner core 内核</p>
+<p>SAC(seismic analysis codes)</p>
+<p>miniSEED(standard for the exchange of earthquake data)</p>
+<p>fetch 获取</p>
+<p>processing 处理</p>
+<p>analysis 分析</p>
+]]></content>
+      <categories>
+        <category>专业英语词汇</category>
+      </categories>
+      <tags>
+        <tag>英语词汇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>地震数据下载与数据命名规则</title>
+    <url>/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/</url>
+    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[Seisman数据命名规则]<a href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3</a></p>
+<p>[地震学笔记]<a href="https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/">https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/</a></p>
+<h1 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h1><p>数据获取有多种方式，例如脚本或者直接网页申请。在这里记录使用方法</p>
+<hr>
+<h2 id="获取数据需要的参数（数据命名规则）"><a href="#获取数据需要的参数（数据命名规则）" class="headerlink" title="获取数据需要的参数（数据命名规则）"></a>获取数据需要的参数（数据命名规则）</h2><p>标准SAC文件命名规则为：</p>
+<pre><code>yyyy.ddd.hh.mm.ss.ffff.NN.SSSSS.LL.CCC.Q.SAC
+</code></pre>
+<ul>
+<li>yyyy: 年份</li>
+<li>ddd: 年分中的第几天</li>
+<li>hh.mm.ss.ffff: 时、分、秒、毫秒</li>
+<li>NN: 台网代号</li>
+<li>SSSSS: 台站名（代号）</li>
+<li>LL: 位置码，台站中的地震仪编号</li>
+<li>CCC: 通道名</li>
+<li>Q: 质量控制标识</li>
+<li>SAC: 格式后缀</li>
+</ul>
+<h3 id="Network-台网"><a href="#Network-台网" class="headerlink" title="Network 台网"></a>Network 台网</h3><p>台网名如下：<br>所有永久或临时台网：<a href="http://www.fdsn.org/networks/">http://www.fdsn.org/networks/</a></p>
+<h3 id="Station-台站"><a href="#Station-台站" class="headerlink" title="Station 台站"></a>Station 台站</h3><h3 id="Location-位置码（同一台站的不同地震仪）"><a href="#Location-位置码（同一台站的不同地震仪）" class="headerlink" title="Location 位置码（同一台站的不同地震仪）"></a>Location 位置码（同一台站的不同地震仪）</h3><p>常见为空。</p>
+<h3 id="Channel-通道"><a href="#Channel-通道" class="headerlink" title="Channel 通道"></a>Channel 通道</h3><p>通道名有三个字符。三个字符分别表示：频带码、仪器码、方位码。</p>
+<h4 id="频带码（Band-Code）"><a href="#频带码（Band-Code）" class="headerlink" title="频带码（Band Code）"></a>频带码（Band Code）</h4><p>第一个字符表示仪器采样率以及响应频带等信息。</p>
+<p>参考：<a href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">Seisman频带码表</a></p>
+<h4 id="仪器码（Instrument-Code）"><a href="#仪器码（Instrument-Code）" class="headerlink" title="仪器码（Instrument Code）"></a>仪器码（Instrument Code）</h4><p>第二个字符表示不同的仪器传感器。</p>
+<table>
+<thead>
+<tr>
+<th>仪器码</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H</td>
+<td>High Gain Seismometer</td>
+<td>高增益地震仪</td>
+</tr>
+<tr>
+<td>L</td>
+<td>Low Gain Seismometer</td>
+<td>低增益地震仪</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Gravimeter</td>
+<td>重力仪</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Mass position Seismometer</td>
+<td>质量位置地震仪</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Accelerometer</td>
+<td>加速度计</td>
+</tr>
+</tbody></table>
+<p>常见H 高增益仪器。</p>
+<h4 id="方位码（Orientation-Code）"><a href="#方位码（Orientation-Code）" class="headerlink" title="方位码（Orientation Code）"></a>方位码（Orientation Code）</h4><ul>
+<li>N E Z 南北向、东西向、垂向</li>
+<li>1 2 3（Z） 3（Z）为垂向，1、2为正交的水平向，但并非南北东西向</li>
+<li>T R Z 切向、径向、垂向</li>
+<li>方位码 U V W 未知，可能与1 2 Z（3）相同</li>
+</ul>
+<p>注意：N、E、Z并非指正北等方向，与正北夹角2度以内的均可取N。以头段变量cmpaz和cmpinc为准（cmpaz也可能产生一定误差）。</p>
+<h3 id="Quality-波形质量"><a href="#Quality-波形质量" class="headerlink" title="Quality 波形质量"></a>Quality 波形质量</h3><ul>
+<li>D 不确定状态的数据</li>
+<li>M 已合并的数据</li>
+<li>R 原始波形数据</li>
+<li>Q 经过质量控制的数据<br>常见M与Q。</li>
+</ul>
+<h3 id="Format-格式"><a href="#Format-格式" class="headerlink" title="Format 格式"></a>Format 格式</h3><ul>
+<li>SAC格式</li>
+<li>mSeed格式</li>
+<li>miniSeed格式</li>
+</ul>
+<hr>
+<h2 id="Web-Services-网页获取"><a href="#Web-Services-网页获取" class="headerlink" title="Web Services 网页获取"></a>Web Services 网页获取</h2><hr>
+<h2 id="Obspy获取"><a href="#Obspy获取" class="headerlink" title="Obspy获取"></a>Obspy获取</h2><h3 id="服务器下载波形数据"><a href="#服务器下载波形数据" class="headerlink" title="服务器下载波形数据"></a>服务器下载波形数据</h3><p>使用get_waveforms()从服务器下载波形数据，<br>需要添加关键字参数自定义申请。</p>
+<h4 id="申请单个数据"><a href="#申请单个数据" class="headerlink" title="申请单个数据"></a>申请单个数据</h4><p>参数：</p>
+<pre><code>waveform = get_waveforms（台网名，台站名，位置码，通道名，波形开始时间，波形结束时间（s））
+</code></pre>
+<ul>
+<li><p>每个参数需要””，多个参数使用 , 隔开。</p>
+</li>
+<li><p>可以使用通配符，?和*</p>
+</li>
+<li><p>filename &#x3D; ‘文件名’waveform</p>
+</li>
+<li><p>attach_response&#x3D;True  添加仪器响应</p>
+<p>  waveform.remove_response(output&#x3D;’VEL’) 去除仪器响应</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy.clients.fdsn.header import URL_MAPPINGS # 数据中心列表</span><br><span class="line">from obspy import UTCDateTime # 时间模块</span><br><span class="line"></span><br><span class="line">client = Client(&quot;IRIS&quot;)  # 可以使用URL或者数据中心简写</span><br><span class="line"></span><br><span class="line">for key in sorted(URL_MAPPINGS): # 显示可用的数据中心列表</span><br><span class="line">    print(&quot;&#123;0:&lt;7&#125; &#123;1&#125;&quot;.format(key, URL_MAPPINGS[key]))</span><br><span class="line"></span><br><span class="line">t = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line"></span><br><span class="line"># 申请单个数据</span><br><span class="line">waveform = client.get_waveforms(&quot;IU&quot;, &quot;ANMO,AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t, t + 60 * 60)  # 多个参数使用逗号分隔</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
+
+<h4 id="申请多组数据"><a href="#申请多组数据" class="headerlink" title="申请多组数据"></a>申请多组数据</h4><p>get_waveforms_bulk()可以同时提交多个申请。</p>
+<ul>
+<li><p>多个列表组成的列表，每一个列表包含：台网名、台站名、位置码、通道名、开始时间和结束时间<br>bulk &#x3D; [[“IU”, “ANMO”, “0?”, “LH?”, t1, t2],(),……]</p>
+</li>
+<li><p>包含有效request（返回信息）的字符串、文件名或者已打开文件的句柄</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">字符串：</span><br><span class="line">bulk = &#x27;quality=B\n&#x27; + \</span><br><span class="line">     &#x27;longestonly=false\n&#x27; + \</span><br><span class="line">     &#x27;IU ANMO * BHZ 2010-02-27 2010-02-27T00:00:02\n&#x27; + \</span><br><span class="line">     &#x27;IU AFI 1? BHE 2010-02-27 2010-02-27T00:00:04\n&#x27; + \</span><br><span class="line">     &#x27;GR GRA1 * BH? 2010-02-27 2010-02-27T00:00:02\n&#x27;</span><br><span class="line">文件名：</span><br><span class="line">client.get_waveforms_bulk(&quot;request.txt&quot;, attach_response=True)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>申请多组数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line">t2 = t1 + 60</span><br><span class="line">bult = [[&quot;IU&quot;, &quot;ANMO&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2], [&quot;IU&quot;, &quot;AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2]]</span><br><span class="line">waveform = client.get_waveforms_bulk(bult)</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="服务器下载地震目录-catalog"><a href="#服务器下载地震目录-catalog" class="headerlink" title="服务器下载地震目录(catalog)"></a>服务器下载地震目录(catalog)</h3><p>get_events() 申请地震目录。</p>
+<h4 id="使用-eventid-获取地震目录"><a href="#使用-eventid-获取地震目录" class="headerlink" title="使用 eventid 获取地震目录"></a>使用 eventid 获取地震目录</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">client = Client(&quot;IRIS&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用起止时间以及震级等条件筛选地震"><a href="#使用起止时间以及震级等条件筛选地震" class="headerlink" title="使用起止时间以及震级等条件筛选地震"></a>使用起止时间以及震级等条件筛选地震</h4><pre><code>get_events(starttime = 开始时间，endtime = 结束时间，minmagnitude = 震级，catalog = 地震目录来源)
+</code></pre>
+<ul>
+<li>starttime &#x3D; 开始时间</li>
+<li>endtime &#x3D; 结束时间</li>
+<li>minmagnitude &#x3D; 最小震级</li>
+<li>catalog &#x3D; “地震目录来源”</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2001-01-07T00:00:00&quot;)</span><br><span class="line">t2 = UTCDateTime(&quot;2001-01-07T03:00:00&quot;)</span><br><span class="line">catalogs = client.get_events(starttime=t1, endtime=t2, minmagnitude=4,</span><br><span class="line">                        catalog=&quot;ISC&quot;)</span><br><span class="line">catalogs.plot(projection=&quot;ortho&quot;)  # 绘制地图</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载台站信息数据"><a href="#下载台站信息数据" class="headerlink" title="下载台站信息数据"></a>下载台站信息数据</h3><p>get_stations() 可以得到台站数据，返回值为网络和台站等信息。</p>
+<p>可以通过这个方法查询到相关台网的台站信息、台站所有的位置码和通道等等信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inventory = client.get_stations(network=&quot;IU&quot;, station=&quot;A*&quot;,</span><br><span class="line">                                 starttime=t1,</span><br><span class="line">                                 endtime=t2, level=&quot;response&quot;)  # 申请所有台站的所有分量和仪器响应文件</span><br><span class="line"></span><br><span class="line">print(inventory)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制仪器相应文件"><a href="#绘制仪器相应文件" class="headerlink" title="绘制仪器相应文件"></a>绘制仪器相应文件</h2><p>利用台站信息get_stations()的返回值的plot_response()获得仪器响应文件。</p>
+<pre><code>inventory.plot_response(min_freq=0.01, output=&quot;DISP&quot;, station=&quot;ADK&quot;, channel=&quot;BH?&quot;)
+</code></pre>
+<ul>
+<li>minfreq &#x3D; 最小频率</li>
+<li>output &#x3D; 输出形式? 仪器响应中内置仪器类型中BBDISP表示位移型地震仪，参照<a href="https://seisman.github.io/SAC_Docs_zh/appendix/resp/resp-file/">Seisman仪器响应文件-内置仪器响应</a></li>
+<li>station &#x3D; 台站名</li>
+<li>channel &#x3D; 通道号</li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>地震数据下载进阶</title>
     <url>/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/">https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/">https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/</a></p>
@@ -2730,6 +2730,54 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
       </categories>
       <tags>
         <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>地震资料解释基础作业整理</title>
+    <url>/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="地震资料解释基础整理的习题总结"><a href="#地震资料解释基础整理的习题总结" class="headerlink" title="地震资料解释基础整理的习题总结"></a>地震资料解释基础整理的习题总结</h1><h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="1-1.jpg" alt="1"></p>
+<p><img src="1-2.jpg" alt="1"></p>
+<p><img src="1-3.jpg" alt="1"></p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p><img src="2-1.jpg" alt="1"></p>
+<p><img src="2-2.jpg" alt="1"></p>
+<p><img src="2-3.jpg" alt="1"></p>
+<p><img src="2-4.jpg" alt="1"></p>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><p><img src="3-1.jpg" alt="1"></p>
+<p><img src="3-2.jpg" alt="1"></p>
+<p><img src="3-3.jpg" alt="1"></p>
+<p><img src="3-4.jpg" alt="1"></p>
+<p><img src="3-5.jpg" alt="1"></p>
+<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><p><img src="4-1.jpg" alt="1"></p>
+<p><img src="4-2.jpg" alt="1"></p>
+<p><img src="4-3.jpg" alt="1"></p>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><p><img src="5-1.jpg" alt="1"></p>
+<p><img src="5-2.jpg" alt="1"></p>
+<p><img src="5-3.jpg" alt="1"></p>
+<p><img src="5-4.jpg" alt="1"></p>
+<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><p><img src="6-1.jpg" alt="1"></p>
+<p><img src="6-2.jpg" alt="1"></p>
+<p><img src="6-3.jpg" alt="1"></p>
+<p><img src="6-4.jpg" alt="1"></p>
+<h1 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h1><p><img src="7-1.jpg" alt="1"></p>
+<p><img src="7-2.jpg" alt="1"></p>
+<p><img src="7-3.jpg" alt="1"></p>
+<h1 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h1><p><img src="8-1.jpg" alt="1"></p>
+<p><img src="8-2.jpg" alt="1"></p>
+<p><img src="8-3.jpg" alt="1"></p>
+<h1 id="第九章"><a href="#第九章" class="headerlink" title="第九章"></a>第九章</h1><p><img src="9-1.jpg" alt="1"></p>
+<p><img src="9-2.jpg" alt="1"></p>
+<p><img src="9-3.jpg" alt="1"></p>
+<h1 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h1><p><img src="10-1.jpg" alt="1"></p>
+<p><img src="10-2.jpg" alt="1"></p>
+<p><img src="10-3.jpg" alt="1"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1].<a href>曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10</a></p>
+<p>[2].<a href>陆基孟,王永刚.地震勘探原理 .东营:中国石油大学华东出版社,2009.2</a></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>地震勘探</tag>
       </tags>
   </entry>
   <entry>
