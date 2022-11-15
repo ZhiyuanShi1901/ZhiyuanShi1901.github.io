@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GMT学习笔记</title>
+    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>参考：</p>
+<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
+<pre><code>conda install gmt -c conda-forge
+gmt --version  //进行测试
+</code></pre>
+<p>升级：</p>
+<pre><code>conda update gmt
+</code></pre>
+<p>卸载：</p>
+<pre><code>conda remove gmt
+</code></pre>
+<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
+<pre><code>gmt  //开始使用gmt
+gmt --new-script &gt; 文件名 //创建一个.sh文件
+gedit 文件名 //使用gedit文本编辑器编辑脚本文件
+bash 文件名  //执行该脚本
+</code></pre>
+<p>建立的gmt文件内容为：</p>
+<p>文件内容：</p>
+<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
+# pdf为格式。
+    # Place modern session commands here
+    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
+gmt end show  # show表示自动打开生成的图片文件
+</code></pre>
+<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
+<p>gmt+模块名+[-选项+参数]</p>
+<p>coast 表示绘制海岸线</p>
+<p>-R指选项，g为参数</p>
+<p>+t为-B的子选项</p>
+<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
+<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
+<ul>
+<li>H：hammer投影</li>
+<li>M：墨卡托投影</li>
+</ul>
+</li>
+<li><p>-R 表示指定绘图范围。格式为：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
+<p>  或者使用国家代码表示区域范围</p>
+<ul>
+<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
+<li>CN：中国国家代码。</li>
+</ul>
+</li>
+<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
+<ul>
+<li>a：annotation 增加标注，即经纬度数字等</li>
+<li>f：frame 刻度线，周边的刻度线</li>
+<li>g：grid 网格线</li>
+<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
+<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
+<li>+t“标题内容”：增加标题</li>
+</ul>
+</li>
+<li><p>-W 表示绘制海岸线</p>
+<ul>
+<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
+<li>颜色有：黑色black，浅红色lightred</li>
+</ul>
+</li>
+<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
+</ul>
+</li>
+<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
+</li>
+<li><p>-G 设置陆地填充色</p>
+</li>
+<li><p>-S 设置水体颜色</p>
+</li>
+<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
+</li>
+<li><p>-N 绘制国界、省界等，</p>
+<ul>
+<li>-N1 表示国界</li>
+<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
+</ul>
+<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
+<pre><code>
+</code></pre>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>GMT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Fortran初探</title>
     <url>/2022/11/01/Fortran%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[Fortran权威指南&#x2F;(英)奇弗斯(Chivers,I.),(英)斯莱索尔姆(Sleightholme,J.)著；陈宝国等译.–北京：人民邮电出版社，2009.10]</p>
@@ -127,101 +222,6 @@ enddo
       </categories>
       <tags>
         <tag>Fortran</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GMT学习笔记</title>
-    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>参考：</p>
-<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
-<pre><code>conda install gmt -c conda-forge
-gmt --version  //进行测试
-</code></pre>
-<p>升级：</p>
-<pre><code>conda update gmt
-</code></pre>
-<p>卸载：</p>
-<pre><code>conda remove gmt
-</code></pre>
-<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
-<pre><code>gmt  //开始使用gmt
-gmt --new-script &gt; 文件名 //创建一个.sh文件
-gedit 文件名 //使用gedit文本编辑器编辑脚本文件
-bash 文件名  //执行该脚本
-</code></pre>
-<p>建立的gmt文件内容为：</p>
-<p>文件内容：</p>
-<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
-# pdf为格式。
-    # Place modern session commands here
-    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
-gmt end show  # show表示自动打开生成的图片文件
-</code></pre>
-<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
-<p>gmt+模块名+[-选项+参数]</p>
-<p>coast 表示绘制海岸线</p>
-<p>-R指选项，g为参数</p>
-<p>+t为-B的子选项</p>
-<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
-<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
-<ul>
-<li>H：hammer投影</li>
-<li>M：墨卡托投影</li>
-</ul>
-</li>
-<li><p>-R 表示指定绘图范围。格式为：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
-<p>  或者使用国家代码表示区域范围</p>
-<ul>
-<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
-<li>CN：中国国家代码。</li>
-</ul>
-</li>
-<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
-<ul>
-<li>a：annotation 增加标注，即经纬度数字等</li>
-<li>f：frame 刻度线，周边的刻度线</li>
-<li>g：grid 网格线</li>
-<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
-<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
-<li>+t“标题内容”：增加标题</li>
-</ul>
-</li>
-<li><p>-W 表示绘制海岸线</p>
-<ul>
-<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
-<li>颜色有：黑色black，浅红色lightred</li>
-</ul>
-</li>
-<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
-</ul>
-</li>
-<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
-</li>
-<li><p>-G 设置陆地填充色</p>
-</li>
-<li><p>-S 设置水体颜色</p>
-</li>
-<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
-</li>
-<li><p>-N 绘制国界、省界等，</p>
-<ul>
-<li>-N1 表示国界</li>
-<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
-</ul>
-<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
-<pre><code>
-</code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>GMT</tag>
       </tags>
   </entry>
   <entry>
@@ -649,6 +649,27 @@ git push     //推送
 <li>文件命名并不全面，文件内部的波形未重新命名。</li>
 </ul>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.core import read</span><br><span class="line">import obspy</span><br><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sigle_net(time1, time2):  # 单个台站数据返回</span><br><span class="line">    net = input(&#x27;Please input the network, default is IU:&#x27;)</span><br><span class="line">    if net == &#x27;&#x27;:</span><br><span class="line">        net = &#x27;IU&#x27;</span><br><span class="line">    print(f&#x27;You have choosen ***&#123;net&#125;*** as the network.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Please wait a minute, you will see info about the network:&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    downloadstations = Client().get_stations(network=net, station=&#x27;*&#x27;, location=&#x27;*&#x27;, starttime=time1, endtime=time2, level=&#x27;response&#x27;)</span><br><span class="line">    print(downloadstations)</span><br><span class="line">    print(&#x27;You could choose the stations, locations and channel, and they are shown thereinbefore.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&#x27;Default means you could just **enter** or make a space to show there is no word.&#x27;)</span><br><span class="line"></span><br><span class="line">    stat = input(&#x27;Please input the station, default is all stations:&#x27;)</span><br><span class="line">    if stat == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        stat = &#x27;*&#x27;</span><br><span class="line">    loc = input(&#x27;Please input the location, default is all locations:&#x27;)</span><br><span class="line">    if loc == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        loc = &#x27;*&#x27;</span><br><span class="line">    cha = input(&#x27;Please input the channel, default is all channels:&#x27;)</span><br><span class="line">    if cha == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        cha = &#x27;*&#x27;</span><br><span class="line">    res = input(&#x27;If you want response? Please input Y/N:&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Data is getting...&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    while True:  # 循环表示</span><br><span class="line">        if res == &#x27;Y&#x27; or res == &#x27;y&#x27;:</span><br><span class="line">            res = &#x27;response&#x27;</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=True)</span><br><span class="line">            break</span><br><span class="line">        elif res == &#x27;N&#x27; or res == &#x27;n&#x27;:</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=False)</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            res = input(&#x27;You have input the wrong world, please input it again:&#x27;)</span><br><span class="line">    info = &#123;&#x27;network&#x27;: net, &#x27;station&#x27;: stat, &#x27;location&#x27;: loc, &#x27;channel&#x27;: cha&#125;</span><br><span class="line">    print(&#x27;Have got the data.&#x27;)</span><br><span class="line">    return data, info</span><br><span class="line"></span><br><span class="line">timest, timee = input(&#x27;Please input the time range of the data, use space for interval(e.g. 2022-01-01T00:00:00):\n&#x27;).split(&#x27; &#x27;)</span><br><span class="line">timest, timee = UTCDateTime(timest), UTCDateTime(timee)</span><br><span class="line">import os</span><br><span class="line">path = (&#x27;DATA/&#x27;)</span><br><span class="line">check = os.path.isdir(path)</span><br><span class="line">if check == False:</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line">quantity = input(&#x27;How mant networks do you want? If you want more than 1 network, Please input its quantity, or just **enter**:&#x27;)</span><br><span class="line">if quantity == &#x27;&#x27; or quantity == 1:  # 避免出现输入1的情况导致错误  保存波形文件</span><br><span class="line">    [data, info] = sigle_net(timest, timee)</span><br><span class="line">    filename = (path  + timest + &#x27;.&#x27; + info[&quot;network&quot;] + &#x27;.&#x27; + info[&quot;station&quot;] + &#x27;.&#x27; +</span><br><span class="line">                info[&#x27;location&#x27;] + &#x27;.&#x27; + info[&quot;channel&quot;] + &#x27;.mseed&#x27;)   # 目前信息不全，之后寻找更多信息补充</span><br><span class="line">    data.write(filename, format=&quot;mseed&quot;)  # 目前只能保存一整个mseed文件。</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">else:</span><br><span class="line">    data = multi_net(quantity, times, timee)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Obspy学习笔记</title>
+    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="数据中心检索数据"><a href="#数据中心检索数据" class="headerlink" title="数据中心检索数据"></a>数据中心检索数据</h2><h2 id="1-FDSN网络服务"><a href="#1-FDSN网络服务" class="headerlink" title="1 FDSN网络服务"></a>1 FDSN网络服务</h2><pre><code>import obspy.clients.fdsn
+</code></pre>
+<h2 id="2-Arclink网络服务"><a href="#2-Arclink网络服务" class="headerlink" title="2 Arclink网络服务"></a>2 Arclink网络服务</h2><h2 id="3-IRIS网络服务"><a href="#3-IRIS网络服务" class="headerlink" title="3 IRIS网络服务"></a>3 IRIS网络服务</h2><h2 id="4-Earthworm-wave服务"><a href="#4-Earthworm-wave服务" class="headerlink" title="4 Earthworm wave服务"></a>4 Earthworm wave服务</h2><pre><code>import obspy.clients.earthworm
+</code></pre>
+<h2 id="5-NEIC网络服务"><a href="#5-NEIC网络服务" class="headerlink" title="5 NEIC网络服务"></a>5 NEIC网络服务</h2><pre><code>import obspy.clients.neic
+</code></pre>
+<h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
+</code></pre>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -1190,27 +1211,6 @@ sumstack # 叠加波形
       </tags>
   </entry>
   <entry>
-    <title>Obspy学习笔记</title>
-    <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="数据中心检索数据"><a href="#数据中心检索数据" class="headerlink" title="数据中心检索数据"></a>数据中心检索数据</h2><h2 id="1-FDSN网络服务"><a href="#1-FDSN网络服务" class="headerlink" title="1 FDSN网络服务"></a>1 FDSN网络服务</h2><pre><code>import obspy.clients.fdsn
-</code></pre>
-<h2 id="2-Arclink网络服务"><a href="#2-Arclink网络服务" class="headerlink" title="2 Arclink网络服务"></a>2 Arclink网络服务</h2><h2 id="3-IRIS网络服务"><a href="#3-IRIS网络服务" class="headerlink" title="3 IRIS网络服务"></a>3 IRIS网络服务</h2><h2 id="4-Earthworm-wave服务"><a href="#4-Earthworm-wave服务" class="headerlink" title="4 Earthworm wave服务"></a>4 Earthworm wave服务</h2><pre><code>import obspy.clients.earthworm
-</code></pre>
-<h2 id="5-NEIC网络服务"><a href="#5-NEIC网络服务" class="headerlink" title="5 NEIC网络服务"></a>5 NEIC网络服务</h2><pre><code>import obspy.clients.neic
-</code></pre>
-<h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
-</code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Obspy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SAC数据格式与数据合并</title>
     <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
     <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
@@ -1231,6 +1231,43 @@ sumstack # 叠加波形
 <li>存在间断，可以直接补零或者线性插值；</li>
 <li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
 </ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC时间变量</title>
+    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+
+
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
+<ul>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+</ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -1492,40 +1529,28 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>SAC时间变量</title>
-    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
-<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
-<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
-<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
-<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
-<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+    <title>Ubuntu安装firefox中国版</title>
+    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
+    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
+<p>参考：</p>
+<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
+<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
+</code></pre>
+<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
+</code></pre>
+<p>使用vi编辑器编辑该文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
 
-
-<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
-<p>使用注意事项：</p>
-<ul>
-<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
-<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
-</ul>
-<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
-<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
-
-<p>处理大量数据时：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
-
-<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
-<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
+<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
+</code></pre>
 ]]></content>
       <categories>
-        <category>地震学常用软件</category>
+        <category>Linux学习</category>
       </categories>
       <tags>
-        <tag>SAC</tag>
+        <tag>Linux学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1543,31 +1568,6 @@ man 命令名  //使用范围更广
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
 <p>重启系统即可。</p>
 <p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
-]]></content>
-      <categories>
-        <category>Linux学习</category>
-      </categories>
-      <tags>
-        <tag>Linux学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu安装firefox中国版</title>
-    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
-    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
-<p>参考：</p>
-<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
-<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
-</code></pre>
-<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
-</code></pre>
-<p>使用vi编辑器编辑该文件，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
-
-<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
-</code></pre>
 ]]></content>
       <categories>
         <category>Linux学习</category>
@@ -2078,10 +2078,15 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
 <p>安装包在<a href>此处</a>可以找到。</p>
 <ul>
 <li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure>
-根据提示，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
-最后进行测试，显示对应的版本信息即可。</li>
+注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure></li>
 </ul>
+<p>安装过程如果卡住，说明网络条件不好，可以使用国内镜像源：</p>
+<pre><code>npm config set registry https://registry.npm.taobao.org
+npm config get registry  # 查看镜像源更新成功
+</code></pre>
+<p>根据提示第4行，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
+<p>最后进行测试，显示对应的版本信息即可。</p>
 <p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
 <blockquote>
 <p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
