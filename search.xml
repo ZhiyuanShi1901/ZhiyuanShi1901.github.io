@@ -130,6 +130,101 @@ enddo
       </tags>
   </entry>
   <entry>
+    <title>Git学习笔记</title>
+    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;你的邮箱&quot;
+ssh-keygen -t rsa -C &quot;你的邮箱&quot;
+</code></pre>
+<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>确认已经完成连接</p>
+<span id="more"></span>
+<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
+cd (仓库名)
+git init
+</code></pre>
+<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
+</code></pre>
+<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
+</code></pre>
+<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
+git add . (将所有文件添加到暂存区)
+</code></pre>
+<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
+git commit  //打开编辑器详细编辑信息
+</code></pre>
+<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
+git log --pretty=short  //只显示第一行的简述信息
+git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
+git diff                //查看当前工作树与暂存区的差别
+git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
+</code></pre>
+<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
+git checkout -b   //创建、切换分支
+git log --graph   //图表形式查看分支
+</code></pre>
+<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
+//同样效果的命令
+git branch (需要切换的分支名)
+git checkout (需要切换的分支名)
+
+git checkout -    //切换回上一个分支
+</code></pre>
+<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
+git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
+</code></pre>
+<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
+</code></pre>
+<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
+git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
+</code></pre>
+<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
+</code></pre>
+<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
+//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
+</code></pre>
+<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
+//使用编辑器修改
+</code></pre>
+<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
+</code></pre>
+<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
+git push -b (分支名)   //创建并推送分支
+</code></pre>
+<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
+git clone (SSH)  //将网络仓库克隆到本地
+git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
+git push  //直接推送处于该情况下的分支
+</code></pre>
+<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
+</code></pre>
+<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
+git remote add (原仓库新名称) (原仓库SSH)
+git fetch (原仓库新名称)       //获取最新数据
+git merge (原仓库新名称)/master   //合并
+</code></pre>
+<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
+git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
+git checkout -b pr1  //创建用于检查的分支
+git merge PR发送者/workname   //合并分支
+git branch -D pr1   //删除分支
+</code></pre>
+<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
+git merge PR发送者/work
+git diff origin/(主分支名)
+git push     //推送
+</code></pre>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Introduction to Seismology习题</title>
     <url>/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/</url>
     <content><![CDATA[<h1 id="这里整理课本习题"><a href="#这里整理课本习题" class="headerlink" title="这里整理课本习题"></a>这里整理课本习题</h1><p>有些习题未完成，之后会持续补充…</p>
@@ -141,6 +236,101 @@ enddo
       </categories>
       <tags>
         <tag>Introduction to Seismology</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GMT学习笔记</title>
+    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>参考：</p>
+<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
+<pre><code>conda install gmt -c conda-forge
+gmt --version  //进行测试
+</code></pre>
+<p>升级：</p>
+<pre><code>conda update gmt
+</code></pre>
+<p>卸载：</p>
+<pre><code>conda remove gmt
+</code></pre>
+<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
+<pre><code>gmt  //开始使用gmt
+gmt --new-script &gt; 文件名 //创建一个.sh文件
+gedit 文件名 //使用gedit文本编辑器编辑脚本文件
+bash 文件名  //执行该脚本
+</code></pre>
+<p>建立的gmt文件内容为：</p>
+<p>文件内容：</p>
+<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
+# pdf为格式。
+    # Place modern session commands here
+    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
+gmt end show  # show表示自动打开生成的图片文件
+</code></pre>
+<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
+<p>gmt+模块名+[-选项+参数]</p>
+<p>coast 表示绘制海岸线</p>
+<p>-R指选项，g为参数</p>
+<p>+t为-B的子选项</p>
+<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
+<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
+<ul>
+<li>H：hammer投影</li>
+<li>M：墨卡托投影</li>
+</ul>
+</li>
+<li><p>-R 表示指定绘图范围。格式为：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
+<p>  或者使用国家代码表示区域范围</p>
+<ul>
+<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
+<li>CN：中国国家代码。</li>
+</ul>
+</li>
+<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
+<ul>
+<li>a：annotation 增加标注，即经纬度数字等</li>
+<li>f：frame 刻度线，周边的刻度线</li>
+<li>g：grid 网格线</li>
+<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
+<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
+<li>+t“标题内容”：增加标题</li>
+</ul>
+</li>
+<li><p>-W 表示绘制海岸线</p>
+<ul>
+<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
+<li>颜色有：黑色black，浅红色lightred</li>
+</ul>
+</li>
+<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
+</ul>
+</li>
+<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
+</li>
+<li><p>-G 设置陆地填充色</p>
+</li>
+<li><p>-S 设置水体颜色</p>
+</li>
+<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
+</li>
+<li><p>-N 绘制国界、省界等，</p>
+<ul>
+<li>-N1 表示国界</li>
+<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
+</ul>
+<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
+<pre><code>
+</code></pre>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>GMT</tag>
       </tags>
   </entry>
   <entry>
@@ -479,196 +669,6 @@ enddo
       </tags>
   </entry>
   <entry>
-    <title>GMT学习笔记</title>
-    <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>参考：</p>
-<p><a href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
-<pre><code>conda install gmt -c conda-forge
-gmt --version  //进行测试
-</code></pre>
-<p>升级：</p>
-<pre><code>conda update gmt
-</code></pre>
-<p>卸载：</p>
-<pre><code>conda remove gmt
-</code></pre>
-<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
-<pre><code>gmt  //开始使用gmt
-gmt --new-script &gt; 文件名 //创建一个.sh文件
-gedit 文件名 //使用gedit文本编辑器编辑脚本文件
-bash 文件名  //执行该脚本
-</code></pre>
-<p>建立的gmt文件内容为：</p>
-<p>文件内容：</p>
-<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
-# pdf为格式。
-    # Place modern session commands here
-    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
-gmt end show  # show表示自动打开生成的图片文件
-</code></pre>
-<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
-<p>gmt+模块名+[-选项+参数]</p>
-<p>coast 表示绘制海岸线</p>
-<p>-R指选项，g为参数</p>
-<p>+t为-B的子选项</p>
-<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
-<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
-<ul>
-<li>H：hammer投影</li>
-<li>M：墨卡托投影</li>
-</ul>
-</li>
-<li><p>-R 表示指定绘图范围。格式为：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
-<p>  或者使用国家代码表示区域范围</p>
-<ul>
-<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
-<li>CN：中国国家代码。</li>
-</ul>
-</li>
-<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
-<ul>
-<li>a：annotation 增加标注，即经纬度数字等</li>
-<li>f：frame 刻度线，周边的刻度线</li>
-<li>g：grid 网格线</li>
-<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
-<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
-<li>+t“标题内容”：增加标题</li>
-</ul>
-</li>
-<li><p>-W 表示绘制海岸线</p>
-<ul>
-<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
-<li>颜色有：黑色black，浅红色lightred</li>
-</ul>
-</li>
-<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
-</ul>
-</li>
-<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
-</li>
-<li><p>-G 设置陆地填充色</p>
-</li>
-<li><p>-S 设置水体颜色</p>
-</li>
-<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
-</li>
-<li><p>-N 绘制国界、省界等，</p>
-<ul>
-<li>-N1 表示国界</li>
-<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
-</ul>
-<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
-<pre><code>
-</code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>GMT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git学习笔记</title>
-    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
-git config --global user.email &quot;你的邮箱&quot;
-ssh-keygen -t rsa -C &quot;你的邮箱&quot;
-</code></pre>
-<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
-<pre><code>ssh -T git@github.com
-</code></pre>
-<p>确认已经完成连接</p>
-<span id="more"></span>
-<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
-cd (仓库名)
-git init
-</code></pre>
-<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
-</code></pre>
-<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
-</code></pre>
-<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
-git add . (将所有文件添加到暂存区)
-</code></pre>
-<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
-git commit  //打开编辑器详细编辑信息
-</code></pre>
-<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
-git log --pretty=short  //只显示第一行的简述信息
-git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
-git diff                //查看当前工作树与暂存区的差别
-git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
-</code></pre>
-<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
-git checkout -b   //创建、切换分支
-git log --graph   //图表形式查看分支
-</code></pre>
-<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
-//同样效果的命令
-git branch (需要切换的分支名)
-git checkout (需要切换的分支名)
-
-git checkout -    //切换回上一个分支
-</code></pre>
-<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
-git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
-</code></pre>
-<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
-</code></pre>
-<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
-git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
-</code></pre>
-<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
-</code></pre>
-<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
-//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
-</code></pre>
-<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
-//使用编辑器修改
-</code></pre>
-<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
-</code></pre>
-<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
-git push -b (分支名)   //创建并推送分支
-</code></pre>
-<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
-git clone (SSH)  //将网络仓库克隆到本地
-git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
-git push  //直接推送处于该情况下的分支
-</code></pre>
-<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
-</code></pre>
-<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
-git remote add (原仓库新名称) (原仓库SSH)
-git fetch (原仓库新名称)       //获取最新数据
-git merge (原仓库新名称)/master   //合并
-</code></pre>
-<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
-git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
-git checkout -b pr1  //创建用于检查的分支
-git merge PR发送者/workname   //合并分支
-git branch -D pr1   //删除分支
-</code></pre>
-<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
-git merge PR发送者/work
-git diff origin/(主分支名)
-git push     //推送
-</code></pre>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Obspy学习笔记</title>
     <url>/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
@@ -681,29 +681,6 @@ git push     //推送
 </code></pre>
 <h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
 </code></pre>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Obspy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obspy地震数据下载脚本</title>
-    <url>/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>目前实现的功能：</p>
-<ul>
-<li>下载特定台站的地震波形</li>
-<li>保存为.mseed文件，或者更改format属性保存sac文件等</li>
-</ul>
-<p>缺陷，之后进行改进：</p>
-<ul>
-<li>一次运行只能保存一个台站的波形数据</li>
-<li>保存的数据为mseed文件，其中所有的波形均在这一个mseed文件中。</li>
-<li>文件命名并不全面，文件内部的波形未重新命名。</li>
-</ul>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.core import read</span><br><span class="line">import obspy</span><br><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sigle_net(time1, time2):  # 单个台站数据返回</span><br><span class="line">    net = input(&#x27;Please input the network, default is IU:&#x27;)</span><br><span class="line">    if net == &#x27;&#x27;:</span><br><span class="line">        net = &#x27;IU&#x27;</span><br><span class="line">    print(f&#x27;You have choosen ***&#123;net&#125;*** as the network.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Please wait a minute, you will see info about the network:&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    downloadstations = Client().get_stations(network=net, station=&#x27;*&#x27;, location=&#x27;*&#x27;, starttime=time1, endtime=time2, level=&#x27;response&#x27;)</span><br><span class="line">    print(downloadstations)</span><br><span class="line">    print(&#x27;You could choose the stations, locations and channel, and they are shown thereinbefore.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&#x27;Default means you could just **enter** or make a space to show there is no word.&#x27;)</span><br><span class="line"></span><br><span class="line">    stat = input(&#x27;Please input the station, default is all stations:&#x27;)</span><br><span class="line">    if stat == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        stat = &#x27;*&#x27;</span><br><span class="line">    loc = input(&#x27;Please input the location, default is all locations:&#x27;)</span><br><span class="line">    if loc == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        loc = &#x27;*&#x27;</span><br><span class="line">    cha = input(&#x27;Please input the channel, default is all channels:&#x27;)</span><br><span class="line">    if cha == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        cha = &#x27;*&#x27;</span><br><span class="line">    res = input(&#x27;If you want response? Please input Y/N:&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Data is getting...&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    while True:  # 循环表示</span><br><span class="line">        if res == &#x27;Y&#x27; or res == &#x27;y&#x27;:</span><br><span class="line">            res = &#x27;response&#x27;</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=True)</span><br><span class="line">            break</span><br><span class="line">        elif res == &#x27;N&#x27; or res == &#x27;n&#x27;:</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=False)</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            res = input(&#x27;You have input the wrong world, please input it again:&#x27;)</span><br><span class="line">    info = &#123;&#x27;network&#x27;: net, &#x27;station&#x27;: stat, &#x27;location&#x27;: loc, &#x27;channel&#x27;: cha&#125;</span><br><span class="line">    print(&#x27;Have got the data.&#x27;)</span><br><span class="line">    return data, info</span><br><span class="line"></span><br><span class="line">timest, timee = input(&#x27;Please input the time range of the data, use space for interval(e.g. 2022-01-01T00:00:00):\n&#x27;).split(&#x27; &#x27;)</span><br><span class="line">timest, timee = UTCDateTime(timest), UTCDateTime(timee)</span><br><span class="line">import os</span><br><span class="line">path = (&#x27;DATA/&#x27;)</span><br><span class="line">check = os.path.isdir(path)</span><br><span class="line">if check == False:</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line">quantity = input(&#x27;How mant networks do you want? If you want more than 1 network, Please input its quantity, or just **enter**:&#x27;)</span><br><span class="line">if quantity == &#x27;&#x27; or quantity == 1:  # 避免出现输入1的情况导致错误  保存波形文件</span><br><span class="line">    [data, info] = sigle_net(timest, timee)</span><br><span class="line">    filename = (path  + timest + &#x27;.&#x27; + info[&quot;network&quot;] + &#x27;.&#x27; + info[&quot;station&quot;] + &#x27;.&#x27; +</span><br><span class="line">                info[&#x27;location&#x27;] + &#x27;.&#x27; + info[&quot;channel&quot;] + &#x27;.mseed&#x27;)   # 目前信息不全，之后寻找更多信息补充</span><br><span class="line">    data.write(filename, format=&quot;mseed&quot;)  # 目前只能保存一整个mseed文件。</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">else:</span><br><span class="line">    data = multi_net(quantity, times, timee)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -952,6 +929,144 @@ git push     //推送
       </tags>
   </entry>
   <entry>
+    <title>SAC数据处理笔记</title>
+    <url>/2022/10/21/SAC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="SAC数据处理流程"><a href="#SAC数据处理流程" class="headerlink" title="SAC数据处理流程"></a>SAC数据处理流程</h1><p>命令：</p>
+<ul>
+<li>全称 简写 参数 介绍</li>
+<li>&#x2F;表示未知，如简写未知则在此处填写 &#x2F;。<br>参考:</li>
+</ul>
+<p><a href="https://seisman.github.io/SAC_Docs_zh/">Seisman-SAC参考手册</a></p>
+<h1 id="滤波操作"><a href="#滤波操作" class="headerlink" title="滤波操作"></a>滤波操作</h1><p>参考：<a href="https://seisman.github.io/SAC_Docs_zh/data-process/filter/">滤波</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fg impulse delta 0.01 npts 1000   # 生成脉冲函数, delta和npts可调</span><br><span class="line">bp c 0.2 2 n 2 p 1                # 要查看的滤波参数</span><br><span class="line">beginframe</span><br><span class="line">xvport 0.1 0.9; yvport 0.7 0.9</span><br><span class="line">fileid off</span><br><span class="line">qdp off</span><br><span class="line">title &#x27;Time Domain Response&#x27;</span><br><span class="line">p                                # 绘制时间域响应</span><br><span class="line">fft</span><br><span class="line">xvport .1 .45; yvport .15 .55</span><br><span class="line">title &#x27;Amplitude Response&#x27;</span><br><span class="line">psp am loglog                    # 振幅响应</span><br><span class="line">xvport .55 .9</span><br><span class="line">title &#x27;Phase Response&#x27;</span><br><span class="line">psp ph linlin                    # 相位响应</span><br><span class="line">endframe</span><br></pre></td></tr></table></figure>
+
+<h2 id="bandpass-bp-无限脉冲带通滤波"><a href="#bandpass-bp-无限脉冲带通滤波" class="headerlink" title="bandpass bp 无限脉冲带通滤波"></a>bandpass bp 无限脉冲带通滤波</h2><pre><code>bp c 0.2 2 n 2 p 1
+</code></pre>
+<ul>
+<li>&#x2F; &#x2F; butter|bessel|c1|c2 使用butterworth、bessel、切比雪夫I型、切比雪夫II型滤波器。 默认使用巴特沃兹滤波器。</li>
+<li>corners c v1 v2 拐角频率设置，如上面的命令中，为0.2HZ和2HZ</li>
+<li>Npoles n v 极数，为1-10之间的整数 </li>
+<li>PASSES p v 通道数，取值为1或2</li>
+<li>tranbw &#x2F; v 设置切比雪夫滤波器转换带宽</li>
+<li>atten &#x2F; v 设置切比雪夫滤波器衰减因子</li>
+</ul>
+<h2 id="lowpass"><a href="#lowpass" class="headerlink" title="lowpass"></a>lowpass</h2><h2 id="highpass"><a href="#highpass" class="headerlink" title="highpass"></a>highpass</h2><h2 id="bandrej"><a href="#bandrej" class="headerlink" title="bandrej"></a>bandrej</h2><h1 id="震相理论到时"><a href="#震相理论到时" class="headerlink" title="震相理论到时"></a>震相理论到时</h1><p>保存震相到时信息的头段包括：a、f、tn，(n取值1-9)<br>相应的震相名信息：ka、kf、ktn。</p>
+<h2 id="chnhdr-ch-手动标记"><a href="#chnhdr-ch-手动标记" class="headerlink" title="chnhdr(ch) 手动标记"></a>chnhdr(ch) 手动标记</h2><pre><code>ch t0 400 t1 799 kt0 P kt1 S
+ch allt -123 iztype i0 
+# 例如第二行表示从所有的偏移时间减去123，同时改变描述参考时间类型的字段iztype
+</code></pre>
+<ul>
+<li>file &#x2F; n1 n2 修改指定文件的头段变量，n指内存中文件的文件号</li>
+<li>&#x2F; &#x2F; v vname SAC头段变量名、变量名对应的值</li>
+<li>allt &#x2F; v 将所有已定义的时间相关头段变量的值加v秒，同时参考时刻减去v秒</li>
+</ul>
+<h2 id="traveltime命令-根据预定义的速度模型计算指定震相的走时"><a href="#traveltime命令-根据预定义的速度模型计算指定震相的走时" class="headerlink" title="traveltime命令 根据预定义的速度模型计算指定震相的走时"></a>traveltime命令 根据预定义的速度模型计算指定震相的走时</h2><p>命令默认值：</p>
+<pre><code>traveltime MODEL iasp91 KM PHASE P S Pn Pg Sn Sg
+</code></pre>
+<ul>
+<li>model &#x2F; v 指定的速度模型，可以为iasp91和ak135</li>
+<li>picks &#x2F; v v取值0-9，表示第一个震相的到时存储在对应头段变量tn中，若未指定不写入头段</li>
+<li>phase &#x2F; vlist 要计算或标记的震相列表，如P、S、Pn</li>
+<li>verbose|quiet &#x2F; &#x2F; 前者在终端输出震相走时以及相对于文件参考时刻的描述，后者不显示震相走时信息</li>
+<li>m|km &#x2F; &#x2F; 头段变量evdp的单位为m或者km</li>
+</ul>
+<h2 id="taup-setsac命令"><a href="#taup-setsac命令" class="headerlink" title="taup_setsac命令"></a>taup_setsac命令</h2><p>Taup软件提供的命令，用于计算震相理论到时并保存到SAC文件中</p>
+<h1 id="波形排序"><a href="#波形排序" class="headerlink" title="波形排序"></a>波形排序</h1><h2 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h2><ul>
+<li>&#x2F; &#x2F; v v指头段变量名，即按照该变量名的值进行排序，最多输入5个，优先按照前面的变量排序</li>
+<li>ascend|descend &#x2F; &#x2F; 前者按照升序排列，后者按照降序。默认升序。每一个变量名都需要指定升序或者降序。</li>
+</ul>
+<h1 id="质量控制（标记或删除信噪比低或者不合适的波形）"><a href="#质量控制（标记或删除信噪比低或者不合适的波形）" class="headerlink" title="质量控制（标记或删除信噪比低或者不合适的波形）"></a>质量控制（标记或删除信噪比低或者不合适的波形）</h1><p>人工挑选坏的波形。</p>
+<pre><code>ppk p 5 # plot 每次绘制5个波形
+# 如果波形的质量很差，使用t9标记
+wh #将标记的t9保存到头段中
+q
+</code></pre>
+<p>t9标记后一般都是正值，而好的波形为未定义状态，值为-12345.0。在命令行使用下面的命令删除定义的波形：</p>
+<pre><code>saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;rm&quot;,$1&#125;&#39; | sh
+</code></pre>
+<p>也可以用如下命令将不好的波形移动到专门的文件夹下：</p>
+<pre><code>mkdir BADWAVE
+saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;mv&quot;,$1,&quot;BAD/&quot;&#125;&#39; | sh
+</code></pre>
+<h2 id="whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区"><a href="#whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区" class="headerlink" title="whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区"></a>whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区</h2><p>直接使用，不需要任何参数。</p>
+<p>注意：</p>
+<p>write命令的over选项可以用内存中头段区和数据区覆盖磁盘文件中的头段区<br>和数据区。该命令用内存中头段区覆盖磁盘文件中的头段区，数据区不会被覆盖。<br>如果使用了cut命令，读取数据时将仅读入部分数据，内存中的头段区将会做<br>相应修改以反映cut命令的效果，但是磁盘中的数据并没有被修改，因而此时<br>不能使用writehdr命令。对被cut的数据使用writehdr命令将可能导致磁<br>盘中的数据产生类似于平移或截断的效果。</p>
+<h1 id="震相拾取（到时标定）"><a href="#震相拾取（到时标定）" class="headerlink" title="震相拾取（到时标定）"></a>震相拾取（到时标定）</h1><h2 id="plotpk-ppk-命令（模式）"><a href="#plotpk-ppk-命令（模式）" class="headerlink" title="plotpk(ppk)命令（模式）"></a>plotpk(ppk)命令（模式）</h2><pre><code>ppk # 进入ppk模式，进入后终端不在提示sac&gt;；
+# 如果之前打开过绘图，需要鼠标点击一下绘图窗口。
+</code></pre>
+<p>直接按下q，即可退出ppk模式。</p>
+<p>注意：进入ppk模式所有键盘输入会解释为ppk命令。当焦点转移到终端时，键盘输入显示在<br>终端中，退出ppk模式时sac依次解释终端中的命令。</p>
+<h2 id="ppk模式下拾取震相"><a href="#ppk模式下拾取震相" class="headerlink" title="ppk模式下拾取震相"></a>ppk模式下拾取震相</h2><p>在绘图窗口，移动鼠标到标记到时位置，依次按下t、0，在标记处出现T0标记，并保存到相应名称头段变量中。</p>
+<p>按q退出ppk模式。</p>
+<pre><code>wh # 保存头段变量
+</code></pre>
+<p>全局变量SAC_PPK_USE_CROSSHAIRS可以控制ppk下鼠标形态。0为十字，1为全图十型。</p>
+<h2 id="关闭快速绘图（显示图形时降采显示）"><a href="#关闭快速绘图（显示图形时降采显示）" class="headerlink" title="关闭快速绘图（显示图形时降采显示）"></a>关闭快速绘图（显示图形时降采显示）</h2><p>现代计算机性能足够，通常关闭快速绘图已获得最佳观感。qdp控制快速绘图开启与关闭。</p>
+<pre><code>qdp off # 关闭快速绘图
+</code></pre>
+<h2 id="放大与缩小"><a href="#放大与缩小" class="headerlink" title="放大与缩小"></a>放大与缩小</h2><p>光标移动到某一位置按下x键，再移动到另一个位置按下x键。两次键入确定了一个时间窗，<br>只显示该时间窗内的波形。</p>
+<p>在窗口某位置按下左键拖动到另一位置实现框内波形放大。</p>
+<p>键入o缩小图幅，但是只能回退5次。</p>
+<h2 id="同时标记三分量"><a href="#同时标记三分量" class="headerlink" title="同时标记三分量"></a>同时标记三分量</h2><p>使用命令：</p>
+<pre><code>ppk p 3 a m
+</code></pre>
+<p>显示三个波形数据。在ppk模式下：</p>
+<p>键入 n 可以依次显示接下来的3个波形。波形显示完成后自动退出ppk模式。</p>
+<p>键入 b 可以显示前3个波形。</p>
+<p>注意：三个分量波形数据参考时刻必须相同；内存中存储的数据顺序需要符合需求。</p>
+<h2 id="ppk命令"><a href="#ppk命令" class="headerlink" title="ppk命令"></a>ppk命令</h2><p>详见<a href="https://seisman.github.io/SAC_Docs_zh/data-process/picking-phase/#id7">ppk命令</a></p>
+<pre><code>plotpk 
+</code></pre>
+<ul>
+<li>perplot &#x2F; n|ON|OFF  一张图绘制n个文件，on表示使用旧值，off表示绘制所有文件</li>
+<li>bell &#x2F; on|off 绘图区内击键时是否响铃</li>
+<li>absolute|relative &#x2F; &#x2F; 绝对&#x2F;相对绘图模式</li>
+<li>reference &#x2F; v|on|off v表示参考线的参考值，on|off是否显示参考线</li>
+<li>markall &#x2F; on|off 一次标记一张图上所有文件到时|指标及光标位置对应的震相到时</li>
+<li>sacelocs &#x2F; on|off 是否将L命令拾取的位置保存到黑板变量中</li>
+</ul>
+<h2 id="标定P、S波"><a href="#标定P、S波" class="headerlink" title="标定P、S波"></a>标定P、S波</h2><p>ppk模式可以键入：</p>
+<ul>
+<li><p>p 标定P波到时，到时信息保存到头段变量A中</p>
+</li>
+<li><p>s 标定S波到时，到时信息保存到头段变量T0中。</p>
+</li>
+<li><p>键入e，震相onset类型，震相方向、震相质量等信息仅用于标记P、S波，这些信息会保留在头段变量KA或者KTO中。<br>例如：进入ppk模式，按下ed1p，KA中的值为EPD1，表示Emergent和极性向下的P波，震相质量为1表示震相清晰。</p>
+</li>
+</ul>
+<h2 id="ppk修改版"><a href="#ppk修改版" class="headerlink" title="ppk修改版"></a>ppk修改版</h2><p>详见<a href="https://blog.seisman.info/faster-ppk/">faster-ppk</a></p>
+<h1 id="信号叠加"><a href="#信号叠加" class="headerlink" title="信号叠加"></a>信号叠加</h1><p>SAC提供Signal Stack Subprocess（简称SSS）来实现。</p>
+<h2 id="进入和退出sss"><a href="#进入和退出sss" class="headerlink" title="进入和退出sss"></a>进入和退出sss</h2><pre><code>sss # 键入sss进入子程序
+quitsub # 退出子程序
+quit # 退出sac
+</code></pre>
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><pre><code>sss # 进入子程序
+addstack a.sac weight 1 delay 20 seconds
+</code></pre>
+<ul>
+<li><p>addstack 读入文件a.sac。</p>
+</li>
+<li><p>weight 设置文件在叠加中的权重，值为0-1。</p>
+</li>
+<li><p>delay 波形向后延迟。</p>
+<p>  liststack # 列出叠加文件列表中的文件属性</p>
+</li>
+</ul>
+<h2 id="叠加文件"><a href="#叠加文件" class="headerlink" title="叠加文件"></a>叠加文件</h2><pre><code>zerostack # 清除之前添加的文件和设置
+addstack # 添加文件
+timewindow 0 19 # 选定时窗，这里为0-19秒
+sumstack # 叠加波形
+</code></pre>
+<p>注意：波形按照相对时刻对齐；叠加后会做归一化。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rdseed学习笔记</title>
     <url>/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
@@ -1107,210 +1222,6 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>SAC数据格式与数据合并</title>
-    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
-<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
-<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
-<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
-
-<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
-<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
-<p>如果出现数据间断或者数据重叠的情况：</p>
-<ul>
-<li>存在间断，可以直接补零或者线性插值；</li>
-<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SAC数据处理笔记</title>
-    <url>/2022/10/21/SAC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="SAC数据处理流程"><a href="#SAC数据处理流程" class="headerlink" title="SAC数据处理流程"></a>SAC数据处理流程</h1><p>命令：</p>
-<ul>
-<li>全称 简写 参数 介绍</li>
-<li>&#x2F;表示未知，如简写未知则在此处填写 &#x2F;。<br>参考:</li>
-</ul>
-<p><a href="https://seisman.github.io/SAC_Docs_zh/">Seisman-SAC参考手册</a></p>
-<h1 id="滤波操作"><a href="#滤波操作" class="headerlink" title="滤波操作"></a>滤波操作</h1><p>参考：<a href="https://seisman.github.io/SAC_Docs_zh/data-process/filter/">滤波</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fg impulse delta 0.01 npts 1000   # 生成脉冲函数, delta和npts可调</span><br><span class="line">bp c 0.2 2 n 2 p 1                # 要查看的滤波参数</span><br><span class="line">beginframe</span><br><span class="line">xvport 0.1 0.9; yvport 0.7 0.9</span><br><span class="line">fileid off</span><br><span class="line">qdp off</span><br><span class="line">title &#x27;Time Domain Response&#x27;</span><br><span class="line">p                                # 绘制时间域响应</span><br><span class="line">fft</span><br><span class="line">xvport .1 .45; yvport .15 .55</span><br><span class="line">title &#x27;Amplitude Response&#x27;</span><br><span class="line">psp am loglog                    # 振幅响应</span><br><span class="line">xvport .55 .9</span><br><span class="line">title &#x27;Phase Response&#x27;</span><br><span class="line">psp ph linlin                    # 相位响应</span><br><span class="line">endframe</span><br></pre></td></tr></table></figure>
-
-<h2 id="bandpass-bp-无限脉冲带通滤波"><a href="#bandpass-bp-无限脉冲带通滤波" class="headerlink" title="bandpass bp 无限脉冲带通滤波"></a>bandpass bp 无限脉冲带通滤波</h2><pre><code>bp c 0.2 2 n 2 p 1
-</code></pre>
-<ul>
-<li>&#x2F; &#x2F; butter|bessel|c1|c2 使用butterworth、bessel、切比雪夫I型、切比雪夫II型滤波器。 默认使用巴特沃兹滤波器。</li>
-<li>corners c v1 v2 拐角频率设置，如上面的命令中，为0.2HZ和2HZ</li>
-<li>Npoles n v 极数，为1-10之间的整数 </li>
-<li>PASSES p v 通道数，取值为1或2</li>
-<li>tranbw &#x2F; v 设置切比雪夫滤波器转换带宽</li>
-<li>atten &#x2F; v 设置切比雪夫滤波器衰减因子</li>
-</ul>
-<h2 id="lowpass"><a href="#lowpass" class="headerlink" title="lowpass"></a>lowpass</h2><h2 id="highpass"><a href="#highpass" class="headerlink" title="highpass"></a>highpass</h2><h2 id="bandrej"><a href="#bandrej" class="headerlink" title="bandrej"></a>bandrej</h2><h1 id="震相理论到时"><a href="#震相理论到时" class="headerlink" title="震相理论到时"></a>震相理论到时</h1><p>保存震相到时信息的头段包括：a、f、tn，(n取值1-9)<br>相应的震相名信息：ka、kf、ktn。</p>
-<h2 id="chnhdr-ch-手动标记"><a href="#chnhdr-ch-手动标记" class="headerlink" title="chnhdr(ch) 手动标记"></a>chnhdr(ch) 手动标记</h2><pre><code>ch t0 400 t1 799 kt0 P kt1 S
-ch allt -123 iztype i0 
-# 例如第二行表示从所有的偏移时间减去123，同时改变描述参考时间类型的字段iztype
-</code></pre>
-<ul>
-<li>file &#x2F; n1 n2 修改指定文件的头段变量，n指内存中文件的文件号</li>
-<li>&#x2F; &#x2F; v vname SAC头段变量名、变量名对应的值</li>
-<li>allt &#x2F; v 将所有已定义的时间相关头段变量的值加v秒，同时参考时刻减去v秒</li>
-</ul>
-<h2 id="traveltime命令-根据预定义的速度模型计算指定震相的走时"><a href="#traveltime命令-根据预定义的速度模型计算指定震相的走时" class="headerlink" title="traveltime命令 根据预定义的速度模型计算指定震相的走时"></a>traveltime命令 根据预定义的速度模型计算指定震相的走时</h2><p>命令默认值：</p>
-<pre><code>traveltime MODEL iasp91 KM PHASE P S Pn Pg Sn Sg
-</code></pre>
-<ul>
-<li>model &#x2F; v 指定的速度模型，可以为iasp91和ak135</li>
-<li>picks &#x2F; v v取值0-9，表示第一个震相的到时存储在对应头段变量tn中，若未指定不写入头段</li>
-<li>phase &#x2F; vlist 要计算或标记的震相列表，如P、S、Pn</li>
-<li>verbose|quiet &#x2F; &#x2F; 前者在终端输出震相走时以及相对于文件参考时刻的描述，后者不显示震相走时信息</li>
-<li>m|km &#x2F; &#x2F; 头段变量evdp的单位为m或者km</li>
-</ul>
-<h2 id="taup-setsac命令"><a href="#taup-setsac命令" class="headerlink" title="taup_setsac命令"></a>taup_setsac命令</h2><p>Taup软件提供的命令，用于计算震相理论到时并保存到SAC文件中</p>
-<h1 id="波形排序"><a href="#波形排序" class="headerlink" title="波形排序"></a>波形排序</h1><h2 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h2><ul>
-<li>&#x2F; &#x2F; v v指头段变量名，即按照该变量名的值进行排序，最多输入5个，优先按照前面的变量排序</li>
-<li>ascend|descend &#x2F; &#x2F; 前者按照升序排列，后者按照降序。默认升序。每一个变量名都需要指定升序或者降序。</li>
-</ul>
-<h1 id="质量控制（标记或删除信噪比低或者不合适的波形）"><a href="#质量控制（标记或删除信噪比低或者不合适的波形）" class="headerlink" title="质量控制（标记或删除信噪比低或者不合适的波形）"></a>质量控制（标记或删除信噪比低或者不合适的波形）</h1><p>人工挑选坏的波形。</p>
-<pre><code>ppk p 5 # plot 每次绘制5个波形
-# 如果波形的质量很差，使用t9标记
-wh #将标记的t9保存到头段中
-q
-</code></pre>
-<p>t9标记后一般都是正值，而好的波形为未定义状态，值为-12345.0。在命令行使用下面的命令删除定义的波形：</p>
-<pre><code>saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;rm&quot;,$1&#125;&#39; | sh
-</code></pre>
-<p>也可以用如下命令将不好的波形移动到专门的文件夹下：</p>
-<pre><code>mkdir BADWAVE
-saclst t9 f *.SAC | awk &#39;$2&gt;0 &#123;print &quot;mv&quot;,$1,&quot;BAD/&quot;&#125;&#39; | sh
-</code></pre>
-<h2 id="whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区"><a href="#whitehdr-wh-将内存中文件的头段区覆盖磁盘文件中的头段区" class="headerlink" title="whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区"></a>whitehdr(wh) 将内存中文件的头段区覆盖磁盘文件中的头段区</h2><p>直接使用，不需要任何参数。</p>
-<p>注意：</p>
-<p>write命令的over选项可以用内存中头段区和数据区覆盖磁盘文件中的头段区<br>和数据区。该命令用内存中头段区覆盖磁盘文件中的头段区，数据区不会被覆盖。<br>如果使用了cut命令，读取数据时将仅读入部分数据，内存中的头段区将会做<br>相应修改以反映cut命令的效果，但是磁盘中的数据并没有被修改，因而此时<br>不能使用writehdr命令。对被cut的数据使用writehdr命令将可能导致磁<br>盘中的数据产生类似于平移或截断的效果。</p>
-<h1 id="震相拾取（到时标定）"><a href="#震相拾取（到时标定）" class="headerlink" title="震相拾取（到时标定）"></a>震相拾取（到时标定）</h1><h2 id="plotpk-ppk-命令（模式）"><a href="#plotpk-ppk-命令（模式）" class="headerlink" title="plotpk(ppk)命令（模式）"></a>plotpk(ppk)命令（模式）</h2><pre><code>ppk # 进入ppk模式，进入后终端不在提示sac&gt;；
-# 如果之前打开过绘图，需要鼠标点击一下绘图窗口。
-</code></pre>
-<p>直接按下q，即可退出ppk模式。</p>
-<p>注意：进入ppk模式所有键盘输入会解释为ppk命令。当焦点转移到终端时，键盘输入显示在<br>终端中，退出ppk模式时sac依次解释终端中的命令。</p>
-<h2 id="ppk模式下拾取震相"><a href="#ppk模式下拾取震相" class="headerlink" title="ppk模式下拾取震相"></a>ppk模式下拾取震相</h2><p>在绘图窗口，移动鼠标到标记到时位置，依次按下t、0，在标记处出现T0标记，并保存到相应名称头段变量中。</p>
-<p>按q退出ppk模式。</p>
-<pre><code>wh # 保存头段变量
-</code></pre>
-<p>全局变量SAC_PPK_USE_CROSSHAIRS可以控制ppk下鼠标形态。0为十字，1为全图十型。</p>
-<h2 id="关闭快速绘图（显示图形时降采显示）"><a href="#关闭快速绘图（显示图形时降采显示）" class="headerlink" title="关闭快速绘图（显示图形时降采显示）"></a>关闭快速绘图（显示图形时降采显示）</h2><p>现代计算机性能足够，通常关闭快速绘图已获得最佳观感。qdp控制快速绘图开启与关闭。</p>
-<pre><code>qdp off # 关闭快速绘图
-</code></pre>
-<h2 id="放大与缩小"><a href="#放大与缩小" class="headerlink" title="放大与缩小"></a>放大与缩小</h2><p>光标移动到某一位置按下x键，再移动到另一个位置按下x键。两次键入确定了一个时间窗，<br>只显示该时间窗内的波形。</p>
-<p>在窗口某位置按下左键拖动到另一位置实现框内波形放大。</p>
-<p>键入o缩小图幅，但是只能回退5次。</p>
-<h2 id="同时标记三分量"><a href="#同时标记三分量" class="headerlink" title="同时标记三分量"></a>同时标记三分量</h2><p>使用命令：</p>
-<pre><code>ppk p 3 a m
-</code></pre>
-<p>显示三个波形数据。在ppk模式下：</p>
-<p>键入 n 可以依次显示接下来的3个波形。波形显示完成后自动退出ppk模式。</p>
-<p>键入 b 可以显示前3个波形。</p>
-<p>注意：三个分量波形数据参考时刻必须相同；内存中存储的数据顺序需要符合需求。</p>
-<h2 id="ppk命令"><a href="#ppk命令" class="headerlink" title="ppk命令"></a>ppk命令</h2><p>详见<a href="https://seisman.github.io/SAC_Docs_zh/data-process/picking-phase/#id7">ppk命令</a></p>
-<pre><code>plotpk 
-</code></pre>
-<ul>
-<li>perplot &#x2F; n|ON|OFF  一张图绘制n个文件，on表示使用旧值，off表示绘制所有文件</li>
-<li>bell &#x2F; on|off 绘图区内击键时是否响铃</li>
-<li>absolute|relative &#x2F; &#x2F; 绝对&#x2F;相对绘图模式</li>
-<li>reference &#x2F; v|on|off v表示参考线的参考值，on|off是否显示参考线</li>
-<li>markall &#x2F; on|off 一次标记一张图上所有文件到时|指标及光标位置对应的震相到时</li>
-<li>sacelocs &#x2F; on|off 是否将L命令拾取的位置保存到黑板变量中</li>
-</ul>
-<h2 id="标定P、S波"><a href="#标定P、S波" class="headerlink" title="标定P、S波"></a>标定P、S波</h2><p>ppk模式可以键入：</p>
-<ul>
-<li><p>p 标定P波到时，到时信息保存到头段变量A中</p>
-</li>
-<li><p>s 标定S波到时，到时信息保存到头段变量T0中。</p>
-</li>
-<li><p>键入e，震相onset类型，震相方向、震相质量等信息仅用于标记P、S波，这些信息会保留在头段变量KA或者KTO中。<br>例如：进入ppk模式，按下ed1p，KA中的值为EPD1，表示Emergent和极性向下的P波，震相质量为1表示震相清晰。</p>
-</li>
-</ul>
-<h2 id="ppk修改版"><a href="#ppk修改版" class="headerlink" title="ppk修改版"></a>ppk修改版</h2><p>详见<a href="https://blog.seisman.info/faster-ppk/">faster-ppk</a></p>
-<h1 id="信号叠加"><a href="#信号叠加" class="headerlink" title="信号叠加"></a>信号叠加</h1><p>SAC提供Signal Stack Subprocess（简称SSS）来实现。</p>
-<h2 id="进入和退出sss"><a href="#进入和退出sss" class="headerlink" title="进入和退出sss"></a>进入和退出sss</h2><pre><code>sss # 键入sss进入子程序
-quitsub # 退出子程序
-quit # 退出sac
-</code></pre>
-<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><pre><code>sss # 进入子程序
-addstack a.sac weight 1 delay 20 seconds
-</code></pre>
-<ul>
-<li><p>addstack 读入文件a.sac。</p>
-</li>
-<li><p>weight 设置文件在叠加中的权重，值为0-1。</p>
-</li>
-<li><p>delay 波形向后延迟。</p>
-<p>  liststack # 列出叠加文件列表中的文件属性</p>
-</li>
-</ul>
-<h2 id="叠加文件"><a href="#叠加文件" class="headerlink" title="叠加文件"></a>叠加文件</h2><pre><code>zerostack # 清除之前添加的文件和设置
-addstack # 添加文件
-timewindow 0 19 # 选定时窗，这里为0-19秒
-sumstack # 叠加波形
-</code></pre>
-<p>注意：波形按照相对时刻对齐；叠加后会做归一化。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SAC时间变量</title>
-    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
-<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
-<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
-<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
-<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
-<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
-
-
-<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
-<p>使用注意事项：</p>
-<ul>
-<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
-<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
-</ul>
-<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
-<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
-
-<p>处理大量数据时：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
-
-<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
-<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu初始环境配置</title>
     <url>/2022/10/19/Ubuntu%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h1 id="1-火狐浏览器配置"><a href="#1-火狐浏览器配置" class="headerlink" title="1 火狐浏览器配置"></a>1 火狐浏览器配置</h1><p>参考：<a href="https://zhiyuanshi1901.github.io/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/">国内版火狐浏览器安装</a></p>
@@ -1382,28 +1293,92 @@ sudo apt install ffmpeg
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu安装firefox中国版</title>
-    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
-    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
-<p>参考：</p>
-<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
-<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
-</code></pre>
-<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
-</code></pre>
-<p>使用vi编辑器编辑该文件，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
-
-<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
-</code></pre>
+    <title>Obspy地震数据下载脚本</title>
+    <url>/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>目前实现的功能：</p>
+<ul>
+<li>下载特定台站的地震波形</li>
+<li>保存为.mseed文件，或者更改format属性保存sac文件等</li>
+</ul>
+<p>缺陷，之后进行改进：</p>
+<ul>
+<li>一次运行只能保存一个台站的波形数据</li>
+<li>保存的数据为mseed文件，其中所有的波形均在这一个mseed文件中。</li>
+<li>文件命名并不全面，文件内部的波形未重新命名。</li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.core import read</span><br><span class="line">import obspy</span><br><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sigle_net(time1, time2):  # 单个台站数据返回</span><br><span class="line">    net = input(&#x27;Please input the network, default is IU:&#x27;)</span><br><span class="line">    if net == &#x27;&#x27;:</span><br><span class="line">        net = &#x27;IU&#x27;</span><br><span class="line">    print(f&#x27;You have choosen ***&#123;net&#125;*** as the network.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Please wait a minute, you will see info about the network:&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    downloadstations = Client().get_stations(network=net, station=&#x27;*&#x27;, location=&#x27;*&#x27;, starttime=time1, endtime=time2, level=&#x27;response&#x27;)</span><br><span class="line">    print(downloadstations)</span><br><span class="line">    print(&#x27;You could choose the stations, locations and channel, and they are shown thereinbefore.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&#x27;Default means you could just **enter** or make a space to show there is no word.&#x27;)</span><br><span class="line"></span><br><span class="line">    stat = input(&#x27;Please input the station, default is all stations:&#x27;)</span><br><span class="line">    if stat == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        stat = &#x27;*&#x27;</span><br><span class="line">    loc = input(&#x27;Please input the location, default is all locations:&#x27;)</span><br><span class="line">    if loc == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        loc = &#x27;*&#x27;</span><br><span class="line">    cha = input(&#x27;Please input the channel, default is all channels:&#x27;)</span><br><span class="line">    if cha == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        cha = &#x27;*&#x27;</span><br><span class="line">    res = input(&#x27;If you want response? Please input Y/N:&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Data is getting...&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    while True:  # 循环表示</span><br><span class="line">        if res == &#x27;Y&#x27; or res == &#x27;y&#x27;:</span><br><span class="line">            res = &#x27;response&#x27;</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=True)</span><br><span class="line">            break</span><br><span class="line">        elif res == &#x27;N&#x27; or res == &#x27;n&#x27;:</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=False)</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            res = input(&#x27;You have input the wrong world, please input it again:&#x27;)</span><br><span class="line">    info = &#123;&#x27;network&#x27;: net, &#x27;station&#x27;: stat, &#x27;location&#x27;: loc, &#x27;channel&#x27;: cha&#125;</span><br><span class="line">    print(&#x27;Have got the data.&#x27;)</span><br><span class="line">    return data, info</span><br><span class="line"></span><br><span class="line">timest, timee = input(&#x27;Please input the time range of the data, use space for interval(e.g. 2022-01-01T00:00:00):\n&#x27;).split(&#x27; &#x27;)</span><br><span class="line">timest, timee = UTCDateTime(timest), UTCDateTime(timee)</span><br><span class="line">import os</span><br><span class="line">path = (&#x27;DATA/&#x27;)</span><br><span class="line">check = os.path.isdir(path)</span><br><span class="line">if check == False:</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line">quantity = input(&#x27;How mant networks do you want? If you want more than 1 network, Please input its quantity, or just **enter**:&#x27;)</span><br><span class="line">if quantity == &#x27;&#x27; or quantity == 1:  # 避免出现输入1的情况导致错误  保存波形文件</span><br><span class="line">    [data, info] = sigle_net(timest, timee)</span><br><span class="line">    filename = (path  + timest + &#x27;.&#x27; + info[&quot;network&quot;] + &#x27;.&#x27; + info[&quot;station&quot;] + &#x27;.&#x27; +</span><br><span class="line">                info[&#x27;location&#x27;] + &#x27;.&#x27; + info[&quot;channel&quot;] + &#x27;.mseed&#x27;)   # 目前信息不全，之后寻找更多信息补充</span><br><span class="line">    data.write(filename, format=&quot;mseed&quot;)  # 目前只能保存一整个mseed文件。</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">else:</span><br><span class="line">    data = multi_net(quantity, times, timee)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Linux学习</category>
+        <category>地震学常用软件</category>
       </categories>
       <tags>
-        <tag>Linux学习</tag>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC数据格式与数据合并</title>
+    <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
+<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>SEED：存储多台站多分量的波形数据和台站元数据。<br>miniSEED：仅包含波形数据。<br>datalessSEED：仅包含台站元数据。<br>CSS3.0：为数据库设计。</p>
+<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h4><p>使用Rdseed进行格式转换：</p>
+<p>从SEED数据中提取SAC格式的波形数据以及台站的RESP仪器响应文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -Rdf file.seed</span><br></pre></td></tr></table></figure>
+
+<p>从SEED数据中提取SAC格式的波形数据以及PZ仪器响应文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rdseed -pdf file.seed</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h4><p>使用<code>merge</code>命令进行合并：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.NET.STA.00.BHZ  # 读入所有需要合并的文件</span><br><span class="line">merge              # 内存中所有的文件被合并为一个文件</span><br><span class="line">w NET.STA.00.BHZ   # 写回到磁盘中</span><br></pre></td></tr></table></figure>
+<p>SAC会检测所有需要合并文件的<code>knetwk</code>、<code>kstnm</code>、<code>kcmpnm</code>、<code>delta</code>参数是否完全匹配，并智能判断文件的合并顺序。</p>
+<p>如果出现数据间断或者数据重叠的情况：</p>
+<ul>
+<li>存在间断，可以直接补零或者线性插值；</li>
+<li>存在重叠，可以比较重叠部分数据是否相同或对重叠的波形进行平均。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC时间变量</title>
+    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+
+
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
+<ul>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+</ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
       </tags>
   </entry>
   <entry>
@@ -1685,6 +1660,31 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu安装firefox中国版</title>
+    <url>/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/</url>
+    <content><![CDATA[<p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
+<p>参考：</p>
+<p><a href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
+<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
+</code></pre>
+<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
+</code></pre>
+<p>使用vi编辑器编辑该文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
+</code></pre>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《信号分析与处理》英语词汇</title>
     <url>/2022/09/15/%E3%80%8A%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
@@ -1762,97 +1762,6 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>英语词汇</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《重力场与重力勘探》英语词汇</title>
-    <url>/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
-<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
-<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
-<p>Gravity 重力</p>
-<p>acceleration 加速度</p>
-<p>concept 概念</p>
-<p>Gravitational field 引力场</p>
-<p>Gravitational potential 引力位</p>
-<p>Gravity potential 重力位</p>
-<p>anomaly 异常</p>
-<p>formulae 公式</p>
-<p>gravitational force caused by density contrast 剩余质量引力</p>
-<p>Free air anomolies 自由空气重力异常</p>
-<p>Bougure gravity anomolies 布格重力异常</p>
-<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
-<p>instruments for relative gravity measurements 相对重力测量仪</p>
-<p>Land gravity metres 地面测量仪器</p>
-<p>marine 海洋</p>
-<p>areo 航空</p>
-<p>borehole 井中</p>
-<p>calibration 标定</p>
-<p>coincidence 一致性</p>
-<p>scale 格值</p>
-<p>basis-points net 基点网</p>
-<p>arrangement 布置</p>
-<p>combination measurements 联测</p>
-<p>Gravity points 普通点</p>
-<p>points for monltor 检查点</p>
-<p>additional measurements 补充观测</p>
-<p>Geodesy 测地工作</p>
-<p>Airlome gravity surcey 航空重力测量</p>
-<p>gravity gradients 重力梯度</p>
-<p>torsion balance gradiometre 扭秤</p>
-<p>satellite 卫星</p>
-<p>reduction 整理</p>
-<p>adjustments 平差</p>
-<p>closer error 闭合差</p>
-<p>condition adjustment 条件平差</p>
-<p>Terrain correction 地形校正</p>
-<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
-<p>Free-air coorection 自由空气（高度）矫正</p>
-<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
-<p>Normal correction 正常场（纬度）校正</p>
-<p>gravity anomolies 重力异常</p>
-<p>illustration of gravity anomalies 异常的图示</p>
-<p>contour map 异常平面图</p>
-<p>profile 剖面图</p>
-<p>profiles on a plane 异常平剖图</p>
-<p>isostasy 均衡</p>
-<p>isostatic gravity anomaly 均衡重力异常</p>
-<p>principle 原理</p>
-<p>estimation 估计</p>
-<p>illutration 表示方法，插图</p>
-<p>least-square method 最小二乘法</p>
-<p>forward calculation 证问题</p>
-<p>irregular 不规则</p>
-<p>interfaces 分界面</p>
-<p>multi-interfaces 多分界面</p>
-<p>characteristic point method 特征点法</p>
-<p>Optimization 选择法</p>
-<p>Interactive method 人机交互式反演方法</p>
-<p>Linear regression 线性回归法</p>
-<p>interation 迭代法</p>
-<p>frequency domain 频率域反演方法</p>
-<p>Ambiguity 多解性问题</p>
-<p>effect 效应</p>
-<p>Separation 分离 </p>
-<p>deep structures 深部的因素</p>
-<p>Regional gravity anomaly 区域异常</p>
-<p>local gravity anomaly 局部异常</p>
-<p>average field method (Grids) 平均场法</p>
-<p>Polygon method 圆周法（多边形法）</p>
-<p>Grid calulation 网格法</p>
-<p>continuation 延拓</p>
-<p>filtering in spatial frequency demain 频率域滤波法</p>
-<p>faults 断裂构造（断层）</p>
-<p>paleo-burial hill 古潜山</p>
-<p>oil trap 封闭</p>
-<p>salt 盐矿</p>
-<p>ore 金属矿</p>
-]]></content>
-      <categories>
-        <category>专业英语词汇</category>
-      </categories>
-      <tags>
-        <tag>重力勘探</tag>
       </tags>
   </entry>
   <entry>
@@ -2000,6 +1909,102 @@ man 命令名  //使用范围更广
       </categories>
       <tags>
         <tag>地震勘探</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《沙丘》记录</title>
+    <url>/2022/11/19/%E3%80%8A%E6%B2%99%E4%B8%98%E3%80%8B%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>《重力场与重力勘探》英语词汇</title>
+    <url>/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
+<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
+<p>Gravity 重力</p>
+<p>acceleration 加速度</p>
+<p>concept 概念</p>
+<p>Gravitational field 引力场</p>
+<p>Gravitational potential 引力位</p>
+<p>Gravity potential 重力位</p>
+<p>anomaly 异常</p>
+<p>formulae 公式</p>
+<p>gravitational force caused by density contrast 剩余质量引力</p>
+<p>Free air anomolies 自由空气重力异常</p>
+<p>Bougure gravity anomolies 布格重力异常</p>
+<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
+<p>instruments for relative gravity measurements 相对重力测量仪</p>
+<p>Land gravity metres 地面测量仪器</p>
+<p>marine 海洋</p>
+<p>areo 航空</p>
+<p>borehole 井中</p>
+<p>calibration 标定</p>
+<p>coincidence 一致性</p>
+<p>scale 格值</p>
+<p>basis-points net 基点网</p>
+<p>arrangement 布置</p>
+<p>combination measurements 联测</p>
+<p>Gravity points 普通点</p>
+<p>points for monltor 检查点</p>
+<p>additional measurements 补充观测</p>
+<p>Geodesy 测地工作</p>
+<p>Airlome gravity surcey 航空重力测量</p>
+<p>gravity gradients 重力梯度</p>
+<p>torsion balance gradiometre 扭秤</p>
+<p>satellite 卫星</p>
+<p>reduction 整理</p>
+<p>adjustments 平差</p>
+<p>closer error 闭合差</p>
+<p>condition adjustment 条件平差</p>
+<p>Terrain correction 地形校正</p>
+<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
+<p>Free-air coorection 自由空气（高度）矫正</p>
+<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
+<p>Normal correction 正常场（纬度）校正</p>
+<p>gravity anomolies 重力异常</p>
+<p>illustration of gravity anomalies 异常的图示</p>
+<p>contour map 异常平面图</p>
+<p>profile 剖面图</p>
+<p>profiles on a plane 异常平剖图</p>
+<p>isostasy 均衡</p>
+<p>isostatic gravity anomaly 均衡重力异常</p>
+<p>principle 原理</p>
+<p>estimation 估计</p>
+<p>illutration 表示方法，插图</p>
+<p>least-square method 最小二乘法</p>
+<p>forward calculation 证问题</p>
+<p>irregular 不规则</p>
+<p>interfaces 分界面</p>
+<p>multi-interfaces 多分界面</p>
+<p>characteristic point method 特征点法</p>
+<p>Optimization 选择法</p>
+<p>Interactive method 人机交互式反演方法</p>
+<p>Linear regression 线性回归法</p>
+<p>interation 迭代法</p>
+<p>frequency domain 频率域反演方法</p>
+<p>Ambiguity 多解性问题</p>
+<p>effect 效应</p>
+<p>Separation 分离 </p>
+<p>deep structures 深部的因素</p>
+<p>Regional gravity anomaly 区域异常</p>
+<p>local gravity anomaly 局部异常</p>
+<p>average field method (Grids) 平均场法</p>
+<p>Polygon method 圆周法（多边形法）</p>
+<p>Grid calulation 网格法</p>
+<p>continuation 延拓</p>
+<p>filtering in spatial frequency demain 频率域滤波法</p>
+<p>faults 断裂构造（断层）</p>
+<p>paleo-burial hill 古潜山</p>
+<p>oil trap 封闭</p>
+<p>salt 盐矿</p>
+<p>ore 金属矿</p>
+]]></content>
+      <categories>
+        <category>专业英语词汇</category>
+      </categories>
+      <tags>
+        <tag>重力勘探</tag>
       </tags>
   </entry>
   <entry>
@@ -2828,6 +2833,26 @@ npm config get registry  # 查看镜像源更新成功
       </tags>
   </entry>
   <entry>
+    <title>子波提取与反褶积方法综述作业</title>
+    <url>/2022/10/21/%E5%AD%90%E6%B3%A2%E6%8F%90%E5%8F%96%E4%B8%8E%E5%8F%8D%E8%A4%B6%E7%A7%AF%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h1 id="作业内容："><a href="#作业内容：" class="headerlink" title="作业内容："></a>作业内容：</h1><p>1、子波提取方法综述</p>
+<p>2、反褶积方法综述</p>
+<h1 id="1、子波提取方法综述"><a href="#1、子波提取方法综述" class="headerlink" title="1、子波提取方法综述"></a>1、子波提取方法综述</h1><p><img src="1.jpg" alt="子波提取1"><br><img src="2.jpg" alt="子波提取2"><br><img src="3.jpg" alt="子波提取3"><br><img src="4.jpg" alt="子波提取4"></p>
+<h1 id="2、反褶积方法综述"><a href="#2、反褶积方法综述" class="headerlink" title="2、反褶积方法综述"></a>2、反褶积方法综述</h1><p><img src="5.jpg" alt="反褶积1"><br><img src="6.jpg" alt="反褶积1"><br><img src="7.jpg" alt="反褶积1"><br><img src="8.jpg" alt="反褶积1"><br><img src="9.jpg" alt="反褶积1"><br><img src="10.jpg" alt="反褶积1"><br><img src="11.jpg" alt="反褶积1"></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1].地震数据处理方法&#x2F;李振春主编.东营：中国石油大学出版社,2004.8</p>
+<p>[2].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2021&filename=SYWT202103001&uniplatform=NZKPT&v=liXv2Ktkr-qoFNjs2QWU_1b4pEln1lZ5Hrco92p293ijIRm_jNubFA6N2d96X_s5">张杰,陈学华,蒋伟.深度域地震子波提取方法综述[J].石油物探,2021,60(03):353-365.</a></p>
+<p>[3].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=SYWT202002003&uniplatform=NZKPT&v=BZuqgJiH9TQE73RcRZBU7Bs8TIBa0xNgAGahye8PMzALPV4TDMWXOP0z5AzXWFv5">戴永寿,张彧豪,张鹏,张红倩,王春娴.时变地震子波提取研究方法综述[J].石油物探,2020,59(02):169-176.</a></p>
+<p>[4].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CMFD&dbname=CMFD201501&filename=1014071870.nh&uniplatform=NZKPT&v=KhCh68wjCJByE2_y8PTjV8Qs0ol6C9vPxGpz1CQ0TCO54ehSnYIKaiCFztYaYZQ9">陈文立. 浅析一种提高地震分辨率的方法_反褶积[D].长安大学,2014.</a></p>
+<p>[5].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFD2013&filename=SYXB201301011&uniplatform=NZKPT&v=hRmteNsrv1Go2RCT86X9oWnHpLopL8H-vHJ1zfK1Gg_YegmzNBGPrtoi8vHc8GgM">孟大江,王德利,冯飞,黄飞,朱恒.基于Curvelet变换的稀疏反褶积[J].石油学报,2013,34(01):107-114.</a></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>seismic exploration</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>地震资料解释基础作业整理</title>
     <url>/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h1 id="地震资料解释基础整理的习题总结"><a href="#地震资料解释基础整理的习题总结" class="headerlink" title="地震资料解释基础整理的习题总结"></a>地震资料解释基础整理的习题总结</h1><h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="1-1.jpg" alt="1"></p>
@@ -2873,26 +2898,6 @@ npm config get registry  # 查看镜像源更新成功
       </categories>
       <tags>
         <tag>地震勘探</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>子波提取与反褶积方法综述作业</title>
-    <url>/2022/10/21/%E5%AD%90%E6%B3%A2%E6%8F%90%E5%8F%96%E4%B8%8E%E5%8F%8D%E8%A4%B6%E7%A7%AF%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<h1 id="作业内容："><a href="#作业内容：" class="headerlink" title="作业内容："></a>作业内容：</h1><p>1、子波提取方法综述</p>
-<p>2、反褶积方法综述</p>
-<h1 id="1、子波提取方法综述"><a href="#1、子波提取方法综述" class="headerlink" title="1、子波提取方法综述"></a>1、子波提取方法综述</h1><p><img src="1.jpg" alt="子波提取1"><br><img src="2.jpg" alt="子波提取2"><br><img src="3.jpg" alt="子波提取3"><br><img src="4.jpg" alt="子波提取4"></p>
-<h1 id="2、反褶积方法综述"><a href="#2、反褶积方法综述" class="headerlink" title="2、反褶积方法综述"></a>2、反褶积方法综述</h1><p><img src="5.jpg" alt="反褶积1"><br><img src="6.jpg" alt="反褶积1"><br><img src="7.jpg" alt="反褶积1"><br><img src="8.jpg" alt="反褶积1"><br><img src="9.jpg" alt="反褶积1"><br><img src="10.jpg" alt="反褶积1"><br><img src="11.jpg" alt="反褶积1"></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1].地震数据处理方法&#x2F;李振春主编.东营：中国石油大学出版社,2004.8</p>
-<p>[2].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2021&filename=SYWT202103001&uniplatform=NZKPT&v=liXv2Ktkr-qoFNjs2QWU_1b4pEln1lZ5Hrco92p293ijIRm_jNubFA6N2d96X_s5">张杰,陈学华,蒋伟.深度域地震子波提取方法综述[J].石油物探,2021,60(03):353-365.</a></p>
-<p>[3].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2020&filename=SYWT202002003&uniplatform=NZKPT&v=BZuqgJiH9TQE73RcRZBU7Bs8TIBa0xNgAGahye8PMzALPV4TDMWXOP0z5AzXWFv5">戴永寿,张彧豪,张鹏,张红倩,王春娴.时变地震子波提取研究方法综述[J].石油物探,2020,59(02):169-176.</a></p>
-<p>[4].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CMFD&dbname=CMFD201501&filename=1014071870.nh&uniplatform=NZKPT&v=KhCh68wjCJByE2_y8PTjV8Qs0ol6C9vPxGpz1CQ0TCO54ehSnYIKaiCFztYaYZQ9">陈文立. 浅析一种提高地震分辨率的方法_反褶积[D].长安大学,2014.</a></p>
-<p>[5].<a href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFD2013&filename=SYXB201301011&uniplatform=NZKPT&v=hRmteNsrv1Go2RCT86X9oWnHpLopL8H-vHJ1zfK1Gg_YegmzNBGPrtoi8vHc8GgM">孟大江,王德利,冯飞,黄飞,朱恒.基于Curvelet变换的稀疏反褶积[J].石油学报,2013,34(01):107-114.</a></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>seismic exploration</tag>
       </tags>
   </entry>
   <entry>
@@ -2975,6 +2980,53 @@ npm config get registry  # 查看镜像源更新成功
       </categories>
       <tags>
         <tag>常用网站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深度学习初探</title>
+    <url>/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<p>来源于：</p>
+<p><a href="http://introtodeeplearning.com/">MIT-Introduction to Deep Learning</a></p>
+<p>代码为MIT课程练习LAB，可以使用Colab进行学习。链接：<br><a href="https://github.com/aamini/introtodeeplearning">MIT-Codes Github resposibility</a></p>
+<h1 id="Lab-1-Intro-to-TensorFlow-and-Music-Generation-with-RNNs"><a href="#Lab-1-Intro-to-TensorFlow-and-Music-Generation-with-RNNs" class="headerlink" title="Lab 1: Intro to TensorFlow and Music Generation with RNNs"></a>Lab 1: Intro to TensorFlow and Music Generation with RNNs</h1><h2 id="Part-1-Intro-to-TensorFlow"><a href="#Part-1-Intro-to-TensorFlow" class="headerlink" title="Part 1:Intro to TensorFlow"></a>Part 1:Intro to TensorFlow</h2><h3 id="创建tf值"><a href="#创建tf值" class="headerlink" title="创建tf值"></a>创建tf值</h3><ul>
+<li><p><code> x=tf.constant(&#39;String&#39;, tf.string)</code>:<br>创建一个常量，这个常量可以是多维列表。<br><code>tf.string</code>表示为字符串,<code>tf.float64</code>表示浮点型。</p>
+</li>
+<li><p><code>x=tf.Variable(value)</code>:创建一个变量</p>
+</li>
+<li><p><code>tf.zeros([a, b, c])</code>:创建一个全是0的矩阵,列表中表示size。</p>
+</li>
+</ul>
+<h3 id="查看tf变量属性"><a href="#查看tf变量属性" class="headerlink" title="查看tf变量属性"></a>查看tf变量属性</h3><ul>
+<li><code>tf.rank(value).numpy()</code>:查看value的维数</li>
+<li><code>tf.shape(value).numpy()</code>:查看value的大小</li>
+</ul>
+<h3 id="tf计算函数"><a href="#tf计算函数" class="headerlink" title="tf计算函数"></a>tf计算函数</h3><ul>
+<li><code>tf.add(a, b)</code>: a+b</li>
+<li><code>tf.subtract(a, b)</code>: a-b</li>
+<li><code>tf.multiply(a, b)</code>: a*b</li>
+</ul>
+<h3 id="创建一个简单的神经网络"><a href="#创建一个简单的神经网络" class="headerlink" title="创建一个简单的神经网络"></a>创建一个简单的神经网络</h3><p>使用的输出公式: <code>y=sigmoid(xW+b)</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">### Defining a network Layer ###</span><br><span class="line"></span><br><span class="line"># n_output_nodes: number of output nodes 输出节点个数</span><br><span class="line"># input_shape: shape of the input 输入大小</span><br><span class="line"># x: input to the layer 层的输入</span><br><span class="line"></span><br><span class="line">class OurDenseLayer(tf.keras.layers.Layer):  # 继承了Layer</span><br><span class="line">  def __init__(self, n_output_nodes):</span><br><span class="line">    super(OurDenseLayer, self).__init__()</span><br><span class="line">    self.n_output_nodes = n_output_nodes</span><br><span class="line"></span><br><span class="line">  def build(self, input_shape):</span><br><span class="line">    d = int(input_shape[-1])</span><br><span class="line">    # Define and initialize parameters: a weight matrix W and bias b  定义并初始化参数：权重W 误差b</span><br><span class="line">    # Note that parameter initialization is random! 参数的初始值是随机的！！！</span><br><span class="line">    self.W = self.add_weight(&quot;weight&quot;, shape=[d, self.n_output_nodes]) # note the dimensionality d行‘节点个数&#x27;列</span><br><span class="line">    self.b = self.add_weight(&quot;bias&quot;, shape=[1, self.n_output_nodes]) # note the dimensionality  1行 ‘节点个数&#x27;列</span><br><span class="line"></span><br><span class="line">  def call(self, x):</span><br><span class="line">    &#x27;&#x27;&#x27;TODO: define the operation for z (hint: use tf.matmul) 定义z &#x27;&#x27;&#x27;</span><br><span class="line">    z = tf.add(tf.matmul(x, self.W), self.b) # TODO</span><br><span class="line"></span><br><span class="line">    &#x27;&#x27;&#x27;TODO: define the operation for out (hint: use tf.sigmoid) 定义输出  &#x27;&#x27;&#x27;</span><br><span class="line">    y = tf.sigmoid(z) # TODO</span><br><span class="line">    return y</span><br><span class="line"></span><br><span class="line"># Since layer parameters are initialized randomly, we will set a random seed for reproducibility 层的参数初始化值是随机的，设置一个随机种子</span><br><span class="line">tf.random.set_seed(1)</span><br><span class="line">layer = OurDenseLayer(3)</span><br><span class="line">layer.build((1,2))</span><br><span class="line">x_input = tf.constant([[1,2.]], shape=(1,2))</span><br><span class="line">y = layer.call(x_input)</span><br><span class="line"></span><br><span class="line"># test the output!</span><br><span class="line">print(y.numpy())</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用时序-Sequential-API的神经网络"><a href="#使用时序-Sequential-API的神经网络" class="headerlink" title="使用时序(Sequential)API的神经网络"></a>使用时序(Sequential)API的神经网络</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from tensorflow.keras import Sequential</span><br><span class="line">from tensorflow.keras.layers import Dense</span><br><span class="line"></span><br><span class="line">n_output_nodes = 3</span><br><span class="line"></span><br><span class="line"># First define the model </span><br><span class="line">model = Sequential()</span><br><span class="line"></span><br><span class="line">dense_layer = Dense(units=n_output_nodes) # TODO  </span><br><span class="line"># 答案：dense_layer = Dense(n_output_nodes, activation=&#x27;sigmoid&#x27;) # TODO</span><br><span class="line"># Add the dense layer to the model</span><br><span class="line">model.add(dense_layer)</span><br></pre></td></tr></table></figure>
+<p>测试输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x_input = tf.constant([[1,2.]], shape=(1,2))</span><br><span class="line">model_output = model(x_input) # TODO   将x输入model模型中运行。</span><br><span class="line"># 答案 model_output = model(x_input).numpy()</span><br><span class="line">print(model_output) </span><br></pre></td></tr></table></figure>
+
+<p>使用Model类创建继承的子类SubclassModel：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from tensorflow.keras import Model</span><br><span class="line">from tensorflow.keras.layers import Dense</span><br><span class="line">class SubclassModel(tf.keras.Model):</span><br><span class="line">    def __init__(self, n_output_nodes):</span><br><span class="line">        super(SubclassModel, self).__init__()</span><br><span class="line">        &#x27;&#x27;&#x27;TODO: Our model consists of a single Dense layer. Define this layer.&#x27;&#x27;&#x27; </span><br><span class="line">        self.dense_layer = Dense(n_output_nodes, activation=&#x27;sigmoid&#x27;)   &#x27;&#x27;&#x27;TODO: Dense Layer&#x27;&#x27;&#x27;</span><br><span class="line">        # 答案 self.dense_layer = Dense(n_output_nodes, activation=&#x27;sigmoid&#x27;)</span><br><span class="line">        # 此处使用sigmoid函数，若使用relu，输出为0；使用tanh，输出的0、2位置为负数。</span><br><span class="line">    def call(self, inputs):</span><br><span class="line">        return self.dense_layer(inputs)</span><br><span class="line"># 测试：   </span><br><span class="line">n_output_nodes = 3</span><br><span class="line">model = SubclassModel(n_output_nodes)</span><br><span class="line">x_input = tf.constant([[1,2.]], shape=(1,2))</span><br><span class="line">print(model.call(x_input))</span><br></pre></td></tr></table></figure>
+
+<p>在<code>call</code>函数中增加：<code>isidentity=False</code>，<br>isidentity，“有时我们希望网络简单地输出原来的值”。<br>True时返回输入值，否则正常执行。</p>
+<h3 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h3><p>通过<code>GradientTape()</code>方法实现梯度计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x = tf.Variable(3.0)</span><br><span class="line">with tf.GradientTape() as tape:</span><br><span class="line">    y=x*x</span><br><span class="line">dy_dx=tape.gradient(y, x)</span><br></pre></td></tr></table></figure>
+
+<p>SGD梯度法优化方法：<br>计算损失L&#x3D;(x−x_f)^2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x = tf.Variable([tf.random.normal([1])]) # x随机取值</span><br><span class="line">learning_rate = 1e-2 # SGD的学习率</span><br><span class="line">history = []</span><br><span class="line">x_f = 4     # 定义目标值</span><br><span class="line"></span><br><span class="line">for i in range(500):</span><br><span class="line">    with tf.GradientTape() as tape:</span><br><span class="line">        loss = (x - x_f)**2  </span><br><span class="line">    grad = tape.gradient(loss, x) # 计算梯度值</span><br><span class="line">    new_x = x - learning_rate*grad # sgd update</span><br><span class="line">    x.assign(new_x) # 更新x值，即用new_x值替换x值。</span><br><span class="line">    history.append(x.numpy()[0]) # 加入索引是因为x为列表，但是x列表只有一个值。</span><br><span class="line"></span><br><span class="line"># Plot the evolution of x as we optimize towards x_f!</span><br><span class="line">plt.plot(history)</span><br><span class="line">plt.plot([0, 500],[x_f,x_f])</span><br><span class="line">plt.legend((&#x27;Predicted&#x27;, &#x27;True&#x27;))</span><br><span class="line">plt.xlabel(&#x27;Iteration&#x27;)</span><br><span class="line">plt.ylabel(&#x27;x value&#x27;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>Tensorflow</tag>
       </tags>
   </entry>
 </search>

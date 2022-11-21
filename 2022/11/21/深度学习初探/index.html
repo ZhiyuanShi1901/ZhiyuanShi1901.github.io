@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="来源于： MIT-Introduction to Deep Learning 代码为MIT课程练习LAB，可以使用Colab进行学习。链接：MIT-Codes Github resposibility Lab 1: Intro to TensorFlow and Music Generation with RNNsPart 1:Intro to TensorFlow创建tf值  x&#x3D;tf.cons">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习初探">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:site_name" content="Zhiyuan Shi">
+<meta property="og:description" content="来源于： MIT-Introduction to Deep Learning 代码为MIT课程练习LAB，可以使用Colab进行学习。链接：MIT-Codes Github resposibility Lab 1: Intro to TensorFlow and Music Generation with RNNsPart 1:Intro to TensorFlow创建tf值  x&#x3D;tf.cons">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-21T12:08:19.000Z">
+<meta property="article:modified_time" content="2022-11-21T14:57:45.062Z">
+<meta property="article:tag" content="Tensorflow">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D%E6%8E%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D%E6%8E%A2/","path":"2022/11/21/深度学习初探/","title":"深度学习初探"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>深度学习初探 | Zhiyuan Shi</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Zhiyuan Shi</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">9</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">17</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-1-Intro-to-TensorFlow-and-Music-Generation-with-RNNs"><span class="nav-number">1.</span> <span class="nav-text">Lab 1: Intro to TensorFlow and Music Generation with RNNs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-1-Intro-to-TensorFlow"><span class="nav-number">1.1.</span> <span class="nav-text">Part 1:Intro to TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAtf%E5%80%BC"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建tf值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Btf%E5%8F%98%E9%87%8F%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">查看tf变量属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf%E8%AE%A1%E7%AE%97%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.3.</span> <span class="nav-text">tf计算函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.1.4.</span> <span class="nav-text">创建一个简单的神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%97%B6%E5%BA%8F-Sequential-API%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.1.5.</span> <span class="nav-text">使用时序(Sequential)API的神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.6.</span> <span class="nav-text">梯度计算</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhiyuanShi1901" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhiyuanShi1901" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dshi78066@gmail.com" title="Personal E-Mail → mailto:dshi78066@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>Personal E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1901030201@s.upc.edu.cn" title="Work E-Mail → mailto:1901030201@s.upc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>Work E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D%E6%8E%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="深度学习初探 | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习初探
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-21 20:08:19 / Modified: 22:57:45" itemprop="dateCreated datePublished" datetime="2022-11-21T20:08:19+08:00">2022-11-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>来源于：</p>
+<p><a target="_blank" rel="noopener" href="http://introtodeeplearning.com/">MIT-Introduction to Deep Learning</a></p>
+<p>代码为MIT课程练习LAB，可以使用Colab进行学习。链接：<br><a target="_blank" rel="noopener" href="https://github.com/aamini/introtodeeplearning">MIT-Codes Github resposibility</a></p>
+<h1 id="Lab-1-Intro-to-TensorFlow-and-Music-Generation-with-RNNs"><a href="#Lab-1-Intro-to-TensorFlow-and-Music-Generation-with-RNNs" class="headerlink" title="Lab 1: Intro to TensorFlow and Music Generation with RNNs"></a>Lab 1: Intro to TensorFlow and Music Generation with RNNs</h1><h2 id="Part-1-Intro-to-TensorFlow"><a href="#Part-1-Intro-to-TensorFlow" class="headerlink" title="Part 1:Intro to TensorFlow"></a>Part 1:Intro to TensorFlow</h2><h3 id="创建tf值"><a href="#创建tf值" class="headerlink" title="创建tf值"></a>创建tf值</h3><ul>
+<li><p><code> x=tf.constant(&#39;String&#39;, tf.string)</code>:<br>创建一个常量，这个常量可以是多维列表。<br><code>tf.string</code>表示为字符串,<code>tf.float64</code>表示浮点型。</p>
+</li>
+<li><p><code>x=tf.Variable(value)</code>:创建一个变量</p>
+</li>
+<li><p><code>tf.zeros([a, b, c])</code>:创建一个全是0的矩阵,列表中表示size。</p>
+</li>
+</ul>
+<h3 id="查看tf变量属性"><a href="#查看tf变量属性" class="headerlink" title="查看tf变量属性"></a>查看tf变量属性</h3><ul>
+<li><code>tf.rank(value).numpy()</code>:查看value的维数</li>
+<li><code>tf.shape(value).numpy()</code>:查看value的大小</li>
+</ul>
+<h3 id="tf计算函数"><a href="#tf计算函数" class="headerlink" title="tf计算函数"></a>tf计算函数</h3><ul>
+<li><code>tf.add(a, b)</code>: a+b</li>
+<li><code>tf.subtract(a, b)</code>: a-b</li>
+<li><code>tf.multiply(a, b)</code>: a*b</li>
+</ul>
+<h3 id="创建一个简单的神经网络"><a href="#创建一个简单的神经网络" class="headerlink" title="创建一个简单的神经网络"></a>创建一个简单的神经网络</h3><p>使用的输出公式: <code>y=sigmoid(xW+b)</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">### Defining a network Layer ###</span><br><span class="line"></span><br><span class="line"># n_output_nodes: number of output nodes 输出节点个数</span><br><span class="line"># input_shape: shape of the input 输入大小</span><br><span class="line"># x: input to the layer 层的输入</span><br><span class="line"></span><br><span class="line">class OurDenseLayer(tf.keras.layers.Layer):  # 继承了Layer</span><br><span class="line">  def __init__(self, n_output_nodes):</span><br><span class="line">    super(OurDenseLayer, self).__init__()</span><br><span class="line">    self.n_output_nodes = n_output_nodes</span><br><span class="line"></span><br><span class="line">  def build(self, input_shape):</span><br><span class="line">    d = int(input_shape[-1])</span><br><span class="line">    # Define and initialize parameters: a weight matrix W and bias b  定义并初始化参数：权重W 误差b</span><br><span class="line">    # Note that parameter initialization is random! 参数的初始值是随机的！！！</span><br><span class="line">    self.W = self.add_weight(&quot;weight&quot;, shape=[d, self.n_output_nodes]) # note the dimensionality d行‘节点个数&#x27;列</span><br><span class="line">    self.b = self.add_weight(&quot;bias&quot;, shape=[1, self.n_output_nodes]) # note the dimensionality  1行 ‘节点个数&#x27;列</span><br><span class="line"></span><br><span class="line">  def call(self, x):</span><br><span class="line">    &#x27;&#x27;&#x27;TODO: define the operation for z (hint: use tf.matmul) 定义z &#x27;&#x27;&#x27;</span><br><span class="line">    z = tf.add(tf.matmul(x, self.W), self.b) # TODO</span><br><span class="line"></span><br><span class="line">    &#x27;&#x27;&#x27;TODO: define the operation for out (hint: use tf.sigmoid) 定义输出  &#x27;&#x27;&#x27;</span><br><span class="line">    y = tf.sigmoid(z) # TODO</span><br><span class="line">    return y</span><br><span class="line"></span><br><span class="line"># Since layer parameters are initialized randomly, we will set a random seed for reproducibility 层的参数初始化值是随机的，设置一个随机种子</span><br><span class="line">tf.random.set_seed(1)</span><br><span class="line">layer = OurDenseLayer(3)</span><br><span class="line">layer.build((1,2))</span><br><span class="line">x_input = tf.constant([[1,2.]], shape=(1,2))</span><br><span class="line">y = layer.call(x_input)</span><br><span class="line"></span><br><span class="line"># test the output!</span><br><span class="line">print(y.numpy())</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用时序-Sequential-API的神经网络"><a href="#使用时序-Sequential-API的神经网络" class="headerlink" title="使用时序(Sequential)API的神经网络"></a>使用时序(Sequential)API的神经网络</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.keras import Sequential</span><br><span class="line">from tensorflow.keras.layers import Dense</span><br><span class="line"></span><br><span class="line">n_output_nodes = 3</span><br><span class="line"></span><br><span class="line"># First define the model </span><br><span class="line">model = Sequential()</span><br><span class="line"></span><br><span class="line">dense_layer = Dense(units=n_output_nodes) # TODO  </span><br><span class="line"># 答案：dense_layer = Dense(n_output_nodes, activation=&#x27;sigmoid&#x27;) # TODO</span><br><span class="line"># Add the dense layer to the model</span><br><span class="line">model.add(dense_layer)</span><br></pre></td></tr></table></figure>
+<p>测试输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x_input = tf.constant([[1,2.]], shape=(1,2))</span><br><span class="line">model_output = model(x_input) # TODO   将x输入model模型中运行。</span><br><span class="line"># 答案 model_output = model(x_input).numpy()</span><br><span class="line">print(model_output) </span><br></pre></td></tr></table></figure>
+
+<p>使用Model类创建继承的子类SubclassModel：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.keras import Model</span><br><span class="line">from tensorflow.keras.layers import Dense</span><br><span class="line">class SubclassModel(tf.keras.Model):</span><br><span class="line">    def __init__(self, n_output_nodes):</span><br><span class="line">        super(SubclassModel, self).__init__()</span><br><span class="line">        &#x27;&#x27;&#x27;TODO: Our model consists of a single Dense layer. Define this layer.&#x27;&#x27;&#x27; </span><br><span class="line">        self.dense_layer = Dense(n_output_nodes, activation=&#x27;sigmoid&#x27;)   &#x27;&#x27;&#x27;TODO: Dense Layer&#x27;&#x27;&#x27;</span><br><span class="line">        # 答案 self.dense_layer = Dense(n_output_nodes, activation=&#x27;sigmoid&#x27;)</span><br><span class="line">        # 此处使用sigmoid函数，若使用relu，输出为0；使用tanh，输出的0、2位置为负数。</span><br><span class="line">    def call(self, inputs):</span><br><span class="line">        return self.dense_layer(inputs)</span><br><span class="line"># 测试：   </span><br><span class="line">n_output_nodes = 3</span><br><span class="line">model = SubclassModel(n_output_nodes)</span><br><span class="line">x_input = tf.constant([[1,2.]], shape=(1,2))</span><br><span class="line">print(model.call(x_input))</span><br></pre></td></tr></table></figure>
+
+<p>在<code>call</code>函数中增加：<code>isidentity=False</code>，<br>isidentity，“有时我们希望网络简单地输出原来的值”。<br>True时返回输入值，否则正常执行。</p>
+<h3 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h3><p>通过<code>GradientTape()</code>方法实现梯度计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = tf.Variable(3.0)</span><br><span class="line">with tf.GradientTape() as tape:</span><br><span class="line">    y=x*x</span><br><span class="line">dy_dx=tape.gradient(y, x)</span><br></pre></td></tr></table></figure>
+
+<p>SGD梯度法优化方法：<br>计算损失L&#x3D;(x−x_f)^2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">x = tf.Variable([tf.random.normal([1])]) # x随机取值</span><br><span class="line">learning_rate = 1e-2 # SGD的学习率</span><br><span class="line">history = []</span><br><span class="line">x_f = 4     # 定义目标值</span><br><span class="line"></span><br><span class="line">for i in range(500):</span><br><span class="line">    with tf.GradientTape() as tape:</span><br><span class="line">        loss = (x - x_f)**2  </span><br><span class="line">    grad = tape.gradient(loss, x) # 计算梯度值</span><br><span class="line">    new_x = x - learning_rate*grad # sgd update</span><br><span class="line">    x.assign(new_x) # 更新x值，即用new_x值替换x值。</span><br><span class="line">    history.append(x.numpy()[0]) # 加入索引是因为x为列表，但是x列表只有一个值。</span><br><span class="line"></span><br><span class="line"># Plot the evolution of x as we optimize towards x_f!</span><br><span class="line">plt.plot(history)</span><br><span class="line">plt.plot([0, 500],[x_f,x_f])</span><br><span class="line">plt.legend((&#x27;Predicted&#x27;, &#x27;True&#x27;))</span><br><span class="line">plt.xlabel(&#x27;Iteration&#x27;)</span><br><span class="line">plt.ylabel(&#x27;x value&#x27;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/19/%E3%80%8A%E6%B2%99%E4%B8%98%E3%80%8B%E8%AE%B0%E5%BD%95/" rel="prev" title="《沙丘》记录">
+                  <i class="fa fa-chevron-left"></i> 《沙丘》记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
