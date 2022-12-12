@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="自带函数zip()zip([一个或者多个迭代器,...])  打包为元组。例如： 123456a &#x3D; [1, 2, 3]b &#x3D; [4, 5, 6]p &#x3D; zip(a,b)&gt;&gt; p &#x3D; [(1,4), (2,5),(3,6)]q &#x3D; zip(*p)&gt;&gt; q &#x3D; [(1,2,3),(4,5,6)]  numpydigitizenumpy.digitize(x, bins, ri">
+    <meta name="description" content="自带函数zip()zip([一个或者多个迭代器,...])  打包为元组。例如： 123456a &#x3D; [1, 2, 3]b &#x3D; [4, 5, 6]p &#x3D; zip(a,b)&gt;&gt; p &#x3D; [(1,4), (2,5),(3,6)]q &#x3D; zip(*p)&gt;&gt; q &#x3D; [(1,2,3),(4,5,6)]  numpystdnumpy.std(a, axis&#x3D;None)   a:计算a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 库函数">
 <meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Zhiyuan Shi">
-<meta property="og:description" content="自带函数zip()zip([一个或者多个迭代器,...])  打包为元组。例如： 123456a &#x3D; [1, 2, 3]b &#x3D; [4, 5, 6]p &#x3D; zip(a,b)&gt;&gt; p &#x3D; [(1,4), (2,5),(3,6)]q &#x3D; zip(*p)&gt;&gt; q &#x3D; [(1,2,3),(4,5,6)]  numpydigitizenumpy.digitize(x, bins, ri">
+<meta property="og:description" content="自带函数zip()zip([一个或者多个迭代器,...])  打包为元组。例如： 123456a &#x3D; [1, 2, 3]b &#x3D; [4, 5, 6]p &#x3D; zip(a,b)&gt;&gt; p &#x3D; [(1,4), (2,5),(3,6)]q &#x3D; zip(*p)&gt;&gt; q &#x3D; [(1,2,3),(4,5,6)]  numpystdnumpy.std(a, axis&#x3D;None)   a:计算a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-27T02:01:21.000Z">
-<meta property="article:modified_time" content="2022-11-30T12:23:25.278Z">
+<meta property="article:modified_time" content="2022-12-05T08:08:06.670Z">
 <meta property="article:tag" content="Python函数">
 <meta name="twitter:card" content="summary">
 
@@ -86,7 +86,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">11</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">19</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%B8%A6%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">自带函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">1.1.</span> <span class="nav-text">zip()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy"><span class="nav-number">2.</span> <span class="nav-text">numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#digitize"><span class="nav-number">2.1.</span> <span class="nav-text">digitize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#argmax-%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%B4%A2%E5%BC%95%E5%80%BC"><span class="nav-number">2.2.</span> <span class="nav-text">argmax 返回列表的最大值索引值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">random 随机数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#choice"><span class="nav-number">2.3.1.</span> <span class="nav-text">choice</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow"><span class="nav-number">3.</span> <span class="nav-text">tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#math"><span class="nav-number">3.1.</span> <span class="nav-text">math</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-mean"><span class="nav-number">3.1.1.</span> <span class="nav-text">reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-sum"><span class="nav-number">3.1.2.</span> <span class="nav-text">reduce_sum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#squeeze"><span class="nav-number">3.2.</span> <span class="nav-text">squeeze</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kereas"><span class="nav-number">3.3.</span> <span class="nav-text">kereas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#layers"><span class="nav-number">3.3.1.</span> <span class="nav-text">layers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dense"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Dense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flatten"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">Flatten</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conv2D-%E5%AE%9A%E4%B9%89%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">Conv2D 定义卷积层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MaxPool2D-%E5%AE%9A%E4%B9%89%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96%E5%B1%82"><span class="nav-number">3.3.1.4.</span> <span class="nav-text">MaxPool2D 定义最大池化层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimizers"><span class="nav-number">3.3.2.</span> <span class="nav-text">optimizers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SGD-%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">SGD 随机梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">3.3.3.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#compile"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">compile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fit-%E6%B5%8B%E8%AF%95%E6%8B%9F%E5%90%88%E7%A8%8B%E5%BA%A6"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">fit 测试拟合程度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evaluate"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">evaluate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#predict"><span class="nav-number">3.3.3.4.</span> <span class="nav-text">predict</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functools"><span class="nav-number">4.</span> <span class="nav-text">functools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#partial"><span class="nav-number">4.1.</span> <span class="nav-text">partial</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%B8%A6%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">自带函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">1.1.</span> <span class="nav-text">zip()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy"><span class="nav-number">2.</span> <span class="nav-text">numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#std"><span class="nav-number">2.1.</span> <span class="nav-text">std</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#digitize"><span class="nav-number">2.2.</span> <span class="nav-text">digitize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#argmax-%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%B4%A2%E5%BC%95%E5%80%BC"><span class="nav-number">2.3.</span> <span class="nav-text">argmax 返回列表的最大值索引值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">2.4.</span> <span class="nav-text">random 随机数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#choice"><span class="nav-number">2.4.1.</span> <span class="nav-text">choice</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow"><span class="nav-number">3.</span> <span class="nav-text">tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#math"><span class="nav-number">3.1.</span> <span class="nav-text">math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clip-by-global-norm"><span class="nav-number">3.2.</span> <span class="nav-text">clip_by_global_norm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-mean"><span class="nav-number">3.2.1.</span> <span class="nav-text">reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-sum"><span class="nav-number">3.2.2.</span> <span class="nav-text">reduce_sum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#squeeze"><span class="nav-number">3.3.</span> <span class="nav-text">squeeze</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kereas"><span class="nav-number">3.4.</span> <span class="nav-text">kereas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#layers"><span class="nav-number">3.4.1.</span> <span class="nav-text">layers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dense"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">Dense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flatten"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">Flatten</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conv2D-%E5%AE%9A%E4%B9%89%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-number">3.4.1.3.</span> <span class="nav-text">Conv2D 定义卷积层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MaxPool2D-%E5%AE%9A%E4%B9%89%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96%E5%B1%82"><span class="nav-number">3.4.1.4.</span> <span class="nav-text">MaxPool2D 定义最大池化层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimizers"><span class="nav-number">3.4.2.</span> <span class="nav-text">optimizers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SGD-%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">SGD 随机梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">3.4.3.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#compile"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">compile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fit-%E6%B5%8B%E8%AF%95%E6%8B%9F%E5%90%88%E7%A8%8B%E5%BA%A6"><span class="nav-number">3.4.3.2.</span> <span class="nav-text">fit 测试拟合程度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evaluate"><span class="nav-number">3.4.3.3.</span> <span class="nav-text">evaluate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#predict"><span class="nav-number">3.4.3.4.</span> <span class="nav-text">predict</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functools"><span class="nav-number">4.</span> <span class="nav-text">functools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#partial"><span class="nav-number">4.1.</span> <span class="nav-text">partial</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,18 +156,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 20:23:25" itemprop="dateModified" datetime="2022-11-30T20:23:25+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-05 16:08:06" itemprop="dateModified" datetime="2022-12-05T16:08:06+08:00">2022-12-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -283,7 +283,18 @@
 <p>打包为元组。<br>例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [1, 2, 3]</span><br><span class="line">b = [4, 5, 6]</span><br><span class="line">p = zip(a,b)</span><br><span class="line">&gt;&gt; p = [(1,4), (2,5),(3,6)]</span><br><span class="line">q = zip(*p)</span><br><span class="line">&gt;&gt; q = [(1,2,3),(4,5,6)]</span><br></pre></td></tr></table></figure>
 
-<h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h2 id="digitize"><a href="#digitize" class="headerlink" title="digitize"></a>digitize</h2><pre><code>numpy.digitize(x, bins, right=False)
+<h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h2 id="std"><a href="#std" class="headerlink" title="std"></a>std</h2><pre><code>numpy.std(a, axis=None)
+</code></pre>
+<ul>
+<li>a:计算a的标准差</li>
+<li>axis: <ul>
+<li>0 计算每一列的标准差</li>
+<li>1 计算每一行的标准差</li>
+<li>None 计算全局标准差</li>
+</ul>
+</li>
+</ul>
+<h2 id="digitize"><a href="#digitize" class="headerlink" title="digitize"></a>digitize</h2><pre><code>numpy.digitize(x, bins, right=False)
 </code></pre>
 <p>返回一个和x相同大小的列表，返回值中的元素对应x元素落在bins区间的索引号。</p>
 <h2 id="argmax-返回列表的最大值索引值"><a href="#argmax-返回列表的最大值索引值" class="headerlink" title="argmax 返回列表的最大值索引值"></a>argmax 返回列表的最大值索引值</h2><h2 id="random-随机数"><a href="#random-随机数" class="headerlink" title="random 随机数"></a>random 随机数</h2><h3 id="choice"><a href="#choice" class="headerlink" title="choice"></a>choice</h3><p>choice(a, size&#x3D;None, replace&#x3D;True, p&#x3D;None)</p>
@@ -293,7 +304,14 @@
 <li>replace 采样的样本是否需要更换。False时样本不会重复。</li>
 <li>p 一维数组，指定a中每个元素采样的概率。默认相同</li>
 </ul>
-<h1 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h1><h2 id="math"><a href="#math" class="headerlink" title="math"></a>math</h2><h3 id="reduce-mean"><a href="#reduce-mean" class="headerlink" title="reduce_mean"></a>reduce_mean</h3><pre><code>tf.math.reduce_mean(input_tensor, axis=None, keepdims=False, name=None)
+<h1 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h1><h2 id="math"><a href="#math" class="headerlink" title="math"></a>math</h2><h2 id="clip-by-global-norm"><a href="#clip-by-global-norm" class="headerlink" title="clip_by_global_norm"></a>clip_by_global_norm</h2><pre><code>tf.clip_by_global_norm( t_list, clip_norm, use_norm=None, name=None)
+</code></pre>
+<ul>
+<li>t_list 元组、列表或者混合张量</li>
+<li>clip_norm 一个标量，大于0。剪裁率</li>
+<li>use_norm 浮点数标量<br>给定张量 t_list 的元组或列表，以及裁剪率 clip_norm，此操作返回裁剪张量列表 list_clipped 和 t_list<br>中所有张量的全局范数 (global_norm)。或者，如果您已经计算了 t_list 的全局范数，则可以使用 use_norm 指定全局范数。</li>
+</ul>
+<h3 id="reduce-mean"><a href="#reduce-mean" class="headerlink" title="reduce_mean"></a>reduce_mean</h3><pre><code>tf.math.reduce_mean(input_tensor, axis=None, keepdims=False, name=None)
 </code></pre>
 <ul>
 <li>input_tensor 输入的张量</li>
@@ -415,6 +433,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/12/12/WSL%E5%AE%89%E8%A3%85/" rel="next" title="WSL安装">
+                  WSL安装 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
