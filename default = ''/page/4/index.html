@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,289 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Obspy学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-10 21:34:02" itemprop="dateCreated datePublished" datetime="2022-08-10T21:34:02+08:00">2022-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-19 21:38:58" itemprop="dateModified" datetime="2022-10-19T21:38:58+08:00">2022-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="数据中心检索数据"><a href="#数据中心检索数据" class="headerlink" title="数据中心检索数据"></a>数据中心检索数据</h2><h2 id="1-FDSN网络服务"><a href="#1-FDSN网络服务" class="headerlink" title="1 FDSN网络服务"></a>1 FDSN网络服务</h2><pre><code>import obspy.clients.fdsn
+</code></pre>
+<h2 id="2-Arclink网络服务"><a href="#2-Arclink网络服务" class="headerlink" title="2 Arclink网络服务"></a>2 Arclink网络服务</h2><h2 id="3-IRIS网络服务"><a href="#3-IRIS网络服务" class="headerlink" title="3 IRIS网络服务"></a>3 IRIS网络服务</h2><h2 id="4-Earthworm-wave服务"><a href="#4-Earthworm-wave服务" class="headerlink" title="4 Earthworm wave服务"></a>4 Earthworm wave服务</h2><pre><code>import obspy.clients.earthworm
+</code></pre>
+<h2 id="5-NEIC网络服务"><a href="#5-NEIC网络服务" class="headerlink" title="5 NEIC网络服务"></a>5 NEIC网络服务</h2><pre><code>import obspy.clients.neic
+</code></pre>
+<h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/06/%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/06/%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">博客增加搜索功能</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-06 17:19:01 / Modified: 17:24:24" itemprop="dateCreated datePublished" datetime="2022-08-06T17:19:01+08:00">2022-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客创建</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>hexo博客可以使用本地搜索实现搜索服务。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyq55917/article/details/125278500">https://blog.csdn.net/zyq55917/article/details/125278500</a></p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在blog根目录下git bash：</p>
+<pre><code>npm install hexo-generator-searchdb
+</code></pre>
+<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><p>在blog根目录下的_config.yml中增加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    content: true</span><br><span class="line">    format: html</span><br></pre></td></tr></table></figure>
+
+<h1 id="next配置"><a href="#next配置" class="headerlink" title="next配置"></a>next配置</h1><p>在主题之下的_config.yml文件中启用search服务。</p>
+<p>只要将<code>enable</code>修改为<code>true</code>即可。</p>
+<p>可以选择auto自动搜索或者manual按回车搜索。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/" class="post-title-link" itemprop="url">Ubuntu安装firefox中国版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-06 16:49:42" itemprop="dateCreated datePublished" datetime="2022-08-06T16:49:42+08:00">2022-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-13 11:16:58" itemprop="dateModified" datetime="2022-08-13T11:16:58+08:00">2022-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Ubuntu安装有firefox，但是登录账号之后书签数据不能同步，因为Ubuntu默认安装为国际版firefox<br>，因此将其卸载并安装中国版firefox。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/775f1f6b75d5">https://www.jianshu.com/p/775f1f6b75d5</a></p>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>在官方应用商店即可卸载firefox</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官网下载firefox：<a target="_blank" rel="noopener" href="https://www.firefox.com.cn/">https://www.firefox.com.cn/</a><br>解压到&#x2F;opt目录：</p>
+<pre><code>tar -xjvf 将文件拖到此处即可 -C /opt
+</code></pre>
+<h1 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h1><pre><code>sudo nano /usr/share/applications/firefox.desktop
+</code></pre>
+<p>使用vi编辑器编辑该文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/opt/firefox/firefox</span><br><span class="line">Icon=/opt/firefox/browser/chrome/icons/default/default128.png</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">StartupNotify=true</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建启动程序链接"><a href="#创建启动程序链接" class="headerlink" title="创建启动程序链接"></a>创建启动程序链接</h1><pre><code>sudo ln -s /usr/share/applications/firefox.desktop /usr/bin/firefox
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

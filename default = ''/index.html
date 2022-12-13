@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">20</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,279 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/13/CentOS%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/13/CentOS%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">CentOS安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-13 13:28:36 / Modified: 13:39:20" itemprop="dateCreated datePublished" datetime="2022-12-13T13:28:36+08:00">2022-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
+<pre><code>....
+kernel panic: not syncing: Fatal exception
+Kernel Offset: ........
+...
+</code></pre>
+<p>以上为部分错误。<br>硬件：<br>CPU: Ryzen 5600G<br>主板: Minisforum B550</p>
+<p>不确定是否为硬件问题，但是显示内核错误。<br>可能是使用Windows平台烧录软件造成的问题，包括Deepin官方烧录软件和rufus均出现这个问题。<br>目前未尝试Linux平台烧录软件。</p>
+<h1 id="CentOS-8-安装"><a href="#CentOS-8-安装" class="headerlink" title="CentOS 8 安装"></a>CentOS 8 安装</h1><p>CentOS 8 安装之前，在<code>Install CentOS 8</code>处点击键盘 <code>E</code> 按键，将第一行的：</p>
+<pre><code>LABEL=CentOS\...... quiet
+</code></pre>
+<p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
+<p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/13/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/13/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Mineos安装与使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-13 12:57:37 / Modified: 13:48:02" itemprop="dateCreated datePublished" datetime="2022-12-13T12:57:37+08:00">2022-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://github.com/geodynamics/mineos">Mineos官方文档</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Mineos安装分为如下几步，目前在第二步出现问题，尚未解决。</p>
+<h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><pre><code>./configure
+</code></pre>
+<p>直接使用这个命令会出现依赖环境问题。例如：<br>    check g77 … no</p>
+<p>使用如下命令可以避免出现这种问题。</p>
+<pre><code>./configure F77=gfortran FFLAGS=-O2
+</code></pre>
+<h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><p>使用命令：</p>
+<pre><code>make
+</code></pre>
+<p>出现错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">make[1]: 进入目录“/home/shizhiyuan/Documents/mineos-1.0.0”</span><br><span class="line">gfortran  -O2 -c -o minos_bran.o minos_bran.f</span><br><span class="line">minos_bran.f:254:32:</span><br><span class="line"></span><br><span class="line">       data tol/1.d-9/,itmax/15/,ichar/&#x27; s&#x27;,&#x27; t&#x27;,&#x27; s&#x27;,&#x27; c&#x27;/</span><br><span class="line">                                1</span><br><span class="line">错误: (1)处 DATA 语句中类型不兼容；试图从 CHARACTER(1) 转换到 INTEGER(4)</span><br><span class="line">make[1]: *** [Makefile:456：minos_bran.o] 错误 1</span><br><span class="line">make[1]: 离开目录“/home/shizhiyuan/Documents/mineos-1.0.0”</span><br><span class="line">make: *** [Makefile:253：all] 错误 2</span><br></pre></td></tr></table></figure>
+
+<p>DATA 语句中类型不兼容，目前未知解决方法。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/" class="post-title-link" itemprop="url">CentOS8安装中国版Firefox</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-13 12:57:20 / Modified: 13:43:56" itemprop="dateCreated datePublished" datetime="2022-12-13T12:57:20+08:00">2022-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装类似于Ubuntu安装方法。在desktop文件中有所差别。</p>
+<p>首先将提取的包移动到相应位置</p>
+<pre><code>sudo mv firefox /usr/local
+</code></pre>
+<p>然后创建desktop文件，命名为firefox.desktop：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Version=1.0</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">GenericName=Web Browser</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/usr/local/firefox/firefox # 软件安装位置</span><br><span class="line">Icon=/usr/local/firefox/browser/chrome/icons/default/default128.png # 图标所在位置</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;</span><br><span class="line">StartupNotify=true</span><br><span class="line">Categories=Network;WebBrowser;</span><br><span class="line">Encoding=UTF-8</span><br></pre></td></tr></table></figure>
+
+<p>将desktop文件移动到<code>/usr/share</code>下的<code>/applications</code>文件夹。</p>
+<pre><code>sudo cp firefox.desktop /usr/share/applicaions
+</code></pre>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://wjhsh.net/szwmd778-p-9944992.html">http://wjhsh.net/szwmd778-p-9944992.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1560,385 +1833,6 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
 <p><img src="10-3.jpg" alt="1"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1].<a href>曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10</a></p>
 <p>[2].<a href>陆基孟,王永刚.地震勘探原理 .东营:中国石油大学华东出版社,2009.2</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">Obspy地震数据下载脚本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-04 21:46:15 / Modified: 22:01:40" itemprop="dateCreated datePublished" datetime="2022-11-04T21:46:15+08:00">2022-11-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>目前实现的功能：</p>
-<ul>
-<li>下载特定台站的地震波形</li>
-<li>保存为.mseed文件，或者更改format属性保存sac文件等</li>
-</ul>
-<p>缺陷，之后进行改进：</p>
-<ul>
-<li>一次运行只能保存一个台站的波形数据</li>
-<li>保存的数据为mseed文件，其中所有的波形均在这一个mseed文件中。</li>
-<li>文件命名并不全面，文件内部的波形未重新命名。</li>
-</ul>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">from obspy.core import read</span><br><span class="line">import obspy</span><br><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sigle_net(time1, time2):  # 单个台站数据返回</span><br><span class="line">    net = input(&#x27;Please input the network, default is IU:&#x27;)</span><br><span class="line">    if net == &#x27;&#x27;:</span><br><span class="line">        net = &#x27;IU&#x27;</span><br><span class="line">    print(f&#x27;You have choosen ***&#123;net&#125;*** as the network.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Please wait a minute, you will see info about the network:&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    downloadstations = Client().get_stations(network=net, station=&#x27;*&#x27;, location=&#x27;*&#x27;, starttime=time1, endtime=time2, level=&#x27;response&#x27;)</span><br><span class="line">    print(downloadstations)</span><br><span class="line">    print(&#x27;You could choose the stations, locations and channel, and they are shown thereinbefore.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&#x27;Default means you could just **enter** or make a space to show there is no word.&#x27;)</span><br><span class="line"></span><br><span class="line">    stat = input(&#x27;Please input the station, default is all stations:&#x27;)</span><br><span class="line">    if stat == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        stat = &#x27;*&#x27;</span><br><span class="line">    loc = input(&#x27;Please input the location, default is all locations:&#x27;)</span><br><span class="line">    if loc == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        loc = &#x27;*&#x27;</span><br><span class="line">    cha = input(&#x27;Please input the channel, default is all channels:&#x27;)</span><br><span class="line">    if cha == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        cha = &#x27;*&#x27;</span><br><span class="line">    res = input(&#x27;If you want response? Please input Y/N:&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Data is getting...&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    while True:  # 循环表示</span><br><span class="line">        if res == &#x27;Y&#x27; or res == &#x27;y&#x27;:</span><br><span class="line">            res = &#x27;response&#x27;</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=True)</span><br><span class="line">            break</span><br><span class="line">        elif res == &#x27;N&#x27; or res == &#x27;n&#x27;:</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=False)</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            res = input(&#x27;You have input the wrong world, please input it again:&#x27;)</span><br><span class="line">    info = &#123;&#x27;network&#x27;: net, &#x27;station&#x27;: stat, &#x27;location&#x27;: loc, &#x27;channel&#x27;: cha&#125;</span><br><span class="line">    print(&#x27;Have got the data.&#x27;)</span><br><span class="line">    return data, info</span><br><span class="line"></span><br><span class="line">timest, timee = input(&#x27;Please input the time range of the data, use space for interval(e.g. 2022-01-01T00:00:00):\n&#x27;).split(&#x27; &#x27;)</span><br><span class="line">timest, timee = UTCDateTime(timest), UTCDateTime(timee)</span><br><span class="line">import os</span><br><span class="line">path = (&#x27;DATA/&#x27;)</span><br><span class="line">check = os.path.isdir(path)</span><br><span class="line">if check == False:</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line">quantity = input(&#x27;How mant networks do you want? If you want more than 1 network, Please input its quantity, or just **enter**:&#x27;)</span><br><span class="line">if quantity == &#x27;&#x27; or quantity == 1:  # 避免出现输入1的情况导致错误  保存波形文件</span><br><span class="line">    [data, info] = sigle_net(timest, timee)</span><br><span class="line">    filename = (path  + timest + &#x27;.&#x27; + info[&quot;network&quot;] + &#x27;.&#x27; + info[&quot;station&quot;] + &#x27;.&#x27; +</span><br><span class="line">                info[&#x27;location&#x27;] + &#x27;.&#x27; + info[&quot;channel&quot;] + &#x27;.mseed&#x27;)   # 目前信息不全，之后寻找更多信息补充</span><br><span class="line">    data.write(filename, format=&quot;mseed&quot;)  # 目前只能保存一整个mseed文件。</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">else:</span><br><span class="line">    data = multi_net(quantity, times, timee)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/" class="post-title-link" itemprop="url">Introduction to Seismology习题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-03 21:46:40" itemprop="dateCreated datePublished" datetime="2022-11-03T21:46:40+08:00">2022-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-04 22:08:40" itemprop="dateModified" datetime="2022-11-04T22:08:40+08:00">2022-11-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">作业布置</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="这里整理课本习题"><a href="#这里整理课本习题" class="headerlink" title="这里整理课本习题"></a>这里整理课本习题</h1><p>有些习题未完成，之后会持续补充…</p>
-<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="1.1.jpg" alt="1"><br><img src="1.2.jpg" alt="1"><br><img src="1.3.jpg" alt="1"><br><img src="1.4.jpg" alt="1"></p>
-<h1 id="Chapter-2"><a href="#Chapter-2" class="headerlink" title="Chapter 2"></a>Chapter 2</h1><p><img src="2.1.jpg" alt="1"><br><img src="2.2.jpg" alt="1"><br><img src="2.3.jpg" alt="1"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/01/Fortran%E5%88%9D%E6%8E%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/01/Fortran%E5%88%9D%E6%8E%A2/" class="post-title-link" itemprop="url">Fortran初探</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-01 21:26:55" itemprop="dateCreated datePublished" datetime="2022-11-01T21:26:55+08:00">2022-11-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 21:45:16" itemprop="dateModified" datetime="2022-11-03T21:45:16+08:00">2022-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[Fortran权威指南&#x2F;(英)奇弗斯(Chivers,I.),(英)斯莱索尔姆(Sleightholme,J.)著；陈宝国等译.–北京：人民邮电出版社，2009.10]</p>
-<p><a target="_blank" rel="noopener" href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
-<h1 id="基础内容"><a href="#基础内容" class="headerlink" title="基础内容"></a>基础内容</h1><p>！ 作为注释标记</p>
-<h3 id="Fortran规则："><a href="#Fortran规则：" class="headerlink" title="Fortran规则："></a>Fortran规则：</h3><ul>
-<li>自由源格式</li>
-<li>不区分大小写</li>
-<li>存在语句顺序<ul>
-<li>PROGRAM</li>
-<li>类型声明语句</li>
-<li>处理与I&#x2F;O语句</li>
-<li>END PROGRAM</li>
-</ul>
-</li>
-<li>！用于引入注释</li>
-<li>变量名称长度最多31字符，包括_</li>
-<li>每行最多132个字符</li>
-<li>最多可以允许39个连续行</li>
-<li>如果不使用<code>IMPLICIT NONE</code>语句，则没有显式声明的变量被看成默认的类型。即：首个字符是A-H或O-Z，则默认为REAL型。若为I-N，则默认INTEGER型。</li>
-</ul>
-<h3 id="1、输出你的名字"><a href="#1、输出你的名字" class="headerlink" title="1、输出你的名字"></a>1、输出你的名字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PROGRAM ch0701      ！程序命名</span><br><span class="line">!</span><br><span class="line">! This program reads in and prints out a name</span><br><span class="line">!</span><br><span class="line">IMPLICIT NONE   ！ 表示使用的每个数据项的类型必须是显式的</span><br><span class="line">CHARACTER*20 :: First_Name ! 类型声明</span><br><span class="line">!</span><br><span class="line">	PRINT *,&#x27; Type in your first name.&#x27;     ！ 输出语句</span><br><span class="line">	PRINT *,&#x27; up to 20 characters&#x27;</span><br><span class="line">	READ *,First_Name       ！读取键盘输入的字符</span><br><span class="line">	PRINT *,First_Name</span><br><span class="line">!</span><br><span class="line">END PROGRAM ch0701   ！ 终止程序</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="2、计算平均值"><a href="#2、计算平均值" class="headerlink" title="2、计算平均值"></a>2、计算平均值</h3><p>遵循的原则：声明所有变量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">PROGRAM ch0702   ！程序命名</span><br><span class="line">!</span><br><span class="line">! This program reads in three numbers and sums</span><br><span class="line">! and averages them</span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">IMPLICIT NONE   ！ 表示使用的每个数据项的类型必须是显式的</span><br><span class="line">REAL :: N1,N2,N3,Average = 0.0,Total = 0.0</span><br><span class="line">INTEGER :: N = 3</span><br><span class="line">	PRINT *,&#x27; Type in three numbers.&#x27;</span><br><span class="line">	PRINT *,&#x27; Separated by spaces or commas&#x27;</span><br><span class="line">	READ *,N1,N2,N3</span><br><span class="line">	Total= N1 + N2 + N3   ! 三个变量值相加</span><br><span class="line">	AVERAGE=Total/N</span><br><span class="line">	PRINT *,&#x27;Average of the numbers is &#x27;,Average</span><br><span class="line">END PROGRAM ch0702</span><br></pre></td></tr></table></figure>
-
-<h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><p>运算法则与C或Python相同，但是需要注意：</p>
-<ul>
-<li>求幂运算：从右往左的顺序</li>
-<li>加减法：不需要注意运算顺序</li>
-<li>乘法除法：非整型运算不一定按照从左到右的顺序，需要加括号保证顺序<br>注意：使用时加括号时最好的方式。</li>
-</ul>
-<h3 id="截断"><a href="#截断" class="headerlink" title="截断"></a>截断</h3><p>注意截断。整型截断为舍入</p>
-<h3 id="PARAMETER-语句"><a href="#PARAMETER-语句" class="headerlink" title="PARAMETER 语句"></a>PARAMETER 语句</h3><pre><code>REAL , PARAMETER :: value=12
-</code></pre>
-<p>类似于C语言中的固定变量，即在类型声明语句之前将某个变量名与变量关联，从而不可更改该变量名的值。<br>类似于<code>#define</code>。</p>
-<h3 id="精度问题"><a href="#精度问题" class="headerlink" title="精度问题"></a>精度问题</h3><h3 id="变量状态"><a href="#变量状态" class="headerlink" title="变量状态"></a>变量状态</h3><ul>
-<li>已确定的状态 defined：已定义值</li>
-<li>未确定的状态 undefined：未定义值</li>
-</ul>
-<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><h4 id="2、运行示例4"><a href="#2、运行示例4" class="headerlink" title="2、运行示例4"></a>2、运行示例4</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PROGRAM ch0804</span><br><span class="line">implicit none</span><br><span class="line">real :: light_minute, distance, elapse</span><br><span class="line">integer :: minute, second </span><br><span class="line">real, parameter :: light_year=9.46*10**12</span><br><span class="line"></span><br><span class="line">light_minute = light_year/(365.25 * 24.0 * 60.0)</span><br><span class="line">distance = 150.0 * 10 ** 6</span><br><span class="line">elapse = distance / light_minute</span><br><span class="line">minute = elapse</span><br><span class="line">second = (elapse - minute) * 60</span><br><span class="line">print *,&#x27; light takes &#x27; , minute, &#x27; Minutes&#x27;</span><br><span class="line">print *,&#x27;             &#x27; , second, &#x27; seconds&#x27;</span><br><span class="line">print *,&#x27; To reach the earth from the sum&#x27;</span><br><span class="line">END PROGRAM ch0804</span><br></pre></td></tr></table></figure>
-
-<p>在运行ch0804出现错误：</p>
-<pre><code>Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)
-</code></pre>
-<p>表示结果超出整型范围。</p>
-<p>疑问：？？？ 未解决</p>
-<h4 id="计算摆的周期"><a href="#计算摆的周期" class="headerlink" title="计算摆的周期"></a>计算摆的周期</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PROGRAM period_of_pendulum</span><br><span class="line">implicit none</span><br><span class="line">real :: length,T</span><br><span class="line">real , parameter :: pi = 3.1415926535</span><br><span class="line">print *,&#x27;Please input the length of pendulum:&#x27;</span><br><span class="line">read *, length</span><br><span class="line">T = 2 * Pi * (length / 9.81) ** .5</span><br><span class="line">print *,&#x27;The period is &#x27;, T, &#x27;seconds.&#x27;</span><br><span class="line">end program period_of_pendulum</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> Please input the length of pendulum:</span><br><span class="line">1</span><br><span class="line"> The period is    2.00606656     seconds.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在计算器中的输出值为：2.006066681。</p>
-<h4 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">program base_conversion</span><br><span class="line">real :: x1=1.0</span><br><span class="line">real :: x2=0.1</span><br><span class="line">real :: x3=0.01</span><br><span class="line">real :: x4=0.001</span><br><span class="line">real :: x5=0.0001</span><br><span class="line">	print *,&#x27; &#x27;,x1</span><br><span class="line">	print *,&#x27; &#x27;,x2</span><br><span class="line">	print *,&#x27; &#x27;,x3</span><br><span class="line">	print *,&#x27; &#x27;,x4</span><br><span class="line">	print *,&#x27; &#x27;,x5</span><br><span class="line">end program base_conversion</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 1.00000000    </span><br><span class="line">0.100000001    </span><br><span class="line"> 9.99999978E-03</span><br><span class="line"> 1.00000005E-03</span><br><span class="line"> 9.99999975E-05</span><br></pre></td></tr></table></figure>
-<p>1.0保持不变，但是其他值均发生了改变。</p>
-<h4 id="简单减法"><a href="#简单减法" class="headerlink" title="简单减法"></a>简单减法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">program subtract</span><br><span class="line">real :: a=1.0002</span><br><span class="line">real :: b=1.0001</span><br><span class="line">real :: c</span><br><span class="line">	c=a-b</span><br><span class="line">	print *,a</span><br><span class="line">	print *,b</span><br><span class="line">	print *,c</span><br><span class="line">end program subtract</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.00020003    </span><br><span class="line">1.00010002    </span><br><span class="line">1.00016594E-04</span><br></pre></td></tr></table></figure>
-<p>理论结果为0.0001，但是结果输出不同了，而且a和b的值也发生了变化。这与十进制与二进制的转换有关。</p>
-<h4 id="fortran下的表达式等价原则"><a href="#fortran下的表达式等价原则" class="headerlink" title="fortran下的表达式等价原则"></a>fortran下的表达式等价原则</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">program expression_equivalence</span><br><span class="line">real :: x=1.002</span><br><span class="line">real :: y=1.001</span><br><span class="line">real :: t1,t2,t3,t4,t5</span><br><span class="line">	t1=x-y</span><br><span class="line">	t2=x+y</span><br><span class="line">	print *,t1</span><br><span class="line">	print *,t2</span><br><span class="line">	t3=t1*t2</span><br><span class="line">	t4=x**2-y**2</span><br><span class="line">	t5=x*x-y*y</span><br><span class="line">	print *,t3</span><br><span class="line">	print *,t4</span><br><span class="line">	print *,t5</span><br><span class="line">end program expression_equivalence</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x-y=9.99927521E-04</span><br><span class="line">x+y=2.00300002    </span><br><span class="line">(x-y)*(x+y)=2.00285483E-03</span><br><span class="line">x^2-y^2=2.00295448E-03</span><br><span class="line">x*x-y*y=2.00295448E-03</span><br></pre></td></tr></table></figure>
-<p>计算器：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x-y=0.001</span><br><span class="line">x+y=2.003  </span><br><span class="line">(x-y)*(x+y)=2.003E-3</span><br><span class="line">x^2-y^2=2.003E-3</span><br><span class="line">x*x-y*y=2.003E-3</span><br></pre></td></tr></table></figure>
-<p>LibreOffice：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x-y=0.001</span><br><span class="line">x+y=2.003  </span><br><span class="line">(x-y)*(x+y)=0.002003</span><br><span class="line">x^2-y^2=0.002003</span><br><span class="line">x*x-y*y=0.002003</span><br></pre></td></tr></table></figure>
-<h4 id="ch0804变形"><a href="#ch0804变形" class="headerlink" title="ch0804变形"></a>ch0804变形</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PROGRAM ch0804changed</span><br><span class="line">implicit none</span><br><span class="line">real :: light_minute, distance, elapse</span><br><span class="line">integer :: minute, second </span><br><span class="line">real :: light_year  ! 改变的为这一句和下面一句，将其改变为可变变量</span><br><span class="line">light_year=9.46*10**12</span><br><span class="line">light_minute = light_year/(365.25 * 24.0 * 60.0)</span><br><span class="line">distance = 150.0 * 10 ** 6</span><br><span class="line">elapse = distance / light_minute</span><br><span class="line">minute = elapse</span><br><span class="line">second = (elapse - minute) * 60</span><br><span class="line">print *,&#x27; light takes &#x27; , minute, &#x27; Minutes&#x27;</span><br><span class="line">print *,&#x27;             &#x27; , second, &#x27; seconds&#x27;</span><br><span class="line">print *,&#x27; To reach the earth from the sum&#x27;</span><br><span class="line">END PROGRAM ch0804changed</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    6 | light_year=9.46*10**12</span><br><span class="line">      |                  1</span><br><span class="line">Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)</span><br></pre></td></tr></table></figure>
-<p>疑问： ？？？未解决</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="DIMENSION-属性"><a href="#DIMENSION-属性" class="headerlink" title="DIMENSION 属性"></a>DIMENSION 属性</h2><p>使用dimension属性将变量定义为数组：</p>
-<pre><code>real , dimension(1:100) :: wages
-integer , dimension(1:1000) :: sample
-</code></pre>
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">program ch0901</span><br><span class="line">implicit none</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">real , dimension(1:12) :: rainfall</span><br><span class="line">integer :: month</span><br><span class="line"></span><br><span class="line">	print *,&#x27;Type in the rainfall values&#x27;</span><br><span class="line">	print *,&#x27;one per line&#x27;</span><br><span class="line">	do month=1,12   ! 使用do进行循环</span><br><span class="line">		read *, rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	do month=1,12</span><br><span class="line">		total = total + rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average = total / 12</span><br><span class="line">	print *,&#x27;average monthly rainfall was&#x27;</span><br><span class="line">	print *, average</span><br><span class="line">end program ch0901</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> Type in the rainfall values</span><br><span class="line"> one per line</span><br><span class="line">23</span><br><span class="line">22</span><br><span class="line">24</span><br><span class="line">23</span><br><span class="line">21</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">12</span><br><span class="line">10</span><br><span class="line">45</span><br><span class="line">40</span><br><span class="line">44</span><br><span class="line"> average monthly rainfall was</span><br><span class="line">   24.2500000  </span><br></pre></td></tr></table></figure>
-<h2 id="do循环"><a href="#do循环" class="headerlink" title="do循环"></a>do循环</h2><pre><code>do counter = start, end, increment
-......  ！语句
-enddo
-</code></pre>
-<p>其中，increment默认为1，可以省略。</p>
-<h2 id="使用参数设置数组大小"><a href="#使用参数设置数组大小" class="headerlink" title="使用参数设置数组大小"></a>使用参数设置数组大小</h2><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">program ch0902</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight for person &#x27;, person</span><br><span class="line">		read *,weight(person)</span><br><span class="line">		total = total + weight(person)</span><br><span class="line">	enddo</span><br><span class="line">	average = total/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights were &#x27;</span><br><span class="line">	</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,weight(person)</span><br><span class="line">	enddo</span><br><span class="line">end program ch0902</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> type in the weight for person            1</span><br><span class="line">85</span><br><span class="line"> type in the weight for person            2</span><br><span class="line">76</span><br><span class="line"> type in the weight for person            3</span><br><span class="line">85</span><br><span class="line"> type in the weight for person            4</span><br><span class="line">90</span><br><span class="line"> type in the weight for person            5</span><br><span class="line">69</span><br><span class="line"> type in the weight for person            6</span><br><span class="line">83</span><br><span class="line"> type in the weight for person            7</span><br><span class="line">64</span><br><span class="line"> type in the weight for person            8</span><br><span class="line">57</span><br><span class="line"> type in the weight for person            9</span><br><span class="line">65</span><br><span class="line"> type in the weight for person           10</span><br><span class="line">76</span><br><span class="line"> the total of the weights is    750.000000    </span><br><span class="line"> average weight is    75.0000000    </span><br><span class="line">            10  weights were </span><br><span class="line">   85.0000000    </span><br><span class="line">   76.0000000    </span><br><span class="line">   85.0000000    </span><br><span class="line">   90.0000000    </span><br><span class="line">   69.0000000    </span><br><span class="line">   83.0000000    </span><br><span class="line">   64.0000000    </span><br><span class="line">   57.0000000    </span><br><span class="line">   65.0000000    </span><br><span class="line">   76.0000000   </span><br></pre></td></tr></table></figure>
-
-<p>语句：</p>
-<pre><code>real , dimension(number) :: weight
-</code></pre>
-<p>若下界未指定，则为1。</p>
-<h2 id="格式化输出形式"><a href="#格式化输出形式" class="headerlink" title="格式化输出形式"></a>格式化输出形式</h2><h3 id="format输出"><a href="#format输出" class="headerlink" title="format输出"></a>format输出</h3><p>常用描述符号与举例：<br>参考：<a target="_blank" rel="noopener" href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
-<p>例句：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print 100</span><br><span class="line">100 format (20x, &#x27;Length&#x27;, 20x,&#x27;period&#x27;)</span><br><span class="line"></span><br><span class="line">do number = 1,10</span><br><span class="line">	print 200, length(number), T(number)</span><br><span class="line">	200 format (20x, i5, 20x, f5.2)  </span><br><span class="line">	 ！ 输出为length和T，其中20x表示空间格数，i5指整数5个长度。f为实数。</span><br><span class="line">enddo</span><br></pre></td></tr></table></figure>
-
-<h2 id="思考题-1"><a href="#思考题-1" class="headerlink" title="思考题"></a>思考题</h2><h3 id="2、计算5个数的平均值"><a href="#2、计算5个数的平均值" class="headerlink" title="2、计算5个数的平均值"></a>2、计算5个数的平均值</h3><p>注意！ 定义数组时使用<code>:</code>分隔上下界，使用do循环使用<code>,</code>分隔上下界。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">program average_5</span><br><span class="line"></span><br><span class="line">integer , parameter :: quantity=5</span><br><span class="line">real , dimension(1 : quantity) :: numbers</span><br><span class="line">real :: total=0.0, average=0.0</span><br><span class="line">integer :: range</span><br><span class="line">do range=1,quantity</span><br><span class="line">	print *,&#x27;Please input &#x27;,quantity,&#x27;numbers, the &#x27;, range,&#x27;one is:&#x27;</span><br><span class="line">	read *,numbers(range)</span><br><span class="line">	total = total + numbers(range)</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">average=total/quantity</span><br><span class="line">print *,&#x27;The average of &#x27;,quantity,&#x27;numbers is:&#x27;,average</span><br><span class="line"></span><br><span class="line">end program average_5</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> Please input            5 numbers, the            1 one is:</span><br><span class="line">5</span><br><span class="line"> Please input            5 numbers, the            2 one is:</span><br><span class="line">3.4</span><br><span class="line"> Please input            5 numbers, the            3 one is:</span><br><span class="line">0.6</span><br><span class="line"> Please input            5 numbers, the            4 one is:</span><br><span class="line">2.8</span><br><span class="line"> Please input            5 numbers, the            5 one is:</span><br><span class="line">8.9</span><br><span class="line"> The average of            5 numbers is:   4.14000034    </span><br></pre></td></tr></table></figure>
-
-<h3 id="3-1、改写体重总数，计算身高总数和平均数"><a href="#3-1、改写体重总数，计算身高总数和平均数" class="headerlink" title="3-1、改写体重总数，计算身高总数和平均数"></a>3-1、改写体重总数，计算身高总数和平均数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">program ch0902</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total_weight=0.0, average_weight=0.0,total_height=0.0, average_height=0.0</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight, height</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight and height for person &#x27;, person, &#x27;use space as the interval:&#x27;</span><br><span class="line">		read *,weight(person), height(person)</span><br><span class="line">		total_weight = total_weight + weight(person)</span><br><span class="line">		total_height = total_height + height(person)</span><br><span class="line">	enddo</span><br><span class="line">	average_weight = total_weight/number_of_people</span><br><span class="line">	average_height = total_height/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total_weight, &#x27;the total of the heights is &#x27;, total_height</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average_weight, &#x27; average height is &#x27;, average_height</span><br><span class="line">	</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights and heights were &#x27;	</span><br><span class="line">	print *,&#x27;^I&#x27;,&#x27;number_of_people&#x27;, &#x27;^I weights&#x27;,&#x27; ^I heights&#x27;	</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,person,&#x27;^I&#x27;,weight(person),&#x27;^I&#x27;, height(person)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">end program ch0902</span><br></pre></td></tr></table></figure>
-<p>忘了改program名了，但是也证明了内部program的名称和外部文件名称可以不同，以外部文件名为准。<br>输出：<br>（ps：输出有些杂乱，因为还没有掌握输出书写的一些方式。）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> type in the weight and height for person            1 use space as the interval:</span><br><span class="line">85 1.85</span><br><span class="line"> type in the weight and height for person            2 use space as the interval:</span><br><span class="line">76 1.80</span><br><span class="line"> type in the weight and height for person            3 use space as the interval:</span><br><span class="line">85 1.85</span><br><span class="line"> type in the weight and height for person            4 use space as the interval:</span><br><span class="line">90 1.70</span><br><span class="line"> type in the weight and height for person            5 use space as the interval:</span><br><span class="line">69 1.75</span><br><span class="line"> type in the weight and height for person            6 use space as the interval:</span><br><span class="line">83 1.67</span><br><span class="line"> type in the weight and height for person            7 use space as the interval:</span><br><span class="line">64 1.55</span><br><span class="line"> type in the weight and height for person            8 use space as the interval:</span><br><span class="line">57 1.63</span><br><span class="line"> type in the weight and height for person            9 use space as the interval:</span><br><span class="line">65 1.79</span><br><span class="line"> type in the weight and height for person           10 use space as the interval:</span><br><span class="line">76 1.78</span><br><span class="line"> the total of the weights is    750.000000     the total of the heights is    17.3700008    </span><br><span class="line"> average weight is    75.0000000      average height is    1.73700011    </span><br><span class="line">            10  weights and heights were </span><br><span class="line"> ^Inumber_of_people^I weights ^I heights</span><br><span class="line">           1 ^I   85.0000000     ^I   1.85000002    </span><br><span class="line">           2 ^I   76.0000000     ^I   1.79999995    </span><br><span class="line">           3 ^I   85.0000000     ^I   1.85000002    </span><br><span class="line">           4 ^I   90.0000000     ^I   1.70000005    </span><br><span class="line">           5 ^I   69.0000000     ^I   1.75000000    </span><br><span class="line">           6 ^I   83.0000000     ^I   1.66999996    </span><br><span class="line">           7 ^I   64.0000000     ^I   1.54999995    </span><br><span class="line">           8 ^I   57.0000000     ^I   1.63000000    </span><br><span class="line">           9 ^I   65.0000000     ^I   1.78999996    </span><br><span class="line">          10 ^I   76.0000000     ^I   1.77999997 </span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-计算BIM值"><a href="#3-2-计算BIM值" class="headerlink" title="3-2 计算BIM值"></a>3-2 计算BIM值</h3><p>使用语句：<br>    a.out &lt; data.dat &gt; results.txt</p>
-<p>实现文件的输入和输出操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">program ch3_2</span><br><span class="line">implicit none</span><br><span class="line"></span><br><span class="line">integer ,parameter :: number_of_people = 10</span><br><span class="line">real :: total_weight=0.0, average_weight=0.0,total_height=0.0, average_height=0.0</span><br><span class="line">integer :: person</span><br><span class="line">real , dimension(1:number_of_people) :: weight, height, BMI</span><br><span class="line"></span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,&#x27;type in the weight and height for person &#x27;, person, &#x27;use space as the interval:&#x27;</span><br><span class="line">		read *,weight(person), height(person)</span><br><span class="line">		total_weight = total_weight + weight(person)</span><br><span class="line">		total_height = total_height + height(person)</span><br><span class="line">		BMI(person)=weight(person)/(height(person)**2)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average_weight = total_weight/number_of_people</span><br><span class="line">	average_height = total_height/number_of_people</span><br><span class="line">	</span><br><span class="line">	print *,&#x27;the total of the weights is &#x27;, total_weight, &#x27;the total of the heights is &#x27;, total_height</span><br><span class="line">	print *,&#x27;average weight is &#x27;, average_weight, &#x27; average height is &#x27;, average_height</span><br><span class="line">	</span><br><span class="line">	print *,&#x27; &#x27;,number_of_people, &#x27; weights and heights were &#x27;	</span><br><span class="line">	print *,&#x27;number_of_people&#x27;, &#x27;weights&#x27;,&#x27;heights&#x27;	,&#x27;BMI&#x27;</span><br><span class="line">	do person = 1, number_of_people</span><br><span class="line">		print *,person ,weight(person), height(person), BMI(person)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">end program ch3_2</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">文件 result.txt</span><br><span class="line"> type in the weight and height for person            1 use space as the interval:</span><br><span class="line"> type in the weight and height for person            2 use space as the interval:</span><br><span class="line"> type in the weight and height for person            3 use space as the interval:</span><br><span class="line"> type in the weight and height for person            4 use space as the interval:</span><br><span class="line"> type in the weight and height for person            5 use space as the interval:</span><br><span class="line"> type in the weight and height for person            6 use space as the interval:</span><br><span class="line"> type in the weight and height for person            7 use space as the interval:</span><br><span class="line"> type in the weight and height for person            8 use space as the interval:</span><br><span class="line"> type in the weight and height for person            9 use space as the interval:</span><br><span class="line"> type in the weight and height for person           10 use space as the interval:</span><br><span class="line"> the total of the weights is    750.000000     the total of the heights is    17.3700008    </span><br><span class="line"> average weight is    75.0000000      average height is    1.73700011    </span><br><span class="line">            10  weights and heights were </span><br><span class="line"> number_of_peopleweightsheightsBMI</span><br><span class="line">           1   85.0000000       1.85000002       24.8356457    </span><br><span class="line">           2   76.0000000       1.79999995       23.4567909    </span><br><span class="line">           3   85.0000000       1.85000002       24.8356457    </span><br><span class="line">           4   90.0000000       1.70000005       31.1418667    </span><br><span class="line">           5   69.0000000       1.75000000       22.5306129    </span><br><span class="line">           6   83.0000000       1.66999996       29.7608395    </span><br><span class="line">           7   64.0000000       1.54999995       26.6389179    </span><br><span class="line">           8   57.0000000       1.63000000       21.4535751    </span><br><span class="line">           9   65.0000000       1.78999996       20.2865086    </span><br><span class="line">          10   76.0000000       1.77999997       23.9868717    </span><br></pre></td></tr></table></figure>
-
-<h3 id="6、计算摆的周期（制表）"><a href="#6、计算摆的周期（制表）" class="headerlink" title="6、计算摆的周期（制表）"></a>6、计算摆的周期（制表）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">program ch6</span><br><span class="line">implicit none</span><br><span class="line">real , parameter :: pi = 3.1415926535</span><br><span class="line">integer ,dimension(1:10) :: length</span><br><span class="line">integer :: number</span><br><span class="line">real ,dimension(1:10) :: T</span><br><span class="line">do number = 1,10,1</span><br><span class="line">	length(number) = number</span><br><span class="line">enddo</span><br><span class="line">do number = 1,10</span><br><span class="line">	T(number) = 2 * pi * (length(number) / 9.81) ** .5</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">print 100</span><br><span class="line">100 format (20x, &#x27;Length&#x27;, 20x,&#x27;period&#x27;)</span><br><span class="line"></span><br><span class="line">do number = 1,10</span><br><span class="line">	print 200, length(number), T(number)</span><br><span class="line">	200 format (20x, i5, 20x, f5.2)  </span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">end program ch6</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Length                    period</span><br><span class="line">    1                     2.01</span><br><span class="line">    2                     2.84</span><br><span class="line">    3                     3.47</span><br><span class="line">    4                     4.01</span><br><span class="line">    5                     4.49</span><br><span class="line">    6                     4.91</span><br><span class="line">    7                     5.31</span><br><span class="line">    8                     5.67</span><br><span class="line">    9                     6.02</span><br><span class="line">   10                     6.34</span><br></pre></td></tr></table></figure>
 
       
     </div>
