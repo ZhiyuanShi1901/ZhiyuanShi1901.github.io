@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参考：[阿帅同学分享的不知名来源的教程]x2rayNx-uiV-Install 注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。 购买服务器使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。 连接服务器并进行配置推荐使用root用户登录。可以不使用sudo命令。 安装gityum install git  clone V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS服务器部署x-ui与v2rayn">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/index.html">
+<meta property="og:site_name" content="Zhiyuan Shi">
+<meta property="og:description" content="参考：[阿帅同学分享的不知名来源的教程]x2rayNx-uiV-Install 注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。 购买服务器使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。 连接服务器并进行配置推荐使用root用户登录。可以不使用sudo命令。 安装gityum install git  clone V">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9.png">
+<meta property="article:published_time" content="2022-12-21T13:09:15.000Z">
+<meta property="article:modified_time" content="2022-12-21T13:58:02.475Z">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9.png">
+
+
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/","path":"2022/12/21/CentOS服务器部署x-ui与v2rayn/","title":"CentOS服务器部署x-ui与v2rayn"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CentOS服务器部署x-ui与v2rayn | Zhiyuan Shi</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Zhiyuan Shi</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">23</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">购买服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">连接服务器并进行配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85git"><span class="nav-number">3.1.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clone-V-install%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">clone V-install库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85V-install"><span class="nav-number">3.3.</span> <span class="nav-text">安装V-install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85x-ui"><span class="nav-number">3.4.</span> <span class="nav-text">安装x-ui</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">4.</span> <span class="nav-text">配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEx-ui%E9%9D%A2%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">配置x-ui面板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEv2rayN"><span class="nav-number">6.</span> <span class="nav-text">设置v2rayN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhiyuanShi1901" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhiyuanShi1901" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dshi78066@gmail.com" title="Personal E-Mail → mailto:dshi78066@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>Personal E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1901030201@s.upc.edu.cn" title="Work E-Mail → mailto:1901030201@s.upc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>Work E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CentOS服务器部署x-ui与v2rayn | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS服务器部署x-ui与v2rayn
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-21 21:09:15 / Modified: 21:58:02" itemprop="dateCreated datePublished" datetime="2022-12-21T21:09:15+08:00">2022-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">Linux服务器实践</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">x2rayN</a><br><a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui">x-ui</a><br><a target="_blank" rel="noopener" href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
+<p><strong>注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。</strong></p>
+<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
+<h1 id="连接服务器并进行配置"><a href="#连接服务器并进行配置" class="headerlink" title="连接服务器并进行配置"></a>连接服务器并进行配置</h1><p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>yum install git
+</code></pre>
+<h2 id="clone-V-install库"><a href="#clone-V-install库" class="headerlink" title="clone V-install库"></a>clone V-install库</h2><pre><code>git clone --depth=1 https://github.com/bedefaced/vpn-install.git
+</code></pre>
+<h2 id="安装V-install"><a href="#安装V-install" class="headerlink" title="安装V-install"></a>安装V-install</h2><p>分别安装PPTP、openvpn和IPSEC。</p>
+<pre><code>vpn-install/pptp/install.sh
+vpn-install/openvpn/install.sh
+vpn-install/ipsec/install.sh
+</code></pre>
+<p>安装过程中进行配置。不知道的直接输入1或者回车就可以，不用单独设置。<br>用户名、密码和PSK需要自行设置，并且需要牢记。</p>
+<h2 id="安装x-ui"><a href="#安装x-ui" class="headerlink" title="安装x-ui"></a>安装x-ui</h2><p>运行：</p>
+<pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+</code></pre>
+<p>安装过程中需要设置面板端口，随便输入一个1到65535数字即可。<br>面板端口牢记，之后会用到。例如这里设置为8888（宝塔面板的端口），以下示例中端口改为自行设置的端口，不推荐设置8888。</p>
+<h1 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h1><p>如果端口不在防火墙白名单里，则不能连接。在阿里云控制台中配置防火墙。</p>
+<p>在控制台左侧，安全-防火墙一栏中，预设有三个可通过防火墙的端口。<br>点击<code>添加规则</code>，依次选择：</p>
+<ul>
+<li>应用类型：自定义，</li>
+<li>协议：TCP</li>
+<li>端口范围： 8888</li>
+<li>限制IP来源：不要修改</li>
+<li>备注：按照自己的想法填写即可</li>
+</ul>
+<p>点击确定后，这个端口不会被拦截。</p>
+<h1 id="配置x-ui面板"><a href="#配置x-ui面板" class="headerlink" title="配置x-ui面板"></a>配置x-ui面板</h1><p>在浏览器官网输入：公网IP:x-ui设置的端口，例如：192.168.0.1:8888。<br>其中，192.168.0.1为公网IP，8888为设置的端口，便可进入到x-ui面板。</p>
+<p><strong>注：公网IP地址在控制台<code>概览</code>页面。</strong></p>
+<p>如果无法进入，很可能是防火墙设置不正确，或者服务器中x-ui未运行。</p>
+<p>点击<code>入站列表</code>，左上角的蓝色加号。</p>
+<p><img src="%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9.png" alt="节点"></p>
+<ul>
+<li>备注：填写节点的名称，选择一个好记又方便的名称即可。</li>
+<li>协议：默认选择vmess即可，也可以选择其他的。因水平有限未进行测试。</li>
+<li>端口：可以随意修改，但是注意要在防火墙开放，具体操作在配置防火墙一栏。</li>
+<li>传输：默认使用tcp即可，也可以使用ws，但是可能需要额外设置。因水平有限未进行测试。</li>
+<li>其余选项可以默认不修改。总流量设置可以设置限制。</li>
+</ul>
+<p>点击添加即可。</p>
+<p>完成后，点击操作，二维码。保存这个二维码，亦可以不保存进入网站查找。</p>
+<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。</p>
+<p>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
+<p>然后对服务器一栏右键，点击<code>设为活动服务器</code></p>
+<p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br><code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
+<p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>阿里云轻量应用服务器-新加坡服务器实测延迟足够使用，在80ms以内。<br>目前该操作仅适用于Windows PC。</p>
+<p>由于该操作使用的服务器只有命令行界面，因此需要一定的Linux基础。</p>
+<p>使用过程中发现去掉图形化界面的Linux十分轻快简洁，如果有必要可以在Linux PC去除图形界面操作。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/13/CentOS%E5%AE%89%E8%A3%85/" rel="prev" title="CentOS安装">
+                  <i class="fa fa-chevron-left"></i> CentOS安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

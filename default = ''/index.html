@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">12</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">22</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">23</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,18 +150,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,134 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/" class="post-title-link" itemprop="url">CentOS服务器部署x-ui与v2rayn</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-21 21:09:15 / Modified: 21:58:02" itemprop="dateCreated datePublished" datetime="2022-12-21T21:09:15+08:00">2022-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">Linux服务器实践</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">x2rayN</a><br><a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui">x-ui</a><br><a target="_blank" rel="noopener" href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
+<p><strong>注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。</strong></p>
+<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
+<h1 id="连接服务器并进行配置"><a href="#连接服务器并进行配置" class="headerlink" title="连接服务器并进行配置"></a>连接服务器并进行配置</h1><p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>yum install git
+</code></pre>
+<h2 id="clone-V-install库"><a href="#clone-V-install库" class="headerlink" title="clone V-install库"></a>clone V-install库</h2><pre><code>git clone --depth=1 https://github.com/bedefaced/vpn-install.git
+</code></pre>
+<h2 id="安装V-install"><a href="#安装V-install" class="headerlink" title="安装V-install"></a>安装V-install</h2><p>分别安装PPTP、openvpn和IPSEC。</p>
+<pre><code>vpn-install/pptp/install.sh
+vpn-install/openvpn/install.sh
+vpn-install/ipsec/install.sh
+</code></pre>
+<p>安装过程中进行配置。不知道的直接输入1或者回车就可以，不用单独设置。<br>用户名、密码和PSK需要自行设置，并且需要牢记。</p>
+<h2 id="安装x-ui"><a href="#安装x-ui" class="headerlink" title="安装x-ui"></a>安装x-ui</h2><p>运行：</p>
+<pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+</code></pre>
+<p>安装过程中需要设置面板端口，随便输入一个1到65535数字即可。<br>面板端口牢记，之后会用到。例如这里设置为8888（宝塔面板的端口），以下示例中端口改为自行设置的端口，不推荐设置8888。</p>
+<h1 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h1><p>如果端口不在防火墙白名单里，则不能连接。在阿里云控制台中配置防火墙。</p>
+<p>在控制台左侧，安全-防火墙一栏中，预设有三个可通过防火墙的端口。<br>点击<code>添加规则</code>，依次选择：</p>
+<ul>
+<li>应用类型：自定义，</li>
+<li>协议：TCP</li>
+<li>端口范围： 8888</li>
+<li>限制IP来源：不要修改</li>
+<li>备注：按照自己的想法填写即可</li>
+</ul>
+<p>点击确定后，这个端口不会被拦截。</p>
+<h1 id="配置x-ui面板"><a href="#配置x-ui面板" class="headerlink" title="配置x-ui面板"></a>配置x-ui面板</h1><p>在浏览器官网输入：公网IP:x-ui设置的端口，例如：192.168.0.1:8888。<br>其中，192.168.0.1为公网IP，8888为设置的端口，便可进入到x-ui面板。</p>
+<p><strong>注：公网IP地址在控制台<code>概览</code>页面。</strong></p>
+<p>如果无法进入，很可能是防火墙设置不正确，或者服务器中x-ui未运行。</p>
+<p>点击<code>入站列表</code>，左上角的蓝色加号。</p>
+<p><img src="%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9.png" alt="节点"></p>
+<ul>
+<li>备注：填写节点的名称，选择一个好记又方便的名称即可。</li>
+<li>协议：默认选择vmess即可，也可以选择其他的。因水平有限未进行测试。</li>
+<li>端口：可以随意修改，但是注意要在防火墙开放，具体操作在配置防火墙一栏。</li>
+<li>传输：默认使用tcp即可，也可以使用ws，但是可能需要额外设置。因水平有限未进行测试。</li>
+<li>其余选项可以默认不修改。总流量设置可以设置限制。</li>
+</ul>
+<p>点击添加即可。</p>
+<p>完成后，点击操作，二维码。保存这个二维码，亦可以不保存进入网站查找。</p>
+<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。</p>
+<p>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
+<p>然后对服务器一栏右键，点击<code>设为活动服务器</code></p>
+<p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br><code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
+<p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>阿里云轻量应用服务器-新加坡服务器实测延迟足够使用，在80ms以内。<br>目前该操作仅适用于Windows PC。</p>
+<p>由于该操作使用的服务器只有命令行界面，因此需要一定的Linux基础。</p>
+<p>使用过程中发现去掉图形化界面的Linux十分轻快简洁，如果有必要可以在Linux PC去除图形界面操作。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1771,121 +1899,6 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
 <h2 id="高级示例"><a href="#高级示例" class="headerlink" title="高级示例"></a>高级示例</h2><p>绘制了更多震相和台站的射线路径。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy.taup import TauPyModel</span><br><span class="line">PHASES = [</span><br><span class="line">    # Phase, distance</span><br><span class="line">    (&#x27;P&#x27;, 26),</span><br><span class="line">    (&#x27;PP&#x27;, 60),</span><br><span class="line">    (&#x27;PPP&#x27;, 94),</span><br><span class="line">    (&#x27;PPS&#x27;, 155),</span><br><span class="line">    (&#x27;p&#x27;, 3),</span><br><span class="line">    (&#x27;pPcP&#x27;, 100),</span><br><span class="line">    (&#x27;PKIKP&#x27;, 170),</span><br><span class="line">    (&#x27;PKJKP&#x27;, 194),</span><br><span class="line">    (&#x27;S&#x27;, 65),</span><br><span class="line">    (&#x27;SP&#x27;, 85),</span><br><span class="line">    (&#x27;SS&#x27;, 134.5),</span><br><span class="line">    (&#x27;SSS&#x27;, 204),</span><br><span class="line">    (&#x27;p&#x27;, -10),</span><br><span class="line">    (&#x27;pP&#x27;, -37.5),(&#x27;s&#x27;, -3),</span><br><span class="line">    (&#x27;sP&#x27;, -49),</span><br><span class="line">    (&#x27;ScS&#x27;, -44),</span><br><span class="line">    (&#x27;SKS&#x27;, -82),</span><br><span class="line">    (&#x27;SKKS&#x27;, -120)]</span><br><span class="line">model = TauPyModel(model=&#x27;iasp91&#x27;)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(subplot_kw=dict(polar=True))</span><br><span class="line"></span><br><span class="line"># Plot all pre-determined phases</span><br><span class="line">for phase, distance in PHASES:</span><br><span class="line">    arrivals = model.get_ray_paths(700, distance, phase_list=[phase])</span><br><span class="line">    ax = arrivals.plot_rays(plot_type=&#x27;spherical&#x27;,</span><br><span class="line">    legend=False, label_arrivals=True,</span><br><span class="line">    plot_all=True, show=False, ax=ax)</span><br><span class="line"></span><br><span class="line"># Annotate regions</span><br><span class="line">ax.text(0, 0, &#x27;Solid\ninner\ncore&#x27;,</span><br><span class="line">horizontalalignment=&#x27;center&#x27;,</span><br><span class="line">verticalalignment=&#x27;center&#x27;,</span><br><span class="line">bbox=dict(facecolor=&#x27;white&#x27;, edgecolor=&#x27;none&#x27;,</span><br><span class="line">alpha=0.7))</span><br><span class="line">ocr = (model.model.radius_of_planet -</span><br><span class="line">(model.model.s_mod.v_mod.iocb_depth +</span><br><span class="line">model.model.s_mod.v_mod.cmb_depth) / 2)</span><br><span class="line">ax.text(np.deg2rad(180), ocr, &#x27;Fluid outer core&#x27;,</span><br><span class="line">horizontalalignment=&#x27;center&#x27;,</span><br><span class="line">bbox=dict(facecolor=&#x27;white&#x27;, edgecolor=&#x27;none&#x27;,</span><br><span class="line">alpha=0.7))</span><br><span class="line">mr = model.model.radius_of_planet - model.model.s_mod.v_mod.cmb_depth / 2</span><br><span class="line">ax.text(np.deg2rad(180), mr, &#x27;Solid mantle&#x27;, horizontalalignment=&#x27;center&#x27;,</span><br><span class="line">bbox=dict(facecolor=&#x27;white&#x27;, edgecolor=&#x27;none&#x27;, alpha=0.7))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="morestations.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">地震资料解释基础作业整理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-11 14:13:29 / Modified: 14:17:04" itemprop="dateCreated datePublished" datetime="2022-11-11T14:13:29+08:00">2022-11-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">作业布置</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="地震资料解释基础整理的习题总结"><a href="#地震资料解释基础整理的习题总结" class="headerlink" title="地震资料解释基础整理的习题总结"></a>地震资料解释基础整理的习题总结</h1><h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="1-1.jpg" alt="1"></p>
-<p><img src="1-2.jpg" alt="1"></p>
-<p><img src="1-3.jpg" alt="1"></p>
-<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p><img src="2-1.jpg" alt="1"></p>
-<p><img src="2-2.jpg" alt="1"></p>
-<p><img src="2-3.jpg" alt="1"></p>
-<p><img src="2-4.jpg" alt="1"></p>
-<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><p><img src="3-1.jpg" alt="1"></p>
-<p><img src="3-2.jpg" alt="1"></p>
-<p><img src="3-3.jpg" alt="1"></p>
-<p><img src="3-4.jpg" alt="1"></p>
-<p><img src="3-5.jpg" alt="1"></p>
-<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><p><img src="4-1.jpg" alt="1"></p>
-<p><img src="4-2.jpg" alt="1"></p>
-<p><img src="4-3.jpg" alt="1"></p>
-<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><p><img src="5-1.jpg" alt="1"></p>
-<p><img src="5-2.jpg" alt="1"></p>
-<p><img src="5-3.jpg" alt="1"></p>
-<p><img src="5-4.jpg" alt="1"></p>
-<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><p><img src="6-1.jpg" alt="1"></p>
-<p><img src="6-2.jpg" alt="1"></p>
-<p><img src="6-3.jpg" alt="1"></p>
-<p><img src="6-4.jpg" alt="1"></p>
-<h1 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h1><p><img src="7-1.jpg" alt="1"></p>
-<p><img src="7-2.jpg" alt="1"></p>
-<p><img src="7-3.jpg" alt="1"></p>
-<h1 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h1><p><img src="8-1.jpg" alt="1"></p>
-<p><img src="8-2.jpg" alt="1"></p>
-<p><img src="8-3.jpg" alt="1"></p>
-<h1 id="第九章"><a href="#第九章" class="headerlink" title="第九章"></a>第九章</h1><p><img src="9-1.jpg" alt="1"></p>
-<p><img src="9-2.jpg" alt="1"></p>
-<p><img src="9-3.jpg" alt="1"></p>
-<h1 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h1><p><img src="10-1.jpg" alt="1"></p>
-<p><img src="10-2.jpg" alt="1"></p>
-<p><img src="10-3.jpg" alt="1"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1].<a href>曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10</a></p>
-<p>[2].<a href>陆基孟,王永刚.地震勘探原理 .东营:中国石油大学华东出版社,2009.2</a></p>
 
       
     </div>
