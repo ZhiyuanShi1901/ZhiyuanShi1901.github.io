@@ -3443,7 +3443,7 @@ npm config get registry  # 查看镜像源更新成功
   <entry>
     <title>CentOS服务器部署x-ui与v2rayn</title>
     <url>/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/</url>
-    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a href="https://github.com/v2fly/v2ray-core/releases">x2rayN</a><br><a href="https://github.com/vaxilu/x-ui">x-ui</a><br><a href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
+    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a href="https://github.com/v2fly/v2ray-core/releases">v2rayN_github</a><br><a href="https://v2rayn.org/">v2rayN官网</a><br><a href="https://v2rayng.org/">移动端v2rayNG官网</a><br><a href="https://github.com/vaxilu/x-ui">x-ui</a><br><a href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
 <p><strong>注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。</strong></p>
 <h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
 <h1 id="连接服务器并进行配置"><a href="#连接服务器并进行配置" class="headerlink" title="连接服务器并进行配置"></a>连接服务器并进行配置</h1><p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
@@ -3485,8 +3485,7 @@ vpn-install/ipsec/install.sh
 </ul>
 <p>点击添加即可。</p>
 <p>完成后，点击操作，二维码。保存这个二维码，亦可以不保存进入网站查找。</p>
-<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。</p>
-<p>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
+<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。<br>下载地址：<a href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a><br>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
 <p>然后对服务器一栏右键，点击<code>设为活动服务器</code></p>
 <p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br><code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
 <p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
