@@ -381,7 +381,7 @@ git push     //推送
   </entry>
   <entry>
     <title>Mineos安装与使用</title>
-    <url>/2022/12/13/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
+    <url>/2022/12/22/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/geodynamics/mineos">Mineos官方文档</a><br><a href="https://www.eas.slu.edu/eqc/eqc_cps/TUTORIAL/SPHERICITY/MINEOS/HTML/index.html">Hermann_Mineos安装</a></p>
 <h1 id="官方安装包安装"><a href="#官方安装包安装" class="headerlink" title="官方安装包安装"></a>官方安装包安装</h1><p>Mineos安装分为如下几步，目前在第二步出现问题，尚未解决。</p>
 <h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><pre><code>./configure
@@ -422,6 +422,117 @@ cd DEMO3
 <p>输出结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Step 1:  minos_bran runs for S modes .....................</span><br><span class="line">============== Program minos_bran ==================</span><br><span class="line"> input model file:</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> output file:</span><br><span class="line"> prem_noocean_S</span><br><span class="line"> eigenfunction file (output):</span><br><span class="line"> eprem_noocean_S</span><br><span class="line"> enter eps and wgrav</span><br><span class="line">   1.0000000000000000E-010   1.0000000000000000     </span><br><span class="line"> enter jcom (1=rad;2=tor;3=sph;4=ictor)</span><br><span class="line">           3</span><br><span class="line"> enter lmin,lmax,wmin,wmax,nmin,nmax</span><br><span class="line">           2        8000   0.0000000000000000        200.00000000000000                0           0</span><br><span class="line"></span><br><span class="line">real	0m1.441s</span><br><span class="line">user	0m1.433s</span><br><span class="line">sys	0m0.006s</span><br><span class="line">Step 2: minos_bran runs for T modes .....................</span><br><span class="line">============== Program minos_bran ==================</span><br><span class="line"> input model file:</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> output file:</span><br><span class="line"> prem_noocean_T</span><br><span class="line"> eigenfunction file (output):</span><br><span class="line"> eprem_noocean_T</span><br><span class="line"> enter eps and wgrav</span><br><span class="line">   1.0000000000000000E-010   1.0000000000000000     </span><br><span class="line"> enter jcom (1=rad;2=tor;3=sph;4=ictor)</span><br><span class="line">           2</span><br><span class="line"> enter lmin,lmax,wmin,wmax,nmin,nmax</span><br><span class="line">           2        8000   0.0000000000000000        200.00000000000000                0           0</span><br><span class="line"></span><br><span class="line">real	0m0.245s</span><br><span class="line">user	0m0.242s</span><br><span class="line">sys	0m0.003s</span><br><span class="line">Step 3: eigen for S .....................................</span><br><span class="line"> ============= Program eigcon ====================</span><br><span class="line">  spheroidals (3) or toroidals (2) or radial (1) or</span><br><span class="line">  inner core toroidals (4) modes</span><br><span class="line">           3</span><br><span class="line">  enter name of model file</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> enter max depth [km] : </span><br><span class="line">   1000.00000    </span><br><span class="line">  enter name of minos_bran output text file</span><br><span class="line"> prem_noocean_S</span><br><span class="line">  minos_bran output binary unformatted file name</span><br><span class="line"> eprem_noocean_S</span><br><span class="line">  enter path/dbase_name or dbase_name to store eigenfunctions:</span><br><span class="line"> test_S</span><br><span class="line"> ====================================================</span><br><span class="line"> eigcon: n,nstart,nrad =          185         119          67</span><br><span class="line"></span><br><span class="line">real	0m0.053s</span><br><span class="line">user	0m0.046s</span><br><span class="line">sys	0m0.007s</span><br><span class="line">Step 4: eigen for T .....................................</span><br><span class="line"> ============= Program eigcon ====================</span><br><span class="line">  spheroidals (3) or toroidals (2) or radial (1) or</span><br><span class="line">  inner core toroidals (4) modes</span><br><span class="line">           2</span><br><span class="line">  enter name of model file</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> enter max depth [km] : </span><br><span class="line">   1000.00000    </span><br><span class="line">  enter name of minos_bran output text file</span><br><span class="line"> prem_noocean_T</span><br><span class="line">  minos_bran output binary unformatted file name</span><br><span class="line"> eprem_noocean_T</span><br><span class="line">  enter path/dbase_name or dbase_name to store eigenfunctions:</span><br><span class="line"> test_T</span><br><span class="line"> ====================================================</span><br><span class="line"> eigcon: n,nstart,nrad =          185         119          67</span><br><span class="line"></span><br><span class="line">real	0m0.025s</span><br><span class="line">user	0m0.024s</span><br><span class="line">sys	0m0.000s</span><br><span class="line">Step 5: green functions evaluation .........................</span><br><span class="line"> ============= Program green ====================</span><br><span class="line"> enter path to db with sta &amp; stachan:</span><br><span class="line"> short</span><br><span class="line"> enter name of file within list of nmodes db:</span><br><span class="line"> db_list</span><br><span class="line"> enter input CMT file name:</span><br><span class="line"> china_cmt_event</span><br><span class="line"> min and max frequencies to be considered (mHz) : </span><br><span class="line">   10.0000000       260.000000    </span><br><span class="line"> enter # pts in greens fns .le.        30000  :</span><br><span class="line">        8000</span><br><span class="line"> enter Green functions output db file name:</span><br><span class="line"> green</span><br><span class="line"> ====================================================</span><br><span class="line"> green: Event: B011400F  2000  14 23:37:10.800 lat =   25.390, lon =   101.400</span><br><span class="line"> green:        source depth = 33.0 km</span><br><span class="line"> green: step =    1.000 sec, nsamples =   8000</span><br><span class="line"> green: # sph. modes in band =        2596   must be .le.       300000</span><br><span class="line"> green: # tor. modes in band =        2352   must be .le.       300000</span><br><span class="line"> green: Input dbname : short</span><br><span class="line"> green: Station: ALE      82.5033  -62.3500 , Channels: 3</span><br><span class="line"> green: Channel: #            1   ALE   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   ALE   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   ALE   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     72.020</span><br><span class="line"> green: Azimuth of Source   :     15.433</span><br><span class="line"> green:    1 ALE    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    2 ALE    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    3 ALE    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: ANMO     34.9502 -106.4602 , Channels: 3</span><br><span class="line"> green: Channel: #            1   ANMO  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   ANMO  LH2        10.0000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   ANMO  LH1        280.000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    114.439</span><br><span class="line"> green: Azimuth of Source   :    -27.665</span><br><span class="line"> green:    4 ANMO   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    5 ANMO   LH2     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    6 ANMO   LH1     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BAK      35.3441 -119.1043 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BAK   BHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BAK   BHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BAK   BHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    108.462</span><br><span class="line"> green: Azimuth of Source   :    -38.270</span><br><span class="line"> green:    7 BAK    BHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    8 BAK    BHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    9 BAK    BHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BDFB    -15.6418  -48.0148 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BDFB  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BDFB  LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BDFB  LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    149.822</span><br><span class="line"> green: Azimuth of Source   :     66.283</span><br><span class="line"> green:   10 BDFB   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   11 BDFB   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   12 BDFB   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BILL     68.0651  166.4524 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BILL  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BILL  LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BILL  LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     57.417</span><br><span class="line"> green: Azimuth of Source   :   -103.266</span><br><span class="line"> green:   13 BILL   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   14 BILL   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   15 BILL   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BJT      40.0183  116.1679 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BJT   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BJT   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BJT   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     19.123</span><br><span class="line"> green: Azimuth of Source   :   -135.267</span><br><span class="line"> green:   16 BJT    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   17 BJT    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   18 BJT    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BRVK     53.0581   70.2828 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BRVK  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BRVK  LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BRVK  LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     36.158</span><br><span class="line"> green: Azimuth of Source   :    127.603</span><br><span class="line"> green:   19 BRVK   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   20 BRVK   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   21 BRVK   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: CASY    -66.2792  110.5364 , Channels: 3</span><br><span class="line"> green: Channel: #            1   CASY  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   CASY  LHN        180.000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   CASY  LHE        270.000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     91.644</span><br><span class="line"> green: Azimuth of Source   :     -8.261</span><br><span class="line"> green:   22 CASY   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   23 CASY   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   24 CASY   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: CCM      38.0557  -91.2446 , Channels: 3</span><br><span class="line"> green: Channel: #            1   CCM   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   CCM   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   CCM   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    115.783</span><br><span class="line"> green: Azimuth of Source   :    -12.703</span><br><span class="line"> green:   25 CCM    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   26 CCM    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   27 CCM    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: TLY      51.6807  103.6438 , Channels: 3</span><br><span class="line"> green: Channel: #            1   TLY   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   TLY   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   TLY   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     26.308</span><br><span class="line"> green: Azimuth of Source   :   -175.417</span><br><span class="line"> green:   28 TLY    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   29 TLY    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   30 TLY    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"></span><br><span class="line">real	0m1.470s</span><br><span class="line">user	0m1.458s</span><br><span class="line">sys	0m0.010s</span><br><span class="line">Step 6: synthetic seismogram construction ..................</span><br><span class="line"> ============== Program syndat ==================</span><br><span class="line"> enter input CMT file name:</span><br><span class="line"> china_cmt_event</span><br><span class="line"> enter tensor type: 0 - moment, 1 - nodal plane 1, 2 - nodal plane 2</span><br><span class="line">           0</span><br><span class="line"> enter input dbname</span><br><span class="line"> green</span><br><span class="line"> enter output dbname</span><br><span class="line"> Syndat</span><br><span class="line"> Enter output units: 0 [nm/s/s] 1 [nm/s] 2 [nm]</span><br><span class="line">syndat: CMT solution:</span><br><span class="line">syndat: Event: B011400F 2000  14 23: 37: 10.8, lat/lon =    25.39   101.40,</span><br><span class="line">syndat: depth =   33.0 km, step =    1.000 sec, Duration =  -2.3 sec,</span><br><span class="line">syndat: M0 =   0.833E+25,</span><br><span class="line">syndat: comp:  -0.600E+24 -0.629E+25  0.689E+25 -0.185E+25  0.120E+24 -0.473E+25</span><br><span class="line">syndat: plane1:   27.  78.  -6. plane2:  118.  84.-168.</span><br><span class="line">syndat: Selected moment tensor components:</span><br><span class="line">syndat: -0.600E+24 -0.629E+25  0.689E+25 -0.185E+25  0.120E+24 -0.473E+25</span><br><span class="line"></span><br><span class="line">syndat: Synthetic waveforms: </span><br><span class="line">syndat:    1 ALE    LHZ         1.000    8000</span><br><span class="line">syndat:    2 ALE    LHN         1.000    8000</span><br><span class="line">syndat:    3 ALE    LHE         1.000    8000</span><br><span class="line">syndat:    4 ANMO   LHZ         1.000    8000</span><br><span class="line">syndat:    5 ANMO   LH2         1.000    8000</span><br><span class="line">syndat:    6 ANMO   LH1         1.000    8000</span><br><span class="line">syndat:    7 BAK    BHZ         1.000    8000</span><br><span class="line">syndat:    8 BAK    BHN         1.000    8000</span><br><span class="line">syndat:    9 BAK    BHE         1.000    8000</span><br><span class="line">syndat:   10 BDFB   LHZ         1.000    8000</span><br><span class="line">syndat:   11 BDFB   LHN         1.000    8000</span><br><span class="line">syndat:   12 BDFB   LHE         1.000    8000</span><br><span class="line">syndat:   13 BILL   LHZ         1.000    8000</span><br><span class="line">syndat:   14 BILL   LHN         1.000    8000</span><br><span class="line">syndat:   15 BILL   LHE         1.000    8000</span><br><span class="line">syndat:   16 BJT    LHZ         1.000    8000</span><br><span class="line">syndat:   17 BJT    LHN         1.000    8000</span><br><span class="line">syndat:   18 BJT    LHE         1.000    8000</span><br><span class="line">syndat:   19 BRVK   LHZ         1.000    8000</span><br><span class="line">syndat:   20 BRVK   LHN         1.000    8000</span><br><span class="line">syndat:   21 BRVK   LHE         1.000    8000</span><br><span class="line">syndat:   22 CASY   LHZ         1.000    8000</span><br><span class="line">syndat:   23 CASY   LHN         1.000    8000</span><br><span class="line">syndat:   24 CASY   LHE         1.000    8000</span><br><span class="line">syndat:   25 CCM    LHZ         1.000    8000</span><br><span class="line">syndat:   26 CCM    LHN         1.000    8000</span><br><span class="line">syndat:   27 CCM    LHE         1.000    8000</span><br><span class="line">syndat:   28 TLY    LHZ         1.000    8000</span><br><span class="line">syndat:   29 TLY    LHN         1.000    8000</span><br><span class="line">syndat:   30 TLY    LHE         1.000    8000</span><br><span class="line"></span><br><span class="line">real	0m0.006s</span><br><span class="line">user	0m0.002s</span><br><span class="line">sys	0m0.004s</span><br></pre></td></tr></table></figure>
 
+<h1 id="文件运行初步解析"><a href="#文件运行初步解析" class="headerlink" title="文件运行初步解析"></a>文件运行初步解析</h1><h2 id="运行1"><a href="#运行1" class="headerlink" title="运行1"></a>运行1</h2><pre><code>cd DEMO3
+./RUN_MINEOS.sh prem_noocean
+</code></pre>
+<p>输出如上<code>test</code>。</p>
+<p>以下为 <code>运行1</code> 运行之后前后对比。<br><img src="%E5%B7%A6%E4%BE%A7%E4%B8%BA%E8%BF%90%E8%A1%8C%E5%90%8E%E7%9A%84%E5%8F%B3%E4%BE%A7%E4%B8%BA%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84.png"></p>
+<p>以下进行初步解析。</p>
+<p>据<code>minos_bran.f</code>文件</p>
+<p><em>Files prem_noocean_S. prem_noocean_T, eprem_noocean_S and eprem_noocean_T are output of the minos_bran program.</em></p>
+<p>minos_bran输出的文件为：<code>prem_noocean_S</code>,<code>prem_noocean_T</code>, <code>eprem_noocean_S</code>和<code>eprem_noocean_T</code>。</p>
+<p>以及</p>
+<p><em>The results are stored in test_S and test_T databases (eigenfunctions); in green database (Green functions); and in Syndat (synthetic seismograms).</em></p>
+<p><code>test_S.eigen.dat</code> 、<code>test_T.eigen.dat</code> 是eigenfunctions,即特征函数。但还有两个同名.eigen文件。 <code>green.wfdisc.dat</code>为格林函数，<code>Syndat.wfdisc.dat</code>为理论地震图。</p>
+<h3 id="第一步：运行minos-bran。S-modes-S振型？"><a href="#第一步：运行minos-bran。S-modes-S振型？" class="headerlink" title="第一步：运行minos_bran。S modes S振型？"></a>第一步：运行minos_bran。S modes S振型？</h3><p>输入为：<code>/models/prem_noocean.txt</code>，即prem模型，该模型将海洋处用上地壳填充。</p>
+<p>输出为： <code>prem_noocean_S</code>。</p>
+<p>特征函数文件：<code>eprem_noocean_S</code>。 </p>
+<pre><code>eps： 1e-10 
+wgrav： 1 
+jcom： 为3,表示为球型振型。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入的参数：</span><br><span class="line">lmin 2</span><br><span class="line">lmax 8000</span><br><span class="line">wmin 0</span><br><span class="line">wmax 200</span><br><span class="line">nmin 0</span><br><span class="line">nmax 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 这个是测试？抑或是输出？这三个在程序中找不到输出的语句。</span><br><span class="line">real	0m1.450s</span><br><span class="line">user	0m1.441s</span><br><span class="line">sys	0m0.007s</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步：运行minos-bran-Tmodes-T振型？"><a href="#第二步：运行minos-bran-Tmodes-T振型？" class="headerlink" title="第二步：运行minos_bran Tmodes T振型？"></a>第二步：运行minos_bran Tmodes T振型？</h3><p>屏幕上的输出大意：</p>
+<p>输入同样为<code>/models/prem_noocean.txt</code></p>
+<p>输出为： <code>prem_noocean_T</code></p>
+<p>特征函数文件：<code>eprem_noocean_T</code></p>
+<pre><code>eps： 1e-10
+wgrav： 1
+jcom： 2
+
+输入的参数：
+lmin 2
+lmax 8000
+wmin 0
+wmax 200
+nmin 0
+nmax 0
+
+输出？？？
+real	0m0.243s
+user	0m0.242s
+sys	0m0.000s
+</code></pre>
+<h3 id="第三步-S-model-eigen"><a href="#第三步-S-model-eigen" class="headerlink" title="第三步 S model-eigen"></a>第三步 S model-eigen</h3><p>运行的程序为eigcon，它的功能是：</p>
+<p><em>converts eigenfunction files (output from minos_bran) into .eigen relation containing only info about the upper most<br>dmax km  ( 0 &lt; dmax &lt; Rn), where, RO is radius of the free surface in km. This version works for all modes: spheroidal, toroidal, and radial.</em></p>
+<p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
+<p>这一步读取控制参数。</p>
+<pre><code>读取了输入文件的jcom。
+输入的模型文件名称：``prem_noocean.text``
+输入的最大深度（max depth，km）：``1000``
+minos_bran的输出文件： ``prem_noocean_S``
+minos_bran的输出无格式二进制文件：``eprem_noocean_S``
+</code></pre>
+<p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径<code>path/dbase_name</code>或名称<code>dbase_name</code>。<br>创建的文件为：<code>dbase_name.eigen</code>， 创建的文件夹为<code>dbase_name.eigen.dat</code>，文件夹中有二进制文件<code>eigen</code>。</p>
+<p>在屏幕运行输出仅输出了三个参数：</p>
+<pre><code>n 185
+nstart 119
+nrad 67
+</code></pre>
+<p>结尾有：</p>
+<pre><code>real	0m0.046s
+user	0m0.043s
+sys	0m0.003s
+</code></pre>
+<h3 id="第四步-关于T的eigen，同3。"><a href="#第四步-关于T的eigen，同3。" class="headerlink" title="第四步 关于T的eigen，同3。"></a>第四步 关于T的eigen，同3。</h3><p>记录屏幕上输出的内容：</p>
+<pre><code>jcom 2
+输入的模型文件名称：prem_noocean.text
+输入的最大深度（max depth，km）：1000
+minos_bran的输出文件： prem_noocean_T
+minos_bran的输出无格式二进制文件：eprem_noocean_T
+路径：test_T
+
+n 185
+nstart 119
+nrad 67
+
+real	0m0.024s
+user	0m0.021s
+sys	0m0.003s
+</code></pre>
+<p>输出的<code>test_S.eigen</code> 和<code>test_S.eigen.dat</code>:<br><img src="test_S%E6%96%87%E4%BB%B6%E5%A4%B9.png"><br><img src="test_S.eigen.dat%E6%96%87%E4%BB%B6.png"></p>
+<h3 id="第五步：格林函数估值（evaluation）"><a href="#第五步：格林函数估值（evaluation）" class="headerlink" title="第五步：格林函数估值（evaluation）"></a>第五步：格林函数估值（evaluation）</h3><p>运行的程序为：green.f</p>
+<p> <em>green program computes for a single event and a given set of stations, the Green functions.</em><br>这个程序计算单个事件和一组给定的台站。</p>
+<p>输入db的路径，结合sta和stachan：short <strong>这两个文件一开始就有</strong><br>short是指<code>shrot.site</code>这个文件和<code>short.sitechan</code>文件，‘结合sta，stachan’可能是指这两个文件。</p>
+<p>文件内容如下：<br><img src="short%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png"></p>
+<p>输入nmodes列表的文件名 ：<code>db_list</code> <strong>这个文件一开始就有</strong></p>
+<p>db_list文件内容为：</p>
+<pre><code>test_S
+test_T
+</code></pre>
+<p>输入CMT文件名： <code>china_cmt_event</code> <strong>这个文件一开始就有</strong></p>
+<p>考虑的最小和最大频率（单位mHz）：10 260</p>
+<p>输入pts</p>
+<p>输入格林函数的输出文件名：<code>green</code>。这个程序输出的文件为：<code>green.wfdisc</code><br><strong>这个文件内容与屏幕输出不同，但是其包含的内容一致。均为台站、通道、时间等信息。</strong></p>
+<p>输出依然存在：</p>
+<pre><code>real	0m1.471s
+user	0m1.455s
+sys	0m0.015s
+</code></pre>
+<h3 id="第六步：构建理论地震图"><a href="#第六步：构建理论地震图" class="headerlink" title="第六步：构建理论地震图"></a>第六步：构建理论地震图</h3><p>使用的程序为：<code>syndat.f</code></p>
+<p><em>syndat program makes synthetic seismograms by convolutions of Green<br>functions with the seismic moment tensor of the choosen event.</em></p>
+<p><strong>选择的事件的地震矩张量和格林函数的卷积，得到理论地震图。</strong></p>
+<p>输入CMT文件名：<code>china_cmt_event</code><br>张量类型： 0</p>
+<p>输入dbname： green</p>
+<p>输出dbname：SYndat</p>
+<p>输出单位： 0 [nm&#x2F;s&#x2F;s] 1 [nm&#x2F;s] 2 [nm]<br>（可能并没有选择输出单位？屏幕输出仅为此。）</p>
+<p>该程序最后输出的文件为：<code>syndat.wfdisc</code>。</p>
+<p>也输出了<code>.origin</code>、<code>.site</code>、<code>.sitechan</code>文件。</p>
+<p>也有<code>Syndat.wfdisc.dat</code>，里面应该是理论地震图。</p>
+<p>之后需要运行将理论地震图转换为sac格式的程序。这一步为运行2的内容。</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -1165,7 +1276,7 @@ cd DEMO3
     <title>SAC学习笔记</title>
     <url>/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
-<h1 id="SAC入门"><a href="#SAC入门" class="headerlink" title="SAC入门"></a>SAC入门</h1><h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><h3 id="启动SAC"><a href="#启动SAC" class="headerlink" title="启动SAC"></a>启动SAC</h3><p>在控制端输入<br><code>sac</code></p>
+<h1 id="SAC-安装"><a href="#SAC-安装" class="headerlink" title="SAC 安装"></a>SAC 安装</h1><h1 id="SAC入门"><a href="#SAC入门" class="headerlink" title="SAC入门"></a>SAC入门</h1><h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><h3 id="启动SAC"><a href="#启动SAC" class="headerlink" title="启动SAC"></a>启动SAC</h3><p>在控制端输入<br><code>sac</code></p>
 <h3 id="退出SAC"><a href="#退出SAC" class="headerlink" title="退出SAC"></a>退出SAC</h3><p>在SAC控制端输入<code>quit</code></p>
 <h2 id="样本数据"><a href="#样本数据" class="headerlink" title="样本数据"></a>样本数据</h2><p>SAC支持生成样本数据进行学习，即使手头没有SAC数据也可以进行学习使用。</p>
 <h3 id="funcgen（fg）"><a href="#funcgen（fg）" class="headerlink" title="funcgen（fg）"></a>funcgen（fg）</h3><p>funcgen（function generator），该命令可以生成一些特定的函数，例如脉冲函数、阶跃函数、正弦函数等。</p>
@@ -3498,6 +3609,53 @@ vpn-install/ipsec/install.sh
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mineos 程序参数解释</title>
+    <url>/2022/12/22/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/</url>
+    <content><![CDATA[<h1 id="minos-bran-f"><a href="#minos-bran-f" class="headerlink" title="minos_bran.f"></a>minos_bran.f</h1><h2 id="jcom"><a href="#jcom" class="headerlink" title="jcom"></a>jcom</h2><p>jcom &#x3D; n， 当n为以下值时：</p>
+<ul>
+<li>1 radial modes ？</li>
+<li>2 toroidal modes 环型振型</li>
+<li>3 spheroidal modes 球型振型</li>
+<li>4 inner core toroidal modes 内核环型振型</li>
+</ul>
+<h2 id="lmin-lmax-wmin-wmax-nmin-nmax"><a href="#lmin-lmax-wmin-wmax-nmin-nmax" class="headerlink" title="lmin lmax wmin wmax nmin nmax"></a>lmin lmax wmin wmax nmin nmax</h2><p><em>lmin - lmax defines the range of angular orders to be computed.<br>if jcom&#x3D;1 this is ignored. wmin - wmax defines the frequency range to be computed (in millihertz)<br>nmin-nmax specifies the branch numbers to be computed – nmin&#x3D;0 is the fundamental mode</em></p>
+<ul>
+<li>lmin lmax 定义要计算的角度的范围? jcom为1时忽略</li>
+<li>wmin wmax 定义计算的频率范围 单位：毫赫兹</li>
+<li>nmin nmax 指定计算的分支编号 nmin&#x3D;0时为基阶振型</li>
+</ul>
+<h2 id="eps-wgrav"><a href="#eps-wgrav" class="headerlink" title="eps wgrav"></a>eps wgrav</h2><p><em>eps controls the accuracy of the runge-kutta integration scheme. the relative accuracy of an eigen frequency will be 2-3 x eps.<br>it also controls the precision with which a root is found and the minimum relative separation of two roots with the same<br>angular order.it is safe to set eps&#x3D;1.d-7.</em></p>
+<p><em>wgrav is the frequency in millihertz above which gravitational<br>terms are neglected-this gives about a factor of 3 increase in speed.</em></p>
+<ul>
+<li>eps： 控制’’runge-kutta integration scheme’’的准确度。本征频率的相对准确度为2-3倍的eps。<br>它还控制找到根的精度以及具有相同角度顺序的两个根的最小相对距离。设置1e-7是安全的</li>
+<li>wgrav：  频率（单位毫赫兹）超过该频率的引力项被忽略。 造成3倍的速度增长。</li>
+</ul>
+<h1 id="eigcon-f"><a href="#eigcon-f" class="headerlink" title="eigcon.f"></a>eigcon.f</h1><ul>
+<li>rn     : radius at surface  表面的半径</li>
+<li>wn     : frequency normalization 频率归一化？为什么只是一个参数呢？</li>
+<li>vn     : velocity normalisation  速度归一化？</li>
+<li>accn   : acceleration normalisation 加速度归一化</li>
+<li>n      : index of surface grid point 表面网格点索引</li>
+<li>nstart : index of lowest grid point 最低网格点索引</li>
+<li>nrad   : # of gridpoints of reduced eigenfunctions 简化特征函数的网格点？</li>
+</ul>
+<h1 id="syndat-f"><a href="#syndat-f" class="headerlink" title="syndat.f"></a>syndat.f</h1><ul>
+<li>张量类型：程序中并没有明确名称。<ul>
+<li>0 moment</li>
+<li>1 nodal plane 1 节面？</li>
+<li>2 nodal plane 2</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Mineos</tag>
       </tags>
   </entry>
 </search>
