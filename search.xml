@@ -236,101 +236,6 @@ enddo
       </tags>
   </entry>
   <entry>
-    <title>Git学习笔记</title>
-    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
-git config --global user.email &quot;你的邮箱&quot;
-ssh-keygen -t rsa -C &quot;你的邮箱&quot;
-</code></pre>
-<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
-<pre><code>ssh -T git@github.com
-</code></pre>
-<p>确认已经完成连接</p>
-<span id="more"></span>
-<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
-cd (仓库名)
-git init
-</code></pre>
-<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
-</code></pre>
-<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
-</code></pre>
-<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
-git add . (将所有文件添加到暂存区)
-</code></pre>
-<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
-git commit  //打开编辑器详细编辑信息
-</code></pre>
-<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
-git log --pretty=short  //只显示第一行的简述信息
-git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
-git diff                //查看当前工作树与暂存区的差别
-git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
-</code></pre>
-<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
-git checkout -b   //创建、切换分支
-git log --graph   //图表形式查看分支
-</code></pre>
-<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
-//同样效果的命令
-git branch (需要切换的分支名)
-git checkout (需要切换的分支名)
-
-git checkout -    //切换回上一个分支
-</code></pre>
-<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
-git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
-</code></pre>
-<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
-</code></pre>
-<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
-git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
-</code></pre>
-<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
-</code></pre>
-<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
-//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
-</code></pre>
-<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
-//使用编辑器修改
-</code></pre>
-<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
-</code></pre>
-<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
-git push -b (分支名)   //创建并推送分支
-</code></pre>
-<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
-git clone (SSH)  //将网络仓库克隆到本地
-git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
-git push  //直接推送处于该情况下的分支
-</code></pre>
-<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
-</code></pre>
-<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
-git remote add (原仓库新名称) (原仓库SSH)
-git fetch (原仓库新名称)       //获取最新数据
-git merge (原仓库新名称)/master   //合并
-</code></pre>
-<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
-git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
-git checkout -b pr1  //创建用于检查的分支
-git merge PR发送者/workname   //合并分支
-git branch -D pr1   //删除分支
-</code></pre>
-<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
-git merge PR发送者/work
-git diff origin/(主分支名)
-git push     //推送
-</code></pre>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GMT学习笔记</title>
     <url>/2022/08/05/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>参考：</p>
@@ -423,6 +328,101 @@ gmt end show  # show表示自动打开生成的图片文件
       </categories>
       <tags>
         <tag>GMT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记</title>
+    <url>/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;你的邮箱&quot;
+ssh-keygen -t rsa -C &quot;你的邮箱&quot;
+</code></pre>
+<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>确认已经完成连接</p>
+<span id="more"></span>
+<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
+cd (仓库名)
+git init
+</code></pre>
+<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
+</code></pre>
+<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
+</code></pre>
+<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
+git add . (将所有文件添加到暂存区)
+</code></pre>
+<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
+git commit  //打开编辑器详细编辑信息
+</code></pre>
+<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
+git log --pretty=short  //只显示第一行的简述信息
+git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
+git diff                //查看当前工作树与暂存区的差别
+git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
+</code></pre>
+<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
+git checkout -b   //创建、切换分支
+git log --graph   //图表形式查看分支
+</code></pre>
+<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
+//同样效果的命令
+git branch (需要切换的分支名)
+git checkout (需要切换的分支名)
+
+git checkout -    //切换回上一个分支
+</code></pre>
+<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
+git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
+</code></pre>
+<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
+</code></pre>
+<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
+git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
+</code></pre>
+<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
+</code></pre>
+<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
+//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
+</code></pre>
+<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
+//使用编辑器修改
+</code></pre>
+<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
+</code></pre>
+<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
+git push -b (分支名)   //创建并推送分支
+</code></pre>
+<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
+git clone (SSH)  //将网络仓库克隆到本地
+git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
+git push  //直接推送处于该情况下的分支
+</code></pre>
+<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
+</code></pre>
+<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
+git remote add (原仓库新名称) (原仓库SSH)
+git fetch (原仓库新名称)       //获取最新数据
+git merge (原仓库新名称)/master   //合并
+</code></pre>
+<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
+git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
+git checkout -b pr1  //创建用于检查的分支
+git merge PR发送者/workname   //合并分支
+git branch -D pr1   //删除分支
+</code></pre>
+<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
+git merge PR发送者/work
+git diff origin/(主分支名)
+git push     //推送
+</code></pre>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -827,6 +827,29 @@ gmt end show  # show表示自动打开生成的图片文件
       </tags>
   </entry>
   <entry>
+    <title>Obspy地震数据下载脚本</title>
+    <url>/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>目前实现的功能：</p>
+<ul>
+<li>下载特定台站的地震波形</li>
+<li>保存为.mseed文件，或者更改format属性保存sac文件等</li>
+</ul>
+<p>缺陷，之后进行改进：</p>
+<ul>
+<li>一次运行只能保存一个台站的波形数据</li>
+<li>保存的数据为mseed文件，其中所有的波形均在这一个mseed文件中。</li>
+<li>文件命名并不全面，文件内部的波形未重新命名。</li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.core import read</span><br><span class="line">import obspy</span><br><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sigle_net(time1, time2):  # 单个台站数据返回</span><br><span class="line">    net = input(&#x27;Please input the network, default is IU:&#x27;)</span><br><span class="line">    if net == &#x27;&#x27;:</span><br><span class="line">        net = &#x27;IU&#x27;</span><br><span class="line">    print(f&#x27;You have choosen ***&#123;net&#125;*** as the network.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Please wait a minute, you will see info about the network:&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    downloadstations = Client().get_stations(network=net, station=&#x27;*&#x27;, location=&#x27;*&#x27;, starttime=time1, endtime=time2, level=&#x27;response&#x27;)</span><br><span class="line">    print(downloadstations)</span><br><span class="line">    print(&#x27;You could choose the stations, locations and channel, and they are shown thereinbefore.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&#x27;Default means you could just **enter** or make a space to show there is no word.&#x27;)</span><br><span class="line"></span><br><span class="line">    stat = input(&#x27;Please input the station, default is all stations:&#x27;)</span><br><span class="line">    if stat == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        stat = &#x27;*&#x27;</span><br><span class="line">    loc = input(&#x27;Please input the location, default is all locations:&#x27;)</span><br><span class="line">    if loc == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        loc = &#x27;*&#x27;</span><br><span class="line">    cha = input(&#x27;Please input the channel, default is all channels:&#x27;)</span><br><span class="line">    if cha == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        cha = &#x27;*&#x27;</span><br><span class="line">    res = input(&#x27;If you want response? Please input Y/N:&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Data is getting...&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    while True:  # 循环表示</span><br><span class="line">        if res == &#x27;Y&#x27; or res == &#x27;y&#x27;:</span><br><span class="line">            res = &#x27;response&#x27;</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=True)</span><br><span class="line">            break</span><br><span class="line">        elif res == &#x27;N&#x27; or res == &#x27;n&#x27;:</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=False)</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            res = input(&#x27;You have input the wrong world, please input it again:&#x27;)</span><br><span class="line">    info = &#123;&#x27;network&#x27;: net, &#x27;station&#x27;: stat, &#x27;location&#x27;: loc, &#x27;channel&#x27;: cha&#125;</span><br><span class="line">    print(&#x27;Have got the data.&#x27;)</span><br><span class="line">    return data, info</span><br><span class="line"></span><br><span class="line">timest, timee = input(&#x27;Please input the time range of the data, use space for interval(e.g. 2022-01-01T00:00:00):\n&#x27;).split(&#x27; &#x27;)</span><br><span class="line">timest, timee = UTCDateTime(timest), UTCDateTime(timee)</span><br><span class="line">import os</span><br><span class="line">path = (&#x27;DATA/&#x27;)</span><br><span class="line">check = os.path.isdir(path)</span><br><span class="line">if check == False:</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line">quantity = input(&#x27;How mant networks do you want? If you want more than 1 network, Please input its quantity, or just **enter**:&#x27;)</span><br><span class="line">if quantity == &#x27;&#x27; or quantity == 1:  # 避免出现输入1的情况导致错误  保存波形文件</span><br><span class="line">    [data, info] = sigle_net(timest, timee)</span><br><span class="line">    filename = (path  + timest + &#x27;.&#x27; + info[&quot;network&quot;] + &#x27;.&#x27; + info[&quot;station&quot;] + &#x27;.&#x27; +</span><br><span class="line">                info[&#x27;location&#x27;] + &#x27;.&#x27; + info[&quot;channel&quot;] + &#x27;.mseed&#x27;)   # 目前信息不全，之后寻找更多信息补充</span><br><span class="line">    data.write(filename, format=&quot;mseed&quot;)  # 目前只能保存一整个mseed文件。</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">else:</span><br><span class="line">    data = multi_net(quantity, times, timee)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mineos 程序参数解释</title>
     <url>/2022/12/22/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/</url>
     <content><![CDATA[<h1 id="minos-bran-f"><a href="#minos-bran-f" class="headerlink" title="minos_bran.f"></a>minos_bran.f</h1><h2 id="jcom"><a href="#jcom" class="headerlink" title="jcom"></a>jcom</h2><p>jcom &#x3D; n， 当n为以下值时：</p>
@@ -1033,29 +1056,6 @@ sys	0m0.015s
       </categories>
       <tags>
         <tag>Mineos</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obspy地震数据下载脚本</title>
-    <url>/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>目前实现的功能：</p>
-<ul>
-<li>下载特定台站的地震波形</li>
-<li>保存为.mseed文件，或者更改format属性保存sac文件等</li>
-</ul>
-<p>缺陷，之后进行改进：</p>
-<ul>
-<li>一次运行只能保存一个台站的波形数据</li>
-<li>保存的数据为mseed文件，其中所有的波形均在这一个mseed文件中。</li>
-<li>文件命名并不全面，文件内部的波形未重新命名。</li>
-</ul>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy.core import read</span><br><span class="line">import obspy</span><br><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sigle_net(time1, time2):  # 单个台站数据返回</span><br><span class="line">    net = input(&#x27;Please input the network, default is IU:&#x27;)</span><br><span class="line">    if net == &#x27;&#x27;:</span><br><span class="line">        net = &#x27;IU&#x27;</span><br><span class="line">    print(f&#x27;You have choosen ***&#123;net&#125;*** as the network.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Please wait a minute, you will see info about the network:&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    downloadstations = Client().get_stations(network=net, station=&#x27;*&#x27;, location=&#x27;*&#x27;, starttime=time1, endtime=time2, level=&#x27;response&#x27;)</span><br><span class="line">    print(downloadstations)</span><br><span class="line">    print(&#x27;You could choose the stations, locations and channel, and they are shown thereinbefore.&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&#x27;Default means you could just **enter** or make a space to show there is no word.&#x27;)</span><br><span class="line"></span><br><span class="line">    stat = input(&#x27;Please input the station, default is all stations:&#x27;)</span><br><span class="line">    if stat == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        stat = &#x27;*&#x27;</span><br><span class="line">    loc = input(&#x27;Please input the location, default is all locations:&#x27;)</span><br><span class="line">    if loc == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        loc = &#x27;*&#x27;</span><br><span class="line">    cha = input(&#x27;Please input the channel, default is all channels:&#x27;)</span><br><span class="line">    if cha == &#x27;&#x27; or &#x27; &#x27;:</span><br><span class="line">        cha = &#x27;*&#x27;</span><br><span class="line">    res = input(&#x27;If you want response? Please input Y/N:&#x27;)</span><br><span class="line"></span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line">    print(&quot;Data is getting...&quot;)</span><br><span class="line">    print(&quot;***************************************************&quot;)</span><br><span class="line"></span><br><span class="line">    while True:  # 循环表示</span><br><span class="line">        if res == &#x27;Y&#x27; or res == &#x27;y&#x27;:</span><br><span class="line">            res = &#x27;response&#x27;</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=True)</span><br><span class="line">            break</span><br><span class="line">        elif res == &#x27;N&#x27; or res == &#x27;n&#x27;:</span><br><span class="line">            data = Client().get_waveforms(network=net, station=stat, location=loc, channel=cha, starttime=time1, endtime=time2, attach_response=False)</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            res = input(&#x27;You have input the wrong world, please input it again:&#x27;)</span><br><span class="line">    info = &#123;&#x27;network&#x27;: net, &#x27;station&#x27;: stat, &#x27;location&#x27;: loc, &#x27;channel&#x27;: cha&#125;</span><br><span class="line">    print(&#x27;Have got the data.&#x27;)</span><br><span class="line">    return data, info</span><br><span class="line"></span><br><span class="line">timest, timee = input(&#x27;Please input the time range of the data, use space for interval(e.g. 2022-01-01T00:00:00):\n&#x27;).split(&#x27; &#x27;)</span><br><span class="line">timest, timee = UTCDateTime(timest), UTCDateTime(timee)</span><br><span class="line">import os</span><br><span class="line">path = (&#x27;DATA/&#x27;)</span><br><span class="line">check = os.path.isdir(path)</span><br><span class="line">if check == False:</span><br><span class="line">    os.mkdir(path)</span><br><span class="line"></span><br><span class="line">quantity = input(&#x27;How mant networks do you want? If you want more than 1 network, Please input its quantity, or just **enter**:&#x27;)</span><br><span class="line">if quantity == &#x27;&#x27; or quantity == 1:  # 避免出现输入1的情况导致错误  保存波形文件</span><br><span class="line">    [data, info] = sigle_net(timest, timee)</span><br><span class="line">    filename = (path  + timest + &#x27;.&#x27; + info[&quot;network&quot;] + &#x27;.&#x27; + info[&quot;station&quot;] + &#x27;.&#x27; +</span><br><span class="line">                info[&#x27;location&#x27;] + &#x27;.&#x27; + info[&quot;channel&quot;] + &#x27;.mseed&#x27;)   # 目前信息不全，之后寻找更多信息补充</span><br><span class="line">    data.write(filename, format=&quot;mseed&quot;)  # 目前只能保存一整个mseed文件。</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">print(type(data))</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">else:</span><br><span class="line">    data = multi_net(quantity, times, timee)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>Obspy</tag>
       </tags>
   </entry>
   <entry>
@@ -1757,43 +1757,6 @@ sumstack # 叠加波形
       </tags>
   </entry>
   <entry>
-    <title>SAC时间变量</title>
-    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
-<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
-<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
-<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
-<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
-<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
-
-
-<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
-<p>使用注意事项：</p>
-<ul>
-<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
-<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
-</ul>
-<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
-<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
-
-<p>处理大量数据时：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
-
-<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
-<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
-]]></content>
-      <categories>
-        <category>地震学常用软件</category>
-      </categories>
-      <tags>
-        <tag>SAC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SAC数据格式与数据合并</title>
     <url>/2022/08/21/SAC%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
     <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/data-format/">SAC数据格式及转换</a><br>[]</p>
@@ -1891,6 +1854,43 @@ sudo apt install ffmpeg
       </categories>
       <tags>
         <tag>Linux学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAC时间变量</title>
+    <url>/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+
+
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
+<ul>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+</ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>SAC</tag>
       </tags>
   </entry>
   <entry>
@@ -2556,89 +2556,6 @@ man 命令名  //使用范围更广
       </tags>
   </entry>
   <entry>
-    <title>博客创建笔记</title>
-    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
-<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
-<li>安装 Git</li>
-<li>安装Nodejs</li>
-</ul>
-<p>安装包在<a href>此处</a>可以找到。</p>
-<ul>
-<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>安装过程如果卡住，说明网络条件不好，可以使用国内镜像源：</p>
-<pre><code>npm config set registry https://registry.npm.taobao.org
-npm config get registry  # 查看镜像源更新成功
-</code></pre>
-<p>根据提示第4行，输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
-<p>最后进行测试，显示对应的版本信息即可。</p>
-<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
-<blockquote>
-<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
-<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
-<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
-</blockquote>
-<p>经过该方法后，问题应该得到了解决。</p>
-<ul>
-<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-查看版本信息后，显示正常为安装成功</li>
-</ul>
-<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
-<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
-<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
-<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
-<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
-<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
-<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
-<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
-<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
-<p>然后安装插件：</p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre>
-<p>最后执行以下命令：</p>
-<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
-</code></pre>
-<p>进行缓存清空、生成html文件、部署到github。</p>
-<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
-<pre><code>hexo new &quot;文章名&quot;
-</code></pre>
-<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
-<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
-<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
-<pre><code>npm install hexo-asset-image --save
-</code></pre>
-<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
-<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
-</code></pre>
-<p>修改为：</p>
-<pre><code>$(this).attr(&#39;src&#39;, src);
-</code></pre>
-<p>保存文件。</p>
-<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
-<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
-<p>使用方式:  ![图片名] ( 图片位置 )</p>
-<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
-]]></content>
-      <categories>
-        <category>博客创建</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>从零开始的Obspy</title>
     <url>/2022/11/11/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.obspy.org/archive/ObsPy_Tutorial_2020-04_chinese.pdf">Obspy中文文档</a></p>
@@ -2783,6 +2700,108 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
       </categories>
       <tags>
         <tag>Obspy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客创建笔记</title>
+    <url>/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/wapchief/article/details/54602515">https://blog.csdn.net/wapchief/article/details/54602515</a><br><a href="https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292">https://www.bilibili.com/video/BV1Eg41157tL?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=aa4150b17b76703c92ffe73e278bf292</a></p>
+<h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><ul>
+<li>安装 Git</li>
+<li>安装Nodejs</li>
+</ul>
+<p>安装包在<a href>此处</a>可以找到。</p>
+<ul>
+<li>win + R 打开cmd命令行，执行以下语句：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+注意：<br>运行npm -v 之后出现下面情况<br><img src="NPM.png" alt="NPM错误"><br>如果出现WARN，执行下述命令即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm-windows-upgrade</span><br><span class="line">npm-windows-upgrade</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>安装过程如果卡住，说明网络条件不好，可以使用国内镜像源：</p>
+<pre><code>npm config set registry https://registry.npm.taobao.org
+npm config get registry  # 查看镜像源更新成功
+</code></pre>
+<p>根据提示第4行，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g npm@8.15.1</span><br></pre></td></tr></table></figure>
+<p>最后进行测试，显示对应的版本信息即可。</p>
+<p>如果还不可以，尝试该方法：<a href="https://www.pudn.com/news/62d6b57855398e076ba77d65.html">https://www.pudn.com/news/62d6b57855398e076ba77d65.html</a><br>以上内容如下：</p>
+<blockquote>
+<p>1、打开node.js的安装路径–&gt;找到npm.cmd文件，右键编辑打开</p>
+<p>2、将文件中的prefix-g 更改为prefix –location&#x3D;global。如同所示。注意后面还有个单引号！！！</p>
+<p>3、保存文件，如果提示权限问题则选中该文件–&gt;右键选择属性–&gt;安全–&gt;修改权限为完全控制就可以正常保存。<br>如果安装出现问题，</p>
+</blockquote>
+<p>经过该方法后，问题应该得到了解决。</p>
+<ul>
+<li>安装Hexo<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+安装完成后，输入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+查看版本信息后，显示正常为安装成功</li>
+</ul>
+<h1 id="2、在Github上创建库"><a href="#2、在Github上创建库" class="headerlink" title="2、在Github上创建库"></a>2、在Github上创建库</h1><p>注：库的名称必须和用户名相同。<br>git初始化时需要连接github账户，具体参考书籍《Github入门与实践》</p>
+<h1 id="3、初始化Hexo"><a href="#3、初始化Hexo" class="headerlink" title="3、初始化Hexo"></a>3、初始化Hexo</h1><p>创建一个文件夹，用于存放hexo与博客文件。<br>运行下述命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br><span class="line">hexo g //进行编译（类似行为）</span><br><span class="line">hexo s //创建一个本地网页</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>cd myblog</code>并不能正常运行，下一步会出现“注”中的问题。</p>
+<p>使用<code>hexo s</code>之后，在浏览器输入<a href="http://localhost:4000/">http://localhost:4000/</a>即可查看本地页面</p>
+<p>注：如果此处出现<code>hexo &lt;command&gt;</code>，可以使用如下解决方案：<br><a href="https://blog.csdn.net/m0_50299150/article/details/121467368?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~default-1-121467368-blog-85267550.pc_relevant_sortByStrongTime&utm_relevant_index=1">该方案链接</a><br>：（进入刚刚创建的myblog文件夹内进行git bash）</p>
+<h1 id="4、安装主题"><a href="#4、安装主题" class="headerlink" title="4、安装主题"></a>4、安装主题</h1><p>这里使用next主题。<a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a><br>next在github中有库，直接clone即可。<br>在上述的文件夹下，使用 git bash<br>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>将clone下来的主题包放置在&#x2F;myblog&#x2F;themes下。</p>
+<h1 id="5、配置文件"><a href="#5、配置文件" class="headerlink" title="5、配置文件"></a>5、配置文件</h1><p>在&#x2F;mybog下的_config.yml文件中，将<code>theme: landscape</code>修改为<code>theme: hexo-theme-next</code>,此操作为将其修改为你使用的主题文件。<br>运行<code>hexo s</code>在本地查看主题情况。</p>
+<p>此处也需要进行修改，将repo修改为你的仓库SSH。注意Branch名称为你所设置的名称。如果为main修改为main。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: git@github.com:你的用户名/你的用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在主题文件夹下，即myblog&#x2F;themes&#x2F;hexo-theme-next文件夹下的_config.yml文件中，进行主题文件信息的配置。<br>具体根据主题官方提示进行修改。</p>
+<h1 id="6、部署到github"><a href="#6、部署到github" class="headerlink" title="6、部署到github"></a>6、部署到github</h1><p>完成配置后，需要将所有内容部署到github上。</p>
+<p>首先进行SSH key的部署。 内容参照[Git学习笔记]。</p>
+<p>然后安装插件：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre>
+<p>最后执行以下命令：</p>
+<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+</code></pre>
+<p>进行缓存清空、生成html文件、部署到github。</p>
+<h1 id="7、写文章"><a href="#7、写文章" class="headerlink" title="7、写文章"></a>7、写文章</h1><p>输入命令</p>
+<pre><code>hexo new &quot;文章名&quot;
+</code></pre>
+<p>即可在source&#x2F;_posts文件夹下看到所属的文章。在其中编写markdown即可。<br>Markdown指南：<a href="https://markdown.com.cn/">https://markdown.com.cn/</a></p>
+<h1 id="8、插入图片的方法"><a href="#8、插入图片的方法" class="headerlink" title="8、插入图片的方法"></a>8、插入图片的方法</h1><p>参考：<a href="https://zhuanlan.zhihu.com/p/542101567/">https://zhuanlan.zhihu.com/p/542101567/</a></p>
+<p>需要安装插件：<br>在根目录myblog下，使用git bash</p>
+<pre><code>npm install hexo-asset-image --save
+</code></pre>
+<p>然后在根目录下，找到文件：&#x2F;node_modules&#x2F;hexo-asset-image&#x2F;index.js<br>打开该文件，在第58行将以下代码修改：</p>
+<pre><code>$(this).attr(&#39;src&#39;, config.root + link + src);
+</code></pre>
+<p>修改为：</p>
+<pre><code>$(this).attr(&#39;src&#39;, src);
+</code></pre>
+<p>保存文件。</p>
+<p>在根目录下的_config.yml文件中，<br><code>post_asset_folder: false</code>修改为true。</p>
+<p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
+<p>使用方式:  ![图片名] ( 图片位置 )</p>
+<p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
+]]></content>
+      <categories>
+        <category>博客创建</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>吉布斯现象作业</title>
+    <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MATLAB进行图像绘制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
+<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
+]]></content>
+      <categories>
+        <category>作业布置</category>
+      </categories>
+      <tags>
+        <tag>地震资料数字处理</tag>
       </tags>
   </entry>
   <entry>
@@ -3509,25 +3528,6 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
       </categories>
       <tags>
         <tag>常用网站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>吉布斯现象作业</title>
-    <url>/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MATLAB进行图像绘制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
-<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
-]]></content>
-      <categories>
-        <category>作业布置</category>
-      </categories>
-      <tags>
-        <tag>地震资料数字处理</tag>
       </tags>
   </entry>
   <entry>
