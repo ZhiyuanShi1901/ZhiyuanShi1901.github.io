@@ -1383,7 +1383,17 @@ sys	0m0.015s
     <title>SAC学习笔记</title>
     <url>/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[seisman]<a href="https://seisman.github.io/SAC_Docs_zh/">https://seisman.github.io/SAC_Docs_zh/</a></p>
-<h1 id="SAC-安装"><a href="#SAC-安装" class="headerlink" title="SAC 安装"></a>SAC 安装</h1><h1 id="SAC入门"><a href="#SAC入门" class="headerlink" title="SAC入门"></a>SAC入门</h1><h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><h3 id="启动SAC"><a href="#启动SAC" class="headerlink" title="启动SAC"></a>启动SAC</h3><p>在控制端输入<br><code>sac</code></p>
+<h1 id="SAC-安装"><a href="#SAC-安装" class="headerlink" title="SAC 安装"></a>SAC 安装</h1><h2 id="安装依赖包："><a href="#安装依赖包：" class="headerlink" title="安装依赖包："></a>安装依赖包：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo yum install gcc gcc-c++ make</span><br><span class="line">sudo yum install glibc ncurses-devel libSM-devel libICE-devel</span><br><span class="line">sudo yum install libXpm-devel libX11-devel zlib-devel libedit-devel</span><br></pre></td></tr></table></figure>
+<p>有些依赖包可能无法安装，例如下面几个。需要手动进行安装。</p>
+<h2 id="libedit下载地址："><a href="#libedit下载地址：" class="headerlink" title="libedit下载地址："></a>libedit下载地址：</h2><p><a href="https://centos.pkgs.org/8/centos-powertools-x86_64/libedit-devel-3.1-23.20170329cvs.el8.x86_64.rpm.html">https://centos.pkgs.org/8/centos-powertools-x86_64/libedit-devel-3.1-23.20170329cvs.el8.x86_64.rpm.html</a><br>yum安装即可。</p>
+<h2 id="另几个依赖包："><a href="#另几个依赖包：" class="headerlink" title="另几个依赖包："></a>另几个依赖包：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo yum install libxml2 libxml2-devel -y</span><br><span class="line">sudo yum install -y libcurl-devel.x86_64 </span><br></pre></td></tr></table></figure>
+
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">../configure --prefix=/usr/local/sac</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>运行<code>~/.bashrc</code>,加入语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SACHOME=/usr/local/sac</span><br><span class="line">export SACAUX=$&#123;SACHOME&#125;/aux</span><br><span class="line">export PATH=$&#123;SACHOME&#125;/bin:$&#123;PATH&#125;</span><br><span class="line"></span><br><span class="line">export SAC_DISPLAY_COPYRIGHT=1</span><br><span class="line">export SAC_PPK_LARGE_CROSSHAIRS=1</span><br><span class="line">export SAC_USE_DATABASE=0</span><br></pre></td></tr></table></figure>
+<p>运行<br><code>   source ~/.bashrc</code><br>即可。</p>
+<h1 id="SAC入门"><a href="#SAC入门" class="headerlink" title="SAC入门"></a>SAC入门</h1><h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><h3 id="启动SAC"><a href="#启动SAC" class="headerlink" title="启动SAC"></a>启动SAC</h3><p>在控制端输入<br><code>sac</code></p>
 <h3 id="退出SAC"><a href="#退出SAC" class="headerlink" title="退出SAC"></a>退出SAC</h3><p>在SAC控制端输入<code>quit</code></p>
 <h2 id="样本数据"><a href="#样本数据" class="headerlink" title="样本数据"></a>样本数据</h2><p>SAC支持生成样本数据进行学习，即使手头没有SAC数据也可以进行学习使用。</p>
 <h3 id="funcgen（fg）"><a href="#funcgen（fg）" class="headerlink" title="funcgen（fg）"></a>funcgen（fg）</h3><p>funcgen（function generator），该命令可以生成一些特定的函数，例如脉冲函数、阶跃函数、正弦函数等。</p>
