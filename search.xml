@@ -850,28 +850,60 @@ git push     //推送
       </tags>
   </entry>
   <entry>
-    <title>Mineos 程序参数解释</title>
-    <url>/2022/12/22/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/</url>
-    <content><![CDATA[<h1 id="minos-bran-f"><a href="#minos-bran-f" class="headerlink" title="minos_bran.f"></a>minos_bran.f</h1><h2 id="jcom"><a href="#jcom" class="headerlink" title="jcom"></a>jcom</h2><p>jcom &#x3D; n， 当n为以下值时：</p>
+    <title>Mineos 程序解释</title>
+    <url>/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/</url>
+    <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>minos内README文件</p>
+<h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行了解与描述。<br>内容均源自程序内部解释与运行进程。<br>模型文件为DEMO中具有的PREM等地球模型。</p>
+<h1 id="minos-bran"><a href="#minos-bran" class="headerlink" title="minos_bran"></a>minos_bran</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>包含一个输入：<br>模型文件</p>
+<p>两个输出：<br>1、模型列表和mode（振型）属性摘要<br>2、本征函数的一个文件</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="jcom"><a href="#jcom" class="headerlink" title="jcom"></a>jcom</h3><p>jcom &#x3D; n， 当n为以下值时：</p>
 <ul>
 <li>1 radial modes ？</li>
 <li>2 toroidal modes 环型振型</li>
 <li>3 spheroidal modes 球型振型</li>
 <li>4 inner core toroidal modes 内核环型振型</li>
 </ul>
-<h2 id="lmin-lmax-wmin-wmax-nmin-nmax"><a href="#lmin-lmax-wmin-wmax-nmin-nmax" class="headerlink" title="lmin lmax wmin wmax nmin nmax"></a>lmin lmax wmin wmax nmin nmax</h2><p><em>lmin - lmax defines the range of angular orders to be computed.<br>if jcom&#x3D;1 this is ignored. wmin - wmax defines the frequency range to be computed (in millihertz)<br>nmin-nmax specifies the branch numbers to be computed – nmin&#x3D;0 is the fundamental mode</em></p>
+<h3 id="lmin-lmax-wmin-wmax-nmin-nmax"><a href="#lmin-lmax-wmin-wmax-nmin-nmax" class="headerlink" title="lmin lmax wmin wmax nmin nmax"></a>lmin lmax wmin wmax nmin nmax</h3><p><em>lmin - lmax defines the range of angular orders to be computed.<br>if jcom&#x3D;1 this is ignored. wmin - wmax defines the frequency range to be computed (in millihertz)<br>nmin-nmax specifies the branch numbers to be computed – nmin&#x3D;0 is the fundamental mode</em></p>
 <ul>
 <li>lmin lmax 定义要计算的角度的范围? jcom为1时忽略</li>
 <li>wmin wmax 定义计算的频率范围 单位：毫赫兹</li>
 <li>nmin nmax 指定计算的分支编号 nmin&#x3D;0时为基阶振型</li>
 </ul>
-<h2 id="eps-wgrav"><a href="#eps-wgrav" class="headerlink" title="eps wgrav"></a>eps wgrav</h2><p><em>eps controls the accuracy of the runge-kutta integration scheme. the relative accuracy of an eigen frequency will be 2-3 x eps.<br>it also controls the precision with which a root is found and the minimum relative separation of two roots with the same<br>angular order.it is safe to set eps&#x3D;1.d-7.</em></p>
+<h3 id="eps-wgrav"><a href="#eps-wgrav" class="headerlink" title="eps wgrav"></a>eps wgrav</h3><p><em>eps controls the accuracy of the runge-kutta integration scheme. the relative accuracy of an eigen frequency will be 2-3 x eps.<br>it also controls the precision with which a root is found and the minimum relative separation of two roots with the same<br>angular order.it is safe to set eps&#x3D;1.d-7.</em></p>
 <p><em>wgrav is the frequency in millihertz above which gravitational<br>terms are neglected-this gives about a factor of 3 increase in speed.</em></p>
 <ul>
 <li>eps： 控制’’runge-kutta integration scheme’’的准确度。本征频率的相对准确度为2-3倍的eps。<br>它还控制找到根的精度以及具有相同角度顺序的两个根的最小相对距离。设置1e-7是安全的</li>
 <li>wgrav：  频率（单位毫赫兹）超过该频率的引力项被忽略。 造成3倍的速度增长。</li>
 </ul>
-<h1 id="eigcon-f"><a href="#eigcon-f" class="headerlink" title="eigcon.f"></a>eigcon.f</h1><ul>
+<h2 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="模型列表"><a href="#模型列表" class="headerlink" title="模型列表"></a>模型列表</h3><p>一个ASCII文件，列出了模型和mode properties（振型属性）。</p>
+<p>例如：相速度（km&#x2F;s），频率，周期，群速度（km&#x2F;h），q，一个参数（动能与势能的比值-1）</p>
+<p>在DEMO3示例中，prem_noocean_S文件就是输出的模型列表。它的列表有两个表格，第一个表格是输入模型的数据，此即prem_noocean.txt内的数据，标题为：<br><code>PREM NO OCEAN MODEL: (    0.0000    0.000) anisotropic case                     ref per =   1.0 secs</code><br>表示为PREM 无海洋的模型，采样间隔1s。<br>表头为：<br><code>level    radius        rho         vpv         vph         vsv         vsh         eta         qmu         qkap</code></p>
+<p>第二个表格表头为：<br><code>integration precision =  0.1000E-09  root precision =  0.1000E-09  gravity cut off =  0.6283E-02 rad/s</code></p>
+<p><code>    mode        phs vel       w(mhz)          t(secs)      grp vel(km/s)        q             raylquo</code> </p>
+<p>integration precision对应参数eps，<br>该表格中的w对应的范围为0-200,但是最后一行超过了200,想必是取值时由于步长原因超出了一点点。</p>
+<h3 id="本征函数文件"><a href="#本征函数文件" class="headerlink" title="本征函数文件"></a>本征函数文件</h3><p>在DEMO3中输出的文件为eprem_noocean_S,无法用文本管理打开。</p>
+<p>文件名为“none”时不再计算本征函数。</p>
+<p>这是一个固定记录长度的二进制文件，每个模式都有一个条目写为<br><code>write(ioeig) (abuf(i),i=1,nvec)</code></p>
+<ul>
+<li>nvec：spheroidal modes（球型振型），值为：5+6<em>npts；toroidal or radial modes（环型或径向振型），值为：5+2</em>npts。</li>
+<li>abuf的前五个字为：n，l，频率，q和群速度。剩余的包括：<ul>
+<li>toroidal modes（环型振型）：w（1..npts）、 wp（1..npts）</li>
+<li>球型振型：u(1..npts),up(1..npts),v(1..npts),vp(1..npts),p(1..npts)，pp(1..npts)</li>
+</ul>
+</li>
+</ul>
+<p>woodhouse和dahlen（1978）表示w,wp,v and vp 必须除以 sqrt(l*(l+1)).<br><strong>注：（A be devided by B 相当于 A&#x2F;B）</strong></p>
+<ul>
+<li>归一化：<br>frequency<strong>2 times integral(rho<em>w</em>w<em>r</em>r) is 1 for toroidal modes<br>frequency</strong>2 times integral(rho*(u<em>u+l</em>(l+1)<em>v</em>v)<em>r</em>r) is 1 for spheroidal modes<br>模型经过归一化，密度为：5515 mg&#x2F;m*<em>3 &#x3D; 1；pi</em>g&#x3D;1</li>
+</ul>
+<p>g为重力常数，地球半径（rn&#x3D;6371000m）为1,归一化结果为：<br>acceleration normalisation（加速度归一化） &#x3D; pi<em>g</em>rhobar*rn</p>
+<p>velocity normalisation（速度归一化）     &#x3D; rn<em>sqrt(pi</em>g*rhobar)&#x3D; vn</p>
+<p>frequency normalization（频率归一化）    &#x3D; vn&#x2F;rn</p>
+<h2 id="运行内容"><a href="#运行内容" class="headerlink" title="运行内容"></a>运行内容</h2><p>（<br>暂时未运行成功，出现错误：<br>At line 400 of file minos_bran.f (unit &#x3D; 7, file &#x3D; ‘fort.7’)<br>Fortran runtime error: End of file<br>）</p>
+<p>input model file（输入模型的名称）: &#x2F;模型路径&#x2F;prem_noocean.txt<br>output file: </p>
+<h1 id="eigcon"><a href="#eigcon" class="headerlink" title="eigcon"></a>eigcon</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
+<p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。<br>创建的文件为：dbase_name.eigen， 创建的文件夹为dbase_name.eigen.dat，文件夹中有二进制文件eigen。<br>这里输出的文件为test_S.eigen,命名的为test</p>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><ul>
 <li>rn     : radius at surface  表面的半径</li>
 <li>wn     : frequency normalization 频率归一化？为什么只是一个参数呢？</li>
 <li>vn     : velocity normalisation  速度归一化？</li>
@@ -880,13 +912,47 @@ git push     //推送
 <li>nstart : index of lowest grid point 最低网格点索引</li>
 <li>nrad   : # of gridpoints of reduced eigenfunctions 简化特征函数的网格点？</li>
 </ul>
-<h1 id="syndat-f"><a href="#syndat-f" class="headerlink" title="syndat.f"></a>syndat.f</h1><ul>
+<h2 id="运行内容-1"><a href="#运行内容-1" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">spheroidals (3) or toroidals (2) or radial (1) orinner core toroidals (4) modes: 选择需要的即可。</span><br><span class="line">enter name of model file（输入模型的名称）：（上文中模型的名称）/模型路径/prem_noocean.txt</span><br><span class="line">enter max depth [km] （输入最大深度）:1000</span><br><span class="line">enter name of minos_bran output text file：输入上文minos_bran输出text文件的名称即可，即prem_noocean_S</span><br><span class="line">minos_bran output binary unformatted file name: 输入二进制无格式化文件名，即eprem_noocean_S</span><br><span class="line">enter path/dbase_name or dbase_name to store eigenfunctions(输入存放本征函数的路径或名称):test_S</span><br></pre></td></tr></table></figure>
+<p>之后运行结束。</p>
+<h1 id="green"><a href="#green" class="headerlink" title="green"></a>green</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>这个程序计算单个事件和一组给定的台站,即格林函数。<br>输入：db_list文件，内容为上面eigcon输出的文件列表，不带后缀名。<br>输出：名为green的.wfdisc文件等</p>
+<h2 id="运行内容-2"><a href="#运行内容-2" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enter path to db with sta &amp; stachan（输入包含台站等信息的文件路径）:.site和.sitechan的文件名。输入文件名即可。示例为short。</span><br><span class="line">enter name of file within list of nmodes db: dblist 由eigcon程序得到的文件列表。即存放本征函数的路径名列表。示例为db_list</span><br><span class="line">enter input CMT file name(输入CMT文件名称):china_cmt_event</span><br><span class="line">min and max frequencies to be considered (mHz) （需要考虑的频率范围）:10 260</span><br><span class="line">enter # pts in greens fns .le.        30000  （输入格林fns的pts？？？小于30000）: 8000</span><br><span class="line">enter Green functions output db file name（输出文件名）:green</span><br></pre></td></tr></table></figure>
+
+<h1 id="syndat-f"><a href="#syndat-f" class="headerlink" title="syndat.f"></a>syndat.f</h1><h2 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h2><p>构建理论地震图使用的程序。选择的事件的地震矩张量和格林函数的卷积，得到理论地震图。<br>最终输出的文件为Syndat.wfdisc.dat，内部为理论地震图。</p>
+<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><ul>
 <li>张量类型：程序中并没有明确名称。<ul>
 <li>0 moment</li>
 <li>1 nodal plane 1 节面？</li>
 <li>2 nodal plane 2</li>
 </ul>
 </li>
+</ul>
+<h2 id="运行内容-3"><a href="#运行内容-3" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enter input CMT file name(输入CMT文件名称)：示例为china_cmt_event</span><br><span class="line">enter tensor type(输入张量类型)：0-moment；1-nodal plane1；2-nodal plane2</span><br><span class="line">enter input dbname(输入文件的dbname)：上文格林函数程序运行的输出名。即green</span><br><span class="line">enter output dbname（输出文件的dbname）：设置输出文件名，可以设置为syndat</span><br><span class="line">Enter output units（输入输出单位）： 0 [nm/s/s] 1 [nm/s] 2 [nm]</span><br></pre></td></tr></table></figure>
+
+<h1 id="cucss2sac"><a href="#cucss2sac" class="headerlink" title="cucss2sac"></a>cucss2sac</h1><h2 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h2><p>将理论地震图转化为其他格式的数据。例如sac格式和asc格式（ASCII）。</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code>cucss2sac [-a [-n]] db_name 输出的sac文件路径的名称
+</code></pre>
+<p>[]内的内容：</p>
+<ul>
+<li><p>无，输出sac文件</p>
+</li>
+<li><p>-a 输出ASC文件</p>
+</li>
+<li><p>-n 按照ASCII表格表头输出，必须和-a一起使用。</p>
+</li>
+<li><p>dbname：该文件必须包括.wfdisc;.origin;.site文件，才能完成SAC标题的构建。这个文件为之前green函数生成的三个文件。</p>
+</li>
+</ul>
+<h1 id="eigen2asc"><a href="#eigen2asc" class="headerlink" title="eigen2asc"></a>eigen2asc</h1><h2 id="简介-5"><a href="#简介-5" class="headerlink" title="简介"></a>简介</h2><p>将本征函数的.eigen文件转化为asc文件。</p>
+<h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><pre><code>eigen2asc nmin nmax lmin lmax db_name out_dir
+</code></pre>
+<p>示例：</p>
+<pre><code>eigen2asc 0 0 6 8 test_S test_S_ASC
+</code></pre>
+<ul>
+<li>nmin, nmax - mininal and maximal values of the radial mode number n（径向振型数n）</li>
+<li>lmin, lmax - mininal and maximal values of the lateral mode number l（l）</li>
+<li>db_name    - data base name, must include .eigen relation;（.eigen文件）</li>
+<li>out_dir    - output directory for ASCII files（输出ASCII文件路径）</li>
 </ul>
 ]]></content>
       <categories>
@@ -2843,6 +2909,7 @@ npm config get registry  # 查看镜像源更新成功
 <p>[3].<a href>Sharp Sides to the African Superplume</a></p>
 <p>[4].<a href>The Yellowstone magmatic system from the mantle plume to the upper crust</a></p>
 <p>[5].[Crust and uppermost mantle beneath the North China Craton, northeastern China, and the Sea of Japan from ambient noise tomography.]</p>
+<p>[6].<a href="https://www.researchgate.net/publication/267572874_Seismological_implications_of_a_lithospheric_low_seismic_velocity_zone_in_Mars">Seismological implications of a lithospheric low seismic velocity zone in Mars</a></p>
 <h1 id="来源-1-Accurate-focal-depth-determination-of-oceanic-earthquakes-using-water-column-reverberation-and-some-implications-for-the-shrinking-plate-hypothesis-鸣震确定海洋地震的准确深度及板块收缩假说"><a href="#来源-1-Accurate-focal-depth-determination-of-oceanic-earthquakes-using-water-column-reverberation-and-some-implications-for-the-shrinking-plate-hypothesis-鸣震确定海洋地震的准确深度及板块收缩假说" class="headerlink" title="来源 [1] [Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis]鸣震确定海洋地震的准确深度及板块收缩假说"></a>来源 [1] [Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis]鸣震确定海洋地震的准确深度及板块收缩假说</h1><h3 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h3><p>seismogenic layer 孕震层</p>
 <p>inversion 反演</p>
 <p>triplication 波的重叠（多震相）</p>
@@ -3096,6 +3163,7 @@ npm config get registry  # 查看镜像源更新成功
 <p>out-of-phase stacking 相位错位叠加</p>
 <h1 id="来源-3-Sharp-Sides-to-the-African-Superplume"><a href="#来源-3-Sharp-Sides-to-the-African-Superplume" class="headerlink" title="来源[3]  Sharp Sides to the African Superplume"></a>来源[3]  Sharp Sides to the African Superplume</h1><h3 id="单词-2"><a href="#单词-2" class="headerlink" title="单词"></a>单词</h3><p>superplume 超级热柱<br>obliquely 斜的<br>fortuitous 偶然的<br>fit 拟合<br>dense 致密的<br>thermal structure 热结构<br>on geological time scales 在地质时间尺度上<br>be correlated with 与……相关<br>geoid anomaly 重力异常<br>bulk sound velocity 体波速度<br>laterally 横向的<br>lowermost mantle 下地幔底界<br>trade off 争议<br>patterns 样式、模式<br>African Low Velocity Structure （ALVS）非洲低速结构体<br>leans toward 倾斜<br>evident 明显的<br>multipathing 多路径<br>demonstrate 证明，线路<br>simultaneously 同时<br>plausible range 合理范围<br>Rayleigh number 瑞雷数<br>bouyancy number 浮力数</p>
 <h1 id="来源-4-The-Yellowstone-magmatic-system-from-the-mantle-plume-to-the-upper-crust"><a href="#来源-4-The-Yellowstone-magmatic-system-from-the-mantle-plume-to-the-upper-crust" class="headerlink" title="来源[4] The Yellowstone magmatic system from the mantle plume to the upper crust"></a>来源[4] The Yellowstone magmatic system from the mantle plume to the upper crust</h1><h3 id="单词-3"><a href="#单词-3" class="headerlink" title="单词"></a>单词</h3><p>supervolcano 超级火山<br>silicic 硅质的，含硅的<br>unveil 揭示<br>magma body 岩浆体<br>lower-crustal 下地壳<br>melt fraction 熔融系数<br>critical 重要的<br>bimodal basaltic-rhyolitic 双模式玄武-流纹岩<br>hazard assesment 灾害评估，风险评价<br>extensive earthquakes 剧烈的地震<br>episodic ground deformation 阵发性地面变形<br>flux 值，系数<br>continental hydrothermal system 大陆热释放系统<br>caldera 火山口<br>cataclysmic eruption 灾难性喷发（火山）<br>rhyolitic lava flows 流纹岩质熔岩流（流变熔岩流）<br>lava 熔岩，火山岩<br>account for 解释<br>distinctly 清楚地<br>evidence 假设<br>volcanic plumbing system 火山通道系统<br>framework 构架，结构<br>elucidated 阐明，解释<br>caldera 破火山口<br>basaltic 玄武岩的<br>dominance 起主导作用<br>depict 描述<br>notably 显著地<br>intrude 侵入<br>mafic 铁镁质的<br>silicic 含硅的<br>fractionate 分开，分馏</p>
+<h1 id="来源-5-Seismological-implications-of-a-lithospheric-low-seismic-velocity-zone-in-Mars"><a href="#来源-5-Seismological-implications-of-a-lithospheric-low-seismic-velocity-zone-in-Mars" class="headerlink" title="来源[5] Seismological implications of a lithospheric low seismic velocity zone in Mars"></a>来源[5] Seismological implications of a lithospheric low seismic velocity zone in Mars</h1><h3 id="单词-4"><a href="#单词-4" class="headerlink" title="单词"></a>单词</h3><p>bulk tidal ？？？<br>dissipative properties 耗散特性？<br>stagnant lid 静止盖层？<br>moment of inertia 惯性矩，转动惯量<br>Phobos’ orbital decay 火卫1轨道衰减<br>synodic period  会合周期<br>petrological 岩石学的<br>olivine-wadsleyite 橄榄石-沃兹利石<br>wadsleyite-ringwoodite 沃兹利石-环木石<br>ringwoodite-perovskite 环木石-钙钛矿<br>bountiful 丰富的,充裕的<br>manifestation 显示，显现</p>
 ]]></content>
       <categories>
         <category>专业英语词汇</category>
@@ -3666,6 +3734,35 @@ npm config get registry  # 查看镜像源更新成功
       </categories>
       <tags>
         <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CPS 安装</title>
+    <url>/2022/12/27/CPS-%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="将安装包解压"><a href="#将安装包解压" class="headerlink" title="将安装包解压"></a>将安装包解压</h1><h1 id="将解压后的文件移动到指定的CPS安装目录"><a href="#将解压后的文件移动到指定的CPS安装目录" class="headerlink" title="将解压后的文件移动到指定的CPS安装目录"></a>将解压后的文件移动到指定的CPS安装目录</h1><pre><code>mkdir -p ~/src/
+mv PROGRAMS.330 ~/src/CPS
+</code></pre>
+<h1 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h1><pre><code>sudo yum install libX11-devel
+</code></pre>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>进入源码目录</p>
+<pre><code>cd ~/src/CPS
+./Setup LINUX6440
+</code></pre>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><pre><code>./C
+</code></pre>
+<h1 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h1><pre><code>echo &#39;# CPS computer programme of seismology&#39; &gt;&gt; ~/.bashrc
+echo &#39;export PATH=$&#123;HOME&#125;/src/CPS/bin:$&#123;PATH&#125;&#39; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><pre><code>sdisp96 -h
+</code></pre>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://seismo-learn.org/software/cps/install/">https://seismo-learn.org/software/cps/install/</a></p>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>CPS</tag>
       </tags>
   </entry>
 </search>
