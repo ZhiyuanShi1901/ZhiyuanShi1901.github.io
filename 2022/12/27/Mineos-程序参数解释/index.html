@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：minos内README文件 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和mode（振型）属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial modes ？ 2 t">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-27T10:22:10.000Z">
-<meta property="article:modified_time" content="2022-12-27T10:26:02.833Z">
+<meta property="article:modified_time" content="2022-12-29T13:48:10.780Z">
 <meta property="article:tag" content="Mineos">
 <meta name="twitter:card" content="summary">
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -248,9 +248,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-12-27 18:22:10 / Modified: 18:26:02" itemprop="dateCreated datePublished" datetime="2022-12-27T18:22:10+08:00">2022-12-27</time>
+      <time title="Created: 2022-12-27 18:22:10" itemprop="dateCreated datePublished" datetime="2022-12-27T18:22:10+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-29 21:48:10" itemprop="dateModified" datetime="2022-12-29T21:48:10+08:00">2022-12-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -322,7 +328,9 @@
 <h2 id="运行内容"><a href="#运行内容" class="headerlink" title="运行内容"></a>运行内容</h2><p>（<br>暂时未运行成功，出现错误：<br>At line 400 of file minos_bran.f (unit &#x3D; 7, file &#x3D; ‘fort.7’)<br>Fortran runtime error: End of file<br>）</p>
 <p>input model file（输入模型的名称）: &#x2F;模型路径&#x2F;prem_noocean.txt<br>output file: </p>
 <h1 id="eigcon"><a href="#eigcon" class="headerlink" title="eigcon"></a>eigcon</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
-<p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。<br>创建的文件为：dbase_name.eigen， 创建的文件夹为dbase_name.eigen.dat，文件夹中有二进制文件eigen。<br>这里输出的文件为test_S.eigen,命名的为test</p>
+<p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。</p>
+<p>minos_bran输出的两个文件和模型文件一起被作为输入。<br><strong>eigcon renormalizes the eigen-functions and outputs them to a depth of 1000 km, in this example.</strong><br>这个程序对特征函数进行重归一化，输出在1000km的深度（这个参数可以在程序中设置，即enter max depth中设置。</p>
+<p>创建的文件为：dbase_name.eigen， 创建的文件夹为dbase_name.eigen.dat，文件夹中有二进制文件eigen。<br>这里输出的文件为test_S.eigen,命名的为test</p>
 <h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><ul>
 <li>rn     : radius at surface  表面的半径</li>
 <li>wn     : frequency normalization 频率归一化？为什么只是一个参数呢？</li>
@@ -335,6 +343,8 @@
 <h2 id="运行内容-1"><a href="#运行内容-1" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spheroidals (3) or toroidals (2) or radial (1) orinner core toroidals (4) modes: 选择需要的即可。</span><br><span class="line">enter name of model file（输入模型的名称）：（上文中模型的名称）/模型路径/prem_noocean.txt</span><br><span class="line">enter max depth [km] （输入最大深度）:1000</span><br><span class="line">enter name of minos_bran output text file：输入上文minos_bran输出text文件的名称即可，即prem_noocean_S</span><br><span class="line">minos_bran output binary unformatted file name: 输入二进制无格式化文件名，即eprem_noocean_S</span><br><span class="line">enter path/dbase_name or dbase_name to store eigenfunctions(输入存放本征函数的路径或名称):test_S</span><br></pre></td></tr></table></figure>
 <p>之后运行结束。</p>
 <h1 id="green"><a href="#green" class="headerlink" title="green"></a>green</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>这个程序计算单个事件和一组给定的台站,即格林函数。<br>输入：db_list文件，内容为上面eigcon输出的文件列表，不带后缀名。<br>输出：名为green的.wfdisc文件等</p>
+<p><code>.sitechan</code>文件决定那些台站和通道用于构建格林函数。通道方向（位置）在<code>.sitechan</code>文件中，台站方向（位置）在<code>.site</code>文件中。这两个文件需要预处理。</p>
+<p>另一个预处理文件为<code>db_list</code>，包含所有eigenfunction文件。在测试中为eigcon输出的文件，即：test_S和test_T。</p>
 <h2 id="运行内容-2"><a href="#运行内容-2" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enter path to db with sta &amp; stachan（输入包含台站等信息的文件路径）:.site和.sitechan的文件名。输入文件名即可。示例为short。</span><br><span class="line">enter name of file within list of nmodes db: dblist 由eigcon程序得到的文件列表。即存放本征函数的路径名列表。示例为db_list</span><br><span class="line">enter input CMT file name(输入CMT文件名称):china_cmt_event</span><br><span class="line">min and max frequencies to be considered (mHz) （需要考虑的频率范围）:10 260</span><br><span class="line">enter # pts in greens fns .le.        30000  （输入格林fns的pts？？？小于30000）: 8000</span><br><span class="line">enter Green functions output db file name（输出文件名）:green</span><br></pre></td></tr></table></figure>
 
 <h1 id="syndat-f"><a href="#syndat-f" class="headerlink" title="syndat.f"></a>syndat.f</h1><h2 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h2><p>构建理论地震图使用的程序。选择的事件的地震矩张量和格林函数的卷积，得到理论地震图。<br>最终输出的文件为Syndat.wfdisc.dat，内部为理论地震图。</p>

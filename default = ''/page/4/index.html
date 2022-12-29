@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -204,6 +204,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/19/SAC%E6%97%B6%E9%97%B4%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">SAC时间变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-08-19 09:32:05 / Modified: 11:36:42" itemprop="dateCreated datePublished" datetime="2022-08-19T09:32:05+08:00">2022-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/data-process/event-info/">https://seisman.github.io/SAC_Docs_zh/data-process/event-info/</a><br><a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15">https://seisman.github.io/SAC_Docs_zh/fileformat/times/#id15</a></p>
+<h4 id="时间变量"><a href="#时间变量" class="headerlink" title="时间变量"></a>时间变量</h4><p>一般数据使用时刻+数据点的形式，占用存储空间较多。因此，选择一个参考时刻，其余时刻<br>使用与参考时刻的秒数差表示。</p>
+<p>一般而言，选择一个特殊的时刻作为参考时刻。</p>
+<p>SAC使用的是：<br>“起始相对时间 + 采样间隔 + 数据点数 + 结束相对时间” 表示。即：<br>“<code>b</code> + <code>deltea</code> + <code>npts</code> + <code>e</code>”，但这样造成了头段变量<code>e</code>的特殊性。</p>
+<p>SAC 将震相到时（时刻）相对于参考时刻的时间差（即相对时间）保存到头段变量 <code>o</code>、 <code>a</code>、<code>f</code>、<code>tn</code> 中。</p>
+<p>参考时刻变量：<code>nzyear</code>、<code>nzjday</code>、<code>nzhour</code>、<code>nzmin</code>、<code>nzsec</code>、<code>nzmsec</code><br>相对时间：<code>b</code>、<code>e</code>、<code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code><br>绝对时刻：参考时刻+相对时间</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p><code>listhdr</code>简写<code>lh</code>，用于列出头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lh 头段变量名（可以列出多个）</span><br></pre></td></tr></table></figure>
+
+
+<p><code>chnhdr</code>简写<code>ch</code>，用于修改头段变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch b 修改值</span><br></pre></td></tr></table></figure>
+<p>使用注意事项：</p>
+<ul>
+<li>如果 <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 都没有定义， 那么修改 b 值可以用于校正仪器的时间零点漂移以及时区差异。</li>
+<li>如果  <code>o</code>、<code>a</code>、<code>f</code>、<code>tn</code> 已经被定义， 则修改 b 值会导致与震相相关的头段变量出现错误！</li>
+</ul>
+<h4 id="修改参考时间"><a href="#修改参考时间" class="headerlink" title="修改参考时间"></a>修改参考时间</h4><p>修改参考时间会导致除了参考时间外的其他变量都没有变化，因此造成绝对时刻发生平移。<br>理论上可以校正零点漂移和时区，但是由于SAC不支持智能判断时间，因此修改时区相对繁琐。<br>如果要校正时区，建议直接修改<code>b</code>。</p>
+<h4 id="修改发震时刻"><a href="#修改发震时刻" class="headerlink" title="修改发震时刻"></a>修改发震时刻</h4><p>修改<code>o</code>实现很危险，因此使用<code>ch</code>命令<code>allt</code>选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SAC&gt; r ./cdv.z</span><br><span class="line">SAC&gt; ch o gmt 1987 173 11 10 10 363   # 06月22日是第173天</span><br><span class="line">                                        # 设置发震时刻</span><br><span class="line">SAC&gt; lh kzdate kztime o  # 列出发震日期、发震时间和发震时刻相对于参考时刻的秒数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:09:56.363</span><br><span class="line">          o = 1.400000e+01       # 发震时刻相对于参考时刻的时间为14秒</span><br><span class="line">SAC&gt; ch allt -14 iztype IO       # 参考时刻加14秒，其他时间减14秒</span><br><span class="line">SAC&gt; lh kzdate kztime o</span><br><span class="line"></span><br><span class="line">     kzdate = JUN 22 (173), 1987</span><br><span class="line">     kztime = 11:10:10.363</span><br><span class="line">          o = 0.000000e+00</span><br><span class="line">SAC&gt; wh                          # 写回磁盘</span><br></pre></td></tr></table></figure>
+
+<p>处理大量数据时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r *.SAC</span><br><span class="line">synchronize            # 同步所有数据的参考时间</span><br><span class="line">ch o gmt 1987 173 11 10 10 363</span><br><span class="line">ch allt (0 - &amp;1,o&amp;) iztype IO</span><br><span class="line">wh</span><br></pre></td></tr></table></figure>
+
+<p><code>(0 - &amp;1,o&amp;)</code>中：<br><code>&amp;1,o&amp;</code> 表示引用内存中第一个SAC文件的头段变量<code>o</code>的值，<br>然后用<code>0-o的值</code>得到结果。优势：不需要使用<code>lh o</code>查看<code>o</code>的值。</p>
+<p><code>synchronize</code> :同步所有数据的参考时间，将内存中所有数据拥有相同的参考时刻。<br>使用此命令后，所有数据的<code>o</code>拥有相同的值。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1688,138 +1792,6 @@ npm config get registry  # 查看镜像源更新成功
 <p>使用该插件后，新建的文章会有一个文件夹，在文件夹中存储图片。</p>
 <p>使用方式:  ![图片名] ( 图片位置 )</p>
 <p>图片位置格式为：&#x2F;文件名&#x2F;图片名</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/07/31/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99%E6%B1%87%E6%80%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/31/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">常用网站汇总</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-31 13:24:51" itemprop="dateCreated datePublished" datetime="2022-07-31T13:24:51+08:00">2022-07-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-03 16:51:02" itemprop="dateModified" datetime="2022-08-03T16:51:02+08:00">2022-08-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="地震学常用网站"><a href="#地震学常用网站" class="headerlink" title="地震学常用网站"></a>地震学常用网站</h1><ul>
-<li><p><a href="www.iris.com">IRIS</a> ：免费的、全球性的学习性地震资料网站，<a target="_blank" rel="noopener" href="https://ds.iris.edu/ds/nodes/dmc/software/downloads/sac/">SAC</a>、<a target="_blank" rel="noopener" href="https://github.com/iris-edu-legacy/rdseed">Rdseed</a>等软件均可在此网站中下载</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.soest.hawaii.edu/gmt/">GMT</a> ：GMT地震波绘图软件</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://neic.usgs.gov/">美国联邦地质调查局</a> ：全球地震资料。但是网站需要梯子</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.globalcmt.org/CMTsearch.html">globalCMT</a> ：具有震源机制解的地震数据</p>
-</li>
-</ul>
-<h1 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h1><ul>
-<li><p><a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Sublime</a> ：编辑器，但是推荐Pycharm</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/pycharm/">Pycharm</a> ：Python推荐编辑器</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.anaconda.com/">Anaconda</a> ：可批量管理Python库</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.codeblocks.org/">CodeBlocks</a> ：C语言推荐编译器</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.python.org/">Python</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a> ：Github工具</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/">Matlab</a> ：数学计算与绘图工具</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js</a> ：博客工具</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.writage.com/">writage</a> ：Word转Markdown</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.pandoc.org/installing.html">pandoc</a> ：Word转Markdown工具</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://zh-cn.libreoffice.org/">libreoffice</a> ：办公套件，类似于office</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.latex-project.org/">Latex</a> ：论文排版软件</p>
-</li>
-</ul>
-<h1 id="其他网站"><a href="#其他网站" class="headerlink" title="其他网站"></a>其他网站</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">hexo</a> ：博客搭建框架</li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a> ：较为齐全的编程教程网站</li>
-<li><a target="_blank" rel="noopener" href="https://bgi.obs-mip.fr/">BGI</a> ：全球重力数据网站</li>
-<li><a target="_blank" rel="noopener" href="https://www.ubuntu.org.cn/global">ubuntu</a> ：Ubuntu官方网站</li>
-<li><a target="_blank" rel="noopener" href="https://www.ubuntukylin.com/">ubuntukylin</a> ：优麒麟</li>
-<li><a target="_blank" rel="noopener" href="https://www.deepin.org/index/zh">deepin</a> ：深度操作系统</li>
-<li><a target="_blank" rel="noopener" href="https://www.centos.org/">Centos</a> ：Centos</li>
-<li><a target="_blank" rel="noopener" href="https://seismo-learn.org/">地震”学“网站</a> ：出色的地震学学习网站</li>
-<li><a target="_blank" rel="noopener" href="https://blog.seisman.info/">Seisman</a> ：出色的地震学相关学习博客，与地震“学”网站相同</li>
-<li><a target="_blank" rel="noopener" href="https://markdown.com.cn/">Markdown</a> ：Markdown语法官方网站</li>
-</ul>
 
       
     </div>
