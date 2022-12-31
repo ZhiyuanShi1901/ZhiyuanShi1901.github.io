@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：minos内README文件 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和mode（振型）属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial modes ？ 2 t">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-27T10:22:10.000Z">
-<meta property="article:modified_time" content="2022-12-31T11:10:03.476Z">
+<meta property="article:modified_time" content="2022-12-31T13:09:01.504Z">
 <meta property="article:tag" content="Mineos">
 <meta name="twitter:card" content="summary">
 
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 19:10:03" itemprop="dateModified" datetime="2022-12-31T19:10:03+08:00">2022-12-31</time>
+      <time title="Modified: 2022-12-31 21:09:01" itemprop="dateModified" datetime="2022-12-31T21:09:01+08:00">2022-12-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -413,15 +413,15 @@ eigen2asc 0 1 2 500 test_S Eigen_S_ASC
 eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 </code></pre>
 <h1 id="endi"><a href="#endi" class="headerlink" title="endi"></a>endi</h1><h2 id="简介-6"><a href="#简介-6" class="headerlink" title="简介"></a>简介</h2><p>In-place file swapping with fixed width</p>
-<h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p><strong>This utility is used when you transfer binary files of<br>.wfdisc or .eigen relations to a platform with a<br>different byte order. The utility changes the byte<br>order from BIG_ENDIAN to LOW_ENDIAN and vice versa.<br>endi sequentially reads the file from the list<br>file1 [ file2 … filen] into memory as an unsigned<br>character string, swaps sequential groups of nw<br>bytes long starting from the beginning of the file,<br>and stores the swapped data<br>into the same place as before (swapping in-place).<br>If the last group has a length less than nw,<br>it stays unswapped.</strong></p>
+<h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p><em>This utility is used when you transfer binary files of<br>.wfdisc or .eigen relations to a platform with a<br>different byte order. The utility changes the byte<br>order from BIG_ENDIAN to LOW_ENDIAN and vice versa.<br>endi sequentially reads the file from the list<br>file1 [ file2 … filen] into memory as an unsigned<br>character string, swaps sequential groups of nw<br>bytes long starting from the beginning of the file,<br>and stores the swapped data<br>into the same place as before (swapping in-place).<br>If the last group has a length less than nw,<br>it stays unswapped.</em></p>
 <p>这个程序用于转换二进制文件</p>
 <p>这个程序改变byte order，从BIG_ENDIAN到LOW_ENDIAN，反之亦然。<br>endi以无符号character string类型顺序读取file1,file2 … 到内存中，交换</p>
 <h2 id="运行-2"><a href="#运行-2" class="headerlink" title="运行"></a>运行</h2><pre><code>endi nw file1 [file2 ... filen]
 </code></pre>
-<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p>w.00001和w.00002都是来源于在PC上产生的一些.wfdisc关系二进制real*4数据文件。这些文件<br><strong>These files have internal LOW_ENDIAN data representation created, e.g., by a direct<br>access FORTRAN WRITE statement.</strong></p>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p>w.00001和w.00002都是来源于在PC上产生的一些.wfdisc关系二进制real*4数据文件。这些文件<br><em>These files have internal LOW_ENDIAN data representation created, e.g., by a direct<br>access FORTRAN WRITE statement.</em></p>
 <pre><code>endi 4 w.00001 w.00002
 </code></pre>
-<p><strong>we change the order of 4-byte words to BIG_ENDIAN for transferring these files on a computer with BIG_ENDIAN byte order, e.g., a SUN Ultra machine, where we may use a direct access READ statement to read data as real*4 variables.</strong></p>
+<p>we change the order of 4-byte words to BIG_ENDIAN for transferring these files on a computer with BIG_ENDIAN byte order, e.g., a SUN Ultra machine, where we may use a direct access READ statement to read data as real*4 variables.</p>
 <h1 id="simpledit"><a href="#simpledit" class="headerlink" title="simpledit"></a>simpledit</h1><h2 id="简介-7"><a href="#简介-7" class="headerlink" title="简介"></a>简介</h2><p>从一个输入的ASCII文件创建.site和.sitechan CSS关系</p>
 <h2 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h2><p>将手动创建的具有台站和通道信息的无格式ASCII文件 ascii_file 转换为 CSS3.0 db_name.site和db_name.sitechan关系列表（文件）。db_name来自于命令行，是数据文件的名称。<br>对于真实数据的另一种创建方法：使用IRIS的rdseed程序创建。注意，CSS格式定义严格，不要人工创建.site和.sitechan文件，这可能造成数值格式错误，造成mineos程序崩溃。对于大量的台站数据，更好的解决方式是写一个直接创建ascii_file或者.site .sitechan文件的程序。</p>
 <h2 id="需要预处理的ASCII文件"><a href="#需要预处理的ASCII文件" class="headerlink" title="需要预处理的ASCII文件"></a>需要预处理的ASCII文件</h2><p>这个文件是ASCII格式集，每一行描述了一个单独的台站或者通道。所有列在台站行之后的通道行隶属于这个台站。</p>
