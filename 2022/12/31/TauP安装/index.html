@@ -21,27 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考[WSL安装]https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;wsl&#x2F;install[运行出现——占位程序接收到错误数据]https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_32461955&#x2F;article&#x2F;details&#x2F;127858827 简介WSL是windows平台使用Linux系统的方式之一。通过安装子系统，使用命令行操作Linux。 安装使用管理员">
+    <meta name="description" content="参考：https:&#x2F;&#x2F;seismo-learn.org&#x2F;software&#x2F;taup&#x2F;install&#x2F; 官方网站：https:&#x2F;&#x2F;www.seis.sc.edu&#x2F;taup&#x2F; java安装：需要安装java运行环境。 sudo yum install epel-release sudo yum install java-11-openjdk  TauP安装将下载的安装包解压 tar -xvf TauP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WSL安装">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/12/12/WSL%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="TauP安装">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Zhiyuan Shi">
-<meta property="og:description" content="参考[WSL安装]https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;wsl&#x2F;install[运行出现——占位程序接收到错误数据]https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_32461955&#x2F;article&#x2F;details&#x2F;127858827 简介WSL是windows平台使用Linux系统的方式之一。通过安装子系统，使用命令行操作Linux。 安装使用管理员">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;seismo-learn.org&#x2F;software&#x2F;taup&#x2F;install&#x2F; 官方网站：https:&#x2F;&#x2F;www.seis.sc.edu&#x2F;taup&#x2F; java安装：需要安装java运行环境。 sudo yum install epel-release sudo yum install java-11-openjdk  TauP安装将下载的安装包解压 tar -xvf TauP">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-12T04:13:17.000Z">
-<meta property="article:modified_time" content="2022-12-12T04:22:50.946Z">
-<meta property="article:tag" content="Windows子系统Linux">
+<meta property="article:published_time" content="2022-12-31T13:02:52.000Z">
+<meta property="article:modified_time" content="2022-12-31T13:06:09.228Z">
+<meta property="article:tag" content="TauP">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/12/12/WSL%E5%AE%89%E8%A3%85/">
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/12/12/WSL%E5%AE%89%E8%A3%85/","path":"2022/12/12/WSL安装/","title":"WSL安装"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/","path":"2022/12/31/TauP安装/","title":"TauP安装"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>WSL安装 | Zhiyuan Shi</title>
+<title>TauP安装 | Zhiyuan Shi</title>
   
 
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bwsl%E7%89%88%E6%9C%AC"><span class="nav-number">4.1.</span> <span class="nav-text">查看wsl版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">出现过的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%A0%E4%BD%8D%E7%A8%8B%E5%BA%8F%E6%8E%A5%E6%94%B6%E5%88%B0%E9%94%99%E8%AF%AF%E6%95%B0%E6%8D%AE"><span class="nav-number">5.1.</span> <span class="nav-text">占位程序接收到错误数据</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">官方网站：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">java安装：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TauP%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">TauP安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">出现过的问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/12/WSL%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -233,12 +233,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="WSL安装 | Zhiyuan Shi">
+      <meta itemprop="name" content="TauP安装 | Zhiyuan Shi">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          WSL安装
+          TauP安装
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-12-12 12:13:17 / Modified: 12:22:50" itemprop="dateCreated datePublished" datetime="2022-12-12T12:13:17+08:00">2022-12-12</time>
+      <time title="Created: 2022-12-31 21:02:52 / Modified: 21:06:09" itemprop="dateCreated datePublished" datetime="2022-12-31T21:02:52+08:00">2022-12-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +258,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
         </span>
     </span>
 
@@ -272,21 +272,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[WSL安装]<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install">https://learn.microsoft.com/zh-cn/windows/wsl/install</a><br>[运行出现——占位程序接收到错误数据]<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32461955/article/details/127858827">https://blog.csdn.net/qq_32461955/article/details/127858827</a></p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>WSL是windows平台使用Linux系统的方式之一。通过安装子系统，使用命令行操作Linux。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>使用管理员身份运行power shell。</p>
-<p>运行：</p>
-<pre><code>wsl --install
+        <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a target="_blank" rel="noopener" href="https://seismo-learn.org/software/taup/install/">https://seismo-learn.org/software/taup/install/</a></p>
+<h1 id="官方网站："><a href="#官方网站：" class="headerlink" title="官方网站："></a>官方网站：</h1><p><a target="_blank" rel="noopener" href="https://www.seis.sc.edu/taup/">https://www.seis.sc.edu/taup/</a></p>
+<h1 id="java安装："><a href="#java安装：" class="headerlink" title="java安装："></a>java安装：</h1><p>需要安装java运行环境。</p>
+<pre><code>sudo yum install epel-release
+sudo yum install java-11-openjdk
 </code></pre>
-<p>重启后即可。</p>
-<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>点击开始菜单中的Ubuntu即可运行。（默认安装Ubuntu）</p>
-<h2 id="查看wsl版本"><a href="#查看wsl版本" class="headerlink" title="查看wsl版本"></a>查看wsl版本</h2><pre><code>wsl -l -v
+<h1 id="TauP安装"><a href="#TauP安装" class="headerlink" title="TauP安装"></a>TauP安装</h1><p>将下载的安装包解压</p>
+<pre><code>tar -xvf TauP-2.6.1.tgz
 </code></pre>
-<h1 id="出现过的问题"><a href="#出现过的问题" class="headerlink" title="出现过的问题"></a>出现过的问题</h1><h2 id="占位程序接收到错误数据"><a href="#占位程序接收到错误数据" class="headerlink" title="占位程序接收到错误数据"></a>占位程序接收到错误数据</h2><p>显示：Error code: Wsl&#x2F;Service&#x2F;0x800706f7</p>
-<p>解决方法：管理员身份运行power shell<br>输入：</p>
-<pre><code>netsh winsock reset
+<p>将taup安装到&#x2F;opt&#x2F;目录下:</p>
+<pre><code>mkdir -p ~/opt/
+mv TauP-2.6.1 ~/opt/
 </code></pre>
-<p>即可解决。</p>
+<p>修改环境变量，将Taup的路径添加到PATH中：</p>
+<pre><code>echo &#39;export PATH=$&#123;HOME&#125;/opt/TauP-2.5.0/bin:$&#123;PATH&#125;&#39; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<p>终端输入taup，出现Taup图形界面即可。</p>
+<h1 id="出现过的问题"><a href="#出现过的问题" class="headerlink" title="出现过的问题"></a>出现过的问题</h1><p>如果出现</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.ArrayIndexOutOfBoundsException: 0
+    at edu.sc.seis.TauP.ToolRun.main(ToolRun.java:140)
+</code></pre>
+<p>说明java版本问题，重装即可。</p>
+<p>首先卸载原有java，查看java版本</p>
+<pre><code>java -version
+</code></pre>
+<p>显示：</p>
+<pre><code>java-11-openjdk-headless-11.0.17.0.8-2.el8.x86_64
+tzdata-java-2022g-1.el8.noarch
+javapackages-filesystem-5.3.0-1.module_el8.0.0+11+5b8c10bd.noarch
+java-11-openjdk-11.0.17.0.8-2.el8.x86_64
+java-1.8.0-openjdk-headless-1.8.0.352.b08-2.el8.x86_64
+</code></pre>
+<p>卸载java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y remove java-11-openjdk-headless-11.0.17.0.8-2.el8.x86_64</span><br><span class="line">yum -y remove java-1.8.0-openjdk-headless-1.8.0.352.b08-2.el8.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>检查是否卸载完成</p>
+<pre><code>java -version
+</code></pre>
+<p>若显示没有java文件，即可重装：运行java安装命令即可。</p>
 
     </div>
 
@@ -296,21 +321,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Windows%E5%AD%90%E7%B3%BB%E7%BB%9FLinux/" rel="tag"># Windows子系统Linux</a>
+              <a href="/tags/TauP/" rel="tag"># TauP</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/" rel="prev" title="Python 库函数">
-                  <i class="fa fa-chevron-left"></i> Python 库函数
+                <a href="/2022/12/29/Mineos%E6%96%B0%E6%A8%A1%E5%9E%8B%E8%BF%90%E8%A1%8C/" rel="prev" title="Mineos新模型运行">
+                  <i class="fa fa-chevron-left"></i> Mineos新模型运行
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/" rel="next" title="CentOS8安装中国版Firefox">
-                  CentOS8安装中国版Firefox <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
