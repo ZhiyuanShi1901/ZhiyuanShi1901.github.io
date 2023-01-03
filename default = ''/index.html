@@ -243,7 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-01-03 09:53:18 / Modified: 10:38:18" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
+      <time title="Created: 2023-01-03 09:53:18 / Modified: 10:41:51" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -275,7 +275,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PDE  2005/01/01 01:42:24.9   7.29   93.92  30.0 5.1 0.0 NICOBAR ISLANDS, INDIA R</span><br><span class="line">C200501010142A   B: 17   27  40 S: 41   58  50 M:  0    0   0 CMT: 1 TRIHD:  0.7</span><br><span class="line">CENTROID:     -1.1 0.8   7.24 0.04   93.96 0.04  12.0  0.0 BDY  S-20050322125628</span><br><span class="line">23 -1.310 0.212  2.320 0.166 -1.010 0.241  0.013 0.535 -2.570 0.668  1.780 0.151</span><br><span class="line">V10   3.376 16 149   0.611 43  44  -3.987 43 254   3.681 282 48  -23  28 73 -136</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="逐行内容"><a href="#逐行内容" class="headerlink" title="逐行内容"></a>逐行内容</h2><h3 id="第一行：震中数据行"><a href="#第一行：震中数据行" class="headerlink" title="第一行：震中数据行"></a>第一行：震中数据行</h3><ul>
+<h2 id="逐行内容"><a href="#逐行内容" class="headerlink" title="逐行内容"></a>逐行内容</h2><h3 id="第一行：震中数据行"><a href="#第一行：震中数据行" class="headerlink" title="第一行：震中数据行"></a>第一行：震中数据行</h3><p>示例：</p>
+<pre><code>PDE  2005/01/01 01:42:24.9   7.29   93.92  30.0 5.1 0.0 NICOBAR ISLANDS, INDIA R
+</code></pre>
+<ul>
 <li>[1-4]   震中参考地震记录。例如（PDE：USGS位置；ISC：ISC地震记录；SWE：面波位置；[Ekstrom，BSSA，2006]）</li>
 <li>[6-15]  Date of reference event 事件日期</li>
 <li>[17-26] Time of reference event 事件时间</li>
@@ -285,7 +288,10 @@
 <li>[49-55] Reported magnitudes, usually mb and MS 震级，通常是mb（体波震级）或ms（面波震级）</li>
 <li>[57-80] Geographical location (24 characters) 地理位置，24个字符</li>
 </ul>
-<h3 id="第二行：CMT信息-1"><a href="#第二行：CMT信息-1" class="headerlink" title="第二行：CMT信息 1"></a>第二行：CMT信息 1</h3><ul>
+<h3 id="第二行：CMT信息-1"><a href="#第二行：CMT信息-1" class="headerlink" title="第二行：CMT信息 1"></a>第二行：CMT信息 1</h3><p>示例：</p>
+<pre><code>C200501010142A   B: 17   27  40 S: 41   58  50 M:  0    0   0 CMT: 1 TRIHD:  0.7
+</code></pre>
+<ul>
 <li><p>[1-16]  <em>CMT event name. This string is a unique CMT-event identifier. Older<br>  events have 8-character names, current ones have 14-character names.<br>  See (1) below for the naming conventions used.</em><br>  CMT事件名称。独一无二的CMT事件标识符，较老的事件8个字符，最近的是14个字符。note（1）中描述了命名规则。</p>
 </li>
 <li><p>[18-61] <em>Data used in the CMT inversion. Three data types may be used:<br>  Long-period body waves (B), Intermediate-period surface waves (S),<br>  and long-period mantle waves (M). For each data type, three values<br>  are given: the number of stations used, the number of components<br>  used, and the shortest period used.</em><br>  B S M CMT反演使用的数据，三类数据类型：</p>
@@ -309,7 +315,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="第三行：CMT信息-2"><a href="#第三行：CMT信息-2" class="headerlink" title="第三行：CMT信息 2"></a>第三行：CMT信息 2</h3><ul>
+<h3 id="第三行：CMT信息-2"><a href="#第三行：CMT信息-2" class="headerlink" title="第三行：CMT信息 2"></a>第三行：CMT信息 2</h3><p>示例：</p>
+<pre><code>CENTROID:     -1.1 0.8   7.24 0.04   93.96 0.04  12.0  0.0 BDY  S-20050322125628
+</code></pre>
+<ul>
 <li><p>[1-58]  <em>Centroid parameters determined in the inversion. Centroid time, given<br>  with respect to the reference time, centroid latitude, centroid<br>  longitude, and centroid depth. The value of each variable is followed<br>  by its estimated standard error. See note (3) below for cases in<br>  which the hypocentral coordinates are held fixed.</em><br>  反演中确定的质心参数。质心时间，相对于参考时间、质心纬度、质心经度和质心深度给出。每个变量的值后跟其估计的标准误差。关于次中心坐标固定的情况，见note（3）。例如第一个参数是2.9,则在第一行的时间基础上加2.9s，如果有负号就是减2.9s。</p>
 </li>
 <li><p>[60-63] <em>Type of depth. “FREE” indicates that the depth was a result of the<br>  inversion; “FIX “ that the depth was fixed and not inverted for;<br>  “BDY “ that the depth was fixed based on modeling of broad-band<br>  P waveforms.</em><br>  深度类型：</p>
