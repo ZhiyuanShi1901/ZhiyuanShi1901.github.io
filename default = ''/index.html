@@ -243,7 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-01-03 09:53:18 / Modified: 10:41:51" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
+      <time title="Created: 2023-01-03 09:53:18 / Modified: 10:49:46" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,7 +266,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="CMT-ndk格式数据"><a href="#CMT-ndk格式数据" class="headerlink" title="CMT .ndk格式数据"></a>CMT .ndk格式数据</h1><p>原介绍：<a target="_blank" rel="noopener" href="https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/allorder.ndk_explained">https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/allorder.ndk_explained</a></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这个数据为ASCII格式，共五行，每行80个字符长度。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>CMT，全称Centroid-Moment-Tensor，是地震震源机制解的<br>这个数据为ASCII格式，共五行，每行80个字符长度。</p>
 <p>数据格式如下：</p>
 <p>示例1（补充了每个参数的含义）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LINE1：</span><br><span class="line">PDE  2005/01/01 01:20:05.4  13.78（纬度）  -88.78（经度） 193.1（震源深度） 5.0（震级mb） 0.0（ms） EL SALVADOR（地理位置）             </span><br><span class="line">LINE2：</span><br><span class="line">C200501010120A（事件名称）   B:  4    4  40（台站数，通道数，最短周期） S: 27   33  50 M:  0    0   0 CMT: 1 TRIHD:  0.6</span><br><span class="line">LINE3：</span><br><span class="line">CENTROID:     -0.3（时间） 0.9  13.76（纬度） 0.06  -89.08（经度） 0.09 162.8（深度） 12.5 FREE（深度类型） S-20050322125201（时间戳）</span><br><span class="line">LINE4：</span><br><span class="line">23（时间指数，*e23）  0.838（Mrr） 0.201（前一个值的标准误差） -0.005（Mtt） 0.231 -0.833（Mpp） 0.270  1.050（Mrt） 0.121 -0.369（Mrp） 0.161  0.044（Mtp） 0.240</span><br><span class="line">LINE5：</span><br><span class="line">V10（版本号）   1.581 56  12  -0.537 23 140  -1.044 24 241（三个特征向量的特征值、plunge和方位角）   1.312   9 29  142（第一个节面的走向，倾角，方位角） 133 72   66 （第二个节面的相关数值）</span><br></pre></td></tr></table></figure>
@@ -373,6 +373,7 @@
 </ul>
 </li>
 <li><p>新的命名规则：14个字符，XYYYYMMDDhhmmZ</p>
+<p>  2005年1月1日开始使用新的命名规则。</p>
 <p>  事件时间更加精准，首字母X只有四种：</p>
 <ul>
 <li>B：只有体波</li>
@@ -880,7 +881,7 @@ source ~/.bashrc
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 21:09:01" itemprop="dateModified" datetime="2022-12-31T21:09:01+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-03 11:14:47" itemprop="dateModified" datetime="2023-01-03T11:14:47+08:00">2023-01-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -949,8 +950,8 @@ source ~/.bashrc
 <p>g为重力常数，地球半径（rn&#x3D;6371000m）为1,归一化结果为：<br>acceleration normalisation（加速度归一化） &#x3D; pi<em>g</em>rhobar*rn</p>
 <p>velocity normalisation（速度归一化）     &#x3D; rn<em>sqrt(pi</em>g*rhobar)&#x3D; vn</p>
 <p>frequency normalization（频率归一化）    &#x3D; vn&#x2F;rn</p>
-<h2 id="运行内容"><a href="#运行内容" class="headerlink" title="运行内容"></a>运行内容</h2><p>（<br>暂时未运行成功，出现错误：<br>At line 400 of file minos_bran.f (unit &#x3D; 7, file &#x3D; ‘fort.7’)<br>Fortran runtime error: End of file<br>）</p>
-<p>input model file（输入模型的名称）: &#x2F;模型路径&#x2F;prem_noocean.txt<br>output file: </p>
+<h2 id="运行内容"><a href="#运行内容" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input model file: ../models/模型名称</span><br><span class="line">output file: 输出的相应振型文件名称</span><br><span class="line">eigenfunction file (output):输出的相应振型二进制无格式文件名称，一般是上一个名称前面+e</span><br><span class="line">enter eps and wgrav：1e-10 10  </span><br><span class="line">enter jcom (1=rad;2=tor;3=sph;4=ictor)：3</span><br><span class="line">enter lmin,lmax,wmin,wmax,nmin,nmax：1 6000 0.0 166.0 0 0</span><br></pre></td></tr></table></figure>
+
 <h1 id="eigcon"><a href="#eigcon" class="headerlink" title="eigcon"></a>eigcon</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
 <p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。</p>
 <p>minos_bran输出的两个文件和模型文件一起被作为输入。<br><strong>eigcon renormalizes the eigen-functions and outputs them to a depth of 1000 km, in this example.</strong><br>这个程序对特征函数进行重归一化，输出在1000km的深度（这个参数可以在程序中设置，即enter max depth中设置。</p>
@@ -1137,7 +1138,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-29 21:51:19" itemprop="dateModified" datetime="2022-12-29T21:51:19+08:00">2022-12-29</time>
+      <time title="Modified: 2023-01-03 11:09:46" itemprop="dateModified" datetime="2023-01-03T11:09:46+08:00">2023-01-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1220,7 +1221,8 @@ jcom： 为3,表示为球型振型。
 </code></pre>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入的参数：</span><br><span class="line">lmin 2</span><br><span class="line">lmax 8000</span><br><span class="line">wmin 0</span><br><span class="line">wmax 200</span><br><span class="line">nmin 0</span><br><span class="line">nmax 0</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 这个是测试？抑或是输出？这三个在程序中找不到输出的语句。</span><br><span class="line">real	0m1.450s</span><br><span class="line">user	0m1.441s</span><br><span class="line">sys	0m0.007s</span><br></pre></td></tr></table></figure>
+<p>使用time命令运行minos_bran程序，返回程序运行时间。具体含义可参考Linux系统命令。<br><strong>注：使用time命令可以直接运行当前目录之外的程序。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">real	0m1.450s</span><br><span class="line">user	0m1.441s</span><br><span class="line">sys	0m0.007s</span><br></pre></td></tr></table></figure>
 
 <h3 id="第二步：运行minos-bran-Tmodes-T振型？"><a href="#第二步：运行minos-bran-Tmodes-T振型？" class="headerlink" title="第二步：运行minos_bran Tmodes T振型？"></a>第二步：运行minos_bran Tmodes T振型？</h3><p>屏幕上的输出大意：</p>
 <p>输入同样为<code>/models/prem_noocean.txt</code></p>
