@@ -241,9 +241,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-01-03 09:53:18 / Modified: 10:49:46" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
+      <time title="Created: 2023-01-03 09:53:18" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-08 11:04:27" itemprop="dateModified" datetime="2023-01-08T11:04:27+08:00">2023-01-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -404,7 +410,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F 2000  14 23 37 10.80 25.39  101.40  33.00 1.0 -2.3 8.33e24 -0.60  -6.29   6.89  -1.85   0.12  -4.73 1.0e24 27 78   -6 118 84 -168</span><br></pre></td></tr></table></figure>
 
 <p>格式内容（补充了参数含义）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F（事件编号） 2000（年份）  14（一年的第几天） 23（时） 37（分） 10.80（centroid秒） 25.39（CENTROID经度）  101.40（CENTROID纬度）  33.00（CENTROID震源深度） 1.0（CMT） -2.3（BOXHD但是原本是正值，这里是负值） 8.33e24（） -0.60（Mrr）  -6.29(Mpp)   6.89(Mtt)  -1.85(Mrt)   0.12(Mrp)  -4.73(Mtp) 1.0e24（） 27 78   -6 118 84 -168（这六个数是第一个节面、第二个节面的走向、倾向、方位角）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F（事件编号evid） 2000（年份）  14（一年的第几天） 23（时） 37（分） 10.80（centroid秒） 25.39（CENTROID经度）  101.40（CENTROID纬度）  33.00（CENTROID震源深度） 1.0（CMT） -2.3（BOXHD但是原本是正值，这里是负值） 8.33e24（） -0.60（Mrr）  -6.29(Mpp)   6.89(Mtt)  -1.85(Mrt)   0.12(Mrp)  -4.73(Mtp) 1.0e24（） 27 78   -6 118 84 -168（这六个数是第一个节面、第二个节面的走向、倾向、方位角）</span><br></pre></td></tr></table></figure>
 
 <p>以下[ ]内为这些数据的字节数，如果字节数不足则在前方补充空格。实际编辑使用空格隔开每个参数即可，不必限制字节。</p>
 <p><strong>注：由于新版事件编号为14个字符长度，因此在MINEOS导入过程中事件编号只能导入前8个字符。具体影响未知。</strong></p>
@@ -421,35 +427,35 @@
 </thead>
 <tbody><tr>
 <td align="center">[1-8]</td>
-<td align="center">事件编号</td>
+<td align="center">事件编号evid</td>
 <td align="center">[45-50]</td>
 <td align="center">centroid震源深度</td>
 <td align="center">[96-101]</td>
-<td align="center">Mrp</td>
+<td align="center">Mrp(Mrφ)</td>
 </tr>
 <tr>
 <td align="center">[10-13]</td>
 <td align="center">年份</td>
 <td align="center">[52-54]</td>
-<td align="center">CMT</td>
+<td align="center">格林函数和地震图的时间步长，单位s</td>
 <td align="center">[103-108]</td>
-<td align="center">Mtp</td>
+<td align="center">Mtp(Mθφ)</td>
 </tr>
 <tr>
 <td align="center">[15-17]</td>
 <td align="center">一年第几天</td>
 <td align="center">[56-59]</td>
-<td align="center">BOXHD</td>
+<td align="center">halfd source half-time duration 单位s</td>
 <td align="center">[110-115]</td>
-<td align="center">1.0e24（未知）</td>
+<td align="center">Mn</td>
 </tr>
 <tr>
 <td align="center">[19-20]</td>
-<td align="center">时</td>
+<td align="center">时 （事件发生时间）</td>
 <td align="center">[61-67]</td>
-<td align="center">8.33e24 未知</td>
+<td align="center">M0，标量张量矩，单位dyn*cm</td>
 <td align="center">[117-118]</td>
-<td align="center">第一个节面的走向</td>
+<td align="center">第一个节面的走向strike</td>
 </tr>
 <tr>
 <td align="center">[22-23]</td>
@@ -457,21 +463,21 @@
 <td align="center">[69-73]</td>
 <td align="center">Mrr</td>
 <td align="center">[120-121]</td>
-<td align="center">第一个节面的倾向</td>
+<td align="center">第一个节面的倾向dip</td>
 </tr>
 <tr>
 <td align="center">[25-29]</td>
-<td align="center">centroid秒</td>
+<td align="center">centroid秒，小数格式</td>
 <td align="center">[75-80]</td>
-<td align="center">Mpp</td>
+<td align="center">Mtt (Mθθ)</td>
 <td align="center">[123-126]</td>
-<td align="center">第一个节面的方位角</td>
+<td align="center">第一个节面的滑动角 slip</td>
 </tr>
 <tr>
 <td align="center">[31-35]</td>
 <td align="center">centroid经度</td>
 <td align="center">[82-87]</td>
-<td align="center">Mtt</td>
+<td align="center">Mpp  (Mφφ)</td>
 <td align="center">[128-130]</td>
 <td align="center">第二个节面的走向</td>
 </tr>
@@ -479,7 +485,7 @@
 <td align="center">[37-43]</td>
 <td align="center">centroid纬度</td>
 <td align="center">[89-94]</td>
-<td align="center">Mrt</td>
+<td align="center">Mrt (Mrθ)</td>
 <td align="center">[132-133]</td>
 <td align="center">第二个节面的倾向</td>
 </tr>
@@ -489,9 +495,10 @@
 <td align="center">*******</td>
 <td align="center">******</td>
 <td align="center">[135-138]</td>
-<td align="center">第二个节面的方位角</td>
+<td align="center">第二个节面的滑动角</td>
 </tr>
 </tbody></table>
+<p>Mrr, Mtt, Mpp, Mrt, Mrp, Mtp 通过Mn归一化的矩张量分量。</p>
 
       
     </div>
@@ -881,7 +888,7 @@ source ~/.bashrc
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-07 21:41:33" itemprop="dateModified" datetime="2023-01-07T21:41:33+08:00">2023-01-07</time>
+      <time title="Modified: 2023-01-08 16:32:04" itemprop="dateModified" datetime="2023-01-08T16:32:04+08:00">2023-01-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1088,20 +1095,80 @@ source ~/.bashrc
 <p>示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eigcon: n,nstart,nrad = 260  119 142</span><br></pre></td></tr></table></figure>
 <p>节点总数为260个，119-142为截取的节点数。</p>
-<h1 id="green"><a href="#green" class="headerlink" title="green"></a>green</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>这个程序计算单个事件和一组给定的台站,即格林函数。<br>输入：db_list文件，内容为上面eigcon输出的文件列表，不带后缀名。<br>输出：名为green的.wfdisc文件等</p>
+<h1 id="green"><a href="#green" class="headerlink" title="green"></a>green</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>这个程序计算单个事件和一组给定的台站的格林函数。<br>每个台站，需要输入指定的通道列表。这个程序能够选择计算不同的格林函数：<br>a) 只计算Z分量；b) 计算三分量，使用标准ZNE传感器；c) 计算三分量，使用12Z传感器。<br>建立台站信息需要创建一个数据集，包含<code>.site</code>和<code>.sitechan</code>两个文件。可以使用IRIS的rdseed或者从全球数据库中选择。<br>另一个输入包含环振振型和球振振型的.eigen关系，在下方的输入一行中提到。</p>
+<p>输入：db_list文件，内容为上面eigcon输出的文件列表，不带后缀名。</p>
+<p>输出：名为green的.wfdisc文件等。每个传感器有六个格林函数</p>
 <p><code>.sitechan</code>文件决定那些台站和通道用于构建格林函数。通道方向（位置）在<code>.sitechan</code>文件中，台站方向（位置）在<code>.site</code>文件中。这两个文件需要预处理。</p>
 <p>另一个预处理文件为<code>db_list</code>，包含所有eigenfunction文件。在测试中为eigcon输出的文件，即：test_S和test_T。</p>
+<h2 id="输入参数-1"><a href="#输入参数-1" class="headerlink" title="输入参数"></a>输入参数</h2><h3 id="fmin-fmax"><a href="#fmin-fmax" class="headerlink" title="fmin fmax"></a>fmin fmax</h3><p>定义输入本征函数数据集中选择的频率范围。忽略所有频率超过范围的振型。</p>
+<h3 id="nsamples"><a href="#nsamples" class="headerlink" title="nsamples"></a>nsamples</h3><p>理论地震图中的样本（这里应该是指地震图中的采样点数量）数量，所有理论地震图从震源时间开始。</p>
+<h2 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h2><h3 id="in-dbname-site-sitechan文件"><a href="#in-dbname-site-sitechan文件" class="headerlink" title="in_dbname .site .sitechan文件"></a>in_dbname .site .sitechan文件</h3><p>文件介绍见simpledit程序。<br>使用这些关系文件，green程序为每个台站定义一定数量的通道组，<br>每一个组有两种情况：一种是包含独立的Z分量通道；或是三通道分量。<br>在分组之前，green程序按照(sta,chan)字段对.sitechan文档进行排序，<br>并删除所有重复行。注意：.sitechan关系文件中的chan字段是标准SEED格式的三字符的通道名称，详见台站数据格式。</p>
+<h3 id="db-list"><a href="#db-list" class="headerlink" title="db_list"></a>db_list</h3><p><strong>This file allows joining an unlimited number of eigcon outputs for spheroidal, toroidal, or radial modes. The single requirement is that intersection between these files is null. Each desired eigenfunction must be present and unique in some eigcon output.</strong><br>此文档允许为球振振型、环振振型或径向振型（radial）连接无限数量的eigcon输出。<br>要求：这些文档之间的交集为null，每个的特征函数必须存在并在eigcon的输出中是唯一的。</p>
+<h3 id="cmt-event"><a href="#cmt-event" class="headerlink" title="cmt_event"></a>cmt_event</h3><p>包含一行数据，参考[CMT .ndk与衍生数据格式]</p>
+<h2 id="输出文件-2"><a href="#输出文件-2" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="wfdisc文件"><a href="#wfdisc文件" class="headerlink" title=".wfdisc文件"></a>.wfdisc文件</h3><p>内部每一行的格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALE LHZ 947893030.80000 1 18 2000014 947941029.80000 48000 1.0000000 1.000000 20.000000 -   g f4 - green.wfdisc.dat                                                 g.00001                                   0       -1 01/03/23-12:10:00</span><br></pre></td></tr></table></figure>
+<p>二进制文件包含六个格林函数，按照顺序对应于张量分量：Mrr，Mθθ，Mφφ，Mrθ，Mrφ，Mθφ，总长度：nsamp</p>
+<h3 id="wfdisc-dat文件"><a href="#wfdisc-dat文件" class="headerlink" title=".wfdisc.dat文件"></a>.wfdisc.dat文件</h3><p>内部存在对应通道数量的文件。</p>
 <h2 id="运行内容-2"><a href="#运行内容-2" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enter path to db with sta &amp; stachan（输入包含台站等信息的文件路径）:.site和.sitechan的文件名。输入文件名即可。示例为short。</span><br><span class="line">enter name of file within list of nmodes db: dblist 由eigcon程序得到的文件列表。即存放本征函数的路径名列表。示例为db_list</span><br><span class="line">enter input CMT file name(输入CMT文件名称):china_cmt_event</span><br><span class="line">min and max frequencies to be considered (mHz) （需要考虑的频率范围）:10 260</span><br><span class="line">enter # pts in greens fns .le.        30000  （输入格林fns的pts？？？小于30000）: 8000</span><br><span class="line">enter Green functions output db file name（输出文件名）:green</span><br></pre></td></tr></table></figure>
 
+<h2 id="输出信息"><a href="#输出信息" class="headerlink" title="输出信息"></a>输出信息</h2><h3 id="sph-modes-in-band-x3D-nnn-must-be-le-meig"><a href="#sph-modes-in-band-x3D-nnn-must-be-le-meig" class="headerlink" title="sph. modes in band &#x3D;  nnn   must be .le.  meig"></a>sph. modes in band &#x3D;  nnn   must be .le.  meig</h3><ul>
+<li>nnn 所有输入数据集的球振振型的总数。</li>
+<li>meig 允许的最大数量（max allowed number）的球振振型，是一个限定值，限制nnn的数量。<br>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sph. modes in band = 1918 must be .le. 300000</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="tor-modes-in-band-x3D-nnn-must-be-le-meig"><a href="#tor-modes-in-band-x3D-nnn-must-be-le-meig" class="headerlink" title="tor. modes in band &#x3D;  nnn   must be .le.  meig"></a>tor. modes in band &#x3D;  nnn   must be .le.  meig</h3><p>同上，但是是环振振型。</p>
+<h3 id="cmt-event文件：事件信息"><a href="#cmt-event文件：事件信息" class="headerlink" title="cmt_event文件：事件信息"></a>cmt_event文件：事件信息</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Event: evid  date&amp;time lat =  ±dd.ddd, lon = ±ddd.ddd</span><br><span class="line">        source depth = ddd.d km</span><br><span class="line">step = d.ddd sec, nsamples =  ddddd</span><br></pre></td></tr></table></figure>
+<p>第一行为事件信息数据； 第二行为时间深度； 第三行为格林函数的时间步长和采样点数量。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Event: B011400F  2000  14 23:37:10.800 lat =   25.390, lon =   101.400</span><br><span class="line">       source depth = 33.0 km</span><br><span class="line">step =    1.000 sec, nsamples =   8000</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入的-site和-sitechan文件名"><a href="#输入的-site和-sitechan文件名" class="headerlink" title="输入的.site和.sitechan文件名"></a>输入的.site和.sitechan文件名</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input dbname : xxxxx</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input dbname : short</span><br></pre></td></tr></table></figure>
+
+<h3 id="台站信息"><a href="#台站信息" class="headerlink" title="台站信息"></a>台站信息</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Station: code lat lon , Channels: nnn</span><br></pre></td></tr></table></figure>
+<p>台站码、位置坐标、选择的传感器组的通道数量</p>
+<h3 id="通道信息"><a href="#通道信息" class="headerlink" title="通道信息"></a>通道信息</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Channel: #  nnn code chan hang vang</span><br></pre></td></tr></table></figure>
+<ul>
+<li>nnn current number in the group 当前组中通道的编号,这个编号可能只是一个表示不同分量的标号。</li>
+<li>code 台站码</li>
+<li>chan hang vang 通道码、以及对应的水平角和垂直角</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Channel: # 1   BDFB  LHZ  0.00000000   0.00000000 </span><br><span class="line">Channel: # 2   BDFB  LHN  0.00000000   90.0000000    </span><br><span class="line">Channel: # 3   BDFB  LHE  90.0000000   90.0000000   </span><br></pre></td></tr></table></figure>
+<h3 id="震中距"><a href="#震中距" class="headerlink" title="震中距"></a>震中距</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Epicentral Distance :  ddd.ddd</span><br></pre></td></tr></table></figure>
+<p>可以得到台站的震中距</p>
+<h3 id="震源方位角"><a href="#震源方位角" class="headerlink" title="震源方位角"></a>震源方位角</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Azimuth of Source : ddd.ddd</span><br></pre></td></tr></table></figure>
+<p>台站到震源的方位角。</p>
+<h3 id="格林函数的"><a href="#格林函数的" class="headerlink" title="格林函数的"></a>格林函数的</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nnn code chan date&amp;time step mmm</span><br></pre></td></tr></table></figure>
+<ul>
+<li>nnn 通道索引。范围为1-通道总数，是这个通道在这个.sitechan文件中的索引。</li>
+<li>code 台站名</li>
+<li>chan 通道码</li>
+<li>date&amp;time 发震时间</li>
+<li>step 格林函数采样时间间隔，单位s</li>
+<li>mmm 六个格林函数块的采样点总数，采样点数 nsamples*6<br>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13 BILL LHZ 2000 14 23:37:10.800 1.000  48000</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h1 id="syndat-f"><a href="#syndat-f" class="headerlink" title="syndat.f"></a>syndat.f</h1><h2 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h2><p>构建理论地震图使用的程序。选择的事件的地震矩张量和格林函数的卷积，得到理论地震图。<br>最终输出的文件为Syndat.wfdisc.dat，内部为理论地震图。</p>
-<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><ul>
-<li>张量类型：程序中并没有明确名称。<ul>
-<li>0 moment</li>
-<li>1 nodal plane 1 节面？</li>
-<li>2 nodal plane 2</li>
+<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><h3 id="plane-输入张量类型"><a href="#plane-输入张量类型" class="headerlink" title="plane 输入张量类型"></a>plane 输入张量类型</h3><ul>
+<li>0 moment 张量分量直接从cmt_file中获取</li>
+<li>1 nodal plane 1 即从节面1（cmt文件中的倒数6-4个数据）获取角度数据及标量距M0计算矩张量分量</li>
+<li>2 nodal plane 2 从节面2获取相应数据计算，同上。</li>
 </ul>
-</li>
+<h3 id="datatype-数据类型"><a href="#datatype-数据类型" class="headerlink" title="datatype 数据类型"></a>datatype 数据类型</h3><ul>
+<li>0 输出的地震波形为加速度地震图，单位nm&#x2F;s2</li>
+<li>1 输出速度图，单位nm&#x2F;s</li>
+<li>2 输出位移图，单位nm</li>
 </ul>
+<h2 id="输入文件-1"><a href="#输入文件-1" class="headerlink" title="输入文件"></a>输入文件</h2><h3 id="输入格林函数文件"><a href="#输入格林函数文件" class="headerlink" title="输入格林函数文件"></a>输入格林函数文件</h3><p>即green程序输出的.wfdisc关系文件。</p>
+<h2 id="输出文件-3"><a href="#输出文件-3" class="headerlink" title="输出文件"></a>输出文件</h2><p>地震图文件，可以通过程序cucss2sac转化为sac格式的地震图。</p>
 <h2 id="运行内容-3"><a href="#运行内容-3" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enter input CMT file name(输入CMT文件名称)：示例为china_cmt_event</span><br><span class="line">enter tensor type(输入张量类型)：0-moment；1-nodal plane1；2-nodal plane2</span><br><span class="line">enter input dbname(输入文件的dbname)：上文格林函数程序运行的输出名。即green</span><br><span class="line">enter output dbname（输出文件的dbname）：设置输出文件名，可以设置为syndat</span><br><span class="line">Enter output units（输入输出单位）： 0 [nm/s/s] 1 [nm/s] 2 [nm]</span><br></pre></td></tr></table></figure>
 
 <h1 id="cucss2sac"><a href="#cucss2sac" class="headerlink" title="cucss2sac"></a>cucss2sac</h1><h2 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h2><p>将理论地震图转化为其他格式的数据。例如sac格式和asc格式（ASCII）。</p>
@@ -1169,7 +1236,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 </code></pre>
 <p>we change the order of 4-byte words to BIG_ENDIAN for transferring these files on a computer with BIG_ENDIAN byte order, e.g., a SUN Ultra machine, where we may use a direct access READ statement to read data as real*4 variables.</p>
 <h1 id="simpledit"><a href="#simpledit" class="headerlink" title="simpledit"></a>simpledit</h1><h2 id="简介-7"><a href="#简介-7" class="headerlink" title="简介"></a>简介</h2><p>从一个输入的ASCII文件创建.site和.sitechan CSS关系</p>
-<h2 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h2><p>将手动创建的具有台站和通道信息的无格式ASCII文件 ascii_file 转换为 CSS3.0 db_name.site和db_name.sitechan关系列表（文件）。db_name来自于命令行，是数据文件的名称。<br>对于真实数据的另一种创建方法：使用IRIS的rdseed程序创建。注意，CSS格式定义严格，不要人工创建.site和.sitechan文件，这可能造成数值格式错误，造成mineos程序崩溃。对于大量的台站数据，更好的解决方式是写一个直接创建ascii_file或者.site .sitechan文件的程序。</p>
+<h2 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h2><p>将手动创建的具有台站和通道信息的无格式ASCII文件 ascii_file 转换为 CSS3.0 db_name.site和db_name.sitechan关系列表（文件）。 db_name来自于命令行，是数据文件的名称。<br>对于真实数据的另一种创建方法：使用IRIS的rdseed程序创建。<br>注意，CSS格式定义严格，不要人工创建.site和.sitechan文件，这可能造成数值格式错误，造成mineos程序崩溃。<br>对于大量的台站数据，更好的解决方式是写一个直接创建ascii_file或者.site .sitechan文件的程序。</p>
 <h2 id="需要预处理的ASCII文件"><a href="#需要预处理的ASCII文件" class="headerlink" title="需要预处理的ASCII文件"></a>需要预处理的ASCII文件</h2><p>这个文件是ASCII格式集，每一行描述了一个单独的台站或者通道。所有列在台站行之后的通道行隶属于这个台站。</p>
 <p>例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ANMO 34.9502 -106.4602 1.6890 ’Albuquerque, New Mexico, USA’</span><br><span class="line">@ LH1 150.0000 280.0 90.0</span><br><span class="line">@ LH2 150.0000 10.0 90.0</span><br><span class="line">@ LHZ 89.3000 0.0 0.0</span><br><span class="line">BJT 40.0183 116.1679 0.1370 ’Baijiatuan, Beijing, China’</span><br><span class="line">@ LHE 60.0000 90.0 90.0</span><br><span class="line">@ LHN 60.0000 0.0 90.0</span><br><span class="line">@ LHZ 60.0000 0.0 0.0</span><br><span class="line">@ BHE 60.0000 90.0 90.0</span><br><span class="line">@ BHN 60.0000 0.0 90.0</span><br><span class="line">@ BHZ 60.0000 0.0 180.0</span><br><span class="line">BILL 68.0651 166.4524 0.2990 ’Bilibino, Russia’</span><br><span class="line">@ LHZ 0.0000 0.0 0.0</span><br><span class="line">CCM 38.0557 -91.2446 0.1710 ’Cathedral Cave, Missouri, USA’</span><br><span class="line">@ LHE 51.0000 90.0 90.0</span><br><span class="line">@ LHN 51.0000 0.0 90.0</span><br><span class="line">@ LHZ 51.0000 0.0 0.0</span><br></pre></td></tr></table></figure>
