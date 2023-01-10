@@ -936,7 +936,7 @@ git push     //推送
 <li>6-（N+5）行 index、r、rho、vpv、vph、vsv、vsh、eta、qshear、qkappa，示例见上。<br>格式：(3x, i3, f12.1, 5f12.2, f12.5, 2f12.2)</li>
 <li>N+6&#x2F;N+11行 包含具有 Runge-Kutta 精度积分、<br>重力切断频率、空行和简正振型属性表标题（共6行）的文本消息。格式：自由格式</li>
 </ul>
-<h5 id="第二部分：振型属性"><a href="#第二部分：振型属性" class="headerlink" title="第二部分：振型属性"></a>第二部分：振型属性</h5><p>对于固定的径向阶数 n 和角度结束 l，minos_bran计算特征函数<br>（单独存储）和标量参数（属性）：特征值（频率）、相位和群速度、<br>Q 以及动能与势能之比。这些标量参数存储在简正振型属性表中。<br>此表中的每一行（行）都给出了当前 n 和 l 的属性。<br>第一部分后面的行如下所示：<br>第(N+12)行到最后：</p>
+<h5 id="第二部分：振型属性"><a href="#第二部分：振型属性" class="headerlink" title="第二部分：振型属性"></a>第二部分：振型属性</h5><p>对于固定的径向阶数 n 和角度阶数 l，minos_bran计算本征函数<br>（单独存储）和标量参数（属性）：特征值（频率）、相位和群速度、<br>Q 以及动能与势能之比。这些标量参数存储在简正振型属性表中。<br>此表中的每一行（行）都给出了当前 n 和 l 的属性。<br>第一部分后面的行如下所示：<br>第(N+12)行到最后：</p>
 <ul>
 <li>norder 振型的径向阶数 n</li>
 <li>typeo 振荡的类型：<ul>
@@ -983,8 +983,8 @@ git push     //推送
 <h2 id="运行内容"><a href="#运行内容" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input model file: ../models/模型名称</span><br><span class="line">output file: 输出的相应振型文件名称</span><br><span class="line">eigenfunction file (output):输出的相应振型二进制无格式文件名称，一般是上一个名称前面+e</span><br><span class="line">enter eps and wgrav：1e-10 10  </span><br><span class="line">enter jcom (1=rad;2=tor;3=sph;4=ictor)：3</span><br><span class="line">enter lmin,lmax,wmin,wmax,nmin,nmax：1 6000 0.0 166.0 0 0</span><br></pre></td></tr></table></figure>
 
 <h1 id="eigcon"><a href="#eigcon" class="headerlink" title="eigcon"></a>eigcon</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
-<p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。</p>
-<p>minos_bran输出的两个文件和模型文件一起被作为输入。<br><strong>eigcon renormalizes the eigen-functions and outputs them to a depth of 1000 km, in this example.</strong><br>这个程序对特征函数进行重归一化，输出在1000km的深度（这个参数可以在程序中设置，即enter max depth中设置。</p>
+<p>输入路径或名称，存储本征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。</p>
+<p>minos_bran输出的两个文件和模型文件一起被作为输入。<br><strong>eigcon renormalizes the eigen-functions and outputs them to a depth of 1000 km, in this example.</strong><br>这个程序对本征函数进行重归一化，输出在1000km的深度（这个参数可以在程序中设置，即enter max depth中设置。</p>
 <p>创建的文件为：dbase_name.eigen， 创建的文件夹为dbase_name.eigen.dat，文件夹中有二进制文件eigen。<br>这里输出的文件为test_S.eigen,命名的为test</p>
 <h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><h3 id="输入参数"><a href="#输入参数" class="headerlink" title="输入参数"></a>输入参数</h3><ul>
 <li>jcom 同minos_bran</li>
@@ -997,13 +997,13 @@ git push     //推送
 <li>accn   : acceleration normalisation 加速度归一化</li>
 <li>n      : index of surface grid point 表面网格点索引</li>
 <li>nstart : index of lowest grid point 最低网格点索引</li>
-<li>nrad   : # of gridpoints of reduced eigenfunctions 简化特征函数的网格点？</li>
+<li>nrad   : # of gridpoints of reduced eigenfunctions 简化本征函数的网格点？</li>
 </ul>
 <h2 id="输出文件-1"><a href="#输出文件-1" class="headerlink" title="输出文件"></a>输出文件</h2><p>有三个输出文件。关系列表<code>dbname.eigen</code>,一个文件夹<code>dbname.eigen.dat</code>,一个二进制文件<code>dbname.eigen.dat/eigen</code><br>其中二进制文件是存储在文件夹中的，因此用&#x2F;表示。即一个名称为<code>eigen</code>的文件。</p>
 <h3 id="dbname-eigen"><a href="#dbname-eigen" class="headerlink" title="dbname.eigen"></a>dbname.eigen</h3><p>这个列表格式在（原文表6.1）中描述。<br>每一行描述了单个本征函数的模态特性（modal properties），<br>并引用了<code>dbname.dat/eigen</code>文件中的数据段。<br>示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0 2 S 1 3233.67798 4.95166 6.38945 509.68240 67 7 7 f4  0 test_S.eigen.dat eigen -1 01/03/23-12:10:00</span><br></pre></td></tr></table></figure>
 
-<h3 id="dbname-eigen-dat-x2F-eigen"><a href="#dbname-eigen-dat-x2F-eigen" class="headerlink" title="dbname.eigen.dat&#x2F;eigen"></a>dbname.eigen.dat&#x2F;eigen</h3><p>包含段（segments）的二进制文件，每一个段存储单个本征振型（n，l）的归一化特征函数。<br>包含4字节长度的单词组成。<br>。大多数计算机体系结构有两种常见的字节顺序：<br>BIG_ENDIAN（直顺序 1-2-3-4）和LOW_ENDIAN（反向顺序 4-3-2-1）。<br>BIG_ENDIAN由SUN和RISC导向的平台使用，<br>LOW_ENDIAN由PC，VAX和DEC硬件使用。<br>eigcon自动检测字节顺序，并将文本字符串“t4”（BIG_ENDIAN）<br>或“f4”（LOW_ENDIAN）放入.eigen关系中的数据类型字段中。</p>
+<h3 id="dbname-eigen-dat-x2F-eigen"><a href="#dbname-eigen-dat-x2F-eigen" class="headerlink" title="dbname.eigen.dat&#x2F;eigen"></a>dbname.eigen.dat&#x2F;eigen</h3><p>包含段（segments）的二进制文件，每一个段存储单个本征振型（n，l）的归一化本征函数。<br>包含4字节长度的单词组成。<br>。大多数计算机体系结构有两种常见的字节顺序：<br>BIG_ENDIAN（直顺序 1-2-3-4）和LOW_ENDIAN（反向顺序 4-3-2-1）。<br>BIG_ENDIAN由SUN和RISC导向的平台使用，<br>LOW_ENDIAN由PC，VAX和DEC硬件使用。<br>eigcon自动检测字节顺序，并将文本字符串“t4”（BIG_ENDIAN）<br>或“f4”（LOW_ENDIAN）放入.eigen关系中的数据类型字段中。</p>
 <p>每一个字段逻辑分为2部分：头部和主体</p>
 <h3 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h3><p>这个部分的段存储模态特性（modal properties）的标量参数和归一化系数。<br>前7个word：</p>
 <ul>
@@ -1045,7 +1045,7 @@ git push     //推送
 <h2 id="输入参数-1"><a href="#输入参数-1" class="headerlink" title="输入参数"></a>输入参数</h2><h3 id="fmin-fmax"><a href="#fmin-fmax" class="headerlink" title="fmin fmax"></a>fmin fmax</h3><p>定义输入本征函数数据集中选择的频率范围。忽略所有频率超过范围的振型。</p>
 <h3 id="nsamples"><a href="#nsamples" class="headerlink" title="nsamples"></a>nsamples</h3><p>理论地震图中的样本（这里应该是指地震图中的采样点数量）数量，所有理论地震图从震源时间开始。</p>
 <h2 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h2><h3 id="in-dbname-site-sitechan文件"><a href="#in-dbname-site-sitechan文件" class="headerlink" title="in_dbname .site .sitechan文件"></a>in_dbname .site .sitechan文件</h3><p>文件介绍见simpledit程序。<br>使用这些关系文件，green程序为每个台站定义一定数量的通道组，<br>每一个组有两种情况：一种是包含独立的Z分量通道；或是三通道分量。<br>在分组之前，green程序按照(sta,chan)字段对.sitechan文档进行排序，<br>并删除所有重复行。注意：.sitechan关系文件中的chan字段是标准SEED格式的三字符的通道名称，详见台站数据格式。</p>
-<h3 id="db-list"><a href="#db-list" class="headerlink" title="db_list"></a>db_list</h3><p><strong>This file allows joining an unlimited number of eigcon outputs for spheroidal, toroidal, or radial modes. The single requirement is that intersection between these files is null. Each desired eigenfunction must be present and unique in some eigcon output.</strong><br>此文档允许为球振振型、环振振型或径向振型（radial）连接无限数量的eigcon输出。<br>要求：这些文档之间的交集为null，每个的特征函数必须存在并在eigcon的输出中是唯一的。</p>
+<h3 id="db-list"><a href="#db-list" class="headerlink" title="db_list"></a>db_list</h3><p><strong>This file allows joining an unlimited number of eigcon outputs for spheroidal, toroidal, or radial modes. The single requirement is that intersection between these files is null. Each desired eigenfunction must be present and unique in some eigcon output.</strong><br>此文档允许为球振振型、环振振型或径向振型（radial）连接无限数量的eigcon输出。<br>要求：这些文档之间的交集为null，每个的本征函数必须存在并在eigcon的输出中是唯一的。</p>
 <h3 id="cmt-event"><a href="#cmt-event" class="headerlink" title="cmt_event"></a>cmt_event</h3><p>包含一行数据，参考[CMT .ndk与衍生数据格式]</p>
 <h2 id="输出文件-2"><a href="#输出文件-2" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="wfdisc文件"><a href="#wfdisc文件" class="headerlink" title=".wfdisc文件"></a>.wfdisc文件</h3><p>内部每一行的格式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALE LHZ 947893030.80000 1 18 2000014 947941029.80000 48000 1.0000000 1.000000 20.000000 -   g f4 - green.wfdisc.dat                                                 g.00001                                   0       -1 01/03/23-12:10:00</span><br></pre></td></tr></table></figure>
@@ -1153,7 +1153,7 @@ git push     //推送
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cucss2sac Syndat Syndat_SAC</span><br><span class="line">cucss2sac green green_SAC</span><br><span class="line">cucss2sac -a Syndat Syndat_ASC</span><br><span class="line">cucss2sac -a -n Syndat Syndat_ASC_NOHEADER</span><br></pre></td></tr></table></figure>
 
 <h1 id="eigen2asc"><a href="#eigen2asc" class="headerlink" title="eigen2asc"></a>eigen2asc</h1><h2 id="简介-5"><a href="#简介-5" class="headerlink" title="简介"></a>简介</h2><p>将本征函数的.eigen文件转化为asc文件。</p>
-<h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>eigen2asc功能转换部分或者全部.eigen关系到一系列ASCII文件。程序eigen2sac在db_name.eigen文件中寻找所有符合振型参数n，l的特征函数：其中，nmin&lt;n&lt;nmax,lmin&lt;l&lt;lmax。并且转换特征函数到ASCII文件。输出文件在out_dir。每一个输出文件包含头部信息和文件内容。<br>头部信息：一行包含.eigen关系的前10个字段，见表6.1（mineos官方手册）。选项 -n 包含头部输出。数据体为三列（包含径向、环型振型（radial toroidal modes））或者七列（球型振型）表格。第一列为半径（单位m），其他列包含本征函数和他们关于半径的导数-U，U‘，V，V’，P，P‘(球型振型)和W，W‘(其他振型)。更多内容见章节4.1（即上面的cucss2sac描述）。输出文件名格式为：X.NNNNNNN.MMMMMMM.ASC；</p>
+<h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>eigen2asc功能转换部分或者全部.eigen关系到一系列ASCII文件。程序eigen2sac在db_name.eigen文件中寻找所有符合振型参数n，l的本征函数：其中，nmin&lt;n&lt;nmax,lmin&lt;l&lt;lmax。并且转换本征函数到ASCII文件。输出文件在out_dir。每一个输出文件包含头部信息和文件内容。<br>头部信息：一行包含.eigen关系的前10个字段，见表6.1（mineos官方手册）。选项 -n 包含头部输出。数据体为三列（包含径向、环型振型（radial toroidal modes））或者七列（球型振型）表格。第一列为半径（单位m），其他列包含本征函数和他们关于半径的导数-U，U‘，V，V’，P，P‘(球型振型)和W，W‘(其他振型)。更多内容见章节4.1（即上面的cucss2sac描述）。输出文件名格式为：X.NNNNNNN.MMMMMMM.ASC；</p>
 <p>X：S球型振型，T环型振型。<br>nnnnnnn：数字n<br>mmmmmmm：数字l。</p>
 <h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><pre><code>eigen2asc nmin nmax lmin lmax db_name out_dir
 </code></pre>
