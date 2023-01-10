@@ -249,7 +249,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-08 11:04:27" itemprop="dateModified" datetime="2023-01-08T11:04:27+08:00">2023-01-08</time>
+      <time title="Modified: 2023-01-09 10:40:12" itemprop="dateModified" datetime="2023-01-09T10:40:12+08:00">2023-01-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -410,7 +410,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F 2000  14 23 37 10.80 25.39  101.40  33.00 1.0 -2.3 8.33e24 -0.60  -6.29   6.89  -1.85   0.12  -4.73 1.0e24 27 78   -6 118 84 -168</span><br></pre></td></tr></table></figure>
 
 <p>格式内容（补充了参数含义）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F（事件编号evid） 2000（年份）  14（一年的第几天） 23（时） 37（分） 10.80（centroid秒） 25.39（CENTROID经度）  101.40（CENTROID纬度）  33.00（CENTROID震源深度） 1.0（CMT） -2.3（BOXHD但是原本是正值，这里是负值） 8.33e24（） -0.60（Mrr）  -6.29(Mpp)   6.89(Mtt)  -1.85(Mrt)   0.12(Mrp)  -4.73(Mtp) 1.0e24（） 27 78   -6 118 84 -168（这六个数是第一个节面、第二个节面的走向、倾向、方位角）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F（事件编号evid） 2000（年份）  14（一年的第几天） 23（时） 37（分） 10.80（centroid秒） 25.39（CENTROID纬度）  101.40（CENTROID经度）  33.00（CENTROID震源深度） 1.0（CMT） -2.3（BOXHD但是原本是正值，这里是负值） 8.33e24（） -0.60（Mrr）  -6.29(Mpp)   6.89(Mtt)  -1.85(Mrt)   0.12(Mrp)  -4.73(Mtp) 1.0e24（） 27 78   -6 118 84 -168（这六个数是第一个节面、第二个节面的走向、倾向、方位角）</span><br></pre></td></tr></table></figure>
 
 <p>以下[ ]内为这些数据的字节数，如果字节数不足则在前方补充空格。实际编辑使用空格隔开每个参数即可，不必限制字节。</p>
 <p><strong>注：由于新版事件编号为14个字符长度，因此在MINEOS导入过程中事件编号只能导入前8个字符。具体影响未知。</strong></p>
@@ -447,7 +447,7 @@
 <td align="center">[56-59]</td>
 <td align="center">halfd source half-time duration 单位s</td>
 <td align="center">[110-115]</td>
-<td align="center">Mn</td>
+<td align="center">Mn 张量分量的归一化系数</td>
 </tr>
 <tr>
 <td align="center">[19-20]</td>
@@ -475,7 +475,7 @@
 </tr>
 <tr>
 <td align="center">[31-35]</td>
-<td align="center">centroid经度</td>
+<td align="center">centroid纬度</td>
 <td align="center">[82-87]</td>
 <td align="center">Mpp  (Mφφ)</td>
 <td align="center">[128-130]</td>
@@ -483,7 +483,7 @@
 </tr>
 <tr>
 <td align="center">[37-43]</td>
-<td align="center">centroid纬度</td>
+<td align="center">centroid经度</td>
 <td align="center">[89-94]</td>
 <td align="center">Mrt (Mrθ)</td>
 <td align="center">[132-133]</td>
