@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考：minos内README文件 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和简正振型属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial modes 可能是指只有n值（">
+    <meta name="description" content="参考：minos内README文件儒略日计算器日序计算器 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和简正振型属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial mode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mineos 程序解释">
 <meta property="og:url" content="https://zhiyuanshi1901.github.io/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/index.html">
 <meta property="og:site_name" content="Zhiyuan Shi">
-<meta property="og:description" content="参考：minos内README文件 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和简正振型属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial modes 可能是指只有n值（">
+<meta property="og:description" content="参考：minos内README文件儒略日计算器日序计算器 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和简正振型属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial mode">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-27T10:22:10.000Z">
-<meta property="article:modified_time" content="2023-01-10T07:37:19.382Z">
+<meta property="article:modified_time" content="2023-01-12T14:12:57.815Z">
 <meta property="article:tag" content="Mineos">
 <meta name="twitter:card" content="summary">
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">简要说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#minos-bran"><span class="nav-number">3.</span> <span class="nav-text">minos_bran</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jcom"><span class="nav-number">3.2.1.</span> <span class="nav-text">jcom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lmin-lmax-wmin-wmax-nmin-nmax"><span class="nav-number">3.2.2.</span> <span class="nav-text">lmin lmax wmin wmax nmin nmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eps-wgrav"><span class="nav-number">3.2.3.</span> <span class="nav-text">eps wgrav</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%EF%BC%88%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">输入文件（模型文件）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B%EF%BC%9A"><span class="nav-number">3.3.1.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.3.2.</span> <span class="nav-text">表格数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%A1%8C%EF%BC%9A%E6%A0%87%E9%A2%98%EF%BC%8C%E9%99%90%E5%88%B6%E4%B8%BA80%E5%AD%97%E8%8A%82%E9%95%BF%E5%BA%A6"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">第一行：标题，限制为80字节长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%A1%8C%EF%BC%9A%EF%BC%88%E6%8C%89%E7%85%A7%E5%8F%82%E6%95%B0%E5%87%BA%E7%8E%B0%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%88%97%EF%BC%89"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">第二行：（按照参数出现顺序排列）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%A1%8C%EF%BC%9A"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">第三行：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%A1%8C-%E7%AC%ACN-3%E8%A1%8C%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%A1%A8%E6%A0%BC%E4%B8%BB%E4%BD%93%EF%BC%8C%E6%AF%8F%E4%B8%80%E8%A1%8C%E8%A1%A8%E7%A4%BA%E8%8A%82%E7%82%B9%E5%9C%A8%E5%8D%8A%E5%BE%84r%E4%B8%8A%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E3%80%82"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">第四行-第N+3行：模型表格主体，每一行表示节点在半径r上的模型参数。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%9E%8B%E4%B8%BA%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%B1%BB%E5%9E%8B%E6%97%B6%EF%BC%88ifdeck-x3D-0%EF%BC%89"><span class="nav-number">3.3.3.</span> <span class="nav-text">模型类型为多项式类型时（ifdeck&#x3D;0）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%A1%8C%EF%BC%9A-%E6%9A%82%E6%97%A0%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">第三行： 暂无示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%A1%8C%EF%BC%9A%E6%9A%82%E6%97%A0%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">第四行：暂无示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E8%A1%8C%EF%BC%9A%E7%AC%AC4-9%E6%88%964-12%E5%B1%82%E4%B8%80%E8%88%AC%E4%BC%9A%E9%87%8D%E5%A4%8Dnreg%E6%AC%A1%E3%80%82%E5%90%84%E9%A1%B9%E5%90%8C%E6%80%A7%E6%A8%A1%E5%9E%8B4-9%E8%A1%8C%EF%BC%8C%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%A8%A1%E5%9E%8B%E4%B8%BA4-12%E8%A1%8C%E3%80%82"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">第五行：第4-9或4-12层一般会重复nreg次。各项同性模型4-9行，各向异性模型为4-12行。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8"><span class="nav-number">3.4.1.</span> <span class="nav-text">模型列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">描述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.4.1.1.1.</span> <span class="nav-text">第一部分：模型表格</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E6%8C%AF%E5%9E%8B%E5%B1%9E%E6%80%A7"><span class="nav-number">3.4.1.1.2.</span> <span class="nav-text">第二部分：振型属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%BE%81%E5%87%BD%E6%95%B0%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.2.</span> <span class="nav-text">本征函数文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9"><span class="nav-number">3.5.</span> <span class="nav-text">运行内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eigcon"><span class="nav-number">4.</span> <span class="nav-text">eigcon</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0-1"><span class="nav-number">4.2.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.1.</span> <span class="nav-text">输入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.2.</span> <span class="nav-text">程序参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6-1"><span class="nav-number">4.3.</span> <span class="nav-text">输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dbname-eigen"><span class="nav-number">4.3.1.</span> <span class="nav-text">dbname.eigen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbname-eigen-dat-x2F-eigen"><span class="nav-number">4.3.2.</span> <span class="nav-text">dbname.eigen.dat&#x2F;eigen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B4%E9%83%A8"><span class="nav-number">4.3.3.</span> <span class="nav-text">头部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E4%BD%93-word8-%E6%9C%80%E5%90%8E"><span class="nav-number">4.3.4.</span> <span class="nav-text">主体 word8-最后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9-1"><span class="nav-number">4.4.</span> <span class="nav-text">运行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">4.5.</span> <span class="nav-text">运行过程中的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eigcon%EF%BC%9A-n-nstart-nrad-x3D-nnn-mmm-kkk"><span class="nav-number">4.5.1.</span> <span class="nav-text">eigcon： n,nstart,nrad &#x3D; nnn, mmm, kkk</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#green"><span class="nav-number">5.</span> <span class="nav-text">green</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="nav-number">5.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0-1"><span class="nav-number">5.2.</span> <span class="nav-text">输入参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fmin-fmax"><span class="nav-number">5.2.1.</span> <span class="nav-text">fmin fmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nsamples"><span class="nav-number">5.2.2.</span> <span class="nav-text">nsamples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">5.3.</span> <span class="nav-text">输入文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#in-dbname-site-sitechan%E6%96%87%E4%BB%B6"><span class="nav-number">5.3.1.</span> <span class="nav-text">in_dbname .site .sitechan文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#db-list"><span class="nav-number">5.3.2.</span> <span class="nav-text">db_list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmt-event"><span class="nav-number">5.3.3.</span> <span class="nav-text">cmt_event</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6-2"><span class="nav-number">5.4.</span> <span class="nav-text">输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wfdisc%E6%96%87%E4%BB%B6"><span class="nav-number">5.4.1.</span> <span class="nav-text">.wfdisc文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wfdisc-dat%E6%96%87%E4%BB%B6"><span class="nav-number">5.4.2.</span> <span class="nav-text">.wfdisc.dat文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9-2"><span class="nav-number">5.5.</span> <span class="nav-text">运行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.</span> <span class="nav-text">输出信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sph-modes-in-band-x3D-nnn-must-be-le-meig"><span class="nav-number">5.6.1.</span> <span class="nav-text">sph. modes in band &#x3D;  nnn   must be .le.  meig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tor-modes-in-band-x3D-nnn-must-be-le-meig"><span class="nav-number">5.6.2.</span> <span class="nav-text">tor. modes in band &#x3D;  nnn   must be .le.  meig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmt-event%E6%96%87%E4%BB%B6%EF%BC%9A%E4%BA%8B%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.3.</span> <span class="nav-text">cmt_event文件：事件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%9A%84-site%E5%92%8C-sitechan%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">5.6.4.</span> <span class="nav-text">输入的.site和.sitechan文件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%B0%E7%AB%99%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.5.</span> <span class="nav-text">台站信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E9%81%93%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.6.</span> <span class="nav-text">通道信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%87%E4%B8%AD%E8%B7%9D"><span class="nav-number">5.6.7.</span> <span class="nav-text">震中距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%87%E6%BA%90%E6%96%B9%E4%BD%8D%E8%A7%92"><span class="nav-number">5.6.8.</span> <span class="nav-text">震源方位角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E7%9A%84"><span class="nav-number">5.6.9.</span> <span class="nav-text">格林函数的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#syndat-f"><span class="nav-number">6.</span> <span class="nav-text">syndat.f</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-3"><span class="nav-number">6.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0-2"><span class="nav-number">6.2.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#plane-%E8%BE%93%E5%85%A5%E5%BC%A0%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.2.1.</span> <span class="nav-text">plane 输入张量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datatype-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.2.2.</span> <span class="nav-text">datatype 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6-1"><span class="nav-number">6.3.</span> <span class="nav-text">输入文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%96%87%E4%BB%B6"><span class="nav-number">6.3.1.</span> <span class="nav-text">输入格林函数文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6-3"><span class="nav-number">6.4.</span> <span class="nav-text">输出文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9-3"><span class="nav-number">6.5.</span> <span class="nav-text">运行内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cucss2sac"><span class="nav-number">7.</span> <span class="nav-text">cucss2sac</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-4"><span class="nav-number">7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">7.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%9A%84SAC%E6%96%87%E4%BB%B6"><span class="nav-number">7.3.</span> <span class="nav-text">生成的SAC文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%9A%84ASCII%E6%96%87%E4%BB%B6"><span class="nav-number">7.4.</span> <span class="nav-text">生成的ASCII文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">7.5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.6.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eigen2asc"><span class="nav-number">8.</span> <span class="nav-text">eigen2asc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-5"><span class="nav-number">8.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">8.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-1"><span class="nav-number">8.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">8.4.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#endi"><span class="nav-number">9.</span> <span class="nav-text">endi</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-6"><span class="nav-number">9.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">9.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-2"><span class="nav-number">9.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">9.4.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#simpledit"><span class="nav-number">10.</span> <span class="nav-text">simpledit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-7"><span class="nav-number">10.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="nav-number">10.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84ASCII%E6%96%87%E4%BB%B6"><span class="nav-number">10.3.</span> <span class="nav-text">需要预处理的ASCII文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-3"><span class="nav-number">10.4.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">10.5.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-origin"><span class="nav-number">11.</span> <span class="nav-text">create_origin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-8"><span class="nav-number">11.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-5"><span class="nav-number">11.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-4"><span class="nav-number">11.3.</span> <span class="nav-text">运行</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">简要说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#minos-bran"><span class="nav-number">3.</span> <span class="nav-text">minos_bran</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jcom"><span class="nav-number">3.2.1.</span> <span class="nav-text">jcom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lmin-lmax-wmin-wmax-nmin-nmax"><span class="nav-number">3.2.2.</span> <span class="nav-text">lmin lmax wmin wmax nmin nmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eps-wgrav"><span class="nav-number">3.2.3.</span> <span class="nav-text">eps wgrav</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%EF%BC%88%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">输入文件（模型文件）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B%EF%BC%9A"><span class="nav-number">3.3.1.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.3.2.</span> <span class="nav-text">表格数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%A1%8C%EF%BC%9A%E6%A0%87%E9%A2%98%EF%BC%8C%E9%99%90%E5%88%B6%E4%B8%BA80%E5%AD%97%E8%8A%82%E9%95%BF%E5%BA%A6"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">第一行：标题，限制为80字节长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%A1%8C%EF%BC%9A%EF%BC%88%E6%8C%89%E7%85%A7%E5%8F%82%E6%95%B0%E5%87%BA%E7%8E%B0%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%88%97%EF%BC%89"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">第二行：（按照参数出现顺序排列）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%A1%8C%EF%BC%9A"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">第三行：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%A1%8C-%E7%AC%ACN-3%E8%A1%8C%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%A1%A8%E6%A0%BC%E4%B8%BB%E4%BD%93%EF%BC%8C%E6%AF%8F%E4%B8%80%E8%A1%8C%E8%A1%A8%E7%A4%BA%E8%8A%82%E7%82%B9%E5%9C%A8%E5%8D%8A%E5%BE%84r%E4%B8%8A%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E3%80%82"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">第四行-第N+3行：模型表格主体，每一行表示节点在半径r上的模型参数。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%9E%8B%E4%B8%BA%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%B1%BB%E5%9E%8B%E6%97%B6%EF%BC%88ifdeck-x3D-0%EF%BC%89"><span class="nav-number">3.3.3.</span> <span class="nav-text">模型类型为多项式类型时（ifdeck&#x3D;0）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%A1%8C%EF%BC%9A-%E6%9A%82%E6%97%A0%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">第三行： 暂无示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%A1%8C%EF%BC%9A%E6%9A%82%E6%97%A0%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">第四行：暂无示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E8%A1%8C%EF%BC%9A%E7%AC%AC4-9%E6%88%964-12%E5%B1%82%E4%B8%80%E8%88%AC%E4%BC%9A%E9%87%8D%E5%A4%8Dnreg%E6%AC%A1%E3%80%82%E5%90%84%E9%A1%B9%E5%90%8C%E6%80%A7%E6%A8%A1%E5%9E%8B4-9%E8%A1%8C%EF%BC%8C%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%A8%A1%E5%9E%8B%E4%B8%BA4-12%E8%A1%8C%E3%80%82"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">第五行：第4-9或4-12层一般会重复nreg次。各项同性模型4-9行，各向异性模型为4-12行。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%88%97%E8%A1%A8"><span class="nav-number">3.4.1.</span> <span class="nav-text">模型列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">描述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.4.1.1.1.</span> <span class="nav-text">第一部分：模型表格</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E6%8C%AF%E5%9E%8B%E5%B1%9E%E6%80%A7"><span class="nav-number">3.4.1.1.2.</span> <span class="nav-text">第二部分：振型属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%BE%81%E5%87%BD%E6%95%B0%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.2.</span> <span class="nav-text">本征函数文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9"><span class="nav-number">3.5.</span> <span class="nav-text">运行内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eigcon"><span class="nav-number">4.</span> <span class="nav-text">eigcon</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0-1"><span class="nav-number">4.2.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.1.</span> <span class="nav-text">输入参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.2.</span> <span class="nav-text">程序参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6-1"><span class="nav-number">4.3.</span> <span class="nav-text">输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dbname-eigen"><span class="nav-number">4.3.1.</span> <span class="nav-text">dbname.eigen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbname-eigen-dat-x2F-eigen"><span class="nav-number">4.3.2.</span> <span class="nav-text">dbname.eigen.dat&#x2F;eigen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B4%E9%83%A8"><span class="nav-number">4.3.3.</span> <span class="nav-text">头部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E4%BD%93-word8-%E6%9C%80%E5%90%8E"><span class="nav-number">4.3.4.</span> <span class="nav-text">主体 word8-最后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9-1"><span class="nav-number">4.4.</span> <span class="nav-text">运行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">4.5.</span> <span class="nav-text">运行过程中的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eigcon%EF%BC%9A-n-nstart-nrad-x3D-nnn-mmm-kkk"><span class="nav-number">4.5.1.</span> <span class="nav-text">eigcon： n,nstart,nrad &#x3D; nnn, mmm, kkk</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#green"><span class="nav-number">5.</span> <span class="nav-text">green</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="nav-number">5.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0-1"><span class="nav-number">5.2.</span> <span class="nav-text">输入参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fmin-fmax"><span class="nav-number">5.2.1.</span> <span class="nav-text">fmin fmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nsamples"><span class="nav-number">5.2.2.</span> <span class="nav-text">nsamples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">5.3.</span> <span class="nav-text">输入文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#in-dbname-site-sitechan%E6%96%87%E4%BB%B6"><span class="nav-number">5.3.1.</span> <span class="nav-text">in_dbname .site .sitechan文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#db-list"><span class="nav-number">5.3.2.</span> <span class="nav-text">db_list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmt-event"><span class="nav-number">5.3.3.</span> <span class="nav-text">cmt_event</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6-2"><span class="nav-number">5.4.</span> <span class="nav-text">输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wfdisc%E6%96%87%E4%BB%B6"><span class="nav-number">5.4.1.</span> <span class="nav-text">.wfdisc文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wfdisc-dat%E6%96%87%E4%BB%B6"><span class="nav-number">5.4.2.</span> <span class="nav-text">.wfdisc.dat文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9-2"><span class="nav-number">5.5.</span> <span class="nav-text">运行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.</span> <span class="nav-text">输出信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sph-modes-in-band-x3D-nnn-must-be-le-meig"><span class="nav-number">5.6.1.</span> <span class="nav-text">sph. modes in band &#x3D;  nnn   must be .le.  meig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tor-modes-in-band-x3D-nnn-must-be-le-meig"><span class="nav-number">5.6.2.</span> <span class="nav-text">tor. modes in band &#x3D;  nnn   must be .le.  meig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmt-event%E6%96%87%E4%BB%B6%EF%BC%9A%E4%BA%8B%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.3.</span> <span class="nav-text">cmt_event文件：事件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%9A%84-site%E5%92%8C-sitechan%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">5.6.4.</span> <span class="nav-text">输入的.site和.sitechan文件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%B0%E7%AB%99%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.5.</span> <span class="nav-text">台站信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E9%81%93%E4%BF%A1%E6%81%AF"><span class="nav-number">5.6.6.</span> <span class="nav-text">通道信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%87%E4%B8%AD%E8%B7%9D"><span class="nav-number">5.6.7.</span> <span class="nav-text">震中距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%87%E6%BA%90%E6%96%B9%E4%BD%8D%E8%A7%92"><span class="nav-number">5.6.8.</span> <span class="nav-text">震源方位角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E7%9A%84"><span class="nav-number">5.6.9.</span> <span class="nav-text">格林函数的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#syndat-f"><span class="nav-number">6.</span> <span class="nav-text">syndat.f</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-3"><span class="nav-number">6.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0-2"><span class="nav-number">6.2.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#plane-%E8%BE%93%E5%85%A5%E5%BC%A0%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.2.1.</span> <span class="nav-text">plane 输入张量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datatype-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.2.2.</span> <span class="nav-text">datatype 数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6-1"><span class="nav-number">6.3.</span> <span class="nav-text">输入文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E6%9E%97%E5%87%BD%E6%95%B0%E6%96%87%E4%BB%B6"><span class="nav-number">6.3.1.</span> <span class="nav-text">输入格林函数文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6-3"><span class="nav-number">6.4.</span> <span class="nav-text">输出文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%86%85%E5%AE%B9-3"><span class="nav-number">6.5.</span> <span class="nav-text">运行内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cucss2sac"><span class="nav-number">7.</span> <span class="nav-text">cucss2sac</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-4"><span class="nav-number">7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">7.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%9A%84SAC%E6%96%87%E4%BB%B6"><span class="nav-number">7.3.</span> <span class="nav-text">生成的SAC文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%9A%84ASCII%E6%96%87%E4%BB%B6"><span class="nav-number">7.4.</span> <span class="nav-text">生成的ASCII文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">7.5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.6.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eigen2asc"><span class="nav-number">8.</span> <span class="nav-text">eigen2asc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-5"><span class="nav-number">8.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">8.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-1"><span class="nav-number">8.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">8.4.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#endi"><span class="nav-number">9.</span> <span class="nav-text">endi</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-6"><span class="nav-number">9.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">9.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-2"><span class="nav-number">9.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">9.4.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#simpledit"><span class="nav-number">10.</span> <span class="nav-text">simpledit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-7"><span class="nav-number">10.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="nav-number">10.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84ASCII%E6%96%87%E4%BB%B6"><span class="nav-number">10.3.</span> <span class="nav-text">需要预处理的ASCII文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-3"><span class="nav-number">10.4.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">10.5.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-origin"><span class="nav-number">11.</span> <span class="nav-text">create_origin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-8"><span class="nav-number">11.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0-5"><span class="nav-number">11.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C-4"><span class="nav-number">11.3.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB-relation-%E8%A1%A8"><span class="nav-number">12.</span> <span class="nav-text">关系(relation)表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#origin-%E9%9C%87%E6%BA%90%E5%85%B3%E7%B3%BB"><span class="nav-number">12.1.</span> <span class="nav-text">.origin 震源关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eigen-%E6%9C%AC%E5%BE%81%E5%85%B3%E7%B3%BB"><span class="nav-number">12.2.</span> <span class="nav-text">.eigen 本征关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#site-%E5%8F%B0%E7%AB%99%E4%BD%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">12.3.</span> <span class="nav-text">.site 台站位置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sitechan-%E5%8F%B0%E7%AB%99%E9%80%9A%E9%81%93%E4%BF%A1%E6%81%AF"><span class="nav-number">12.4.</span> <span class="nav-text">.sitechan 台站通道信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wfdisc-%E6%B3%A2%E5%BD%A2%E6%96%87%E4%BB%B6%E5%A4%B4%E4%BF%A1%E6%81%AF%E5%92%8C%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-number">12.5.</span> <span class="nav-text">wfdisc 波形文件头信息和描述信息</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-10 15:37:19" itemprop="dateModified" datetime="2023-01-10T15:37:19+08:00">2023-01-10</time>
+      <time title="Modified: 2023-01-12 22:12:57" itemprop="dateModified" datetime="2023-01-12T22:12:57+08:00">2023-01-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,7 +278,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>minos内README文件</p>
+        <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>minos内README文件<br><a target="_blank" rel="noopener" href="http://chengxua.com/lishi/Julian_simp.html">儒略日计算器</a><br><a target="_blank" rel="noopener" href="http://quickeditor.top/days.html">日序计算器</a></p>
 <h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行了解与描述。<br>内容均源自程序内部解释与运行进程。<br>模型文件为DEMO中具有的PREM等地球模型。</p>
 <h1 id="minos-bran"><a href="#minos-bran" class="headerlink" title="minos_bran"></a>minos_bran</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>包含一个输入：<br>模型文件</p>
 <p>两个输出：<br>1、模型列表和简正振型属性摘要<br>2、本征函数的一个文件</p>
@@ -632,6 +632,769 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <h2 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h2><p>create_origin是一个shell脚本，从cmt_event ASCII文件中读取green程序输入文件cmt_event第一行,<br>将震源时间和位置信息转换为一行CSS3.0关系表，并将其写入db_name.origin文件。<br>这个脚本只填写.origin关系表中的字段：lat,lon,depth,time,orid,jdate,auth和lddate。其他的字段对于mineos并不重要，<br>由默认值填充。更多信息见下面所示表4.1。</p>
 <h2 id="运行-4"><a href="#运行-4" class="headerlink" title="运行"></a>运行</h2><pre><code>create_origin cmt_event db_name
 </code></pre>
+<h1 id="关系-relation-表"><a href="#关系-relation-表" class="headerlink" title="关系(relation)表"></a>关系(relation)表</h1><h2 id="origin-震源关系"><a href="#origin-震源关系" class="headerlink" title=".origin 震源关系"></a>.origin 震源关系</h2><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-7.2800  125.9900  473.4000   393567535.30000 1 -1 1982173 -1 -1 -1 -1 -1 - -999.0000 - -999.00 -1 -999.00 -1 -999.00 -1 - PDE &amp; Hvd CMT -1 -1 </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">lat</td>
+<td align="center">估算的纬度</td>
+<td align="center">不允许</td>
+<td align="center"></td>
+<td align="center">即cmt文件中的纬度</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">lon</td>
+<td align="center">估算的经度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">即cmt文件中的精度</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">depth</td>
+<td align="center">震源深度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">cmt文件中的震源深度</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">time</td>
+<td align="center">发震时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">发震时间为儒略日时间</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">orid</td>
+<td align="center">震源原始id代码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">evid</td>
+<td align="center">事件代码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">jdate</td>
+<td align="center">日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">年份和一年第几天</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">ndef</td>
+<td align="center">定位（locating）震相索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">ndp</td>
+<td align="center">深度（depth）震相索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">grn</td>
+<td align="center">地理区域索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">srn</td>
+<td align="center">地震区域索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">etype</td>
+<td align="center">事件类型</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">depdp</td>
+<td align="center">源自深度震相的估计深度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.0000</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">dtype</td>
+<td align="center">使用的深度方法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">mb</td>
+<td align="center">体波震级</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.00</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">mbid</td>
+<td align="center">mb 编号（magid）？</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">ms</td>
+<td align="center">面波震级</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.00</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">msid</td>
+<td align="center">ms magid 纬度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">ml</td>
+<td align="center">近震（local）震级</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.00</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="center">mlid</td>
+<td align="center">ml magid</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">algorithm</td>
+<td align="center">使用的定位算法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">auth</td>
+<td align="center">source&#x2F;originator</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">震中参考地震记录 &amp; 震源信息来源</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">commid</td>
+<td align="center">comment id</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+</tr>
+</tbody></table>
+<p><em>注： -1、-999.00、- 可能是该项没有值或者未知。</em><br><em>6号evid为1可能是由于只有一个地震事件。目前还未尝试是否有多个地震事件的计算方式。</em></p>
+<h2 id="eigen-本征关系"><a href="#eigen-本征关系" class="headerlink" title=".eigen 本征关系"></a>.eigen 本征关系</h2><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 44 S 1 197.56850 4.55313 3.58608 151.39850 67 7 7 f4 0 test_S.eigen.dat                                                 eigen                                  -1 01/09/23-21:11:33</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">norder</td>
+<td align="center">径向阶数 n</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">lorder</td>
+<td align="center">角度阶数 l</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">typeo</td>
+<td align="center">振型类型</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">与输入的振型有关</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">eigid</td>
+<td align="center">eigen id</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">索引，这里是行数序号</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">per</td>
+<td align="center">本征频率 周期表示</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">对应的本征频率</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">phvel</td>
+<td align="center">相速度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">该振型对应的等效面波相速度</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">grvel</td>
+<td align="center">群速度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">attn</td>
+<td align="center">衰减</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">衰减系数Q（品质因子）</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">nrow</td>
+<td align="center">行号</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">ncol</td>
+<td align="center">列号</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">npar</td>
+<td align="center">参数序号</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">datatype</td>
+<td align="center">数值存储</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">目前只有f4、t4两种：f4用于PC、DEC、VAX IEEE，单精度实型；t4用于SUN IEEE，单精度实型</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">foff</td>
+<td align="center">字节偏移量</td>
+<td align="center">不允许</td>
+<td align="center">≥0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">dir</td>
+<td align="center">所在目录</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">路径名的目录部分，包含特征关系的当前目录</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">dfile</td>
+<td align="center">文件名称</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">commid</td>
+<td align="center">注释标识（comment id）</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="site-台站位置信息"><a href="#site-台站位置信息" class="headerlink" title=".site 台站位置信息"></a>.site 台站位置信息</h2><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO 1960001 -1 34.9462 -106.4567 1.7400 Albuquerque, New Mexico, USA - - 0.0000 0.0000 01/08/23-21:43:39</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">ondate</td>
+<td align="center">儒略开始日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">offdate</td>
+<td align="center">儒略终止日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">lat</td>
+<td align="center">纬度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">lon</td>
+<td align="center">精度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">elev</td>
+<td align="center">海拔</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">staname</td>
+<td align="center">台站描述</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">statype</td>
+<td align="center">台站类型：但台站，台阵等等</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">refsta</td>
+<td align="center">台站相对台阵编号</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">dnorth</td>
+<td align="center">台阵参考偏移距</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">deast</td>
+<td align="center">台阵参考偏移距</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="sitechan-台站通道信息"><a href="#sitechan-台站通道信息" class="headerlink" title=".sitechan 台站通道信息"></a>.sitechan 台站通道信息</h2><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO LHE 1960001 -1 -1 n 100.0000 90.0 90.0 - 01/08/23-21:43:39</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">chan</td>
+<td align="center">通道码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">ondate</td>
+<td align="center">儒略开始日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">chanid</td>
+<td align="center">通道id</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">offdate</td>
+<td align="center">儒略结束日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">ctype</td>
+<td align="center">通道类型</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">cdepth</td>
+<td align="center">安置深度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">hang</td>
+<td align="center">水平角</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">vang</td>
+<td align="center">垂直角</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">descrip</td>
+<td align="center">通道描述</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">iddate</td>
+<td align="center">载入时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="wfdisc-波形文件头信息和描述信息"><a href="#wfdisc-波形文件头信息和描述信息" class="headerlink" title="wfdisc 波形文件头信息和描述信息"></a>wfdisc 波形文件头信息和描述信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO SHZ 393567535.30000 1 6 1982173 393615534.30000 48000 1.0000000 1.000000 20.000000 - g f4 - green.wfdisc.dat g.00001 0 -1 01/09/23-21:11:33</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">chan</td>
+<td align="center">通道码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">time</td>
+<td align="center">文件中第一个采样点的地质时间（epoch time）</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">wfid</td>
+<td align="center">波形id，这里是一个索引值，相当于行数</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">chanid</td>
+<td align="center">通道操作id</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">jdate</td>
+<td align="center">儒略（julian）日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">endtime</td>
+<td align="center">time*(nsamp-1)&#x2F;samprate</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">nsamp</td>
+<td align="center">采样点个数</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">samprate</td>
+<td align="center">采样率，单位s</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">calib</td>
+<td align="center">标称校准</td>
+<td align="center">不允许</td>
+<td align="center">任意非0浮点数</td>
+<td align="center">校准系数，即映射数字数据到地球位移的转换系数。该系数在属性calper规定的自由振荡周期内成立。正值表示分量方向的地面位移增量（分量方向，如z、n、e）由增值表示（），负值相反。该值通常反映记录时可用的最佳校准信息。</td>
+<td align="center">nanometers或digital count</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">calper</td>
+<td align="center">标称较准周期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">instype</td>
+<td align="center">仪器码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">segtype</td>
+<td align="center">标引（indexing）方法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">datatype</td>
+<td align="center">数值存储</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">clip</td>
+<td align="center">削减（clipped）标志</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">dir</td>
+<td align="center">所在文件夹</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">dfile</td>
+<td align="center">文件名</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">foff</td>
+<td align="center">字节偏移量</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">commid</td>
+<td align="center">注释标识（comment id）</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 
     </div>
 
