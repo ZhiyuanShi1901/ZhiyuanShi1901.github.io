@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：minos内README文件儒略日计算器日序计算器 简要说明本文主要对mineos软件运行的程序进行了解与描述。内容均源自程序内部解释与运行进程。模型文件为DEMO中具有的PREM等地球模型。 minos_bran简介包含一个输入：模型文件 两个输出：1、模型列表和简正振型属性摘要2、本征函数的一个文件 参数jcomjcom &#x3D; n， 当n为以下值时：  1 radial mode">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-27T10:22:10.000Z">
-<meta property="article:modified_time" content="2023-01-12T14:12:57.815Z">
+<meta property="article:modified_time" content="2023-01-13T14:06:26.935Z">
 <meta property="article:tag" content="Mineos">
 <meta name="twitter:card" content="summary">
 
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-12 22:12:57" itemprop="dateModified" datetime="2023-01-12T22:12:57+08:00">2023-01-12</time>
+      <time title="Modified: 2023-01-13 22:06:26" itemprop="dateModified" datetime="2023-01-13T22:06:26+08:00">2023-01-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -643,6 +643,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <th align="center">NA值</th>
 <th align="center">取值范围</th>
 <th align="center">备注</th>
+<th align="center">单位</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -650,16 +651,18 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center">lat</td>
 <td align="center">估算的纬度</td>
 <td align="center">不允许</td>
-<td align="center"></td>
-<td align="center">即cmt文件中的纬度</td>
+<td align="center">-90.0≤lat≤90.0</td>
+<td align="center">纬度，地理纬度，北半球为正；即cmt文件中的纬度</td>
+<td align="center">度 ° degrees</td>
 </tr>
 <tr>
 <td align="center">2</td>
 <td align="center">lon</td>
 <td align="center">估算的经度</td>
+<td align="center">不允许</td>
+<td align="center">-180.0≤lon≤180.0</td>
+<td align="center">地理经度，本初子午线以东为正；即cmt文件中的经度</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">即cmt文件中的精度</td>
 </tr>
 <tr>
 <td align="center">3</td>
@@ -668,6 +671,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">cmt文件中的震源深度</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">4</td>
@@ -676,6 +680,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">发震时间为儒略日时间</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">5</td>
@@ -684,6 +689,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">6</td>
@@ -692,14 +698,16 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">7</td>
 <td align="center">jdate</td>
 <td align="center">日期</td>
+<td align="center">-1</td>
+<td align="center">yyyyddd,必须与time属性一致</td>
+<td align="center">年份和一年第几天 。具体内容：公元前(B.C.E)日期为负。例如没有0000000.仅用于估计S,T,C振型（Evaluated only for S,T,C）</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">年份和一年第几天</td>
 </tr>
 <tr>
 <td align="center">9</td>
@@ -708,6 +716,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">10</td>
@@ -716,6 +725,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">11</td>
@@ -724,6 +734,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">12</td>
@@ -732,6 +743,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">13</td>
@@ -740,6 +752,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">14</td>
@@ -748,6 +761,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-999.0000</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">15</td>
@@ -756,6 +770,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">16</td>
@@ -764,6 +779,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-999.00</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">17</td>
@@ -772,6 +788,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">18</td>
@@ -780,6 +797,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-999.00</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">19</td>
@@ -788,6 +806,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">20</td>
@@ -796,6 +815,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-999.00</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">21</td>
@@ -804,6 +824,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-1</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">22</td>
@@ -812,6 +833,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">-</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">23</td>
@@ -820,22 +842,25 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center">震中参考地震记录 &amp; 震源信息来源</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">24</td>
 <td align="center">commid</td>
 <td align="center">comment id</td>
+<td align="center">-1 No any remarks</td>
+<td align="center">≥0</td>
+<td align="center">数据文件。注释标识。这是用于指向预定义备注列表中的自由格式注释的整数键。尚未实施。</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">-1</td>
 </tr>
 <tr>
 <td align="center">25</td>
 <td align="center">lddate</td>
 <td align="center">载入时间</td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">-1</td>
 </tr>
 </tbody></table>
 <p><em>注： -1、-999.00、- 可能是该项没有值或者未知。</em><br><em>6号evid为1可能是由于只有一个地震事件。目前还未尝试是否有多个地震事件的计算方式。</em></p>
@@ -850,63 +875,71 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <th align="center">NA值</th>
 <th align="center">取值范围</th>
 <th align="center">备注</th>
+<th align="center">单位</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">1</td>
 <td align="center">norder</td>
 <td align="center">径向阶数 n</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1</td>
+<td align="center">未给出</td>
+<td align="center">本征振型的径向阶数n</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2</td>
 <td align="center">lorder</td>
 <td align="center">角度阶数 l</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1</td>
+<td align="center">未给出</td>
+<td align="center">简正振型的角阶数l，也称 harmonic degree</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">3</td>
 <td align="center">typeo</td>
 <td align="center">振型类型</td>
+<td align="center">不允许</td>
+<td align="center">未给出</td>
+<td align="center">二进制数据类型。这个字符表示数据类型。R：radial径向振型；S：球振振型；T：环振振型；C：内核环振振型；P：表示数据包括常熟（constants）、归一化参数（normalization）和半径采样点（radius samples）。</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">与输入的振型有关</td>
 </tr>
 <tr>
 <td align="center">4</td>
 <td align="center">eigid</td>
 <td align="center">eigen id</td>
+<td align="center">不允许</td>
 <td align="center"></td>
+<td align="center">本征函数索引，这个关键字段是一个由n l和振型类型定义的本征函数数据独一无二的标识</td>
 <td align="center"></td>
-<td align="center">索引，这里是行数序号</td>
 </tr>
 <tr>
 <td align="center">5</td>
 <td align="center">per</td>
 <td align="center">本征频率 周期表示</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">对应的本征频率</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">对应的本征频率。频率为w&#x3D;2*pi&#x2F;per；w的归一化值位于关联的二进制文件中。</td>
+<td align="center">秒 s</td>
 </tr>
 <tr>
 <td align="center">6</td>
 <td align="center">phvel</td>
 <td align="center">相速度</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">该振型对应的等效面波相速度</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">该振型对应的本征频率（per）的相速度。见typeo</td>
+<td align="center">km&#x2F;s</td>
 </tr>
 <tr>
 <td align="center">7</td>
 <td align="center">grvel</td>
 <td align="center">群速度</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">群速度。给出属性per（本征频率）对应的量级值的群速度。仅评估S,T和C振型，见typeo</td>
+<td align="center">km&#x2F;s</td>
 </tr>
 <tr>
 <td align="center">8</td>
@@ -915,38 +948,43 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center">-1</td>
 <td align="center">&gt;0</td>
 <td align="center">衰减系数Q（品质因子）</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">9</td>
 <td align="center">nrow</td>
 <td align="center">行号</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">二进制文件中存储的本征函数网格（grid）的行号</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">10</td>
 <td align="center">ncol</td>
 <td align="center">列号</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1</td>
+<td align="center">未说明</td>
+<td align="center">二进制文件中存储的本征函数网格（grid）的列号</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">11</td>
 <td align="center">npar</td>
 <td align="center">参数序号</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">0</td>
+<td align="center">&gt;0</td>
+<td align="center">？二进制文件中存储的参数的序号</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">12</td>
 <td align="center">datatype</td>
 <td align="center">数值存储</td>
+<td align="center">不允许</td>
+<td align="center">t4或f4</td>
+<td align="center">数值存储数据。该属性指定文档系统中数据序列的格式。属性用于在必要时以实数交换四个字节。f4用于PC、DEC、VAX IEEE，单精度实型；t4用于SUN IEEE，单精度实型</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">目前只有f4、t4两种：f4用于PC、DEC、VAX IEEE，单精度实型；t4用于SUN IEEE，单精度实型</td>
 </tr>
 <tr>
 <td align="center">13</td>
@@ -954,38 +992,43 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center">字节偏移量</td>
 <td align="center">不允许</td>
 <td align="center">≥0</td>
+<td align="center">这是数据文档中特征函数段的字节偏移量。见dir和dfile</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">14</td>
 <td align="center">dir</td>
 <td align="center">所在目录</td>
+<td align="center">不允许</td>
+<td align="center">任意64个字符的字符串</td>
+<td align="center">路径名的目录部分，包含特征关系的当前目录的相对路径</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center">路径名的目录部分，包含特征关系的当前目录</td>
 </tr>
 <tr>
 <td align="center">15</td>
 <td align="center">dfile</td>
 <td align="center">文件名称</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">任意32个字符的字符串</td>
+<td align="center">数据文件。指多路特征函数文件。</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">16</td>
 <td align="center">commid</td>
 <td align="center">注释标识（comment id）</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1 No any remarks</td>
+<td align="center">≥0</td>
+<td align="center">数据文件。注释标识。这是用于指向预定义备注列表中的自由格式注释的整数键。尚未实施。</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">17</td>
 <td align="center">lddate</td>
 <td align="center">载入时间</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -1000,6 +1043,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <th align="center">NA值</th>
 <th align="center">取值范围</th>
 <th align="center">备注</th>
+<th align="center">单位</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -1009,30 +1053,34 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">2</td>
 <td align="center">ondate</td>
 <td align="center">儒略开始日期</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">yyyyddd</td>
+<td align="center">台站或者传感器其实日期。台站经常移动，但是台站码不变。该日期使得能够选择当时正确的台站lat，lon和elev。</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">3</td>
 <td align="center">offdate</td>
 <td align="center">儒略终止日期</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1</td>
+<td align="center">yyyyddd</td>
+<td align="center">台站或者传感器关闭、取消或移除的时间。见ondate</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">4</td>
 <td align="center">lat</td>
 <td align="center">纬度</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">-90.0≤lat≤90.0</td>
+<td align="center">纬度，地理纬度，北半球为正；即cmt文件中的纬度</td>
+<td align="center">度 ° degrees</td>
 </tr>
 <tr>
 <td align="center">5</td>
@@ -1041,167 +1089,74 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">6</td>
 <td align="center">elev</td>
 <td align="center">海拔</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-999.0</td>
+<td align="center">-10.0≤elev≤10.0</td>
+<td align="center">地震台站相对于平均海平面的海拔</td>
+<td align="center">千米 km</td>
 </tr>
 <tr>
 <td align="center">7</td>
 <td align="center">staname</td>
 <td align="center">台站描述</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">50个字符以内的大写字符串</td>
+<td align="center">sta所描述台站的全名</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">8</td>
 <td align="center">statype</td>
 <td align="center">台站类型：但台站，台阵等等</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">ss ar （小写）</td>
+<td align="center">台站类型。ss：单个台站；ar：台阵</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">9</td>
 <td align="center">refsta</td>
 <td align="center">台站相对台阵编号</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">任意site关系中的sta</td>
+<td align="center">参考台站。这个字符串指定使用的阵列（这个site文件中的所有台站）的参考台站。?见deast，dnorth</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">10</td>
 <td align="center">dnorth</td>
 <td align="center">台阵参考偏移距</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">0.0</td>
+<td align="center">-20000.00≤dnorth≤20000.00</td>
+<td align="center">北向距离。给出台阵（array element）元素北向或相对位置，位于由refsta值指定的台阵中心以北。见deast</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">11</td>
 <td align="center">deast</td>
 <td align="center">台阵参考偏移距</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">0.0</td>
+<td align="center">-20000.00≤deast≤20000.00</td>
+<td align="center">向东距离。此属性给出台阵元素的“东向”或相对位置，位于由 refsta 值指定的台阵中心以东。见dnorth。</td>
+<td align="center">千米 km</td>
 </tr>
 <tr>
 <td align="center">12</td>
 <td align="center">lddate</td>
 <td align="center">载入时间</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
 <h2 id="sitechan-台站通道信息"><a href="#sitechan-台站通道信息" class="headerlink" title=".sitechan 台站通道信息"></a>.sitechan 台站通道信息</h2><p>示例</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO LHE 1960001 -1 -1 n 100.0000 90.0 90.0 - 01/08/23-21:43:39</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th align="center">字节索引</th>
-<th align="center">名称</th>
-<th align="center">含义</th>
-<th align="center">NA值</th>
-<th align="center">取值范围</th>
-<th align="center">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">sta</td>
-<td align="center">台站码</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">chan</td>
-<td align="center">通道码</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">ondate</td>
-<td align="center">儒略开始日期</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">chanid</td>
-<td align="center">通道id</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">offdate</td>
-<td align="center">儒略结束日期</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="center">ctype</td>
-<td align="center">通道类型</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="center">cdepth</td>
-<td align="center">安置深度</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">hang</td>
-<td align="center">水平角</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">vang</td>
-<td align="center">垂直角</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="center">descrip</td>
-<td align="center">通道描述</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">11</td>
-<td align="center">iddate</td>
-<td align="center">载入时间</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<h2 id="wfdisc-波形文件头信息和描述信息"><a href="#wfdisc-波形文件头信息和描述信息" class="headerlink" title="wfdisc 波形文件头信息和描述信息"></a>wfdisc 波形文件头信息和描述信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO SHZ 393567535.30000 1 6 1982173 393615534.30000 48000 1.0000000 1.000000 20.000000 - g f4 - green.wfdisc.dat g.00001 0 -1 01/09/23-21:11:33</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -1227,19 +1182,132 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center">2</td>
 <td align="center">chan</td>
 <td align="center">通道码</td>
+<td align="center">需要有效值</td>
+<td align="center">3个大写字母</td>
+<td align="center">通道码，具体可在搜索中查找</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">ondate</td>
+<td align="center">儒略开始日期</td>
+<td align="center">不允许</td>
+<td align="center">yyyyddd</td>
+<td align="center">台站或者传感器其实日期。台站经常移动，但是台站码不变。该日期使得能够选择当时正确的台站lat，lon和elev。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">chanid</td>
+<td align="center">通道id</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">通道记录标识。是一个独立标识一个特殊记录的代理键（surrogate key）。作为单个标识符，表示sta、chan、time更加方便。但是这三个值对处理人员更加直观。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">offdate</td>
+<td align="center">儒略结束日期</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">6</td>
+<td align="center">ctype</td>
+<td align="center">通道类型</td>
+<td align="center">-</td>
+<td align="center">小写字母n或b或i</td>
+<td align="center">表示数据通道类型。n：正常仪器响应；b：台阵数据确定的相干波形？；i：能量叠加的非相干波形？</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">edepth</td>
+<td align="center">安置深度</td>
+<td align="center">不允许</td>
+<td align="center">≥0.0</td>
+<td align="center">仪器位置的深度，相对于site关系中的elev（台站海拔）</td>
+<td align="center">千米 km</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">hang</td>
+<td align="center">水平角</td>
+<td align="center">不允许</td>
+<td align="center">0.0≤hang≤360.0</td>
+<td align="center">地震仪的水平方向。给出地震仪在水平平面上的指向，由正北顺时针。NS走向地震仪指向北，为0；WE走向地震仪指向西，为270</td>
+<td align="center">度，° degrees</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">vang</td>
+<td align="center">垂直角</td>
+<td align="center">不允许</td>
+<td align="center">0.0≤vang≤90.0</td>
+<td align="center">地震仪的垂向指向。此属性测量地震仪的敏感轴与向外垂直方向之间的角度。对于垂直走向地震仪，vang&#x3D;0；水平走向地震仪，vang&#x3D;90</td>
+<td align="center">度 ° degrees</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">descrip</td>
+<td align="center">通道描述</td>
+<td align="center">-</td>
+<td align="center">50字节长度的任意格式字符串</td>
+<td align="center">通道描述，数据通道的描述。对于非仪器通道（例如beams）这是在核心列表的通道选择中仅有的定量描述</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">iddate</td>
+<td align="center">载入时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="wfdisc-波形文件头信息和描述信息"><a href="#wfdisc-波形文件头信息和描述信息" class="headerlink" title="wfdisc 波形文件头信息和描述信息"></a>wfdisc 波形文件头信息和描述信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO SHZ 393567535.30000 1 6 1982173 393615534.30000 48000 1.0000000 1.000000 20.000000 - g f4 - green.wfdisc.dat g.00001 0 -1 01/09/23-21:11:33</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center">需要有效输入</td>
+<td align="center">6个字符的大写字符串</td>
+<td align="center">台站码，或者地震台的common code name。通常为3或4个字符</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">chan</td>
+<td align="center">通道码</td>
+<td align="center">需要有效值</td>
+<td align="center">3个大写字母</td>
+<td align="center">通道码，具体可在搜索中查找</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">3</td>
 <td align="center">time</td>
 <td align="center">文件中第一个采样点的地质时间（epoch time）</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">未说明</td>
+<td align="center">从1970年1月1日0时为起始点计算的秒数。存储为双精度浮点型，允许15个十进制数字。范围可达3*10^4年。</td>
+<td align="center">秒s</td>
 </tr>
 <tr>
 <td align="center">4</td>
@@ -1254,9 +1322,9 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center">5</td>
 <td align="center">chanid</td>
 <td align="center">通道操作id</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">通道记录标识。是一个独立标识一个特殊记录的代理键（surrogate key）。作为单个标识符，表示sta、chan、time更加方便。但是这三个值对处理人员更加直观。</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -1271,29 +1339,29 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <tr>
 <td align="center">7</td>
 <td align="center">endtime</td>
-<td align="center">time*(nsamp-1)&#x2F;samprate</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">注意！详细查看备注time*(nsamp-1)&#x2F;samprate</td>
+<td align="center">+9999999999（10个9）.999</td>
+<td align="center">endtime&gt;time</td>
+<td align="center">endtime&#x3D;time+（nsamp-1）&#x2F;samprate（这里与前面的含义不一样，源文档如此。这里认为此处+为正确）</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">8</td>
 <td align="center">nsamp</td>
 <td align="center">采样点个数</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">采样点个数，波形段的采样点数量</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">9</td>
 <td align="center">samprate</td>
-<td align="center">采样率，单位s</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">采样率，单位s^-1</td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">samples&#x2F;second。该值可能与标称值略有不同，以反映时钟漂移。？</td>
+<td align="center">s^-1</td>
 </tr>
 <tr>
 <td align="center">10</td>
@@ -1308,90 +1376,90 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <td align="center">11</td>
 <td align="center">calper</td>
 <td align="center">标称较准周期</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">calib有效时规定周期。</td>
+<td align="center">秒，s</td>
 </tr>
 <tr>
 <td align="center">12</td>
 <td align="center">instype</td>
 <td align="center">仪器码</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">大写字母，不计数。详见Ganse and Hutt,1982</td>
+<td align="center">标识仪器类型，例如SRO、ASRO以及S-750</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">13</td>
 <td align="center">segtype</td>
 <td align="center">标引（indexing）方法</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">o v s d g w</td>
+<td align="center">segment type。段类型。波形为：o（original）原始；v（virtual）虚拟的；s（segmented）分离的？；d（duplicate）副本；g（Green’s function）格林函数；w（synthetic）合成记录</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">14</td>
 <td align="center">datatype</td>
 <td align="center">数值存储</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">t4或f4</td>
+<td align="center">数值存储数据。该属性指定文档系统中数据序列的格式。属性用于在必要时以实数交换四个字节。f4用于PC、DEC、VAX IEEE，单精度实型；t4用于SUN IEEE，单精度实型</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">15</td>
 <td align="center">clip</td>
 <td align="center">削减（clipped）标志</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-</td>
+<td align="center">{c n} 小写字母</td>
+<td align="center">一个字符指示数据是否削减。c表示是，n表示否</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">16</td>
 <td align="center">dir</td>
 <td align="center">所在文件夹</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">任意64个字符的字符串</td>
+<td align="center">路径名的目录部分，包含特征关系的当前目录的相对路径</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">17</td>
 <td align="center">dfile</td>
 <td align="center">文件名</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">任意32个字符长度的字符串</td>
+<td align="center">disk waveform？的名称或者单分量格林函数的名称。</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">18</td>
 <td align="center">foff</td>
 <td align="center">字节偏移量</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不允许</td>
+<td align="center">≥0</td>
+<td align="center">这是数据文档中特征函数段的字节偏移量。见dir和dfile</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">19</td>
 <td align="center">commid</td>
 <td align="center">注释标识（comment id）</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">-1 No any remarks</td>
+<td align="center">≥0</td>
+<td align="center">数据文件。注释标识。这是用于指向预定义备注列表中的自由格式注释的整数键。尚未实施。</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">20</td>
 <td align="center">lddate</td>
 <td align="center">载入时间</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
