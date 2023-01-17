@@ -1659,7 +1659,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <tr>
 <td align="center">5</td>
 <td align="center">lon</td>
-<td align="center">精度</td>
+<td align="center">经度</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -1835,11 +1835,11 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 </tr>
 <tr>
 <td align="center">11</td>
-<td align="center">iddate</td>
+<td align="center">lddate</td>
 <td align="center">载入时间</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
