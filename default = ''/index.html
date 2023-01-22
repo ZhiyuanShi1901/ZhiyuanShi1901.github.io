@@ -2376,7 +2376,7 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-12 11:40:05" itemprop="dateModified" datetime="2023-01-12T11:40:05+08:00">2023-01-12</time>
+      <time title="Modified: 2023-01-20 15:39:40" itemprop="dateModified" datetime="2023-01-20T15:39:40+08:00">2023-01-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2425,6 +2425,16 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">make[1]: 进入目录“/home/shizhiyuan/Documents/mineos-1.0.0”</span><br><span class="line">gfortran  -O2 -c -o minos_bran.o minos_bran.f</span><br><span class="line">minos_bran.f:254:32:</span><br><span class="line"></span><br><span class="line">       data tol/1.d-9/,itmax/15/,ichar/&#x27; s&#x27;,&#x27; t&#x27;,&#x27; s&#x27;,&#x27; c&#x27;/</span><br><span class="line">                                1</span><br><span class="line">错误: (1)处 DATA 语句中类型不兼容；试图从 CHARACTER(1) 转换到 INTEGER(4)</span><br><span class="line">make[1]: *** [Makefile:456：minos_bran.o] 错误 1</span><br><span class="line">make[1]: 离开目录“/home/shizhiyuan/Documents/mineos-1.0.0”</span><br><span class="line">make: *** [Makefile:253：all] 错误 2</span><br></pre></td></tr></table></figure>
 <p>DATA 语句中类型不兼容，目前未知解决方法。</p>
 <h1 id="使用Hermann网站提供的修改过minos-bran-f文件的安装包安装更为简便，且能够安装成功。"><a href="#使用Hermann网站提供的修改过minos-bran-f文件的安装包安装更为简便，且能够安装成功。" class="headerlink" title="使用Hermann网站提供的修改过minos_bran.f文件的安装包安装更为简便，且能够安装成功。"></a>使用Hermann网站提供的修改过minos_bran.f文件的安装包安装更为简便，且能够安装成功。</h1><p>环境：Centos8</p>
+<h2 id="依赖环境"><a href="#依赖环境" class="headerlink" title="依赖环境"></a>依赖环境</h2><p>Mineos依赖于:</p>
+<ul>
+<li>gcc</li>
+<li>g77</li>
+<li>f77</li>
+<li>gfortran</li>
+</ul>
+<p>一般安装gcc-gfortran即可。</p>
+<pre><code>sudo yum install gcc-gfortran
+</code></pre>
 <h2 id="configure-1"><a href="#configure-1" class="headerlink" title="configure"></a>configure</h2><pre><code>./configure F77=gfortran FFLAGS=-O2
 </code></pre>
 <h2 id="make-1"><a href="#make-1" class="headerlink" title="make"></a>make</h2><pre><code>make
@@ -2439,6 +2449,9 @@ eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
 <p>运行成功后的输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">make[1]: 进入目录“/home/shizhiyuan/Documents/hermann/MINEOS/mineos-1.0.0.rbh”</span><br><span class="line">test -z &quot;/usr/local/bin&quot; || /usr/bin/mkdir -p &quot;/usr/local/bin&quot;</span><br><span class="line">  /usr/bin/install -c &#x27;minos_bran&#x27; &#x27;/usr/local/bin/minos_bran&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;syndat&#x27; &#x27;/usr/local/bin/syndat&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;green&#x27; &#x27;/usr/local/bin/green&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;eigcon&#x27; &#x27;/usr/local/bin/eigcon&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;endi&#x27; &#x27;/usr/local/bin/endi&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;eigen2asc&#x27; &#x27;/usr/local/bin/eigen2asc&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;simpledit&#x27; &#x27;/usr/local/bin/simpledit&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;cucss2sac&#x27; &#x27;/usr/local/bin/cucss2sac&#x27;</span><br><span class="line">test -z &quot;/usr/local/bin&quot; || /usr/bin/mkdir -p &quot;/usr/local/bin&quot;</span><br><span class="line"> /usr/bin/install -c &#x27;scripts/creat_origin&#x27; &#x27;/usr/local/bin/creat_origin&#x27;</span><br><span class="line">test -z &quot;/usr/local/share/mineos&quot; || /usr/bin/mkdir -p &quot;/usr/local/share/mineos&quot;</span><br><span class="line"> /usr/bin/install -c -m 644 &#x27;doc/mineos.pdf&#x27; &#x27;/usr/local/share/mineos/mineos.pdf&#x27;</span><br><span class="line"> /usr/bin/install -c -m 644 &#x27;DEMO/DEMO.tar.gz&#x27; &#x27;/usr/local/share/mineos/DEMO.tar.gz&#x27;</span><br><span class="line"> /usr/bin/install -c -m 644 &#x27;DEMO/README&#x27; &#x27;/usr/local/share/mineos/README&#x27;</span><br><span class="line">make[1]: 离开目录“/home/shizhiyuan/Documents/hermann/MINEOS/mineos-1.0.0.rbh”</span><br></pre></td></tr></table></figure>
 
+<h2 id="补充内容"><a href="#补充内容" class="headerlink" title="补充内容"></a>补充内容</h2><p>运行.csh文件需要安装csh</p>
+<pre><code>sudo yum install csh
+</code></pre>
 <h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><p>先将mineos文件内DEMO文件夹中的DEMO压缩包解压。当然更推荐命令操作：</p>
 <pre><code>cd DEMO
 gunzip -c DEMO.tar.gz | tar xf -  # 这一步使用操作界面完成，就是解压的步骤。
