@@ -108,7 +108,7 @@ vpn-install/ipsec/install.sh
   </entry>
   <entry>
     <title>Fortran初探</title>
-    <url>/2022/11/01/Fortran%E5%88%9D%E6%8E%A2/</url>
+    <url>/2023/01/23/Fortran%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>1、[Fortran权威指南&#x2F;(英)奇弗斯(Chivers,I.),(英)斯莱索尔姆(Sleightholme,J.)著；陈宝国等译.–北京：人民邮电出版社，2009.10]</p>
 <p>2、<a href="https://www.yiibai.com/fortran/fortran_basic_input_output.html">https://www.yiibai.com/fortran/fortran_basic_input_output.html</a></p>
 <p>3、[Fortran 程序设计：第四版&#x2F;（美）史蒂芬·查普曼著；王志强等译.-北京：中国电力出版社，2018.10（2022.8重印）]</p>
@@ -400,14 +400,60 @@ PRINT string,x,y
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    6 | light_year=9.46*10**12</span><br><span class="line">      |                  1</span><br><span class="line">Error: Result of exponentiation at (1) exceeds the range of INTEGER(4)</span><br></pre></td></tr></table></figure>
 <p>疑问： ？？？未解决</p>
 <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="DIMENSION-属性"><a href="#DIMENSION-属性" class="headerlink" title="DIMENSION 属性"></a>DIMENSION 属性</h2><p>使用dimension属性将变量定义为数组：</p>
-<pre><code>real , dimension(1:100) :: wages
-integer , dimension(1:1000) :: sample
+<pre><code>real , dimension(len) :: wages
+integer , dimension(len) :: sample
 </code></pre>
-<p>示例：</p>
+<p>赋值数组内的元素：</p>
+<pre><code>wages(1)=1.
+wages = [1.,2.,33.]
+wages = 1 # 赋值为相同值
+(arg1, arg2, ... , index = istart, iend, incr) # 隐藏的循环初始化赋值
+</code></pre>
+<p>示例1：</p>
+<pre><code>integer, dimension(25)::array4=[(0,i=1,4),5*j,j=1,5]
+</code></pre>
+<p>结果：</p>
+<pre><code>0,0,0,0,5,0,0,0,0,10,0,0,0,0,15,0,0,0,0,20
+</code></pre>
+<p>示例2：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program ch0901</span><br><span class="line">implicit none</span><br><span class="line">real :: total=0.0, average=0.0 !定义变量</span><br><span class="line">real , dimension(1:12) :: rainfall</span><br><span class="line">integer :: month</span><br><span class="line"></span><br><span class="line">	print *,&#x27;Type in the rainfall values&#x27;</span><br><span class="line">	print *,&#x27;one per line&#x27;</span><br><span class="line">	do month=1,12   ! 使用do进行循环</span><br><span class="line">		read *, rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	do month=1,12</span><br><span class="line">		total = total + rainfall(month)</span><br><span class="line">	enddo</span><br><span class="line">	</span><br><span class="line">	average = total / 12</span><br><span class="line">	print *,&#x27;average monthly rainfall was&#x27;</span><br><span class="line">	print *, average</span><br><span class="line">end program ch0901</span><br></pre></td></tr></table></figure>
 
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> Type in the rainfall values</span><br><span class="line"> one per line</span><br><span class="line">23</span><br><span class="line">22</span><br><span class="line">24</span><br><span class="line">23</span><br><span class="line">21</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">12</span><br><span class="line">10</span><br><span class="line">45</span><br><span class="line">40</span><br><span class="line">44</span><br><span class="line"> average monthly rainfall was</span><br><span class="line">   24.2500000  </span><br></pre></td></tr></table></figure>
+<h2 id="改变数组下标取值范围"><a href="#改变数组下标取值范围" class="headerlink" title="改变数组下标取值范围"></a>改变数组下标取值范围</h2><p>一般使用<code>1,2,...,N</code>表示下标索引。但是有时以<code>0</code>开始更为方便。<br>指定下标的方式为：</p>
+<pre><code>real, dimension(lower_bound : upper_bound) :: array
+</code></pre>
+<p>数组宽度&#x3D;上界值-下界值+1</p>
+<h2 id="数组下标越界"><a href="#数组下标越界" class="headerlink" title="数组下标越界"></a>数组下标越界</h2><p>边界检测消耗运算资源。debug时开启，运行时关闭。</p>
+<p>开启边界检测器在运行时输入:</p>
+<pre><code># windows情况下
+ifort -check filename.f90 # 编译
+filename.f90 # 运行
+</code></pre>
+<h2 id="使用命名常数"><a href="#使用命名常数" class="headerlink" title="使用命名常数"></a>使用命名常数</h2><pre><code>REAL, DIMENSION(MAX_SIZE)::array1
+</code></pre>
+<p>MAX_SIZE可以修改。</p>
+<h2 id="使用整个数组"><a href="#使用整个数组" class="headerlink" title="使用整个数组"></a>使用整个数组</h2><p>数组<code>a</code>与数组<code>b</code>相加，为两个数组中的逐个元素相加。但是两个数组纬度必须相同！标量值与数组相同，将作用于每个元素。</p>
+<h2 id="使用部分数组"><a href="#使用部分数组" class="headerlink" title="使用部分数组"></a>使用部分数组</h2><p>部分数组，即数组的子集。</p>
+<pre><code>subscript_1 : subscript_2 : stride  # 最小下标，最大下标，下标增量
+</code></pre>
+<p>若缺省，则分别为：数组的最小下标，数组的最大下标，1。</p>
+<h2 id="数组输入输出"><a href="#数组输入输出" class="headerlink" title="数组输入输出"></a>数组输入输出</h2><h3 id="数组元素输入输出"><a href="#数组元素输入输出" class="headerlink" title="数组元素输入输出"></a>数组元素输入输出</h3><p>可以使用<code>WRITE</code>语句。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WRITE (*,100)a(1),a(2),a(3)</span><br><span class="line">100 FORMAT (&#x27;a=&#x27;,3F10.2)</span><br></pre></td></tr></table></figure>
+
+<p>隐式DO循环：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WRITE (*,100) (a(i), i=1,3)</span><br><span class="line">100 FORMAT (&#x27;a=&#x27;,3F10.2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WRITE (unit, format)(arg1, arg2,...,index = istart, iend, incr)</span><br></pre></td></tr></table></figure>
+<p>arg为要输入或者输出的数值。index控制循环。<code>READ</code>同上。<br>arg如果为数组，可以使用：<code>arg(index)</code>表示输出。</p>
+<p>嵌套隐式DO循环：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">write(*,100) ((i,j,j=1,3),i=1,2)</span><br><span class="line">100 FORMAT (I5,1X,I5)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 1</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 1</span><br><span class="line">2 2</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="整个数组的输入输出"><a href="#整个数组的输入输出" class="headerlink" title="整个数组的输入输出"></a>整个数组的输入输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">real, dimension(5)::a=[1,2,3,4,5]</span><br><span class="line">WRITE(*,100) a</span><br><span class="line">100 FORMAT (6F8.3)</span><br><span class="line">WRITE(*,100) a(2::2) # 输出指定下标</span><br><span class="line">WRITE(*,100) a([3,2,3,4]) # 输出数组指定的下标</span><br></pre></td></tr></table></figure>
+
 <h2 id="do循环"><a href="#do循环" class="headerlink" title="do循环"></a>do循环</h2><pre><code>do counter = start, end, increment
 ......  ！语句
 enddo
@@ -570,6 +616,51 @@ end do [name]
 <h4 id="REWIND"><a href="#REWIND" class="headerlink" title="REWIND"></a>REWIND</h4><pre><code>REWIND(UNIT=unit)
 </code></pre>
 <p>从文件头重新开始文件。</p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>外部过程：把每个子任务作为独立的程序单元进行编码。</p>
+<p>两种外部过程：子例程和函数子程序（函数）。</p>
+<h2 id="子例程"><a href="#子例程" class="headerlink" title="子例程"></a>子例程</h2><p>CALL语句使用过程名调用，格式如下:<br>定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SUBROUTINE subroutine_name (argument_list)</span><br><span class="line">...</span><br><span class="line">(Delaration section)</span><br><span class="line">...</span><br><span class="line">(Execution section)</span><br><span class="line">...</span><br><span class="line">RETURN </span><br><span class="line">END SUBROUTINE [subroutine_name]</span><br></pre></td></tr></table></figure>
+
+<h3 id="INTENT属性："><a href="#INTENT属性：" class="headerlink" title="INTENT属性："></a>INTENT属性：</h3><p>定义<code>argument_list</code>中的变量，需要定义IN或OUT变量，以表示变量是输入还是输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">REAL, INTENT(IN)::IN_VALUE1</span><br><span class="line">REAL, INTENT(OUT)::OUT_VALUE1</span><br><span class="line">REAL, DIMENSION(N), INTENT(INOUT)::ARRAY # 定义一个能输入和输出的数组</span><br></pre></td></tr></table></figure>
+<p>其中，<code>INOUT</code>可以写为：<code>IN OUT</code>。<br>使用INTENT属性可以避免修改了<code>IN</code>类型的变量导致之后的该变量被改变，从而产生的错误。记住每一个形参都要设置INTENT属性！！！</p>
+<p>定义内部变量时，定义临时变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">REAL ::temp</span><br></pre></td></tr></table></figure>
+
+<p>调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CALL subroutine_name (argument_list)</span><br></pre></td></tr></table></figure>
+<p>调用时注意<code>argument_list</code>中的变量类型必须一一对应！</p>
+<h3 id="传递数组"><a href="#传递数组" class="headerlink" title="传递数组"></a>传递数组</h3><p>数组可以显式传递或者不定大小传递。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">REAL, INTENT(IN), DIMENSION(n)::data1 # n为数组大小，在输入列表中给出。</span><br><span class="line">REAL, INTENT(IN), DIMENSION(*)::data1 # 不定大小，边界检测，整个或者部分数组都不能工作。</span><br></pre></td></tr></table></figure>
+<p><strong>注：目前基本不使用不定数组的格式，因为会产生越界问题，且不易监测。</strong></p>
+<h3 id="传递字符变量"><a href="#传递字符变量" class="headerlink" title="传递字符变量"></a>传递字符变量</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CHARACTER (len=*), INTENT(IN)::STRING1</span><br></pre></td></tr></table></figure>
+<p>使用<code>*</code>表示长度即可。因为没有必要在编译时必须知道字符串长度。</p>
+<h3 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h3><p>不要在子例程中加入<code>STOP</code>语句，否则程序会“神秘终止”。<br>正确方法是对可能存在的错误进行检测。使用<code>IF</code>语句进行检测，采取相应操作。例如返回<code>error=0</code>。</p>
+<h2 id="模块共享数据"><a href="#模块共享数据" class="headerlink" title="模块共享数据"></a>模块共享数据</h2><p>模块，使用<code>MODULE</code>声明。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MODULE shared_data</span><br><span class="line">！ 声明在两个程序之间共享的数据</span><br><span class="line">IMPLICIT NONE</span><br><span class="line">SAVE   ！ 必须包含这个语句。</span><br><span class="line">INTEGER, PARAMETER :: num_vals = 5 ！ 数组中的最大数值个数</span><br><span class="line">REAL, DIMENSION(num_vals)::values ! 数据值</span><br><span class="line">END MODULE shared_data</span><br></pre></td></tr></table></figure>
+<p>使用模块中的数据：该语句必须出现在其他语句之前。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">USE shared_data</span><br></pre></td></tr></table></figure>
+<p>注意：share的数据和局部变量不要重名！</p>
+<h2 id="模块过程"><a href="#模块过程" class="headerlink" title="模块过程"></a>模块过程</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MODULE my_subs</span><br><span class="line">implicit none</span><br><span class="line">contains</span><br><span class="line"></span><br><span class="line">    SUBROUTINE sub1 (a,b,c,x,error)</span><br><span class="line">    implicit none</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    end subroutine sub1</span><br><span class="line">    </span><br><span class="line">END MODULE my_subs</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">USE my_subs</span><br></pre></td></tr></table></figure>
+<p>即可在调用程序单元中使用子例程sub1。</p>
+<p>使用模块调用子进程，可以使程序完全掌握子进程内的所有参数等，返回必要的错误信息。而直接调用子进程，主程序无法了解子进程中的任何信息。</p>
+<h2 id="FORTRAN函数"><a href="#FORTRAN函数" class="headerlink" title="FORTRAN函数"></a>FORTRAN函数</h2><p>函数：结果是单个数值、逻辑值、字符串或数组的过程。只能返回一个值。</p>
+<p>用户定义函数格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FUNCTION name (参数列表)</span><br><span class="line">...</span><br><span class="line">(在声明部分必须声明name类型)</span><br><span class="line">REAL, INTENT(IN):: INPUT_1</span><br><span class="line">...</span><br><span class="line">（执行部分）</span><br><span class="line">...</span><br><span class="line">name = expr</span><br><span class="line">RETURN</span><br><span class="line">END FUNCTION [name]</span><br></pre></td></tr></table></figure>
+
+<p>由于函数必须返回一个值，因此需要定义函数返回值类型，有两种，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INTEGER FUNCTION my_function(i,j)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FUNCTION my_function(i,j)</span><br><span class="line">INTEGER :: my_function</span><br></pre></td></tr></table></figure>
+<p>函数名为输出变量的名称，并且该变量已被定义，因此不需要在函数中再次定义。但是输入参数需要定义！</p>
+<h2 id="过程作为参数传递给其它过程"><a href="#过程作为参数传递给其它过程" class="headerlink" title="过程作为参数传递给其它过程"></a>过程作为参数传递给其它过程</h2><h3 id="用户定义函数作为参数传递"><a href="#用户定义函数作为参数传递" class="headerlink" title="用户定义函数作为参数传递"></a>用户定义函数作为参数传递</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 外部定义函数，声明函数是外部调用的</span><br><span class="line">REAL, EXTERNAL :: fun_1, fun_2[,.....]</span><br><span class="line"></span><br><span class="line"># 调用fun的SUBROUTINE中</span><br><span class="line">REAL,EXTERNAL :: fun</span><br></pre></td></tr></table></figure>
+
+<h3 id="子例程作为参数传递"><a href="#子例程作为参数传递" class="headerlink" title="子例程作为参数传递"></a>子例程作为参数传递</h3><p>在SUBROUTINE中，传递名为<code>sub</code>的子例程。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SUBROUTINE subs(sub, ...)</span><br><span class="line">...</span><br><span class="line">EXTERNAL :: sub ！ 定义子例程</span><br><span class="line">（定义其他输入输出变量）</span><br><span class="line">...</span><br><span class="line">CALL sub(value_list) ! 调用子例程</span><br><span class="line">...</span><br><span class="line">END SUBROUTINE subs</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
         <category>学习笔记</category>
