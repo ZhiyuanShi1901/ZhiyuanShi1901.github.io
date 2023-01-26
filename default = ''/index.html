@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -204,6 +204,91 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2023/01/26/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E5%AE%9E%E8%AE%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/26/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E5%AE%9E%E8%AE%AD/" class="post-title-link" itemprop="url">地震数据处理方法实训</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-01-26 22:18:21 / Modified: 22:23:45" itemprop="dateCreated datePublished" datetime="2023-01-26T22:18:21+08:00">2023-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">作业布置</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="褶积滤波"><a href="#褶积滤波" class="headerlink" title="褶积滤波"></a>褶积滤波</h1><p>这里使用的子进程为实训手册中已有的子进程。</p>
+<p>使用理想低通滤波器和带通滤波器进行滤波。对应滤波保留的频率范围为：<br>低通滤波器：0-70Hz<br>带通滤波器：10-80Hz</p>
+<p>均使用时域下的滤波因子得到滤波器，所有滤波过程在时域之下进行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">program ch1_conv_fliter</span><br><span class="line">real, dimension(100) :: X,r_low_end=0., coun=[(i,i=1,100)],r_band_end=0.</span><br><span class="line">real,dimension (101) :: h_low=0., h_band=0.</span><br><span class="line">real,dimension (101+100-1) :: r_low=0., r_band=0.</span><br><span class="line">real :: wc1=70.0,wc2=10.0,wc3=80.0 ! 滤波器的滤波边界</span><br><span class="line">complex, dimension(100,2) :: C   ! 定义一个复数数组C，用于表示X。</span><br><span class="line">character(10) :: filename=&#x27;INPUT1.DAT&#x27;</span><br><span class="line">integer :: i, num=100</span><br><span class="line">real, parameter :: pi=3.1415926535</span><br><span class="line">! 读取input1的数据并输出到屏幕</span><br><span class="line">open(1, file=filename, form=&#x27;formatted&#x27;, status=&#x27;old&#x27;)</span><br><span class="line">read (1,*)(X(i), i=1,100)</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">print *,&#x27;This is the data in the &#x27;,filename ,&#x27;.&#x27;</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">do i=1,100</span><br><span class="line">PRINT *,X(i)</span><br><span class="line">end do</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line"></span><br><span class="line">! 理想低通滤波器</span><br><span class="line">low_pass_fliter: do i=1,101</span><br><span class="line">	if ((i-1).eq.0) then</span><br><span class="line">	h_low(i)=0</span><br><span class="line">	else</span><br><span class="line">	h_low(i)=sin(wc1*2.*(i-1)/1000.)/(pi*(2.*(i-1)/1000.))</span><br><span class="line">	endif</span><br><span class="line">end do low_pass_fliter</span><br><span class="line"></span><br><span class="line">call CON(X,h_low,r_low,100,101,100+101-1)</span><br><span class="line">! 得到最后的输出，r_low_end为最终的滤波结果</span><br><span class="line">do i=1,100</span><br><span class="line">r_low_end(i)=r_low(i+50)</span><br><span class="line">end do</span><br><span class="line"></span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">print *,&#x27;This is the last result, low pass 70.&#x27;</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">do i=1,100</span><br><span class="line">PRINT *,r_low_end(i)</span><br><span class="line">end do</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">! 写入70HZ低通滤波器结果</span><br><span class="line">! open(2,file=&#x27;con_low_filter_70.dat&#x27;, status=&#x27;replace&#x27;, action=&#x27;write&#x27;)</span><br><span class="line">! write_70: do i=1,100</span><br><span class="line">! 	write(2,100) coun(i),r_low_end(i)</span><br><span class="line">	</span><br><span class="line">! end do write_70</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">! 理想带通滤波器</span><br><span class="line">band_pass_fliter: do i=1,101</span><br><span class="line">	if ((i-1).eq.0) then</span><br><span class="line">	h_band(i)=0</span><br><span class="line">	else</span><br><span class="line">	h_band(i)=sin(wc3*2.*(i-1)/1000.)/(pi*(2.*(i-1)/1000.))-sin(wc2*2.*(i-1)/1000.)/(pi*(2.*(i-1)/1000.))</span><br><span class="line">	endif</span><br><span class="line">end do band_pass_fliter</span><br><span class="line">call CON(X,h_band,r_band,100,101,100+101-1)</span><br><span class="line">! 得到最后的输出，r_band_end为最终的滤波结果</span><br><span class="line">do i=1,100</span><br><span class="line">r_band_end(i)=r_band(i+50)</span><br><span class="line">end do</span><br><span class="line"></span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">print *,&#x27;This is the last result，band pass 80-10hz&#x27;</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">do i=1,100</span><br><span class="line">PRINT *,r_band_end(i)</span><br><span class="line">end do</span><br><span class="line">print *,&#x27;################################################&#x27;</span><br><span class="line">! 写入滤波器结果</span><br><span class="line">open(3,file=&#x27;ch1_conv_filter.dat&#x27;, status=&#x27;replace&#x27;, action=&#x27;write&#x27;)</span><br><span class="line">write(3,*) &quot;number,origin,low_pass_70,band_pass_80_10&quot;</span><br><span class="line">write_8: do i=1,100</span><br><span class="line">	write(3,100) coun(i),X(i),r_low_end(i),r_band_end(i)</span><br><span class="line">100 format(F4.0,&#x27;,&#x27;,2(F14.7,&#x27;,&#x27;), F14.7)</span><br><span class="line">end do write_8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">end program ch1_conv_fliter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SUBROUTINE DFT(N,C,S)</span><br><span class="line">	COMPLEX C(N),Y(512),W</span><br><span class="line">	IF(S.EQ.1.0)Z=1.0</span><br><span class="line">	IF(S.EQ.-1.0)Z=1.0/FLOAT(N)</span><br><span class="line">	DO 20 I=1,N</span><br><span class="line">	Y(I)=(0.0,0.0)</span><br><span class="line">	DO 20 J=1,N</span><br><span class="line">	A=COS(2.0*3.14159265*(I-1)*(J-1)/FLOAT(N))</span><br><span class="line">	B=SIN(2.0*3.14159265*(I-1)*(J-1)/FLOAT(N))*(-S)</span><br><span class="line">	W=CMPLX(A,B)</span><br><span class="line"> 20	Y(I)=Y(I)+C(J)*W</span><br><span class="line">	DO 30 I=1,N</span><br><span class="line"> 30	C(I)=Y(I)*Z</span><br><span class="line">	RETURN</span><br><span class="line">	END</span><br><span class="line"></span><br><span class="line">	SUBROUTINE CON(A,B,C,I,J,K)</span><br><span class="line">	DIMENSION A(I),B(J),C(K)</span><br><span class="line">	DO 1 K1=1,K</span><br><span class="line">  1	C(K1)=0.0</span><br><span class="line">	DO 2 I1=1,I</span><br><span class="line">	DO 2 I2=1,J</span><br><span class="line">	II=I1+I2-1</span><br><span class="line">  2	C(II)=C(II)+A(I1)*B(I2)*0.004</span><br><span class="line">	RETURN</span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gfortran ch1_conv_fliter  # 编译</span><br><span class="line">./a.out # 执行</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -3446,95 +3531,6 @@ Kernel Offset: ........
 </code></pre>
 <p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
 <p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/" class="post-title-link" itemprop="url">CentOS8安装中国版Firefox</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-12-13 12:57:20 / Modified: 13:43:56" itemprop="dateCreated datePublished" datetime="2022-12-13T12:57:20+08:00">2022-12-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装类似于Ubuntu安装方法。在desktop文件中有所差别。</p>
-<p>首先将提取的包移动到相应位置</p>
-<pre><code>sudo mv firefox /usr/local
-</code></pre>
-<p>然后创建desktop文件，命名为firefox.desktop：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Version=1.0</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">GenericName=Web Browser</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/usr/local/firefox/firefox # 软件安装位置</span><br><span class="line">Icon=/usr/local/firefox/browser/chrome/icons/default/default128.png # 图标所在位置</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;</span><br><span class="line">StartupNotify=true</span><br><span class="line">Categories=Network;WebBrowser;</span><br><span class="line">Encoding=UTF-8</span><br></pre></td></tr></table></figure>
-
-<p>将desktop文件移动到<code>/usr/share</code>下的<code>/applications</code>文件夹。</p>
-<pre><code>sudo cp firefox.desktop /usr/share/applicaions
-</code></pre>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://wjhsh.net/szwmd778-p-9944992.html">http://wjhsh.net/szwmd778-p-9944992.html</a></p>
 
       
     </div>
