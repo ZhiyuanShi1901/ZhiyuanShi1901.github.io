@@ -249,7 +249,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-28 10:58:16" itemprop="dateModified" datetime="2023-01-28T10:58:16+08:00">2023-01-28</time>
+      <time title="Modified: 2023-01-28 12:15:00" itemprop="dateModified" datetime="2023-01-28T12:15:00+08:00">2023-01-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,7 +272,8 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行深入解析，尝试理解程序运行的原理。<br>内容均源自mineos软件的程序代码。</p>
-<h1 id="minos-bran程序子进程介绍"><a href="#minos-bran程序子进程介绍" class="headerlink" title="minos_bran程序子进程介绍"></a>minos_bran程序子进程介绍</h1><p>w最小为0.1mHz，这是w的最小限制<br>l最小值为1<br>选择计算径向振型时，l只计算基阶，即l&#x3D;0的情况。</p>
+<h1 id="minos-bran程序子进程介绍"><a href="#minos-bran程序子进程介绍" class="headerlink" title="minos_bran程序子进程介绍"></a>minos_bran程序子进程介绍</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wmin=max(wmin,0.1d0) ! wmin最小为0.1mhz，此为w最小限制。</span><br><span class="line"></span><br><span class="line">if(lmin.le.0) lmin=1 ! l最小值小于等于0时，l最小值为1</span><br><span class="line">if(jcom.eq.1) then  ! jcom等于1（径向振型）时，l只计算0阶情况</span><br><span class="line">    lmin=0</span><br><span class="line">    lmax=0</span><br><span class="line">end if</span><br></pre></td></tr></table></figure>
+<p>w最小为0.1mHz，这是w的最小限制<br>l最小值为1<br>选择计算径向振型时，l只计算基阶，即l&#x3D;0的情况。</p>
 <h2 id="wtable-iout-ioeig-ifreq"><a href="#wtable-iout-ioeig-ifreq" class="headerlink" title="wtable(iout,ioeig,ifreq)"></a>wtable(iout,ioeig,ifreq)</h2><p>共用区变量：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">  +  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line">   common/shanks/b(46),c(10),dx,step(8),stepf,maxo,in</span><br><span class="line">   common/mtab/we(2),de(2),ke(2),wtry,bm</span><br></pre></td></tr></table></figure>
 <ul>
