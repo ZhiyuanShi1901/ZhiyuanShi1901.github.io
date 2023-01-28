@@ -5943,6 +5943,10 @@ java-1.8.0-openjdk-headless-1.8.0.352.b08-2.el8.x86_64
 <li>det</li>
 <li>ifeif</li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print *,&#x27;eigenfunction file (output):&#x27;</span><br><span class="line">read(5,100) filnam</span><br><span class="line">print *,filnam(1:lnblnk(filnam))</span><br><span class="line">ifreq=1</span><br><span class="line">if(filnam(1:4).eq.&#x27;none&#x27;) ifreq=0 ! 如果filnam前四个字符为none，则ifreq=0</span><br><span class="line">open(3,file=filnam,form=&#x27;unformatted&#x27;,iostat=iret)</span><br></pre></td></tr></table></figure>
+<p>这里说明了ifreq的来历。当本征函数文件（eigenfunction file）名前四个字符为none时，ifreq&#x3D;0，将不再计算本征函数文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(ifeif.eq.0) return</span><br></pre></td></tr></table></figure>
+<p>该语句表明ifreq在detqn子进程中为ifeif参数。当ifreq&#x3D;0时，即本征函数文件名为：’none*’时不再输出本征函数文件（文件为空）。</p>
 <h3 id="rotspl-eps1-wt-iout-ioeig-ifreq-ncall"><a href="#rotspl-eps1-wt-iout-ioeig-ifreq-ncall" class="headerlink" title="rotspl(eps1,wt,iout,ioeig,ifreq,ncall)"></a>rotspl(eps1,wt,iout,ioeig,ifreq,ncall)</h3><p>通过样条差值查找roots</p>
 <p>kchar 1s 2t 3s 4c</p>
 <ul>
