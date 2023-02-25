@@ -1035,6 +1035,8 @@ end do [name]
 <li>双精度 DEXP()</li>
 <li>复数 CEXP()</li>
 </ul>
+<h1 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h1><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program test</span><br><span class="line">COMPLEX, dimension(2):: a</span><br><span class="line">real x</span><br><span class="line"></span><br><span class="line">a(1)=CMPLX(1.0,2.0)</span><br><span class="line">x=aimag(a(1))</span><br><span class="line">print*, x</span><br><span class="line">read *,</span><br><span class="line">end program test</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -1832,6 +1834,8 @@ creat_origin china_cmt_event Syndat
 </code></pre>
 <h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
 </code></pre>
+<h1 id="计算震中距"><a href="#计算震中距" class="headerlink" title="计算震中距"></a>计算震中距</h1><p>参考：<a href="https://blog.csdn.net/weixin_45693832/article/details/118416213">https://blog.csdn.net/weixin_45693832/article/details/118416213</a><br>使用geodetics中的gps2dist_azimuth计算。<br>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from obspy import geodetics</span><br><span class="line">distance=geodetics.gps2dist_azimuth(lat1,lon1,lat2,lon2)</span><br><span class="line">angle=geodetics.kilometers2degrees(distance*0.001)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -6035,6 +6039,26 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
       </categories>
       <tags>
         <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用论文网站</title>
+    <url>/2023/02/25/%E5%B8%B8%E7%94%A8%E8%AE%BA%E6%96%87%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里整理一些常用的论文查找网站。</p>
+<h1 id="汇总型网站-按照推荐顺序排列"><a href="#汇总型网站-按照推荐顺序排列" class="headerlink" title="汇总型网站 (按照推荐顺序排列)"></a>汇总型网站 (按照推荐顺序排列)</h1><p><a href="https://www.researchgate.net/">researchgate</a><br>在这个网站可以找到大部分发表文献的作者，向其提交申请，经过对方同意可以获取文献。并且网站具有交流的功能，可以通过follow等方式关注感兴趣的作者和内容。</p>
+<p><a href="https://www.academia.edu/">academia</a><br>可以直接下载文献。</p>
+<p><a href="https://www.sciencedirect.com/">Sciencedirect</a><br>可以通过机构登录获取文献。</p>
+<p><a href="https://link.springer.com/">springer</a><br>可以通过机构登录获取文献。</p>
+<h1 id="期刊"><a href="#期刊" class="headerlink" title="期刊"></a>期刊</h1><p>此仅放置相应的期刊官网。可以通过google搜索到相应期刊官网，一些文献可以直接下载。</p>
+<p><a href="https://agupubs.onlinelibrary.wiley.com/">American Geophysical Union</a><br>美国地球物理学会。</p>
+<p><a href="https://pubs.geoscienceworld.org/">GeoScienceWorld</a><br>GeoScienceWorld（GSW）是由7家地球科学领域的顶尖协会共同建立的非营利型组织。（词源百度百科）</p>
+<p><a href="https://core.ac.uk/">Core</a><br>CORE is the world’s largest aggregator of open access research papers from repositories and journals. (词源官网)</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>常用网站</tag>
       </tags>
   </entry>
 </search>
