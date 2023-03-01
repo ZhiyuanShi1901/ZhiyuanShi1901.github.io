@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;seismo-learn.org&#x2F;software&#x2F;taup&#x2F;install&#x2F; 官方网站：https:&#x2F;&#x2F;www.seis.sc.edu&#x2F;taup&#x2F; java安装：需要安装java运行环境。 sudo yum install epel-release sudo yum install java-11-openjdk  TauP安装将下载的安装包解压 tar -xvf TauP">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-31T13:02:52.000Z">
-<meta property="article:modified_time" content="2022-12-31T13:06:09.228Z">
+<meta property="article:modified_time" content="2023-02-28T13:10:02.361Z">
 <meta property="article:tag" content="TauP">
 <meta name="twitter:card" content="summary">
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -248,9 +248,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-12-31 21:02:52 / Modified: 21:06:09" itemprop="dateCreated datePublished" datetime="2022-12-31T21:02:52+08:00">2022-12-31</time>
+      <time title="Created: 2022-12-31 21:02:52" itemprop="dateCreated datePublished" datetime="2022-12-31T21:02:52+08:00">2022-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-02-28 21:10:02" itemprop="dateModified" datetime="2023-02-28T21:10:02+08:00">2023-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -289,7 +295,7 @@ mv TauP-2.6.1 ~/opt/
 <pre><code>echo &#39;export PATH=$&#123;HOME&#125;/opt/TauP-2.5.0/bin:$&#123;PATH&#125;&#39; &gt;&gt; ~/.bashrc
 source ~/.bashrc
 </code></pre>
-<p>终端输入taup，出现Taup图形界面即可。</p>
+<p>终端输入taup，出现Taup图形界面即可。<br>注意：此处的Taup版本为2.5.0， 需要修改为对应版本。</p>
 <h1 id="出现过的问题"><a href="#出现过的问题" class="headerlink" title="出现过的问题"></a>出现过的问题</h1><p>如果出现</p>
 <pre><code>Exception in thread &quot;main&quot; java.lang.ArrayIndexOutOfBoundsException: 0
     at edu.sc.seis.TauP.ToolRun.main(ToolRun.java:140)
