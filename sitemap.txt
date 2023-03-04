@@ -1,3 +1,4 @@
+https://zhiyuanshi1901.github.io/2023/01/26/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E5%AE%9E%E8%AE%AD/
 https://zhiyuanshi1901.github.io/2023/03/01/%E5%9C%A8linux%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE/
 https://zhiyuanshi1901.github.io/2023/03/01/Taup%E5%88%9D%E6%8E%A2/
 https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/
@@ -7,7 +8,6 @@ https://zhiyuanshi1901.github.io/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%
 https://zhiyuanshi1901.github.io/2023/02/07/baidu_verify_codeva-0NlQJTBPs1/
 https://zhiyuanshi1901.github.io/2023/02/05/Python-SAC-IO/
 https://zhiyuanshi1901.github.io/2023/01/27/mineos%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90/
-https://zhiyuanshi1901.github.io/2023/01/26/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E5%AE%9E%E8%AE%AD/
 https://zhiyuanshi1901.github.io/2022/12/22/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/
 https://zhiyuanshi1901.github.io/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/
 https://zhiyuanshi1901.github.io/2022/09/15/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E8%AF%AD%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/
