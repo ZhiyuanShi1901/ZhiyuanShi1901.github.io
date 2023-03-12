@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">26</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">27</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,318 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2023/01/03/CMT-ndk%E4%B8%8E%E8%A1%8D%E7%94%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/03/CMT-ndk%E4%B8%8E%E8%A1%8D%E7%94%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">CMT .ndk与衍生数据格式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-03 09:53:18" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-09 10:40:12" itemprop="dateModified" datetime="2023-01-09T10:40:12+08:00">2023-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CMT-ndk格式数据"><a href="#CMT-ndk格式数据" class="headerlink" title="CMT .ndk格式数据"></a>CMT .ndk格式数据</h1><p>原介绍：<a target="_blank" rel="noopener" href="https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/allorder.ndk_explained">https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/allorder.ndk_explained</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>CMT，全称Centroid-Moment-Tensor，是地震震源机制解的<br>这个数据为ASCII格式，共五行，每行80个字符长度。</p>
+<p>数据格式如下：</p>
+<p>示例1（补充了每个参数的含义）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LINE1：</span><br><span class="line">PDE  2005/01/01 01:20:05.4  13.78（纬度）  -88.78（经度） 193.1（震源深度） 5.0（震级mb） 0.0（ms） EL SALVADOR（地理位置）             </span><br><span class="line">LINE2：</span><br><span class="line">C200501010120A（事件名称）   B:  4    4  40（台站数，通道数，最短周期） S: 27   33  50 M:  0    0   0 CMT: 1 TRIHD:  0.6</span><br><span class="line">LINE3：</span><br><span class="line">CENTROID:     -0.3（时间） 0.9  13.76（纬度） 0.06  -89.08（经度） 0.09 162.8（深度） 12.5 FREE（深度类型） S-20050322125201（时间戳）</span><br><span class="line">LINE4：</span><br><span class="line">23（时间指数，*e23）  0.838（Mrr） 0.201（前一个值的标准误差） -0.005（Mtt） 0.231 -0.833（Mpp） 0.270  1.050（Mrt） 0.121 -0.369（Mrp） 0.161  0.044（Mtp） 0.240</span><br><span class="line">LINE5：</span><br><span class="line">V10（版本号）   1.581 56  12  -0.537 23 140  -1.044 24 241（三个特征向量的特征值、plunge和方位角）   1.312   9 29  142（第一个节面的走向，倾角，方位角） 133 72   66 （第二个节面的相关数值）</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PDE  2005/01/01 01:42:24.9   7.29   93.92  30.0 5.1 0.0 NICOBAR ISLANDS, INDIA R</span><br><span class="line">C200501010142A   B: 17   27  40 S: 41   58  50 M:  0    0   0 CMT: 1 TRIHD:  0.7</span><br><span class="line">CENTROID:     -1.1 0.8   7.24 0.04   93.96 0.04  12.0  0.0 BDY  S-20050322125628</span><br><span class="line">23 -1.310 0.212  2.320 0.166 -1.010 0.241  0.013 0.535 -2.570 0.668  1.780 0.151</span><br><span class="line">V10   3.376 16 149   0.611 43  44  -3.987 43 254   3.681 282 48  -23  28 73 -136</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="逐行内容"><a href="#逐行内容" class="headerlink" title="逐行内容"></a>逐行内容</h2><h3 id="第一行：震中数据行"><a href="#第一行：震中数据行" class="headerlink" title="第一行：震中数据行"></a>第一行：震中数据行</h3><p>示例：</p>
+<pre><code>PDE  2005/01/01 01:42:24.9   7.29   93.92  30.0 5.1 0.0 NICOBAR ISLANDS, INDIA R
+</code></pre>
+<ul>
+<li>[1-4]   震中参考地震记录。例如（PDE：USGS位置；ISC：ISC地震记录；SWE：面波位置；[Ekstrom，BSSA，2006]）</li>
+<li>[6-15]  Date of reference event 事件日期</li>
+<li>[17-26] Time of reference event 事件时间</li>
+<li>[28-33] Latitude 纬度</li>
+<li>[35-41] Longitude 经度</li>
+<li>[43-47] Depth 震源深度</li>
+<li>[49-55] Reported magnitudes, usually mb and MS 震级，通常是mb（体波震级）或ms（面波震级）</li>
+<li>[57-80] Geographical location (24 characters) 地理位置，24个字符</li>
+</ul>
+<h3 id="第二行：CMT信息-1"><a href="#第二行：CMT信息-1" class="headerlink" title="第二行：CMT信息 1"></a>第二行：CMT信息 1</h3><p>示例：</p>
+<pre><code>C200501010142A   B: 17   27  40 S: 41   58  50 M:  0    0   0 CMT: 1 TRIHD:  0.7
+</code></pre>
+<ul>
+<li><p>[1-16]  <em>CMT event name. This string is a unique CMT-event identifier. Older<br>  events have 8-character names, current ones have 14-character names.<br>  See (1) below for the naming conventions used.</em><br>  CMT事件名称。独一无二的CMT事件标识符，较老的事件8个字符，最近的是14个字符。note（1）中描述了命名规则。</p>
+</li>
+<li><p>[18-61] <em>Data used in the CMT inversion. Three data types may be used:<br>  Long-period body waves (B), Intermediate-period surface waves (S),<br>  and long-period mantle waves (M). For each data type, three values<br>  are given: the number of stations used, the number of components<br>  used, and the shortest period used.</em><br>  B S M CMT反演使用的数据，三类数据类型：</p>
+<ul>
+<li>B：长周期体波 </li>
+<li>S：中等周期面波</li>
+<li>M：长周期地幔波<br>每一个数据类型有三个数值：台站数，通道数，使用的最短周期</li>
+</ul>
+</li>
+<li><p>[63-68] <em>Type of source inverted for: “CMT: 0” - general moment tensor;<br>  “CMT: 1” - moment tensor with constraint of zero trace (standard);<br>  “CMT: 2” - double-couple source.</em><br>  反转源类型： </p>
+<ul>
+<li>0：一般矩张量</li>
+<li>1：具有零迹约束的矩张量？</li>
+<li>2：双力偶震源</li>
+</ul>
+</li>
+<li><p>[70-80] <em>Type and duration of moment-rate function assumed in the inversion.<br>  “TRIHD” indicates a triangular moment-rate function, “BOXHD” indicates<br>  a boxcar moment-rate function. The value given is half the duration<br>  of the moment-rate function. This value is assumed in the inversion,<br>  following a standard scaling relationship (see note (2) below),<br>  and is not derived from the analysis.</em><br>  反演中假设的矩率函数的类型和持续时间。</p>
+<ul>
+<li>“TRIHD”：表示三角形矩速率函数，</li>
+<li>“BOXHD”：表示boxcar矩速率函数。给定的值是矩率函数持续时间的一半。该值在反演中按照标准缩放关系（见下面的note（2））假设，而不是从分析中得出的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第三行：CMT信息-2"><a href="#第三行：CMT信息-2" class="headerlink" title="第三行：CMT信息 2"></a>第三行：CMT信息 2</h3><p>示例：</p>
+<pre><code>CENTROID:     -1.1 0.8   7.24 0.04   93.96 0.04  12.0  0.0 BDY  S-20050322125628
+</code></pre>
+<ul>
+<li><p>[1-58]  <em>Centroid parameters determined in the inversion. Centroid time, given<br>  with respect to the reference time, centroid latitude, centroid<br>  longitude, and centroid depth. The value of each variable is followed<br>  by its estimated standard error. See note (3) below for cases in<br>  which the hypocentral coordinates are held fixed.</em><br>  反演中确定的质心参数。质心时间，相对于参考时间、质心纬度、质心经度和质心深度给出。每个变量的值后跟其估计的标准误差。关于次中心坐标固定的情况，见note（3）。例如第一个参数是2.9,则在第一行的时间基础上加2.9s，如果有负号就是减2.9s。</p>
+</li>
+<li><p>[60-63] <em>Type of depth. “FREE” indicates that the depth was a result of the<br>  inversion; “FIX “ that the depth was fixed and not inverted for;<br>  “BDY “ that the depth was fixed based on modeling of broad-band<br>  P waveforms.</em><br>  深度类型：</p>
+<ul>
+<li>FREE：深度是反演的结果</li>
+<li>FIX：深度经过校正，没有经过反转？</li>
+<li>BDY：深度经过模拟宽频P波校正</li>
+</ul>
+</li>
+<li><p>[65-80] <em>Timestamp. This 16-character string identifies the type of analysis that<br>  led to the given CMT results and, for recent events, the date and<br>  time of the analysis. This is useful to distinguish Quick CMTs (“Q-“),<br>  calculated within hours of an event, from Standard CMTs (“S-“), which<br>  are calculated later. The format for this string should not be<br>  considered fixed.</em><br>  时间戳。16个字符长度的字符串，标识导致给定 CMT 结果的分析类型，以及分析的日期和时间（对于最近事件）。用来区分事件发生后小时内计算的快速CMTs（“Q-”），稍后计算的标准CMTs（“S-”）。字符串的格式不固定。</p>
+</li>
+</ul>
+<h3 id="第四行：CMT信息-3"><a href="#第四行：CMT信息-3" class="headerlink" title="第四行：CMT信息 3"></a>第四行：CMT信息 3</h3><p>示例：</p>
+<pre><code>23 -1.310 0.212  2.320 0.166 -1.010 0.241  0.013 0.535 -2.570 0.668  1.780 0.151
+</code></pre>
+<ul>
+<li><p>[1-2]   <em>The exponent for all following moment values. For example, if the<br>  exponent is given as 24, the moment values that follow, expressed in<br>  dyne-cm, should be multiplied by 10**24.</em><br>  所有后续时刻值的指数。例如，如果指数为 24，则后面的矩值（以 dyne-cm 表示）应乘以 10**24。</p>
+</li>
+<li><p>[3-80]  <em>The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where r<br>  is up, t is south, and p is east. See Aki and Richards for conversions<br>  to other coordinate systems. The value of each moment-tensor<br>element is followed by its estimated standard error. See note (4)<br>below for cases in which some elements are constrained in the inversion.</em><br>  六个矩张量元素：Mrr, Mtt, Mpp, Mrt, Mrp, Mtp</p>
+<ul>
+<li><p>r：up</p>
+</li>
+<li><p>t：south</p>
+</li>
+<li><p>p：east</p>
+<p>每个矩张量元素的值后面跟着他的标准误差。有关某些元素在反转中受到限制的情况，请参见note（4）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="第五行：CMT信息-4"><a href="#第五行：CMT信息-4" class="headerlink" title="第五行：CMT信息 4"></a>第五行：CMT信息 4</h3><p>示例：</p>
+<pre><code>V10   3.376 16 149   0.611 43  44  -3.987 43 254   3.681 282 48  -23  28 73 -136
+</code></pre>
+<ul>
+<li><p>[1-3]   <em>Version code. This three-character string is used to track the version<br>  of the program that generates the “ndk” file.</em><br>  版本号，三个字符的字符串用于记录获取ndk文件的程序版本号。</p>
+</li>
+<li><p>[4-48]  <em>Moment tensor expressed in its principal-axis system: eigenvalue,<br>  plunge, and azimuth of the three eigenvectors. The eigenvalue should be<br>  multiplied by 1.0E(exponent) as given on line four.</em><br>  在其主轴系统中表示的矩张量：三个特征向量的特征值、plunge和方位角。特征值应乘以 10**（指数），如第四行所示。</p>
+</li>
+<li><p>[50-56] <em>Scalar moment, to be multiplied by 1.0E(exponent) as given on line four.</em></p>
+<p>  标量力矩，乘10**（第四行的指数）</p>
+</li>
+<li><p>[58-80] <em>Strike, dip, and rake for first nodal plane of the best-double-couple<br>  mechanism, repeated for the second nodal plane. The angles are defined<br>  as in Aki and Richards.</em><br>  最佳双耦合机制解第一个节面的走向，倾角，滑动角，后三个是第二个界面的相关数据。角度定义与Aki和Richards相同。</p>
+</li>
+</ul>
+<h2 id="Notes-additional-information"><a href="#Notes-additional-information" class="headerlink" title="Notes (additional information):"></a>Notes (additional information):</h2><h3 id="NOTE-1"><a href="#NOTE-1" class="headerlink" title="NOTE 1"></a>NOTE 1</h3><p><em>CMT event names follow two conventions. Older events use an 8-character<br>name with the structure XMMDDYYZ, where MMDDYY represents the date of<br>the event, Z is a letter (A-Z followed by a-z) distinguishing different<br>events on the same day, and X is a letter (B,M,Z,C,…) used to identify<br>the types of data used in the inversion. Newer events use 14-character event<br>names with the structure XYYYYMMDDhhmmZ, in which the time is given to greater<br>precision, and the initial letter is limited to four possibilities: B - body<br>waves only, S - surface waves only, M - mantle waves only, C - a combination<br>of data types.</em></p>
+<ul>
+<li><p>较老的命名规则：8个字符，XMMDDYYZ</p>
+<ul>
+<li>MMDDYY：事件日期</li>
+<li>X：用于标记反演中使用的数据类型。(B,M,Z,C,…) </li>
+<li>Z：区分同一天不同的地震事件(A-Z 之后是 a-z)</li>
+</ul>
+</li>
+<li><p>新的命名规则：14个字符，XYYYYMMDDhhmmZ</p>
+<p>  2005年1月1日开始使用新的命名规则。</p>
+<p>  事件时间更加精准，首字母X只有四种：</p>
+<ul>
+<li>B：只有体波</li>
+<li>S：只有面波</li>
+<li>M：只有地幔波</li>
+<li>C：综合数据类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="NOTE-2"><a href="#NOTE-2" class="headerlink" title="NOTE 2"></a>NOTE 2</h3><p><em>The source duration is generally estimated using an empirically determined<br>relationship such that the duration increases as the cube root of the scalar<br>moment. Specifically, we currently use a relationship where the half duration<br>for an event with moment 1E24 is 1.05 seconds, and for an event with moment<br>1E27 is 10.5 seconds.</em></p>
+<p>源持续时间通常使用经验确定的关系来估计，使得持续时间随着标量矩的立方根而增加。<br>具体来说，我们目前使用的关系是，矩为 10<strong>24 的事件的半持续时间为 1.05 秒，<br>矩为 10</strong>27 的事件的半持续时间为 10.5 秒。</p>
+<h3 id="NOTE-3"><a href="#NOTE-3" class="headerlink" title="NOTE 3"></a>NOTE 3</h3><p><em>For some small earthquakes for which the azimuthal distribution of stations<br>with useful seismograms is poor, we constrain the epicenter of the event to<br>the reference location. This is reflected in the catalog by standard<br>errors of 0.0 for both the centroid latitude and the centroid longitude.</em></p>
+<p>对于一些具有有用地震图的台站方位分布较差的小地震，我们将事件的震中限制在参考位置。<br>这反映在目录中，质心纬度和质心经度的标准误差均为 0.0。</p>
+<h3 id="NOTE-4"><a href="#NOTE-4" class="headerlink" title="NOTE 4"></a>NOTE 4</h3><p><em>For some very shallow earthquakes, the CMT inversion does not well<br>constrain the vertical-dip-slip components of the moment tensor (Mrt and Mrp),<br>and we constrain these components to zero in the inversion. The standard<br>errors for Mrt and Mrp are set to zero in this case.</em></p>
+<p>对于一些很浅的地震，CMT 反演并没有很好地约束矩张量的垂直倾滑分量（Mrt 和 Mrp），<br>我们在反演中将这些分量约束为零。在这种情况下，Mrt 和 Mrp 的标准误差设置为零。</p>
+<h1 id="MINEOS-CMT数据格式"><a href="#MINEOS-CMT数据格式" class="headerlink" title="MINEOS CMT数据格式"></a>MINEOS CMT数据格式</h1><h2 id="官方内容"><a href="#官方内容" class="headerlink" title="官方内容"></a>官方内容</h2><p><em>There is a single event file called china_cmt_event.txt that contains Harvard CMT infor-mation for an event in Southern China.</em></p>
+<p>单个事件文件：包含单个中国南部地震事件的 Harvard CMT 信息</p>
+<p><em>The third input file is the file china_cmt_evt, which is a single-lined listing containing the coordinates and event parameters of an earthquake in China. The moment tensor is not used by this program, but by the program syndat which follows.</em></p>
+<p>单行列表包含坐标和事件参数。矩张量不由这个程序（green）使用，而是在程序syndat中使用</p>
+<p><em>This example will choose modes only between frequencies of 0 and 166 mHz (i.e., periods greater than 6 sec). It will produce Green’s functions that are 8000 samples long. The time sampling specified in the china_cmt_evt file is 1 sec, so this is a time series length of a little over two hours. In many cases, both the minor and major arc arrivals can be seen.</em><br><em>The program will output a .wfdisc relation in the database called green; that is, a file called green.wfdisc which points to the waveforms on disk in a default location.</em></p>
+<p>此示例将仅在 0 和 166 mHz 的频率（即大于 6 秒的周期）之间选择模式。它将产生 8000 个样本长的 Green 函数。china_cmt_evt文件中指定的时间采样为 1 秒，因此这是两个多小时的时间序列长度。在许多情况下，可以看到小弧和大弧到达。<br>该程序将在数据库中输出一个名为绿色的 .wfdisc 关系;也就是说，一个名为 green.wfdisc 的文件指向默认位置的磁盘上的波形。</p>
+<p><em>Figure B.1: Station BJT. Comparison with Herrmann’s plane code. Three-component synthetic seismogram<br>for the fundamental spheroidal and toroidal modes. Mineos seismogram is plotted in red, Herrmann’s in<br>blue. Earthquake is 25.39N, 101.40E (Southern China), depth is 33 km. Model is PREM, in which the water<br>layer is filled with the upper crust’s velocities. The crust has only two layers.</em></p>
+<p>这一栏中包含了事件信息，得知事件的坐标和发震深度。</p>
+<h2 id="格式内容"><a href="#格式内容" class="headerlink" title="格式内容"></a>格式内容</h2><p>harward CMT保存的.ndk格式的cmt数据:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PDE  2000/01/14 23:37:07.9  25.61  101.06  33.0 5.4 5.9 YUNNAN PROVINCE, CHINA  </span><br><span class="line">B011400F         B: 57  127  45 S:  0    0   0 M:  0    0   0 CMT: 1 BOXHD:  2.3</span><br><span class="line">CENTROID:      2.9 0.2  25.39 0.02  101.40 0.02  33.0  0.0 FIX  O-00000000000000</span><br><span class="line">24 -0.600 0.095 -6.289 0.121  6.888 0.132 -1.854 0.256  0.118 0.239 -4.726 0.118</span><br><span class="line">V10   8.460  4 252  -0.260 76 143  -8.200 13 343   8.330  27 78   -6 118 84 -168</span><br></pre></td></tr></table></figure>
+
+<p>china_cmt_event的数据格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F 2000  14 23 37 10.80 25.39  101.40  33.00 1.0 -2.3 8.33e24 -0.60  -6.29   6.89  -1.85   0.12  -4.73 1.0e24 27 78   -6 118 84 -168</span><br></pre></td></tr></table></figure>
+
+<p>格式内容（补充了参数含义）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F（事件编号evid） 2000（年份）  14（一年的第几天） 23（时） 37（分） 10.80（centroid秒） 25.39（CENTROID纬度）  101.40（CENTROID经度）  33.00（CENTROID震源深度） 1.0（CMT） -2.3（BOXHD但是原本是正值，这里是负值） 8.33e24（） -0.60（Mrr）  -6.29(Mpp)   6.89(Mtt)  -1.85(Mrt)   0.12(Mrp)  -4.73(Mtp) 1.0e24（） 27 78   -6 118 84 -168（这六个数是第一个节面、第二个节面的走向、倾向、方位角）</span><br></pre></td></tr></table></figure>
+
+<p>以下[ ]内为这些数据的字节数，如果字节数不足则在前方补充空格。实际编辑使用空格隔开每个参数即可，不必限制字节。</p>
+<p><strong>注：由于新版事件编号为14个字符长度，因此在MINEOS导入过程中事件编号只能导入前8个字符。具体影响未知。</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字节位置</th>
+<th align="center">含义</th>
+<th align="center">字节位置</th>
+<th align="center">含义</th>
+<th align="center">字节位置</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[1-8]</td>
+<td align="center">事件编号evid</td>
+<td align="center">[45-50]</td>
+<td align="center">centroid震源深度</td>
+<td align="center">[96-101]</td>
+<td align="center">Mrp(Mrφ)</td>
+</tr>
+<tr>
+<td align="center">[10-13]</td>
+<td align="center">年份</td>
+<td align="center">[52-54]</td>
+<td align="center">格林函数和地震图的时间步长，单位s</td>
+<td align="center">[103-108]</td>
+<td align="center">Mtp(Mθφ)</td>
+</tr>
+<tr>
+<td align="center">[15-17]</td>
+<td align="center">一年第几天</td>
+<td align="center">[56-59]</td>
+<td align="center">halfd source half-time duration 单位s</td>
+<td align="center">[110-115]</td>
+<td align="center">Mn 张量分量的归一化系数</td>
+</tr>
+<tr>
+<td align="center">[19-20]</td>
+<td align="center">时 （事件发生时间）</td>
+<td align="center">[61-67]</td>
+<td align="center">M0，标量张量矩，单位dyn*cm</td>
+<td align="center">[117-118]</td>
+<td align="center">第一个节面的走向strike</td>
+</tr>
+<tr>
+<td align="center">[22-23]</td>
+<td align="center">分</td>
+<td align="center">[69-73]</td>
+<td align="center">Mrr</td>
+<td align="center">[120-121]</td>
+<td align="center">第一个节面的倾向dip</td>
+</tr>
+<tr>
+<td align="center">[25-29]</td>
+<td align="center">centroid秒，小数格式</td>
+<td align="center">[75-80]</td>
+<td align="center">Mtt (Mθθ)</td>
+<td align="center">[123-126]</td>
+<td align="center">第一个节面的滑动角 slip</td>
+</tr>
+<tr>
+<td align="center">[31-35]</td>
+<td align="center">centroid纬度</td>
+<td align="center">[82-87]</td>
+<td align="center">Mpp  (Mφφ)</td>
+<td align="center">[128-130]</td>
+<td align="center">第二个节面的走向</td>
+</tr>
+<tr>
+<td align="center">[37-43]</td>
+<td align="center">centroid经度</td>
+<td align="center">[89-94]</td>
+<td align="center">Mrt (Mrθ)</td>
+<td align="center">[132-133]</td>
+<td align="center">第二个节面的倾向</td>
+</tr>
+<tr>
+<td align="center">******</td>
+<td align="center">*****</td>
+<td align="center">*******</td>
+<td align="center">******</td>
+<td align="center">[135-138]</td>
+<td align="center">第二个节面的滑动角</td>
+</tr>
+</tbody></table>
+<p>Mrr, Mtt, Mpp, Mrt, Mrp, Mtp 通过Mn归一化的矩张量分量。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2692,224 +3004,6 @@ Kernel Offset: ........
 <pre><code>netsh winsock reset
 </code></pre>
 <p>即可解决。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Python 库函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-27 10:01:21" itemprop="dateCreated datePublished" datetime="2022-11-27T10:01:21+08:00">2022-11-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 16:08:06" itemprop="dateModified" datetime="2022-12-05T16:08:06+08:00">2022-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="自带函数"><a href="#自带函数" class="headerlink" title="自带函数"></a>自带函数</h1><h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><pre><code>zip([一个或者多个迭代器,...])
-</code></pre>
-<p>打包为元组。<br>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [1, 2, 3]</span><br><span class="line">b = [4, 5, 6]</span><br><span class="line">p = zip(a,b)</span><br><span class="line">&gt;&gt; p = [(1,4), (2,5),(3,6)]</span><br><span class="line">q = zip(*p)</span><br><span class="line">&gt;&gt; q = [(1,2,3),(4,5,6)]</span><br></pre></td></tr></table></figure>
-
-<h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h2 id="std"><a href="#std" class="headerlink" title="std"></a>std</h2><pre><code>numpy.std(a, axis=None)
-</code></pre>
-<ul>
-<li>a:计算a的标准差</li>
-<li>axis: <ul>
-<li>0 计算每一列的标准差</li>
-<li>1 计算每一行的标准差</li>
-<li>None 计算全局标准差</li>
-</ul>
-</li>
-</ul>
-<h2 id="digitize"><a href="#digitize" class="headerlink" title="digitize"></a>digitize</h2><pre><code>numpy.digitize(x, bins, right=False)
-</code></pre>
-<p>返回一个和x相同大小的列表，返回值中的元素对应x元素落在bins区间的索引号。</p>
-<h2 id="argmax-返回列表的最大值索引值"><a href="#argmax-返回列表的最大值索引值" class="headerlink" title="argmax 返回列表的最大值索引值"></a>argmax 返回列表的最大值索引值</h2><h2 id="random-随机数"><a href="#random-随机数" class="headerlink" title="random 随机数"></a>random 随机数</h2><h3 id="choice"><a href="#choice" class="headerlink" title="choice"></a>choice</h3><p>choice(a, size&#x3D;None, replace&#x3D;True, p&#x3D;None)</p>
-<ul>
-<li>a 序列</li>
-<li>size 采样的数量，可以是整数，可以是tuple(m，n，k)</li>
-<li>replace 采样的样本是否需要更换。False时样本不会重复。</li>
-<li>p 一维数组，指定a中每个元素采样的概率。默认相同</li>
-</ul>
-<h1 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h1><h2 id="math"><a href="#math" class="headerlink" title="math"></a>math</h2><h2 id="clip-by-global-norm"><a href="#clip-by-global-norm" class="headerlink" title="clip_by_global_norm"></a>clip_by_global_norm</h2><pre><code>tf.clip_by_global_norm( t_list, clip_norm, use_norm=None, name=None)
-</code></pre>
-<ul>
-<li>t_list 元组、列表或者混合张量</li>
-<li>clip_norm 一个标量，大于0。剪裁率</li>
-<li>use_norm 浮点数标量<br>给定张量 t_list 的元组或列表，以及裁剪率 clip_norm，此操作返回裁剪张量列表 list_clipped 和 t_list<br>中所有张量的全局范数 (global_norm)。或者，如果您已经计算了 t_list 的全局范数，则可以使用 use_norm 指定全局范数。</li>
-</ul>
-<h3 id="reduce-mean"><a href="#reduce-mean" class="headerlink" title="reduce_mean"></a>reduce_mean</h3><pre><code>tf.math.reduce_mean(input_tensor, axis=None, keepdims=False, name=None)
-</code></pre>
-<ul>
-<li>input_tensor 输入的张量</li>
-<li>axis <ul>
-<li>缺省，则输出的值为张量所有值的平均值，为一个数字。</li>
-<li>0，输出一个向量，沿着纵向取平均值</li>
-<li>1，沿着横向取平均值</li>
-</ul>
-</li>
-<li>keepdims true表示保留长度为1的缩减维度。</li>
-</ul>
-<h3 id="reduce-sum"><a href="#reduce-sum" class="headerlink" title="reduce_sum"></a>reduce_sum</h3><pre><code>tf.math.reduce_sum(input_tensor, axis=None, keepdims=False, name=None)
-</code></pre>
-<p>输入与mean相同。</p>
-<ul>
-<li>axis <ul>
-<li>缺省，表示张量的所有值相加</li>
-<li>0，纵向相加</li>
-<li>1，横向相加，返回横向量。</li>
-</ul>
-</li>
-<li>keepdims 为True时，且axis为1，返回列向量</li>
-</ul>
-<h2 id="squeeze"><a href="#squeeze" class="headerlink" title="squeeze"></a>squeeze</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf/squeeze">https://www.tensorflow.org/api_docs/python/tf/squeeze</a></p>
-<pre><code>tf.squeeze(input, axis=None, name=None)
-</code></pre>
-<p>给定一个输入张量。默认移除数量为1的维度。如果axis有值，则移除axis列表对应索引的值。</p>
-<ul>
-<li>input 输入，是一个张量。</li>
-<li>axis 一个列表，指的是张量的索引。</li>
-</ul>
-<h2 id="kereas"><a href="#kereas" class="headerlink" title="kereas"></a>kereas</h2><h3 id="layers"><a href="#layers" class="headerlink" title="layers"></a>layers</h3><h4 id="Dense"><a href="#Dense" class="headerlink" title="Dense"></a>Dense</h4><pre><code>tf.keras.layers.Dense(
-    units,
-    activation=None,
-    use_bias=True,
-    kernel_initializer=&#39;glorot_uniform&#39;,
-    bias_initializer=&#39;zeros&#39;,
-    kernel_regularizer=None,
-    bias_regularizer=None,
-    activity_regularizer=None,
-    kernel_constraint=None,
-    bias_constraint=None,
-    **kwargs
-)
-</code></pre>
-<ul>
-<li>units 正整数，输出的维度</li>
-<li>activation 激活函数<ul>
-<li>sigmoid</li>
-<li>relu</li>
-<li>tf.nn.relu </li>
-<li>tf.nn.softmax</li>
-</ul>
-</li>
-<li>use_bias 布尔型 层是否使用bias向量<br>目前暂时只需要前两个参数。</li>
-</ul>
-<h4 id="Flatten"><a href="#Flatten" class="headerlink" title="Flatten"></a>Flatten</h4><pre><code>tf.keras.layers.Flatten()
-</code></pre>
-<p>将2D层转化为1D向量，只是重排向量。</p>
-<h4 id="Conv2D-定义卷积层"><a href="#Conv2D-定义卷积层" class="headerlink" title="Conv2D 定义卷积层"></a>Conv2D 定义卷积层</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.Conv2D(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides=(1, 1),</span><br><span class="line">    padding=&#x27;valid&#x27;,</span><br><span class="line">    data_format=None,</span><br><span class="line">    dilation_rate=(1, 1),</span><br><span class="line">    groups=1,</span><br><span class="line">    activation=None,</span><br><span class="line">    use_bias=True,</span><br><span class="line">    kernel_initializer=&#x27;glorot_uniform&#x27;,</span><br><span class="line">    bias_initializer=&#x27;zeros&#x27;,</span><br><span class="line">    kernel_regularizer=None,</span><br><span class="line">    bias_regularizer=None,</span><br><span class="line">    activity_regularizer=None,</span><br><span class="line">    kernel_constraint=None,</span><br><span class="line">    bias_constraint=None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>filters 输出的维度。即输出的层的数量。</li>
-<li>kernel_size 核的大小。可以是整数或者矩阵。</li>
-<li>padding 是否填充0。指在输入层的周围填充0。<code>vaild</code>表示不填充，<code>same</code>表示填充一圈0。</li>
-</ul>
-<h4 id="MaxPool2D-定义最大池化层"><a href="#MaxPool2D-定义最大池化层" class="headerlink" title="MaxPool2D 定义最大池化层"></a>MaxPool2D 定义最大池化层</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.MaxPool2D(</span><br><span class="line">    pool_size=(2, 2),</span><br><span class="line">    strides=None,</span><br><span class="line">    padding=&#x27;valid&#x27;,</span><br><span class="line">    data_format=None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>pool_size 池化核大小</li>
-<li>strides 池化核移动的步长</li>
-</ul>
-<h3 id="optimizers"><a href="#optimizers" class="headerlink" title="optimizers"></a>optimizers</h3><h4 id="SGD-随机梯度下降法"><a href="#SGD-随机梯度下降法" class="headerlink" title="SGD 随机梯度下降法"></a>SGD 随机梯度下降法</h4><pre><code>tf.keras.optimizers.SGD(learning_rate = 0.1)
-</code></pre>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><h4 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h4><p>compile</p>
-<h4 id="fit-测试拟合程度"><a href="#fit-测试拟合程度" class="headerlink" title="fit 测试拟合程度"></a>fit 测试拟合程度</h4><h4 id="evaluate"><a href="#evaluate" class="headerlink" title="evaluate"></a>evaluate</h4><pre><code>test_loss, test_acc = model.evaluate(x=test_images, y=test_labels)
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">evaluate(</span><br><span class="line">    x=None,</span><br><span class="line">    y=None,</span><br><span class="line">    batch_size=None,</span><br><span class="line">    verbose=&#x27;auto&#x27;,</span><br><span class="line">    sample_weight=None,</span><br><span class="line">    steps=None,</span><br><span class="line">    callbacks=None,</span><br><span class="line">    max_queue_size=10,</span><br><span class="line">    workers=1,</span><br><span class="line">    use_multiprocessing=False,</span><br><span class="line">    return_dict=False,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>x 输入数据</li>
-<li>y 目标数据</li>
-</ul>
-<h4 id="predict"><a href="#predict" class="headerlink" title="predict"></a>predict</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">predict(</span><br><span class="line">    x,</span><br><span class="line">    batch_size=None,</span><br><span class="line">    verbose=&#x27;auto&#x27;,</span><br><span class="line">    steps=None,</span><br><span class="line">    callbacks=None,</span><br><span class="line">    max_queue_size=10,</span><br><span class="line">    workers=1,</span><br><span class="line">    use_multiprocessing=False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>x 输入的采样点，可以是：<ul>
-<li>numpy矩阵，或者矩阵列表</li>
-<li>tensorflow张量，或者张量列表</li>
-<li>tf.data 数据集</li>
-</ul>
-</li>
-</ul>
-<h1 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h1><p>Python标准模块，提供了一些常用的高阶函数，也就是用于处理其它函数的特殊函数。</p>
-<h2 id="partial"><a href="#partial" class="headerlink" title="partial"></a>partial</h2><pre><code>functools.partial(func[, *args][, **keywords])
-</code></pre>
-<p>将对象的缺省默认值修改为args中的值。<br>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int(&#x27;10&#x27;) # 输出为10</span><br><span class="line">int2 = partial(int, base=2)  # base就是keywords</span><br><span class="line">int2(&#x27;10&#x27;) # 输出为2</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>func 可调用的对象或者函数。调用partial对象会转为使用新的参数和关键字参数调用func。</li>
-<li>args 最左边的位置参数作为优先位置参数提供给partial对象调用。</li>
-<li>keywords 对象被调用时提供关键字参数</li>
-</ul>
 
       
     </div>

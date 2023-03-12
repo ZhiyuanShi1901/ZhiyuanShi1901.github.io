@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">26</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">27</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,224 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Python 库函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-27 10:01:21" itemprop="dateCreated datePublished" datetime="2022-11-27T10:01:21+08:00">2022-11-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-05 16:08:06" itemprop="dateModified" datetime="2022-12-05T16:08:06+08:00">2022-12-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="自带函数"><a href="#自带函数" class="headerlink" title="自带函数"></a>自带函数</h1><h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><pre><code>zip([一个或者多个迭代器,...])
+</code></pre>
+<p>打包为元组。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [1, 2, 3]</span><br><span class="line">b = [4, 5, 6]</span><br><span class="line">p = zip(a,b)</span><br><span class="line">&gt;&gt; p = [(1,4), (2,5),(3,6)]</span><br><span class="line">q = zip(*p)</span><br><span class="line">&gt;&gt; q = [(1,2,3),(4,5,6)]</span><br></pre></td></tr></table></figure>
+
+<h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h2 id="std"><a href="#std" class="headerlink" title="std"></a>std</h2><pre><code>numpy.std(a, axis=None)
+</code></pre>
+<ul>
+<li>a:计算a的标准差</li>
+<li>axis: <ul>
+<li>0 计算每一列的标准差</li>
+<li>1 计算每一行的标准差</li>
+<li>None 计算全局标准差</li>
+</ul>
+</li>
+</ul>
+<h2 id="digitize"><a href="#digitize" class="headerlink" title="digitize"></a>digitize</h2><pre><code>numpy.digitize(x, bins, right=False)
+</code></pre>
+<p>返回一个和x相同大小的列表，返回值中的元素对应x元素落在bins区间的索引号。</p>
+<h2 id="argmax-返回列表的最大值索引值"><a href="#argmax-返回列表的最大值索引值" class="headerlink" title="argmax 返回列表的最大值索引值"></a>argmax 返回列表的最大值索引值</h2><h2 id="random-随机数"><a href="#random-随机数" class="headerlink" title="random 随机数"></a>random 随机数</h2><h3 id="choice"><a href="#choice" class="headerlink" title="choice"></a>choice</h3><p>choice(a, size&#x3D;None, replace&#x3D;True, p&#x3D;None)</p>
+<ul>
+<li>a 序列</li>
+<li>size 采样的数量，可以是整数，可以是tuple(m，n，k)</li>
+<li>replace 采样的样本是否需要更换。False时样本不会重复。</li>
+<li>p 一维数组，指定a中每个元素采样的概率。默认相同</li>
+</ul>
+<h1 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h1><h2 id="math"><a href="#math" class="headerlink" title="math"></a>math</h2><h2 id="clip-by-global-norm"><a href="#clip-by-global-norm" class="headerlink" title="clip_by_global_norm"></a>clip_by_global_norm</h2><pre><code>tf.clip_by_global_norm( t_list, clip_norm, use_norm=None, name=None)
+</code></pre>
+<ul>
+<li>t_list 元组、列表或者混合张量</li>
+<li>clip_norm 一个标量，大于0。剪裁率</li>
+<li>use_norm 浮点数标量<br>给定张量 t_list 的元组或列表，以及裁剪率 clip_norm，此操作返回裁剪张量列表 list_clipped 和 t_list<br>中所有张量的全局范数 (global_norm)。或者，如果您已经计算了 t_list 的全局范数，则可以使用 use_norm 指定全局范数。</li>
+</ul>
+<h3 id="reduce-mean"><a href="#reduce-mean" class="headerlink" title="reduce_mean"></a>reduce_mean</h3><pre><code>tf.math.reduce_mean(input_tensor, axis=None, keepdims=False, name=None)
+</code></pre>
+<ul>
+<li>input_tensor 输入的张量</li>
+<li>axis <ul>
+<li>缺省，则输出的值为张量所有值的平均值，为一个数字。</li>
+<li>0，输出一个向量，沿着纵向取平均值</li>
+<li>1，沿着横向取平均值</li>
+</ul>
+</li>
+<li>keepdims true表示保留长度为1的缩减维度。</li>
+</ul>
+<h3 id="reduce-sum"><a href="#reduce-sum" class="headerlink" title="reduce_sum"></a>reduce_sum</h3><pre><code>tf.math.reduce_sum(input_tensor, axis=None, keepdims=False, name=None)
+</code></pre>
+<p>输入与mean相同。</p>
+<ul>
+<li>axis <ul>
+<li>缺省，表示张量的所有值相加</li>
+<li>0，纵向相加</li>
+<li>1，横向相加，返回横向量。</li>
+</ul>
+</li>
+<li>keepdims 为True时，且axis为1，返回列向量</li>
+</ul>
+<h2 id="squeeze"><a href="#squeeze" class="headerlink" title="squeeze"></a>squeeze</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf/squeeze">https://www.tensorflow.org/api_docs/python/tf/squeeze</a></p>
+<pre><code>tf.squeeze(input, axis=None, name=None)
+</code></pre>
+<p>给定一个输入张量。默认移除数量为1的维度。如果axis有值，则移除axis列表对应索引的值。</p>
+<ul>
+<li>input 输入，是一个张量。</li>
+<li>axis 一个列表，指的是张量的索引。</li>
+</ul>
+<h2 id="kereas"><a href="#kereas" class="headerlink" title="kereas"></a>kereas</h2><h3 id="layers"><a href="#layers" class="headerlink" title="layers"></a>layers</h3><h4 id="Dense"><a href="#Dense" class="headerlink" title="Dense"></a>Dense</h4><pre><code>tf.keras.layers.Dense(
+    units,
+    activation=None,
+    use_bias=True,
+    kernel_initializer=&#39;glorot_uniform&#39;,
+    bias_initializer=&#39;zeros&#39;,
+    kernel_regularizer=None,
+    bias_regularizer=None,
+    activity_regularizer=None,
+    kernel_constraint=None,
+    bias_constraint=None,
+    **kwargs
+)
+</code></pre>
+<ul>
+<li>units 正整数，输出的维度</li>
+<li>activation 激活函数<ul>
+<li>sigmoid</li>
+<li>relu</li>
+<li>tf.nn.relu </li>
+<li>tf.nn.softmax</li>
+</ul>
+</li>
+<li>use_bias 布尔型 层是否使用bias向量<br>目前暂时只需要前两个参数。</li>
+</ul>
+<h4 id="Flatten"><a href="#Flatten" class="headerlink" title="Flatten"></a>Flatten</h4><pre><code>tf.keras.layers.Flatten()
+</code></pre>
+<p>将2D层转化为1D向量，只是重排向量。</p>
+<h4 id="Conv2D-定义卷积层"><a href="#Conv2D-定义卷积层" class="headerlink" title="Conv2D 定义卷积层"></a>Conv2D 定义卷积层</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.Conv2D(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides=(1, 1),</span><br><span class="line">    padding=&#x27;valid&#x27;,</span><br><span class="line">    data_format=None,</span><br><span class="line">    dilation_rate=(1, 1),</span><br><span class="line">    groups=1,</span><br><span class="line">    activation=None,</span><br><span class="line">    use_bias=True,</span><br><span class="line">    kernel_initializer=&#x27;glorot_uniform&#x27;,</span><br><span class="line">    bias_initializer=&#x27;zeros&#x27;,</span><br><span class="line">    kernel_regularizer=None,</span><br><span class="line">    bias_regularizer=None,</span><br><span class="line">    activity_regularizer=None,</span><br><span class="line">    kernel_constraint=None,</span><br><span class="line">    bias_constraint=None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>filters 输出的维度。即输出的层的数量。</li>
+<li>kernel_size 核的大小。可以是整数或者矩阵。</li>
+<li>padding 是否填充0。指在输入层的周围填充0。<code>vaild</code>表示不填充，<code>same</code>表示填充一圈0。</li>
+</ul>
+<h4 id="MaxPool2D-定义最大池化层"><a href="#MaxPool2D-定义最大池化层" class="headerlink" title="MaxPool2D 定义最大池化层"></a>MaxPool2D 定义最大池化层</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.MaxPool2D(</span><br><span class="line">    pool_size=(2, 2),</span><br><span class="line">    strides=None,</span><br><span class="line">    padding=&#x27;valid&#x27;,</span><br><span class="line">    data_format=None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>pool_size 池化核大小</li>
+<li>strides 池化核移动的步长</li>
+</ul>
+<h3 id="optimizers"><a href="#optimizers" class="headerlink" title="optimizers"></a>optimizers</h3><h4 id="SGD-随机梯度下降法"><a href="#SGD-随机梯度下降法" class="headerlink" title="SGD 随机梯度下降法"></a>SGD 随机梯度下降法</h4><pre><code>tf.keras.optimizers.SGD(learning_rate = 0.1)
+</code></pre>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><h4 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h4><p>compile</p>
+<h4 id="fit-测试拟合程度"><a href="#fit-测试拟合程度" class="headerlink" title="fit 测试拟合程度"></a>fit 测试拟合程度</h4><h4 id="evaluate"><a href="#evaluate" class="headerlink" title="evaluate"></a>evaluate</h4><pre><code>test_loss, test_acc = model.evaluate(x=test_images, y=test_labels)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">evaluate(</span><br><span class="line">    x=None,</span><br><span class="line">    y=None,</span><br><span class="line">    batch_size=None,</span><br><span class="line">    verbose=&#x27;auto&#x27;,</span><br><span class="line">    sample_weight=None,</span><br><span class="line">    steps=None,</span><br><span class="line">    callbacks=None,</span><br><span class="line">    max_queue_size=10,</span><br><span class="line">    workers=1,</span><br><span class="line">    use_multiprocessing=False,</span><br><span class="line">    return_dict=False,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>x 输入数据</li>
+<li>y 目标数据</li>
+</ul>
+<h4 id="predict"><a href="#predict" class="headerlink" title="predict"></a>predict</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">predict(</span><br><span class="line">    x,</span><br><span class="line">    batch_size=None,</span><br><span class="line">    verbose=&#x27;auto&#x27;,</span><br><span class="line">    steps=None,</span><br><span class="line">    callbacks=None,</span><br><span class="line">    max_queue_size=10,</span><br><span class="line">    workers=1,</span><br><span class="line">    use_multiprocessing=False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>x 输入的采样点，可以是：<ul>
+<li>numpy矩阵，或者矩阵列表</li>
+<li>tensorflow张量，或者张量列表</li>
+<li>tf.data 数据集</li>
+</ul>
+</li>
+</ul>
+<h1 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h1><p>Python标准模块，提供了一些常用的高阶函数，也就是用于处理其它函数的特殊函数。</p>
+<h2 id="partial"><a href="#partial" class="headerlink" title="partial"></a>partial</h2><pre><code>functools.partial(func[, *args][, **keywords])
+</code></pre>
+<p>将对象的缺省默认值修改为args中的值。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int(&#x27;10&#x27;) # 输出为10</span><br><span class="line">int2 = partial(int, base=2)  # base就是keywords</span><br><span class="line">int2(&#x27;10&#x27;) # 输出为2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>func 可调用的对象或者函数。调用partial对象会转为使用新的参数和关键字参数调用func。</li>
+<li>args 最左边的位置参数作为优先位置参数提供给partial对象调用。</li>
+<li>keywords 对象被调用时提供关键字参数</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1921,224 +2139,6 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
 <p>LCALDA &#x3D; FALSE<br>全称为 Calculate Distance and Azimuth。<br>若为 TRUE，则当事件和台站的坐标被写入或被修改时，<br>头段变量 dist、gcarc、az、 baz 将自动计算，<br>否则不会被自动计算，SAC 头段中会存在信息的不兼容。</p>
 <p>KCMPNM &#x3D; BH1<br>通道名,B、H、1分别代表宽频带、高增益、北向分量</p>
 <p>KNETWK &#x3D; IU<br>台网名</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/" class="post-title-link" itemprop="url">地震数据下载与数据命名规则</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-23 21:35:54" itemprop="dateCreated datePublished" datetime="2022-10-23T21:35:54+08:00">2022-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-28 21:39:48" itemprop="dateModified" datetime="2022-10-28T21:39:48+08:00">2022-10-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[Seisman数据命名规则]<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3</a></p>
-<p>[地震学笔记]<a target="_blank" rel="noopener" href="https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/">https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/</a></p>
-<h1 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h1><p>数据获取有多种方式，例如脚本或者直接网页申请。在这里记录使用方法</p>
-<hr>
-<h2 id="获取数据需要的参数（数据命名规则）"><a href="#获取数据需要的参数（数据命名规则）" class="headerlink" title="获取数据需要的参数（数据命名规则）"></a>获取数据需要的参数（数据命名规则）</h2><p>标准SAC文件命名规则为：</p>
-<pre><code>yyyy.ddd.hh.mm.ss.ffff.NN.SSSSS.LL.CCC.Q.SAC
-</code></pre>
-<ul>
-<li>yyyy: 年份</li>
-<li>ddd: 年分中的第几天</li>
-<li>hh.mm.ss.ffff: 时、分、秒、毫秒</li>
-<li>NN: 台网代号</li>
-<li>SSSSS: 台站名（代号）</li>
-<li>LL: 位置码，台站中的地震仪编号</li>
-<li>CCC: 通道名</li>
-<li>Q: 质量控制标识</li>
-<li>SAC: 格式后缀</li>
-</ul>
-<h3 id="Network-台网"><a href="#Network-台网" class="headerlink" title="Network 台网"></a>Network 台网</h3><p>台网名如下：<br>所有永久或临时台网：<a target="_blank" rel="noopener" href="http://www.fdsn.org/networks/">http://www.fdsn.org/networks/</a></p>
-<h3 id="Station-台站"><a href="#Station-台站" class="headerlink" title="Station 台站"></a>Station 台站</h3><h3 id="Location-位置码（同一台站的不同地震仪）"><a href="#Location-位置码（同一台站的不同地震仪）" class="headerlink" title="Location 位置码（同一台站的不同地震仪）"></a>Location 位置码（同一台站的不同地震仪）</h3><p>常见为空。</p>
-<h3 id="Channel-通道"><a href="#Channel-通道" class="headerlink" title="Channel 通道"></a>Channel 通道</h3><p>通道名有三个字符。三个字符分别表示：频带码、仪器码、方位码。</p>
-<h4 id="频带码（Band-Code）"><a href="#频带码（Band-Code）" class="headerlink" title="频带码（Band Code）"></a>频带码（Band Code）</h4><p>第一个字符表示仪器采样率以及响应频带等信息。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">Seisman频带码表</a></p>
-<h4 id="仪器码（Instrument-Code）"><a href="#仪器码（Instrument-Code）" class="headerlink" title="仪器码（Instrument Code）"></a>仪器码（Instrument Code）</h4><p>第二个字符表示不同的仪器传感器。</p>
-<table>
-<thead>
-<tr>
-<th>仪器码</th>
-<th>说明</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>H</td>
-<td>High Gain Seismometer</td>
-<td>高增益地震仪</td>
-</tr>
-<tr>
-<td>L</td>
-<td>Low Gain Seismometer</td>
-<td>低增益地震仪</td>
-</tr>
-<tr>
-<td>G</td>
-<td>Gravimeter</td>
-<td>重力仪</td>
-</tr>
-<tr>
-<td>M</td>
-<td>Mass position Seismometer</td>
-<td>质量位置地震仪</td>
-</tr>
-<tr>
-<td>N</td>
-<td>Accelerometer</td>
-<td>加速度计</td>
-</tr>
-</tbody></table>
-<p>常见H 高增益仪器。</p>
-<h4 id="方位码（Orientation-Code）"><a href="#方位码（Orientation-Code）" class="headerlink" title="方位码（Orientation Code）"></a>方位码（Orientation Code）</h4><ul>
-<li>N E Z 南北向、东西向、垂向</li>
-<li>1 2 3（Z） 3（Z）为垂向，1、2为正交的水平向，但并非南北东西向</li>
-<li>T R Z 切向、径向、垂向</li>
-<li>方位码 U V W 未知，可能与1 2 Z（3）相同</li>
-</ul>
-<p>注意：N、E、Z并非指正北等方向，与正北夹角2度以内的均可取N。以头段变量cmpaz和cmpinc为准（cmpaz也可能产生一定误差）。</p>
-<h3 id="Quality-波形质量"><a href="#Quality-波形质量" class="headerlink" title="Quality 波形质量"></a>Quality 波形质量</h3><ul>
-<li>D 不确定状态的数据</li>
-<li>M 已合并的数据</li>
-<li>R 原始波形数据</li>
-<li>Q 经过质量控制的数据<br>常见M与Q。</li>
-</ul>
-<h3 id="Format-格式"><a href="#Format-格式" class="headerlink" title="Format 格式"></a>Format 格式</h3><ul>
-<li>SAC格式</li>
-<li>mSeed格式</li>
-<li>miniSeed格式</li>
-</ul>
-<hr>
-<h2 id="Web-Services-网页获取"><a href="#Web-Services-网页获取" class="headerlink" title="Web Services 网页获取"></a>Web Services 网页获取</h2><hr>
-<h2 id="Obspy获取"><a href="#Obspy获取" class="headerlink" title="Obspy获取"></a>Obspy获取</h2><h3 id="服务器下载波形数据"><a href="#服务器下载波形数据" class="headerlink" title="服务器下载波形数据"></a>服务器下载波形数据</h3><p>使用get_waveforms()从服务器下载波形数据，<br>需要添加关键字参数自定义申请。</p>
-<h4 id="申请单个数据"><a href="#申请单个数据" class="headerlink" title="申请单个数据"></a>申请单个数据</h4><p>参数：</p>
-<pre><code>waveform = get_waveforms（台网名，台站名，位置码，通道名，波形开始时间，波形结束时间（s））
-</code></pre>
-<ul>
-<li><p>每个参数需要””，多个参数使用 , 隔开。</p>
-</li>
-<li><p>可以使用通配符，?和*</p>
-</li>
-<li><p>filename &#x3D; ‘文件名’waveform</p>
-</li>
-<li><p>attach_response&#x3D;True  添加仪器响应</p>
-<p>  waveform.remove_response(output&#x3D;’VEL’) 去除仪器响应</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy.clients.fdsn.header import URL_MAPPINGS # 数据中心列表</span><br><span class="line">from obspy import UTCDateTime # 时间模块</span><br><span class="line"></span><br><span class="line">client = Client(&quot;IRIS&quot;)  # 可以使用URL或者数据中心简写</span><br><span class="line"></span><br><span class="line">for key in sorted(URL_MAPPINGS): # 显示可用的数据中心列表</span><br><span class="line">    print(&quot;&#123;0:&lt;7&#125; &#123;1&#125;&quot;.format(key, URL_MAPPINGS[key]))</span><br><span class="line"></span><br><span class="line">t = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line"></span><br><span class="line"># 申请单个数据</span><br><span class="line">waveform = client.get_waveforms(&quot;IU&quot;, &quot;ANMO,AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t, t + 60 * 60)  # 多个参数使用逗号分隔</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
-
-<h4 id="申请多组数据"><a href="#申请多组数据" class="headerlink" title="申请多组数据"></a>申请多组数据</h4><p>get_waveforms_bulk()可以同时提交多个申请。</p>
-<ul>
-<li><p>多个列表组成的列表，每一个列表包含：台网名、台站名、位置码、通道名、开始时间和结束时间<br>bulk &#x3D; [[“IU”, “ANMO”, “0?”, “LH?”, t1, t2],(),……]</p>
-</li>
-<li><p>包含有效request（返回信息）的字符串、文件名或者已打开文件的句柄</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字符串：</span><br><span class="line">bulk = &#x27;quality=B\n&#x27; + \</span><br><span class="line">     &#x27;longestonly=false\n&#x27; + \</span><br><span class="line">     &#x27;IU ANMO * BHZ 2010-02-27 2010-02-27T00:00:02\n&#x27; + \</span><br><span class="line">     &#x27;IU AFI 1? BHE 2010-02-27 2010-02-27T00:00:04\n&#x27; + \</span><br><span class="line">     &#x27;GR GRA1 * BH? 2010-02-27 2010-02-27T00:00:02\n&#x27;</span><br><span class="line">文件名：</span><br><span class="line">client.get_waveforms_bulk(&quot;request.txt&quot;, attach_response=True)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>申请多组数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line">t2 = t1 + 60</span><br><span class="line">bult = [[&quot;IU&quot;, &quot;ANMO&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2], [&quot;IU&quot;, &quot;AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2]]</span><br><span class="line">waveform = client.get_waveforms_bulk(bult)</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="服务器下载地震目录-catalog"><a href="#服务器下载地震目录-catalog" class="headerlink" title="服务器下载地震目录(catalog)"></a>服务器下载地震目录(catalog)</h3><p>get_events() 申请地震目录。</p>
-<h4 id="使用-eventid-获取地震目录"><a href="#使用-eventid-获取地震目录" class="headerlink" title="使用 eventid 获取地震目录"></a>使用 eventid 获取地震目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = Client(&quot;IRIS&quot;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用起止时间以及震级等条件筛选地震"><a href="#使用起止时间以及震级等条件筛选地震" class="headerlink" title="使用起止时间以及震级等条件筛选地震"></a>使用起止时间以及震级等条件筛选地震</h4><pre><code>get_events(starttime = 开始时间，endtime = 结束时间，minmagnitude = 震级，catalog = 地震目录来源)
-</code></pre>
-<ul>
-<li>starttime &#x3D; 开始时间</li>
-<li>endtime &#x3D; 结束时间</li>
-<li>minmagnitude &#x3D; 最小震级</li>
-<li>catalog &#x3D; “地震目录来源”</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2001-01-07T00:00:00&quot;)</span><br><span class="line">t2 = UTCDateTime(&quot;2001-01-07T03:00:00&quot;)</span><br><span class="line">catalogs = client.get_events(starttime=t1, endtime=t2, minmagnitude=4,</span><br><span class="line">                        catalog=&quot;ISC&quot;)</span><br><span class="line">catalogs.plot(projection=&quot;ortho&quot;)  # 绘制地图</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载台站信息数据"><a href="#下载台站信息数据" class="headerlink" title="下载台站信息数据"></a>下载台站信息数据</h3><p>get_stations() 可以得到台站数据，返回值为网络和台站等信息。</p>
-<p>可以通过这个方法查询到相关台网的台站信息、台站所有的位置码和通道等等信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inventory = client.get_stations(network=&quot;IU&quot;, station=&quot;A*&quot;,</span><br><span class="line">                                 starttime=t1,</span><br><span class="line">                                 endtime=t2, level=&quot;response&quot;)  # 申请所有台站的所有分量和仪器响应文件</span><br><span class="line"></span><br><span class="line">print(inventory)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="绘制仪器相应文件"><a href="#绘制仪器相应文件" class="headerlink" title="绘制仪器相应文件"></a>绘制仪器相应文件</h2><p>利用台站信息get_stations()的返回值的plot_response()获得仪器响应文件。</p>
-<pre><code>inventory.plot_response(min_freq=0.01, output=&quot;DISP&quot;, station=&quot;ADK&quot;, channel=&quot;BH?&quot;)
-</code></pre>
-<ul>
-<li>minfreq &#x3D; 最小频率</li>
-<li>output &#x3D; 输出形式? 仪器响应中内置仪器类型中BBDISP表示位移型地震仪，参照<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/appendix/resp/resp-file/">Seisman仪器响应文件-内置仪器响应</a></li>
-<li>station &#x3D; 台站名</li>
-<li>channel &#x3D; 通道号</li>
-</ul>
 
       
     </div>

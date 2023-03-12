@@ -1,3 +1,4 @@
+https://zhiyuanshi1901.github.io/2023/03/12/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94%E4%BD%9C%E4%B8%9A/
 https://zhiyuanshi1901.github.io/2023/03/06/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zhiyuanshi1901.github.io/2023/01/26/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E5%AE%9E%E8%AE%AD/
 https://zhiyuanshi1901.github.io/2023/03/01/%E5%9C%A8linux%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE/
@@ -81,6 +82,7 @@ https://zhiyuanshi1901.github.io/tags/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E6%95
 https://zhiyuanshi1901.github.io/tags/seismic-exploration/
 https://zhiyuanshi1901.github.io/tags/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/
 https://zhiyuanshi1901.github.io/tags/Tensorflow/
+https://zhiyuanshi1901.github.io/tags/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94/
 https://zhiyuanshi1901.github.io/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/
 https://zhiyuanshi1901.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/
 https://zhiyuanshi1901.github.io/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/
