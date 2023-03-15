@@ -889,8 +889,16 @@ enddo
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">outer IF(test1)THEN</span><br><span class="line">    </span><br><span class="line">    inner IF(test1)THEN</span><br><span class="line"></span><br><span class="line">    END IF inner</span><br><span class="line">    </span><br><span class="line">END IF outer</span><br></pre></td></tr></table></figure>
 
 <p>逻辑IF语句</p>
-<pre><code>IF(logical_expr)语句
+<pre><code>IF(logical_expr) a,b,c
 </code></pre>
+<p>算数IF语句</p>
+<pre><code>IF(expr) a, b, c
+</code></pre>
+<ul>
+<li>&lt;0 执行a</li>
+<li>&#x3D;0 执行b</li>
+<li>大于0 执行c</li>
+</ul>
 <h2 id="SELECT-CASE结构"><a href="#SELECT-CASE结构" class="headerlink" title="SELECT CASE结构"></a>SELECT CASE结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[name:]SELECT CASE( case_expr)</span><br><span class="line">CASE(情况选择1)[name]</span><br><span class="line">    语句1</span><br><span class="line">    语句2</span><br><span class="line">    ...</span><br><span class="line">CASE(情况选择2)[name]</span><br><span class="line">    语句1</span><br><span class="line">    语句2</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">CASE DEFAULT [name]</span><br><span class="line">    语句1</span><br><span class="line">    语句2</span><br><span class="line">    ...</span><br><span class="line">END SELECT [name]</span><br></pre></td></tr></table></figure>
 
 <p>命名case结构，使得更加清晰。</p>
@@ -1054,6 +1062,10 @@ end do [name]
 </ul>
 <h1 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h1><p>示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">program test</span><br><span class="line">COMPLEX, dimension(2):: a</span><br><span class="line">real x</span><br><span class="line"></span><br><span class="line">a(1)=CMPLX(1.0,2.0)</span><br><span class="line">x=aimag(a(1))</span><br><span class="line">print*, x</span><br><span class="line">read *,</span><br><span class="line">end program test</span><br></pre></td></tr></table></figure>
+<h1 id="一些已经不再使用的内容"><a href="#一些已经不再使用的内容" class="headerlink" title="一些已经不再使用的内容"></a>一些已经不再使用的内容</h1><h2 id="equivalence-等价"><a href="#equivalence-等价" class="headerlink" title="equivalence 等价"></a>equivalence 等价</h2><p>示例：</p>
+<pre><code>equivalence (nn,abuf)
+</code></pre>
+<p>nn和abuf等价，即二者完全相同，改变任何一方都会改变另一方。在定义变量时写入。</p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -4557,29 +4569,48 @@ man 命令名  //使用范围更广
     <content><![CDATA[<h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行深入解析，尝试理解程序运行的原理。<br>内容均源自mineos软件的程序代码。</p>
 <h1 id="minos-bran程序子进程介绍"><a href="#minos-bran程序子进程介绍" class="headerlink" title="minos_bran程序子进程介绍"></a>minos_bran程序子进程介绍</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wmin=max(wmin,0.1d0) ! wmin最小为0.1mhz，此为w最小限制。</span><br><span class="line"></span><br><span class="line">if(lmin.le.0) lmin=1 ! l最小值小于等于0时，l最小值为1</span><br><span class="line">if(jcom.eq.1) then  ! jcom等于1（径向振型）时，l只计算0阶情况</span><br><span class="line">    lmin=0</span><br><span class="line">    lmax=0</span><br><span class="line">end if</span><br></pre></td></tr></table></figure>
 <p>w最小为0.1mHz，这是w的最小限制<br>l最小值为1<br>选择计算径向振型时，l只计算基阶，即l&#x3D;0的情况。</p>
-<h2 id="wtable-iout-ioeig-ifreq"><a href="#wtable-iout-ioeig-ifreq" class="headerlink" title="wtable(iout,ioeig,ifreq)"></a>wtable(iout,ioeig,ifreq)</h2><p>共用区变量：</p>
+<h2 id="model-iin-iout"><a href="#model-iin-iout" class="headerlink" title="model(iin, iout)"></a>model(iin, iout)</h2><h3 id="drspln-i1-i2-x-y-q-f"><a href="#drspln-i1-i2-x-y-q-f" class="headerlink" title="drspln(i1,i2,x,y,q,f)"></a>drspln(i1,i2,x,y,q,f)</h3><p><em>rspln computes cubic spline interpolation coefficients for y(x) between grid points i1 and i2 saving them in q.<br>the interpolation is continuous with continuous first and second derivitives.<br>it agrees exactly with y at grid points and with the three point first derivitives at both end points (i1 and i2).<br>x must be monotonic but if two successive values of x are equal a discontinuity is assumed and<br>seperate interpolation is done on each strictly monotonic segment.<br>the arrays must be dimensioned at least - x(i2), y(i2), q(3,i2), and f(3,i2). f is working storage for rspln.  -rpb</em></p>
+<p>rspln在i1与i2点之间计算y(x)的三次样条插值系数，将系数保存到q。<br>插值是连续的，具有连续的一阶和二阶导数。<br>它与网格点处的 y 以及两个端点（i1 和 i2）处的三点一阶导数完全一致。<br>x 必须是单调的，但如果 x 的两个连续值相等，则假定此处为间断面（模型具有莫霍面和古登堡面等），对每个严格单调的部分进行单独插值。（有间断面的情况插值在间断面之间进行）<br>数组的维度必须至少为 - x(i2)、y(i2)、q(3,i2) 和 f(3,i2)。（例如，i1&#x3D;1，i2&#x3D;n（模型节点数），x&#x3D;r，y&#x3D;rho）<br>f 是 rspln 的工作存储器。</p>
+<p>示例：</p>
+<pre><code>drspln(1,n,r,rho,qro,wrk)
+</code></pre>
+<p>从点1-n进行对rho(r)的spline插值，结果保存到qro中。<br>wrk为一个工作存储器，存储器可能只是用于存储中间值，无实际含义。（存疑）</p>
+<h3 id="grav-g-rho-qro-r-n"><a href="#grav-g-rho-qro-r-n" class="headerlink" title="grav(g,rho,qro,r,n)"></a>grav(g,rho,qro,r,n)</h3><p><em>given rho and spline coeffs,computes gravity</em><br>给定 rho 和样条系数，计算重力。</p>
+<h2 id="wtable-iout-ioeig-ifreq"><a href="#wtable-iout-ioeig-ifreq" class="headerlink" title="wtable(iout,ioeig,ifreq)"></a>wtable(iout,ioeig,ifreq)</h2><p><em>makes up table of frequencies</em><br>计算本征频率列表</p>
+<p>共用区变量：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">  +  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line">   common/shanks/b(46),c(10),dx,step(8),stepf,maxo,in</span><br><span class="line">   common/mtab/we(2),de(2),ke(2),wtry,bm</span><br></pre></td></tr></table></figure>
 <ul>
 <li>iout 输出模型列表文件单元号</li>
 <li>ioeig 输出本征函数文件单元号</li>
-<li>ifreq 未知</li>
+<li>ifreq &#x3D;0时不输出本征函数文件</li>
 </ul>
 <h3 id="steps-eps"><a href="#steps-eps" class="headerlink" title="steps(eps)"></a>steps(eps)</h3><p>计算8个无量纲step大小for rks integration积分</p>
 <ul>
 <li>eps 输入的eps，即准确度大小。</li>
 </ul>
-<h3 id="detqn-wdim-knt-det-ifeif"><a href="#detqn-wdim-knt-det-ifeif" class="headerlink" title="detqn(wdim,knt,det,ifeif)"></a>detqn(wdim,knt,det,ifeif)</h3><p>假设方程的积分，它返回行列式形式的secular dterminant的值（det）和零交点数量。<br>共用区变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> common r(mk),fmu(mk),flam(mk),qshear(mk),qkappa(mk),</span><br><span class="line">+ xa2(mk),xlam(mk),rho(mk),qro(3,mk),g(mk),qg(3,mk),</span><br><span class="line">+ fcon(mk),fspl(3,mk),lcon(mk),lspl(3,mk),ncon(mk),</span><br><span class="line">+ nspl(3,mk),ccon(mk),cspl(3,mk),acon(mk),aspl(3,mk)</span><br><span class="line"> common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">+  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line"> common/eifx/a(14,mk),dum(mk)</span><br><span class="line"> common/rindx/nic,noc,nsl,nicp1,nocp1,nslp1,n</span><br></pre></td></tr></table></figure>
+<h3 id="detqn-wdim-knt-det-ifeif"><a href="#detqn-wdim-knt-det-ifeif" class="headerlink" title="detqn(wdim,knt,det,ifeif)"></a>detqn(wdim,knt,det,ifeif)</h3><p><em>supevises the integration of the equations,it returns the value<br>of the secular determinant as det and the count of zero crossings</em><br>假设方程的积分，它返回行列式形式的secular dterminant的值（det）和零交点数量。</p>
 <ul>
-<li>wdim</li>
-<li>knt</li>
-<li>det</li>
+<li>wdim 一个二维数组，为最小和最大本征频率计算范围</li>
+<li>knt 零交叉点数量</li>
+<li>det 长期行列式的值</li>
 <li>ifeif</li>
 </ul>
+<p>共用区变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> common r(mk),fmu(mk),flam(mk),qshear(mk),qkappa(mk),</span><br><span class="line">+ xa2(mk),xlam(mk),rho(mk),qro(3,mk),g(mk),qg(3,mk),</span><br><span class="line">+ fcon(mk),fspl(3,mk),lcon(mk),lspl(3,mk),ncon(mk),</span><br><span class="line">+ nspl(3,mk),ccon(mk),cspl(3,mk),acon(mk),aspl(3,mk)</span><br><span class="line"> common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">+  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line"> common/eifx/a(14,mk),dum(mk)</span><br><span class="line"> common/rindx/nic,noc,nsl,nicp1,nocp1,nslp1,n</span><br></pre></td></tr></table></figure>
+
+
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print *,&#x27;eigenfunction file (output):&#x27;</span><br><span class="line">read(5,100) filnam</span><br><span class="line">print *,filnam(1:lnblnk(filnam))</span><br><span class="line">ifreq=1</span><br><span class="line">if(filnam(1:4).eq.&#x27;none&#x27;) ifreq=0 ! 如果filnam前四个字符为none，则ifreq=0</span><br><span class="line">open(3,file=filnam,form=&#x27;unformatted&#x27;,iostat=iret)</span><br></pre></td></tr></table></figure>
 <p>这里说明了ifreq的来历。当本征函数文件（eigenfunction file）名前四个字符为none时，ifreq&#x3D;0，将不再计算本征函数文件。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(ifeif.eq.0) return</span><br></pre></td></tr></table></figure>
 <p>该语句表明ifreq在detqn子进程中为ifeif参数。当ifreq&#x3D;0时，即本征函数文件名为：’none*’时不再输出本征函数文件（文件为空）。</p>
+<h4 id="sdepth-wdim-ls"><a href="#sdepth-wdim-ls" class="headerlink" title="sdepth(wdim,ls)"></a>sdepth(wdim,ls)</h4><p>finds starting level,ls, for a given l and w<br>对于给定的l和w寻找开始的层ls</p>
+<h4 id="fprpmn-jf-jl-f-h-nvefm-iexp"><a href="#fprpmn-jf-jl-f-h-nvefm-iexp" class="headerlink" title="fprpmn(jf,jl,f,h,nvefm,iexp)"></a>fprpmn(jf,jl,f,h,nvefm,iexp)</h4><p>propagate the minor vector in a fluid region from level jf to jl<br>在流体区域从jf层到jl层传播minor vector</p>
+<h4 id="remedy-ls"><a href="#remedy-ls" class="headerlink" title="remedy(ls)"></a>remedy(ls)</h4><p>Obtains the eigenfunction of an awkward spheroidal mode by integrating to the icb or the mcb.<br>通过积分到ICB或CMB得到一个不合适的（awkward）球振振型的本征函数</p>
+<h5 id="fsbdry-af-as-kg"><a href="#fsbdry-af-as-kg" class="headerlink" title="fsbdry(af,as,kg)"></a>fsbdry(af,as,kg)</h5><p>fsbdry creates solid fundamental matrix as from fluid fundamental matrix af. It is presumed that fsbdry is used to cross a f&#x2F;s boundary.</p>
+<p>fsbdry 从流体基本矩阵 af 创建固体基本矩阵 as。 假定 fsbdry函数 用于跨越 f&#x2F;s 边界。</p>
+<h5 id="sfbdry-jf-jl-as-af-kg"><a href="#sfbdry-jf-jl-as-af-kg" class="headerlink" title="sfbdry(jf,jl,as,af,kg)"></a>sfbdry(jf,jl,as,af,kg)</h5><p><em>The tangential traction scalar is forced to vanish at the solid side of a s&#x2F;f boundary(level jl).<br>a(j,3,i) is elliminated for i&#x3D;jf…jl and af is loaded from a at level jl.</em><br>切向牵引标量在 s&#x2F;f 边界的实体侧（水平 jl）消失。 a(j,3,i) 对于 i&#x3D;jf…jl 被消除并且 af 从 a 在级别 jl 加载。</p>
+<h5 id="match-n-j-kg-af-afr-icomp"><a href="#match-n-j-kg-af-afr-icomp" class="headerlink" title="match(n,j,kg,af,afr,icomp)"></a>match(n,j,kg,af,afr,icomp)</h5><p><em>Matches boundary conditions during downward integration – first try is at cmb, second try is at icb.</em><br>在向下积分时符合边界条件——第一次尝试在 cmb，第二次尝试在 icb。</p>
+<h4 id="eifout-lsmin"><a href="#eifout-lsmin" class="headerlink" title="eifout(lsmin)"></a>eifout(lsmin)</h4><p><em>massages spheroidal mode eigenfunctions before output</em><br>在输出前“修改”球振振型本征函数</p>
 <h3 id="rotspl-eps1-wt-iout-ioeig-ifreq-ncall"><a href="#rotspl-eps1-wt-iout-ioeig-ifreq-ncall" class="headerlink" title="rotspl(eps1,wt,iout,ioeig,ifreq,ncall)"></a>rotspl(eps1,wt,iout,ioeig,ifreq,ncall)</h3><p>通过样条差值查找roots</p>
 <p>kchar 1s 2t 3s 4c</p>
 <ul>
@@ -4588,8 +4619,10 @@ man 命令名  //使用范围更广
 <li>iout 输出模型文件的单元号</li>
 <li>ioeig 输出本征函数文件的单元号</li>
 <li>ifreq 与本征函数文件名有关。前四个字符为none时为0,输出缺少qmod和wdiff（q和动能与势能之比-1）,其他时候为1。</li>
-<li>ncall</li>
+<li>ncall 一个有关计数的参数</li>
 </ul>
+<h3 id="gauslv-r1-r2-iq-fint-nint"><a href="#gauslv-r1-r2-iq-fint-nint" class="headerlink" title="gauslv(r1,r2,iq,fint,nint)"></a>gauslv(r1,r2,iq,fint,nint)</h3><p>fifth order gauss-legendre integration<br>五阶高斯-勒让德积分。</p>
+<h4 id="intgds-rr-iq-vals"><a href="#intgds-rr-iq-vals" class="headerlink" title="intgds(rr,iq,vals)"></a>intgds(rr,iq,vals)</h4><p>interpolates integrands for normalisation,cg,q etc..for use with gauslv<br>插值积分以进行归一化、cg、q等，gauslv使用该函数</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
