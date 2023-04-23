@@ -1,3 +1,6 @@
+https://zhiyuanshi1901.github.io/2023/04/23/%E5%90%84%E7%A7%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%90%8D%E8%AF%8D/
+https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/
+https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zhiyuanshi1901.github.io/2022/12/13/CentOS%E5%AE%89%E8%A3%85/
 https://zhiyuanshi1901.github.io/2023/02/05/Python-SAC-IO/
 https://zhiyuanshi1901.github.io/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/
@@ -8,7 +11,6 @@ https://zhiyuanshi1901.github.io/2023/03/12/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86
 https://zhiyuanshi1901.github.io/2023/03/06/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zhiyuanshi1901.github.io/2023/01/26/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E5%AE%9E%E8%AE%AD/
 https://zhiyuanshi1901.github.io/2023/03/01/%E5%9C%A8linux%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE/
-https://zhiyuanshi1901.github.io/2022/12/31/TauP%E5%AE%89%E8%A3%85/
 https://zhiyuanshi1901.github.io/2023/02/25/%E5%B8%B8%E7%94%A8%E8%AE%BA%E6%96%87%E7%BD%91%E7%AB%99/
 https://zhiyuanshi1901.github.io/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zhiyuanshi1901.github.io/2023/02/07/baidu_verify_codeva-0NlQJTBPs1/
@@ -18,7 +20,6 @@ https://zhiyuanshi1901.github.io/2023/01/03/CMT-ndk%E4%B8%8E%E8%A1%8D%E7%94%9F%E
 https://zhiyuanshi1901.github.io/2022/12/29/Mineos%E6%96%B0%E6%A8%A1%E5%9E%8B%E8%BF%90%E8%A1%8C/
 https://zhiyuanshi1901.github.io/2022/12/27/CPS-%E5%AE%89%E8%A3%85/
 https://zhiyuanshi1901.github.io/2022/10/31/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E6%96%87%E6%96%87%E7%8C%AE%E6%B1%87%E6%80%BB/
-https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/
 https://zhiyuanshi1901.github.io/2022/11/18/Introduction-to-Seismology%E8%AF%8D%E6%B1%87%E6%95%B4%E7%90%86/
 https://zhiyuanshi1901.github.io/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/
@@ -60,12 +61,12 @@ https://zhiyuanshi1901.github.io/tags/CMT/
 https://zhiyuanshi1901.github.io/tags/CPS/
 https://zhiyuanshi1901.github.io/tags/CentOS/
 https://zhiyuanshi1901.github.io/tags/Linux/
-https://zhiyuanshi1901.github.io/tags/GMT/
-https://zhiyuanshi1901.github.io/tags/Fortran/
-https://zhiyuanshi1901.github.io/tags/Introduction-to-Seismology/
 https://zhiyuanshi1901.github.io/tags/Git/
-https://zhiyuanshi1901.github.io/tags/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/
+https://zhiyuanshi1901.github.io/tags/Introduction-to-Seismology/
+https://zhiyuanshi1901.github.io/tags/Fortran/
+https://zhiyuanshi1901.github.io/tags/GMT/
 https://zhiyuanshi1901.github.io/tags/Mineos/
+https://zhiyuanshi1901.github.io/tags/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/
 https://zhiyuanshi1901.github.io/tags/Obspy/
 https://zhiyuanshi1901.github.io/tags/SAC/
 https://zhiyuanshi1901.github.io/tags/Python%E5%87%BD%E6%95%B0/
@@ -78,11 +79,12 @@ https://zhiyuanshi1901.github.io/tags/%E5%9C%B0%E9%9C%87%E5%8B%98%E6%8E%A2/
 https://zhiyuanshi1901.github.io/tags/Dune/
 https://zhiyuanshi1901.github.io/tags/%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2/
 https://zhiyuanshi1901.github.io/tags/%E5%B7%A5%E5%85%B7/
+https://zhiyuanshi1901.github.io/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/
 https://zhiyuanshi1901.github.io/tags/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E6%95%B0%E5%AD%97%E5%A4%84%E7%90%86/
+https://zhiyuanshi1901.github.io/tags/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94/
 https://zhiyuanshi1901.github.io/tags/seismic-exploration/
 https://zhiyuanshi1901.github.io/tags/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/
 https://zhiyuanshi1901.github.io/tags/Tensorflow/
-https://zhiyuanshi1901.github.io/tags/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94/
 https://zhiyuanshi1901.github.io/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/
 https://zhiyuanshi1901.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/
 https://zhiyuanshi1901.github.io/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/
@@ -94,5 +96,6 @@ https://zhiyuanshi1901.github.io/categories/%E5%9C%B0%E9%9C%87%E5%8B%98%E6%8E%A2
 https://zhiyuanshi1901.github.io/categories/Linux/
 https://zhiyuanshi1901.github.io/categories/%E6%9D%82%E8%B0%88/
 https://zhiyuanshi1901.github.io/categories/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/
+https://zhiyuanshi1901.github.io/categories/%E7%89%A9%E7%90%86%E5%AD%A6/
 https://zhiyuanshi1901.github.io/categories/%E5%B7%A5%E5%85%B7/
 https://zhiyuanshi1901.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
