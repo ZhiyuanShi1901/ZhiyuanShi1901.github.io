@@ -61,12 +61,12 @@ https://zhiyuanshi1901.github.io/tags/CMT/
 https://zhiyuanshi1901.github.io/tags/CPS/
 https://zhiyuanshi1901.github.io/tags/CentOS/
 https://zhiyuanshi1901.github.io/tags/Linux/
-https://zhiyuanshi1901.github.io/tags/Git/
-https://zhiyuanshi1901.github.io/tags/Introduction-to-Seismology/
 https://zhiyuanshi1901.github.io/tags/Fortran/
 https://zhiyuanshi1901.github.io/tags/GMT/
-https://zhiyuanshi1901.github.io/tags/Mineos/
+https://zhiyuanshi1901.github.io/tags/Git/
+https://zhiyuanshi1901.github.io/tags/Introduction-to-Seismology/
 https://zhiyuanshi1901.github.io/tags/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/
+https://zhiyuanshi1901.github.io/tags/Mineos/
 https://zhiyuanshi1901.github.io/tags/Obspy/
 https://zhiyuanshi1901.github.io/tags/SAC/
 https://zhiyuanshi1901.github.io/tags/Python%E5%87%BD%E6%95%B0/
