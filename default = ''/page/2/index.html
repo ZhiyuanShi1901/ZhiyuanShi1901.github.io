@@ -876,7 +876,7 @@ source ~/.bashrc
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/" class="post-title-link" itemprop="url">Mineos 程序解释</a>
+          <a href="/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/" class="post-title-link" itemprop="url">Mineos 程序参数解释</a>
         </h2>
 
         <div class="post-meta-container">
@@ -894,7 +894,7 @@ source ~/.bashrc
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-17 12:38:16" itemprop="dateModified" datetime="2023-01-17T12:38:16+08:00">2023-01-17</time>
+      <time title="Modified: 2023-04-05 10:47:51" itemprop="dateModified" datetime="2023-04-05T10:47:51+08:00">2023-04-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -984,6 +984,13 @@ source ~/.bashrc
 <li>第十行：vph的系数 (km&#x2F;s)</li>
 <li>第十一行：vsh的系数 (km&#x2F;s)</li>
 <li>第十二行：eta的系数</li>
+</ul>
+<p><strong>注意：</strong><br>模型创建时需要注意以下几点：</p>
+<ul>
+<li>ICB边界固态侧不能为索引2。因为计算时将其-1作为开始层。因此ICB边界索引必须大于2。</li>
+<li>模型间隔避免太大，即两行之间的半径差值不可太大，可能是由于插值问题导致的。</li>
+<li>严格按照上述格式(f8.0, 3f9.2, 2f9.1, 2f9.2, f9.5)进行创建，否则会导致.eigcon出错。</li>
+<li>前三行标题行格式严格按照Mineos。MODEL注意大写，不要小写，否则会造成寻找定位mode位置时错误。<br>例如：<code>(    0.0000    0.000)</code>中间多了<code>,</code>会出现错误。</li>
 </ul>
 <h2 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="模型列表"><a href="#模型列表" class="headerlink" title="模型列表"></a>模型列表</h3><p>一个ASCII文件，列出了模型和mode properties（振型属性）。</p>
 <p>例如：相速度（km&#x2F;s），频率，周期，群速度（km&#x2F;h），q，一个参数（动能与势能的比值-1）</p>
@@ -1119,7 +1126,8 @@ source ~/.bashrc
 
 <h2 id="输出信息"><a href="#输出信息" class="headerlink" title="输出信息"></a>输出信息</h2><h3 id="sph-modes-in-band-x3D-nnn-must-be-le-meig"><a href="#sph-modes-in-band-x3D-nnn-must-be-le-meig" class="headerlink" title="sph. modes in band &#x3D;  nnn   must be .le.  meig"></a>sph. modes in band &#x3D;  nnn   must be .le.  meig</h3><ul>
 <li>nnn 所有输入数据集的球振振型的总数。</li>
-<li>meig 允许的最大数量（max allowed number）的球振振型，是一个限定值，限制nnn的数量。<br>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sph. modes in band = 1918 must be .le. 300000</span><br></pre></td></tr></table></figure></li>
+<li>meig 允许的最大数量（max allowed number）的球振振型，是一个限定值，限制nnn的数量。<br>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sph. modes in band = 1918 must be .le. 300000</span><br></pre></td></tr></table></figure>
+此时需要修改green.h中的信息。修改后删除&#x2F;usr&#x2F;local&#x2F;bin中与mineos相关的程序，重新编译安装（最好使用原版。</li>
 </ul>
 <h3 id="tor-modes-in-band-x3D-nnn-must-be-le-meig"><a href="#tor-modes-in-band-x3D-nnn-must-be-le-meig" class="headerlink" title="tor. modes in band &#x3D;  nnn   must be .le.  meig"></a>tor. modes in band &#x3D;  nnn   must be .le.  meig</h3><p>同上，但是是环振振型。</p>
 <h3 id="cmt-event文件：事件信息"><a href="#cmt-event文件：事件信息" class="headerlink" title="cmt_event文件：事件信息"></a>cmt_event文件：事件信息</h3><p>格式：</p>
@@ -2785,9 +2793,15 @@ vpn-install/ipsec/install.sh
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-12-13 13:28:36 / Modified: 13:39:20" itemprop="dateCreated datePublished" datetime="2022-12-13T13:28:36+08:00">2022-12-13</time>
+      <time title="Created: 2022-12-13 13:28:36" itemprop="dateCreated datePublished" datetime="2022-12-13T13:28:36+08:00">2022-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-23 09:58:33" itemprop="dateModified" datetime="2023-04-23T09:58:33+08:00">2023-04-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2809,7 +2823,8 @@ vpn-install/ipsec/install.sh
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
+          <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglailea/article/details/105602902">https://blog.csdn.net/fenglailea/article/details/105602902</a></p>
+<h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
 <pre><code>....
 kernel panic: not syncing: Fatal exception
 Kernel Offset: ........
@@ -2821,6 +2836,7 @@ Kernel Offset: ........
 <pre><code>LABEL=CentOS\...... quiet
 </code></pre>
 <p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
+<p>如果无法进入图形界面，在<code>quite</code>前面加上 <code>nomodeset</code></p>
 <p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
 
       

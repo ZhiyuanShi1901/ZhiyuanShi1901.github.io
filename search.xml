@@ -293,7 +293,8 @@ source ~/.bashrc
   <entry>
     <title>CentOS安装</title>
     <url>/2022/12/13/CentOS%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
+    <content><![CDATA[<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/fenglailea/article/details/105602902">https://blog.csdn.net/fenglailea/article/details/105602902</a></p>
+<h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
 <pre><code>....
 kernel panic: not syncing: Fatal exception
 Kernel Offset: ........
@@ -305,6 +306,7 @@ Kernel Offset: ........
 <pre><code>LABEL=CentOS\...... quiet
 </code></pre>
 <p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
+<p>如果无法进入图形界面，在<code>quite</code>前面加上 <code>nomodeset</code></p>
 <p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
 ]]></content>
       <categories>
@@ -1874,7 +1876,7 @@ creat_origin china_cmt_event Syndat
       </tags>
   </entry>
   <entry>
-    <title>Mineos 程序解释</title>
+    <title>Mineos 程序参数解释</title>
     <url>/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/</url>
     <content><![CDATA[<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>minos内README文件<br><a href="http://chengxua.com/lishi/Julian_simp.html">儒略日计算器</a><br><a href="http://quickeditor.top/days.html">日序计算器</a></p>
 <h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行了解与描述。<br>内容均源自程序内部解释与运行进程。<br>模型文件为DEMO中具有的PREM等地球模型。</p>
@@ -1944,6 +1946,13 @@ creat_origin china_cmt_event Syndat
 <li>第十行：vph的系数 (km&#x2F;s)</li>
 <li>第十一行：vsh的系数 (km&#x2F;s)</li>
 <li>第十二行：eta的系数</li>
+</ul>
+<p><strong>注意：</strong><br>模型创建时需要注意以下几点：</p>
+<ul>
+<li>ICB边界固态侧不能为索引2。因为计算时将其-1作为开始层。因此ICB边界索引必须大于2。</li>
+<li>模型间隔避免太大，即两行之间的半径差值不可太大，可能是由于插值问题导致的。</li>
+<li>严格按照上述格式(f8.0, 3f9.2, 2f9.1, 2f9.2, f9.5)进行创建，否则会导致.eigcon出错。</li>
+<li>前三行标题行格式严格按照Mineos。MODEL注意大写，不要小写，否则会造成寻找定位mode位置时错误。<br>例如：<code>(    0.0000    0.000)</code>中间多了<code>,</code>会出现错误。</li>
 </ul>
 <h2 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="模型列表"><a href="#模型列表" class="headerlink" title="模型列表"></a>模型列表</h3><p>一个ASCII文件，列出了模型和mode properties（振型属性）。</p>
 <p>例如：相速度（km&#x2F;s），频率，周期，群速度（km&#x2F;h），q，一个参数（动能与势能的比值-1）</p>
@@ -2079,7 +2088,8 @@ creat_origin china_cmt_event Syndat
 
 <h2 id="输出信息"><a href="#输出信息" class="headerlink" title="输出信息"></a>输出信息</h2><h3 id="sph-modes-in-band-x3D-nnn-must-be-le-meig"><a href="#sph-modes-in-band-x3D-nnn-must-be-le-meig" class="headerlink" title="sph. modes in band &#x3D;  nnn   must be .le.  meig"></a>sph. modes in band &#x3D;  nnn   must be .le.  meig</h3><ul>
 <li>nnn 所有输入数据集的球振振型的总数。</li>
-<li>meig 允许的最大数量（max allowed number）的球振振型，是一个限定值，限制nnn的数量。<br>示例：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sph. modes in band = 1918 must be .le. 300000</span><br></pre></td></tr></table></figure></li>
+<li>meig 允许的最大数量（max allowed number）的球振振型，是一个限定值，限制nnn的数量。<br>示例：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sph. modes in band = 1918 must be .le. 300000</span><br></pre></td></tr></table></figure>
+此时需要修改green.h中的信息。修改后删除&#x2F;usr&#x2F;local&#x2F;bin中与mineos相关的程序，重新编译安装（最好使用原版。</li>
 </ul>
 <h3 id="tor-modes-in-band-x3D-nnn-must-be-le-meig"><a href="#tor-modes-in-band-x3D-nnn-must-be-le-meig" class="headerlink" title="tor. modes in band &#x3D;  nnn   must be .le.  meig"></a>tor. modes in band &#x3D;  nnn   must be .le.  meig</h3><p>同上，但是是环振振型。</p>
 <h3 id="cmt-event文件：事件信息"><a href="#cmt-event文件：事件信息" class="headerlink" title="cmt_event文件：事件信息"></a>cmt_event文件：事件信息</h3><p>格式：</p>
@@ -3346,6 +3356,9 @@ st[0].detrend(&#39;polynomial&#39;, order=3) # 进行去趋势，选择为多项
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy</span><br><span class="line">import sacpy</span><br><span class="line">import pysmo</span><br><span class="line"># import pyrocko</span><br><span class="line">import obspy</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from pysmo import SacIO</span><br><span class="line">import os</span><br><span class="line">from obspy.signal.detrend import polynomial  # 去除多阶趋势</span><br><span class="line"></span><br><span class="line">def cusdetrend(filepath, tr, order=3):  # 去趋势</span><br><span class="line"># 文件路径；由读取sac文件得到的trace，即seismogram[0]；执行多项式去趋势的阶数，默认为3阶</span><br><span class="line">    seismogram = tr.copy()</span><br><span class="line">    been_detrend = seismogram.detrend(&#x27;polynomial&#x27;, order=order) # 进行去趋势，选择为多项式，阶数为3</span><br><span class="line">    return been_detrend</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def integral(input_file, dt):  # 执行积分</span><br><span class="line"># 输入文件为列表文件；dt为时间采样间隔</span><br><span class="line">    length = len(input_file)</span><br><span class="line">    output = [0 for i in range(0, length)]</span><br><span class="line">    for i in range(0, length-1):</span><br><span class="line">        if i == 0:</span><br><span class="line">            output[i] = 0</span><br><span class="line">        else:</span><br><span class="line">            time = 0</span><br><span class="line">            for j in range(0, i):</span><br><span class="line">                time = time + (input_file[j]+input_file[j+1])/2*dt</span><br><span class="line">            output[i] = time</span><br><span class="line"></span><br><span class="line">    return output</span><br><span class="line"></span><br><span class="line">def cus2disp(input_file, dt, type): # 转换为位移图， </span><br><span class="line"># 输入文件（列表）；采样时间间隔；输入图形类型（1为速度图，2为加速度图）</span><br><span class="line">    if type == 1:</span><br><span class="line">        outfile = integral(input_file, dt)</span><br><span class="line">    elif type == 2:</span><br><span class="line">        outfile = integral(integral(input_file, dt), dt)</span><br><span class="line">    else:</span><br><span class="line">        print(&#x27;wrong input type!&#x27;)</span><br><span class="line">    return outfile</span><br><span class="line"></span><br><span class="line">def savejpg(filepath, tr, imgtype):  # 绘制图形</span><br><span class="line"># 文件路径；trace；图形类型，目前没有用</span><br><span class="line">    # 调整画布大小，进行绘制</span><br><span class="line">    t = np.arange(0, (tr.stats.npts / tr.stats.sampling_rate), tr.stats.delta)</span><br><span class="line">    fig = plt.figure(1, figsize=(16, 9), dpi=200)</span><br><span class="line">    plt.subplot(2, 1, 2)</span><br><span class="line">    plt.plot(t, tr.data, &#x27;k&#x27;)</span><br><span class="line">    plt.xlabel(&#x27;T(s)&#x27;)</span><br><span class="line">    plt.ylabel(&#x27;Displacement(nm)&#x27;)</span><br><span class="line">    plt.title(&#x27;had detrend&#x27;+&#x27; &#x27;+tr.stats.station+tr.stats.channel)</span><br><span class="line">    # 判断文件是否存在, 存在，则删除文件</span><br><span class="line">    savepath=filepath+&#x27;detrend&#x27;+tr.stats.station+&#x27;_&#x27;+tr.stats.channel+&#x27;.jpg&#x27;</span><br><span class="line">    if(os.path.exists(savepath)):</span><br><span class="line">        os.remove(savepath)</span><br><span class="line">    # 保存</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line">    print(&#x27;saving jpg file.&#x27;)</span><br><span class="line">    plt.savefig(filepath+&#x27;detrend&#x27;+tr.stats.station+&#x27;_&#x27;+tr.stats.channel+&#x27;.jpg&#x27;)</span><br><span class="line">    print(f&#x27;The file has been saved as &#123;filepath&#125;&#123;tr.stats.station&#125;_&#123;tr.stats.channel&#125;.jpg&#x27;)</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line">    # plt.show()</span><br><span class="line">    plt.close(fig)</span><br><span class="line">    plt.close(&#x27;all&#x27;)</span><br><span class="line"></span><br><span class="line">    # 判断文件是否存在, 存在，则删除文件</span><br><span class="line">    savepath=filepath+&#x27;detrend&#x27;+tr.stats.station+&#x27;_&#x27;+tr.stats.channel+&#x27;.sac&#x27;</span><br><span class="line">    if(os.path.exists(savepath)):</span><br><span class="line">        os.remove(savepath)</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line">    print(&#x27;saving sac file...&#x27;)</span><br><span class="line">    tr.write(savepath, format=&#x27;SAC&#x27;)</span><br><span class="line">    print(f&#x27;The file has been saved as &#123;filepath&#125;&#123;tr.stats.station&#125;_&#123;tr.stats.channel&#125;.jpg&#x27;)</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line"></span><br><span class="line">def acc2dis_detrend(path, type):  # 主程序：转换为displacement并去趋势</span><br><span class="line"># 文件路径；type=1 为velo，type=2为acc</span><br><span class="line">    for file_name in os.listdir(path):</span><br><span class="line">        if(file_name[-3:]!=&#x27;SAC&#x27;):  # 避免读取其他文件</span><br><span class="line">            continue</span><br><span class="line">        filepath = path+&#x27;/&#x27;+file_name</span><br><span class="line">        seismogram = obspy.read(filepath)</span><br><span class="line">        trace = seismogram[0]</span><br><span class="line">        # 进行转换,返回值为列表</span><br><span class="line">        trace_data = cus2disp(trace.data, dt=trace.stats.delta, type=type)</span><br><span class="line">        # 列表导入到stream数据中,只有这样才能使用obspy的去趋势函数。</span><br><span class="line">        trace.data = numpy.array(trace_data[0:len(trace_data)-1])</span><br><span class="line">        print(trace.data)</span><br><span class="line">        # 进行去趋势</span><br><span class="line">        detrend_result = cusdetrend(filepath, trace, order=3)  # 进行去趋势。</span><br><span class="line">        # 保存</span><br><span class="line">        if type == 1:</span><br><span class="line">            imgtype = &#x27;velocity(nm/s)&#x27;</span><br><span class="line">        elif type == 2:</span><br><span class="line">            imgtype = &#x27;accelate(nm/s2)&#x27;</span><br><span class="line">        savejpg(filepath, detrend_result, imgtype)</span><br><span class="line"></span><br><span class="line"># 文件所在位置</span><br><span class="line">path1 = &#x27;G:/Pythonworks/Obspy_data_solve/seismogram/0_200acc&#x27;</span><br><span class="line"># 执行</span><br><span class="line">acc2dis_detrend(path1, 2)</span><br></pre></td></tr></table></figure>
+
+<h1 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h1><h2 id="安装-sklearn-库"><a href="#安装-sklearn-库" class="headerlink" title="安装 sklearn 库"></a>安装 sklearn 库</h2><p>conda 安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda install -c anaconda scikit-learn</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -4576,6 +4589,14 @@ man 命令名  //使用范围更广
 </code></pre>
 <p>从点1-n进行对rho(r)的spline插值，结果保存到qro中。<br>wrk为一个工作存储器，存储器可能只是用于存储中间值，无实际含义。（存疑）</p>
 <h3 id="grav-g-rho-qro-r-n"><a href="#grav-g-rho-qro-r-n" class="headerlink" title="grav(g,rho,qro,r,n)"></a>grav(g,rho,qro,r,n)</h3><p><em>given rho and spline coeffs,computes gravity</em><br>给定 rho 和样条系数，计算重力。</p>
+<p>变量：</p>
+<ul>
+<li>nsl 地表边界，为固态侧边界。若是具有海洋的地球模型，则nsl为地表与海洋边界的固态侧。</li>
+<li>nslp1 地表边界，液态侧。</li>
+<li>ncip1 ICB索引液态侧</li>
+<li>nocp1 CMB索引固态侧</li>
+<li>tref 校正值。&lt;&#x3D;0时无校正。</li>
+</ul>
 <h2 id="wtable-iout-ioeig-ifreq"><a href="#wtable-iout-ioeig-ifreq" class="headerlink" title="wtable(iout,ioeig,ifreq)"></a>wtable(iout,ioeig,ifreq)</h2><p><em>makes up table of frequencies</em><br>计算本征频率列表</p>
 <p>共用区变量：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">  +  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line">   common/shanks/b(46),c(10),dx,step(8),stepf,maxo,in</span><br><span class="line">   common/mtab/we(2),de(2),ke(2),wtry,bm</span><br></pre></td></tr></table></figure>
@@ -4605,10 +4626,23 @@ man 命令名  //使用范围更广
 <p>该语句表明ifreq在detqn子进程中为ifeif参数。当ifreq&#x3D;0时，即本征函数文件名为：’none*’时不再输出本征函数文件（文件为空）。</p>
 <h4 id="sdepth-wdim-ls"><a href="#sdepth-wdim-ls" class="headerlink" title="sdepth(wdim,ls)"></a>sdepth(wdim,ls)</h4><p>finds starting level,ls, for a given l and w<br>对于给定的l和w寻找开始的层ls</p>
 <h4 id="fprpmn-jf-jl-f-h-nvefm-iexp"><a href="#fprpmn-jf-jl-f-h-nvefm-iexp" class="headerlink" title="fprpmn(jf,jl,f,h,nvefm,iexp)"></a>fprpmn(jf,jl,f,h,nvefm,iexp)</h4><p>propagate the minor vector in a fluid region from level jf to jl<br>在流体区域从jf层到jl层传播minor vector</p>
+<h5 id="zknt-s-sp-f-fp-x-y-ifsol"><a href="#zknt-s-sp-f-fp-x-y-ifsol" class="headerlink" title="zknt(s,sp,f,fp,x,y,ifsol)"></a>zknt(s,sp,f,fp,x,y,ifsol)</h5><p>zknt(s,h,f,fp,x,y,1)</p>
+<p>给定次向量和导数，构造模式计数</p>
 <h4 id="remedy-ls"><a href="#remedy-ls" class="headerlink" title="remedy(ls)"></a>remedy(ls)</h4><p>Obtains the eigenfunction of an awkward spheroidal mode by integrating to the icb or the mcb.<br>通过积分到ICB或CMB得到一个不合适的（awkward）球振振型的本征函数</p>
-<h5 id="fsbdry-af-as-kg"><a href="#fsbdry-af-as-kg" class="headerlink" title="fsbdry(af,as,kg)"></a>fsbdry(af,as,kg)</h5><p>fsbdry creates solid fundamental matrix as from fluid fundamental matrix af. It is presumed that fsbdry is used to cross a f&#x2F;s boundary.</p>
-<p>fsbdry 从流体基本矩阵 af 创建固体基本矩阵 as。 假定 fsbdry函数 用于跨越 f&#x2F;s 边界。</p>
+<h5 id="fprop-jf-jl-f-iexp"><a href="#fprop-jf-jl-f-iexp" class="headerlink" title="fprop(jf,jl,f,iexp)"></a>fprop(jf,jl,f,iexp)</h5><p><em>fprop propagates the fundamental matrix f from jf to jl (a fluid region)</em><br>fprop 将基本矩阵 f 从 jf 传播到 jl（流体区域）</p>
+<p>示例：</p>
+<pre><code>fprop(noc,nicp1,af,iexp)
+# 该函数位于2515行左右，表示地壳上海洋部分基本矩阵af的传播。
+</code></pre>
+<h5 id="fsbdry-af-as-kg"><a href="#fsbdry-af-as-kg" class="headerlink" title="fsbdry(af,as,kg)"></a>fsbdry(af,as,kg)</h5><p><em>fsbdry creates solid fundamental matrix as from fluid fundamental matrix af.<br>It is presumed that fsbdry is used to cross a f&#x2F;s boundary.</em></p>
+<p>fsbdry 从流体基本矩阵 af 创建固体基本矩阵 as。<br>假定 fsbdry函数 用于跨越 f&#x2F;s 边界。</p>
+<h5 id="sprop-li-jf-jl-f-iexp"><a href="#sprop-li-jf-jl-f-iexp" class="headerlink" title="sprop(li,jf,jl,f,iexp)"></a>sprop(li,jf,jl,f,iexp)</h5><p>sprop propagates the fundamental matrix f from jf to jl (a solid region)<br>if jorth&#x3D;1 the columns of f are orthogonalized at each level except in regions of oscillatory p and s.</p>
+<p>sprop 将基本矩阵 f 从 jf 传播到jl（实心区域） 如果jnorth&#x3D;1，f的列在除振荡 p 和 s 区域之外的每个层（level）上都是正交的。</p>
+<h6 id="ortho-li-lc-b-kg"><a href="#ortho-li-lc-b-kg" class="headerlink" title="ortho(li,lc,b,kg)"></a>ortho(li,lc,b,kg)</h6><p>Finds the orthogonal matrix v such that the columns of b<em>v are orthogonal,<br>the array a is replaced by a</em>v for levels li - lc.<br>Array b is replaced by b*v and is then ready for entry to sprop at level lc.<br>This is intended to diminish the onset of degeneracy caused by rapid exponential<br>growth in the mantle for modes with deeply turning S and shallowly turning P.</p>
+<p>找到正交矩阵 v，使得 b<em>v 的列是正交的，对于层 li 至 lc，数组 a 被 a</em>v 替换。<br>数组 b 被 b*v 替换，然后准备好进入 lc 层的 sprop。这是为了减少由深度旋转 S 和<br>浅度旋转 P 的模式在地幔中快速指数增长引起的退化的开始。</p>
 <h5 id="sfbdry-jf-jl-as-af-kg"><a href="#sfbdry-jf-jl-as-af-kg" class="headerlink" title="sfbdry(jf,jl,as,af,kg)"></a>sfbdry(jf,jl,as,af,kg)</h5><p><em>The tangential traction scalar is forced to vanish at the solid side of a s&#x2F;f boundary(level jl).<br>a(j,3,i) is elliminated for i&#x3D;jf…jl and af is loaded from a at level jl.</em><br>切向牵引标量在 s&#x2F;f 边界的实体侧（水平 jl）消失。 a(j,3,i) 对于 i&#x3D;jf…jl 被消除并且 af 从 a 在级别 jl 加载。</p>
+<h5 id="baylis-q-maxo1"><a href="#baylis-q-maxo1" class="headerlink" title="baylis(q,maxo1)"></a>baylis(q,maxo1)</h5><p><em>baylis returns the coefficients for rks integration.<br>see e. baylis shanks(1966 a. m. s.) and references therein for the coefficients.<br>the eight runge-kutta-shanks formulae are (1-1) (2-2) (3-3) (4-4) (5-5) (6-6) (7-7) (8-10).<br>for orders greater than 4 the formulae are approximate rather than exact so incurring less roundoff.</em></p>
+<p>baylis 返回 rks 积分的系数。 见e. baylis shanks（1966 a. m. s.）及其中的系数参考。<br>八runge-kutta-shanks公式是 (1-1) (2-2) (3-3) (4-4) (5-5) (6-6) (7-7) (8-10)。<br>对于大于 4 的阶数，公式是近似的而不是精确的，因此产生的舍入较少。</p>
 <h5 id="match-n-j-kg-af-afr-icomp"><a href="#match-n-j-kg-af-afr-icomp" class="headerlink" title="match(n,j,kg,af,afr,icomp)"></a>match(n,j,kg,af,afr,icomp)</h5><p><em>Matches boundary conditions during downward integration – first try is at cmb, second try is at icb.</em><br>在向下积分时符合边界条件——第一次尝试在 cmb，第二次尝试在 icb。</p>
 <h4 id="eifout-lsmin"><a href="#eifout-lsmin" class="headerlink" title="eifout(lsmin)"></a>eifout(lsmin)</h4><p><em>massages spheroidal mode eigenfunctions before output</em><br>在输出前“修改”球振振型本征函数</p>
 <h3 id="rotspl-eps1-wt-iout-ioeig-ifreq-ncall"><a href="#rotspl-eps1-wt-iout-ioeig-ifreq-ncall" class="headerlink" title="rotspl(eps1,wt,iout,ioeig,ifreq,ncall)"></a>rotspl(eps1,wt,iout,ioeig,ifreq,ncall)</h3><p>通过样条差值查找roots</p>
@@ -4622,7 +4656,7 @@ man 命令名  //使用范围更广
 <li>ncall 一个有关计数的参数</li>
 </ul>
 <h3 id="gauslv-r1-r2-iq-fint-nint"><a href="#gauslv-r1-r2-iq-fint-nint" class="headerlink" title="gauslv(r1,r2,iq,fint,nint)"></a>gauslv(r1,r2,iq,fint,nint)</h3><p>fifth order gauss-legendre integration<br>五阶高斯-勒让德积分。</p>
-<h4 id="intgds-rr-iq-vals"><a href="#intgds-rr-iq-vals" class="headerlink" title="intgds(rr,iq,vals)"></a>intgds(rr,iq,vals)</h4><p>interpolates integrands for normalisation,cg,q etc..for use with gauslv<br>插值积分以进行归一化、cg、q等，gauslv使用该函数</p>
+<h4 id="intgds-rr-iq-vals"><a href="#intgds-rr-iq-vals" class="headerlink" title="intgds(rr,iq,vals)"></a>intgds(rr,iq,vals)</h4><p>interpolates integrands for normalisation,cg,q etc..for use with gauslv<br>插值积分以进行归一化、cg、q等，gauslv使用该�</p>
 ]]></content>
       <categories>
         <category>地震学常用软件</category>
@@ -6171,6 +6205,7 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
     <content><![CDATA[<h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><h2 id="What-and-WHere"><a href="#What-and-WHere" class="headerlink" title="What and WHere"></a>What and WHere</h2><p>README.md 开始信息<br>LICENSE GNU LGPL licence<br>StdModels 在&#x2F;lib&#x2F;TauP-2.6.1.jar&#x2F;edu&#x2F;sc&#x2F;seis&#x2F;TauP&#x2F;StdModels中存在的模型</p>
 <h1 id="创建模型"><a href="#创建模型" class="headerlink" title="创建模型"></a>创建模型</h1><h2 id="nd模型"><a href="#nd模型" class="headerlink" title=".nd模型"></a>.nd模型</h2><p>模型中，每一列为：<br>depth（km）；P波速度（km&#x2F;s）；S波速度(km&#x2F;s)；密度（g&#x2F;cm3）；Qp；Qs。</p>
 <p>但是只有前三列为有效值，其余三列无效，只是为了兼容之后的某些情况。</p>
+<p>注意！模型最后一行留一空白行。</p>
 <p>使用英文单词表示分界面：</p>
 <ul>
 <li>mantle 莫霍界面</li>
@@ -6216,7 +6251,9 @@ sh prem_normal_vel.gmt
 <li>–verbose 未知</li>
 </ul>
 <p>注意：必须已安装gmt。安装见《GMT安装》。</p>
-<h1 id="绘制模型慢度剖面图"><a href="#绘制模型慢度剖面图" class="headerlink" title="绘制模型慢度剖面图"></a>绘制模型慢度剖面图</h1>]]></content>
+<h1 id="绘制模型慢度剖面图"><a href="#绘制模型慢度剖面图" class="headerlink" title="绘制模型慢度剖面图"></a>绘制模型慢度剖面图</h1><h1 id="绘制走时曲线"><a href="#绘制走时曲线" class="headerlink" title="绘制走时曲线"></a>绘制走时曲线</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export model=&#x27;premoonaver&#x27;</span><br><span class="line">export phases=&#x27;p,s,PKP,ScS,PcP,P,S&#x27;</span><br><span class="line">taup_curve -mod $model.nd -h 867.0 -ph $&#123;phases&#125; -o time_curve -gmt</span><br><span class="line">sh time_curve.gmt</span><br></pre></td></tr></table></figure>
+<p>注意：震相s与S不同，需要单独绘制。</p>
+]]></content>
       <categories>
         <category>地震学常用软件</category>
       </categories>
