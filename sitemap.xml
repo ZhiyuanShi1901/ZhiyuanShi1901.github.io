@@ -746,6 +746,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://zhiyuanshi1901.github.io/tags/Conda/</loc>
+    <lastmod>2023-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -848,6 +855,13 @@
   
   <url>
     <loc>https://zhiyuanshi1901.github.io/categories/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2023-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhiyuanshi1901.github.io/categories/%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2023-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
