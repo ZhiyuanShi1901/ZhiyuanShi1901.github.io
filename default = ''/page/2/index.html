@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">29</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,148 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2023/02/05/Python-SAC-IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/05/Python-SAC-IO/" class="post-title-link" itemprop="url">Python-SAC-IO</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-05 20:50:23" itemprop="dateCreated datePublished" datetime="2023-02-05T20:50:23+08:00">2023-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-22 15:53:24" itemprop="dateModified" datetime="2023-04-22T15:53:24+08:00">2023-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在Python中使用包实现SAC文件读取。有如下三个SAC读取相关的库：<br><a target="_blank" rel="noopener" href="https://github.com/pysmo/pysmo">pysmo</a><br><a target="_blank" rel="noopener" href="https://github.com/eost/sacpy">sacpy</a><br><a target="_blank" rel="noopener" href="https://pyrocko.org/docs/current/install/packages/anaconda.html">pyrocko</a></p>
+<p>注意：有些库不支持较高的Python版本。例如pyrocko只支持到3.6.*版本。使用conda创建环境较为方便，建议使用3.6版本的<br>python，在改版本下均可安装以下库及Obspy。</p>
+<p>运行如果出现报错：</p>
+<pre><code>&#39;version_info&#39; object has no attribute &#39;__version__&#39;
+</code></pre>
+<p>试一下运行：</p>
+<pre><code>pip install pyparsing==2.4.7
+</code></pre>
+<h1 id="pysmo"><a href="#pysmo" class="headerlink" title="pysmo"></a>pysmo</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>pip install pysmo
+pip install pysmo --pre
+pip install git+https://github.com/pysmo/pysmo
+</code></pre>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>官方文档：<a target="_blank" rel="noopener" href="https://pysmo.readthedocs.io/en/latest/sac.html">https://pysmo.readthedocs.io/en/latest/sac.html</a></p>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from pysmo import SacIO</span><br><span class="line">seismogram = SacIO.from_file(&#x27;filename.sac&#x27;)</span><br><span class="line">datas = seismogram.data</span><br><span class="line">print(datas)</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取采样率"><a href="#读取采样率" class="headerlink" title="读取采样率"></a>读取采样率</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delta = seismogram.delta</span><br><span class="line">print(delta)</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改采样率"><a href="#修改采样率" class="headerlink" title="修改采样率"></a>修改采样率</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seismogram.delta = 0.05</span><br></pre></td></tr></table></figure>
+<h3 id="读取IRIS的地震数据"><a href="#读取IRIS的地震数据" class="headerlink" title="读取IRIS的地震数据"></a>读取IRIS的地震数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from pysmo import SacIO</span><br><span class="line">&gt;&gt;&gt; my_sac = SacIO.from_iris(</span><br><span class="line">&gt;&gt;&gt;             net=&quot;C1&quot;,</span><br><span class="line">&gt;&gt;&gt;             sta=&quot;VA01&quot;,</span><br><span class="line">&gt;&gt;&gt;             cha=&quot;BHZ&quot;,</span><br><span class="line">&gt;&gt;&gt;             loc=&quot;--&quot;,</span><br><span class="line">&gt;&gt;&gt;             start=&quot;2021-03-22T13:00:00&quot;,</span><br><span class="line">&gt;&gt;&gt;             duration=1 * 60 * 60,</span><br><span class="line">&gt;&gt;&gt;             scale=&quot;AUTO&quot;,</span><br><span class="line">&gt;&gt;&gt;             demean=&quot;true&quot;,</span><br><span class="line">&gt;&gt;&gt;             force_single_result=True)</span><br><span class="line">&gt;&gt;&gt; my_sac.npts</span><br><span class="line">144001</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="sacpy"><a href="#sacpy" class="headerlink" title="sacpy"></a>sacpy</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>使用pip即可</p>
+<pre><code>pip install sacpy
+</code></pre>
+<h1 id="pyrocko"><a href="#pyrocko" class="headerlink" title="pyrocko"></a>pyrocko</h1><h1 id="Obspy"><a href="#Obspy" class="headerlink" title="Obspy"></a>Obspy</h1><p>Obspy也可以直接读取sac文件。如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import obspy</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">st = obspy.read(&quot;filename.sac&quot;)</span><br><span class="line">tr=st[0]</span><br><span class="line">print(st)</span><br><span class="line">print(type(st))</span><br><span class="line">print(st[0].data)</span><br><span class="line">print(st[0].stats.delta)</span><br></pre></td></tr></table></figure>
+<p>注意： 使用obspy读取得到的为stream格式，该格式是一个列表。需要使用<code>st[0]</code>表示sac的图像数据。</p>
+<h2 id="获取基本信息"><a href="#获取基本信息" class="headerlink" title="获取基本信息"></a>获取基本信息</h2><pre><code>st[0].stats
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">      network: NA</span><br><span class="line">      station: BILL</span><br><span class="line">     location: </span><br><span class="line">      channel: LHE</span><br><span class="line">    starttime: 2000-01-14T23:37:10.800000Z</span><br><span class="line">      endtime: 2000-01-15T00:30:29.800000Z</span><br><span class="line">sampling_rate: 1.0</span><br><span class="line">        delta: 1.0</span><br><span class="line">         npts: 3200</span><br><span class="line">        calib: 1.0</span><br><span class="line">      _format: SAC</span><br><span class="line">          sac: AttribDict(&#123;&#x27;delta&#x27;: 1.0, &#x27;depmin&#x27;: -4299.8511, &#x27;depmax&#x27;: 4099.0977, &#x27;b&#x27;: 0.0, &#x27;e&#x27;: 3199.0, &#x27;o&#x27;: 0.0, &#x27;internal0&#x27;: 2.0, &#x27;stla&#x27;: 68.065102, &#x27;stlo&#x27;: 166.45239, &#x27;stdp&#x27;: 0.0, &#x27;evla&#x27;: 25.610001, &#x27;evlo&#x27;: 101.06, &#x27;evdp&#x27;: 33000.0, &#x27;dist&#x27;: 6370.9048, &#x27;az&#x27;: 23.937832, &#x27;baz&#x27;: 257.17334, &#x27;gcarc&#x27;: 57.340527, &#x27;depmen&#x27;: -2.0147384e-06, &#x27;nzyear&#x27;: 2000, &#x27;nzjday&#x27;: 14, &#x27;nzhour&#x27;: 23, &#x27;nzmin&#x27;: 37, &#x27;nzsec&#x27;: 10, &#x27;nzmsec&#x27;: 800, &#x27;nvhdr&#x27;: 6, &#x27;norid&#x27;: 0, &#x27;nevid&#x27;: 0, &#x27;npts&#x27;: 3200, &#x27;iftype&#x27;: 1, &#x27;iztype&#x27;: 9, &#x27;leven&#x27;: 1, &#x27;lpspol&#x27;: 0, &#x27;lovrok&#x27;: 1, &#x27;lcalda&#x27;: 1, &#x27;unused23&#x27;: 0, &#x27;kstnm&#x27;: &#x27;BILL&#x27;, &#x27;kcmpnm&#x27;: &#x27;LHE&#x27;, &#x27;knetwk&#x27;: &#x27;NA&#x27;, &#x27;kevnm&#x27;: &#x27;&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="获取采样率"><a href="#获取采样率" class="headerlink" title="获取采样率"></a>获取采样率</h2><pre><code>st[0].stats.delta
+</code></pre>
+<h1 id="去趋势"><a href="#去趋势" class="headerlink" title="去趋势"></a>去趋势</h1><p>使用：</p>
+<pre><code>st=obspy.read(filepath)
+st[0].detrend(&#39;polynomial&#39;, order=3) # 进行去趋势，选择为多项式，阶数为3
+</code></pre>
+<p>去除线性或者多阶趋势。<br>选项1可选：</p>
+<ul>
+<li>simple<br>Subtracts a linear function defined by first&#x2F;last sample of the trace (uses obspy.signal.detrend.simple()).</li>
+<li>linear<br>Fitting a linear function to the trace with least squares and subtracting it (uses scipy.signal.detrend()).</li>
+<li>constant or demean<br>Mean of data is subtracted (uses scipy.signal.detrend()).</li>
+<li>polynomial<br>Subtracts a polynomial of a given order. (uses obspy.signal.detrend.polynomial()).</li>
+<li>spline<br>Subtracts a spline of a given order with a given number of samples between spline nodes.(uses obspy.signal.detrend.spline()).</li>
+</ul>
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><h2 id><a href="#" class="headerlink" title></a></h2><p>使用方法</p>
+<p>在最后两行：<br>第一行为图所在目录（文件夹），文件为SAC格式。如果不是SAC格式，将被忽略。<br>第二行为：</p>
+<ul>
+<li>path1 路径 </li>
+<li>2 图类型type<ul>
+<li>type&#x3D;1 速度图</li>
+<li>type&#x3D;2 加速度图<br>均转换为位移图。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">import numpy</span><br><span class="line">import sacpy</span><br><span class="line">import pysmo</span><br><span class="line"># import pyrocko</span><br><span class="line">import obspy</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from pysmo import SacIO</span><br><span class="line">import os</span><br><span class="line">from obspy.signal.detrend import polynomial  # 去除多阶趋势</span><br><span class="line"></span><br><span class="line">def cusdetrend(filepath, tr, order=3):  # 去趋势</span><br><span class="line"># 文件路径；由读取sac文件得到的trace，即seismogram[0]；执行多项式去趋势的阶数，默认为3阶</span><br><span class="line">    seismogram = tr.copy()</span><br><span class="line">    been_detrend = seismogram.detrend(&#x27;polynomial&#x27;, order=order) # 进行去趋势，选择为多项式，阶数为3</span><br><span class="line">    return been_detrend</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def integral(input_file, dt):  # 执行积分</span><br><span class="line"># 输入文件为列表文件；dt为时间采样间隔</span><br><span class="line">    length = len(input_file)</span><br><span class="line">    output = [0 for i in range(0, length)]</span><br><span class="line">    for i in range(0, length-1):</span><br><span class="line">        if i == 0:</span><br><span class="line">            output[i] = 0</span><br><span class="line">        else:</span><br><span class="line">            time = 0</span><br><span class="line">            for j in range(0, i):</span><br><span class="line">                time = time + (input_file[j]+input_file[j+1])/2*dt</span><br><span class="line">            output[i] = time</span><br><span class="line"></span><br><span class="line">    return output</span><br><span class="line"></span><br><span class="line">def cus2disp(input_file, dt, type): # 转换为位移图， </span><br><span class="line"># 输入文件（列表）；采样时间间隔；输入图形类型（1为速度图，2为加速度图）</span><br><span class="line">    if type == 1:</span><br><span class="line">        outfile = integral(input_file, dt)</span><br><span class="line">    elif type == 2:</span><br><span class="line">        outfile = integral(integral(input_file, dt), dt)</span><br><span class="line">    else:</span><br><span class="line">        print(&#x27;wrong input type!&#x27;)</span><br><span class="line">    return outfile</span><br><span class="line"></span><br><span class="line">def savejpg(filepath, tr, imgtype):  # 绘制图形</span><br><span class="line"># 文件路径；trace；图形类型，目前没有用</span><br><span class="line">    # 调整画布大小，进行绘制</span><br><span class="line">    t = np.arange(0, (tr.stats.npts / tr.stats.sampling_rate), tr.stats.delta)</span><br><span class="line">    fig = plt.figure(1, figsize=(16, 9), dpi=200)</span><br><span class="line">    plt.subplot(2, 1, 2)</span><br><span class="line">    plt.plot(t, tr.data, &#x27;k&#x27;)</span><br><span class="line">    plt.xlabel(&#x27;T(s)&#x27;)</span><br><span class="line">    plt.ylabel(&#x27;Displacement(nm)&#x27;)</span><br><span class="line">    plt.title(&#x27;had detrend&#x27;+&#x27; &#x27;+tr.stats.station+tr.stats.channel)</span><br><span class="line">    # 判断文件是否存在, 存在，则删除文件</span><br><span class="line">    savepath=filepath+&#x27;detrend&#x27;+tr.stats.station+&#x27;_&#x27;+tr.stats.channel+&#x27;.jpg&#x27;</span><br><span class="line">    if(os.path.exists(savepath)):</span><br><span class="line">        os.remove(savepath)</span><br><span class="line">    # 保存</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line">    print(&#x27;saving jpg file.&#x27;)</span><br><span class="line">    plt.savefig(filepath+&#x27;detrend&#x27;+tr.stats.station+&#x27;_&#x27;+tr.stats.channel+&#x27;.jpg&#x27;)</span><br><span class="line">    print(f&#x27;The file has been saved as &#123;filepath&#125;&#123;tr.stats.station&#125;_&#123;tr.stats.channel&#125;.jpg&#x27;)</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line">    # plt.show()</span><br><span class="line">    plt.close(fig)</span><br><span class="line">    plt.close(&#x27;all&#x27;)</span><br><span class="line"></span><br><span class="line">    # 判断文件是否存在, 存在，则删除文件</span><br><span class="line">    savepath=filepath+&#x27;detrend&#x27;+tr.stats.station+&#x27;_&#x27;+tr.stats.channel+&#x27;.sac&#x27;</span><br><span class="line">    if(os.path.exists(savepath)):</span><br><span class="line">        os.remove(savepath)</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line">    print(&#x27;saving sac file...&#x27;)</span><br><span class="line">    tr.write(savepath, format=&#x27;SAC&#x27;)</span><br><span class="line">    print(f&#x27;The file has been saved as &#123;filepath&#125;&#123;tr.stats.station&#125;_&#123;tr.stats.channel&#125;.jpg&#x27;)</span><br><span class="line">    print(&#x27;###############################&#x27;)</span><br><span class="line"></span><br><span class="line">def acc2dis_detrend(path, type):  # 主程序：转换为displacement并去趋势</span><br><span class="line"># 文件路径；type=1 为velo，type=2为acc</span><br><span class="line">    for file_name in os.listdir(path):</span><br><span class="line">        if(file_name[-3:]!=&#x27;SAC&#x27;):  # 避免读取其他文件</span><br><span class="line">            continue</span><br><span class="line">        filepath = path+&#x27;/&#x27;+file_name</span><br><span class="line">        seismogram = obspy.read(filepath)</span><br><span class="line">        trace = seismogram[0]</span><br><span class="line">        # 进行转换,返回值为列表</span><br><span class="line">        trace_data = cus2disp(trace.data, dt=trace.stats.delta, type=type)</span><br><span class="line">        # 列表导入到stream数据中,只有这样才能使用obspy的去趋势函数。</span><br><span class="line">        trace.data = numpy.array(trace_data[0:len(trace_data)-1])</span><br><span class="line">        print(trace.data)</span><br><span class="line">        # 进行去趋势</span><br><span class="line">        detrend_result = cusdetrend(filepath, trace, order=3)  # 进行去趋势。</span><br><span class="line">        # 保存</span><br><span class="line">        if type == 1:</span><br><span class="line">            imgtype = &#x27;velocity(nm/s)&#x27;</span><br><span class="line">        elif type == 2:</span><br><span class="line">            imgtype = &#x27;accelate(nm/s2)&#x27;</span><br><span class="line">        savejpg(filepath, detrend_result, imgtype)</span><br><span class="line"></span><br><span class="line"># 文件所在位置</span><br><span class="line">path1 = &#x27;G:/Pythonworks/Obspy_data_solve/seismogram/0_200acc&#x27;</span><br><span class="line"># 执行</span><br><span class="line">acc2dis_detrend(path1, 2)</span><br></pre></td></tr></table></figure>
+
+<h1 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h1><h2 id="安装-sklearn-库"><a href="#安装-sklearn-库" class="headerlink" title="安装 sklearn 库"></a>安装 sklearn 库</h2><p>conda 安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c anaconda scikit-learn</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -3570,133 +3712,6 @@ dbpick green
 <li>增加了STEP7，内容为将Syndat转化为SAC格式。</li>
 <li>修改了china_cmt_event为xinjiang_cmt_event。内容为另一个地震事件。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line">#</span><br><span class="line"># Example of the synthetic seismogram&#x27;s generation script.</span><br><span class="line">#</span><br><span class="line"># Usage: RUN_MINEOS.sh model_name</span><br><span class="line"># </span><br><span class="line"># Available model names for DEMO version:</span><br><span class="line"># prem_noocean  prem_ocean CPacific NRussia</span><br><span class="line">#----------------------------------------------------------</span><br><span class="line">if( $#argv != 1) then</span><br><span class="line">echo &quot; Usage: RUN_MIN.csh model_name&quot;</span><br><span class="line">exit</span><br><span class="line">endif</span><br><span class="line">alias cp cp</span><br><span class="line">alias rm rm</span><br><span class="line">alias mv mv</span><br><span class="line">set model=$1                # setup 1-D model name</span><br><span class="line"># check model name</span><br><span class="line">set flg=0</span><br><span class="line">foreach f (CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt)</span><br><span class="line">if($f == $1) set flg=1</span><br><span class="line">end</span><br><span class="line">if($flg == 0) then</span><br><span class="line">echo &quot;Model name $1 is wrong, allowed names are:&quot;</span><br><span class="line">echo &quot;CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt&quot;</span><br><span class="line">exit</span><br><span class="line">endif</span><br><span class="line">#----------------------------------------------------------------</span><br><span class="line"># Step 0 </span><br><span class="line"># make .site and .sitechan </span><br><span class="line">time simpledit stations short</span><br><span class="line">#---------------------------------------------------------------------</span><br><span class="line"># 1 run minos_bran for S mpde</span><br><span class="line"># n=0, f 0-200mhz</span><br><span class="line">echo &quot;Step 1:  minos_bran runs for S modes .....................&quot;</span><br><span class="line">echo &quot;============== Program minos_bran ==================&quot;</span><br><span class="line">if( -f $&#123;model&#125;_S) rm -f $&#123;model&#125;_S # 存在的话移除掉</span><br><span class="line">if( -f e$&#123;model&#125;_S) rm -f e$&#123;model&#125;_S</span><br><span class="line">time minos_bran &lt;&lt; EOF</span><br><span class="line">../models/$model.txt</span><br><span class="line">$&#123;model&#125;_S</span><br><span class="line">e$&#123;model&#125;_S</span><br><span class="line">1.0e-10 1</span><br><span class="line">3</span><br><span class="line">2 8000 0.0 200.0 0 0</span><br><span class="line">EOF</span><br><span class="line">#=========================================================</span><br><span class="line"># 2. run minos_bran program for fundamental T  mode,</span><br><span class="line"># where,  n=0, 0 &lt; f &lt;  0.2 Hz,</span><br><span class="line">#</span><br><span class="line">echo &quot;Step 2: minos_bran runs for T modes .....................&quot;</span><br><span class="line">echo &quot;============== Program minos_bran ==================&quot;</span><br><span class="line">if( -f $&#123;model&#125;_T) rm -f $&#123;model&#125;_T</span><br><span class="line">if( -f e$&#123;model&#125;_T) rm -f e$&#123;model&#125;_T</span><br><span class="line">time minos_bran &lt;&lt; EOF</span><br><span class="line">../models/$model.txt</span><br><span class="line">$&#123;model&#125;_T</span><br><span class="line">e$&#123;model&#125;_T</span><br><span class="line">1.0e-10 1</span><br><span class="line">2</span><br><span class="line">2 8000 0.0 200.0 0 0</span><br><span class="line">EOF</span><br><span class="line">#============================================================</span><br><span class="line"># 3. Convert minos_bran results to .eigen relation (S mode)</span><br><span class="line">#</span><br><span class="line">echo &quot;Step 3: eigen for S .....................................&quot;</span><br><span class="line">if( -f test_S.eigen) rm -rf test_S.*</span><br><span class="line">time eigcon &lt;&lt; EOF</span><br><span class="line">3</span><br><span class="line">../models/$model.txt</span><br><span class="line">1000</span><br><span class="line">$&#123;model&#125;_S</span><br><span class="line">e$&#123;model&#125;_S</span><br><span class="line">test_S</span><br><span class="line">EOF</span><br><span class="line">#============================================================</span><br><span class="line"># 4. Convert minos_bran results to .eigen relation (T mode)</span><br><span class="line">echo &quot;Step 4: eigen for T .....................................&quot;</span><br><span class="line">if( -f test_T.eigen) rm -rf test_T.*</span><br><span class="line">time eigcon &lt;&lt; EOF</span><br><span class="line">2</span><br><span class="line">../models/$model.txt</span><br><span class="line">1000</span><br><span class="line">$&#123;model&#125;_T</span><br><span class="line">e$&#123;model&#125;_T</span><br><span class="line">test_T</span><br><span class="line">EOF</span><br><span class="line">#=========================================================</span><br><span class="line"># 5. Evaluate green functions for given sitechan relation</span><br><span class="line">echo &quot;Step 5: green functions evaluation .........................&quot;</span><br><span class="line">if( -f green.wfdisc) rm -rf green.*</span><br><span class="line">time green &lt;&lt; EOF</span><br><span class="line">short</span><br><span class="line">db_list</span><br><span class="line">xinjiang_cmt_event</span><br><span class="line">10 260</span><br><span class="line">8000</span><br><span class="line">green</span><br><span class="line">EOF</span><br><span class="line">cp -p short.site green.site</span><br><span class="line">cp -p short.sitechan green.sitechan</span><br><span class="line"># create origin relation for data base green</span><br><span class="line">creat_origin xinjiang_cmt_event green</span><br><span class="line">#============================================================</span><br><span class="line"># 6. Synthetic data construction</span><br><span class="line">echo &quot;Step 6: synthetic seismogram construction ..................&quot;</span><br><span class="line">if( -f Syndat.wfdisc) rm -rf Syndat.*</span><br><span class="line">time syndat &lt;&lt; EOF</span><br><span class="line">xinjiang_cmt_event</span><br><span class="line">0</span><br><span class="line">green</span><br><span class="line">Syndat</span><br><span class="line">0</span><br><span class="line">EOF</span><br><span class="line"># convert Green functions to BIG_ENDIAN binary numerical storage</span><br><span class="line"># this is ANTELOPE requirement</span><br><span class="line"># $bin/wfendi 0 0 Syndat Syndat</span><br><span class="line"># copy .site, .sitechan relations into database Syndat</span><br><span class="line">cp -p short.site Syndat.site</span><br><span class="line">cp -p short.sitechan Syndat.sitechan</span><br><span class="line">creat_origin xinjiang_cmt_event Syndat</span><br><span class="line"># =====================================================</span><br><span class="line">#7.MAKE SAC TRANSFORM</span><br><span class="line">echo &quot;Step 7: SAC transform&quot;</span><br><span class="line">time cucss2sac Syndat Syndat_SAC</span><br><span class="line">echo &quot;over&quot;</span><br><span class="line">exit</span><br></pre></td></tr></table></figure></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/" class="post-title-link" itemprop="url">CentOS服务器部署x-ui与v2rayn</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-12-21 21:09:15 / Modified: 22:23:20" itemprop="dateCreated datePublished" datetime="2022-12-21T21:09:15+08:00">2022-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">Linux服务器实践</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">v2rayN_github</a><br><a target="_blank" rel="noopener" href="https://v2rayn.org/">v2rayN官网</a><br><a target="_blank" rel="noopener" href="https://v2rayng.org/">移动端v2rayNG官网</a><br><a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui">x-ui</a><br><a target="_blank" rel="noopener" href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
-<p><strong>注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。</strong></p>
-<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
-<h1 id="连接服务器并进行配置"><a href="#连接服务器并进行配置" class="headerlink" title="连接服务器并进行配置"></a>连接服务器并进行配置</h1><p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
-<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>yum install git
-</code></pre>
-<h2 id="clone-V-install库"><a href="#clone-V-install库" class="headerlink" title="clone V-install库"></a>clone V-install库</h2><pre><code>git clone --depth=1 https://github.com/bedefaced/vpn-install.git
-</code></pre>
-<h2 id="安装V-install"><a href="#安装V-install" class="headerlink" title="安装V-install"></a>安装V-install</h2><p>分别安装PPTP、openvpn和IPSEC。</p>
-<pre><code>vpn-install/pptp/install.sh
-vpn-install/openvpn/install.sh
-vpn-install/ipsec/install.sh
-</code></pre>
-<p>安装过程中进行配置。不知道的直接输入1或者回车就可以，不用单独设置。<br>用户名、密码和PSK需要自行设置，并且需要牢记。</p>
-<h2 id="安装x-ui"><a href="#安装x-ui" class="headerlink" title="安装x-ui"></a>安装x-ui</h2><p>运行：</p>
-<pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
-</code></pre>
-<p>安装过程中需要设置面板端口，随便输入一个1到65535数字即可。<br>面板端口牢记，之后会用到。例如这里设置为8888（宝塔面板的端口），以下示例中端口改为自行设置的端口，不推荐设置8888。</p>
-<h1 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h1><p>如果端口不在防火墙白名单里，则不能连接。在阿里云控制台中配置防火墙。</p>
-<p>在控制台左侧，安全-防火墙一栏中，预设有三个可通过防火墙的端口。<br>点击<code>添加规则</code>，依次选择：</p>
-<ul>
-<li>应用类型：自定义，</li>
-<li>协议：TCP</li>
-<li>端口范围： 8888</li>
-<li>限制IP来源：不要修改</li>
-<li>备注：按照自己的想法填写即可</li>
-</ul>
-<p>点击确定后，这个端口不会被拦截。</p>
-<h1 id="配置x-ui面板"><a href="#配置x-ui面板" class="headerlink" title="配置x-ui面板"></a>配置x-ui面板</h1><p>在浏览器官网输入：公网IP:x-ui设置的端口，例如：192.168.0.1:8888。<br>其中，192.168.0.1为公网IP，8888为设置的端口，便可进入到x-ui面板。</p>
-<p><strong>注：公网IP地址在控制台<code>概览</code>页面。</strong></p>
-<p>如果无法进入，很可能是防火墙设置不正确，或者服务器中x-ui未运行。</p>
-<p>点击<code>入站列表</code>，左上角的蓝色加号。</p>
-<p><img src="%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9.png" alt="节点"></p>
-<ul>
-<li>备注：填写节点的名称，选择一个好记又方便的名称即可。</li>
-<li>协议：默认选择vmess即可，也可以选择其他的。因水平有限未进行测试。</li>
-<li>端口：可以随意修改，但是注意要在防火墙开放，具体操作在配置防火墙一栏。</li>
-<li>传输：默认使用tcp即可，也可以使用ws，但是可能需要额外设置。因水平有限未进行测试。</li>
-<li>其余选项可以默认不修改。总流量设置可以设置限制。</li>
-</ul>
-<p>点击添加即可。</p>
-<p>完成后，点击操作，二维码。保存这个二维码，亦可以不保存进入网站查找。</p>
-<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。<br>下载地址：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a><br>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
-<p>然后对服务器一栏右键，点击<code>设为活动服务器</code></p>
-<p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br><code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
-<p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>阿里云轻量应用服务器-新加坡服务器实测延迟足够使用，在80ms以内。<br>目前该操作仅适用于Windows PC。</p>
-<p>由于该操作使用的服务器只有命令行界面，因此需要一定的Linux基础。</p>
-<p>使用过程中发现去掉图形化界面的Linux十分轻快简洁，如果有必要可以在Linux PC去除图形界面操作。</p>
 
       
     </div>
