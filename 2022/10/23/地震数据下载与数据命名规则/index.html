@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：[Seisman数据命名规则]https:&#x2F;&#x2F;seisman.github.io&#x2F;SAC_Docs_zh&#x2F;appendix&#x2F;naming-convections&#x2F;#id3 [地震学笔记]https:&#x2F;&#x2F;seismology.gitee.io&#x2F;seisnote&#x2F;obspydoc&#x2F;plot_5_retrieving_data&#x2F; 数据获取数据获取有多种方式，例如脚本或者直接网页申请。在这里记录使用">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-23T13:35:54.000Z">
-<meta property="article:modified_time" content="2022-10-28T13:39:48.000Z">
+<meta property="article:modified_time" content="2023-06-08T06:26:45.871Z">
 <meta property="article:tag" content="Obspy">
 <meta name="twitter:card" content="summary">
 
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-28 21:39:48" itemprop="dateModified" datetime="2022-10-28T21:39:48+08:00">2022-10-28</time>
+      <time title="Modified: 2023-06-08 14:26:45" itemprop="dateModified" datetime="2023-06-08T14:26:45+08:00">2023-06-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -356,7 +356,10 @@
 <li>miniSeed格式</li>
 </ul>
 <hr>
-<h2 id="Web-Services-网页获取"><a href="#Web-Services-网页获取" class="headerlink" title="Web Services 网页获取"></a>Web Services 网页获取</h2><hr>
+<h2 id="Web-Services-网页获取"><a href="#Web-Services-网页获取" class="headerlink" title="Web Services 网页获取"></a>Web Services 网页获取</h2><p>在浏览器中输入, 可以直接获取相关数据:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://service.iris.edu/fdsnws/dataselect/1/query?network=XA&amp;station=S12&amp;starttime=1970-01-01T00:00:00&amp;endtime=1971-01-01T12:00:00</span><br></pre></td></tr></table></figure>
+<p>如上所述为台网XA、台站S12，起始时间与终止时间为1970与1971年的月震记录。</p>
+<hr>
 <h2 id="Obspy获取"><a href="#Obspy获取" class="headerlink" title="Obspy获取"></a>Obspy获取</h2><h3 id="服务器下载波形数据"><a href="#服务器下载波形数据" class="headerlink" title="服务器下载波形数据"></a>服务器下载波形数据</h3><p>使用get_waveforms()从服务器下载波形数据，<br>需要添加关键字参数自定义申请。</p>
 <h4 id="申请单个数据"><a href="#申请单个数据" class="headerlink" title="申请单个数据"></a>申请单个数据</h4><p>参数：</p>
 <pre><code>waveform = get_waveforms（台网名，台站名，位置码，通道名，波形开始时间，波形结束时间（s））

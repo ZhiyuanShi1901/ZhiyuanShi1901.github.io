@@ -1,3 +1,4 @@
+https://zhiyuanshi1901.github.io/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/
 https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zhiyuanshi1901.github.io/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/
 https://zhiyuanshi1901.github.io/2023/05/03/MATLAB%E5%87%BD%E6%95%B0/
@@ -36,7 +37,6 @@ https://zhiyuanshi1901.github.io/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99
 https://zhiyuanshi1901.github.io/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/
 https://zhiyuanshi1901.github.io/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/
 https://zhiyuanshi1901.github.io/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
-https://zhiyuanshi1901.github.io/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/
 https://zhiyuanshi1901.github.io/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/
 https://zhiyuanshi1901.github.io/2022/10/21/%E5%AD%90%E6%B3%A2%E6%8F%90%E5%8F%96%E4%B8%8E%E5%8F%8D%E8%A4%B6%E7%A7%AF%E6%96%B9%E6%B3%95%E7%BB%BC%E8%BF%B0%E4%BD%9C%E4%B8%9A/
 https://zhiyuanshi1901.github.io/2022/10/21/SAC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/
