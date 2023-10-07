@@ -6364,4 +6364,36 @@ signalchannel.plot(outfile=&#39;signalchannel_oneday_filter&#39;,
         <tag>MATLAB</tag>
       </tags>
   </entry>
+  <entry>
+    <title>English Lesson Record</title>
+    <url>/2023/09/21/English-Lesson-Record/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Deglitches</title>
+    <url>/2023/09/10/Deglitches/</url>
+    <content><![CDATA[<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>Deglitches软件包来源于[1]。可以在<a href="https://pss-gitlab.math.univ-paris-diderot.fr/data-processing-wg/seisglitch/-/tree/master">https://pss-gitlab.math.univ-paris-diderot.fr/data-processing-wg/seisglitch/-/tree/master</a>中下载。</p>
+<p>使用教程在<a href="https://seisglitch.readthedocs.io/en/latest/index.html">https://seisglitch.readthedocs.io/en/latest/index.html</a>中</p>
+<p>[1]. Scholz, J.-R., Widmer-Schnidrig, R., Davis, P., Lognonné, P., Pinot, B., Garcia, R. F., et al. (2020). Detection, analysis, and removal of glitches from InSight’s seismic data from Mars. Earth and Space Science, 7, e2020EA001317. <a href="https://doi.org/10.1029/2020EA001317">https://doi.org/10.1029/2020EA001317</a></p>
+<p>[2]. Lognonné, P., Schimmel, M., Stutzmann, E., Davis, P., Drilleau, M., Sainton, G., et al. (2023). Detection of Mars normal modes from S1222a event and seismic hum. Geophysical Research Letters, 50, e2023GL103205. <a href="https://doi.org/10.1029/2023GL103205">https://doi.org/10.1029/2023GL103205</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>该软件包是为了去除由于温度剧烈变化等原因导致地震仪出现的极大峰值噪声。这种噪声普遍呈现在火星地震仪上，且无法通过滤波消除（Lognonne, et al, 2023）。</p>
+<h1 id="config-yml文件"><a href="#config-yml文件" class="headerlink" title="config.yml文件"></a>config.yml文件</h1><p>该文件是进行Glitch操作的控制文件，即每一步运行的输入文件。它控制所有方法的参数。因此该文件的参数设置十分重要。</p>
+<h1 id="Glitch探测"><a href="#Glitch探测" class="headerlink" title="Glitch探测"></a>Glitch探测</h1><p>使用’detect’方法进行Glitch探测。该方法将生成一个txt文件，表述Glitch出现的各种参数，如时间、数量等。</p>
+<p>该方法是进行Glitch去除的一个重要步骤，运行方式如下：</p>
+<pre><code>seisglitch detect path/to/config.yml
+</code></pre>
+<h1 id="Glitch去除"><a href="#Glitch去除" class="headerlink" title="Glitch去除"></a>Glitch去除</h1><p>使用’remove’方法去除Glitch。该方法将原始数据去除Glitch，生成deGlitch后的数据与Glitch数据。</p>
+<pre><code>seisglitch remove path/to/config.yml
+</code></pre>
+<h1 id="Glitch绘制"><a href="#Glitch绘制" class="headerlink" title="Glitch绘制"></a>Glitch绘制</h1><p>进行Glitch的绘图。该方法将数据中的Glitch使用细直线标记出来。</p>
+<pre><code>seisglitch plot path/to/config.yml
+</code></pre>
+]]></content>
+      <categories>
+        <category>地震学常用软件</category>
+      </categories>
+      <tags>
+        <tag>行星数据处理</tag>
+      </tags>
+  </entry>
 </search>

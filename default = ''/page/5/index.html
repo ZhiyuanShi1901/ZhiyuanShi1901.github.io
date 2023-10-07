@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">16</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">31</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,250 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">吉布斯现象作业</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-30 19:38:00 / Modified: 19:41:36" itemprop="dateCreated datePublished" datetime="2022-09-30T19:38:00+08:00">2022-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">作业布置</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MATLAB进行图像绘制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
+<p><img src="%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Zhiyuan Shi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/21/%E3%80%8A%E9%87%8D%E5%8A%9B%E5%9C%BA%E4%B8%8E%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" class="post-title-link" itemprop="url">《重力场与重力勘探》英语词汇</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-21 21:40:33 / Modified: 21:43:14" itemprop="dateCreated datePublished" datetime="2022-09-21T21:40:33+08:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url" rel="index"><span itemprop="name">专业英语词汇</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[重力场与重力勘探&#x2F;曾华霖编著.-北京：地质出版社，2005.6]</p>
+<h1 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h1><p>Gravity Field and Gravity Exploration 重力场与重力勘探</p>
+<p>Gravity 重力</p>
+<p>acceleration 加速度</p>
+<p>concept 概念</p>
+<p>Gravitational field 引力场</p>
+<p>Gravitational potential 引力位</p>
+<p>Gravity potential 重力位</p>
+<p>anomaly 异常</p>
+<p>formulae 公式</p>
+<p>gravitational force caused by density contrast 剩余质量引力</p>
+<p>Free air anomolies 自由空气重力异常</p>
+<p>Bougure gravity anomolies 布格重力异常</p>
+<p>instruments for absolute gravity measurements 绝对重力测量仪</p>
+<p>instruments for relative gravity measurements 相对重力测量仪</p>
+<p>Land gravity metres 地面测量仪器</p>
+<p>marine 海洋</p>
+<p>areo 航空</p>
+<p>borehole 井中</p>
+<p>calibration 标定</p>
+<p>coincidence 一致性</p>
+<p>scale 格值</p>
+<p>basis-points net 基点网</p>
+<p>arrangement 布置</p>
+<p>combination measurements 联测</p>
+<p>Gravity points 普通点</p>
+<p>points for monltor 检查点</p>
+<p>additional measurements 补充观测</p>
+<p>Geodesy 测地工作</p>
+<p>Airlome gravity surcey 航空重力测量</p>
+<p>gravity gradients 重力梯度</p>
+<p>torsion balance gradiometre 扭秤</p>
+<p>satellite 卫星</p>
+<p>reduction 整理</p>
+<p>adjustments 平差</p>
+<p>closer error 闭合差</p>
+<p>condition adjustment 条件平差</p>
+<p>Terrain correction 地形校正</p>
+<p>Bouguer correction 中间层矫正（美国等国家将中间层矫正称为布格校正）</p>
+<p>Free-air coorection 自由空气（高度）矫正</p>
+<p>combine elevation correction 综合高度校正（国内称布格校正）</p>
+<p>Normal correction 正常场（纬度）校正</p>
+<p>gravity anomolies 重力异常</p>
+<p>illustration of gravity anomalies 异常的图示</p>
+<p>contour map 异常平面图</p>
+<p>profile 剖面图</p>
+<p>profiles on a plane 异常平剖图</p>
+<p>isostasy 均衡</p>
+<p>isostatic gravity anomaly 均衡重力异常</p>
+<p>principle 原理</p>
+<p>estimation 估计</p>
+<p>illutration 表示方法，插图</p>
+<p>least-square method 最小二乘法</p>
+<p>forward calculation 证问题</p>
+<p>irregular 不规则</p>
+<p>interfaces 分界面</p>
+<p>multi-interfaces 多分界面</p>
+<p>characteristic point method 特征点法</p>
+<p>Optimization 选择法</p>
+<p>Interactive method 人机交互式反演方法</p>
+<p>Linear regression 线性回归法</p>
+<p>interation 迭代法</p>
+<p>frequency domain 频率域反演方法</p>
+<p>Ambiguity 多解性问题</p>
+<p>effect 效应</p>
+<p>Separation 分离 </p>
+<p>deep structures 深部的因素</p>
+<p>Regional gravity anomaly 区域异常</p>
+<p>local gravity anomaly 局部异常</p>
+<p>average field method (Grids) 平均场法</p>
+<p>Polygon method 圆周法（多边形法）</p>
+<p>Grid calulation 网格法</p>
+<p>continuation 延拓</p>
+<p>filtering in spatial frequency demain 频率域滤波法</p>
+<p>faults 断裂构造（断层）</p>
+<p>paleo-burial hill 古潜山</p>
+<p>oil trap 封闭</p>
+<p>salt 盐矿</p>
+<p>ore 金属矿</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1602,192 +1846,6 @@
 </ul>
 <p>注意：两个参数指cmpaz和cmpnic</p>
 <p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/" class="post-title-link" itemprop="url">Ubuntu与windows双系统设置windows默认启动</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-08-13 11:07:53 / Modified: 11:19:26" itemprop="dateCreated datePublished" datetime="2022-08-13T11:07:53+08:00">2022-08-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id><a href="#" class="headerlink" title></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
-
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Zhiyuan Shi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/10/Obspy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Obspy学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-10 21:34:02" itemprop="dateCreated datePublished" datetime="2022-08-10T21:34:02+08:00">2022-08-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-19 09:41:14" itemprop="dateModified" datetime="2023-02-19T09:41:14+08:00">2023-02-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="1、UTC标准时间、地震数据读取、数据中心"><a href="#1、UTC标准时间、地震数据读取、数据中心" class="headerlink" title="1、UTC标准时间、地震数据读取、数据中心"></a>1、UTC标准时间、地震数据读取、数据中心</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from obspy.core import UTCDateTime</span><br><span class="line"></span><br><span class="line"># 设置UTC世界标准时间</span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00&quot;))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(2012, 9, 7, 12, 15))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(1347020100.0))</span><br><span class="line">    </span><br><span class="line">    print(UTCDateTime(&quot;2012-09-07T12:15:00+02:00&quot;)) # 更改时区</span><br><span class="line">    </span><br><span class="line">    time = UTCDateTime(&quot;2012-09-07T12:15:00&quot;)</span><br><span class="line">    print(time.year) # 年份属性</span><br><span class="line">    print(time.julday) # 属性</span><br><span class="line">    print(time.timestamp) #</span><br><span class="line">    print(time.weekday) #存疑 返回一周的第几天，周一为0开始</span><br><span class="line">    </span><br><span class="line">    print(time + 3600)   # 增加3600秒</span><br><span class="line">    time2 = UTCDateTime(2012, 9, 7)</span><br><span class="line">    print(time - time2)  # 返回秒数差</span><br><span class="line"></span><br><span class="line">## 地震数据读取</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line"># 读取obspy实例网站http://examples.obspy.org/内的数据。</span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">print(st)</span><br><span class="line">tr = st[0]  # st中只有一个示例</span><br><span class="line"></span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr)</span><br><span class="line">## 访问元信息</span><br><span class="line">print(&quot;next\n&quot;)</span><br><span class="line">print(tr.stats)</span><br><span class="line">print(tr.stats.station)  # 返回stats中的station信息</span><br><span class="line">print(tr.stats.gse2.datatype) # 返回datatype信息</span><br><span class="line"></span><br><span class="line"># 访问波形数据</span><br><span class="line">print(tr.data)  # 对tr中的波形数据检索，返回值为数组</span><br><span class="line">print(tr.data[0:3])</span><br><span class="line">print(len(tr)) # 返回波形数据长度</span><br><span class="line"></span><br><span class="line"># 数据浏览</span><br><span class="line">st.plot()  # 快速浏览波形</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 波形绘制</span><br><span class="line">from obspy.core import read</span><br><span class="line">singlechannel = read(&#x27;https://examples.obspy.org/COP.BHZ.DK.2009.050&#x27;)</span><br><span class="line">print(singlechannel)</span><br><span class="line">threechannels = read(&quot;https://examples.obspy.org/COP.BHE.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHN.DK.2009.050&quot;)</span><br><span class="line">threechannels += read(&quot;https://examples.obspy.org/COP.BHZ.DK.2009.050&quot;)</span><br><span class="line">print(threechannels)</span><br><span class="line"></span><br><span class="line">singlechannel.plot()  # 绘制singlechannel图像</span><br><span class="line"># 自定义选项</span><br><span class="line">dt = singlechannel[0].stats.starttime</span><br><span class="line">singlechannel.plot(color=&#x27;red&#x27;, number_of_ticks=7,</span><br><span class="line">     tick_rotation = 5, tick_format=&#x27;%l:%M %p&#x27;,</span><br><span class="line">     starttime = dt + 60*60, endtime = dt+60*60+120,</span><br><span class="line">                   outfile = &#x27;singlechannel.png&#x27;)</span><br><span class="line">## outfile 将图像保存到系统中。</span><br><span class="line"></span><br><span class="line">threechannels.plot(size=(800, 600))</span><br><span class="line"># 自行设置图像分辨率大小，多个trace会同时显示</span><br><span class="line"></span><br><span class="line">singlechannel.plot(type=&#x27;dayplot&#x27;)</span><br><span class="line"># 一天的trace图像，设置dayplot参数可以打印一天的图像</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 绘制具有事件信息的记录</span><br><span class="line">from obspy import read</span><br><span class="line">st = read(&quot;http://examples.obspy.org/GR.BFO..LHZ.2012.108&quot;)</span><br><span class="line">st.filter(&quot;lowpass&quot;, freq=0.1, corners=2)</span><br><span class="line">st.plot(type=&quot;dayplot&quot;, interval=60, right_vertical_labels=False,</span><br><span class="line">        vertical_scaling_range=5e3,</span><br><span class="line">        one_tick_per_line=True,</span><br><span class="line">        color=[&#x27;k&#x27;,&#x27;r&#x27;,&#x27;b&#x27;,&#x27;g&#x27;],</span><br><span class="line">        show_y_UTC_label=False,</span><br><span class="line">        events=&#123;&#x27;min_magnitude&#x27;:6.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># stream.plot(type=&#x27;section&#x27;)</span><br><span class="line"># 绘制stream中的某一段记录</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"># 使用matplotlib自定义绘图</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from obspy import read</span><br><span class="line"></span><br><span class="line">st = read(&quot;http://examples.obspy.org/RJOB_061005_072159.ehz.new&quot;)</span><br><span class="line">tr = st[0]</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(tr.times(&quot;matplotlib&quot;), tr.data, &quot;b-&quot;)</span><br><span class="line">ax.xaxis_date()</span><br><span class="line">fig.autofmt_xdate()</span><br><span class="line">plt.show()</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<h1 id="重要"><a href="#重要" class="headerlink" title="重要"></a>重要</h1><h2 id="数据中心检索数据"><a href="#数据中心检索数据" class="headerlink" title="数据中心检索数据"></a>数据中心检索数据</h2><h2 id="1-FDSN网络服务"><a href="#1-FDSN网络服务" class="headerlink" title="1 FDSN网络服务"></a>1 FDSN网络服务</h2><pre><code>import obspy.clients.fdsn
-</code></pre>
-<h2 id="2-Arclink网络服务"><a href="#2-Arclink网络服务" class="headerlink" title="2 Arclink网络服务"></a>2 Arclink网络服务</h2><h2 id="3-IRIS网络服务"><a href="#3-IRIS网络服务" class="headerlink" title="3 IRIS网络服务"></a>3 IRIS网络服务</h2><h2 id="4-Earthworm-wave服务"><a href="#4-Earthworm-wave服务" class="headerlink" title="4 Earthworm wave服务"></a>4 Earthworm wave服务</h2><pre><code>import obspy.clients.earthworm
-</code></pre>
-<h2 id="5-NEIC网络服务"><a href="#5-NEIC网络服务" class="headerlink" title="5 NEIC网络服务"></a>5 NEIC网络服务</h2><pre><code>import obspy.clients.neic
-</code></pre>
-<h2 id="6-Syngine服务"><a href="#6-Syngine服务" class="headerlink" title="6 Syngine服务"></a>6 Syngine服务</h2><pre><code>import obspy.clients.syngine
-</code></pre>
-<h1 id="计算震中距"><a href="#计算震中距" class="headerlink" title="计算震中距"></a>计算震中距</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45693832/article/details/118416213">https://blog.csdn.net/weixin_45693832/article/details/118416213</a><br>使用geodetics中的gps2dist_azimuth计算。<br>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from obspy import geodetics</span><br><span class="line">distance=geodetics.gps2dist_azimuth(lat1,lon1,lat2,lon2)</span><br><span class="line">angle=geodetics.kilometers2degrees(distance*0.001)</span><br></pre></td></tr></table></figure>
 
       
     </div>
