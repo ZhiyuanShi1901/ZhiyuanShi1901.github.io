@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -205,6 +205,144 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/10/19/Ubuntu%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shi Zhiyuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日常学习笔记">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 日常学习笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/19/Ubuntu%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Ubuntu初始环境配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-10-19 21:25:29 / 修改时间：21:27:38" itemprop="dateCreated datePublished" datetime="2022-10-19T21:25:29+08:00">2022-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1-火狐浏览器配置"><a href="#1-火狐浏览器配置" class="headerlink" title="1 火狐浏览器配置"></a>1 火狐浏览器配置</h1><p>参考：<a href="https://zhiyuanshi1901.github.io/2022/08/06/Ubuntu%E5%AE%89%E8%A3%85firefox%E4%B8%AD%E5%9B%BD%E7%89%88/">国内版火狐浏览器安装</a></p>
+<h1 id="2-安装conda"><a href="#2-安装conda" class="headerlink" title="2 安装conda"></a>2 安装conda</h1><p>参考：<a target="_blank" rel="noopener" href="https://seismo-learn.org/software/anaconda/">conda 安装教程</a></p>
+<p>在官方下载linux 64的安装包。<a target="_blank" rel="noopener" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh">Linux 64</a></p>
+<p>运行命令行：</p>
+<pre><code>bash Miniconda3-latest-Linux-x86_64.sh # 下载的包名
+</code></pre>
+<p>测试安装，运行python即可，在界面显示anaconda即安装成功。</p>
+<h1 id="3-安装pycharm并配置python环境"><a href="#3-安装pycharm并配置python环境" class="headerlink" title="3 安装pycharm并配置python环境"></a>3 安装pycharm并配置python环境</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44749630/article/details/125683049">pycharm等安装教程</a></p>
+<p>pycharm在官网下载：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/edu-products/download/#section=pycharm-edu">Pycharm Edu linux</a></p>
+<p>将包内内容提取出来，在该包的<code>bin</code>下打开命令行：</p>
+<pre><code>./pycharm.sh
+</code></pre>
+<p>执行即可。<br>安装完成后的左下角选择 Create Desktop Entry 即可添加快捷方式。</p>
+<p>使用Pycharm需要配置conda的python环境。</p>
+<p>在Python Interpreter中选择 <code>Add Interpreter</code>，其中的路径选择已存在的Virtualenv Environment,在路径中<br>选择conda安装路径下的python3。 例如我的路径为：</p>
+<pre><code>/home/用户名/Downloads/yes/bin/python3.9
+</code></pre>
+<p>在这个环境下能够找到使用conda安装的库即可。</p>
+<h1 id="4-使用conda安装必要的库"><a href="#4-使用conda安装必要的库" class="headerlink" title="4 使用conda安装必要的库"></a>4 使用conda安装必要的库</h1><p>参考：<a target="_blank" rel="noopener" href="https://seismo-learn.org/software/anaconda/">conda 安装教程</a></p>
+<pre><code>conda install 库名
+</code></pre>
+<p>可以使用 <code>conda</code>命令或者<code>pip</code>命令安装python环境库。</p>
+<p>使用以下命令进行其他操作：</p>
+<pre><code>conda update 库名  # 升级
+conda search 库名  # 搜索
+pip install 库名 # pip安装
+</code></pre>
+<h1 id="5-安装搜狗输入法"><a href="#5-安装搜狗输入法" class="headerlink" title="5 安装搜狗输入法"></a>5 安装搜狗输入法</h1><p>参考：<a target="_blank" rel="noopener" href="https://shurufa.sogou.com/linux/guide">搜狗输入法官方安装教程</a></p>
+<p>搜狗输入法默认使用 <code>ctrl+space</code> 激活。<br>注：不建议删除系统自带ibus</p>
+<h1 id="6-Rdseed-安装"><a href="#6-Rdseed-安装" class="headerlink" title="6 Rdseed 安装"></a>6 Rdseed 安装</h1><p>参考：<a target="_blank" rel="noopener" href="http://www.manongjc.com/detail/50-gfwopzloqnbvxkj.html">Rdseed与SAC安装教程</a><br>在官网下载Rdseed安装包。可以使用IRIS网站下载，但是现在IRIS已经停止支持Rdseed。<br><a target="_blank" rel="noopener" href="http://ds.iris.edu/pub/programs/">http://ds.iris.edu/pub/programs/</a></p>
+<p>在github中可以下载最新版本Rdseed。</p>
+<p>解包后，在Rdseed解包后的目录下使用命令:</p>
+<pre><code>cp -p rdseed.rh6.linux_64 /usr/local/bin/rdseed
+</code></pre>
+<p>之后即可在命令行中输入Rdseed，可进入界面。<br>注： 如果使用的非Linux 64位系统，需要对makefile文件进行编译。具体参考上述参考链接。</p>
+<h1 id="7-SAC-安装"><a href="#7-SAC-安装" class="headerlink" title="7 SAC 安装"></a>7 SAC 安装</h1><p>参考：<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/install/linux-binary/">SAC linux安装</a></p>
+<h1 id="8-GMT-安装"><a href="#8-GMT-安装" class="headerlink" title="8 GMT 安装"></a>8 GMT 安装</h1><p>参考：<a target="_blank" rel="noopener" href="https://docs.gmt-china.org/latest/install/ubuntu-debian/">GMT安装</a></p>
+<p>使用conda安装：</p>
+<pre><code>conda install gmt -c conda-forge
+gmt -v  # 测试
+
+conda update gmt  # 升级
+conda remove gmt  # 卸载
+</code></pre>
+<p>官方二进制包：</p>
+<pre><code>sudo apt update
+sudo apt install gmt gmt-dcw gmt-gshhg
+sudo apt install ghostscript
+sudo apt install gdal-bin
+sudo apt install graphicsmagick
+sudo apt install ffmpeg
+</code></pre>
+<p>建议使用conda安装，使用官方二进制包安装时产生了下载错误等问题。</p>
+<h1 id="Opendtect"><a href="#Opendtect" class="headerlink" title="Opendtect"></a>Opendtect</h1><p><a target="_blank" rel="noopener" href="https://doc.opendtect.org/6.6.0/doc/admindoc/Default.htm#installation/opendtect/installing-opendtect-on-linux.htm?TocPath=2%2520Installation%257COpendTect%257CInstalling%2520OpendTect%2520on%2520Linux%257C_____0">官方安装教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://dgbes.com/download">官方下载链接</a></p>
+<p>在官方下载处下载得到.sh文件，运行：</p>
+<pre><code>sudo bash OpendTect_Installer_lux64.sh
+</code></pre>
+<p>安装即可。</p>
+<p>To start OpendTect change the terminal or<br>Konsole directory into &#x2F;home&#x2F;your_username&#x2F;OpendTectPro&#x2F;6.6.0 and then run .&#x2F;start_dtect</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1637,234 +1775,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shi Zhiyuan">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日常学习笔记">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 日常学习笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Rdseed学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-14 09:49:38" itemprop="dateCreated datePublished" datetime="2022-08-14T09:49:38+08:00">2022-08-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-21 20:20:24" itemprop="dateModified" datetime="2022-08-21T20:20:24+08:00">2022-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">地震学常用软件</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
-<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a target="_blank" rel="noopener" href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
-<p>[2] <a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
-<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
-<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
-<p>The following options may be selected:</p>
-<ul>
-<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
-</li>
-<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
-</li>
-<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
-</li>
-<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
-</li>
-<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
-</li>
-<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
-</li>
-<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
-</li>
-<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
-</li>
-<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
-<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
-<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
-</li>
-<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
-</li>
-<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
-</li>
-<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
-</li>
-<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
-</li>
-<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
-<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
-</li>
-<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
-</li>
-<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
-</li>
-<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
-<ul>
-<li>E： 全部质量的波形数据 </li>
-<li>D： 不确定状态的数据</li>
-<li>M： 已合并的数据</li>
-<li>R： 原始波形数据</li>
-<li>Q： 经过质量控制的数据</li>
-</ul>
-</li>
-<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
-</li>
-<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
-</li>
-<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
-<p>[检索站摘要信息]</p>
-</li>
-<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
-<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
-</li>
-<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
-</li>
-<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
-<ul>
-<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
-</ul>
-</li>
-<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
-</li>
-<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
-<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
-</li>
-</ul>
-<p>(请参阅下面选项部分的逆转检查)]</p>
-<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
-<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
-<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
-<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
-<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
-<p>下列方向对应的方位角和入射角参数：</p>
-<table>
-<thead>
-<tr>
-<th align="center">方向</th>
-<th align="center">cmpaz（方位角）</th>
-<th align="center">cmpinc（入射角）</th>
-<th align="center">方位码</th>
-<th align="center">极性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">垂直向上</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;Z</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">垂直向下</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;180</td>
-<td align="center">&gt;Z</td>
-<td align="center">&gt;负</td>
-</tr>
-<tr>
-<td align="center">正北</td>
-<td align="center">&gt;0</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;N</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">正南</td>
-<td align="center">&gt;180</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;N</td>
-<td align="center">&gt;负</td>
-</tr>
-<tr>
-<td align="center">正东</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;E</td>
-<td align="center">&gt;正</td>
-</tr>
-<tr>
-<td align="center">正西</td>
-<td align="center">&gt;270</td>
-<td align="center">&gt;90</td>
-<td align="center">&gt;E</td>
-<td align="center">&gt;负</td>
-</tr>
-</tbody></table>
-<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
-<ul>
-<li>n&#x3D;0  不检测极性</li>
-<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
-<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
-<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
-</ul>
-<p>注意：两个参数指cmpaz和cmpnic</p>
-<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/default%20=%20''/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/default%20=%20''/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default%20=%20''/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/default%20=%20''/page/6/">6</a><a class="extend next" rel="next" href="/default%20=%20''/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1878,7 +1788,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
