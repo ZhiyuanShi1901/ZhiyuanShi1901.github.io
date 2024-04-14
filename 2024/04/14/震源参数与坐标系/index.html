@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhiyuanshi1901.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文简介一些软件&#x2F;数据中关于震源参数的计算与坐标系问题。 1 CMT .ndk格式数据Global CMT网站提供了详细的地震矩张量和断层参数。 12345The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where ris up, t is south, and p is east. See Aki and Ri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="震源参数与坐标系">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/2024/04/14/%E9%9C%87%E6%BA%90%E5%8F%82%E6%95%B0%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB/index.html">
+<meta property="og:site_name" content="日常学习笔记">
+<meta property="og:description" content="本文简介一些软件&#x2F;数据中关于震源参数的计算与坐标系问题。 1 CMT .ndk格式数据Global CMT网站提供了详细的地震矩张量和断层参数。 12345The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where ris up, t is south, and p is east. See Aki and Ri">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-14T13:51:48.000Z">
+<meta property="article:modified_time" content="2024-04-14T13:55:25.663Z">
+<meta property="article:author" content="Shi Zhiyuan">
+<meta property="article:tag" content="CMT">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhiyuanshi1901.github.io/2024/04/14/%E9%9C%87%E6%BA%90%E5%8F%82%E6%95%B0%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhiyuanshi1901.github.io/2024/04/14/%E9%9C%87%E6%BA%90%E5%8F%82%E6%95%B0%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB/","path":"2024/04/14/震源参数与坐标系/","title":"震源参数与坐标系"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>震源参数与坐标系 | 日常学习笔记</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">日常学习笔记</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">17</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-CMT-ndk%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text">1 CMT .ndk格式数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MINEOS-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">MINEOS 使用的坐标系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Instaseis-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">Instaseis 使用的坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-%E6%BA%90"><span class="nav-number">3.1.</span> <span class="nav-text">Source 源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E7%BB%99%E5%87%BA%E7%9F%A9%E5%BC%A0%E9%87%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">直接给出矩张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E9%9C%87%E6%BA%90%E6%96%AD%E5%B1%82%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.2.</span> <span class="nav-text">给出震源断层参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BAparse%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.3.</span> <span class="nav-text">给出parse文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%85%B7%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.1.4.</span> <span class="nav-text">Source 返回值具有的属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">上述的所有参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor-%E5%8C%85%E5%90%AB%E5%85%AD%E4%B8%AA%E7%9F%A9%E5%BC%A0%E9%87%8F%E7%9A%84List%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">tensor 包含六个矩张量的List，分量为[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor-voigt%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%9D%90%E6%A0%87%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">tensor_voigt，进行了坐标旋转，分量为[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ForceSource-%E5%8A%9B%E6%BA%90"><span class="nav-number">3.2.</span> <span class="nav-text">ForceSource 力源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E7%89%B5%E5%BC%95%E5%8A%9B%E4%B8%89%E5%88%86%E9%87%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">给出牵引力三分量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ForceSource-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%85%B7%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">ForceSource 返回值具有的属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0-1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">上述的所有参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#force-rtp-%E5%8C%85%E5%90%AB%E4%B8%89%E4%B8%AA%E7%89%B5%E5%BC%95%E5%8A%9B%E5%88%86%E9%87%8F%E7%9A%84List%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-f-r-f-t-f-p"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">force_rtp 包含三个牵引力分量的List，分量为[f_r, f_t, f_p]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#force-tpr%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%9D%90%E6%A0%87%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-f-t-f-p-f-r"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">force_tpr，进行了坐标旋转，分量为[f_t, f_p, f_r]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FiniteSource-%E6%9C%89%E9%99%90%E6%BA%90"><span class="nav-number">3.3.</span> <span class="nav-text">FiniteSource 有限源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E7%82%B9%E6%BA%90"><span class="nav-number">3.3.1.</span> <span class="nav-text">给出点源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Receiver-%E5%8F%B0%E7%AB%99"><span class="nav-number">3.4.</span> <span class="nav-text">Receiver 台站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SPECNM-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">4.</span> <span class="nav-text">SPECNM 使用的坐标系</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Shi Zhiyuan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhiyuanShi1901" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhiyuanShi1901" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dshi78066@gmail.com" title="Personal E-Mail → mailto:dshi78066@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>Personal E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1901030201@s.upc.edu.cn" title="Work E-Mail → mailto:1901030201@s.upc.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>Work E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhiyuanshi1901.github.io/2024/04/14/%E9%9C%87%E6%BA%90%E5%8F%82%E6%95%B0%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shi Zhiyuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日常学习笔记">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="震源参数与坐标系 | 日常学习笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          震源参数与坐标系
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-14 21:51:48 / 修改时间：21:55:25" itemprop="dateCreated datePublished" datetime="2024-04-14T21:51:48+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">地震学基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文简介一些软件&#x2F;数据中关于震源参数的计算与坐标系问题。</p>
+<h1 id="1-CMT-ndk格式数据"><a href="#1-CMT-ndk格式数据" class="headerlink" title="1 CMT .ndk格式数据"></a>1 CMT .ndk格式数据</h1><p>Global CMT网站提供了详细的地震矩张量和断层参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where r</span><br><span class="line">is up, t is south, and p is east. See Aki and Richards for conversions</span><br><span class="line">to other coordinate systems. The value of each moment-tensor</span><br><span class="line">element is followed by its estimated standard error. See note (4)</span><br><span class="line">below for cases in which some elements are constrained in the inversion.</span><br></pre></td></tr></table></figure>
+
+<p>断层参数一般有两组，其对应的矩张量相同：（此处暂留疑问：正北方向为地理正北or地磁正北？） 见（《地震学、震源及地球结构概论》 P206 图4.2-2）</p>
+<ul>
+<li>strike 走向：断层延伸方向与正北方向夹角 0-360度</li>
+<li>dip 倾角：断层面与倾向夹角 0-90度</li>
+<li>rake(slip) 走滑角：断层上盘相对下盘滑动方向与走向的夹角 0-180度</li>
+<li>Scalar Moment 地震矩标量：表征地震释放能量</li>
+</ul>
+<p>矩张量使用的坐标系为（Up, South, East）,即（r, θ, φ）。参考（Aki, Quantitative Seismology, P113）。</p>
+<p>注意：使用（Aki, Quantitative Seismology, P112）公式，并进行坐标变换之后，计算值与Global CMT给出的矩张量分量不同，目前未知原因。</p>
+<h1 id="MINEOS-使用的坐标系"><a href="#MINEOS-使用的坐标系" class="headerlink" title="MINEOS 使用的坐标系"></a>MINEOS 使用的坐标系</h1><p>坐标系与<code>1 CMT .ndk</code>格式数据相同。</p>
+<h1 id="Instaseis-使用的坐标系"><a href="#Instaseis-使用的坐标系" class="headerlink" title="Instaseis 使用的坐标系"></a>Instaseis 使用的坐标系</h1><p>参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
+<p>Python包 <code>instaseis</code> 使用 <code>Source</code> 属性计算震源参数、使用<code>Reveiver</code>归纳台站参数。</p>
+<p>其可以使用多重方式给出震源参数。</p>
+<h2 id="Source-源"><a href="#Source-源" class="headerlink" title="Source 源"></a>Source 源</h2><h3 id="直接给出矩张量"><a href="#直接给出矩张量" class="headerlink" title="直接给出矩张量"></a>直接给出矩张量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source(latitude, longitude, depth_in_m=None, m_rr=0.0, m_tt=0.0, m_pp=0.0, m_rt=0.0, m_rp=0.0, m_tp=0.0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">M=np.zeros(6)</span><br><span class="line">M[0] = 1.E18</span><br><span class="line">src = instaseis.Source(latitude=0., longitude=0., depth_in_m=10e4, m_rr=M[0], m_tt=M[1], m_pp=M[2], m_rt=M[3],</span><br><span class="line">                 m_rp=M[4], m_tp=M[5])</span><br></pre></td></tr></table></figure>
+<p>其中，Source的参数为：（可以通过<code>source.参数名</code>调取，下同）</p>
+<ul>
+<li>atitude – geocentric latitude of the source in degree</li>
+<li>longitude – longitude of the source in degree</li>
+<li>depth_in_m – source depth in m</li>
+<li>m_rr – moment tensor components in r, theta, phi in Nm</li>
+<li>m_tt – moment tensor components in r, theta, phi in Nm</li>
+<li>m_pp – moment tensor components in r, theta, phi in Nm</li>
+<li>m_rt – moment tensor components in r, theta, phi in Nm</li>
+<li>m_rp – moment tensor components in r, theta, phi in Nm</li>
+<li>m_tp – moment tensor components in r, theta, phi in Nm</li>
+<li>time_shift – correction of the origin time in seconds. Useful in the context of finite source or user defined source time functions.</li>
+<li>sliprate – normalized source time function (sliprate)</li>
+<li>dt – sampling of the source time function</li>
+<li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
+</ul>
+<h3 id="给出震源断层参数"><a href="#给出震源断层参数" class="headerlink" title="给出震源断层参数"></a>给出震源断层参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source.from_strike_dip_rake(latitude, longitude, depth_in_m, strike, dip, rake, M0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.from_strike_dip_rake(</span><br><span class="line">    latitude=10.0, longitude=12.0, depth_in_m=1000, strike=strike, dip=dip, rake=rake, M0=M0)</span><br></pre></td></tr></table></figure>
+<p>参数为：</p>
+<ul>
+<li>latitude – geocentric latitude of the source in degree</li>
+<li>longitude – longitude of the source in degree</li>
+<li>depth_in_m – source depth in m</li>
+<li>strike – strike of the fault in degree</li>
+<li>dip – dip of the fault in degree</li>
+<li>rake – rake of the fault in degree</li>
+<li>M0 – scalar moment</li>
+<li>time_shift – correction of the origin time in seconds. only useful in the context of finite sources</li>
+<li>sliprate – normalized source time function (sliprate)</li>
+<li>dt – sampling of the source time function</li>
+<li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
+</ul>
+<h3 id="给出parse文件"><a href="#给出parse文件" class="headerlink" title="给出parse文件"></a>给出parse文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.parse(quakeml_file)</span><br></pre></td></tr></table></figure>
+<p>quakeml_file: </p>
+<h3 id="Source-返回值具有的属性："><a href="#Source-返回值具有的属性：" class="headerlink" title="Source 返回值具有的属性："></a>Source 返回值具有的属性：</h3><h4 id="上述的所有参数"><a href="#上述的所有参数" class="headerlink" title="上述的所有参数"></a>上述的所有参数</h4><h4 id="tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp"><a href="#tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp" class="headerlink" title="tensor 包含六个矩张量的List，分量为[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]"></a>tensor 包含六个矩张量的List，分量为<code>[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</code></h4><h4 id="tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp"><a href="#tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp" class="headerlink" title="tensor_voigt，进行了坐标旋转，分量为[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]"></a>tensor_voigt，进行了坐标旋转，分量为<code>[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</code></h4><h2 id="ForceSource-力源"><a href="#ForceSource-力源" class="headerlink" title="ForceSource 力源"></a>ForceSource 力源</h2><h3 id="给出牵引力三分量"><a href="#给出牵引力三分量" class="headerlink" title="给出牵引力三分量"></a>给出牵引力三分量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ForceSource(latitude, longitude, depth_in_m=None, f_r=0.0, f_t=0.0, f_p=0.0, origin_time=UTCDateTime(1970, 1, 1, 0, 0), sliprate=None, time_shift=None, dt=None)</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.ForceSource(latitude=12.34, longitude=12.34, f_r=1E10)</span><br></pre></td></tr></table></figure>
+<p>参数为：</p>
+<ul>
+<li>latitude – geocentric latitude of the source in degree</li>
+<li>longitude – longitude of the source in degree</li>
+<li>depth_in_m – source depth in m</li>
+<li>f_r – force components in r, theta, phi in N</li>
+<li>f_t – force components in r, theta, phi in N</li>
+<li>f_p – force components in r, theta, phi in N</li>
+<li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
+<li>sliprate – normalized source time function (sliprate)</li>
+<li>time_shift – correction of the origin time in seconds. Useful in the context of finite source or user defined source time functions.</li>
+<li>dt – sampling of the source time function</li>
+</ul>
+<h3 id="ForceSource-返回值具有的属性："><a href="#ForceSource-返回值具有的属性：" class="headerlink" title="ForceSource 返回值具有的属性："></a>ForceSource 返回值具有的属性：</h3><h4 id="上述的所有参数-1"><a href="#上述的所有参数-1" class="headerlink" title="上述的所有参数"></a>上述的所有参数</h4><h4 id="force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p"><a href="#force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p" class="headerlink" title="force_rtp 包含三个牵引力分量的List，分量为[f_r, f_t, f_p]"></a>force_rtp 包含三个牵引力分量的List，分量为<code>[f_r, f_t, f_p]</code></h4><h4 id="force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r"><a href="#force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r" class="headerlink" title="force_tpr，进行了坐标旋转，分量为[f_t, f_p, f_r]"></a>force_tpr，进行了坐标旋转，分量为<code>[f_t, f_p, f_r]</code></h4><h2 id="FiniteSource-有限源"><a href="#FiniteSource-有限源" class="headerlink" title="FiniteSource 有限源"></a>FiniteSource 有限源</h2><p>相关内容详见参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
+<h3 id="给出点源"><a href="#给出点源" class="headerlink" title="给出点源"></a>给出点源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.source.FiniteSource(pointsources=None, CMT=None, magnitude=None, event_duration=None, hypocenter_longitude=None, hypocenter_latitude=None, hypocenter_depth_in_m=None)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pointsources (list of Source objects) – The points sources making up the finite source.</li>
+<li>CMT (Source, optional) – The centroid of the finite source.</li>
+<li>magnitude (float, optional) – The total moment magnitude of the source.</li>
+<li>event_duration (float, optional) – The event duration in seconds.</li>
+<li>hypocenter_longitude (float, optional) – The hypocentral longitude.</li>
+<li>hypocenter_latitude (float, optional) – The hypocentral latitude.</li>
+<li>hypocenter_depth_in_m (float, optional) – The hypocentral depth in m.</li>
+</ul>
+<h2 id="Receiver-台站"><a href="#Receiver-台站" class="headerlink" title="Receiver 台站"></a>Receiver 台站</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Receiver(latitude, longitude, network=None, station=None, location=None, depth_in_m=None)</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rec = Receiver(latitude=12.34, longitude=56.78, network=&quot;AB&quot;,</span><br><span class="line">               station=&quot;CDE&quot;, location=&quot;SY&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>latitude (float) – The geocentric latitude of the receiver in degree.</li>
+<li>longitude (float) – The longitude of the receiver in degree.</li>
+<li>depth_in_m (float) – The depth of the receiver in meters. Only</li>
+<li>network (str, optional) – The network id of the receiver.</li>
+<li>station (str, optional) – The station id of the receiver.</li>
+<li>location (str) – The location code of the receiver.</li>
+</ul>
+<h1 id="SPECNM-使用的坐标系"><a href="#SPECNM-使用的坐标系" class="headerlink" title="SPECNM 使用的坐标系"></a>SPECNM 使用的坐标系</h1><p>与 <code>Instaseis 使用的坐标系</code> 相同，使用 instaseis.Source 与 instaseis.Receiver 创建相关震源、台站信息。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CMT/" rel="tag"># CMT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/02/25/nd%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98/" rel="prev" title=".nd文件创建问题">
+                  <i class="fa fa-chevron-left"></i> .nd文件创建问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/14/SPECNM-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" rel="next" title="SPECNM 使用方法">
+                  SPECNM 使用方法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shi Zhiyuan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
