@@ -76,12 +76,10 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/categories/index.html">
+<meta property="og:title" content="Seismology Learning">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/archives/index.html">
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T02:20:13.000Z">
-<meta property="article:modified_time" content="2024-04-25T02:22:57.346Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -93,7 +91,7 @@
     root: '',
     scheme: 'Muse',
     version: '6.0.0',
-    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -115,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/categories/"/>
+  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/archives/"/>
 
 
 
@@ -140,7 +138,7 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -279,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2023/01/27/mineos%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2023/01/03/CMT-ndk%E4%B8%8E%E8%A1%8D%E7%94%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -298,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/01/27/mineos%E7%A8%8B%E5%BA%8F%E8%A7%A3%E6%9E%90/" itemprop="url">mineos程序解析</a></h1>
+                <a class="post-title-link" href="/2023/01/03/CMT-ndk%E4%B8%8E%E8%A1%8D%E7%94%9F%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F/" itemprop="url">CMT .ndk与衍生数据格式</a></h1>
         
 
         <div class="post-meta">
@@ -310,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-01-27T17:46:21+08:00">2023-01-27</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-01-03T09:53:18+08:00">2023-01-03</time>
             
 
             
@@ -370,84 +368,234 @@
       
         
           
-            <h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行深入解析，尝试理解程序运行的原理。<br>内容均源自mineos软件的程序代码。</p>
-<h1 id="minos-bran程序子进程介绍"><a href="#minos-bran程序子进程介绍" class="headerlink" title="minos_bran程序子进程介绍"></a>minos_bran程序子进程介绍</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wmin=max(wmin,0.1d0) ! wmin最小为0.1mhz，此为w最小限制。</span><br><span class="line"></span><br><span class="line">if(lmin.le.0) lmin=1 ! l最小值小于等于0时，l最小值为1</span><br><span class="line">if(jcom.eq.1) then  ! jcom等于1（径向振型）时，l只计算0阶情况</span><br><span class="line">    lmin=0</span><br><span class="line">    lmax=0</span><br><span class="line">end if</span><br></pre></td></tr></table></figure>
-<p>w最小为0.1mHz，这是w的最小限制<br>l最小值为1<br>选择计算径向振型时，l只计算基阶，即l&#x3D;0的情况。</p>
-<h2 id="model-iin-iout"><a href="#model-iin-iout" class="headerlink" title="model(iin, iout)"></a>model(iin, iout)</h2><h3 id="drspln-i1-i2-x-y-q-f"><a href="#drspln-i1-i2-x-y-q-f" class="headerlink" title="drspln(i1,i2,x,y,q,f)"></a>drspln(i1,i2,x,y,q,f)</h3><p><em>rspln computes cubic spline interpolation coefficients for y(x) between grid points i1 and i2 saving them in q.<br>the interpolation is continuous with continuous first and second derivitives.<br>it agrees exactly with y at grid points and with the three point first derivitives at both end points (i1 and i2).<br>x must be monotonic but if two successive values of x are equal a discontinuity is assumed and<br>seperate interpolation is done on each strictly monotonic segment.<br>the arrays must be dimensioned at least - x(i2), y(i2), q(3,i2), and f(3,i2). f is working storage for rspln.  -rpb</em></p>
-<p>rspln在i1与i2点之间计算y(x)的三次样条插值系数，将系数保存到q。<br>插值是连续的，具有连续的一阶和二阶导数。<br>它与网格点处的 y 以及两个端点（i1 和 i2）处的三点一阶导数完全一致。<br>x 必须是单调的，但如果 x 的两个连续值相等，则假定此处为间断面（模型具有莫霍面和古登堡面等），对每个严格单调的部分进行单独插值。（有间断面的情况插值在间断面之间进行）<br>数组的维度必须至少为 - x(i2)、y(i2)、q(3,i2) 和 f(3,i2)。（例如，i1&#x3D;1，i2&#x3D;n（模型节点数），x&#x3D;r，y&#x3D;rho）<br>f 是 rspln 的工作存储器。</p>
-<p>示例：</p>
-<pre><code>drspln(1,n,r,rho,qro,wrk)
-</code></pre>
-<p>从点1-n进行对rho(r)的spline插值，结果保存到qro中。<br>wrk为一个工作存储器，存储器可能只是用于存储中间值，无实际含义。（存疑）</p>
-<h3 id="grav-g-rho-qro-r-n"><a href="#grav-g-rho-qro-r-n" class="headerlink" title="grav(g,rho,qro,r,n)"></a>grav(g,rho,qro,r,n)</h3><p><em>given rho and spline coeffs,computes gravity</em><br>给定 rho 和样条系数，计算重力。</p>
-<p>变量：</p>
-<ul>
-<li>nsl 地表边界，为固态侧边界。若是具有海洋的地球模型，则nsl为地表与海洋边界的固态侧。</li>
-<li>nslp1 地表边界，液态侧。</li>
-<li>ncip1 ICB索引液态侧</li>
-<li>nocp1 CMB索引固态侧</li>
-<li>tref 校正值。&lt;&#x3D;0时无校正。</li>
-</ul>
-<h2 id="wtable-iout-ioeig-ifreq"><a href="#wtable-iout-ioeig-ifreq" class="headerlink" title="wtable(iout,ioeig,ifreq)"></a>wtable(iout,ioeig,ifreq)</h2><p><em>makes up table of frequencies</em><br>计算本征频率列表</p>
-<p>共用区变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">  +  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line">   common/shanks/b(46),c(10),dx,step(8),stepf,maxo,in</span><br><span class="line">   common/mtab/we(2),de(2),ke(2),wtry,bm</span><br></pre></td></tr></table></figure>
-<ul>
-<li>iout 输出模型列表文件单元号</li>
-<li>ioeig 输出本征函数文件单元号</li>
-<li>ifreq &#x3D;0时不输出本征函数文件</li>
-</ul>
-<h3 id="steps-eps"><a href="#steps-eps" class="headerlink" title="steps(eps)"></a>steps(eps)</h3><p>计算8个无量纲step大小for rks integration积分</p>
-<ul>
-<li>eps 输入的eps，即准确度大小。</li>
-</ul>
-<h3 id="detqn-wdim-knt-det-ifeif"><a href="#detqn-wdim-knt-det-ifeif" class="headerlink" title="detqn(wdim,knt,det,ifeif)"></a>detqn(wdim,knt,det,ifeif)</h3><p><em>supevises the integration of the equations,it returns the value<br>of the secular determinant as det and the count of zero crossings</em><br>假设方程的积分，它返回行列式形式的secular dterminant的值（det）和零交点数量。</p>
-<ul>
-<li>wdim 一个二维数组，为最小和最大本征频率计算范围</li>
-<li>knt 零交叉点数量</li>
-<li>det 长期行列式的值</li>
-<li>ifeif</li>
-</ul>
-<p>共用区变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> common r(mk),fmu(mk),flam(mk),qshear(mk),qkappa(mk),</span><br><span class="line">+ xa2(mk),xlam(mk),rho(mk),qro(3,mk),g(mk),qg(3,mk),</span><br><span class="line">+ fcon(mk),fspl(3,mk),lcon(mk),lspl(3,mk),ncon(mk),</span><br><span class="line">+ nspl(3,mk),ccon(mk),cspl(3,mk),acon(mk),aspl(3,mk)</span><br><span class="line"> common/bits/pi,rn,vn,wn,w,wsq,wray,qinv,cg,wgrav,tref,fct,eps,fl,</span><br><span class="line">+  fl1,fl2,fl3,sfl3,jcom,nord,l,kg,kount,knsw,ifanis,iback</span><br><span class="line"> common/eifx/a(14,mk),dum(mk)</span><br><span class="line"> common/rindx/nic,noc,nsl,nicp1,nocp1,nslp1,n</span><br></pre></td></tr></table></figure>
+            <h1 id="CMT-ndk格式数据"><a href="#CMT-ndk格式数据" class="headerlink" title="CMT .ndk格式数据"></a>CMT .ndk格式数据</h1><p>原介绍：<a target="_blank" rel="noopener" href="https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/allorder.ndk_explained">https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/allorder.ndk_explained</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>CMT，全称Centroid-Moment-Tensor，是地震震源机制解的<br>这个数据为ASCII格式，共五行，每行80个字符长度。</p>
+<p>数据格式如下：</p>
+<p>示例1（补充了每个参数的含义）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LINE1：</span><br><span class="line">PDE  2005/01/01 01:20:05.4  13.78（纬度）  -88.78（经度） 193.1（震源深度） 5.0（震级mb） 0.0（ms） EL SALVADOR（地理位置）             </span><br><span class="line">LINE2：</span><br><span class="line">C200501010120A（事件名称）   B:  4    4  40（台站数，通道数，最短周期） S: 27   33  50 M:  0    0   0 CMT: 1 TRIHD:  0.6</span><br><span class="line">LINE3：</span><br><span class="line">CENTROID:     -0.3（时间） 0.9  13.76（纬度） 0.06  -89.08（经度） 0.09 162.8（深度） 12.5 FREE（深度类型） S-20050322125201（时间戳）</span><br><span class="line">LINE4：</span><br><span class="line">23（时间指数，*e23）  0.838（Mrr） 0.201（前一个值的标准误差） -0.005（Mtt） 0.231 -0.833（Mpp） 0.270  1.050（Mrt） 0.121 -0.369（Mrp） 0.161  0.044（Mtp） 0.240</span><br><span class="line">LINE5：</span><br><span class="line">V10（版本号）   1.581 56  12  -0.537 23 140  -1.044 24 241（三个特征向量的特征值、plunge和方位角）   1.312   9 29  142（第一个节面的走向，倾角，方位角） 133 72   66 （第二个节面的相关数值）</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PDE  2005/01/01 01:42:24.9   7.29   93.92  30.0 5.1 0.0 NICOBAR ISLANDS, INDIA R</span><br><span class="line">C200501010142A   B: 17   27  40 S: 41   58  50 M:  0    0   0 CMT: 1 TRIHD:  0.7</span><br><span class="line">CENTROID:     -1.1 0.8   7.24 0.04   93.96 0.04  12.0  0.0 BDY  S-20050322125628</span><br><span class="line">23 -1.310 0.212  2.320 0.166 -1.010 0.241  0.013 0.535 -2.570 0.668  1.780 0.151</span><br><span class="line">V10   3.376 16 149   0.611 43  44  -3.987 43 254   3.681 282 48  -23  28 73 -136</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print *,&#x27;eigenfunction file (output):&#x27;</span><br><span class="line">read(5,100) filnam</span><br><span class="line">print *,filnam(1:lnblnk(filnam))</span><br><span class="line">ifreq=1</span><br><span class="line">if(filnam(1:4).eq.&#x27;none&#x27;) ifreq=0 ! 如果filnam前四个字符为none，则ifreq=0</span><br><span class="line">open(3,file=filnam,form=&#x27;unformatted&#x27;,iostat=iret)</span><br></pre></td></tr></table></figure>
-<p>这里说明了ifreq的来历。当本征函数文件（eigenfunction file）名前四个字符为none时，ifreq&#x3D;0，将不再计算本征函数文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(ifeif.eq.0) return</span><br></pre></td></tr></table></figure>
-<p>该语句表明ifreq在detqn子进程中为ifeif参数。当ifreq&#x3D;0时，即本征函数文件名为：’none*’时不再输出本征函数文件（文件为空）。</p>
-<h4 id="sdepth-wdim-ls"><a href="#sdepth-wdim-ls" class="headerlink" title="sdepth(wdim,ls)"></a>sdepth(wdim,ls)</h4><p>finds starting level,ls, for a given l and w<br>对于给定的l和w寻找开始的层ls</p>
-<h4 id="fprpmn-jf-jl-f-h-nvefm-iexp"><a href="#fprpmn-jf-jl-f-h-nvefm-iexp" class="headerlink" title="fprpmn(jf,jl,f,h,nvefm,iexp)"></a>fprpmn(jf,jl,f,h,nvefm,iexp)</h4><p>propagate the minor vector in a fluid region from level jf to jl<br>在流体区域从jf层到jl层传播minor vector</p>
-<h5 id="zknt-s-sp-f-fp-x-y-ifsol"><a href="#zknt-s-sp-f-fp-x-y-ifsol" class="headerlink" title="zknt(s,sp,f,fp,x,y,ifsol)"></a>zknt(s,sp,f,fp,x,y,ifsol)</h5><p>zknt(s,h,f,fp,x,y,1)</p>
-<p>给定次向量和导数，构造模式计数</p>
-<h4 id="remedy-ls"><a href="#remedy-ls" class="headerlink" title="remedy(ls)"></a>remedy(ls)</h4><p>Obtains the eigenfunction of an awkward spheroidal mode by integrating to the icb or the mcb.<br>通过积分到ICB或CMB得到一个不合适的（awkward）球振振型的本征函数</p>
-<h5 id="fprop-jf-jl-f-iexp"><a href="#fprop-jf-jl-f-iexp" class="headerlink" title="fprop(jf,jl,f,iexp)"></a>fprop(jf,jl,f,iexp)</h5><p><em>fprop propagates the fundamental matrix f from jf to jl (a fluid region)</em><br>fprop 将基本矩阵 f 从 jf 传播到 jl（流体区域）</p>
-<p>示例：</p>
-<pre><code>fprop(noc,nicp1,af,iexp)
-# 该函数位于2515行左右，表示地壳上海洋部分基本矩阵af的传播。
+<h2 id="逐行内容"><a href="#逐行内容" class="headerlink" title="逐行内容"></a>逐行内容</h2><h3 id="第一行：震中数据行"><a href="#第一行：震中数据行" class="headerlink" title="第一行：震中数据行"></a>第一行：震中数据行</h3><p>示例：</p>
+<pre><code>PDE  2005/01/01 01:42:24.9   7.29   93.92  30.0 5.1 0.0 NICOBAR ISLANDS, INDIA R
 </code></pre>
-<h5 id="fsbdry-af-as-kg"><a href="#fsbdry-af-as-kg" class="headerlink" title="fsbdry(af,as,kg)"></a>fsbdry(af,as,kg)</h5><p><em>fsbdry creates solid fundamental matrix as from fluid fundamental matrix af.<br>It is presumed that fsbdry is used to cross a f&#x2F;s boundary.</em></p>
-<p>fsbdry 从流体基本矩阵 af 创建固体基本矩阵 as。<br>假定 fsbdry函数 用于跨越 f&#x2F;s 边界。</p>
-<h5 id="sprop-li-jf-jl-f-iexp"><a href="#sprop-li-jf-jl-f-iexp" class="headerlink" title="sprop(li,jf,jl,f,iexp)"></a>sprop(li,jf,jl,f,iexp)</h5><p>sprop propagates the fundamental matrix f from jf to jl (a solid region)<br>if jorth&#x3D;1 the columns of f are orthogonalized at each level except in regions of oscillatory p and s.</p>
-<p>sprop 将基本矩阵 f 从 jf 传播到jl（实心区域） 如果jnorth&#x3D;1，f的列在除振荡 p 和 s 区域之外的每个层（level）上都是正交的。</p>
-<h6 id="ortho-li-lc-b-kg"><a href="#ortho-li-lc-b-kg" class="headerlink" title="ortho(li,lc,b,kg)"></a>ortho(li,lc,b,kg)</h6><p>Finds the orthogonal matrix v such that the columns of b<em>v are orthogonal,<br>the array a is replaced by a</em>v for levels li - lc.<br>Array b is replaced by b*v and is then ready for entry to sprop at level lc.<br>This is intended to diminish the onset of degeneracy caused by rapid exponential<br>growth in the mantle for modes with deeply turning S and shallowly turning P.</p>
-<p>找到正交矩阵 v，使得 b<em>v 的列是正交的，对于层 li 至 lc，数组 a 被 a</em>v 替换。<br>数组 b 被 b*v 替换，然后准备好进入 lc 层的 sprop。这是为了减少由深度旋转 S 和<br>浅度旋转 P 的模式在地幔中快速指数增长引起的退化的开始。</p>
-<h5 id="sfbdry-jf-jl-as-af-kg"><a href="#sfbdry-jf-jl-as-af-kg" class="headerlink" title="sfbdry(jf,jl,as,af,kg)"></a>sfbdry(jf,jl,as,af,kg)</h5><p><em>The tangential traction scalar is forced to vanish at the solid side of a s&#x2F;f boundary(level jl).<br>a(j,3,i) is elliminated for i&#x3D;jf…jl and af is loaded from a at level jl.</em><br>切向牵引标量在 s&#x2F;f 边界的实体侧（水平 jl）消失。 a(j,3,i) 对于 i&#x3D;jf…jl 被消除并且 af 从 a 在级别 jl 加载。</p>
-<h5 id="baylis-q-maxo1"><a href="#baylis-q-maxo1" class="headerlink" title="baylis(q,maxo1)"></a>baylis(q,maxo1)</h5><p><em>baylis returns the coefficients for rks integration.<br>see e. baylis shanks(1966 a. m. s.) and references therein for the coefficients.<br>the eight runge-kutta-shanks formulae are (1-1) (2-2) (3-3) (4-4) (5-5) (6-6) (7-7) (8-10).<br>for orders greater than 4 the formulae are approximate rather than exact so incurring less roundoff.</em></p>
-<p>baylis 返回 rks 积分的系数。 见e. baylis shanks（1966 a. m. s.）及其中的系数参考。<br>八runge-kutta-shanks公式是 (1-1) (2-2) (3-3) (4-4) (5-5) (6-6) (7-7) (8-10)。<br>对于大于 4 的阶数，公式是近似的而不是精确的，因此产生的舍入较少。</p>
-<h5 id="match-n-j-kg-af-afr-icomp"><a href="#match-n-j-kg-af-afr-icomp" class="headerlink" title="match(n,j,kg,af,afr,icomp)"></a>match(n,j,kg,af,afr,icomp)</h5><p><em>Matches boundary conditions during downward integration – first try is at cmb, second try is at icb.</em><br>在向下积分时符合边界条件——第一次尝试在 cmb，第二次尝试在 icb。</p>
-<h4 id="eifout-lsmin"><a href="#eifout-lsmin" class="headerlink" title="eifout(lsmin)"></a>eifout(lsmin)</h4><p><em>massages spheroidal mode eigenfunctions before output</em><br>在输出前“修改”球振振型本征函数</p>
-<h3 id="rotspl-eps1-wt-iout-ioeig-ifreq-ncall"><a href="#rotspl-eps1-wt-iout-ioeig-ifreq-ncall" class="headerlink" title="rotspl(eps1,wt,iout,ioeig,ifreq,ncall)"></a>rotspl(eps1,wt,iout,ioeig,ifreq,ncall)</h3><p>通过样条差值查找roots</p>
-<p>kchar 1s 2t 3s 4c</p>
 <ul>
-<li>eps1 输入的频率准确度控制参数eps</li>
-<li>wt 两个元素的数组：wmin和wmax</li>
-<li>iout 输出模型文件的单元号</li>
-<li>ioeig 输出本征函数文件的单元号</li>
-<li>ifreq 与本征函数文件名有关。前四个字符为none时为0,输出缺少qmod和wdiff（q和动能与势能之比-1）,其他时候为1。</li>
-<li>ncall 一个有关计数的参数</li>
+<li>[1-4]   震中参考地震记录。例如（PDE：USGS位置；ISC：ISC地震记录；SWE：面波位置；[Ekstrom，BSSA，2006]）</li>
+<li>[6-15]  Date of reference event 事件日期</li>
+<li>[17-26] Time of reference event 事件时间</li>
+<li>[28-33] Latitude 纬度</li>
+<li>[35-41] Longitude 经度</li>
+<li>[43-47] Depth 震源深度</li>
+<li>[49-55] Reported magnitudes, usually mb and MS 震级，通常是mb（体波震级）或ms（面波震级）</li>
+<li>[57-80] Geographical location (24 characters) 地理位置，24个字符</li>
 </ul>
-<h3 id="gauslv-r1-r2-iq-fint-nint"><a href="#gauslv-r1-r2-iq-fint-nint" class="headerlink" title="gauslv(r1,r2,iq,fint,nint)"></a>gauslv(r1,r2,iq,fint,nint)</h3><p>fifth order gauss-legendre integration<br>五阶高斯-勒让德积分。</p>
-<h4 id="intgds-rr-iq-vals"><a href="#intgds-rr-iq-vals" class="headerlink" title="intgds(rr,iq,vals)"></a>intgds(rr,iq,vals)</h4><p>interpolates integrands for normalisation,cg,q etc..for use with gauslv<br>插值积分以进行归一化、cg、q等，gauslv使用该�</p>
+<h3 id="第二行：CMT信息-1"><a href="#第二行：CMT信息-1" class="headerlink" title="第二行：CMT信息 1"></a>第二行：CMT信息 1</h3><p>示例：</p>
+<pre><code>C200501010142A   B: 17   27  40 S: 41   58  50 M:  0    0   0 CMT: 1 TRIHD:  0.7
+</code></pre>
+<ul>
+<li><p>[1-16]  <em>CMT event name. This string is a unique CMT-event identifier. Older<br>  events have 8-character names, current ones have 14-character names.<br>  See (1) below for the naming conventions used.</em><br>  CMT事件名称。独一无二的CMT事件标识符，较老的事件8个字符，最近的是14个字符。note（1）中描述了命名规则。</p>
+</li>
+<li><p>[18-61] <em>Data used in the CMT inversion. Three data types may be used:<br>  Long-period body waves (B), Intermediate-period surface waves (S),<br>  and long-period mantle waves (M). For each data type, three values<br>  are given: the number of stations used, the number of components<br>  used, and the shortest period used.</em><br>  B S M CMT反演使用的数据，三类数据类型：</p>
+<ul>
+<li>B：长周期体波 </li>
+<li>S：中等周期面波</li>
+<li>M：长周期地幔波<br>每一个数据类型有三个数值：台站数，通道数，使用的最短周期</li>
+</ul>
+</li>
+<li><p>[63-68] <em>Type of source inverted for: “CMT: 0” - general moment tensor;<br>  “CMT: 1” - moment tensor with constraint of zero trace (standard);<br>  “CMT: 2” - double-couple source.</em><br>  反转源类型： </p>
+<ul>
+<li>0：一般矩张量</li>
+<li>1：具有零迹约束的矩张量？</li>
+<li>2：双力偶震源</li>
+</ul>
+</li>
+<li><p>[70-80] <em>Type and duration of moment-rate function assumed in the inversion.<br>  “TRIHD” indicates a triangular moment-rate function, “BOXHD” indicates<br>  a boxcar moment-rate function. The value given is half the duration<br>  of the moment-rate function. This value is assumed in the inversion,<br>  following a standard scaling relationship (see note (2) below),<br>  and is not derived from the analysis.</em><br>  反演中假设的矩率函数的类型和持续时间。</p>
+<ul>
+<li>“TRIHD”：表示三角形矩速率函数，</li>
+<li>“BOXHD”：表示boxcar矩速率函数。给定的值是矩率函数持续时间的一半。该值在反演中按照标准缩放关系（见下面的note（2））假设，而不是从分析中得出的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第三行：CMT信息-2"><a href="#第三行：CMT信息-2" class="headerlink" title="第三行：CMT信息 2"></a>第三行：CMT信息 2</h3><p>示例：</p>
+<pre><code>CENTROID:     -1.1 0.8   7.24 0.04   93.96 0.04  12.0  0.0 BDY  S-20050322125628
+</code></pre>
+<ul>
+<li><p>[1-58]  <em>Centroid parameters determined in the inversion. Centroid time, given<br>  with respect to the reference time, centroid latitude, centroid<br>  longitude, and centroid depth. The value of each variable is followed<br>  by its estimated standard error. See note (3) below for cases in<br>  which the hypocentral coordinates are held fixed.</em><br>  反演中确定的质心参数。质心时间，相对于参考时间、质心纬度、质心经度和质心深度给出。每个变量的值后跟其估计的标准误差。关于次中心坐标固定的情况，见note（3）。例如第一个参数是2.9,则在第一行的时间基础上加2.9s，如果有负号就是减2.9s。</p>
+</li>
+<li><p>[60-63] <em>Type of depth. “FREE” indicates that the depth was a result of the<br>  inversion; “FIX “ that the depth was fixed and not inverted for;<br>  “BDY “ that the depth was fixed based on modeling of broad-band<br>  P waveforms.</em><br>  深度类型：</p>
+<ul>
+<li>FREE：深度是反演的结果</li>
+<li>FIX：深度经过校正，没有经过反转？</li>
+<li>BDY：深度经过模拟宽频P波校正</li>
+</ul>
+</li>
+<li><p>[65-80] <em>Timestamp. This 16-character string identifies the type of analysis that<br>  led to the given CMT results and, for recent events, the date and<br>  time of the analysis. This is useful to distinguish Quick CMTs (“Q-“),<br>  calculated within hours of an event, from Standard CMTs (“S-“), which<br>  are calculated later. The format for this string should not be<br>  considered fixed.</em><br>  时间戳。16个字符长度的字符串，标识导致给定 CMT 结果的分析类型，以及分析的日期和时间（对于最近事件）。用来区分事件发生后小时内计算的快速CMTs（“Q-”），稍后计算的标准CMTs（“S-”）。字符串的格式不固定。</p>
+</li>
+</ul>
+<h3 id="第四行：CMT信息-3"><a href="#第四行：CMT信息-3" class="headerlink" title="第四行：CMT信息 3"></a>第四行：CMT信息 3</h3><p>示例：</p>
+<pre><code>23 -1.310 0.212  2.320 0.166 -1.010 0.241  0.013 0.535 -2.570 0.668  1.780 0.151
+</code></pre>
+<ul>
+<li><p>[1-2]   <em>The exponent for all following moment values. For example, if the<br>  exponent is given as 24, the moment values that follow, expressed in<br>  dyne-cm, should be multiplied by 10**24.</em><br>  所有后续时刻值的指数。例如，如果指数为 24，则后面的矩值（以 dyne-cm 表示）应乘以 10**24。</p>
+</li>
+<li><p>[3-80]  <em>The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where r<br>  is up, t is south, and p is east. See Aki and Richards for conversions<br>  to other coordinate systems. The value of each moment-tensor<br>element is followed by its estimated standard error. See note (4)<br>below for cases in which some elements are constrained in the inversion.</em><br>  六个矩张量元素：Mrr, Mtt, Mpp, Mrt, Mrp, Mtp</p>
+<ul>
+<li><p>r：up</p>
+</li>
+<li><p>t：south</p>
+</li>
+<li><p>p：east</p>
+<p>每个矩张量元素的值后面跟着他的标准误差。有关某些元素在反转中受到限制的情况，请参见note（4）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="第五行：CMT信息-4"><a href="#第五行：CMT信息-4" class="headerlink" title="第五行：CMT信息 4"></a>第五行：CMT信息 4</h3><p>示例：</p>
+<pre><code>V10   3.376 16 149   0.611 43  44  -3.987 43 254   3.681 282 48  -23  28 73 -136
+</code></pre>
+<ul>
+<li><p>[1-3]   <em>Version code. This three-character string is used to track the version<br>  of the program that generates the “ndk” file.</em><br>  版本号，三个字符的字符串用于记录获取ndk文件的程序版本号。</p>
+</li>
+<li><p>[4-48]  <em>Moment tensor expressed in its principal-axis system: eigenvalue,<br>  plunge, and azimuth of the three eigenvectors. The eigenvalue should be<br>  multiplied by 1.0E(exponent) as given on line four.</em><br>  在其主轴系统中表示的矩张量：三个特征向量的特征值、plunge和方位角。特征值应乘以 10**（指数），如第四行所示。</p>
+</li>
+<li><p>[50-56] <em>Scalar moment, to be multiplied by 1.0E(exponent) as given on line four.</em></p>
+<p>  标量力矩，乘10**（第四行的指数）</p>
+</li>
+<li><p>[58-80] <em>Strike, dip, and rake for first nodal plane of the best-double-couple<br>  mechanism, repeated for the second nodal plane. The angles are defined<br>  as in Aki and Richards.</em><br>  最佳双耦合机制解第一个节面的走向，倾角，滑动角，后三个是第二个界面的相关数据。角度定义与Aki和Richards相同。</p>
+</li>
+</ul>
+<h2 id="Notes-additional-information"><a href="#Notes-additional-information" class="headerlink" title="Notes (additional information):"></a>Notes (additional information):</h2><h3 id="NOTE-1"><a href="#NOTE-1" class="headerlink" title="NOTE 1"></a>NOTE 1</h3><p><em>CMT event names follow two conventions. Older events use an 8-character<br>name with the structure XMMDDYYZ, where MMDDYY represents the date of<br>the event, Z is a letter (A-Z followed by a-z) distinguishing different<br>events on the same day, and X is a letter (B,M,Z,C,…) used to identify<br>the types of data used in the inversion. Newer events use 14-character event<br>names with the structure XYYYYMMDDhhmmZ, in which the time is given to greater<br>precision, and the initial letter is limited to four possibilities: B - body<br>waves only, S - surface waves only, M - mantle waves only, C - a combination<br>of data types.</em></p>
+<ul>
+<li><p>较老的命名规则：8个字符，XMMDDYYZ</p>
+<ul>
+<li>MMDDYY：事件日期</li>
+<li>X：用于标记反演中使用的数据类型。(B,M,Z,C,…) </li>
+<li>Z：区分同一天不同的地震事件(A-Z 之后是 a-z)</li>
+</ul>
+</li>
+<li><p>新的命名规则：14个字符，XYYYYMMDDhhmmZ</p>
+<p>  2005年1月1日开始使用新的命名规则。</p>
+<p>  事件时间更加精准，首字母X只有四种：</p>
+<ul>
+<li>B：只有体波</li>
+<li>S：只有面波</li>
+<li>M：只有地幔波</li>
+<li>C：综合数据类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="NOTE-2"><a href="#NOTE-2" class="headerlink" title="NOTE 2"></a>NOTE 2</h3><p><em>The source duration is generally estimated using an empirically determined<br>relationship such that the duration increases as the cube root of the scalar<br>moment. Specifically, we currently use a relationship where the half duration<br>for an event with moment 1E24 is 1.05 seconds, and for an event with moment<br>1E27 is 10.5 seconds.</em></p>
+<p>源持续时间通常使用经验确定的关系来估计，使得持续时间随着标量矩的立方根而增加。<br>具体来说，我们目前使用的关系是，矩为 10<strong>24 的事件的半持续时间为 1.05 秒，<br>矩为 10</strong>27 的事件的半持续时间为 10.5 秒。</p>
+<h3 id="NOTE-3"><a href="#NOTE-3" class="headerlink" title="NOTE 3"></a>NOTE 3</h3><p><em>For some small earthquakes for which the azimuthal distribution of stations<br>with useful seismograms is poor, we constrain the epicenter of the event to<br>the reference location. This is reflected in the catalog by standard<br>errors of 0.0 for both the centroid latitude and the centroid longitude.</em></p>
+<p>对于一些具有有用地震图的台站方位分布较差的小地震，我们将事件的震中限制在参考位置。<br>这反映在目录中，质心纬度和质心经度的标准误差均为 0.0。</p>
+<h3 id="NOTE-4"><a href="#NOTE-4" class="headerlink" title="NOTE 4"></a>NOTE 4</h3><p><em>For some very shallow earthquakes, the CMT inversion does not well<br>constrain the vertical-dip-slip components of the moment tensor (Mrt and Mrp),<br>and we constrain these components to zero in the inversion. The standard<br>errors for Mrt and Mrp are set to zero in this case.</em></p>
+<p>对于一些很浅的地震，CMT 反演并没有很好地约束矩张量的垂直倾滑分量（Mrt 和 Mrp），<br>我们在反演中将这些分量约束为零。在这种情况下，Mrt 和 Mrp 的标准误差设置为零。</p>
+<h1 id="MINEOS-CMT数据格式"><a href="#MINEOS-CMT数据格式" class="headerlink" title="MINEOS CMT数据格式"></a>MINEOS CMT数据格式</h1><h2 id="官方内容"><a href="#官方内容" class="headerlink" title="官方内容"></a>官方内容</h2><p><em>There is a single event file called china_cmt_event.txt that contains Harvard CMT infor-mation for an event in Southern China.</em></p>
+<p>单个事件文件：包含单个中国南部地震事件的 Harvard CMT 信息</p>
+<p><em>The third input file is the file china_cmt_evt, which is a single-lined listing containing the coordinates and event parameters of an earthquake in China. The moment tensor is not used by this program, but by the program syndat which follows.</em></p>
+<p>单行列表包含坐标和事件参数。矩张量不由这个程序（green）使用，而是在程序syndat中使用</p>
+<p><em>This example will choose modes only between frequencies of 0 and 166 mHz (i.e., periods greater than 6 sec). It will produce Green’s functions that are 8000 samples long. The time sampling specified in the china_cmt_evt file is 1 sec, so this is a time series length of a little over two hours. In many cases, both the minor and major arc arrivals can be seen.</em><br><em>The program will output a .wfdisc relation in the database called green; that is, a file called green.wfdisc which points to the waveforms on disk in a default location.</em></p>
+<p>此示例将仅在 0 和 166 mHz 的频率（即大于 6 秒的周期）之间选择模式。它将产生 8000 个样本长的 Green 函数。china_cmt_evt文件中指定的时间采样为 1 秒，因此这是两个多小时的时间序列长度。在许多情况下，可以看到小弧和大弧到达。<br>该程序将在数据库中输出一个名为绿色的 .wfdisc 关系;也就是说，一个名为 green.wfdisc 的文件指向默认位置的磁盘上的波形。</p>
+<p><em>Figure B.1: Station BJT. Comparison with Herrmann’s plane code. Three-component synthetic seismogram<br>for the fundamental spheroidal and toroidal modes. Mineos seismogram is plotted in red, Herrmann’s in<br>blue. Earthquake is 25.39N, 101.40E (Southern China), depth is 33 km. Model is PREM, in which the water<br>layer is filled with the upper crust’s velocities. The crust has only two layers.</em></p>
+<p>这一栏中包含了事件信息，得知事件的坐标和发震深度。</p>
+<h2 id="格式内容"><a href="#格式内容" class="headerlink" title="格式内容"></a>格式内容</h2><p>harward CMT保存的.ndk格式的cmt数据:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PDE  2000/01/14 23:37:07.9  25.61  101.06  33.0 5.4 5.9 YUNNAN PROVINCE, CHINA  </span><br><span class="line">B011400F         B: 57  127  45 S:  0    0   0 M:  0    0   0 CMT: 1 BOXHD:  2.3</span><br><span class="line">CENTROID:      2.9 0.2  25.39 0.02  101.40 0.02  33.0  0.0 FIX  O-00000000000000</span><br><span class="line">24 -0.600 0.095 -6.289 0.121  6.888 0.132 -1.854 0.256  0.118 0.239 -4.726 0.118</span><br><span class="line">V10   8.460  4 252  -0.260 76 143  -8.200 13 343   8.330  27 78   -6 118 84 -168</span><br></pre></td></tr></table></figure>
+
+<p>china_cmt_event的数据格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F 2000  14 23 37 10.80 25.39  101.40  33.00 1.0 -2.3 8.33e24 -0.60  -6.29   6.89  -1.85   0.12  -4.73 1.0e24 27 78   -6 118 84 -168</span><br></pre></td></tr></table></figure>
+
+<p>格式内容（补充了参数含义）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B011400F（事件编号evid） 2000（年份）  14（一年的第几天） 23（时） 37（分） 10.80（centroid秒） 25.39（CENTROID纬度）  101.40（CENTROID经度）  33.00（CENTROID震源深度 km） 1.0（格林函数或地震图的时间步长） -2.3（BOXHD但是原本是正值，这里是负值） 8.33e24（M0） -0.60（Mrr）  -6.29(Mtt)   6.89(Mpp)  -1.85(Mrt)   0.12(Mrp)  -4.73(Mtp) 1.0e24（Mn 张量分量的归一化系数） 27 78   -6 118 84 -168（这六个数是第一个节面、第二个节面的走向、倾向、方位角）</span><br></pre></td></tr></table></figure>
+
+<p>以下[ ]内为这些数据的字节数，如果字节数不足则在前方补充空格。实际编辑使用空格隔开每个参数即可，不必限制字节。</p>
+<p><strong>注：由于新版事件编号为14个字符长度，因此在MINEOS导入过程中事件编号只能导入前8个字符。具体影响未知。</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字节位置</th>
+<th align="center">含义</th>
+<th align="center">字节位置</th>
+<th align="center">含义</th>
+<th align="center">字节位置</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[1-8]</td>
+<td align="center">事件编号evid</td>
+<td align="center">[45-50]</td>
+<td align="center">centroid震源深度 单位km</td>
+<td align="center">[96-101]</td>
+<td align="center">Mrp(Mrφ)</td>
+</tr>
+<tr>
+<td align="center">[10-13]</td>
+<td align="center">年份</td>
+<td align="center">[52-54]</td>
+<td align="center">格林函数和地震图的时间步长，单位s</td>
+<td align="center">[103-108]</td>
+<td align="center">Mtp(Mθφ)</td>
+</tr>
+<tr>
+<td align="center">[15-17]</td>
+<td align="center">一年第几天</td>
+<td align="center">[56-59]</td>
+<td align="center">halfd: source half-time duration 单位s</td>
+<td align="center">[110-115]</td>
+<td align="center">Mn 张量分量的归一化系数,即地震矩张量Mpq的数量级</td>
+</tr>
+<tr>
+<td align="center">[19-20]</td>
+<td align="center">时 （事件发生时间）</td>
+<td align="center">[61-67]</td>
+<td align="center">M0，地震矩标量，单位dyn*cm</td>
+<td align="center">[117-118]</td>
+<td align="center">第一个节面的走向strike</td>
+</tr>
+<tr>
+<td align="center">[22-23]</td>
+<td align="center">分</td>
+<td align="center">[69-73]</td>
+<td align="center">Mrr</td>
+<td align="center">[120-121]</td>
+<td align="center">第一个节面的倾向dip</td>
+</tr>
+<tr>
+<td align="center">[25-29]</td>
+<td align="center">centroid秒，小数格式</td>
+<td align="center">[75-80]</td>
+<td align="center">Mtt (Mθθ)</td>
+<td align="center">[123-126]</td>
+<td align="center">第一个节面的滑动角 slip</td>
+</tr>
+<tr>
+<td align="center">[31-35]</td>
+<td align="center">centroid纬度</td>
+<td align="center">[82-87]</td>
+<td align="center">Mpp  (Mφφ)</td>
+<td align="center">[128-130]</td>
+<td align="center">第二个节面的走向</td>
+</tr>
+<tr>
+<td align="center">[37-43]</td>
+<td align="center">centroid经度</td>
+<td align="center">[89-94]</td>
+<td align="center">Mrt (Mrθ)</td>
+<td align="center">[132-133]</td>
+<td align="center">第二个节面的倾向</td>
+</tr>
+<tr>
+<td align="center">******</td>
+<td align="center">*****</td>
+<td align="center">*******</td>
+<td align="center">******</td>
+<td align="center">[135-138]</td>
+<td align="center">第二个节面的滑动角</td>
+</tr>
+</tbody></table>
+<p>Mrr, Mtt, Mpp, Mrt, Mrp, Mtp 通过Mn归一化的矩张量分量。坐标系与Aki-Quantitative Seismology中<code>(Up,South,East)</code>相同(P113)。</p>
 
           
         
@@ -487,7 +635,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/64/">64</a><a class="extend next" rel="next" href="/page/20/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/18/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/20/">&gt;</a>
   </nav>
 
 
@@ -533,7 +681,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -639,7 +787,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+        <div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

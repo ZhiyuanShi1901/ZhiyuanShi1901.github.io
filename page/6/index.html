@@ -76,12 +76,10 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/categories/index.html">
+<meta property="og:title" content="Seismology Learning">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/archives/index.html">
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T02:20:13.000Z">
-<meta property="article:modified_time" content="2024-04-25T02:22:57.346Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -93,7 +91,7 @@
     root: '',
     scheme: 'Muse',
     version: '6.0.0',
-    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -115,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/categories/"/>
+  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/archives/"/>
 
 
 
@@ -140,7 +138,7 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -279,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2024/02/25/nd%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2023/05/03/MATLAB%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -298,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2024/02/25/nd%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98/" itemprop="url">.nd文件创建问题</a></h1>
+                <a class="post-title-link" href="/2023/05/03/MATLAB%E5%87%BD%E6%95%B0/" itemprop="url">MATLAB函数</a></h1>
         
 
         <div class="post-meta">
@@ -310,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-02-25T19:27:55+08:00">2024-02-25</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-05-03T08:28:34+08:00">2023-05-03</time>
             
 
             
@@ -318,6 +316,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%87%BD%E6%95%B0%E5%BA%93%E6%B1%87%E6%80%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">程序函数库汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -348,10 +368,20 @@
       
         
           
-            <p>使用Windows命令行创建nd文件的时候：</p>
-<pre><code>type nul-&gt;name.nd
+            <h1 id="meshgrid"><a href="#meshgrid" class="headerlink" title="meshgrid"></a>meshgrid</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47017197/article/details/125906313">https://blog.csdn.net/m0_47017197/article/details/125906313</a><br>meshgrid 函数用来生成网格矩阵，可以是二维网格矩阵。</p>
+<pre><code>[XX,YY]=meshgrid(X, Y)
 </code></pre>
-<p>不要提前输入任何内容，而是创建一个空白文件。否则fortran读取的时候会出现问题。</p>
+<p>生成Y元素个数为行，X元素个数为列的网格，其中XX为扩充为Y的个数的行：</p>
+<p>X&#x3D;[1,2,3];Y&#x3D;[4,5]</p>
+<p>XX&#x3D;[1,2,3;1,2,3]<br>YY&#x3D;[4,5;4,5;4,5]</p>
+<h1 id="surf"><a href="#surf" class="headerlink" title="surf"></a>surf</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44044161/article/details/116741630">https://blog.csdn.net/weixin_44044161/article/details/116741630</a></p>
+<pre><code>surf(XX,YY,ZZ)
+</code></pre>
+<p>生成三维图像。</p>
+<h1 id="shading-interp"><a href="#shading-interp" class="headerlink" title="shading interp"></a>shading interp</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mxr2026588745/article/details/108928622">https://blog.csdn.net/mxr2026588745/article/details/108928622</a><br>对曲面图行进行色彩差值处理。使得色彩平滑过渡</p>
+<h1 id="view"><a href="#view" class="headerlink" title="view"></a>view</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fightclub_/article/details/126498319">https://blog.csdn.net/fightclub_/article/details/126498319</a></p>
+<p>从不同的方位角和视角查看图像。<br>view(方位角，仰角)</p>
+<p>方位角：视线与Y轴正向方向在xOy平面夹角。视线看向x轴正方向为正<br>仰角：视线与Y轴正向方向在yOz平面夹角。视线看向z轴负向方向为正。<br>view(0, 90) 方位角0度，仰角90度，从上面俯视xOz平面。</p>
 
           
         
@@ -391,7 +421,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/64/">64</a><a class="extend next" rel="next" href="/page/7/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/7/">&gt;</a>
   </nav>
 
 
@@ -437,7 +467,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -543,7 +573,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+        <div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

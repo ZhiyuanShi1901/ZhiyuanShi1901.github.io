@@ -76,12 +76,10 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://zhiyuanshi1901.github.io/categories/index.html">
+<meta property="og:title" content="Seismology Learning">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/archives/index.html">
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T02:20:13.000Z">
-<meta property="article:modified_time" content="2024-04-25T02:22:57.346Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -93,7 +91,7 @@
     root: '',
     scheme: 'Muse',
     version: '6.0.0',
-    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -115,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/categories/"/>
+  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/archives/"/>
 
 
 
@@ -140,7 +138,7 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -279,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/">
+    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2022/09/15/%E3%80%8A%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -298,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/09/30/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/" itemprop="url">吉布斯现象作业</a></h1>
+                <a class="post-title-link" href="/2022/09/15/%E3%80%8A%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E3%80%8B%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url">《地震资料解释基础》英语词汇</a></h1>
         
 
         <div class="post-meta">
@@ -310,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-09-30T19:38:00+08:00">2022-09-30</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-09-15T20:07:56+08:00">2022-09-15</time>
             
 
             
@@ -331,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">作业布置</span>
+                  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url" rel="index">
+                    <span itemprop="name">专业英语词汇</span>
                   </a>
                 </span>
 
@@ -370,14 +368,142 @@
       
         
           
-            <h1 id="使用matlab和C进行绘图与计算。"><a href="#使用matlab和C进行绘图与计算。" class="headerlink" title="使用matlab和C进行绘图与计算。"></a>使用matlab和C进行绘图与计算。</h1><p>程序如下：<br>C程序计算采样和DFT频域转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">//# define NP 2001</span><br><span class="line"># define PI 2*asin(1.0)</span><br><span class="line">#define T 2.0</span><br><span class="line">void dft(xreal, ximag);</span><br><span class="line">float xtime(float dt, float *x, float *t, int N);</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    float dt1=1.6;</span><br><span class="line">    float dt2=2.5;</span><br><span class="line">    int N1=T*1000/dt1;</span><br><span class="line">    printf(&quot;%d &quot;,N1);</span><br><span class="line"></span><br><span class="line">    float x1[N1],t1[N1];</span><br><span class="line">    int N2 = T*1000/dt2;</span><br><span class="line">    float x2[N2],t2[N2];</span><br><span class="line"></span><br><span class="line">    xtime(dt1,x1,t1, N1);</span><br><span class="line">    xtime(dt2,x2,t2, N2);</span><br><span class="line"></span><br><span class="line">    float xreal1[N1], ximag1[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal1[i]=x1[i]; ximag1[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal1 %f\t%d\n&quot;, xreal1[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal1, ximag1,N1);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal1[i],ximag1[i],i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float xreal2[N1], ximag2[N1];</span><br><span class="line">    printf(&quot;输出测试&quot;);  //测试无误</span><br><span class="line">    for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal2[i]=x1[i]; ximag2[i]=0;  //将雷克子波输入实部为原值，虚部为0</span><br><span class="line">        printf(&quot;xreal2 %f\t%d\n&quot;, xreal2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dft(xreal2, ximag2, N2);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%f\t%f\t%d\n&quot;, xreal2[i],ximag2[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FILE *DFT;  //打开最终输出的文件</span><br><span class="line">    DFT = fopen(&quot;work_dt1.csv&quot;, &quot;w&quot;);</span><br><span class="line">printf( &quot;dt1 \n&quot;);</span><br><span class="line">    for(int i=0; i&lt;N1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">         fprintf(DFT, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal1[i],2)+pow(ximag1[i], 2)), i/dt1/N1);</span><br><span class="line">    &#125;</span><br><span class="line">    FILE *DFT2;</span><br><span class="line">    DFT2 = fopen(&quot;work_dt2.csv&quot;, &quot;w&quot;);</span><br><span class="line">    printf( &quot;dt2 \n&quot;);</span><br><span class="line">     for(int i=0; i&lt;N2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">         printf(&quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">         fprintf(DFT2, &quot;%10.6f\t %10.6f\n&quot;, sqrt(pow(xreal2[i],2)+pow(ximag2[i], 2)), i/dt2/N2);</span><br><span class="line">    &#125;</span><br><span class="line">fclose(DFT);</span><br><span class="line">fclose(DFT2);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dft(float *xreal,float *ximag, int N)  //DFT 离散傅里叶正变换</span><br><span class="line">&#123;</span><br><span class="line">    float Xreal[N],Ximag[N];</span><br><span class="line">    float sumreal, sumimag, rad;  //定义实部计算加和、虚部计算加和、角度</span><br><span class="line"></span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        sumreal = 0.0; sumimag = 0.0;</span><br><span class="line">        for(int n=0; n&lt;N; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            rad = 2*PI/N*n*k;</span><br><span class="line">            //printf(&quot;thisxreal %f\t%d\t%d\n&quot;, xreal[n], n, k);</span><br><span class="line">            sumreal += xreal[n]*cos(rad) + ximag[n]*sin(rad);</span><br><span class="line">            sumimag += -xreal[n]*sin(rad) + ximag[n]*cos(rad);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Xreal[k] = sumreal;</span><br><span class="line">        Ximag[k] = sumimag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int k = 0; k &lt; N; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        xreal[k] = Xreal[k];</span><br><span class="line">        ximag[k] = Ximag[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float xtime(float dt, float *x, float *t, int N)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t[i] = -T/2+i*dt/1000;</span><br><span class="line">        if(t[i]==0)</span><br><span class="line">             x[i] = 227.0;</span><br><span class="line">        else</span><br><span class="line">        x[i] = sin(300*t[i])/PI/t[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MATLAB进行图像绘制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">dt1 = 1.6;</span><br><span class="line">dt2 = 2.5;</span><br><span class="line">[t1,x1,N1] = xtime(dt1);</span><br><span class="line">[t2,x2,N2] = xtime(dt2);</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">plot(t1,x1,&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;);</span><br><span class="line">title(&#x27;时域采样结果&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">plot(t2,x2,&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;);</span><br><span class="line"></span><br><span class="line">load work_dt1.csv</span><br><span class="line">load work_dt2.csv</span><br><span class="line"></span><br><span class="line">figure(2)</span><br><span class="line">subplot(2,1,1)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt1(:,2),work_dt1(:,1),&#x27;-r&#x27;)</span><br><span class="line">legend(&#x27;采样间隔1.6ms&#x27;)</span><br><span class="line">title(&#x27;频谱绘制&#x27;)</span><br><span class="line">subplot(2,1,2)</span><br><span class="line">hold on</span><br><span class="line">plot(work_dt2(:,2),work_dt2(:,1),&#x27;-b&#x27;)</span><br><span class="line">legend(&#x27;采样间隔2.5ms&#x27;)</span><br><span class="line"></span><br><span class="line">function [t,x,N] = xtime(dt)</span><br><span class="line">    T = 2; % 采样总时间为2s，原点两边各采样1s</span><br><span class="line">    N = floor(T*1000/dt);</span><br><span class="line">    x = zeros(1,N);</span><br><span class="line">    t = zeros(1,N);</span><br><span class="line">    for i=1 : N</span><br><span class="line">        t(i) = -T/2+(i-1)*dt/1000;</span><br><span class="line">        x(i) = 1/pi/t(i)*sin(300*t(i));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="频率采样"></p>
-<p><img src="/%E5%90%89%E5%B8%83%E6%96%AF%E7%8E%B0%E8%B1%A1%E4%BD%9C%E4%B8%9A/%E6%97%B6%E5%9F%9F%E9%87%87%E6%A0%B7.jpg" alt="时域采样"></p>
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这里的名词大多是在学习中所记得，因为英语单词实在是难记，而且有些名词<br>在其他翻译软件中没有专业解释，因此，在这里当做词典，可以通过搜索进行查找。</p>
+<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].[曹丹平等编著.地震资料解释基础 北京：石油工业出版社，2020.10]</p>
+<h1 id="来源-1-《地震资料解释基础》"><a href="#来源-1-《地震资料解释基础》" class="headerlink" title="来源 [1]《地震资料解释基础》"></a>来源 [1]《地震资料解释基础》</h1><h2 id="第一章-三维地震资料解释基础"><a href="#第一章-三维地震资料解释基础" class="headerlink" title="第一章 三维地震资料解释基础"></a>第一章 三维地震资料解释基础</h2><p>seismic exploration 地震勘探</p>
+<p>acquisition 采集（地震勘探）</p>
+<p>interpretation 解释（地震勘探）</p>
+<p>seismic data 地震资料</p>
+<p>reservoir 储层</p>
+<p>density 密度</p>
+<p>medium 介质</p>
+<p>medium model for seismic wave propagation 地震波传播介质模型</p>
+<p>viscoelastic body 黏弹性体</p>
+<p>isotropy 各向同性</p>
+<p>anisotropy 各向异性</p>
+<p>AVO(amplitude variation with angle)振幅随偏移距变化；(amplitude versus offset ) 振幅与炮检距关系</p>
+<p>homogeneous medium 均匀介质</p>
+<p>heterogeneous medium 非均匀介质</p>
+<p>single-phase medium 单相介质</p>
+<p>double-phase medium 双相介质</p>
+<p>elastomer 弹性体</p>
+<p>elastic wave 弹性波</p>
+<p>wave equation 波动方程</p>
+<p>Fermat principle 费马原理</p>
+<p>Huygens-Fresnel principle 惠更斯-菲涅尔原理</p>
+<p>Snell’s law 斯奈尔定律</p>
+<p>reflected wave 反射波</p>
+<p>transmitted wave 透射波</p>
+<p>wave seismology 波动地震学</p>
+<p>geometric seismology 集合地震学</p>
+<p>eikonal equation 程函方程</p>
+<p>geometry 观测系统</p>
+<p>CDP(common depth point) 共深度点</p>
+<p>xline 横向方向</p>
+<p>inline 测线方向</p>
+<p>CMP(common mid point) 共中心点</p>
+<p>OVT(offset vector tile) 炮检距向量片（域偏移技术）</p>
+<p>Kirchhoff 克其霍夫</p>
+<p>convolution 褶积</p>
+<p>reflection coefficient 反射系数</p>
+<p>reflectivity 反射率</p>
+<p>resolving power 分辨能力</p>
+<p>resolution 分辨率</p>
+<p>vertical 垂向</p>
+<p>lateral 横向</p>
+<p>first fresnel zone 第一菲涅尔带</p>
+<p>Rayleigh 瑞利准则</p>
+<p>Ricker 雷克准则</p>
+<p>Widess 怀德斯准则</p>
+<p>AVA(amplitude variation with incident angle) 振幅随入射角变化</p>
+<p>AVP(amplitude variation with ray-parameter) 振幅随射线参数的变化</p>
+<p>Zoeppritz 佐普里兹</p>
+<p>gradient 梯度</p>
+<p>rock physics 岩石物理</p>
+<p>seismic rock physics 地震岩石物理</p>
+<p>seismic petrophysics 地震岩石物理</p>
+<h2 id="第二章-三维地震数据与计算机可视化"><a href="#第二章-三维地震数据与计算机可视化" class="headerlink" title="第二章 三维地震数据与计算机可视化"></a>第二章 三维地震数据与计算机可视化</h2><p>3D seismic data volume 三维地震数据体</p>
+<p>seismic trace 地震记录道</p>
+<p>seismic section&#x2F;seismic cross-section&#x2F; seismic profile&#x2F;proflie 地震剖面</p>
+<p>trace space &#x2F; group interval 道间距</p>
+<p>sample interval 采样间隔</p>
+<p>sample rate 采样率</p>
+<p>seismic recording length 地震记录长度</p>
+<p>inline&#x2F;line 主测线&#x2F;主测线剖面</p>
+<p>crossline&#x2F;xline 横测线&#x2F;联络测线</p>
+<p>arbitrary line 任意线</p>
+<p>horizontal sections&#x2F;horizontal slice 水平切片</p>
+<p>time slice 时间切片</p>
+<p>depth slice 深度切片</p>
+<p>seiscrop section 水平切片（起源于seiscrop公司）</p>
+<p>horizon slice 沿层切片&#x2F;层位切片</p>
+<p>fault slice 断面切片</p>
+<p>vertical sections 垂直剖面</p>
+<p>stratal slice 地层切片</p>
+<p>wave peak &#x2F; wave crest 波峰</p>
+<p>wave trough 波谷</p>
+<p>scaling 缩放</p>
+<p>digital clipping 数字限幅</p>
+<p>spectrum 谱</p>
+<p>bandwidth 带宽</p>
+<p>zero phase wavelet 零相位子波</p>
+<p>minimum phase wavelet 最小相位子波</p>
+<p>polarity 极性</p>
+<p>positive 正(反射)</p>
+<p>hard 硬(反射)</p>
+<p>normal polarity 正常极性（正极性）</p>
+<p>reverse polarity 反极性 negative polarity 负极性</p>
+<p>American polarity 美洲极性</p>
+<p>European polarity 欧洲极性</p>
+<p>primary color 原色&#x2F;基色</p>
+<p>magenta 品红</p>
+<p>cyan 青</p>
+<p>hue 色调</p>
+<p>saturation 饱和度</p>
+<p>lightness 亮度</p>
+<p>color scheme 色标</p>
+<p>color bar 色棒</p>
+<p>contrasting color scheme 对比配色法</p>
+<p>gradational color scheme 渐变配色法</p>
+<p>single-gradational color scheme 单向渐变色标</p>
+<p>single-graditional gray scale 单向渐变灰色色标（灰度色标）</p>
+<p>double-gradational color scheme 双向渐变色标</p>
+<p>enhanced dynamic range double-gradational color scheme 增强动态范围的双向渐变色标</p>
+<p>contrasting spectral color scheme 对比色色标（彩虹色标）</p>
+<p>composite color scheme 复合色标</p>
+<p>1D cyclical color scheme 一维周期性色标</p>
+<p>2D color scheme 二维色标</p>
+<p>3D color scheme 三维色标</p>
+<p>cross-section display 剖面显示</p>
+<p>WT (wiggle trace) 波形曲线显示</p>
+<p>VA (variable area) 变面积显示</p>
+<p>D-VA (dual polarity variable area) 双极性变面积显示</p>
+<p>VD (variable density) 变密度（灰度）显示</p>
+<p>VI (variable intensity) 彩色变密度显示</p>
+<p>VI-WT &#x2F; VD-WT 波形加变密度显示</p>
+<p>VA-VD 变面积加变密度叠合显示</p>
+<p>seismic overlays 叠合显示</p>
+<p>blended or mixed displays 叠合显示</p>
+<p>surface visualization 平面可视化（计数）</p>
+<p>composite display 复合显示</p>
+<p>cube display 立方体显示</p>
+<p>chair display 椅状显示</p>
+<p>seismic data 3D visualization 地震数据三维可视化</p>
+<p>volume visualization 三维体可视化</p>
+<p>voxel 体元</p>
+<p>visual integration 可视化集成</p>
+<p>virtual reality 虚拟现实</p>
+<p>immersive visualization 浸入式可视化</p>
+<p>full 3D interpretation of seismic data 地震资料全三维解释</p>
+<p>autotracking 自动追踪</p>
+<p>autopicking 自动拾取</p>
+<p>seed voxel 种子点</p>
+<p>seismic interpretation system 地震解释系统</p>
+<p>interactive interpretation system of seismic data 地震资料（人机）交互解释系统</p>
+<p>results of seismic data interpretation 地震资料解释成果</p>
+<p>CGM (computer graphics metafile) 计算机图形元文件</p>
+<p>PPI (pixel per inch) 每英寸像素</p>
+<p>DPI (dot per inch) 每英寸点</p>
 
           
         
@@ -417,7 +543,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/45/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/page/64/">64</a><a class="extend next" rel="next" href="/page/47/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/45/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/47/">&gt;</a>
   </nav>
 
 
@@ -463,7 +589,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -569,7 +695,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+        <div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
