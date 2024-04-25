@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/about/index.html">
+<meta property="og:site_name" content="日常学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-25T02:20:01.000Z">
+<meta property="article:modified_time" content="2024-04-25T02:22:19.259Z">
+<meta property="article:author" content="Shi Zhiyuan">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/about/"/>
+
+
+
+
+
+  <title>Git学习笔记 | 日常学习笔记</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">日常学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日常学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-30T20:18:45+08:00">2022-07-30</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="This-is-the-learning-notes-of-how-to-git"><a href="#This-is-the-learning-notes-of-how-to-git" class="headerlink" title="This is the learning notes of how to git."></a>This is the learning notes of how to git.</h1></h1><h2 id="First-chapter–How-to-make-a-local-repository"><a href="#First-chapter–How-to-make-a-local-repository" class="headerlink" title="First chapter–How to make a local repository."></a>First chapter–How to make a local repository.</h2></h2><h3 id="获取SSH，本地git连接到github库"><a href="#获取SSH，本地git连接到github库" class="headerlink" title="获取SSH，本地git连接到github库"></a>获取SSH，本地git连接到github库</h3><pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;你的邮箱&quot;
+ssh-keygen -t rsa -C &quot;你的邮箱&quot;
+</code></pre>
+<p>多次回车之后可以找到文件id_rsa.pub，或者使用<code>cat ~/.ssh/id_rsa.pub</code>查看你的ssh。<br>复制下来，粘贴到github网站的设置&#x2F;SSH and GPG Keys对应位置上。确认即可。</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<p>确认已经完成连接</p>
+<span id="more"></span>
+<h3 id="Basic-operate"><a href="#Basic-operate" class="headerlink" title="Basic operate"></a>Basic operate</h3><h4 id="1-初始化仓库-在你想创建仓库的文件夹下运行git-bash"><a href="#1-初始化仓库-在你想创建仓库的文件夹下运行git-bash" class="headerlink" title="1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)"></a>1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</h4><pre><code>mkdir (仓库名)
+cd (仓库名)
+git init
+</code></pre>
+<h4 id="2-查看仓库状态"><a href="#2-查看仓库状态" class="headerlink" title="2. 查看仓库状态"></a>2. 查看仓库状态</h4><pre><code>git status
+</code></pre>
+<h4 id="3-创建一个md文件，用于说明仓库用途。"><a href="#3-创建一个md文件，用于说明仓库用途。" class="headerlink" title="3. 创建一个md文件，用于说明仓库用途。"></a>3. 创建一个md文件，用于说明仓库用途。</h4><pre><code>touch README.md
+</code></pre>
+<h4 id="4-向暂存区中添加文件"><a href="#4-向暂存区中添加文件" class="headerlink" title="4. 向暂存区中添加文件"></a>4. 向暂存区中添加文件</h4><pre><code>git add (文件名)
+git add . (将所有文件添加到暂存区)
+</code></pre>
+<h4 id="5-提交保存信息"><a href="#5-提交保存信息" class="headerlink" title="5. 提交保存信息"></a>5. 提交保存信息</h4><pre><code>git commit -m &quot;描述信息&quot;
+git commit  //打开编辑器详细编辑信息
+</code></pre>
+<h4 id="6-查看提交日志"><a href="#6-查看提交日志" class="headerlink" title="6. 查看提交日志"></a>6. 查看提交日志</h4><pre><code>git log
+git log --pretty=short  //只显示第一行的简述信息
+git log -p [文件名]     //显示所有文件[该文件]的改动（能够显示文件前后差别）
+git diff                //查看当前工作树与暂存区的差别
+git diff HEAD           //查看与最新提交的差别  （***养成提交前查看的好习惯***）
+</code></pre>
+<h3 id="Branch-operate"><a href="#Branch-operate" class="headerlink" title="Branch operate"></a>Branch operate</h3><h4 id="1-显示分支"><a href="#1-显示分支" class="headerlink" title="1. 显示分支"></a>1. 显示分支</h4><pre><code>git branch    //显示分支一览表
+git checkout -b   //创建、切换分支
+git log --graph   //图表形式查看分支
+</code></pre>
+<h4 id="2-切换分支"><a href="#2-切换分支" class="headerlink" title="2. 切换分支"></a>2. 切换分支</h4><pre><code>git checkout -b (需要切换到的分支名)  //切换到对应的分支
+//同样效果的命令
+git branch (需要切换的分支名)
+git checkout (需要切换的分支名)
+
+git checkout -    //切换回上一个分支
+</code></pre>
+<h4 id="3-合并分支"><a href="#3-合并分支" class="headerlink" title="3. 合并分支"></a>3. 合并分支</h4><pre><code>git checkout (需要合并到的分支名)  //先切换到目标分支，将其他分支合并到该分支
+git merge --no-ff (被合并的分支)  //该被合并的分支被合并到上行分支
+</code></pre>
+<h3 id="Change-operate"><a href="#Change-operate" class="headerlink" title="Change operate"></a>Change operate</h3><h4 id="1-回溯历史版本"><a href="#1-回溯历史版本" class="headerlink" title="1. 回溯历史版本"></a>1. 回溯历史版本</h4><pre><code>git reset --hard (回溯时间点的哈希值)   //所有内容回溯到之前的状态
+</code></pre>
+<h4 id="2-推进历史"><a href="#2-推进历史" class="headerlink" title="2. 推进历史"></a>2. 推进历史</h4><pre><code>git reflog      //查看当前仓库执行过的操作日志
+git reset --hard (需要推进到的时间点的哈希值) //推进到该哈希值时间点
+</code></pre>
+<h3 id="3-消除回溯导致的冲突"><a href="#3-消除回溯导致的冲突" class="headerlink" title="3. 消除回溯导致的冲突"></a>3. 消除回溯导致的冲突</h3><pre><code>//进入文件中修改，提交即可
+</code></pre>
+<h3 id="4-修改提交信息"><a href="#4-修改提交信息" class="headerlink" title="4. 修改提交信息"></a>4. 修改提交信息</h3><pre><code>git commit --amend   //启动编辑器
+//修改提交信息，保存按 在末行模式下，输入命令:wq关闭即可
+</code></pre>
+<h3 id="5-压缩历史（更改历史）"><a href="#5-压缩历史（更改历史）" class="headerlink" title="5. 压缩历史（更改历史）"></a>5. 压缩历史（更改历史）</h3><pre><code>git rebase -i HEAD~2  //编辑器打开2条最新的历史记录
+//使用编辑器修改
+</code></pre>
+<h3 id="Push-to-internal-storage"><a href="#Push-to-internal-storage" class="headerlink" title="Push to internal storage"></a>Push to internal storage</h3><h4 id="1-添加远程仓库"><a href="#1-添加远程仓库" class="headerlink" title="1.添加远程仓库"></a>1.添加远程仓库</h4><pre><code>git remote add origin (仓库的SSH)
+</code></pre>
+<h4 id="2-推送"><a href="#2-推送" class="headerlink" title="2. 推送"></a>2. 推送</h4><pre><code>git push -u origin （分支名）  //推送该分支
+git push -b (分支名)   //创建并推送分支
+</code></pre>
+<h3 id="Pull-storage"><a href="#Pull-storage" class="headerlink" title="Pull storage"></a>Pull storage</h3><h4 id="1-获取远程仓库"><a href="#1-获取远程仓库" class="headerlink" title="1. 获取远程仓库"></a>1. 获取远程仓库</h4><pre><code>//在另一个目录下运行git bash
+git clone (SSH)  //将网络仓库克隆到本地
+git checkout -b (本地新建分支名) origin/(远程分支名)  //将远程仓库的分支克隆
+git push  //直接推送处于该情况下的分支
+</code></pre>
+<h4 id="2-获取最新的远程仓库分支"><a href="#2-获取最新的远程仓库分支" class="headerlink" title="2. 获取最新的远程仓库分支"></a>2. 获取最新的远程仓库分支</h4><pre><code>git pull origin (分支名)
+</code></pre>
+<h3 id="Use-Pull-Request"><a href="#Use-Pull-Request" class="headerlink" title="Use Pull Request"></a>Use Pull Request</h3><h4 id="1-WIP-means-Work-in-progress-正在开发中"><a href="#1-WIP-means-Work-in-progress-正在开发中" class="headerlink" title="1. [WIP] means Work in progress 正在开发中"></a>1. [WIP] means Work in progress 正在开发中</h4><h4 id="2-保持本地fork仓库的最新状态"><a href="#2-保持本地fork仓库的最新状态" class="headerlink" title="2. 保持本地fork仓库的最新状态"></a>2. 保持本地fork仓库的最新状态</h4><pre><code>cd (本地仓库路径)
+git remote add (原仓库新名称) (原仓库SSH)
+git fetch (原仓库新名称)       //获取最新数据
+git merge (原仓库新名称)/master   //合并
+</code></pre>
+<h4 id="3-接收Pull-Request"><a href="#3-接收Pull-Request" class="headerlink" title="3. 接收Pull Request"></a>3. 接收Pull Request</h4><pre><code>git remote add PR发送者 (发送者远程仓库SSH) 
+git fetch PR发送者    //将发送方仓库设置为本地仓库的远程仓库
+git checkout -b pr1  //创建用于检查的分支
+git merge PR发送者/workname   //合并分支
+git branch -D pr1   //删除分支
+</code></pre>
+<h4 id="4-采纳"><a href="#4-采纳" class="headerlink" title="4. 采纳"></a>4. 采纳</h4><pre><code>git checkout (主分支名)
+git merge PR发送者/work
+git diff origin/(主分支名)
+git push     //推送
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/07/31/%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E6%97%B6%E9%97%B4%E5%9C%BA%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%8A%A5%E5%91%8A/" rel="prev" title="层状介质时间场模拟与报告">
+                层状介质时间场模拟与报告 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#This-is-the-learning-notes-of-how-to-git"><span class="nav-number">1.</span> <span class="nav-text">This is the learning notes of how to git.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#First-chapter%E2%80%93How-to-make-a-local-repository"><span class="nav-number">1.1.</span> <span class="nav-text">First chapter–How to make a local repository.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96SSH%EF%BC%8C%E6%9C%AC%E5%9C%B0git%E8%BF%9E%E6%8E%A5%E5%88%B0github%E5%BA%93"><span class="nav-number">1.1.1.</span> <span class="nav-text">获取SSH，本地git连接到github库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-operate"><span class="nav-number">1.1.2.</span> <span class="nav-text">Basic operate</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93-%E5%9C%A8%E4%BD%A0%E6%83%B3%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E8%BF%90%E8%A1%8Cgit-bash"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1. 初始化仓库  (在你想创建仓库的文件夹下运行git bash)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2. 查看仓库状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAmd%E6%96%87%E4%BB%B6%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%AF%B4%E6%98%8E%E4%BB%93%E5%BA%93%E7%94%A8%E9%80%94%E3%80%82"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3. 创建一个md文件，用于说明仓库用途。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%90%91%E6%9A%82%E5%AD%98%E5%8C%BA%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">4. 向暂存区中添加文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%8F%90%E4%BA%A4%E4%BF%9D%E5%AD%98%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">5. 提交保存信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E6%97%A5%E5%BF%97"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">6. 查看提交日志</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Branch-operate"><span class="nav-number">1.1.3.</span> <span class="nav-text">Branch operate</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%98%BE%E7%A4%BA%E5%88%86%E6%94%AF"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1. 显示分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">2. 切换分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">3. 合并分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-operate"><span class="nav-number">1.1.4.</span> <span class="nav-text">Change operate</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9B%9E%E6%BA%AF%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">1. 回溯历史版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8E%A8%E8%BF%9B%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">2. 推进历史</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B6%88%E9%99%A4%E5%9B%9E%E6%BA%AF%E5%AF%BC%E8%87%B4%E7%9A%84%E5%86%B2%E7%AA%81"><span class="nav-number">1.1.5.</span> <span class="nav-text">3. 消除回溯导致的冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.6.</span> <span class="nav-text">4. 修改提交信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%8E%8B%E7%BC%A9%E5%8E%86%E5%8F%B2%EF%BC%88%E6%9B%B4%E6%94%B9%E5%8E%86%E5%8F%B2%EF%BC%89"><span class="nav-number">1.1.7.</span> <span class="nav-text">5. 压缩历史（更改历史）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Push-to-internal-storage"><span class="nav-number">1.1.8.</span> <span class="nav-text">Push to internal storage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">1.添加远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8E%A8%E9%80%81"><span class="nav-number">1.1.8.2.</span> <span class="nav-text">2. 推送</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pull-storage"><span class="nav-number">1.1.9.</span> <span class="nav-text">Pull storage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">1.1.9.1.</span> <span class="nav-text">1. 获取远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%86%E6%94%AF"><span class="nav-number">1.1.9.2.</span> <span class="nav-text">2. 获取最新的远程仓库分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-Pull-Request"><span class="nav-number">1.1.10.</span> <span class="nav-text">Use Pull Request</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-WIP-means-Work-in-progress-%E6%AD%A3%E5%9C%A8%E5%BC%80%E5%8F%91%E4%B8%AD"><span class="nav-number">1.1.10.1.</span> <span class="nav-text">1. [WIP] means Work in progress 正在开发中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BF%9D%E6%8C%81%E6%9C%AC%E5%9C%B0fork%E4%BB%93%E5%BA%93%E7%9A%84%E6%9C%80%E6%96%B0%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.10.2.</span> <span class="nav-text">2. 保持本地fork仓库的最新状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%8E%A5%E6%94%B6Pull-Request"><span class="nav-number">1.1.10.3.</span> <span class="nav-text">3. 接收Pull Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E9%87%87%E7%BA%B3"><span class="nav-number">1.1.10.4.</span> <span class="nav-text">4. 采纳</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shi Zhiyuan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

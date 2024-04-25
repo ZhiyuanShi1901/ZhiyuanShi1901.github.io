@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://zhiyuanshi1901.github.io/about/index.html">
+<meta property="og:site_name" content="日常学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-25T02:20:01.000Z">
+<meta property="article:modified_time" content="2024-04-25T02:22:19.259Z">
+<meta property="article:author" content="Shi Zhiyuan">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ZhiyuanShi1901.github.io/about/"/>
+
+
+
+
+
+  <title>Python 库函数 | 日常学习笔记</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">日常学习笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ZhiyuanShi1901.github.io/2022/11/27/Python-%E5%BA%93%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日常学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 库函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-11-27T10:01:21+08:00">2022-11-27</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%87%BD%E6%95%B0%E5%BA%93%E6%B1%87%E6%80%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">程序函数库汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="自带函数"><a href="#自带函数" class="headerlink" title="自带函数"></a>自带函数</h1><h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><pre><code>zip([一个或者多个迭代器,...])
+</code></pre>
+<p>打包为元组。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [1, 2, 3]</span><br><span class="line">b = [4, 5, 6]</span><br><span class="line">p = zip(a,b)</span><br><span class="line">&gt;&gt; p = [(1,4), (2,5),(3,6)]</span><br><span class="line">q = zip(*p)</span><br><span class="line">&gt;&gt; q = [(1,2,3),(4,5,6)]</span><br></pre></td></tr></table></figure>
+
+<h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><h2 id="std"><a href="#std" class="headerlink" title="std"></a>std</h2><pre><code>numpy.std(a, axis=None)
+</code></pre>
+<ul>
+<li>a:计算a的标准差</li>
+<li>axis: <ul>
+<li>0 计算每一列的标准差</li>
+<li>1 计算每一行的标准差</li>
+<li>None 计算全局标准差</li>
+</ul>
+</li>
+</ul>
+<h2 id="digitize"><a href="#digitize" class="headerlink" title="digitize"></a>digitize</h2><pre><code>numpy.digitize(x, bins, right=False)
+</code></pre>
+<p>返回一个和x相同大小的列表，返回值中的元素对应x元素落在bins区间的索引号。</p>
+<h2 id="argmax-返回列表的最大值索引值"><a href="#argmax-返回列表的最大值索引值" class="headerlink" title="argmax 返回列表的最大值索引值"></a>argmax 返回列表的最大值索引值</h2><h2 id="random-随机数"><a href="#random-随机数" class="headerlink" title="random 随机数"></a>random 随机数</h2><h3 id="choice"><a href="#choice" class="headerlink" title="choice"></a>choice</h3><p>choice(a, size&#x3D;None, replace&#x3D;True, p&#x3D;None)</p>
+<ul>
+<li>a 序列</li>
+<li>size 采样的数量，可以是整数，可以是tuple(m，n，k)</li>
+<li>replace 采样的样本是否需要更换。False时样本不会重复。</li>
+<li>p 一维数组，指定a中每个元素采样的概率。默认相同</li>
+</ul>
+<h1 id="tensorflow"><a href="#tensorflow" class="headerlink" title="tensorflow"></a>tensorflow</h1><h2 id="math"><a href="#math" class="headerlink" title="math"></a>math</h2><h2 id="clip-by-global-norm"><a href="#clip-by-global-norm" class="headerlink" title="clip_by_global_norm"></a>clip_by_global_norm</h2><pre><code>tf.clip_by_global_norm( t_list, clip_norm, use_norm=None, name=None)
+</code></pre>
+<ul>
+<li>t_list 元组、列表或者混合张量</li>
+<li>clip_norm 一个标量，大于0。剪裁率</li>
+<li>use_norm 浮点数标量<br>给定张量 t_list 的元组或列表，以及裁剪率 clip_norm，此操作返回裁剪张量列表 list_clipped 和 t_list<br>中所有张量的全局范数 (global_norm)。或者，如果您已经计算了 t_list 的全局范数，则可以使用 use_norm 指定全局范数。</li>
+</ul>
+<h3 id="reduce-mean"><a href="#reduce-mean" class="headerlink" title="reduce_mean"></a>reduce_mean</h3><pre><code>tf.math.reduce_mean(input_tensor, axis=None, keepdims=False, name=None)
+</code></pre>
+<ul>
+<li>input_tensor 输入的张量</li>
+<li>axis <ul>
+<li>缺省，则输出的值为张量所有值的平均值，为一个数字。</li>
+<li>0，输出一个向量，沿着纵向取平均值</li>
+<li>1，沿着横向取平均值</li>
+</ul>
+</li>
+<li>keepdims true表示保留长度为1的缩减维度。</li>
+</ul>
+<h3 id="reduce-sum"><a href="#reduce-sum" class="headerlink" title="reduce_sum"></a>reduce_sum</h3><pre><code>tf.math.reduce_sum(input_tensor, axis=None, keepdims=False, name=None)
+</code></pre>
+<p>输入与mean相同。</p>
+<ul>
+<li>axis <ul>
+<li>缺省，表示张量的所有值相加</li>
+<li>0，纵向相加</li>
+<li>1，横向相加，返回横向量。</li>
+</ul>
+</li>
+<li>keepdims 为True时，且axis为1，返回列向量</li>
+</ul>
+<h2 id="squeeze"><a href="#squeeze" class="headerlink" title="squeeze"></a>squeeze</h2><p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf/squeeze">https://www.tensorflow.org/api_docs/python/tf/squeeze</a></p>
+<pre><code>tf.squeeze(input, axis=None, name=None)
+</code></pre>
+<p>给定一个输入张量。默认移除数量为1的维度。如果axis有值，则移除axis列表对应索引的值。</p>
+<ul>
+<li>input 输入，是一个张量。</li>
+<li>axis 一个列表，指的是张量的索引。</li>
+</ul>
+<h2 id="kereas"><a href="#kereas" class="headerlink" title="kereas"></a>kereas</h2><h3 id="layers"><a href="#layers" class="headerlink" title="layers"></a>layers</h3><h4 id="Dense"><a href="#Dense" class="headerlink" title="Dense"></a>Dense</h4><pre><code>tf.keras.layers.Dense(
+    units,
+    activation=None,
+    use_bias=True,
+    kernel_initializer=&#39;glorot_uniform&#39;,
+    bias_initializer=&#39;zeros&#39;,
+    kernel_regularizer=None,
+    bias_regularizer=None,
+    activity_regularizer=None,
+    kernel_constraint=None,
+    bias_constraint=None,
+    **kwargs
+)
+</code></pre>
+<ul>
+<li>units 正整数，输出的维度</li>
+<li>activation 激活函数<ul>
+<li>sigmoid</li>
+<li>relu</li>
+<li>tf.nn.relu </li>
+<li>tf.nn.softmax</li>
+</ul>
+</li>
+<li>use_bias 布尔型 层是否使用bias向量<br>目前暂时只需要前两个参数。</li>
+</ul>
+<h4 id="Flatten"><a href="#Flatten" class="headerlink" title="Flatten"></a>Flatten</h4><pre><code>tf.keras.layers.Flatten()
+</code></pre>
+<p>将2D层转化为1D向量，只是重排向量。</p>
+<h4 id="Conv2D-定义卷积层"><a href="#Conv2D-定义卷积层" class="headerlink" title="Conv2D 定义卷积层"></a>Conv2D 定义卷积层</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.Conv2D(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides=(1, 1),</span><br><span class="line">    padding=&#x27;valid&#x27;,</span><br><span class="line">    data_format=None,</span><br><span class="line">    dilation_rate=(1, 1),</span><br><span class="line">    groups=1,</span><br><span class="line">    activation=None,</span><br><span class="line">    use_bias=True,</span><br><span class="line">    kernel_initializer=&#x27;glorot_uniform&#x27;,</span><br><span class="line">    bias_initializer=&#x27;zeros&#x27;,</span><br><span class="line">    kernel_regularizer=None,</span><br><span class="line">    bias_regularizer=None,</span><br><span class="line">    activity_regularizer=None,</span><br><span class="line">    kernel_constraint=None,</span><br><span class="line">    bias_constraint=None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>filters 输出的维度。即输出的层的数量。</li>
+<li>kernel_size 核的大小。可以是整数或者矩阵。</li>
+<li>padding 是否填充0。指在输入层的周围填充0。<code>vaild</code>表示不填充，<code>same</code>表示填充一圈0。</li>
+</ul>
+<h4 id="MaxPool2D-定义最大池化层"><a href="#MaxPool2D-定义最大池化层" class="headerlink" title="MaxPool2D 定义最大池化层"></a>MaxPool2D 定义最大池化层</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.MaxPool2D(</span><br><span class="line">    pool_size=(2, 2),</span><br><span class="line">    strides=None,</span><br><span class="line">    padding=&#x27;valid&#x27;,</span><br><span class="line">    data_format=None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>pool_size 池化核大小</li>
+<li>strides 池化核移动的步长</li>
+</ul>
+<h3 id="optimizers"><a href="#optimizers" class="headerlink" title="optimizers"></a>optimizers</h3><h4 id="SGD-随机梯度下降法"><a href="#SGD-随机梯度下降法" class="headerlink" title="SGD 随机梯度下降法"></a>SGD 随机梯度下降法</h4><pre><code>tf.keras.optimizers.SGD(learning_rate = 0.1)
+</code></pre>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><h4 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h4><p>compile</p>
+<h4 id="fit-测试拟合程度"><a href="#fit-测试拟合程度" class="headerlink" title="fit 测试拟合程度"></a>fit 测试拟合程度</h4><h4 id="evaluate"><a href="#evaluate" class="headerlink" title="evaluate"></a>evaluate</h4><pre><code>test_loss, test_acc = model.evaluate(x=test_images, y=test_labels)
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">evaluate(</span><br><span class="line">    x=None,</span><br><span class="line">    y=None,</span><br><span class="line">    batch_size=None,</span><br><span class="line">    verbose=&#x27;auto&#x27;,</span><br><span class="line">    sample_weight=None,</span><br><span class="line">    steps=None,</span><br><span class="line">    callbacks=None,</span><br><span class="line">    max_queue_size=10,</span><br><span class="line">    workers=1,</span><br><span class="line">    use_multiprocessing=False,</span><br><span class="line">    return_dict=False,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>x 输入数据</li>
+<li>y 目标数据</li>
+</ul>
+<h4 id="predict"><a href="#predict" class="headerlink" title="predict"></a>predict</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">predict(</span><br><span class="line">    x,</span><br><span class="line">    batch_size=None,</span><br><span class="line">    verbose=&#x27;auto&#x27;,</span><br><span class="line">    steps=None,</span><br><span class="line">    callbacks=None,</span><br><span class="line">    max_queue_size=10,</span><br><span class="line">    workers=1,</span><br><span class="line">    use_multiprocessing=False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>x 输入的采样点，可以是：<ul>
+<li>numpy矩阵，或者矩阵列表</li>
+<li>tensorflow张量，或者张量列表</li>
+<li>tf.data 数据集</li>
+</ul>
+</li>
+</ul>
+<h1 id="functools"><a href="#functools" class="headerlink" title="functools"></a>functools</h1><p>Python标准模块，提供了一些常用的高阶函数，也就是用于处理其它函数的特殊函数。</p>
+<h2 id="partial"><a href="#partial" class="headerlink" title="partial"></a>partial</h2><pre><code>functools.partial(func[, *args][, **keywords])
+</code></pre>
+<p>将对象的缺省默认值修改为args中的值。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int(&#x27;10&#x27;) # 输出为10</span><br><span class="line">int2 = partial(int, base=2)  # base就是keywords</span><br><span class="line">int2(&#x27;10&#x27;) # 输出为2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>func 可调用的对象或者函数。调用partial对象会转为使用新的参数和关键字参数调用func。</li>
+<li>args 最左边的位置参数作为优先位置参数提供给partial对象调用。</li>
+<li>keywords 对象被调用时提供关键字参数</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D%E6%8E%A2/" rel="next" title="深度学习初探">
+                <i class="fa fa-chevron-left"></i> 深度学习初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/12/12/WSL%E5%AE%89%E8%A3%85/" rel="prev" title="WSL安装">
+                WSL安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%B8%A6%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">自带函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">1.1.</span> <span class="nav-text">zip()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy"><span class="nav-number">2.</span> <span class="nav-text">numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#std"><span class="nav-number">2.1.</span> <span class="nav-text">std</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#digitize"><span class="nav-number">2.2.</span> <span class="nav-text">digitize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#argmax-%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC%E7%B4%A2%E5%BC%95%E5%80%BC"><span class="nav-number">2.3.</span> <span class="nav-text">argmax 返回列表的最大值索引值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">2.4.</span> <span class="nav-text">random 随机数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#choice"><span class="nav-number">2.4.1.</span> <span class="nav-text">choice</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow"><span class="nav-number">3.</span> <span class="nav-text">tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#math"><span class="nav-number">3.1.</span> <span class="nav-text">math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clip-by-global-norm"><span class="nav-number">3.2.</span> <span class="nav-text">clip_by_global_norm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-mean"><span class="nav-number">3.2.1.</span> <span class="nav-text">reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce-sum"><span class="nav-number">3.2.2.</span> <span class="nav-text">reduce_sum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#squeeze"><span class="nav-number">3.3.</span> <span class="nav-text">squeeze</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kereas"><span class="nav-number">3.4.</span> <span class="nav-text">kereas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#layers"><span class="nav-number">3.4.1.</span> <span class="nav-text">layers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dense"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">Dense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flatten"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">Flatten</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conv2D-%E5%AE%9A%E4%B9%89%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-number">3.4.1.3.</span> <span class="nav-text">Conv2D 定义卷积层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MaxPool2D-%E5%AE%9A%E4%B9%89%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96%E5%B1%82"><span class="nav-number">3.4.1.4.</span> <span class="nav-text">MaxPool2D 定义最大池化层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimizers"><span class="nav-number">3.4.2.</span> <span class="nav-text">optimizers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SGD-%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">SGD 随机梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">3.4.3.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#compile"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">compile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fit-%E6%B5%8B%E8%AF%95%E6%8B%9F%E5%90%88%E7%A8%8B%E5%BA%A6"><span class="nav-number">3.4.3.2.</span> <span class="nav-text">fit 测试拟合程度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evaluate"><span class="nav-number">3.4.3.3.</span> <span class="nav-text">evaluate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#predict"><span class="nav-number">3.4.3.4.</span> <span class="nav-text">predict</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#functools"><span class="nav-number">4.</span> <span class="nav-text">functools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#partial"><span class="nav-number">4.1.</span> <span class="nav-text">partial</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shi Zhiyuan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
