@@ -75,15 +75,15 @@
 
 
 
-<meta name="description" content="Seismology Learning Note and Personal Blog">
+<meta name="description" content="Welcome！网站主要记录地震学学习过程，相关软件的使用方式，学习中发现的有趣的内容。 点击 Tags 选择某一特定软件的相关内容点击 Categories 选择某一特定学科的相关内容点击 Archives 按时间顺序查看内容     在茫茫的大千世界里，每一个人都应该保有一个自己的小千世界。  —— 林清玄《人生最美是清欢》">
 <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://shizhiyuan.work/about/index.html">
+<meta property="og:title" content="home">
+<meta property="og:url" content="https://shizhiyuan.work/index.html">
 <meta property="og:site_name" content="Seismology Learning">
-<meta property="og:description" content="Seismology Learning Note and Personal Blog">
+<meta property="og:description" content="Welcome！网站主要记录地震学学习过程，相关软件的使用方式，学习中发现的有趣的内容。 点击 Tags 选择某一特定软件的相关内容点击 Categories 选择某一特定学科的相关内容点击 Archives 按时间顺序查看内容     在茫茫的大千世界里，每一个人都应该保有一个自己的小千世界。  —— 林清玄《人生最美是清欢》">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-25T02:20:01.000Z">
-<meta property="article:modified_time" content="2024-04-25T02:22:19.259Z">
+<meta property="article:published_time" content="2024-04-25T08:14:45.000Z">
+<meta property="article:modified_time" content="2024-04-25T10:57:14.589Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://shizhiyuan.work/about/"/>
+  <link rel="canonical" href="https://shizhiyuan.work/"/>
 
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2024/02/25/nd%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2024/04/14/%E9%9C%87%E6%BA%90%E5%8F%82%E6%95%B0%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2024/02/25/nd%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98/" itemprop="url">.nd文件创建问题</a></h1>
+                <a class="post-title-link" href="/2024/04/14/%E9%9C%87%E6%BA%90%E5%8F%82%E6%95%B0%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB/" itemprop="url">震源参数与坐标系</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-02-25T19:27:55+08:00">2024-02-25</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-04-14T21:51:48+08:00">2024-04-14</time>
             
 
             
@@ -344,6 +344,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">地震学基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -374,10 +396,103 @@
       
         
           
-            <p>使用Windows命令行创建nd文件的时候：</p>
-<pre><code>type nul-&gt;name.nd
-</code></pre>
-<p>不要提前输入任何内容，而是创建一个空白文件。否则fortran读取的时候会出现问题。</p>
+            <p>本文简介一些软件&#x2F;数据中关于震源参数的计算与坐标系问题。</p>
+<h1 id="1-CMT-ndk格式数据"><a href="#1-CMT-ndk格式数据" class="headerlink" title="1 CMT .ndk格式数据"></a>1 CMT .ndk格式数据</h1><p>Global CMT网站提供了详细的地震矩张量和断层参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where r</span><br><span class="line">is up, t is south, and p is east. See Aki and Richards for conversions</span><br><span class="line">to other coordinate systems. The value of each moment-tensor</span><br><span class="line">element is followed by its estimated standard error. See note (4)</span><br><span class="line">below for cases in which some elements are constrained in the inversion.</span><br></pre></td></tr></table></figure>
+
+<p>断层参数一般有两组，其对应的矩张量相同：（此处暂留疑问：正北方向为地理正北or地磁正北？） 见（《地震学、震源及地球结构概论》 P206 图4.2-2）</p>
+<ul>
+<li>strike 走向：断层延伸方向与正北方向夹角 0-360度</li>
+<li>dip 倾角：断层面与倾向夹角 0-90度</li>
+<li>rake(slip) 走滑角：断层上盘相对下盘滑动方向与走向的夹角 0-180度</li>
+<li>Scalar Moment 地震矩标量：表征地震释放能量</li>
+</ul>
+<p>矩张量使用的坐标系为（Up, South, East）,即（r, θ, φ）。参考（Aki, Quantitative Seismology, P113）。</p>
+<p>注意：使用（Aki, Quantitative Seismology, P112）公式，并进行坐标变换之后，计算值与Global CMT给出的矩张量分量不同，目前未知原因。</p>
+<h1 id="MINEOS-使用的坐标系"><a href="#MINEOS-使用的坐标系" class="headerlink" title="MINEOS 使用的坐标系"></a>MINEOS 使用的坐标系</h1><p>坐标系与<code>1 CMT .ndk</code>格式数据相同。</p>
+<h1 id="Instaseis-使用的坐标系"><a href="#Instaseis-使用的坐标系" class="headerlink" title="Instaseis 使用的坐标系"></a>Instaseis 使用的坐标系</h1><p>参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
+<p>Python包 <code>instaseis</code> 使用 <code>Source</code> 属性计算震源参数、使用<code>Reveiver</code>归纳台站参数。</p>
+<p>其可以使用多重方式给出震源参数。</p>
+<h2 id="Source-源"><a href="#Source-源" class="headerlink" title="Source 源"></a>Source 源</h2><h3 id="直接给出矩张量"><a href="#直接给出矩张量" class="headerlink" title="直接给出矩张量"></a>直接给出矩张量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source(latitude, longitude, depth_in_m=None, m_rr=0.0, m_tt=0.0, m_pp=0.0, m_rt=0.0, m_rp=0.0, m_tp=0.0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">M=np.zeros(6)</span><br><span class="line">M[0] = 1.E18</span><br><span class="line">src = instaseis.Source(latitude=0., longitude=0., depth_in_m=10e4, m_rr=M[0], m_tt=M[1], m_pp=M[2], m_rt=M[3],</span><br><span class="line">                 m_rp=M[4], m_tp=M[5])</span><br></pre></td></tr></table></figure>
+<p>其中，Source的参数为：（可以通过<code>source.参数名</code>调取，下同）</p>
+<ul>
+<li>atitude – geocentric latitude of the source in degree</li>
+<li>longitude – longitude of the source in degree</li>
+<li>depth_in_m – source depth in m</li>
+<li>m_rr – moment tensor components in r, theta, phi in Nm</li>
+<li>m_tt – moment tensor components in r, theta, phi in Nm</li>
+<li>m_pp – moment tensor components in r, theta, phi in Nm</li>
+<li>m_rt – moment tensor components in r, theta, phi in Nm</li>
+<li>m_rp – moment tensor components in r, theta, phi in Nm</li>
+<li>m_tp – moment tensor components in r, theta, phi in Nm</li>
+<li>time_shift – correction of the origin time in seconds. Useful in the context of finite source or user defined source time functions.</li>
+<li>sliprate – normalized source time function (sliprate)</li>
+<li>dt – sampling of the source time function</li>
+<li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
+</ul>
+<h3 id="给出震源断层参数"><a href="#给出震源断层参数" class="headerlink" title="给出震源断层参数"></a>给出震源断层参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source.from_strike_dip_rake(latitude, longitude, depth_in_m, strike, dip, rake, M0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.from_strike_dip_rake(</span><br><span class="line">    latitude=10.0, longitude=12.0, depth_in_m=1000, strike=strike, dip=dip, rake=rake, M0=M0)</span><br></pre></td></tr></table></figure>
+<p>参数为：</p>
+<ul>
+<li>latitude – geocentric latitude of the source in degree</li>
+<li>longitude – longitude of the source in degree</li>
+<li>depth_in_m – source depth in m</li>
+<li>strike – strike of the fault in degree</li>
+<li>dip – dip of the fault in degree</li>
+<li>rake – rake of the fault in degree</li>
+<li>M0 – scalar moment</li>
+<li>time_shift – correction of the origin time in seconds. only useful in the context of finite sources</li>
+<li>sliprate – normalized source time function (sliprate)</li>
+<li>dt – sampling of the source time function</li>
+<li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
+</ul>
+<h3 id="给出parse文件"><a href="#给出parse文件" class="headerlink" title="给出parse文件"></a>给出parse文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.parse(quakeml_file)</span><br></pre></td></tr></table></figure>
+<p>quakeml_file: </p>
+<h3 id="Source-返回值具有的属性："><a href="#Source-返回值具有的属性：" class="headerlink" title="Source 返回值具有的属性："></a>Source 返回值具有的属性：</h3><h4 id="上述的所有参数"><a href="#上述的所有参数" class="headerlink" title="上述的所有参数"></a>上述的所有参数</h4><h4 id="tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp"><a href="#tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp" class="headerlink" title="tensor 包含六个矩张量的List，分量为[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]"></a>tensor 包含六个矩张量的List，分量为<code>[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</code></h4><h4 id="tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp"><a href="#tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp" class="headerlink" title="tensor_voigt，进行了坐标旋转，分量为[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]"></a>tensor_voigt，进行了坐标旋转，分量为<code>[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</code></h4><h2 id="ForceSource-力源"><a href="#ForceSource-力源" class="headerlink" title="ForceSource 力源"></a>ForceSource 力源</h2><h3 id="给出牵引力三分量"><a href="#给出牵引力三分量" class="headerlink" title="给出牵引力三分量"></a>给出牵引力三分量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ForceSource(latitude, longitude, depth_in_m=None, f_r=0.0, f_t=0.0, f_p=0.0, origin_time=UTCDateTime(1970, 1, 1, 0, 0), sliprate=None, time_shift=None, dt=None)</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.ForceSource(latitude=12.34, longitude=12.34, f_r=1E10)</span><br></pre></td></tr></table></figure>
+<p>参数为：</p>
+<ul>
+<li>latitude – geocentric latitude of the source in degree</li>
+<li>longitude – longitude of the source in degree</li>
+<li>depth_in_m – source depth in m</li>
+<li>f_r – force components in r, theta, phi in N</li>
+<li>f_t – force components in r, theta, phi in N</li>
+<li>f_p – force components in r, theta, phi in N</li>
+<li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
+<li>sliprate – normalized source time function (sliprate)</li>
+<li>time_shift – correction of the origin time in seconds. Useful in the context of finite source or user defined source time functions.</li>
+<li>dt – sampling of the source time function</li>
+</ul>
+<h3 id="ForceSource-返回值具有的属性："><a href="#ForceSource-返回值具有的属性：" class="headerlink" title="ForceSource 返回值具有的属性："></a>ForceSource 返回值具有的属性：</h3><h4 id="上述的所有参数-1"><a href="#上述的所有参数-1" class="headerlink" title="上述的所有参数"></a>上述的所有参数</h4><h4 id="force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p"><a href="#force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p" class="headerlink" title="force_rtp 包含三个牵引力分量的List，分量为[f_r, f_t, f_p]"></a>force_rtp 包含三个牵引力分量的List，分量为<code>[f_r, f_t, f_p]</code></h4><h4 id="force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r"><a href="#force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r" class="headerlink" title="force_tpr，进行了坐标旋转，分量为[f_t, f_p, f_r]"></a>force_tpr，进行了坐标旋转，分量为<code>[f_t, f_p, f_r]</code></h4><h2 id="FiniteSource-有限源"><a href="#FiniteSource-有限源" class="headerlink" title="FiniteSource 有限源"></a>FiniteSource 有限源</h2><p>相关内容详见参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
+<h3 id="给出点源"><a href="#给出点源" class="headerlink" title="给出点源"></a>给出点源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.source.FiniteSource(pointsources=None, CMT=None, magnitude=None, event_duration=None, hypocenter_longitude=None, hypocenter_latitude=None, hypocenter_depth_in_m=None)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pointsources (list of Source objects) – The points sources making up the finite source.</li>
+<li>CMT (Source, optional) – The centroid of the finite source.</li>
+<li>magnitude (float, optional) – The total moment magnitude of the source.</li>
+<li>event_duration (float, optional) – The event duration in seconds.</li>
+<li>hypocenter_longitude (float, optional) – The hypocentral longitude.</li>
+<li>hypocenter_latitude (float, optional) – The hypocentral latitude.</li>
+<li>hypocenter_depth_in_m (float, optional) – The hypocentral depth in m.</li>
+</ul>
+<h2 id="Receiver-台站"><a href="#Receiver-台站" class="headerlink" title="Receiver 台站"></a>Receiver 台站</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Receiver(latitude, longitude, network=None, station=None, location=None, depth_in_m=None)</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rec = Receiver(latitude=12.34, longitude=56.78, network=&quot;AB&quot;,</span><br><span class="line">               station=&quot;CDE&quot;, location=&quot;SY&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>latitude (float) – The geocentric latitude of the receiver in degree.</li>
+<li>longitude (float) – The longitude of the receiver in degree.</li>
+<li>depth_in_m (float) – The depth of the receiver in meters. Only</li>
+<li>network (str, optional) – The network id of the receiver.</li>
+<li>station (str, optional) – The station id of the receiver.</li>
+<li>location (str) – The location code of the receiver.</li>
+</ul>
+<h1 id="SPECNM-使用的坐标系"><a href="#SPECNM-使用的坐标系" class="headerlink" title="SPECNM 使用的坐标系"></a>SPECNM 使用的坐标系</h1><p>与 <code>Instaseis 使用的坐标系</code> 相同，使用 instaseis.Source 与 instaseis.Receiver 创建相关震源、台站信息。</p>
 
           
         
@@ -417,7 +532,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/2/">&lt;</a><a class="page-number" href="/default-index/">1</a><a class="page-number" href="/default-index/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/default-index/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/61/">61</a><a class="extend next" rel="next" href="/default-index/page/4/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/2/">&lt;</a><a class="page-number" href="/default-index/">1</a><a class="page-number" href="/default-index/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/default-index/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/62/">62</a><a class="extend next" rel="next" href="/default-index/page/4/">&gt;</a>
   </nav>
 
 
@@ -467,7 +582,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -489,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
