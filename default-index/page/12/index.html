@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2023/03/06/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2023/03/12/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94%E4%BD%9C%E4%B8%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/03/06/GMT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">GMT学习笔记</a></h1>
+                <a class="post-title-link" href="/2023/03/12/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94%E4%BD%9C%E4%B8%9A/" itemprop="url">地球物理反演作业</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-06T21:17:59+08:00">2023-03-06</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-12T14:59:35+08:00">2023-03-12</time>
             
 
             
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">地震学常用软件</span>
+                  <a href="/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">作业布置</span>
                   </a>
                 </span>
 
@@ -396,107 +396,11 @@
       
         
           
-            <p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://docs.gmt-china.org/latest/">https://docs.gmt-china.org/latest/</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>GMT分为Linux版本和Windows版本，本次使用在linux版本，在ubuntu下运行。<br>使用miniconda进行安装gmt十分方便。</p>
-<pre><code>conda install gmt -c conda-forge
-gmt --version  //进行测试
-</code></pre>
-<p>升级：</p>
-<pre><code>conda update gmt
-</code></pre>
-<p>卸载：</p>
-<pre><code>conda remove gmt
-</code></pre>
-<h1 id="入门使用"><a href="#入门使用" class="headerlink" title="入门使用"></a>入门使用</h1><h2 id="初步使用"><a href="#初步使用" class="headerlink" title="初步使用"></a>初步使用</h2><h3 id="GMT基本内容"><a href="#GMT基本内容" class="headerlink" title="GMT基本内容"></a>GMT基本内容</h3><p>在终端中输入</p>
-<pre><code>gmt  //开始使用gmt
-gmt --new-script &gt; 文件名 //创建一个.sh文件
-gedit 文件名 //使用gedit文本编辑器编辑脚本文件
-bash 文件名  //执行该脚本
-</code></pre>
-<p>建立的gmt文件内容为：</p>
-<p>文件内容：</p>
-<pre><code>gmt begin figurename pdf  # figurename指生成图片文件名，不给定时默认gmtsession
-# pdf为格式。
-    # Place modern session commands here
-    gmt coast -Rg -JH15c -Gpurple -Baf -B+t&quot;My first Plot&quot;
-gmt end show  # show表示自动打开生成的图片文件
-</code></pre>
-<h3 id="GMT脚本模板"><a href="#GMT脚本模板" class="headerlink" title="GMT脚本模板"></a>GMT脚本模板</h3><p>gmt的命令格式为：</p>
-<p>gmt+模块名+[-选项+参数]</p>
-<p>coast 表示绘制海岸线</p>
-<p>-R指选项，g为参数</p>
-<p>+t为-B的子选项</p>
-<h3 id="coast模块"><a href="#coast模块" class="headerlink" title="coast模块"></a>coast模块</h3><ul>
-<li><p>-JH180&#x2F;15c：指定地图投影参数，H表示使用Hammer投影，地图中心为经度180°（0-360°为标准）<br>地图宽度为15cm</p>
-<ul>
-<li>H：hammer投影</li>
-<li>M：墨卡托投影</li>
-</ul>
-</li>
-<li><p>-R 表示指定绘图范围。格式为：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-R起始经度/结束经度/起始纬度/结束纬度</span><br><span class="line">-Rg # g表示global，写法相当于下面语句，表示绘制全球地图</span><br><span class="line">-R0/360/-90/90</span><br></pre></td></tr></table></figure>
-<p>  或者使用国家代码表示区域范围</p>
-<ul>
-<li>NZ：新西兰国家代码，表示绘制该国的地图。</li>
-<li>CN：中国国家代码。</li>
-</ul>
-</li>
-<li><p>-B 表示增加边框及经纬线，参数一般为g。</p>
-<ul>
-<li>a：annotation 增加标注，即经纬度数字等</li>
-<li>f：frame 刻度线，周边的刻度线</li>
-<li>g：grid 网格线</li>
-<li>xa4g2： 表示x轴标注间隔4°，网格线间隔2°，y轴同理</li>
-<li>WSen：控制四条边的属性，大写表示添加标注，小写表示只绘制边框不显示标注</li>
-<li>+t“标题内容”：增加标题</li>
-</ul>
-</li>
-<li><p>-W 表示绘制海岸线</p>
-<ul>
-<li>0.5p,black：表示岸线为0.5p宽的黑色线条<ul>
-<li>颜色有：黑色black，浅红色lightred</li>
-</ul>
-</li>
-<li>1&#x2F;0.5p,black：1&#x2F;表示绘制1级海岸线</li>
-</ul>
-</li>
-<li><p>-A 绘制对象湖泊或岛屿的最小面积（平方千米）</p>
-</li>
-<li><p>-G 设置陆地填充色</p>
-</li>
-<li><p>-S 设置水体颜色</p>
-</li>
-<li><p>-C 设置湖泊颜色，不设置为S颜色</p>
-</li>
-<li><p>-N 绘制国界、省界等，</p>
-<ul>
-<li>-N1 表示国界</li>
-<li>-N2 表示省界 此处使用中国国界省界数据绘制，具体内容如下：<a target="_blank" rel="noopener" href="https://docs.gmt-china.org/latest/dataset-CN/CN-border/">https://docs.gmt-china.org/latest/dataset-CN/CN-border/</a></li>
-</ul>
-<p>下载好相应数据包后，使用方式如下：<br>      <figure class="highlight plaintext"><figcaption><span>plot CN-border-La.gmt -W0.1p```，此绘制的事中国国界省界十段线和南海诸岛。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line">+ -L 添加比例尺</span><br><span class="line">    </span><br><span class="line">    比例尺参数</span><br><span class="line">  + g经度/纬度  比例尺位置</span><br><span class="line">  + +w1000k 比例尺长度为1000km</span><br><span class="line">  + +c25 绘制比例尺为北纬25°</span><br><span class="line">  + +f 比例尺风格</span><br><span class="line">  + +u 显示比例尺对应单位</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### basemap模块</span><br><span class="line">绘制线性坐标轴和三维坐标轴</span><br><span class="line">+ -J</span><br><span class="line">  + X8c/5c：X轴宽度8cm、高度5cm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -R</span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右，表示图的范围</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -B  参数同上</span><br><span class="line">  + +l“坐标轴名”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三维线性坐标轴：</span><br><span class="line">+ -R </span><br><span class="line">  + x轴左/x轴右/y轴左/y轴右/z轴下/z轴上</span><br><span class="line"></span><br><span class="line">z轴参数同x、y轴</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### gridimage模块 </span><br><span class="line">绘制全球地形起伏</span><br><span class="line"></span><br><span class="line">+ @erath_relief_xxx指定地形起伏数据精度</span><br><span class="line">  + 30m表示30′分辨率。1′约2km。</span><br><span class="line">  + 1s表示以1″为分辨率，约为30m</span><br><span class="line"></span><br><span class="line">+ -J 同coast模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -I+d 增加光照效果</span><br><span class="line"></span><br><span class="line">#### 增加色标：</span><br><span class="line"></span><br><span class="line">    gmt colorbar</span><br><span class="line"></span><br><span class="line">+ -B 设置色标标注间隔，添加标签</span><br><span class="line">  + xaf+l“标签”：设置间隔和标签，同上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ -D 色标放置位置</span><br><span class="line">  + JMR 地形起伏图右侧中间</span><br><span class="line">  + +w10c 色标长度10cm</span><br><span class="line">  + +o1.5c/0c 向右偏移1.5cm</span><br><span class="line">  + +ml 标签放在色标左侧</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### makecpt模块：</span><br><span class="line">制作CPT文件，供接下来的grdimage和colorcolorbar命令使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-</li>
-</ul>
-<p>gmt basemap 参数<br>gmt makecpt -Cglobe -T -8000&#x2F;8000<br>gmt colorbar -Bxa2000 -B+l”m”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 绘图示例：</span><br><span class="line">绘制模型速度剖面的gmt脚本，使用TAUP自动生成：</span><br><span class="line">```commandline</span><br><span class="line">#!/bin/sh</span><br><span class="line">#</span><br><span class="line"># This script will plot the modelmyself velocity model using GMT. If you want to</span><br><span class="line">#use this as a data file for psxy in another script, delete these</span><br><span class="line"># first lines, as well as the last line.</span><br><span class="line">#</span><br><span class="line">/bin/rm -f modelmyself_vel.ps gmt.history</span><br><span class="line"></span><br><span class="line">PCOLOR=0/0/255</span><br><span class="line">SCOLOR=255/0/0</span><br><span class="line">P2COLOR=0/255/255</span><br><span class="line">S2COLOR=255/0/255</span><br><span class="line"></span><br><span class="line">gmt psbasemap -JX6i/-9i -P -R0/11.657488500000001/0/6371.0 -Bxa2f1+l&#x27;Velocity (km/s)&#x27; -Byf200a400+l&#x27;Depth (km)&#x27; -BWSen+t&#x27;modelmyself&#x27;  -K &gt; modelmyself_vel.ps</span><br><span class="line"></span><br><span class="line">gmt psxy -JX -P -R -W2p,$&#123;PCOLOR&#125; -: -m -O -K &gt;&gt; modelmyself_vel.ps &lt;&lt;END</span><br><span class="line">0.0 9.74431</span><br><span class="line">371.0 9.74431</span><br><span class="line">871.0 9.74431</span><br><span class="line">1371.0 9.74431</span><br><span class="line">1891.0 9.74431</span><br><span class="line">2891.0 9.74431</span><br><span class="line">2891.0 10.33598</span><br><span class="line">3370.5 10.33598</span><br><span class="line">3870.5 10.33598</span><br><span class="line">4370.5 10.33598</span><br><span class="line">4670.5 10.33598</span><br><span class="line">5149.5 10.33598</span><br><span class="line">5149.5 11.10237</span><br><span class="line">5371.0 11.10237</span><br><span class="line">6371.0 11.10237</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">gmt psxy -JX -P -R -W2p,$&#123;SCOLOR&#125; -: -m -O  -K &gt;&gt; modelmyself_vel.ps &lt;&lt;END</span><br><span class="line">0.0 5.21269</span><br><span class="line">371.0 5.21269</span><br><span class="line">871.0 5.21269</span><br><span class="line">1371.0 5.21269</span><br><span class="line">1891.0 5.21269</span><br><span class="line">2891.0 5.21269</span><br><span class="line">2891.0 0.0</span><br><span class="line">3370.5 0.0</span><br><span class="line">3870.5 0.0</span><br><span class="line">4370.5 0.0</span><br><span class="line">4670.5 0.0</span><br><span class="line">5149.5 0.0</span><br><span class="line">5149.5 3.51458</span><br><span class="line">5371.0 3.51458</span><br><span class="line">6371.0 3.51458</span><br><span class="line">END</span><br><span class="line">gmt psxy -JX -P -R -W2p,$&#123;P2COLOR&#125; -: -m -O -K &gt;&gt; modelmyself_vel.ps &lt;&lt;END</span><br><span class="line">0.0 9.74431</span><br><span class="line">371.0 9.74431</span><br><span class="line">871.0 9.74431</span><br><span class="line">1371.0 9.74431</span><br><span class="line">1891.0 9.74431</span><br><span class="line">2891.0 9.74431</span><br><span class="line">2891.0 9.20998</span><br><span class="line">3370.5 10.33598</span><br><span class="line">3870.5 10.33598</span><br><span class="line">4370.5 10.33598</span><br><span class="line">4470.5 10.33598</span><br><span class="line">4670.5 10.33598</span><br><span class="line">4670.5 11.10237</span><br><span class="line">5371.0 11.10237</span><br><span class="line">6371.0 11.10237</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">gmt psxy -JX -P -R -W2p,$&#123;S2COLOR&#125; -: -m -O &gt;&gt; modelmyself_vel.ps &lt;&lt;END</span><br><span class="line">0.0 5.21269</span><br><span class="line">371.0 5.21269</span><br><span class="line">871.0 5.21269</span><br><span class="line">1371.0 5.21269</span><br><span class="line">1891.0 5.21269</span><br><span class="line">2891.0 5.21269</span><br><span class="line">2891.0 0.0</span><br><span class="line">3370.5 0.0</span><br><span class="line">3870.5 0.0</span><br><span class="line">4370.5 0.0</span><br><span class="line">4470.5 0.0</span><br><span class="line">4670.5 0.0</span><br><span class="line">4670.5 3.51458</span><br><span class="line">5371.0 3.51458</span><br><span class="line">6371.0 3.51458</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># convert ps to pdf, clean up .ps file</span><br><span class="line">gmt psconvert -P -Tf  modelmyself_vel.ps &amp;&amp; rm modelmyself_vel.ps</span><br><span class="line"># clean up after gmt...</span><br><span class="line">/bin/rm gmt.history</span><br></pre></td></tr></table></figure>
+            <h1 id="作业1"><a href="#作业1" class="headerlink" title="作业1"></a>作业1</h1><p>fortran计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">program ch1_filter</span><br><span class="line">implicit none</span><br><span class="line">real, dimension(:), allocatable :: Xin, Xout1_average, Xout2_average,  &amp;</span><br><span class="line">Xout1_weighted, Xout2_weighted, Xout1_middle, Xout2_middle</span><br><span class="line">integer :: n=0, i,j, STAT</span><br><span class="line">real :: wn</span><br><span class="line">integer, parameter :: window1=7, window2=13</span><br><span class="line">real, dimension(window1) :: w1, input1</span><br><span class="line">real, dimension(window2) :: w2, input2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">open(1, file=&#x27;homework.txt&#x27;, form=&#x27;formatted&#x27;, status=&#x27;old&#x27; )</span><br><span class="line">! 读取文件行数</span><br><span class="line">DO WHILE (.TRUE.)</span><br><span class="line">    READ(1,*,IOSTAT=STAT)</span><br><span class="line">    IF(STAT .NE. 0) EXIT</span><br><span class="line">    n=n+1</span><br><span class="line">ENDDO</span><br><span class="line"></span><br><span class="line">open(2, status=&#x27;replace&#x27;,action=&#x27;write&#x27;, file=&#x27;result.dat&#x27;)</span><br><span class="line">allocate(Xin(n), Xout1_average(int(n-2*(window1-1)/2)),Xout2_average(int(n-2*(window2-1)/2)))</span><br><span class="line">allocate(Xout1_weighted(n-2*(window1-1)/2),Xout2_weighted(n-2*(window2-1)/2))</span><br><span class="line">allocate(Xout1_middle(n-2*(window1-1)/2),Xout2_middle(n-2*(window2-1)/2))</span><br><span class="line">close(unit=1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">open(3, file=&#x27;homework.txt&#x27;, form=&#x27;formatted&#x27;, status=&#x27;old&#x27; )</span><br><span class="line">read(3,*) (Xin(i) , i=1,n) </span><br><span class="line"></span><br><span class="line">do i=1,n</span><br><span class="line">print *, Xin(i)</span><br><span class="line">end do</span><br><span class="line"></span><br><span class="line">! 平均处理</span><br><span class="line">do i=1, n-2*(window1-1)/2</span><br><span class="line">    Xout1_average(i)=0.</span><br><span class="line">    do j=i, i+window1-1</span><br><span class="line">        Xout1_average(i)=Xout1_average(i)+Xin(j)</span><br><span class="line">    enddo</span><br><span class="line">    Xout1_average(i)=Xout1_average(i)/window1</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">do i=1, n-2*(window2-1)/2</span><br><span class="line">    Xout2_average(i)=0.</span><br><span class="line">    do j=i, i+window2-1</span><br><span class="line">        Xout2_average(i)=Xout2_average(i)+Xin(j)</span><br><span class="line">    enddo</span><br><span class="line">    Xout2_average(i)=Xout2_average(i)/window2</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">! 加权平均1</span><br><span class="line">do i=1, window1</span><br><span class="line">    wn=(window1+1)/2</span><br><span class="line">    if(i.le.wn) then </span><br><span class="line">    w1(i) = i/(wn**2)</span><br><span class="line">    else</span><br><span class="line">    w1(i) = (2*wn-i)/(wn**2)</span><br><span class="line">    endif</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">do i=1, n-2*(window1-1)/2</span><br><span class="line">    Xout1_weighted(i)=0.</span><br><span class="line">    do j=i, i+window1-1</span><br><span class="line">        Xout1_weighted(i)=Xout1_weighted(i)+Xin(j)*w1(j-i+1)</span><br><span class="line">    enddo</span><br><span class="line">enddo</span><br><span class="line">! 加权平均2</span><br><span class="line">do i=1, window2</span><br><span class="line">    wn=(window2+1)/2</span><br><span class="line">    if(i.le.wn) then </span><br><span class="line">    w2(i) = i/(wn**2)</span><br><span class="line">    else</span><br><span class="line">    w2(i) = (2*wn-i)/(wn**2)</span><br><span class="line">    endif</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">do i=1, n-2*(window1-1)/2</span><br><span class="line">    Xout2_weighted(i)=0.</span><br><span class="line">    do j=i, i+window1-1</span><br><span class="line">        Xout2_weighted(i)=Xout2_weighted(i)+Xin(j)*w2(j-i+1)</span><br><span class="line">    enddo</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">! 中值滤波1</span><br><span class="line">do i=1, n-2*(window1-1)/2</span><br><span class="line"></span><br><span class="line">    do j=i, i+window1-1</span><br><span class="line">        input1(j-i+1) = Xin(j)</span><br><span class="line">    enddo</span><br><span class="line">    call sort(input1,Xout1_middle(i),window1)</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">! 中值滤波2</span><br><span class="line">do i=1, n-2*(window2-1)/2</span><br><span class="line">    </span><br><span class="line">    do j=i, i+window2-1</span><br><span class="line">        input2(j-i+1) = Xin(j)</span><br><span class="line">    enddo</span><br><span class="line">    call sort(input2,Xout2_middle(i),window2)</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">do i=1, 132</span><br><span class="line">    write(2, 100) i, Xin(i+10), Xout1_average(i+7), Xout2_average(i+4), Xout1_weighted(i+7), Xout2_weighted(i+4), &amp;</span><br><span class="line">            Xout1_middle(i+7), Xout2_middle(i+4)</span><br><span class="line">enddo</span><br><span class="line"> 100 format(I4, 7(x, F15.4))</span><br><span class="line">end program ch1_filter</span><br><span class="line"></span><br><span class="line">SUBROUTINE sort(a,b,n)</span><br><span class="line">dimension :: a(n)</span><br><span class="line">real b</span><br><span class="line">real temp</span><br><span class="line">do i=1,n-1</span><br><span class="line">  do j=i+1,n</span><br><span class="line">   if (a(i).gt.a(j)) then</span><br><span class="line">   temp = a(i)</span><br><span class="line">   a(i) = a(j)</span><br><span class="line">   a(j) = temp</span><br><span class="line">   endif</span><br><span class="line">  enddo</span><br><span class="line">enddo </span><br><span class="line">b=a((n+1)/2)</span><br><span class="line">return</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
-<p>其中，语句</p>
-<pre><code>gmt psxy -JX -P -R -W2p,$&#123;PCOLOR&#125; -: -m -O -K
-</code></pre>
-<p>为绘制语句。其中：</p>
-<ul>
-<li>-J 表示投影方式</li>
-<li>-P </li>
-<li>-R </li>
-<li>-W2p 表示线段宽度为2</li>
-<li>${PCOLOR}为设置的颜色变量。</li>
-<li>-O -K<ul>
-<li>-K 表示第一个图层</li>
-<li>-K -O 表示中间的图层</li>
-<li>-O 表示最后一个图层</li>
-</ul>
-</li>
-</ul>
+<p>matlab绘制图像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">load result.dat</span><br><span class="line"></span><br><span class="line">figure(1)</span><br><span class="line">hold on;</span><br><span class="line">subplot(4,2,1:2)</span><br><span class="line">plot(result(:,1), result(:,2), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;原始数据&#x27;)</span><br><span class="line">subplot(4,2,3)</span><br><span class="line">plot(result(:,1), result(:,3), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;平均值，窗口7&#x27;)</span><br><span class="line">subplot(4,2,4)</span><br><span class="line">plot(result(:,1), result(:,4), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;平均值，窗口13&#x27;)</span><br><span class="line">subplot(4,2,5)</span><br><span class="line">plot(result(:,1), result(:,5), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;权重，窗口7&#x27;)</span><br><span class="line">subplot(4,2,6)</span><br><span class="line">plot(result(:,1), result(:,6), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;权重，窗口13&#x27;)</span><br><span class="line">subplot(4,2,7)</span><br><span class="line">plot(result(:,1), result(:,7), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;中值滤波，窗口7&#x27;)</span><br><span class="line">subplot(4,2,8)</span><br><span class="line">plot(result(:,1), result(:,8), &#x27;r-&#x27;)</span><br><span class="line">title(&#x27;中值滤波，窗口13&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
           
         
@@ -536,7 +440,7 @@ gmt end show  # show表示自动打开生成的图片文件
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/11/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/default-index/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/62/">62</a><a class="extend next" rel="next" href="/default-index/page/13/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/11/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/default-index/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/63/">63</a><a class="extend next" rel="next" href="/default-index/page/13/">&gt;</a>
   </nav>
 
 
@@ -586,7 +490,7 @@ gmt end show  # show表示自动打开生成的图片文件
               
                 <a href="/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -597,7 +501,7 @@ gmt end show  # show表示自动打开生成的图片文件
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -608,7 +512,7 @@ gmt end show  # show表示自动打开生成的图片文件
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

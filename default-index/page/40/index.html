@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/10/23/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/" itemprop="url">地震数据下载与数据命名规则</a></h1>
+                <a class="post-title-link" href="/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/" itemprop="url">地震数据下载进阶</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-10-23T21:35:54+08:00">2022-10-23</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-10-28T21:37:08+08:00">2022-10-28</time>
             
 
             
@@ -396,143 +396,57 @@
       
         
           
-            <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[Seisman数据命名规则]<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3</a></p>
-<p>[地震学笔记]<a target="_blank" rel="noopener" href="https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/">https://seismology.gitee.io/seisnote/obspydoc/plot_5_retrieving_data/</a></p>
-<h1 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h1><p>数据获取有多种方式，例如脚本或者直接网页申请。在这里记录使用方法</p>
+            <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/">https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/</a><br><a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/">https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/</a></p>
+<h1 id="读写波形数据"><a href="#读写波形数据" class="headerlink" title="读写波形数据"></a>读写波形数据</h1><h3 id="根据台网寻找台站相关内容"><a href="#根据台网寻找台站相关内容" class="headerlink" title="根据台网寻找台站相关内容"></a>根据台网寻找台站相关内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from obspy.clients.fdsn import Client as fdsnclient</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line">t1 = UTCDateTime(&#x27;2014-10-28T00:00:00&#x27;)</span><br><span class="line">t2 = UTCDateTime(&#x27;2014-10-29T00:00:00&#x27;)</span><br><span class="line">fdsnstations = fdsnclient().get_stations(network=&quot;IU&quot;, station=&quot;*&quot;,</span><br><span class="line">                                 starttime=t1,</span><br><span class="line">                                 endtime=t2, level=&quot;response&quot; )  # 获取IU台网的所有台站信息</span><br><span class="line">                                 </span><br><span class="line">print(fdsnstations)  # 显示台站信息</span><br></pre></td></tr></table></figure>
+<p>可以使用下述命令将台站信息保存为pz文件。</p>
+<pre><code>fdsnstations.write(&#39;fdsnstations.pz&#39;, format=&#39;sacpz&#39;)
+</code></pre>
+<p>但是运行的时候出现如下情况，但是文件却能够正常保存。</p>
+<pre><code>UserWarning: IU.ADK.00.VM2 2009-07-19T00:00:00.000000Z has no paz. Skipping.warnings.warn(msg)
+</code></pre>
+<p>也可以通过复制台站信息到文本编辑器保存，进行查找比对。但是通过write得到的信息更丰富。</p>
+<p>文件内容为每个台站各个通道的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">* **************************************************</span><br><span class="line">* NETWORK     : IU</span><br><span class="line">* STATION     : ADK</span><br><span class="line">* LOCATION    : 00</span><br><span class="line">* CHANNEL     : BH1</span><br><span class="line">* CREATED     : 2022-10-28T09:14:39.992066Z</span><br><span class="line">* START       : 2009-07-19T00:00:00.000000Z</span><br><span class="line">* END         : 2018-09-05T02:00:00.000000Z</span><br><span class="line">* DESCRIPTION : Adak, Aleutian Islands, Alaska</span><br><span class="line">* LATITUDE    : 51.8823</span><br><span class="line">* LONGITUDE   : -176.6842</span><br><span class="line">* ELEVATION   : 130.0</span><br><span class="line">* DEPTH       : 0.0</span><br><span class="line">* DIP (SEED)  : 0.0</span><br><span class="line">* AZIMUTH     : 0.0</span><br><span class="line">* SAMPLE RATE : 20.0</span><br><span class="line">* INPUT UNIT  : M</span><br><span class="line">* OUTPUT UNIT : counts</span><br><span class="line">* INSTTYPE    : None</span><br><span class="line">* INSTGAIN    : 2058.13 (m/s)</span><br><span class="line">* SENSITIVITY : 3453210000.0 (m/s)</span><br><span class="line">* A0          : 3948.34</span><br><span class="line">* **************************************************</span><br><span class="line">ZEROS 5</span><br><span class="line"> +0.000000e+00 +0.000000e+00</span><br><span class="line"> +0.000000e+00 +0.000000e+00</span><br><span class="line"> -2.377070e-02 +0.000000e+00</span><br><span class="line"> -2.377070e-02 +0.000000e+00</span><br><span class="line"> +0.000000e+00 +0.000000e+00</span><br><span class="line">POLES 6</span><br><span class="line"> -1.573350e-02 +0.000000e+00</span><br><span class="line"> -1.357340e-02 -1.234000e-02</span><br><span class="line"> -1.357340e-02 +1.234000e-02</span><br><span class="line"> -2.905130e-02 +0.000000e+00</span><br><span class="line"> -3.918000e+01 -4.912000e+01</span><br><span class="line"> -3.918000e+01 +4.912000e+01</span><br><span class="line">CONSTANT 1.363445e+13</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="通过台站具体信息申请数据"><a href="#通过台站具体信息申请数据" class="headerlink" title="通过台站具体信息申请数据"></a>通过台站具体信息申请数据</h3><pre><code>IUdata = fdsnclient().get_waveforms(network=&#39;IU&#39;, station= &#39;ADK&#39;, location=&#39;00&#39;, channel=&#39;*&#39;, starttime=t1, endtime=t2, attach_response=True) # 申请具有仪器响应的地震数据
+</code></pre>
+<h3 id="将数据写入到文件中"><a href="#将数据写入到文件中" class="headerlink" title="将数据写入到文件中"></a>将数据写入到文件中</h3><pre><code>IUdata.write(&quot;test.mseed&quot;, format=&quot;mseed&quot;)
+</code></pre>
+<p>可以选择mseed、sac等格式。</p>
+<p>注意！！！<br>选择mseed格式时，所有波形保存在一个文件里。而sac格式文件会单独保存，每一个<br>波形文件将单独保存。其中三通道是分离的，但是文件名称保存需要注意。<br>可以通过Python循环命名，但是需要获取的均为三分量数据，否则会出现顺序错误。</p>
+<h1 id="读写地震目录"><a href="#读写地震目录" class="headerlink" title="读写地震目录"></a>读写地震目录</h1><pre><code>catalogs = fdsnclient().get_events(starttime=t1, endtime=t2, minmagnitude=4,
+                    catalog=&quot;ISC&quot;) # 获取数据
+</code></pre>
+<p>保存到本地，为kml格式：（谷歌地球专属格式）</p>
+<pre><code>catalogs.write(&#39;catalogs&#39;, format=&#39;kml&#39;)
+</code></pre>
+<p>或者直接从服务器读取</p>
+<pre><code>cat = obspy.read_events() # 从服务器读取
+</code></pre>
 <hr>
-<h2 id="获取数据需要的参数（数据命名规则）"><a href="#获取数据需要的参数（数据命名规则）" class="headerlink" title="获取数据需要的参数（数据命名规则）"></a>获取数据需要的参数（数据命名规则）</h2><p>标准SAC文件命名规则为：</p>
-<pre><code>yyyy.ddd.hh.mm.ss.ffff.NN.SSSSS.LL.CCC.Q.SAC
-</code></pre>
-<ul>
-<li>yyyy: 年份</li>
-<li>ddd: 年分中的第几天</li>
-<li>hh.mm.ss.ffff: 时、分、秒、毫秒</li>
-<li>NN: 台网代号</li>
-<li>SSSSS: 台站名（代号）</li>
-<li>LL: 位置码，台站中的地震仪编号</li>
-<li>CCC: 通道名</li>
-<li>Q: 质量控制标识</li>
-<li>SAC: 格式后缀</li>
-</ul>
-<h3 id="Network-台网"><a href="#Network-台网" class="headerlink" title="Network 台网"></a>Network 台网</h3><p>台网名如下：<br>所有永久或临时台网：<a target="_blank" rel="noopener" href="http://www.fdsn.org/networks/">http://www.fdsn.org/networks/</a></p>
-<h3 id="Station-台站"><a href="#Station-台站" class="headerlink" title="Station 台站"></a>Station 台站</h3><h3 id="Location-位置码（同一台站的不同地震仪）"><a href="#Location-位置码（同一台站的不同地震仪）" class="headerlink" title="Location 位置码（同一台站的不同地震仪）"></a>Location 位置码（同一台站的不同地震仪）</h3><p>常见为空。</p>
-<h3 id="Channel-通道"><a href="#Channel-通道" class="headerlink" title="Channel 通道"></a>Channel 通道</h3><p>通道名有三个字符。三个字符分别表示：频带码、仪器码、方位码。</p>
-<h4 id="频带码（Band-Code）"><a href="#频带码（Band-Code）" class="headerlink" title="频带码（Band Code）"></a>频带码（Band Code）</h4><p>第一个字符表示仪器采样率以及响应频带等信息。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/appendix/naming-convections/#id3">Seisman频带码表</a></p>
-<h4 id="仪器码（Instrument-Code）"><a href="#仪器码（Instrument-Code）" class="headerlink" title="仪器码（Instrument Code）"></a>仪器码（Instrument Code）</h4><p>第二个字符表示不同的仪器传感器。</p>
-<table>
-<thead>
-<tr>
-<th>仪器码</th>
-<th>说明</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>H</td>
-<td>High Gain Seismometer</td>
-<td>高增益地震仪</td>
-</tr>
-<tr>
-<td>L</td>
-<td>Low Gain Seismometer</td>
-<td>低增益地震仪</td>
-</tr>
-<tr>
-<td>G</td>
-<td>Gravimeter</td>
-<td>重力仪</td>
-</tr>
-<tr>
-<td>M</td>
-<td>Mass position Seismometer</td>
-<td>质量位置地震仪</td>
-</tr>
-<tr>
-<td>N</td>
-<td>Accelerometer</td>
-<td>加速度计</td>
-</tr>
-</tbody></table>
-<p>常见H 高增益仪器。</p>
-<h4 id="方位码（Orientation-Code）"><a href="#方位码（Orientation-Code）" class="headerlink" title="方位码（Orientation Code）"></a>方位码（Orientation Code）</h4><ul>
-<li>N E Z 南北向、东西向、垂向</li>
-<li>1 2 3（Z） 3（Z）为垂向，1、2为正交的水平向，但并非南北东西向</li>
-<li>T R Z 切向、径向、垂向</li>
-<li>方位码 U V W 未知，可能与1 2 Z（3）相同</li>
-</ul>
-<p>注意：N、E、Z并非指正北等方向，与正北夹角2度以内的均可取N。以头段变量cmpaz和cmpinc为准（cmpaz也可能产生一定误差）。</p>
-<h3 id="Quality-波形质量"><a href="#Quality-波形质量" class="headerlink" title="Quality 波形质量"></a>Quality 波形质量</h3><ul>
-<li>D 不确定状态的数据</li>
-<li>M 已合并的数据</li>
-<li>R 原始波形数据</li>
-<li>Q 经过质量控制的数据<br>常见M与Q。</li>
-</ul>
-<h3 id="Format-格式"><a href="#Format-格式" class="headerlink" title="Format 格式"></a>Format 格式</h3><ul>
-<li>SAC格式</li>
-<li>mSeed格式</li>
-<li>miniSeed格式</li>
-</ul>
-<hr>
-<h2 id="Web-Services-网页获取"><a href="#Web-Services-网页获取" class="headerlink" title="Web Services 网页获取"></a>Web Services 网页获取</h2><p>在浏览器中输入, 可以直接获取相关数据:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://service.iris.edu/fdsnws/dataselect/1/query?network=XA&amp;station=S12&amp;starttime=1970-01-01T00:00:00&amp;endtime=1971-01-01T12:00:00</span><br></pre></td></tr></table></figure>
-<p>如上所述为台网XA、台站S12，起始时间与终止时间为1970与1971年的月震记录。</p>
-<hr>
-<h2 id="Obspy获取"><a href="#Obspy获取" class="headerlink" title="Obspy获取"></a>Obspy获取</h2><h3 id="服务器下载波形数据"><a href="#服务器下载波形数据" class="headerlink" title="服务器下载波形数据"></a>服务器下载波形数据</h3><p>使用get_waveforms()从服务器下载波形数据，<br>需要添加关键字参数自定义申请。</p>
-<h4 id="申请单个数据"><a href="#申请单个数据" class="headerlink" title="申请单个数据"></a>申请单个数据</h4><p>参数：</p>
-<pre><code>waveform = get_waveforms（台网名，台站名，位置码，通道名，波形开始时间，波形结束时间（s））
-</code></pre>
-<ul>
-<li><p>每个参数需要””，多个参数使用 , 隔开。</p>
-</li>
-<li><p>可以使用通配符，?和*</p>
-</li>
-<li><p>filename &#x3D; ‘文件名’waveform</p>
-</li>
-<li><p>attach_response&#x3D;True  添加仪器响应</p>
-<p>  waveform.remove_response(output&#x3D;’VEL’) 去除仪器响应</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from obspy.clients.fdsn import Client</span><br><span class="line">from obspy.clients.fdsn.header import URL_MAPPINGS # 数据中心列表</span><br><span class="line">from obspy import UTCDateTime # 时间模块</span><br><span class="line"></span><br><span class="line">client = Client(&quot;IRIS&quot;)  # 可以使用URL或者数据中心简写</span><br><span class="line"></span><br><span class="line">for key in sorted(URL_MAPPINGS): # 显示可用的数据中心列表</span><br><span class="line">    print(&quot;&#123;0:&lt;7&#125; &#123;1&#125;&quot;.format(key, URL_MAPPINGS[key]))</span><br><span class="line"></span><br><span class="line">t = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line"></span><br><span class="line"># 申请单个数据</span><br><span class="line">waveform = client.get_waveforms(&quot;IU&quot;, &quot;ANMO,AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t, t + 60 * 60)  # 多个参数使用逗号分隔</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
-
-<h4 id="申请多组数据"><a href="#申请多组数据" class="headerlink" title="申请多组数据"></a>申请多组数据</h4><p>get_waveforms_bulk()可以同时提交多个申请。</p>
-<ul>
-<li><p>多个列表组成的列表，每一个列表包含：台网名、台站名、位置码、通道名、开始时间和结束时间<br>bulk &#x3D; [[“IU”, “ANMO”, “0?”, “LH?”, t1, t2],(),……]</p>
-</li>
-<li><p>包含有效request（返回信息）的字符串、文件名或者已打开文件的句柄</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字符串：</span><br><span class="line">bulk = &#x27;quality=B\n&#x27; + \</span><br><span class="line">     &#x27;longestonly=false\n&#x27; + \</span><br><span class="line">     &#x27;IU ANMO * BHZ 2010-02-27 2010-02-27T00:00:02\n&#x27; + \</span><br><span class="line">     &#x27;IU AFI 1? BHE 2010-02-27 2010-02-27T00:00:04\n&#x27; + \</span><br><span class="line">     &#x27;GR GRA1 * BH? 2010-02-27 2010-02-27T00:00:02\n&#x27;</span><br><span class="line">文件名：</span><br><span class="line">client.get_waveforms_bulk(&quot;request.txt&quot;, attach_response=True)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>申请多组数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2010-02-27T06:45:00.000&quot;)</span><br><span class="line">t2 = t1 + 60</span><br><span class="line">bult = [[&quot;IU&quot;, &quot;ANMO&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2], [&quot;IU&quot;, &quot;AFI&quot;, &quot;0?&quot;, &quot;LH?&quot;, t1, t2]]</span><br><span class="line">waveform = client.get_waveforms_bulk(bult)</span><br><span class="line">print(waveform)</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="服务器下载地震目录-catalog"><a href="#服务器下载地震目录-catalog" class="headerlink" title="服务器下载地震目录(catalog)"></a>服务器下载地震目录(catalog)</h3><p>get_events() 申请地震目录。</p>
-<h4 id="使用-eventid-获取地震目录"><a href="#使用-eventid-获取地震目录" class="headerlink" title="使用 eventid 获取地震目录"></a>使用 eventid 获取地震目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = Client(&quot;IRIS&quot;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用起止时间以及震级等条件筛选地震"><a href="#使用起止时间以及震级等条件筛选地震" class="headerlink" title="使用起止时间以及震级等条件筛选地震"></a>使用起止时间以及震级等条件筛选地震</h4><pre><code>get_events(starttime = 开始时间，endtime = 结束时间，minmagnitude = 震级，catalog = 地震目录来源)
-</code></pre>
-<ul>
-<li>starttime &#x3D; 开始时间</li>
-<li>endtime &#x3D; 结束时间</li>
-<li>minmagnitude &#x3D; 最小震级</li>
-<li>catalog &#x3D; “地震目录来源”</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t1 = UTCDateTime(&quot;2001-01-07T00:00:00&quot;)</span><br><span class="line">t2 = UTCDateTime(&quot;2001-01-07T03:00:00&quot;)</span><br><span class="line">catalogs = client.get_events(starttime=t1, endtime=t2, minmagnitude=4,</span><br><span class="line">                        catalog=&quot;ISC&quot;)</span><br><span class="line">catalogs.plot(projection=&quot;ortho&quot;)  # 绘制地图</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载台站信息数据"><a href="#下载台站信息数据" class="headerlink" title="下载台站信息数据"></a>下载台站信息数据</h3><p>get_stations() 可以得到台站数据，返回值为网络和台站等信息。</p>
-<p>可以通过这个方法查询到相关台网的台站信息、台站所有的位置码和通道等等信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inventory = client.get_stations(network=&quot;IU&quot;, station=&quot;A*&quot;,</span><br><span class="line">                                 starttime=t1,</span><br><span class="line">                                 endtime=t2, level=&quot;response&quot;)  # 申请所有台站的所有分量和仪器响应文件</span><br><span class="line"></span><br><span class="line">print(inventory)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="绘制仪器相应文件"><a href="#绘制仪器相应文件" class="headerlink" title="绘制仪器相应文件"></a>绘制仪器相应文件</h2><p>利用台站信息get_stations()的返回值的plot_response()获得仪器响应文件。</p>
-<pre><code>inventory.plot_response(min_freq=0.01, output=&quot;DISP&quot;, station=&quot;ADK&quot;, channel=&quot;BH?&quot;)
-</code></pre>
-<ul>
-<li>minfreq &#x3D; 最小频率</li>
-<li>output &#x3D; 输出形式? 仪器响应中内置仪器类型中BBDISP表示位移型地震仪，参照<a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/appendix/resp/resp-file/">Seisman仪器响应文件-内置仪器响应</a></li>
-<li>station &#x3D; 台站名</li>
-<li>channel &#x3D; 通道号</li>
-</ul>
+<h1 id="数据信息"><a href="#数据信息" class="headerlink" title="数据信息"></a>数据信息</h1><p>以数据IU_ADK_10_B01.sac的头段信息为例：</p>
+<p>NPTS &#x3D; 3456000<br>数据点数   </p>
+<p>B &#x3D; 5.000000e-04<br>文件起始时间</p>
+<p>E &#x3D; 8.639998e+04<br>文件结束时间</p>
+<p>IFTYPE &#x3D; TIME SERIES FILE<br><a target="_blank" rel="noopener" href="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/?highlight=iftype#iftype">sac文件类型</a></p>
+<p>LEVEN &#x3D; TRUE<br>等时间间隔为True</p>
+<p>DELTA &#x3D; 2.500000e-02<br>等间隔数据的数据点采样周期</p>
+<p>DEPMIN &#x3D; -4.688610e+05<br>因变量Y的最小值</p>
+<p>DEPMAX &#x3D; 4.731680e+05<br>因变量Y的最大值</p>
+<p>DEPMEN &#x3D; 8.591051e+01<br>因变量Y的均值</p>
+<p>KZDATE &#x3D; OCT 28 (301), 2014<br>字符数字格式的参考日期，由nzyear、nzjday（一年的第几天）导出</p>
+<p>KZTIME &#x3D; 00:00:00.019<br>字符数字格式参考时间，由nzhour（时）、nzmin（分）、nzsec（秒）、nzmsec（毫秒）导出</p>
+<p>IZTYPE &#x3D; BEGIN TIME<br><a target="_blank" rel="noopener" href="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#iztype">等效参考时刻</a></p>
+<p>KSTNM &#x3D; ADK<br>台站名</p>
+<p>KEVNM &#x3D; -12345  -12345<br>事件名，长度为16个字节</p>
+<p>KHOLE &#x3D; 10<br>如果是核爆事件，则是孔眼标识；如果是其它时间，则是位置标识。</p>
+<p>LOVROK &#x3D; TRUE<br>若为 TRUE，则磁盘里的原始数据可被覆盖，否则不可被覆盖。</p>
+<p>NVHDR &#x3D; 6<br>SAC头段版本号。目前最新版本为6</p>
+<p>SCALE &#x3D; 1.000000e+00<br>因变量比例因子，即真实物理场被乘以该比例因子而得到现有数据。</p>
+<p>LPSPOL &#x3D; TRUE<br>在左手坐标系下，若三通道都是正极性则为真，否则为假。</p>
+<p>LCALDA &#x3D; FALSE<br>全称为 Calculate Distance and Azimuth。<br>若为 TRUE，则当事件和台站的坐标被写入或被修改时，<br>头段变量 dist、gcarc、az、 baz 将自动计算，<br>否则不会被自动计算，SAC 头段中会存在信息的不兼容。</p>
+<p>KCMPNM &#x3D; BH1<br>通道名,B、H、1分别代表宽频带、高增益、北向分量</p>
+<p>KNETWK &#x3D; IU<br>台网名</p>
 
           
         
@@ -572,7 +486,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/39/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/default-index/page/41/">41</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/62/">62</a><a class="extend next" rel="next" href="/default-index/page/41/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/39/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/default-index/page/41/">41</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/63/">63</a><a class="extend next" rel="next" href="/default-index/page/41/">&gt;</a>
   </nav>
 
 
@@ -622,7 +536,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -633,7 +547,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -644,7 +558,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
