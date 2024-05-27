@@ -75,15 +75,15 @@
 
 
 
-<meta name="description" content="34e895a3fd0bee1dadbd8358d3b14d24">
+<meta name="description" content="Seismology Learning Note and Personal Blog">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Seismology Learning">
-<meta property="og:url" content="https://shizhiyuan.work/baidu_verify_codeva-0NlQJTBPs1.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://shizhiyuan.work/about/index.html">
 <meta property="og:site_name" content="Seismology Learning">
-<meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
+<meta property="og:description" content="Seismology Learning Note and Personal Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2024-04-25T02:20:01.000Z">
+<meta property="article:modified_time" content="2024-04-25T02:22:19.259Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://shizhiyuan.work/baidu_verify_codeva-0NlQJTBPs1.html"/>
+  <link rel="canonical" href="https://shizhiyuan.work/about/"/>
 
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/08/13/Ubuntu%E8%AE%BE%E7%BD%AEwindows%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8/" itemprop="url">Ubuntu与windows双系统设置windows默认启动</a></h1>
+                <a class="post-title-link" href="/2022/08/14/Rdseed%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">Rdseed学习笔记</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-08-13T11:07:53+08:00">2022-08-13</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-08-14T09:49:38+08:00">2022-08-14</time>
             
 
             
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux学习</span>
+                  <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">地震学常用软件</span>
                   </a>
                 </span>
 
@@ -396,18 +396,150 @@
       
         
           
-            <p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35708970/article/details/124853492">https://blog.csdn.net/qq_35708970/article/details/124853492</a></p>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>在安装ubuntu和windows双系统后，<br>默认进入ubuntu。平时经常使用windows，所以很不方便。因此修改为windows默认启动。</p>
-<p>打开终端，输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
-
-<p>将第6行的 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GTUB_DEFAULT=0</span><br></pre></td></tr></table></figure>
-<p>后面的数字修改为进入系统前windows所处的位置，为第n个时，0改为n-1。</p>
-<p>保存后，运行以下命令更新grub文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p>重启系统即可。</p>
-<p>安装双系统后，<br>Windows系统重启不能重启到BIOS界面之前，只能对Windows系统进行重启。Linux系统重启可以重新进入BIOS。目前未能解决这个问题。</p>
+            <p>Rdseed软件是IRIS提供，用于读取SEED格式文件、并转化为SAC、ASCII、SEGY等<br>常用格式的转化软件。</p>
+<p>由于Rdseed安装较为繁琐，在本电脑上未能成功实现安装。若安装成功，将在未来几个月内进行更新。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a target="_blank" rel="noopener" href="https://github.com/iris-edu-legacy/rdseed">https://github.com/iris-edu-legacy/rdseed</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">https://blog.seisman.info/rdseed-notes/</a></p>
+<p>说明：<br>()内文字为[2]中的中文内容，[]中文字为[1]中README文件的中文直译。语法说明中其他中文补充内容为[1]中README文件中文直译。</p>
+<h1 id="语法说明"><a href="#语法说明" class="headerlink" title="语法说明"></a>语法说明</h1><p>使用<code>rdseed -h</code>或者<code>rdseed -u</code>可查看命令选项和语法说明。</p>
+<p>The following options may be selected:</p>
+<ul>
+<li><p>-a  retrieve the abbreviation dictionaries (提取缩略词词典)</p>
+</li>
+<li><p>-b n  set the seismogram input buffer size (bytes) (设置输出波形数据的最大数据点数<br>，默认为2*E7)</p>
+</li>
+<li><p>-c retrieve volume table of contents (提取文件内容的目录信息)[检索卷目录]</p>
+</li>
+<li><p>-C arg  retrieve the comments where ‘arg’ is either STN or CHN<br>(提取台站或分量的注释信息)    [检索 “arg”为STN或CHN的注释]</p>
+</li>
+<li><p>-d output data records (follow with -o to select a format or it defaults to SAC)<br>(从seed数据中提取波形数据)[输出数据记录(后跟-o以选择格式，否则默认为SAC)]</p>
+</li>
+<li><p>-e  extract event&#x2F;station data<br>(提取事件或台站数据到文件)[提取事件&#x2F;站数据]</p>
+</li>
+<li><p>-E output filename will include endtime<br>(输出的波形数据的文件名中包含结束时间)[输出文件名将包括结束时间]</p>
+</li>
+<li><p>-f file   input file name<br>(输入文件名)[输入文件名]</p>
+</li>
+<li><p>-g file   specify alternate SEED volume for metadata (see ALT_RESPONSE_FILE)</p>
+<p>  (为 SEED 或 miniSEED 数据单独指定响应文件。响应文件可以是 SEED 格式也可以是 dateless SEED 格式，也可以通过设置环境变量 ALT_RESPONSE_FILE 指定响应文件，这样 做的好处在于可以多个 SEED 文件共用一套响应文件。)</p>
+<p>  [为元数据指定备用SEED卷(参见ALT_RESPONSE_FILE)]</p>
+</li>
+<li><p>-h help (this list)<br>(显示语法)[显示这个用法列表]</p>
+</li>
+<li><p>-i ignore location codes<br>(忽略位置码)[忽略位置代码]</p>
+</li>
+<li><p>-k  strip records from output which have a zero sample count (miniSEED and SEED output only)<br>(跳过数据点为0的记录)[采样计数为零的输出条带记录(仅限miniSEED和SEED输出)]</p>
+</li>
+<li><p>-l  list contents of each record in the volume<br>(列出每个 block 的内容)[列出卷中每条记录的内容]</p>
+</li>
+<li><p>-o n  specify output format (numeric value, see examples below). Use -d with this option.<br>(输出波形数据的格式。默认为SAC格式。n取值范围为1-9。其中 SAC（1）、 AH（2）、CSS（3）、miniSEED（4）、SEED（5）、SAC ASCII（6）、SEGY（7）、 Simple ASCII(SLIST)（8）、Simple ASCII(TSPAIR)（9）)</p>
+<p>  [指定输出格式(数值，参见下面的示例)。在此选项中使用-d。]</p>
+</li>
+<li><p>-p output poles and zeros<br>(输出 SAC PZ 格式的仪器响应文件)[输出极点和零点]</p>
+</li>
+<li><p>-q dir   specify the output directory<br>(指定输出目录，该目录必须已经存在，默认输出到当前目录)[指定输出目录为dir]</p>
+</li>
+<li><p>-Q  qual specify data quality [E,D,M,Q,R] (see Input Options below for details)<br>(选择波形数据质量)[qual指定数据质量<a href="%E8%AF%A6%E8%A7%81%E4%B8%8B%E9%9D%A2%E7%9A%84%E8%BE%93%E5%85%A5%E9%80%89%E9%A1%B9">E,D,M,Q,R</a>]</p>
+<ul>
+<li>E： 全部质量的波形数据 </li>
+<li>D： 不确定状态的数据</li>
+<li>M： 已合并的数据</li>
+<li>R： 原始波形数据</li>
+<li>Q： 经过质量控制的数据</li>
+</ul>
+</li>
+<li><p>-R print response data<br>(输出RESP格式的仪器响应文件)[打印响应数据]</p>
+</li>
+<li><p>-s retrieve all station header information<br>(输出全部台站的RESP格式一起响应文件到终端)[检索所有站标头信息]</p>
+</li>
+<li><p>-S retrieve station summary information<br>(提取台站汇总信息到文件rdseed.stations，内容包括台站名、台网名、经纬度、海拔、分量、台站开始时间和结束时间)</p>
+<p>[检索站摘要信息]</p>
+</li>
+<li><p>-t show start&#x2F;stop times, start blocks of events<br>(输出波形相关信息到终端，包括：台站名、分量名、台网名、位置码、质量控制符、波形开始时间、结束时间、采样率、数据点数。)</p>
+<p>  [显示开始&#x2F;停止时间，开始事件块]</p>
+</li>
+<li><p>-u show usage (this list)<br>(显示语法)[显示使用方式]</p>
+</li>
+<li><p>-v n   select volume number<br>(选择卷号，默认值为1.对于seed文件n只能取1)[选择卷号]</p>
+<ul>
+<li>可以使用(-v选项)选择文件或磁带上所需的顺序卷。<br>  第一卷是“1”，第二卷是“2”，以此类推。备注:该选项仅适用于包含多个逻辑卷的物理卷。</li>
+</ul>
+</li>
+<li><p>-x use summary file<br>(使用JWEED生成的summary文件，根据summary文件提取指定台站、分量和时间窗内的波形数据)[使用summary文件]</p>
+</li>
+<li><p>-z n  check for reversals and apply sign change correction based on the number n&#x3D;[0-3]<br>    (see Check Reversal under Options section below)<br>(检查并校正数据极性)</p>
+<p>  [检查反转情况，并根据数字n&#x3D;[0-3]应用符号更改纠正</p>
+</li>
+</ul>
+<p>(请参阅下面选项部分的逆转检查)]</p>
+<h1 id="极性及其校正"><a href="#极性及其校正" class="headerlink" title="极性及其校正"></a>极性及其校正</h1><p>参考于<a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>博客</p>
+<p>地震仪的传感器记录三分量值，若地面运动与仪器的敏感轴运动方向一致时，输出为正值。</p>
+<p>SAC头段中cmpaz和cmpinc是用于描述正方向的方法。</p>
+<p>cmpaz：敏感轴的方位角，从正北方向N开始顺时针旋转。</p>
+<p>cmpinc：敏感轴的入射角，垂直向上方向开始旋转的角度。</p>
+<p>下列方向对应的方位角和入射角参数：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">cmpaz（方位角）</th>
+<th align="center">cmpinc（入射角）</th>
+<th align="center">方位码</th>
+<th align="center">极性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">垂直向上</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">垂直向下</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;Z</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正北</td>
+<td align="center">&gt;0</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正南</td>
+<td align="center">&gt;180</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;N</td>
+<td align="center">&gt;负</td>
+</tr>
+<tr>
+<td align="center">正东</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;正</td>
+</tr>
+<tr>
+<td align="center">正西</td>
+<td align="center">&gt;270</td>
+<td align="center">&gt;90</td>
+<td align="center">&gt;E</td>
+<td align="center">&gt;负</td>
+</tr>
+</tbody></table>
+<p><code>-z n</code>选项可以用于检测和校正负极性。</p>
+<ul>
+<li>n&#x3D;0  不检测极性</li>
+<li>n&#x3D;1  只检查两个参数； 如果是负极性，就反转所有数据点的正负号并修改这两个参数的值。</li>
+<li>n&#x3D;2  只检查总增益的正负值；如果是负值表示负极性，反转所有数据的正负号，不修改这两个参数的值。</li>
+<li>n&#x3D;3  同时检查两个参数和总增益，只有其中之一符合负极性要求时做校正。</li>
+</ul>
+<p>注意：两个参数指cmpaz和cmpnic</p>
+<p>由于正负极性概念仅适用于6个标准分量方向，对于垂向分量而言，通常需要校正极性，负责查看Z分量波形数据时，可能出现某个台站波形极性错误。对于水平分量不做校正也不会有问题。<br><a target="_blank" rel="noopener" href="https://blog.seisman.info/rdseed-notes/">seisman</a>建议使用n&#x3D;1做极性校正。</p>
 
           
         
@@ -447,7 +579,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/54/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/default-index/page/56/">56</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/63/">63</a><a class="extend next" rel="next" href="/default-index/page/56/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/54/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/54/">54</a><span class="page-number current">55</span><a class="page-number" href="/default-index/page/56/">56</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/64/">64</a><a class="extend next" rel="next" href="/default-index/page/56/">&gt;</a>
   </nav>
 
 
@@ -497,7 +629,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -519,7 +651,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

@@ -75,15 +75,15 @@
 
 
 
-<meta name="description" content="34e895a3fd0bee1dadbd8358d3b14d24">
+<meta name="description" content="Seismology Learning Note and Personal Blog">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Seismology Learning">
-<meta property="og:url" content="https://shizhiyuan.work/baidu_verify_codeva-0NlQJTBPs1.html">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://shizhiyuan.work/about/index.html">
 <meta property="og:site_name" content="Seismology Learning">
-<meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
+<meta property="og:description" content="Seismology Learning Note and Personal Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2024-04-25T02:20:01.000Z">
+<meta property="article:modified_time" content="2024-04-25T02:22:19.259Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://shizhiyuan.work/baidu_verify_codeva-0NlQJTBPs1.html"/>
+  <link rel="canonical" href="https://shizhiyuan.work/about/"/>
 
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/13/CentOS%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/" itemprop="url">CentOS8安装中国版Firefox</a></h1>
+                <a class="post-title-link" href="/2022/12/13/CentOS%E5%AE%89%E8%A3%85/" itemprop="url">CentOS安装</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-13T12:57:20+08:00">2022-12-13</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-13T13:28:36+08:00">2022-12-13</time>
             
 
             
@@ -396,17 +396,25 @@
       
         
           
-            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装类似于Ubuntu安装方法。在desktop文件中有所差别。</p>
-<p>首先将提取的包移动到相应位置</p>
-<pre><code>sudo mv firefox /usr/local
+            <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglailea/article/details/105602902">https://blog.csdn.net/fenglailea/article/details/105602902</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chy555chy/article/details/113747253">https://blog.csdn.net/chy555chy/article/details/113747253</a></p>
+<h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
+<pre><code>....
+kernel panic: not syncing: Fatal exception
+Kernel Offset: ........
+...
 </code></pre>
-<p>然后创建desktop文件，命名为firefox.desktop：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Version=1.0</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">GenericName=Web Browser</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/usr/local/firefox/firefox # 软件安装位置</span><br><span class="line">Icon=/usr/local/firefox/browser/chrome/icons/default/default128.png # 图标所在位置</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;</span><br><span class="line">StartupNotify=true</span><br><span class="line">Categories=Network;WebBrowser;</span><br><span class="line">Encoding=UTF-8</span><br></pre></td></tr></table></figure>
-
-<p>将desktop文件移动到<code>/usr/share</code>下的<code>/applications</code>文件夹。</p>
-<pre><code>sudo cp firefox.desktop /usr/share/applicaions
+<p>以上为部分错误。<br>硬件：<br>CPU: Ryzen 5600G<br>主板: Minisforum B550</p>
+<p>不确定是否为硬件问题，但是显示内核错误。<br>可能是使用Windows平台烧录软件造成的问题，包括Deepin官方烧录软件和rufus均出现这个问题。<br>目前未尝试Linux平台烧录软件。</p>
+<h1 id="CentOS-8-安装"><a href="#CentOS-8-安装" class="headerlink" title="CentOS 8 安装"></a>CentOS 8 安装</h1><p>CentOS 8 安装之前，在<code>Install CentOS 8</code>处点击键盘 <code>E</code> 按键，将第一行的：</p>
+<pre><code>LABEL=CentOS\...... quiet
 </code></pre>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://wjhsh.net/szwmd778-p-9944992.html">http://wjhsh.net/szwmd778-p-9944992.html</a></p>
+<p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
+<p>如果无法进入图形界面，在<code>quite</code>前面加上 <code>nomodeset</code></p>
+<p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
+<h1 id="centos使用前的环境配置"><a href="#centos使用前的环境配置" class="headerlink" title="centos使用前的环境配置"></a>centos使用前的环境配置</h1><pre><code>yum -y update #升级所有包，改变软件设置和系统设置,系统版本内核都升级
+</code></pre>
+<h2 id="无法使用ntfs格式移动硬盘"><a href="#无法使用ntfs格式移动硬盘" class="headerlink" title="无法使用ntfs格式移动硬盘"></a>无法使用ntfs格式移动硬盘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install ntfs-3g</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「福州司马懿」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/chy555chy/article/details/113747253</span><br></pre></td></tr></table></figure>
 
           
         
@@ -446,7 +454,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/28/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/default-index/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/63/">63</a><a class="extend next" rel="next" href="/default-index/page/30/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/28/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/default-index/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/64/">64</a><a class="extend next" rel="next" href="/default-index/page/30/">&gt;</a>
   </nav>
 
 
@@ -496,7 +504,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -518,7 +526,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
