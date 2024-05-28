@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/10/31/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E6%96%87%E6%96%87%E7%8C%AE%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/10/28/%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%BF%9B%E9%98%B6/" itemprop="url">地震数据下载进阶</a></h1>
+                <a class="post-title-link" href="/2022/10/31/%E5%9C%B0%E9%9C%87%E5%AD%A6%E8%8B%B1%E6%96%87%E6%96%87%E7%8C%AE%E6%B1%87%E6%80%BB/" itemprop="url">地震学英文文献汇总</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-10-28T21:37:08+08:00">2022-10-28</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-10-31T15:12:12+08:00">2022-10-31</time>
             
 
             
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">地震学常用软件</span>
+                  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/" itemprop="url" rel="index">
+                    <span itemprop="name">专业英语词汇</span>
                   </a>
                 </span>
 
@@ -396,57 +396,268 @@
       
         
           
-            <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/">https://seismology.gitee.io/seisnote/obspydoc/plot_3_read_and_write/</a><br><a target="_blank" rel="noopener" href="https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/">https://seisman.github.io/SAC_Docs_zh/fileformat/header-variables/</a></p>
-<h1 id="读写波形数据"><a href="#读写波形数据" class="headerlink" title="读写波形数据"></a>读写波形数据</h1><h3 id="根据台网寻找台站相关内容"><a href="#根据台网寻找台站相关内容" class="headerlink" title="根据台网寻找台站相关内容"></a>根据台网寻找台站相关内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from obspy.clients.fdsn import Client as fdsnclient</span><br><span class="line">from obspy import UTCDateTime</span><br><span class="line">t1 = UTCDateTime(&#x27;2014-10-28T00:00:00&#x27;)</span><br><span class="line">t2 = UTCDateTime(&#x27;2014-10-29T00:00:00&#x27;)</span><br><span class="line">fdsnstations = fdsnclient().get_stations(network=&quot;IU&quot;, station=&quot;*&quot;,</span><br><span class="line">                                 starttime=t1,</span><br><span class="line">                                 endtime=t2, level=&quot;response&quot; )  # 获取IU台网的所有台站信息</span><br><span class="line">                                 </span><br><span class="line">print(fdsnstations)  # 显示台站信息</span><br></pre></td></tr></table></figure>
-<p>可以使用下述命令将台站信息保存为pz文件。</p>
-<pre><code>fdsnstations.write(&#39;fdsnstations.pz&#39;, format=&#39;sacpz&#39;)
-</code></pre>
-<p>但是运行的时候出现如下情况，但是文件却能够正常保存。</p>
-<pre><code>UserWarning: IU.ADK.00.VM2 2009-07-19T00:00:00.000000Z has no paz. Skipping.warnings.warn(msg)
-</code></pre>
-<p>也可以通过复制台站信息到文本编辑器保存，进行查找比对。但是通过write得到的信息更丰富。</p>
-<p>文件内容为每个台站各个通道的信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">* **************************************************</span><br><span class="line">* NETWORK     : IU</span><br><span class="line">* STATION     : ADK</span><br><span class="line">* LOCATION    : 00</span><br><span class="line">* CHANNEL     : BH1</span><br><span class="line">* CREATED     : 2022-10-28T09:14:39.992066Z</span><br><span class="line">* START       : 2009-07-19T00:00:00.000000Z</span><br><span class="line">* END         : 2018-09-05T02:00:00.000000Z</span><br><span class="line">* DESCRIPTION : Adak, Aleutian Islands, Alaska</span><br><span class="line">* LATITUDE    : 51.8823</span><br><span class="line">* LONGITUDE   : -176.6842</span><br><span class="line">* ELEVATION   : 130.0</span><br><span class="line">* DEPTH       : 0.0</span><br><span class="line">* DIP (SEED)  : 0.0</span><br><span class="line">* AZIMUTH     : 0.0</span><br><span class="line">* SAMPLE RATE : 20.0</span><br><span class="line">* INPUT UNIT  : M</span><br><span class="line">* OUTPUT UNIT : counts</span><br><span class="line">* INSTTYPE    : None</span><br><span class="line">* INSTGAIN    : 2058.13 (m/s)</span><br><span class="line">* SENSITIVITY : 3453210000.0 (m/s)</span><br><span class="line">* A0          : 3948.34</span><br><span class="line">* **************************************************</span><br><span class="line">ZEROS 5</span><br><span class="line"> +0.000000e+00 +0.000000e+00</span><br><span class="line"> +0.000000e+00 +0.000000e+00</span><br><span class="line"> -2.377070e-02 +0.000000e+00</span><br><span class="line"> -2.377070e-02 +0.000000e+00</span><br><span class="line"> +0.000000e+00 +0.000000e+00</span><br><span class="line">POLES 6</span><br><span class="line"> -1.573350e-02 +0.000000e+00</span><br><span class="line"> -1.357340e-02 -1.234000e-02</span><br><span class="line"> -1.357340e-02 +1.234000e-02</span><br><span class="line"> -2.905130e-02 +0.000000e+00</span><br><span class="line"> -3.918000e+01 -4.912000e+01</span><br><span class="line"> -3.918000e+01 +4.912000e+01</span><br><span class="line">CONSTANT 1.363445e+13</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="通过台站具体信息申请数据"><a href="#通过台站具体信息申请数据" class="headerlink" title="通过台站具体信息申请数据"></a>通过台站具体信息申请数据</h3><pre><code>IUdata = fdsnclient().get_waveforms(network=&#39;IU&#39;, station= &#39;ADK&#39;, location=&#39;00&#39;, channel=&#39;*&#39;, starttime=t1, endtime=t2, attach_response=True) # 申请具有仪器响应的地震数据
-</code></pre>
-<h3 id="将数据写入到文件中"><a href="#将数据写入到文件中" class="headerlink" title="将数据写入到文件中"></a>将数据写入到文件中</h3><pre><code>IUdata.write(&quot;test.mseed&quot;, format=&quot;mseed&quot;)
-</code></pre>
-<p>可以选择mseed、sac等格式。</p>
-<p>注意！！！<br>选择mseed格式时，所有波形保存在一个文件里。而sac格式文件会单独保存，每一个<br>波形文件将单独保存。其中三通道是分离的，但是文件名称保存需要注意。<br>可以通过Python循环命名，但是需要获取的均为三分量数据，否则会出现顺序错误。</p>
-<h1 id="读写地震目录"><a href="#读写地震目录" class="headerlink" title="读写地震目录"></a>读写地震目录</h1><pre><code>catalogs = fdsnclient().get_events(starttime=t1, endtime=t2, minmagnitude=4,
-                    catalog=&quot;ISC&quot;) # 获取数据
-</code></pre>
-<p>保存到本地，为kml格式：（谷歌地球专属格式）</p>
-<pre><code>catalogs.write(&#39;catalogs&#39;, format=&#39;kml&#39;)
-</code></pre>
-<p>或者直接从服务器读取</p>
-<pre><code>cat = obspy.read_events() # 从服务器读取
-</code></pre>
-<hr>
-<h1 id="数据信息"><a href="#数据信息" class="headerlink" title="数据信息"></a>数据信息</h1><p>以数据IU_ADK_10_B01.sac的头段信息为例：</p>
-<p>NPTS &#x3D; 3456000<br>数据点数   </p>
-<p>B &#x3D; 5.000000e-04<br>文件起始时间</p>
-<p>E &#x3D; 8.639998e+04<br>文件结束时间</p>
-<p>IFTYPE &#x3D; TIME SERIES FILE<br><a target="_blank" rel="noopener" href="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/?highlight=iftype#iftype">sac文件类型</a></p>
-<p>LEVEN &#x3D; TRUE<br>等时间间隔为True</p>
-<p>DELTA &#x3D; 2.500000e-02<br>等间隔数据的数据点采样周期</p>
-<p>DEPMIN &#x3D; -4.688610e+05<br>因变量Y的最小值</p>
-<p>DEPMAX &#x3D; 4.731680e+05<br>因变量Y的最大值</p>
-<p>DEPMEN &#x3D; 8.591051e+01<br>因变量Y的均值</p>
-<p>KZDATE &#x3D; OCT 28 (301), 2014<br>字符数字格式的参考日期，由nzyear、nzjday（一年的第几天）导出</p>
-<p>KZTIME &#x3D; 00:00:00.019<br>字符数字格式参考时间，由nzhour（时）、nzmin（分）、nzsec（秒）、nzmsec（毫秒）导出</p>
-<p>IZTYPE &#x3D; BEGIN TIME<br><a target="_blank" rel="noopener" href="https://zhiyuanshi1901.github.io/2022/08/15/SAC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#iztype">等效参考时刻</a></p>
-<p>KSTNM &#x3D; ADK<br>台站名</p>
-<p>KEVNM &#x3D; -12345  -12345<br>事件名，长度为16个字节</p>
-<p>KHOLE &#x3D; 10<br>如果是核爆事件，则是孔眼标识；如果是其它时间，则是位置标识。</p>
-<p>LOVROK &#x3D; TRUE<br>若为 TRUE，则磁盘里的原始数据可被覆盖，否则不可被覆盖。</p>
-<p>NVHDR &#x3D; 6<br>SAC头段版本号。目前最新版本为6</p>
-<p>SCALE &#x3D; 1.000000e+00<br>因变量比例因子，即真实物理场被乘以该比例因子而得到现有数据。</p>
-<p>LPSPOL &#x3D; TRUE<br>在左手坐标系下，若三通道都是正极性则为真，否则为假。</p>
-<p>LCALDA &#x3D; FALSE<br>全称为 Calculate Distance and Azimuth。<br>若为 TRUE，则当事件和台站的坐标被写入或被修改时，<br>头段变量 dist、gcarc、az、 baz 将自动计算，<br>否则不会被自动计算，SAC 头段中会存在信息的不兼容。</p>
-<p>KCMPNM &#x3D; BH1<br>通道名,B、H、1分别代表宽频带、高增益、北向分量</p>
-<p>KNETWK &#x3D; IU<br>台网名</p>
+            <h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>[1].<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X15006275">Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis</a></p>
+<p>[2].<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/222576810_Mantle_transition_zone_beneath_the_Caribbean-South_American_plate_boundary_and_its_tectonic_implications">Mantle transition zone beneath the Caribbean-South American plate boundary and its tectonic implications</a></p>
+<p>[3].<a href="">Sharp Sides to the African Superplume</a></p>
+<p>[4].<a href="">The Yellowstone magmatic system from the mantle plume to the upper crust</a></p>
+<p>[5].[Crust and uppermost mantle beneath the North China Craton, northeastern China, and the Sea of Japan from ambient noise tomography.]</p>
+<p>[6].<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/267572874_Seismological_implications_of_a_lithospheric_low_seismic_velocity_zone_in_Mars">Seismological implications of a lithospheric low seismic velocity zone in Mars</a></p>
+<h1 id="来源-1-Accurate-focal-depth-determination-of-oceanic-earthquakes-using-water-column-reverberation-and-some-implications-for-the-shrinking-plate-hypothesis-鸣震确定海洋地震的准确深度及板块收缩假说"><a href="#来源-1-Accurate-focal-depth-determination-of-oceanic-earthquakes-using-water-column-reverberation-and-some-implications-for-the-shrinking-plate-hypothesis-鸣震确定海洋地震的准确深度及板块收缩假说" class="headerlink" title="来源 [1] [Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis]鸣震确定海洋地震的准确深度及板块收缩假说"></a>来源 [1] [Accurate focal depth determination of oceanic earthquakes using water-column reverberation and some implications for the shrinking plate hypothesis]鸣震确定海洋地震的准确深度及板块收缩假说</h1><h3 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h3><p>seismogenic layer 孕震层</p>
+<p>inversion 反演</p>
+<p>triplication 波的重叠（多震相）</p>
+<p>thermal 热的</p>
+<p>dynamic 动力学的</p>
+<p>oceanic 海洋的</p>
+<p>lithosphere 岩石层</p>
+<p>lithospheric 岩石圈的</p>
+<p>hypocentral 震源位置的</p>
+<p>reverberations 多次波</p>
+<p>estimate 估计</p>
+<p>simultaneous 同时发生的</p>
+<p>alternative 可选的</p>
+<p>located 近震</p>
+<p>tension 拉张</p>
+<p>horizontal 水平的</p>
+<p>stress 应力</p>
+<p>strain 应变</p>
+<p>hypothesis 假说</p>
+<p>thrust faulting 逆断层</p>
+<p>normal faulting 正断层</p>
+<p>indicating 指示</p>
+<p>deviatoric stress 偏应力</p>
+<p>tensor 张量</p>
+<p>compression 压缩</p>
+<p>consistent 一致的</p>
+<p>prediction 预言</p>
+<p>investigated 调查</p>
+<p>perpendicular 垂直的 直立的</p>
+<p>tectonophysics 构造物理</p>
+<p>intraplate 板块内</p>
+<p>settings 背景，环境</p>
+<p>correspond 符合，一致</p>
+<p>ridge 山脊</p>
+<p>mid-ocean ridges 洋中脊</p>
+<p>nucleate 有核的，产生</p>
+<p>transform faults 转换断层</p>
+<p>trench 海沟</p>
+<p>infer 推断，推论，反演</p>
+<p>P-wave first motion P波初动</p>
+<p>coupling 耦合的</p>
+<p>compressive 压缩</p>
+<p>mechanisms 机制</p>
+<p>interperted 被解释为……</p>
+<p>depth-dependent 深度相关的</p>
+<p>numerical modeling 数值模拟</p>
+<p>competent </p>
+<p>respectively</p>
+<p>investigations 观测结果</p>
+<p>establish 建立</p>
+<p>measurable 可测量的</p>
+<p>non-rigidity 非刚性的</p>
+<p>plates 板块</p>
+<p>accumulate 积累</p>
+<p>displacement 位移</p>
+<p>non-negligible 不可忽略的</p>
+<p>manifested 显然的</p>
+<p>centroid-moment tensors 中心矩张量</p>
+<p>event 事件（地震学）；同相轴（地震勘探）</p>
+<p>tradeoff 具有相关性的，互相制约的，一般用作 The tradeoff between A and B</p>
+<p>identify 标识，识别，标定</p>
+<p>depth phases 深度震相</p>
+<p>arrival time 到时</p>
+<p>sophisticated 复杂有效的</p>
+<p>routine 常规的</p>
+<p>constrain 约束</p>
+<p>assuming 假设</p>
+<p>source time function 震源时间函数</p>
+<p>iterative 迭代的</p>
+<p>fitting 拟合</p>
+<p>determine 测定</p>
+<p>teleseismic 远震</p>
+<p>intermediate-size earthquakes 中等大小地震（5-6级）</p>
+<p>increasingly challenging </p>
+<p>isolate 分离</p>
+<p>CAP (cut-and-paste) 剪切粘贴</p>
+<p>optimum 相对来说的最优解</p>
+<p>swell-generated</p>
+<p>periodically 周期性地</p>
+<p>shallow 浅的</p>
+<p>systematically 系统性地</p>
+<p>investigate 观察</p>
+<p>grid-search based algorithm 基于网格搜索的算法</p>
+<p>summed 叠加的</p>
+<p>stack 叠加（地震勘探）</p>
+<p>relocated 重定位</p>
+<p>deformation 变形</p>
+<p>asthenosphere 软流圈</p>
+<p>take off angle 离源角</p>
+<p>discretize 离散化</p>
+<p>triplications 三倍的</p>
+<p>ray paths 射线路径</p>
+<p>transport equation 输运方程</p>
+<p>ray tracing 射线追踪</p>
+<p>ray parameters 射线参数</p>
+<p>lefthand LHS 方程左项</p>
+<p>LRS 方程右项</p>
+<p>signal-to-noise ratio 信噪比（S&#x2F;N或SNR）</p>
+<p>sampling interval 采样间隔</p>
+<p>receiver function 接收函数</p>
+<p>shear wave spliting 横波分裂</p>
+<p>signal window length 信号窗宽度</p>
+<p>tomography-velocity structure 层析成像</p>
+<p>attanuation 衰减</p>
+<p>full wave inversion-velocity structure 全波形反演</p>
+<p>joint inversion 联合反演</p>
+<p>modified 改进的</p>
+<p>continental 大陆的</p>
+<p>taken from 来自于</p>
+<p>field data 实际数据</p>
+<p>increment 间隔</p>
+<p>align 对齐</p>
+<p>linearly stack 线性叠加</p>
+<p>exact 相同</p>
+<p>former 前者</p>
+<p>investigated 调查 研究</p>
+<p>seismicity 地震活动性</p>
+<p>termed 标识</p>
+<p>regions  区域</p>
+<p>strike-slip 走滑型</p>
+<p>thrust 逆冲型</p>
+<p>normal 正断层型</p>
+<p>in contrast 与之相反的</p>
+<p>listed 列举</p>
+<p>temporary stations 流动台站</p>
+<p>broadband stations 宽频地震仪（台站）</p>
+<p>pre-processed 预处理</p>
+<p>post-processed 后处理</p>
+<p>Deep Probe Experiment 深探测实验</p>
+<p>normalized to unity 归一化</p>
+<p>ruptured 破裂的</p>
+<p>perturbed 扰动</p>
+<p>associated 关联的</p>
+<p>converted 转换</p>
+<p>transmission coefficient 透射系数</p>
+<p>conventional（traditional）传统的</p>
+<p>robust 稳定的</p>
+<p>utilizes 利用</p>
+<p>relocated 重定位</p>
+<p>slight 轻微的</p>
+<p>regime 状态</p>
+<p>parallel 平行</p>
+<p>decouple 解耦</p>
+<p>joint 接合处</p>
+<p>pattern 辐射花样图</p>
+<p>orthogonal 直角的</p>
+<h3 id="句式"><a href="#句式" class="headerlink" title="句式"></a>句式</h3><ul>
+<li>… ,indicating that …  指示，表明</li>
+</ul>
+<p>例：The shallow and deep events are determined to be a thrust and normal earthquake, respectively, <strong>indicating that</strong> the stress field within the oceanic<br>lithosphere changes from horizontal deviatoric compression to horizontal deviatoric tension as depth increase, which is consistent with the prediction<br>of lithospheric cooling models.</p>
+<ul>
+<li>…A, consistent with B… A与B一致 （可以替换为： indicating that, suggesting that,suggest that）</li>
+</ul>
+<p>例：Furthermore, we show that the P-axis of the newly investigated thrust-faulting earthquake is perpendicular to that of<br>the previously studied thrust event, <strong>consistent with</strong> the predictions of the shrinking-plate hypothesis.</p>
+<ul>
+<li>along …, along …, along …. 在……中，在……中（出现）</li>
+</ul>
+<p>例：Depth estimates of oceanic earthquakes have been useful in the investigation of many problems of tectonophysics:<br>depth extent of the seismogenic layer in intraplate settings and the corresponding limiting temperature above which<br>earthquakes do not nucleate, <strong>along</strong> mid-ocean ridges, <strong>along</strong> transform faults, and <strong>along</strong> the outer rise of trenches.</p>
+<ul>
+<li>A, and found that B  基于事实A发现、认识B</li>
+</ul>
+<p>例： Sykes and Sbar studied focal mechanism solutions of earthquakes occurring off the mid-ocean ridge axis using P-wave<br>first motion data, <strong>and found that</strong> most earthquakes occurring in oceanic lithosphere older than ~15Ma indicate thrust faulting<br>while those observed in the younger oceanic lithophere indicate normal faulting.</p>
+<ul>
+<li><p>conclude that 得出结论</p>
+</li>
+<li><p>respectively 分别地<br>例：The upper and the lower competent lithosphere are in horizontal deviatoric compression and tension, <strong>respectively</strong>.</p>
+</li>
+</ul>
+<p>We set the P-wave velocity to be 8.04, 6.30 and 1.50 km&#x2F;s for the mantle, crust, and seawater, <strong>respectively</strong>.</p>
+<ul>
+<li><p>have helped to …   有助于</p>
+</li>
+<li><p>the tradeoff between … A and B is …  A和B的争议…<br>例：<strong>The tradeoff between</strong> earthquake origin time and focal depth is a well known problem in hypocentral inversion.</p>
+</li>
+<li><p>… poorly constrained  不够准确<br>例：From only P-wave arrival time data from teleseismic stations, the focal depth is in many cases <strong>poorly constrained</strong>.</p>
+</li>
+<li><p>Here in after … 在这里，……<br>例： <strong>Here in after</strong> we refer to this grid search technique as the Z-H analysis, where Z is the focal depth measured from<br>the ocean floor.</p>
+</li>
+<li><p>by combining … 综合分析</p>
+</li>
+<li><p>and then 然后</p>
+</li>
+<li><p>In contract, …  相反的</p>
+</li>
+<li><p>… be also reversed when necessary.</p>
+</li>
+<li><p>with an uncertainty less than …</p>
+</li>
+</ul>
+<h1 id="来源-2-Mantle-transition-zone-beneath-the-Caribbean-South-American-plate-boundary-and-its-tectonic-implications"><a href="#来源-2-Mantle-transition-zone-beneath-the-Caribbean-South-American-plate-boundary-and-its-tectonic-implications" class="headerlink" title="来源[2] Mantle transition zone beneath the Caribbean-South American plate boundary and its tectonic implications"></a>来源[2] Mantle transition zone beneath the Caribbean-South American plate boundary and its tectonic implications</h1><h3 id="单词-1"><a href="#单词-1" class="headerlink" title="单词"></a>单词</h3><p>keel 山根</p>
+<p>topography 地形起伏</p>
+<p>uplift 向上突起</p>
+<p>scenario 现象</p>
+<p>underlying 根本的 潜在的</p>
+<p>bound 标记</p>
+<p>slab 厚片，平板</p>
+<p>subducting slab 俯冲带</p>
+<p>high-velocity anomalies HVA 高速异常</p>
+<p>global tomography models 全球层析成像模型</p>
+<p>distinguish 辨别</p>
+<p>lateral resolution 空间分辨率</p>
+<p>coverage 覆盖范围</p>
+<p>slopes 斜率</p>
+<p>Clapeyron slopes 克拉贝龙斜率</p>
+<p>phase transition 相变</p>
+<p>map out 成像</p>
+<p>up to 高达</p>
+<p>it was generally believed that 所有人认为</p>
+<p>anhydrous 脱水</p>
+<p>portion 部分</p>
+<p>mineral assemblages 矿物重整</p>
+<p>water content 水含量</p>
+<p>crucial 重要的</p>
+<p>around the Pacific subduction zones 环太平洋俯冲地震带</p>
+<p>mineral physic studies 矿物物理研究</p>
+<p>water storage capacity 储水能力（化学式）</p>
+<p>receiver function 接收函数</p>
+<p>long-standing debate 长期存在的争议</p>
+<p>primary goal （motivition）最初的目标</p>
+<p>temporary 流动台站</p>
+<p>permanent 永久台站</p>
+<p>aperture 孔径</p>
+<p>peak deployment 峰值数量部署（部署的数量较多）</p>
+<p>dense 密集</p>
+<p>national seismic network 国家地震台网</p>
+<p>ocean bottom seismographs 海底地震仪</p>
+<p>radial 径向</p>
+<p>transverse 横向（与大圆面垂直的方向）</p>
+<p>azimuth 方位角</p>
+<p>water level 灌水深度</p>
+<p>first arrival 初至</p>
+<p>simple pulse 简单的脉冲</p>
+<p>manually 人工的</p>
+<p>corner frequency 角频率</p>
+<p>inset 图中的小图</p>
+<p>CCP common-conversion-point </p>
+<p>arrow 箭头</p>
+<p>respect 方向</p>
+<p>3D travel-time anomalies 3D速度校正</p>
+<p>equivalent to 等价于</p>
+<p>overlaps 有交集的</p>
+<p>by 乘</p>
+<p>study area 研究区</p>
+<p>reduce 压制，降低</p>
+<p>linear stack 一阶叠加</p>
+<p>increments 增长间隔，增长率</p>
+<p>centroid 中心</p>
+<p>uplift 上升</p>
+<p>scenario 情况</p>
+<p>unsaturated 不饱和</p>
+<p>out-of-phase stacking 相位错位叠加</p>
+<h1 id="来源-3-Sharp-Sides-to-the-African-Superplume"><a href="#来源-3-Sharp-Sides-to-the-African-Superplume" class="headerlink" title="来源[3]  Sharp Sides to the African Superplume"></a>来源[3]  Sharp Sides to the African Superplume</h1><h3 id="单词-2"><a href="#单词-2" class="headerlink" title="单词"></a>单词</h3><p>superplume 超级热柱<br>obliquely 斜的<br>fortuitous 偶然的<br>fit 拟合<br>dense 致密的<br>thermal structure 热结构<br>on geological time scales 在地质时间尺度上<br>be correlated with 与……相关<br>geoid anomaly 重力异常<br>bulk sound velocity 体波速度<br>laterally 横向的<br>lowermost mantle 下地幔底界<br>trade off 争议<br>patterns 样式、模式<br>African Low Velocity Structure （ALVS）非洲低速结构体<br>leans toward 倾斜<br>evident 明显的<br>multipathing 多路径<br>demonstrate 证明，线路<br>simultaneously 同时<br>plausible range 合理范围<br>Rayleigh number 瑞雷数<br>bouyancy number 浮力数</p>
+<h1 id="来源-4-The-Yellowstone-magmatic-system-from-the-mantle-plume-to-the-upper-crust"><a href="#来源-4-The-Yellowstone-magmatic-system-from-the-mantle-plume-to-the-upper-crust" class="headerlink" title="来源[4] The Yellowstone magmatic system from the mantle plume to the upper crust"></a>来源[4] The Yellowstone magmatic system from the mantle plume to the upper crust</h1><h3 id="单词-3"><a href="#单词-3" class="headerlink" title="单词"></a>单词</h3><p>supervolcano 超级火山<br>silicic 硅质的，含硅的<br>unveil 揭示<br>magma body 岩浆体<br>lower-crustal 下地壳<br>melt fraction 熔融系数<br>critical 重要的<br>bimodal basaltic-rhyolitic 双模式玄武-流纹岩<br>hazard assesment 灾害评估，风险评价<br>extensive earthquakes 剧烈的地震<br>episodic ground deformation 阵发性地面变形<br>flux 值，系数<br>continental hydrothermal system 大陆热释放系统<br>caldera 火山口<br>cataclysmic eruption 灾难性喷发（火山）<br>rhyolitic lava flows 流纹岩质熔岩流（流变熔岩流）<br>lava 熔岩，火山岩<br>account for 解释<br>distinctly 清楚地<br>evidence 假设<br>volcanic plumbing system 火山通道系统<br>framework 构架，结构<br>elucidated 阐明，解释<br>caldera 破火山口<br>basaltic 玄武岩的<br>dominance 起主导作用<br>depict 描述<br>notably 显著地<br>intrude 侵入<br>mafic 铁镁质的<br>silicic 含硅的<br>fractionate 分开，分馏</p>
+<h1 id="来源-5-Seismological-implications-of-a-lithospheric-low-seismic-velocity-zone-in-Mars"><a href="#来源-5-Seismological-implications-of-a-lithospheric-low-seismic-velocity-zone-in-Mars" class="headerlink" title="来源[5] Seismological implications of a lithospheric low seismic velocity zone in Mars"></a>来源[5] Seismological implications of a lithospheric low seismic velocity zone in Mars</h1><h3 id="单词-4"><a href="#单词-4" class="headerlink" title="单词"></a>单词</h3><p>bulk tidal ？？？<br>dissipative properties 耗散特性？<br>stagnant lid 静止盖层？<br>moment of inertia 惯性矩，转动惯量<br>Phobos’ orbital decay 火卫1轨道衰减<br>synodic period  会合周期<br>petrological 岩石学的<br>olivine-wadsleyite 橄榄石-沃兹利石<br>wadsleyite-ringwoodite 沃兹利石-环木石<br>ringwoodite-perovskite 环木石-钙钛矿<br>bountiful 丰富的,充裕的<br>manifestation 显示，显现</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>Seismic Hum 地震轰鸣声？ 类似于持续震动</p>
+<p>Slichter mode 地球内核平动振荡模</p>
 
           
         
@@ -486,7 +697,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/40/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/default-index/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/64/">64</a><a class="extend next" rel="next" href="/default-index/page/42/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/40/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/default-index/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/65/">65</a><a class="extend next" rel="next" href="/default-index/page/42/">&gt;</a>
   </nav>
 
 
@@ -536,7 +747,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

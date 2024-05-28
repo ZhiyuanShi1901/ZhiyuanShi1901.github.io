@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="34e895a3fd0bee1dadbd8358d3b14d24">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Seismology Learning">
+<meta property="og:url" content="https://shizhiyuan.work/baidu_verify_codeva-0NlQJTBPs1.html">
+<meta property="og:site_name" content="Seismology Learning">
+<meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:author" content="Shi Zhiyuan">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://shizhiyuan.work/baidu_verify_codeva-0NlQJTBPs1.html"/>
+
+
+
+
+
+  <title>Python函数汇总 | Seismology Learning</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Seismology Learning</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Seismology Learning Note</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2024/05/28/Python%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/log.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Seismology Learning">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python函数汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-28T21:31:09+08:00">2024-05-28</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%87%BD%E6%95%B0%E5%BA%93%E6%B1%87%E6%80%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">程序函数库汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>汇总自行创建的Python函数，主要关于MINEOS和SPECNM相关输入、输出文件的创建与读取。</p>
+<h1 id="模型创建相关"><a href="#模型创建相关" class="headerlink" title="模型创建相关"></a>模型创建相关</h1><p>使用MINEOS模型创建相关的nd模型与平均化模型。</p>
+<h2 id="使用Obspy-taup创建npz模型以供Taup绘图使用"><a href="#使用Obspy-taup创建npz模型以供Taup绘图使用" class="headerlink" title="使用Obspy.taup创建npz模型以供Taup绘图使用"></a>使用Obspy.taup创建npz模型以供Taup绘图使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def create_taupnd_model(model_dir, model_name, output_dir):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param model_dir: nd模型所在的绝对路径，例如：&#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/&#x27;。注意：nd模型必须存在 `mantle` `outer-core` `inner-core` 标识。</span><br><span class="line">    :param model_name: 模型名称，不带后缀</span><br><span class="line">    :param output_dir: ndk文件输出绝对路径</span><br><span class="line">    :return: 返回taup model对象，model具有get_travel_times等属性</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    model_dir = model_dir + model_name + &#x27;.nd&#x27;</span><br><span class="line">    taup_create.build_taup_model(model_dir,</span><br><span class="line">                                 output_folder=output_dir)</span><br><span class="line">    model = TauPyModel(model_name + &#x27;.npz&#x27;)</span><br><span class="line">    return model</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="通过已有模型进行平均化"><a href="#通过已有模型进行平均化" class="headerlink" title="通过已有模型进行平均化"></a>通过已有模型进行平均化</h2><p>需要个性化的内容： </p>
+<p>1、原始模型文件的路径。该模型必须为MINEOS所需格式。路径名包含绝对路径及文件名称。例如：<br><code>/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/old_models/prem_noocean.txt</code></p>
+<p>2、需要平均化的边界R值列表。<br>该列表中的所有值为平均化之后各个层的边界半径值，单位为m。注意：需要从小到大排列，且没有重复，并包含地表与球心半径值。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boundaries = [0., 1221500, 3480000, 6291000, 6371000]</span><br></pre></td></tr></table></figure>
+
+<p>3、输出模型名称。<br>不包含后缀的名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model_name = &#x27;prem_mean_LVZ_350&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>4、ICB与CMB的半径R值。<br>需要通过该值查找输出响应索引，因此需要指明ICB与CMB的R值。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ICB = 1221500.</span><br><span class="line">CMB = 3480000.</span><br></pre></td></tr></table></figure>
+
+<p>5、是否需要添加低速带。<br>此选项在平均化模型之后进行，手动设置低速带顶底边界和vp、vs速度。<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifLVZ = True</span><br><span class="line">boundary1=3480000</span><br><span class="line">boundary2=3480000 + 350000</span><br><span class="line">LVZvp = 11785.04 - 0.075*11785.04</span><br><span class="line">LVZvs = 6414.27 - 0.15*6414.27</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br></pre></td><td class="code"><pre><span class="line">from numpy import pi</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">创建平均模型，并且可以自由改变添加低速带。</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">def find_indices_of_values(lst, value):</span><br><span class="line">    return [index for index, item in enumerate(lst) if item == value]</span><br><span class="line"></span><br><span class="line">def rho_integer(bound1, bound2, radius, rho):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    计算一个区域内的密度平均值</span><br><span class="line">    :param bound1: 底界面半径，单位m，即R。</span><br><span class="line">    :param bound2: 顶界面半径，同上</span><br><span class="line">    :param radius: 整个模型的半径参数</span><br><span class="line">    :param rho: 整个模型的密度参数</span><br><span class="line">    :return: 标量 密度平均值</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    for i in range(0, len(radius)):</span><br><span class="line">        if radius[i] == bound1 and radius[i+1] != bound1: # 寻找bound1边界, 如果为第一个界面，则进行下述步骤：</span><br><span class="line">            index_bound1 = i  # 记录bound1边界的索引。</span><br><span class="line">            rho_sig = 0.</span><br><span class="line">            for j in range(index_bound1, len(radius)):</span><br><span class="line">                if radius[j] != bound2:</span><br><span class="line">                    rho_sig += 4 * pi * (pow(radius[j + 1], 3) - pow(radius[j], 3)) * rho[j] / 3</span><br><span class="line">                elif radius[j] == bound2 and radius[j-1] != bound2:</span><br><span class="line">                    index_bound2 = j</span><br><span class="line">                    rho_mean = (rho_sig / (4 * pi * (pow(radius[index_bound2], 3) - pow(radius[index_bound1], 3)) / 3))</span><br><span class="line">                    return rho_mean</span><br><span class="line">def v_integer(bound1, bound2, radius, v):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    计算一个区域内的v、q、eta平均值</span><br><span class="line">    :param bound1: 底界面半径，单位m，即R。</span><br><span class="line">    :param bound2: 顶界面半径，同上</span><br><span class="line">    :param radius: 整个模型的半径参数</span><br><span class="line">    :param rho: 整个模型的某个v q eta参数</span><br><span class="line">    :return: 标量 相应平均值</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    for i in range(0, len(radius)):</span><br><span class="line">        if radius[i] == bound1 and radius[i+1] != bound1: # 寻找bound1边界, 如果为第一个界面，则进行下述步骤：</span><br><span class="line">            index_bound1 = i  # 记录bound1边界的索引。</span><br><span class="line">            v_sig = 0.</span><br><span class="line">            for j in range(index_bound1, len(radius)):</span><br><span class="line">                if radius[j] != bound2:</span><br><span class="line">                    v_sig += (radius[j + 1] - radius[j]) * v[j]</span><br><span class="line">                elif radius[j] == bound2 and radius[j-1] != bound2:</span><br><span class="line">                    index_bound2 = j</span><br><span class="line">                    v_mean = (v_sig / (radius[index_bound2] - radius[index_bound1]))</span><br><span class="line">                    return v_mean</span><br><span class="line"></span><br><span class="line">def read_mineos_model(modelfile):</span><br><span class="line">    with open(modelfile, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        Radius = []</span><br><span class="line">        rho = []</span><br><span class="line">        vp = []</span><br><span class="line">        vs = []</span><br><span class="line">        qp = []</span><br><span class="line">        qs = []</span><br><span class="line">        eta = []</span><br><span class="line"></span><br><span class="line">        for i in range(0, len(lines)):</span><br><span class="line">            Heads = []</span><br><span class="line">            if i == 0 or i==1 or i==2:</span><br><span class="line">                Heads.append(lines[i])</span><br><span class="line">                continue</span><br><span class="line">            elif lines[i] == &#x27;\n&#x27;:</span><br><span class="line">                continue</span><br><span class="line">            Radius.append(float(lines[i][0:8]))</span><br><span class="line">            rho.append(float(lines[i][8:17]))</span><br><span class="line">            vp.append(float(lines[i][17:26]))</span><br><span class="line">            vs.append(float(lines[i][26:35]))</span><br><span class="line">            qp.append(float(lines[i][35:44]))</span><br><span class="line">            qs.append(float(lines[i][44:53]))</span><br><span class="line">            eta.append(float(lines[i][73:80]))</span><br><span class="line">        file.close()</span><br><span class="line">    return Heads, Radius, rho, vp, vs, qp, qs, eta</span><br><span class="line"></span><br><span class="line">def enlarge_models(Radius, rho, vp, vs, qp, qs, eta, enlarge_N=300):</span><br><span class="line">    step = int(max(Radius)/enlarge_N)</span><br><span class="line">    Radius_enlarged = []</span><br><span class="line">    rho_enlarged = []</span><br><span class="line">    vp_enlarged = []</span><br><span class="line">    vs_enlarged = []</span><br><span class="line">    qp_enlarged = []</span><br><span class="line">    qs_enlarged = []</span><br><span class="line">    eta_enlarged = []</span><br><span class="line"></span><br><span class="line">    for i in range(0, len(Radius)-1):</span><br><span class="line">        if Radius[i] != Radius[i+1]:</span><br><span class="line">            radius = Radius[i]</span><br><span class="line">            for j in range(0, int((Radius[i+1] - Radius[i]) / step)):</span><br><span class="line">                if radius &gt;= Radius[i+1]:</span><br><span class="line">                    break</span><br><span class="line">                Radius_enlarged.append(radius)</span><br><span class="line">                rho_enlarged.append(rho[i])</span><br><span class="line">                vp_enlarged.append(vp[i])</span><br><span class="line">                vs_enlarged.append(vs[i])</span><br><span class="line">                qp_enlarged.append(qp[i])</span><br><span class="line">                qs_enlarged.append(qs[i])</span><br><span class="line">                eta_enlarged.append(eta[i])</span><br><span class="line">                radius += step</span><br><span class="line">            Radius_enlarged.append(Radius[i+1])</span><br><span class="line">            rho_enlarged.append(rho[i])</span><br><span class="line">            vp_enlarged.append(vp[i])</span><br><span class="line">            vs_enlarged.append(vs[i])</span><br><span class="line">            qp_enlarged.append(qp[i])</span><br><span class="line">            qs_enlarged.append(qs[i])</span><br><span class="line">            eta_enlarged.append(eta[i])</span><br><span class="line"></span><br><span class="line">    return Radius_enlarged, rho_enlarged, vp_enlarged, vs_enlarged, qp_enlarged, qs_enlarged, eta_enlarged</span><br><span class="line"></span><br><span class="line">def Change_v(boundary1, boundary2, changedvp, changedvs, Radius, rho, vp, vs, qp, qs, eta):</span><br><span class="line">    if Radius[0] == boundary1:</span><br><span class="line">        index_bound1 = 0</span><br><span class="line">    else:</span><br><span class="line">        for i in range(1, len(Radius)-1):</span><br><span class="line">            if Radius[i] == boundary1 and Radius[i+1] == boundary1 : # 寻找bound1边界, 如果为第一个界面，则进行下述步骤：</span><br><span class="line">                index_bound1 = i+1</span><br><span class="line">                continue  # 已经存在这个边界，不需要额外添加。</span><br><span class="line">            elif Radius[i] &lt; boundary1 and Radius[i+1] &gt; boundary1 :</span><br><span class="line">                # 不存在边界，添加一个分界面。</span><br><span class="line">                Radius = Radius[:i+1] + [boundary1, boundary1] + Radius[i+1:]</span><br><span class="line">                rho = rho[:i+1] + [rho[i], rho[i+1]] + rho[i+1:]</span><br><span class="line">                vp = vp[:i+1] + [vp[i], vp[i+1]] + vp[i+1:]</span><br><span class="line">                vs = vs[:i+1] + [vs[i], vs[i+1]] + vs[i+1:]</span><br><span class="line">                qp = qp[:i+1] + [qp[i], qp[i+1]] + qp[i+1:]</span><br><span class="line">                qs = qs[:i+1] + [qs[i], qs[i+1]] + qs[i+1:]</span><br><span class="line">                eta = eta[:i+1] + [eta[i], eta[i+1]] + eta[i+1:]</span><br><span class="line">                index_bound1 = i + 2</span><br><span class="line">            elif Radius[i-1] &lt; boundary1 and Radius[i + 1] &gt; boundary1 and Radius[i] == boundary1:</span><br><span class="line">                # 不存在边界，添加一个分界面。</span><br><span class="line">                Radius = Radius[:i + 1] + [boundary1] + Radius[i + 1:]</span><br><span class="line">                rho = rho[:i + 1] + [rho[i+1]] + rho[i + 1:]</span><br><span class="line">                vp = vp[:i + 1] + [vp[i+1]] + vp[i + 1:]</span><br><span class="line">                vs = vs[:i + 1] + [vs[i+1]] + vs[i + 1:]</span><br><span class="line">                qp = qp[:i + 1] + [qp[i+1]] + qp[i + 1:]</span><br><span class="line">                qs = qs[:i + 1] + [qs[i+1]] + qs[i + 1:]</span><br><span class="line">                eta = eta[:i + 1] + [eta[i+1]] + eta[i + 1:]</span><br><span class="line">                index_bound1 = i + 1</span><br><span class="line"></span><br><span class="line">    if Radius[len(Radius)-1] == boundary2:</span><br><span class="line">        index_bound2 = len(Radius)-1</span><br><span class="line">    else:</span><br><span class="line">        for i in range(1, len(Radius) - 1):</span><br><span class="line">            if Radius[i] == boundary2 and Radius[i + 1] == boundary2:  # 寻找bound1边界, 如果为第一个界面，则进行下述步骤：</span><br><span class="line">                index_bound2 = i</span><br><span class="line">                continue  # 已经存在这个边界，不需要额外添加。</span><br><span class="line">            elif Radius[i] &lt; boundary2 and Radius[i + 1] &gt; boundary2:</span><br><span class="line">                # 不存在边界，添加一个分界面。</span><br><span class="line">                Radius = Radius[:i + 1] + [boundary2, boundary2] + Radius[i + 1:]</span><br><span class="line">                rho = rho[:i + 1] + [rho[i], rho[i + 1]] + rho[i + 1:]</span><br><span class="line">                vp = vp[:i + 1] + [vp[i], vp[i + 1]] + vp[i + 1:]</span><br><span class="line">                vs = vs[:i + 1] + [vs[i], vs[i + 1]] + vs[i + 1:]</span><br><span class="line">                qp = qp[:i + 1] + [qp[i], qp[i + 1]] + qp[i + 1:]</span><br><span class="line">                qs = qs[:i + 1] + [qs[i], qs[i + 1]] + qs[i + 1:]</span><br><span class="line">                eta = eta[:i + 1] + [eta[i], eta[i + 1]] + eta[i + 1:]</span><br><span class="line">                index_bound2 = i + 1</span><br><span class="line">            elif Radius[i - 1] &lt; boundary2 and Radius[i + 1] &gt; boundary2 and Radius[i] == boundary2:</span><br><span class="line">                # 不存在边界，添加一个分界面。</span><br><span class="line">                Radius = Radius[:i + 1] + [boundary2] + Radius[i + 1:]</span><br><span class="line">                rho = rho[:i + 1] + [rho[i + 1]] + rho[i + 1:]</span><br><span class="line">                vp = vp[:i + 1] + [vp[i + 1]] + vp[i + 1:]</span><br><span class="line">                vs = vs[:i + 1] + [vs[i + 1]] + vs[i + 1:]</span><br><span class="line">                qp = qp[:i + 1] + [qp[i + 1]] + qp[i + 1:]</span><br><span class="line">                qs = qs[:i + 1] + [qs[i + 1]] + qs[i + 1:]</span><br><span class="line">                eta = eta[:i + 1] + [eta[i + 1]] + eta[i + 1:]</span><br><span class="line">                index_bound2 = i</span><br><span class="line"></span><br><span class="line">    for j in range(index_bound1, index_bound2 + 1):</span><br><span class="line">        vp[j] = changedvp</span><br><span class="line">        vs[j] = changedvs</span><br><span class="line">    return Radius, rho, vp, vs, qp, qs, eta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 原始模型文件</span><br><span class="line">modelfile = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/old_models/prem_noocean.txt&#x27;</span><br><span class="line"># 读取原始模型</span><br><span class="line">Heads, Radius, rho, vp, vs, qp, qs, eta = read_mineos_model(modelfile)</span><br><span class="line"># 需要平均化的边界R值，单位m, 需要从0开始，Rmax结束</span><br><span class="line">boundaries = [0., 1221500, 3480000, 6291000, 6371000]</span><br><span class="line"># 输出模型名称</span><br><span class="line">model_name = &#x27;prem_mean_LVZ_350&#x27;</span><br><span class="line"># ICB与CMB边界半径R值</span><br><span class="line">ICB = 1221500.</span><br><span class="line">CMB = 3480000.</span><br><span class="line"></span><br><span class="line">ifLVZ = True</span><br><span class="line">boundary1=3480000</span><br><span class="line">boundary2=3480000 + 350000</span><br><span class="line"># LVZvp = 12510.70 - 0.075*12510.70</span><br><span class="line">LVZvp = 11785.04 - 0.075*11785.04</span><br><span class="line"># LVZvs = 6806.58 - 0.15*6806.58</span><br><span class="line">LVZvs = 6414.27 - 0.15*6414.27</span><br><span class="line"></span><br><span class="line"># 存储初始模型平均值的列表</span><br><span class="line">Radius_mean1 = []</span><br><span class="line">rho_mean1 = []</span><br><span class="line">vp_mean1 = []</span><br><span class="line">vs_mean1 = []</span><br><span class="line">qp_mean1 = []</span><br><span class="line">qs_mean1 = []</span><br><span class="line">eta_mean1 = []</span><br><span class="line"></span><br><span class="line"># 计算初始模型平均值</span><br><span class="line">for p in range(0, len(boundaries)):</span><br><span class="line">    if p != 0 and p != len(boundaries)-1:</span><br><span class="line">        rho_mean = rho_integer(boundaries[p], boundaries[p+1], Radius, rho)</span><br><span class="line">        vp_mean = v_integer(boundaries[p], boundaries[p+1], Radius, vp)</span><br><span class="line">        vs_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, vs)</span><br><span class="line">        qp_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, qp)</span><br><span class="line">        qs_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, qs)</span><br><span class="line">        eta_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, eta)</span><br><span class="line"></span><br><span class="line">        Radius_mean1.append(boundaries[p])</span><br><span class="line">        Radius_mean1.append(boundaries[p])</span><br><span class="line">        rho_mean1.append(rho_mean1[len(rho_mean1)-1])</span><br><span class="line">        rho_mean1.append(rho_mean)</span><br><span class="line">        vp_mean1.append(vp_mean1[len(vp_mean1)-1])</span><br><span class="line">        vp_mean1.append(vp_mean)</span><br><span class="line">        vs_mean1.append(vs_mean1[len(vs_mean1)-1])</span><br><span class="line">        vs_mean1.append(vs_mean)</span><br><span class="line">        qp_mean1.append(qp_mean1[len(qp_mean1)-1])</span><br><span class="line">        qp_mean1.append(qp_mean)</span><br><span class="line">        qs_mean1.append(qs_mean1[len(qs_mean1)-1])</span><br><span class="line">        qs_mean1.append(qs_mean)</span><br><span class="line">        eta_mean1.append(eta_mean1[len(eta_mean1)-1])</span><br><span class="line">        eta_mean1.append(eta_mean)</span><br><span class="line"></span><br><span class="line">    elif p == 0:</span><br><span class="line">        rho_mean = rho_integer(boundaries[p], boundaries[p+1], Radius, rho)</span><br><span class="line">        vp_mean = v_integer(boundaries[p], boundaries[p+1], Radius, vp)</span><br><span class="line">        vs_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, vs)</span><br><span class="line">        qp_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, qp)</span><br><span class="line">        qs_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, qs)</span><br><span class="line">        eta_mean = v_integer(boundaries[p], boundaries[p + 1], Radius, eta)</span><br><span class="line"></span><br><span class="line">        Radius_mean1.append(boundaries[p])</span><br><span class="line">        rho_mean1.append(rho_mean)</span><br><span class="line">        vp_mean1.append(vp_mean)</span><br><span class="line">        vs_mean1.append(vs_mean)</span><br><span class="line">        qp_mean1.append(qp_mean)</span><br><span class="line">        qs_mean1.append(qs_mean)</span><br><span class="line">        eta_mean1.append(eta_mean)</span><br><span class="line"></span><br><span class="line">    elif p==len(boundaries)-1:</span><br><span class="line">        Radius_mean1.append(boundaries[p])</span><br><span class="line">        rho_mean1.append(rho_mean1[len(rho_mean1)-1])</span><br><span class="line">        vp_mean1.append(vp_mean1[len(vp_mean1)-1])</span><br><span class="line">        vs_mean1.append(vs_mean1[len(vs_mean1)-1])</span><br><span class="line">        qp_mean1.append(qp_mean1[len(qp_mean1)-1])</span><br><span class="line">        qs_mean1.append(qs_mean1[len(qs_mean1)-1])</span><br><span class="line">        eta_mean1.append(eta_mean1[len(eta_mean1)-1])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 扩充模型</span><br><span class="line">Radius_enlarged, rho_enlarged, vp_enlarged, vs_enlarged, qp_enlarged, qs_enlarged, eta_enlarged = (</span><br><span class="line">    enlarge_models(Radius=Radius_mean1, rho=rho_mean1, vp=vp_mean1, vs=vs_mean1,</span><br><span class="line">                   qp=qp_mean1, qs=qs_mean1, eta=eta_mean1, enlarge_N=300))</span><br><span class="line"># 增加低速带</span><br><span class="line">if ifLVZ == True:</span><br><span class="line">    Radius_enlarged, rho_enlarged, vp_enlarged, vs_enlarged, qp_enlarged, qs_enlarged, eta_enlarged = Change_v(boundary1,  boundary2,</span><br><span class="line">             changedvp=LVZvp, changedvs=LVZvs,</span><br><span class="line">             Radius=Radius_enlarged, rho=rho_enlarged, vp=vp_enlarged, vs=vs_enlarged,</span><br><span class="line">             qp=qp_enlarged, qs=qs_enlarged, eta=eta_enlarged)</span><br><span class="line"></span><br><span class="line"># 平均化的模型名称</span><br><span class="line">num = len(Radius_enlarged)</span><br><span class="line">index_ICB = find_indices_of_values(Radius_enlarged, ICB)</span><br><span class="line">index_CMB = find_indices_of_values(Radius_enlarged, CMB)</span><br><span class="line">with open(model_name + &#x27;.txt&#x27;, &#x27;w&#x27;) as file:</span><br><span class="line">    file.write(f&#x27;&#123;model_name&#125;   THE MEAN MODE\n&#x27;)</span><br><span class="line">    file.write(&#x27;   1    1.0000   1\n&#x27;)</span><br><span class="line">    file.write(&#x27;&#123;:&gt;6d&#125;&#123;:&gt;4d&#125;&#123;:&gt;4d&#125;\n&#x27;.format(num, index_ICB[0]+1, index_CMB[0]+1))</span><br><span class="line">    for i in range(0, len(Radius_enlarged)):</span><br><span class="line">        file.write(</span><br><span class="line">            &#x27;&#123;:&gt;7.0f&#125;.&#123;:&gt;9.2f&#125;&#123;:&gt;9.2f&#125;&#123;:&gt;9.2f&#125;&#123;:&gt;9.1f&#125;&#123;:&gt;9.1f&#125;&#123;:&gt;9.2f&#125;&#123;:&gt;9.2f&#125;&#123;:&gt;9.5f&#125;&#x27;.format(Radius_enlarged[i],</span><br><span class="line">                                                                                                       rho_enlarged[i],</span><br><span class="line">                                                                                                       vp_enlarged[i],</span><br><span class="line">                                                                                                       vs_enlarged[i],</span><br><span class="line">                                                                                                       qp_enlarged[i],</span><br><span class="line">                                                                                                       qs_enlarged[i],</span><br><span class="line">                                                                                                       vp_enlarged[i],</span><br><span class="line">                                                                                                       vs_enlarged[i],</span><br><span class="line">                                                                                                     eta_enlarged[i]))</span><br><span class="line">        file.write(&#x27;\n&#x27;)</span><br><span class="line">    file.write(&#x27;\n&#x27;)</span><br><span class="line">    file.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="读取MINEOS模型的相关内容"><a href="#读取MINEOS模型的相关内容" class="headerlink" title="读取MINEOS模型的相关内容"></a>读取MINEOS模型的相关内容</h2><p>简介：读取MINEOS模型</p>
+<p>输入：</p>
+<ul>
+<li>modelfile MINEOS模型文件绝对路径</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>一个列表，包含：<br><code>[Radius, rho, vp, vs, qp, qs, eta]</code><br>其中每一个元素为一个列表，如<code>Radius</code>为一个列表，其他元素对应<code>Radius</code>相同索引所在的值。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">def get_filename(path):</span><br><span class="line">    if os.path.exists(path):</span><br><span class="line">        # 文件存在，可以进行操作，例如打开读取</span><br><span class="line">        ifexist = True</span><br><span class="line">        return ifexist</span><br><span class="line">    else:</span><br><span class="line">        # 文件不存在，可以选择跳过或者处理错误</span><br><span class="line">        ifexist = False</span><br><span class="line">        return ifexist</span><br><span class="line"></span><br><span class="line">def MINEOS_model_read(modelfile):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param modelfile: Absolute file path of model</span><br><span class="line">    :return: A 2D list have:</span><br><span class="line">    [Radius, rho, vp, vs, qp, qs, eta]</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if get_filename(modelfile) == False:</span><br><span class="line">        print(f&#x27;NO such file of &#123;modelfile&#125;&#x27;)</span><br><span class="line">        return []</span><br><span class="line">    with open(modelfile, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        Radius = []</span><br><span class="line">        rho = []</span><br><span class="line">        vp = []</span><br><span class="line">        vs = []</span><br><span class="line">        qp = []</span><br><span class="line">        qs = []</span><br><span class="line">        eta = []</span><br><span class="line"></span><br><span class="line">        for i in range(0, len(lines)):</span><br><span class="line">            if i == 0 or i==1 or i==2 or lines[i]==&#x27;\n&#x27;:</span><br><span class="line">                continue</span><br><span class="line">            Radius.append(float(lines[i][0:8]))</span><br><span class="line">            rho.append(float(lines[i][8:17]))</span><br><span class="line">            vp.append(float(lines[i][17:26]))</span><br><span class="line">            vs.append(float(lines[i][26:35]))</span><br><span class="line">            qp.append(float(lines[i][35:44]))</span><br><span class="line">            qs.append(float(lines[i][44:53]))</span><br><span class="line">            eta.append(float(lines[i][73:80]))</span><br><span class="line">        file.close()</span><br><span class="line">    out = []</span><br><span class="line">    out.append(Radius)</span><br><span class="line">    out.append(rho)</span><br><span class="line">    out.append(vp)</span><br><span class="line">    out.append(vs)</span><br><span class="line">    out.append(qp)</span><br><span class="line">    out.append(qs)</span><br><span class="line">    out.append(eta)</span><br><span class="line">    return out</span><br></pre></td></tr></table></figure>
+
+<h2 id="将MINEOS模型转化为nd模型"><a href="#将MINEOS模型转化为nd模型" class="headerlink" title="将MINEOS模型转化为nd模型"></a>将MINEOS模型转化为nd模型</h2><p>需要引入<code>读取MINEOS模型的相关内容</code>中的两个函数</p>
+<p>个性化修改项：</p>
+<ul>
+<li>model_name 输出的nd模型的名称，不带后缀。程序会自动添加nd后缀</li>
+<li>model_dir 输入的MINEOS模型的绝对路径。<br>  这里的示例中使用相同的模型名称，因此直接调用更加方便。<br>  第一项为模型所在文件夹路径，第二项为模型名称，第三项为MINEOS模型文件格式后缀。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">model_name = &#x27;prem_mean_LVZ_300&#x27;</span><br><span class="line">model_dir = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/&#x27; + model_name + &#x27;.txt&#x27;</span><br><span class="line">out = MINEOS_model_read(model_dir)</span><br><span class="line"></span><br><span class="line">with open(model_name + &#x27;.nd&#x27;, &#x27;w&#x27;) as file:</span><br><span class="line">    Depth = np.flip((6371000. - np.array(out[0])) / 1000.)</span><br><span class="line">    rho = np.flip(np.array(out[1]) / 1000.)</span><br><span class="line">    vp = np.flip(np.array(out[2]) / 1000.)</span><br><span class="line">    vs = np.flip(np.array(out[3]) / 1000.)</span><br><span class="line">    qp = np.flip(np.array(out[4]))</span><br><span class="line">    qs = np.flip(np.array(out[5]))</span><br><span class="line">    for i in range(0, len(Depth)):</span><br><span class="line">        file.write(</span><br><span class="line">            &#x27;&#123;:&gt;7.1f&#125;&#123;:&gt;8.1f&#125;&#123;:&gt;8.1f&#125;&#123;:&gt;9.2f&#125;&#123;:&gt;9.1f&#125;&#123;:&gt;9.1f&#125;&#x27;.format(Depth[i],</span><br><span class="line">                                                                        vp[i],</span><br><span class="line">                                                                       vs[i],</span><br><span class="line">                                                                       rho[i],</span><br><span class="line">                                                                       qp[i],</span><br><span class="line">                                                                       qs[i]))</span><br><span class="line">        file.write(&#x27;\n&#x27;)</span><br><span class="line">    file.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制MINEOS模型"><a href="#绘制MINEOS模型" class="headerlink" title="绘制MINEOS模型"></a>绘制MINEOS模型</h2><p>模型绘制可以自行进行，这里提供一个绘图示例，每一种参数单独绘制在子图中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line">model_name1 = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/prem_mean_noLVZ.txt&#x27;</span><br><span class="line">model_name2 = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/prem_mean_LVZ_100.txt&#x27;</span><br><span class="line">model_name3 = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/prem_mean_LVZ_150.txt&#x27;</span><br><span class="line">model_name4 = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/prem_mean_LVZ_200.txt&#x27;</span><br><span class="line">model_name5 = &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/models/prem_mean_LVZ_300.txt&#x27;</span><br><span class="line">models = [model_name1, model_name2, model_name3, model_name4, model_name5]</span><br><span class="line">plt.rcParams.update(&#123;&#x27;font.size&#x27;:20&#125;)</span><br><span class="line">layout = [</span><br><span class="line">    [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;.&quot;],</span><br><span class="line">]</span><br><span class="line">fig, axs = plt.subplot_mosaic(layout, figsize=[18,9])</span><br><span class="line">fig.subplots_adjust(wspace=0.4, hspace=0.4)</span><br><span class="line">fig.suptitle(&#x27;Earth models for different thickness LVZ above CMB&#x27;)</span><br><span class="line">axs[&#x27;A&#x27;].set_xlabel(&#x27;v$_&#123;p&#125;$(km/s)&#x27;)</span><br><span class="line">axs[&#x27;A&#x27;].set_ylabel(&#x27;Radius(km)&#x27;)</span><br><span class="line">axs[&#x27;B&#x27;].set_xlabel(&#x27;v$_&#123;s&#125;$(km/s)&#x27;)</span><br><span class="line">axs[&#x27;B&#x27;].set_ylabel(&#x27;Radius(km)&#x27;)</span><br><span class="line">axs[&#x27;C&#x27;].set_xlabel(&#x27;Denisity(g/cm$^3$)&#x27;)</span><br><span class="line">axs[&#x27;C&#x27;].set_ylabel(&#x27;Radius(km)&#x27;)</span><br><span class="line">for n in range(0, len(models)):</span><br><span class="line">    out = MINEOS_model_read(models[n])</span><br><span class="line">    axs[&quot;A&quot;].plot(np.array(out[2]) / 1000, np.array(out[0]) / 1000)  # vp</span><br><span class="line">for n in range(0, len(models)):</span><br><span class="line">    out = MINEOS_model_read(models[n])</span><br><span class="line">    axs[&quot;B&quot;].plot(np.array(out[3]) / 1000, np.array(out[0]) / 1000 )  # vs</span><br><span class="line">for n in range(0, len(models)):</span><br><span class="line">    out = MINEOS_model_read(models[n])</span><br><span class="line">    axs[&quot;C&quot;].plot(np.array(out[1]) / 1000, np.array(out[0]) / 1000 )  # rho</span><br><span class="line"></span><br><span class="line">axs[&#x27;A&#x27;].set_yticks([0, 1000, 2000, 3000, 4000, 5000, 6000, 6371])</span><br><span class="line">axs[&#x27;B&#x27;].set_yticks([0, 1000, 2000, 3000, 4000, 5000, 6000, 6371])</span><br><span class="line">axs[&#x27;C&#x27;].set_yticks([0, 1000, 2000, 3000, 4000, 5000, 6000, 6371])</span><br><span class="line">axs[&#x27;A&#x27;].set_xlim([0, 14])</span><br><span class="line">axs[&#x27;A&#x27;].set_ylim([0, 6371])</span><br><span class="line">axs[&#x27;B&#x27;].set_ylim([0, 6371])</span><br><span class="line">axs[&#x27;C&#x27;].set_ylim([0, 6371])</span><br><span class="line"></span><br><span class="line">plt.legend([&#x27;noLVZ&#x27;, &#x27;100km LVZ&#x27;, &#x27;150km LVZ&#x27;, &#x27;200km LVZ&#x27;, &#x27;300km LVZ&#x27;], loc=&#x27;lower left&#x27;,  bbox_to_anchor=(1, 0.5))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h1 id="MINEOS输出内容读取"><a href="#MINEOS输出内容读取" class="headerlink" title="MINEOS输出内容读取"></a>MINEOS输出内容读取</h1><h2 id="振型文件读取"><a href="#振型文件读取" class="headerlink" title="振型文件读取"></a>振型文件读取</h2><p>振型文件指由MINEOS min_bran输出的文件，一般命名为<code>模型名称+_振型类型</code>，振型类型为S、T或R。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>put_freq_in_same：将MINEOS输出的振型文件的一个参数整合为一个列表，按照n、l排列</p>
+<p>read_mineos_modefile：读取MINEOS输出的振型文件中的相关信息并输出</p>
+<p>put_0_velocity：取同一个径向阶数值的相关参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import obspy</span><br><span class="line">import numpy as np</span><br><span class="line">from obspy import taup</span><br><span class="line"></span><br><span class="line">def put_freq_in_same(n, l, freq, nmax=10000, lmax=101):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    将MINEOS输出的振型文件的一个参数整合为一个列表，按照n、l排列</span><br><span class="line">    :param n: list 列表 读取输出的径向阶数列表n</span><br><span class="line">    :param l: list 列表  读取输出的角度阶数列表l</span><br><span class="line">    :param freq: list 列表  读取输出的频率列表，输入的freq列表为其他项也可以，例如群速度或者相速度</span><br><span class="line">    :param nmax: int 整数  读取的输出径向阶数列表的最大长度，可以尽量设置大一些以保证所有内容存在</span><br><span class="line">    :param lmax: int 整数  读取的输出角度阶数列表的最大长度，可以尽量设置大一些以保证所有内容存在</span><br><span class="line">    :return: list 列表  freqs_all 索引值为[n, l]的频率列表，如freqs_all[1,2]为n=1,l=2振型的本征频率</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    freqs_all = np.zeros([nmax, lmax])</span><br><span class="line">    for i in range(0, len(n)):</span><br><span class="line">        freqs_all[int(n[i]), int(l[i])] = freq[i]</span><br><span class="line">    freqs_all[freqs_all == 0] = np.nan</span><br><span class="line">    return freqs_all</span><br><span class="line"></span><br><span class="line">def read_mineos_modefile(modefile_dir, model_name, mode_type):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    读取MINEOS输出的振型文件中的相关信息并输出。</span><br><span class="line">    :param modefile_dir: string 字符串 读取的振型文件所在文件夹绝对路径，</span><br><span class="line">        例如：&#x27;/home/shizhiyuanubuntu/Documents/mineos-1.0.2/DEMO/prem_sim_nolvz&#x27;,</span><br><span class="line">        此路径末尾不包含&#x27;/&#x27;，振型文件就在该文件夹下</span><br><span class="line">    :param model_name: string 字符串 MINEOS计算使用的模型名称，例如：prem_mean_noLVZ</span><br><span class="line">    :param mode_type: string 字符串 振型类型，如S、T、R。表征球型、环型、径向振型的振型输出文件</span><br><span class="line">    :return: n, l, frequency, phase_velocity, group_velocity</span><br><span class="line">            输出为五个列表(list)，分别为 径向阶数、角度阶数、频率、相速度、群速度</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    modefile = model_name + &#x27;_&#x27; + mode_type</span><br><span class="line">    modefile_alldir = modefile_dir + &#x27;/&#x27; + modefile</span><br><span class="line">    print(modefile_alldir)</span><br><span class="line">    with open(modefile_alldir, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        n = []</span><br><span class="line">        l = []</span><br><span class="line">        frequency = []</span><br><span class="line">        group_velocity = []</span><br><span class="line">        phase_velocity = []</span><br><span class="line">        for i in range(0, len(lines)):</span><br><span class="line">            if lines[i][6:10] == &#x27;mode&#x27;:</span><br><span class="line">                index = i+2</span><br><span class="line">        for i in range(index, len(lines)):</span><br><span class="line">            n.append(float(lines[i][0:5]))</span><br><span class="line">            l.append(float(lines[i][8:12]))</span><br><span class="line">            phase_velocity.append(float(lines[i][13:24]))</span><br><span class="line">            frequency.append(float(lines[i][25:40]))</span><br><span class="line">            group_velocity.append(float(lines[i][57:72]))</span><br><span class="line">    return n, l, frequency, phase_velocity, group_velocity</span><br><span class="line"></span><br><span class="line">def put_0_velocity(n,frequency, ph_vel, grop_vel, ni = 0):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    取同一个径向阶数值的相关参数。</span><br><span class="line">    :param n: list 振型文件输出的径向阶数</span><br><span class="line">    :param frequency: list 振型文件输出的频率</span><br><span class="line">    :param ph_vel: list 振型文件输出的相速度</span><br><span class="line">    :param grop_vel: list 振型文件输出的群速度</span><br><span class="line">    :param ni: int 输出的径向阶数的值。</span><br><span class="line">    :return: freq, ph_vel0, grop_vel0</span><br><span class="line">        三个列表(list)，分别对应ni值对应的本征频率、相速度、群速度</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    ph_vel0 = []</span><br><span class="line">    grop_vel0 = []</span><br><span class="line">    freq = []</span><br><span class="line">    for i in range(0, len(n)):</span><br><span class="line">        if n[i] == ni:</span><br><span class="line">            freq.append(frequency[i])</span><br><span class="line">            ph_vel0.append(ph_vel[i])</span><br><span class="line">            grop_vel0.append(grop_vel[i])</span><br><span class="line">    return freq, ph_vel0, grop_vel0</span><br></pre></td></tr></table></figure>
+
+<h3 id="振型文件读取内容绘图示例"><a href="#振型文件读取内容绘图示例" class="headerlink" title="振型文件读取内容绘图示例"></a>振型文件读取内容绘图示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"># 读取振型文件</span><br><span class="line">n_nolvz, l_nolvz, frequency_nolvz, phase_velocity_nolvz, group_velocity_nolvz = (</span><br><span class="line">    read_mineos_modefile(modefile_dir=&#x27;/home/shizhiyuanubuntu/Documents/mineos-1.0.2/DEMO/prem_sim_nolvz&#x27;,</span><br><span class="line">                     model_name=&#x27;prem_mean_noLVZ&#x27;, mode_type=&#x27;S&#x27;))</span><br><span class="line">lvz_no_freq = put_freq_in_same(n_nolvz, l_nolvz, frequency_nolvz, nmax=40, lmax=500)</span><br><span class="line"></span><br><span class="line">n_lvz_100, l_lvz_100, frequency_lvz_100, phase_velocity_lvz_100, group_velocity_lvz_100 = (</span><br><span class="line">    read_mineos_modefile(modefile_dir=&#x27;/home/shizhiyuanubuntu/Documents/mineos-1.0.2/DEMO/prem_sim_lvz100&#x27;,</span><br><span class="line">                     model_name=&#x27;prem_mean_LVZ_100&#x27;, mode_type=&#x27;S&#x27;))</span><br><span class="line">lvz_100_freq = put_freq_in_same(n_lvz_100, l_lvz_100, frequency_lvz_100, nmax=40, lmax=500)</span><br><span class="line"></span><br><span class="line">n_lvz_150, l_lvz_150, frequency_lvz_150, phase_velocity_lvz_150, group_velocity_lvz_150 = (</span><br><span class="line">    read_mineos_modefile(modefile_dir=&#x27;/home/shizhiyuanubuntu/Documents/mineos-1.0.2/DEMO/prem_sim_lvz150&#x27;,</span><br><span class="line">                     model_name=&#x27;prem_mean_LVZ_150&#x27;, mode_type=&#x27;S&#x27;))</span><br><span class="line">lvz_150_freq = put_freq_in_same(n_lvz_150, l_lvz_150, frequency_lvz_150, nmax=40, lmax=500)</span><br><span class="line"></span><br><span class="line">n_lvz_200, l_lvz_200, frequency_lvz_200, phase_velocity_lvz_200, group_velocity_lvz_200 = (</span><br><span class="line">    read_mineos_modefile(modefile_dir=&#x27;/home/shizhiyuanubuntu/Documents/mineos-1.0.2/DEMO/prem_sim_lvz200&#x27;,</span><br><span class="line">                     model_name=&#x27;prem_mean_LVZ_200&#x27;, mode_type=&#x27;S&#x27;))</span><br><span class="line">lvz_200_freq = put_freq_in_same(n_lvz_200, l_lvz_200, frequency_lvz_200, nmax=40, lmax=500)</span><br><span class="line"></span><br><span class="line">n_lvz_300, l_lvz_300, frequency_lvz_300, phase_velocity_lvz_300, group_velocity_lvz_300 = (</span><br><span class="line">    read_mineos_modefile(modefile_dir=&#x27;/home/shizhiyuanubuntu/Documents/mineos-1.0.2/DEMO/prem_sim_lvz300&#x27;,</span><br><span class="line">                     model_name=&#x27;prem_mean_LVZ_300&#x27;, mode_type=&#x27;S&#x27;))</span><br><span class="line">lvz_300_freq = put_freq_in_same(n_lvz_300, l_lvz_300, frequency_lvz_300, nmax=40, lmax=500)</span><br><span class="line"></span><br><span class="line"># 设置颜色</span><br><span class="line">clolor_zise = (0.267, 0.16, 0.353)</span><br><span class="line">clolor_zanglan = (0.255, 0.243, 0.522)</span><br><span class="line">clolor_shenlan = (0.188, 0.408, 0.553)</span><br><span class="line">clolor_lanlv = (0.122, 0.573, 0.545)</span><br><span class="line">clolor_lvse = (0.208, 0.718, 0.467)</span><br><span class="line">clolor_lvhuang = (0.569, 0.835, 0.259)</span><br><span class="line">clolor_huangse = (0.973, 0.902, 0.125)</span><br><span class="line"></span><br><span class="line"># 创建fig</span><br><span class="line">layout = [</span><br><span class="line">    [&quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;],</span><br><span class="line">    [&quot;A&quot;, &quot;A&quot;,&quot;A&quot;, &quot;C&quot;, &quot;C&quot;],</span><br><span class="line">    [&quot;A&quot;, &quot;A&quot;,&quot;A&quot;, &quot;.&quot;, &quot;.&quot;],</span><br><span class="line">]</span><br><span class="line">fig, axs = plt.subplot_mosaic(layout, figsize=[18,9])</span><br><span class="line">fig.subplots_adjust(wspace=0.5, hspace=0.6)</span><br><span class="line">fig.suptitle(&#x27;Rayleigh wave dispersion curve for different LVZ thickness&#x27;)</span><br><span class="line"># 设置坐标</span><br><span class="line">axs[&#x27;A&#x27;].set_xlabel(&#x27;Angular order&#x27;)</span><br><span class="line">axs[&#x27;A&#x27;].set_ylabel(&#x27;frequency(mHz)&#x27;)</span><br><span class="line">axs[&#x27;B&#x27;].set_xlabel(&#x27;Angular order&#x27;)</span><br><span class="line">axs[&#x27;B&#x27;].set_ylabel(&#x27;frequency(mHz)&#x27;)</span><br><span class="line">axs[&#x27;C&#x27;].set_xlabel(&#x27;Angular order&#x27;)</span><br><span class="line">axs[&#x27;C&#x27;].set_ylabel(&#x27;frequency(mHz)&#x27;)</span><br><span class="line"># 绘制n=0-10、l=0-101范围内的频散曲线</span><br><span class="line">for n in range(0, 10):</span><br><span class="line">    axs[&#x27;A&#x27;].plot([i for i in range(0, 101)], lvz_no_freq[n, 0:101], color = &#x27;k&#x27;)</span><br><span class="line">    axs[&#x27;A&#x27;].plot([i for i in range(0, 101)], lvz_100_freq[n, 0:101], color = &#x27;grey&#x27;)</span><br><span class="line">    axs[&#x27;A&#x27;].plot([i for i in range(0, 101)], lvz_150_freq[n, 0:101], color = &#x27;lightcoral&#x27;)</span><br><span class="line">    axs[&#x27;A&#x27;].plot([i for i in range(0, 101)], lvz_200_freq[n, 0:101], color = &#x27;brown&#x27;)</span><br><span class="line">    axs[&#x27;A&#x27;].plot([i for i in range(0, 101)], lvz_300_freq[n, 0:101], color=&#x27;maroon&#x27;)</span><br><span class="line">    axs[&#x27;A&#x27;].text(100, np.nanmax(lvz_no_freq[n, 0:101]), &#x27;&#123;&#125;&#x27;.format(n))</span><br><span class="line"># 绘制n=0、l=0-101范围内的频散曲线</span><br><span class="line">for n in range(0, 1):</span><br><span class="line">    axs[&#x27;B&#x27;].plot([i for i in range(0, 101)], lvz_no_freq[n, 0:101], color = &#x27;k&#x27;)</span><br><span class="line">    axs[&#x27;B&#x27;].plot([i for i in range(0, 101)], lvz_100_freq[n, 0:101], color = &#x27;grey&#x27;)</span><br><span class="line">    axs[&#x27;B&#x27;].plot([i for i in range(0, 101)], lvz_150_freq[n, 0:101], color = &#x27;lightcoral&#x27;)</span><br><span class="line">    axs[&#x27;B&#x27;].plot([i for i in range(0, 101)], lvz_200_freq[n, 0:101], color = &#x27;brown&#x27;)</span><br><span class="line">    axs[&#x27;B&#x27;].plot([i for i in range(0, 101)], lvz_300_freq[n, 0:101], color=&#x27;maroon&#x27;)</span><br><span class="line">    # axs[&#x27;B&#x27;].text(100, np.nanmax(lvz_no_freq[n, 0:101]), &#x27;&#123;&#125;&#x27;.format(n))</span><br><span class="line">    axs[&#x27;B&#x27;].set_title(&#x27;Radial order=0&#x27;, fontsize=14)</span><br><span class="line"># 绘制n=1、l=0-101范围内的频散曲线</span><br><span class="line">for n in range(1, 2):</span><br><span class="line">    axs[&#x27;C&#x27;].plot([i for i in range(0, 101)], lvz_no_freq[n, 0:101], color = &#x27;k&#x27;)</span><br><span class="line">    axs[&#x27;C&#x27;].plot([i for i in range(0, 101)], lvz_100_freq[n, 0:101], color = &#x27;grey&#x27;)</span><br><span class="line">    axs[&#x27;C&#x27;].plot([i for i in range(0, 101)], lvz_150_freq[n, 0:101], color = &#x27;lightcoral&#x27;)</span><br><span class="line">    axs[&#x27;C&#x27;].plot([i for i in range(0, 101)], lvz_200_freq[n, 0:101], color = &#x27;brown&#x27;)</span><br><span class="line">    axs[&#x27;C&#x27;].plot([i for i in range(0, 101)], lvz_300_freq[n, 0:101], color=&#x27;maroon&#x27;)</span><br><span class="line">    # axs[&#x27;C&#x27;].text(100, np.nanmax(lvz_no_freq[n, 0:101]), &#x27;&#123;&#125;&#x27;.format(n))</span><br><span class="line">    axs[&#x27;C&#x27;].set_title(&#x27;Radial order=1&#x27;, fontsize=14)</span><br><span class="line">axs[&#x27;C&#x27;].legend([&#x27;noLVZ&#x27;, &#x27;100km LVZ&#x27;, &#x27;150km LVZ&#x27;, &#x27;200km LVZ&#x27;, &#x27;300km LVZ&#x27;], loc=&#x27;lower left&#x27;,  bbox_to_anchor=(-0., -1.86))</span><br></pre></td></tr></table></figure>
+
+<h2 id="本征函数文件读取"><a href="#本征函数文件读取" class="headerlink" title="本征函数文件读取"></a>本征函数文件读取</h2><h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>mineos_file_read <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from plot_single_eigenfunction import plot_W_eigenfunction, plot_U_eigenfunction</span><br><span class="line">from plot_eigenfunctions import open_file_and_plot_eigenfunctions_signal</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">def get_filename(path):</span><br><span class="line">    if os.path.exists(path):</span><br><span class="line">        # 文件存在，可以进行操作，例如打开读取</span><br><span class="line">        ifexist = True</span><br><span class="line">        return ifexist</span><br><span class="line">    else:</span><br><span class="line">        # 文件不存在，可以选择跳过或者处理错误</span><br><span class="line">        ifexist = False</span><br><span class="line">        return ifexist</span><br><span class="line"></span><br><span class="line">def mineos_file_read(MINEOS_eigenfunction_dir, Modetype, radial_order, angular_order, Mineos_file=[]):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">     读取MINEOS单个本征函数文件；</span><br><span class="line">    :param MINEOS_eigenfunction_dir: string MINEOS 文件绝对路径，</span><br><span class="line">        例如：&#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/MINEOS_eigenfunctions/&#x27;</span><br><span class="line">        程序内部根据Modetype自动添加&#x27;test_T_ASC/&#x27;或&#x27;test_S_ASC/&#x27;等文件夹名。</span><br><span class="line">    :param Modetype: string 振型类型，S、T、R</span><br><span class="line">    :param radial_order: int 径向阶数</span><br><span class="line">    :param angular_order: int 角度阶数</span><br><span class="line">    :param Mineos_file: Mineos本征函数文件的名称.ASC，可以不指定该名称。</span><br><span class="line">    如果指定则按照改名称选择，忽略radial_oder和angular_order参数；</span><br><span class="line">    如果不指定则需要指定radial_order、angular_order</span><br><span class="line">    :return: 返回值均为list</span><br><span class="line">    若振型类型为S，返回：Radius, U_eigenfunction, V_eigenfunction, P_eigenfunction</span><br><span class="line">    分别表示半径列表、U分量、V分量、P分量（考虑重力相关参数）</span><br><span class="line">    若振型类型为T，返回：Radius, W_eigenfunction</span><br><span class="line">    若振型类型为R，返回：Radius, R_eigenfunction</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    radial_orderstr, angular_orderstr = MINEOS_eigenfunction_file_name(radial_order, angular_order)</span><br><span class="line">    if Mineos_file == []:</span><br><span class="line">        if Modetype == &#x27;T&#x27; or Modetype == &#x27;t&#x27; or Modetype == &#x27;W&#x27;:</span><br><span class="line">            modename = &#x27;T.&#x27; + radial_orderstr + &#x27;.&#x27; + angular_orderstr + &#x27;.ASC&#x27;</span><br><span class="line">            print(modename)</span><br><span class="line">            T_MINEOS_eigenfunction_file = MINEOS_eigenfunction_dir + &#x27;test_T_ASC/&#x27; + modename</span><br><span class="line">            if get_filename(T_MINEOS_eigenfunction_file) == False:</span><br><span class="line">                print(f&#x27;NO such file of &#123;T_MINEOS_eigenfunction_file&#125;&#x27;)</span><br><span class="line">                return [], []</span><br><span class="line">            with open(T_MINEOS_eigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">                lines = file.readlines()</span><br><span class="line">                W_eigenfunction = []</span><br><span class="line">                Radius = []</span><br><span class="line">                for i in range(0, len(lines)):</span><br><span class="line">                    if i == 0:</span><br><span class="line">                        continue</span><br><span class="line">                    Radius.append(float(lines[i][0:8]))</span><br><span class="line">                    W_eigenfunction.append(float(lines[i][8:23]))</span><br><span class="line">                file.close()</span><br><span class="line">            return Radius, W_eigenfunction</span><br><span class="line"></span><br><span class="line">        elif Modetype == &#x27;S&#x27; or Modetype == &#x27;s&#x27; or Modetype == &#x27;U&#x27;  or Modetype == &#x27;V&#x27;:</span><br><span class="line">            modename = &#x27;S.&#x27; + radial_orderstr + &#x27;.&#x27; + angular_orderstr + &#x27;.ASC&#x27;</span><br><span class="line">            print(modename)</span><br><span class="line">            S_MINEOS_eigenfunction_file = MINEOS_eigenfunction_dir + &#x27;test_S_ASC/&#x27; + modename</span><br><span class="line">            if get_filename(S_MINEOS_eigenfunction_file) == False:</span><br><span class="line">                print(f&#x27;NO such file of &#123;S_MINEOS_eigenfunction_file&#125;&#x27;)</span><br><span class="line">                return [], [], [], []</span><br><span class="line">            with open(S_MINEOS_eigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">                lines = file.readlines()</span><br><span class="line">                U_eigenfunction = []</span><br><span class="line">                V_eigenfunction = []</span><br><span class="line">                P_eigenfunction = []</span><br><span class="line">                Radius = []</span><br><span class="line">                for i in range(0, len(lines)):</span><br><span class="line">                    if i == 0:</span><br><span class="line">                        continue</span><br><span class="line">                    else:</span><br><span class="line">                        Radius.append(float(lines[i][0:8]))</span><br><span class="line">                        U_eigenfunction.append(float(lines[i][8:23]))</span><br><span class="line">                        V_eigenfunction.append(float(lines[i][38:53]))</span><br><span class="line">                        P_eigenfunction.append(float(lines[i][68:83]))</span><br><span class="line">                file.close()</span><br><span class="line">            return Radius, U_eigenfunction, V_eigenfunction, P_eigenfunction</span><br><span class="line">        elif Modetype == &#x27;R&#x27; or Modetype == &#x27;r&#x27;:</span><br><span class="line">            modename = &#x27;S.&#x27; + radial_orderstr + &#x27;.&#x27; + angular_orderstr + &#x27;.ASC&#x27;</span><br><span class="line">            print(modename)</span><br><span class="line">            R_MINEOS_eigenfunction_file = MINEOS_eigenfunction_dir + &#x27;test_R_ASC/&#x27; + modename</span><br><span class="line">            if get_filename(R_MINEOS_eigenfunction_file) == False:</span><br><span class="line">                print(f&#x27;NO such file of &#123;R_MINEOS_eigenfunction_file&#125;&#x27;)</span><br><span class="line">                return [], []</span><br><span class="line">            with open(R_MINEOS_eigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">                lines = file.readlines()</span><br><span class="line">                R_eigenfunction = []</span><br><span class="line">                Radius = []</span><br><span class="line">                for i in range(0, len(lines)):</span><br><span class="line">                    if i == 0:</span><br><span class="line">                        continue</span><br><span class="line">                    Radius.append(float(lines[i][0:8]))</span><br><span class="line">                    R_eigenfunction.append(float(lines[i][8:23]))</span><br><span class="line">                file.close()</span><br><span class="line">            return Radius, R_eigenfunction</span><br><span class="line">        else:</span><br><span class="line">            if Modetype == &#x27;T&#x27; or Modetype == &#x27;t&#x27;  or Modetype == &#x27;W&#x27;:</span><br><span class="line">                T_MINEOS_eigenfunction_file = MINEOS_eigenfunction_dir + &#x27;test_T_ASC/&#x27; + Mineos_file</span><br><span class="line">                if get_filename(T_MINEOS_eigenfunction_file) == False:</span><br><span class="line">                    print(f&#x27;NO such file of &#123;T_MINEOS_eigenfunction_file&#125;&#x27;)</span><br><span class="line">                    return [], []</span><br><span class="line">                with open(T_MINEOS_eigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">                    lines = file.readlines()</span><br><span class="line">                    W_eigenfunction = []</span><br><span class="line">                    Radius = []</span><br><span class="line">                    for i in range(0, len(lines)):</span><br><span class="line">                        if i == 0:</span><br><span class="line">                            continue</span><br><span class="line">                        Radius.append(float(lines[i][0:8]))</span><br><span class="line">                        W_eigenfunction.append(float(lines[i][8:23]))</span><br><span class="line">                    file.close()</span><br><span class="line">                return Radius, W_eigenfunction</span><br><span class="line"></span><br><span class="line">            elif Modetype == &#x27;S&#x27; or Modetype == &#x27;s&#x27; or Modetype == &#x27;U&#x27; or Modetype == &#x27;V&#x27;:</span><br><span class="line">                S_MINEOS_eigenfunction_file = MINEOS_eigenfunction_dir + &#x27;test_S_ASC/&#x27; + Mineos_file</span><br><span class="line">                if get_filename(S_MINEOS_eigenfunction_file) == False:</span><br><span class="line">                    print(f&#x27;NO such file of &#123;S_MINEOS_eigenfunction_file&#125;&#x27;)</span><br><span class="line">                    return [], [], [], []</span><br><span class="line">                with open(S_MINEOS_eigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">                    lines = file.readlines()</span><br><span class="line">                    U_eigenfunction = []</span><br><span class="line">                    V_eigenfunction = []</span><br><span class="line">                    P_eigenfunction = []</span><br><span class="line">                    Radius = []</span><br><span class="line">                    for i in range(0, len(lines)):</span><br><span class="line">                        if i == 0:</span><br><span class="line">                            continue</span><br><span class="line">                        else:</span><br><span class="line">                            Radius.append(float(lines[i][0:8]))</span><br><span class="line">                            U_eigenfunction.append(float(lines[i][8:23]))</span><br><span class="line">                            V_eigenfunction.append(float(lines[i][38:53]))</span><br><span class="line">                            P_eigenfunction.append(float(lines[i][68:83]))</span><br><span class="line">                    file.close()</span><br><span class="line">                return Radius, U_eigenfunction, V_eigenfunction, P_eigenfunction</span><br><span class="line">            elif Modetype == &#x27;R&#x27; or Modetype == &#x27;r&#x27;:</span><br><span class="line">                R_MINEOS_eigenfunction_file = MINEOS_eigenfunction_dir + &#x27;test_R_ASC/&#x27; + Mineos_file</span><br><span class="line">                if get_filename(R_MINEOS_eigenfunction_file) == False:</span><br><span class="line">                    print(f&#x27;NO such file of &#123;R_MINEOS_eigenfunction_file&#125;&#x27;)</span><br><span class="line">                    return [], []</span><br><span class="line">                with open(R_MINEOS_eigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">                    lines = file.readlines()</span><br><span class="line">                    R_eigenfunction = []</span><br><span class="line">                    Radius = []</span><br><span class="line">                    for i in range(0, len(lines)):</span><br><span class="line">                        if i == 0:</span><br><span class="line">                            continue</span><br><span class="line">                        Radius.append(float(lines[i][0:8]))</span><br><span class="line">                        R_eigenfunction.append(float(lines[i][8:23]))</span><br><span class="line">                    file.close()</span><br><span class="line">                return Radius, R_eigenfunction</span><br><span class="line"></span><br><span class="line">def numofzero(numb):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    添加0,因为MINEOS输出的本征函数文件命名规则需要添加很多0,因此使用该函数创建本征函数名以供读取使用。</span><br><span class="line">    :param numb: int 输入的数字</span><br><span class="line">    :return: string 增加0之后的数字</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if numb &lt; 10:</span><br><span class="line">        itsstr = &#x27;000000&#x27; + str(numb)</span><br><span class="line">    elif numb &lt; 100:</span><br><span class="line">        itsstr = &#x27;00000&#x27; + str(numb)</span><br><span class="line">    elif numb &lt; 1000:</span><br><span class="line">        itsstr = &#x27;0000&#x27; + str(numb)</span><br><span class="line">    elif numb &lt; 10000:</span><br><span class="line">        itsstr = &#x27;000&#x27; + str(numb)</span><br><span class="line">    return itsstr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def MINEOS_eigenfunction_file_name(radial_order, angular_order):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    创建MINEOS本征函数名</span><br><span class="line">    :param radial_order: int 径向阶数 </span><br><span class="line">    :param angular_order: int 角度阶数</span><br><span class="line">    :return: string</span><br><span class="line">        radial_orderstr: 径向阶数补0后的字符串类型</span><br><span class="line">        angular_orderstr: 径向阶数补0后的字符串类型</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    radial_orderstr = numofzero(radial_order)</span><br><span class="line">    angular_orderstr = numofzero(angular_order)</span><br><span class="line">    return radial_orderstr, angular_orderstr</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="SPECNM输出内容读取"><a href="#SPECNM输出内容读取" class="headerlink" title="SPECNM输出内容读取"></a>SPECNM输出内容读取</h1><h2 id="振型相关文件的读取"><a href="#振型相关文件的读取" class="headerlink" title="振型相关文件的读取"></a>振型相关文件的读取</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">def read_SPECNM_mode_frequency_output(mode_file_freq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    读取SPECNM振型输出文件；仅输出频率信息</span><br><span class="line">    :param mode_file_freq: string 振型相关文件绝对路径，即该文件所在绝对路径及文件名——完整的路径地址</span><br><span class="line">    :return: list n, l, freq, period</span><br><span class="line">        返回 径向阶数、角度阶数、频率、周期 的列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    with open(mode_file_freq, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        n = []</span><br><span class="line">        l = []</span><br><span class="line">        freq = []</span><br><span class="line">        period = []</span><br><span class="line">        for i in range(0, len(lines)):</span><br><span class="line">            if i == 0 or i == 1 or lines[i] == &#x27;\n&#x27;:</span><br><span class="line">                continue</span><br><span class="line">            n.append(float(lines[i][0:6]))</span><br><span class="line">            l.append(float(lines[i][6:12]))</span><br><span class="line">            freq.append(float(lines[i][12:27]))</span><br><span class="line">            period.append(float(lines[i][27:39]))</span><br><span class="line">        file.close()</span><br><span class="line">    return n, l, freq, period</span><br><span class="line"></span><br><span class="line">def read_SPECNM_mode_output(mode_file, modetype):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    读取SPECNM振型输出文件；相关函数为 Love_output 等SPECNM振型输出函数</span><br><span class="line">    :param mode_file: string 振型相关文件绝对路径，即该文件所在绝对路径及文件名——完整的路径地址</span><br><span class="line">    例如：&#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/prem_noocean/Rayleigh_output/prem_noocean_S_output.txt&#x27;</span><br><span class="line">    :param modetype: string 振型类型，为S、T、R</span><br><span class="line">    :return: list</span><br><span class="line">    若振型类型为S或T，输出列表 n, l, freq, period, ph_v, grp_v, gama, Q, epsilon</span><br><span class="line">    为径向阶数、角度阶数、频率、周期、相速度、群速度、gama、品质因子Q、epsilon</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if modetype == &#x27;S&#x27; or modetype == &#x27;T&#x27;:</span><br><span class="line">        with open(mode_file, &#x27;r&#x27;) as file:</span><br><span class="line">            lines = file.readlines()</span><br><span class="line">            n = []</span><br><span class="line">            l = []</span><br><span class="line">            freq = []</span><br><span class="line">            period = []</span><br><span class="line">            ph_v = []</span><br><span class="line">            grp_v = []</span><br><span class="line">            gama = []</span><br><span class="line">            Q = []</span><br><span class="line">            epsilon = []</span><br><span class="line">            &#x27;&#123;:&gt;6d&#125;&#123;:&gt;6d&#125;&#123;:&gt;15.5f&#125;&#123;:&gt;12.3f&#125;&#123;:&gt;12.3f&#125;&#123;:&gt;12.3f&#125;&#123;:&gt;12.3f&#125;&#123;:&gt;12.3f&#125;&#123;:&gt;12.3f&#125;&#x27;</span><br><span class="line">            for i in range(0, len(lines)):</span><br><span class="line">                if i == 0 or i == 1 or lines[i] == &#x27;\n&#x27;:</span><br><span class="line">                    continue</span><br><span class="line">                n.append(float(lines[i][0:6]))</span><br><span class="line">                l.append(float(lines[i][6:12]))</span><br><span class="line">                freq.append(float(lines[i][12:27]))</span><br><span class="line">                period.append(float(lines[i][27:39]))</span><br><span class="line">                ph_v.append(float(lines[i][39:51]))</span><br><span class="line">                grp_v.append(float(lines[i][51:63]))</span><br><span class="line">                gama.append(float(lines[i][63:75]))</span><br><span class="line">                Q.append(float(lines[i][75:87]))</span><br><span class="line">                epsilon.append(float(lines[i][87:99]))</span><br><span class="line">            file.close()</span><br><span class="line">        return n, l, freq, period, ph_v, grp_v, gama, Q, epsilon</span><br><span class="line">    elif modetype==&#x27;R&#x27;:</span><br><span class="line">        with open(mode_file, &#x27;r&#x27;) as file:</span><br><span class="line">            lines = file.readlines()</span><br><span class="line">            n = []</span><br><span class="line">            l = []</span><br><span class="line">            freq = []</span><br><span class="line">            period = []</span><br><span class="line">            gama = []</span><br><span class="line">            Q = []</span><br><span class="line">            epsilon = []</span><br><span class="line">            for i in range(0, len(lines)):</span><br><span class="line">                if i == 0 or i == 1 or lines[i] == &#x27;\n&#x27;:</span><br><span class="line">                    continue</span><br><span class="line">                n.append(float(lines[i][0:6]))</span><br><span class="line">                l.append(float(lines[i][6:12]))</span><br><span class="line">                freq.append(float(lines[i][12:27]))</span><br><span class="line">                period.append(float(lines[i][27:39]))</span><br><span class="line">                gama.append(float(lines[i][39:51]))</span><br><span class="line">                Q.append(float(lines[i][51:63]))</span><br><span class="line">                epsilon.append(float(lines[i][63:75]))</span><br><span class="line">            file.close()</span><br><span class="line">        return n, l, freq, period,[], [], gama, Q, epsilon</span><br><span class="line"></span><br><span class="line">def find_freq(mode_file, modetype, angular_order, radial_order):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    寻找SPECNM特定一系列振型的频率，已知振型参数n、l。</span><br><span class="line">    :param mode_file: string 振型相关文件绝对路径，即该文件所在绝对路径及文件名——完整的路径地址</span><br><span class="line">    :param modetype: 振型类型，为S、T、R</span><br><span class="line">    :param angular_order:  1D array, 角度阶数列表，</span><br><span class="line">    :param radial_order:  1D array, 径向阶数列表</span><br><span class="line">    :return: list 频率列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    n, l, freq, period = read_SPECNM_mode_frequency_output(mode_file_freq=mode_file)</span><br><span class="line">    out_freq = []</span><br><span class="line">    for i in range(0, len(angular_order)):</span><br><span class="line">        for j in range(0, len(n)):</span><br><span class="line">            if radial_order[i] == n[j] and angular_order[i] == l[j]:</span><br><span class="line">                out_freq.append(freq[j])</span><br><span class="line">    return out_freq</span><br></pre></td></tr></table></figure>
+
+<h2 id="读取并绘制本征函数"><a href="#读取并绘制本征函数" class="headerlink" title="读取并绘制本征函数"></a>读取并绘制本征函数</h2><h3 id="绘制单个本征函数图像"><a href="#绘制单个本征函数图像" class="headerlink" title="绘制单个本征函数图像"></a>绘制单个本征函数图像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">from specnm import rayleigh_fg</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">from specnm import seismogram</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">def open_file_and_plot_eigenfunctions_signal(radial_order, angular_order, data_dir, eigenfunction_type=&#x27;U&#x27;, linestyle=&#x27;k-&#x27;,ifdr = False, ifnormalized=0):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    输出单个本征函数文件，绘制图像。输出为plot的一条曲线，需要自行设置figure以及plot.show()</span><br><span class="line">    :param radial_order: 径向阶数n</span><br><span class="line">    :param angular_order: 角度阶数l</span><br><span class="line">    :param data_dir: 本征函数文件所在绝对路径，例如：</span><br><span class="line">    该本征函数文件为radord9angord1.txt，其路径位于：</span><br><span class="line">    &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/prem_noocean/Rayleigh_output/eigenfunctions/&#x27;</span><br><span class="line">    :param eigenfunction_type: 本征函数的类型，有U、V、W三种类型，分别对应S振型的两种分量和T振型一种分量。</span><br><span class="line">    :param linestyle: 颜色和线型，例如&#x27;k-&#x27;</span><br><span class="line">    :param ifdr: 该文件是否是本征函数的导数（关于radius的导数），默认为False</span><br><span class="line">    :param ifnormalized: 本征函数是否进行归一化 0:不归一化 1：以地表位移为参考 2：以最大值为参考</span><br><span class="line">    :return: 无，仅绘制本征函数曲线，为一个plot函数。需要在函数外部进行figure创建和plt.show</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if ifdr == True: # 如果绘制的是eigenfunction_dr.</span><br><span class="line">        eigenfunction_file = &#x27;dr_&#x27; + eigenfunction_type + &#x27;_&#x27; + f&#x27;radord&#123;radial_order&#125;_angord&#123;angular_order&#125;.txt&#x27;</span><br><span class="line">    else:</span><br><span class="line">        eigenfunction_file = eigenfunction_type + &#x27;_&#x27; + f&#x27;radord&#123;radial_order&#125;_angord&#123;angular_order&#125;.txt&#x27;</span><br><span class="line">    file = data_dir + eigenfunction_file</span><br><span class="line">    radius_file = data_dir + &#x27;Radius.txt&#x27;</span><br><span class="line">    with open(file, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        eigenfunction = []</span><br><span class="line">        eigenfunction_dr = []</span><br><span class="line">        for line in lines:</span><br><span class="line">            eigenfunction.append(float(line))</span><br><span class="line">        file.close()</span><br><span class="line"></span><br><span class="line">    with open(radius_file, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        radius = []</span><br><span class="line">        for line in lines:</span><br><span class="line">            radius.append(float(line))</span><br><span class="line">        file.close()</span><br><span class="line"></span><br><span class="line">    # print(eigenfunction)</span><br><span class="line">    eigenfunction = np.array(eigenfunction)</span><br><span class="line">    radius = np.array(radius) / 1000</span><br><span class="line">    if ifnormalized == 1:</span><br><span class="line">        plt.plot(radius, eigenfunction / eigenfunction[len(eigenfunction) - 1], linestyle)  # 归一化后</span><br><span class="line">    elif ifnormalized == 2:</span><br><span class="line">        plt.plot(radius, eigenfunction / abs(max(eigenfunction)), linestyle)  # 按照最大值归一化</span><br><span class="line">    else:</span><br><span class="line">        plt.plot(radius, eigenfunction, linestyle)  # 非归一化</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制本征函数图像"><a href="#绘制本征函数图像" class="headerlink" title="绘制本征函数图像"></a>绘制本征函数图像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line">import specnm</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">def plot_W_eigenfunction(wdir, radial_order, angular_order, ifnormalized=0, </span><br><span class="line">                         ifnegative=False, mode_type=&#x27;W&#x27;, linecolorsytle=&#x27;k-&#x27;, </span><br><span class="line">                         linewidth=1, if_radius_normalized = False, ifaxis=False, </span><br><span class="line">                         ifreverse=False, iflines=False):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    绘制特定振型的本征函数</span><br><span class="line">    :param wdir:  本征函数文件所在路径，例如W_radord1angord2.txt位于该路径下：</span><br><span class="line">    &#x27;/home/shizhiyuanubuntu/PycharmProjects/Seismology/prem_noocean/Love_output/eigenfunctions/&#x27;</span><br><span class="line">    :param radial_order: int 径向阶数</span><br><span class="line">    :param angular_order: int 角度阶数</span><br><span class="line">    :param ifnormalized: 是否进行归一化。</span><br><span class="line">        0：不进行归一化；1：使用地表位移作为基准进行归一化； 2: 使用绝对值最大值作为基准进行归一化 </span><br><span class="line">        默认为0</span><br><span class="line">    :param ifnegative: 是否对本征函数值进行反转，即加一个负号；</span><br><span class="line">    :param mode_type: string 本征函数振型类型，尽管在路径中已经指出不同的振型类型存放于不同的文件夹下，但是依然需要指定</span><br><span class="line">        振型类型以方便创建需要读取的文件的名称。分为U、V、W三种类型；Radial_output输出仍为U、V分量。</span><br><span class="line">    :param linecolorsytle: string 绘制的本征函数的曲线颜色和线型，默认&#x27;k-&#x27;</span><br><span class="line">    :param linewidth: float 绘制的本征函数的曲线宽度，默认为1</span><br><span class="line">    :param if_radius_normalized: 输出的图像坐标轴中半径是否归一化；归一化后半径范围为相对值0-1。</span><br><span class="line">    :param ifaxis: 是否在地表处显示一条横线表示在边界面；以及是否显示地球660间断面和CMB。</span><br><span class="line">    :param ifreverse: False: 半径为y轴；True：半径为x轴。</span><br><span class="line">    :return: 只进行plot，需要在函数外围设置figure和plt.show()</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    weigenfunction_file = mode_type + &#x27;_&#x27; + f&#x27;radord&#123;radial_order&#125;_angord&#123;angular_order&#125;.txt&#x27;</span><br><span class="line">    radial_file = &#x27;Radius.txt&#x27;</span><br><span class="line">    weigenfunction_file = wdir + weigenfunction_file</span><br><span class="line">    wradial_file = wdir + radial_file</span><br><span class="line">    with open(weigenfunction_file, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        weigenfunction = []</span><br><span class="line">        for line in lines:</span><br><span class="line">            weigenfunction.append(float(line))</span><br><span class="line">        file.close()</span><br><span class="line">    with open(wradial_file, &#x27;r&#x27;) as file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line">        wradius = []</span><br><span class="line">        for line in lines:</span><br><span class="line">            wradius.append(float(line))</span><br><span class="line">        file.close()</span><br><span class="line"></span><br><span class="line">    if ifnegative==True:</span><br><span class="line">        if weigenfunction[np.argmax(np.abs(np.array(weigenfunction)))] &lt; 0:</span><br><span class="line">            weigenfunction = -np.array(weigenfunction)</span><br><span class="line"></span><br><span class="line">    if ifnormalized == 1:</span><br><span class="line">        if ifreverse == False:</span><br><span class="line">            if if_radius_normalized == False:</span><br><span class="line">                plt.plot(np.array(weigenfunction)/weigenfunction[len(weigenfunction)-1], np.array(wradius)/1000, linecolorsytle, linewidth=linewidth)</span><br><span class="line">            else:</span><br><span class="line">                plt.plot(np.array(weigenfunction) / weigenfunction[len(weigenfunction) - 1], np.array(wradius) / max(np.array(wradius)),</span><br><span class="line">                         linecolorsytle, linewidth=linewidth)</span><br><span class="line">        else:</span><br><span class="line">            if if_radius_normalized == False:</span><br><span class="line">                plt.plot(np.array(wradius) / 1000, np.array(weigenfunction) / weigenfunction[len(weigenfunction) - 1],</span><br><span class="line">                     linecolorsytle, linewidth=linewidth)</span><br><span class="line">            else:</span><br><span class="line">                plt.plot(np.array(wradius) / max(np.array(wradius)), np.array(weigenfunction) / weigenfunction[len(weigenfunction) - 1],</span><br><span class="line">                         linecolorsytle, linewidth=linewidth)</span><br><span class="line"></span><br><span class="line">        if ifaxis == 1:</span><br><span class="line">            if weigenfunction[0] &lt; 0:</span><br><span class="line">                plt.axhline(y=wradius[0]/1000, xmin=weigenfunction[0] / weigenfunction[len(weigenfunction)-1], xmax=0, color=&#x27;k&#x27;,</span><br><span class="line">                            linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">            else:</span><br><span class="line">                plt.axhline(y=wradius[0] / 1000, xmin=0, xmax=weigenfunction[0] / weigenfunction[len(weigenfunction)-1], color=&#x27;k&#x27;,</span><br><span class="line">                            linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">            plt.text(-1, wradius[0]/1000, &#x27;CMB&#x27;)</span><br><span class="line">            plt.text(-1, max(wradius)/1000-670, &#x27;670&#x27;)</span><br><span class="line">            plt.plot([-1, -0.7], [max(wradius) / 1000 - 670, max(wradius) / 1000 - 670], &#x27;k-&#x27;)</span><br><span class="line"></span><br><span class="line">            if weigenfunction[len(weigenfunction) - 1] &lt; 0:</span><br><span class="line">                plt.axhline(y=wradius[len(wradius) - 1] / 1000, xmin=weigenfunction[len(weigenfunction) - 1] / max(weigenfunction),</span><br><span class="line">                            xmax=0,</span><br><span class="line">                            color=&#x27;k&#x27;, linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">            else:</span><br><span class="line">                plt.axhline(y=wradius[len(wradius) - 1] / 1000, xmin=0,</span><br><span class="line">                            xmax=weigenfunction[len(weigenfunction) - 1] / weigenfunction[len(weigenfunction)-1],</span><br><span class="line">                            color=&#x27;k&#x27;, linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">        if ifaxis == 1:</span><br><span class="line">            plt.text(-1, wradius[len(wradius)-1]/1000, &#x27;0&#x27;)</span><br><span class="line">    elif ifnormalized == 2:  # 当使用绝对值最大值作为归一化条件时</span><br><span class="line">        if ifreverse == False:</span><br><span class="line">            if if_radius_normalized == False:</span><br><span class="line">                plt.plot(np.array(weigenfunction)/max(abs(np.array(weigenfunction))), np.array(wradius)/1000, linecolorsytle, linewidth=linewidth)</span><br><span class="line">            else:</span><br><span class="line">                plt.plot(np.array(weigenfunction) / max(abs(np.array(weigenfunction))), np.array(wradius) / max(np.array(wradius)),</span><br><span class="line">                         linecolorsytle, linewidth=linewidth)</span><br><span class="line">        else:</span><br><span class="line">            if if_radius_normalized == False:</span><br><span class="line">                plt.plot(np.array(wradius) / 1000, np.array(weigenfunction) / max(abs(np.array(weigenfunction))),</span><br><span class="line">                     linecolorsytle, linewidth=linewidth)</span><br><span class="line">            else:</span><br><span class="line">                plt.plot(np.array(wradius) / max(np.array(wradius)), np.array(weigenfunction) / max(abs(np.array(weigenfunction))),</span><br><span class="line">                         linecolorsytle, linewidth=linewidth)</span><br><span class="line"></span><br><span class="line">        if ifaxis == 1:</span><br><span class="line">            if weigenfunction[0] &lt; 0:</span><br><span class="line">                # plt.axhline(y=wradius[0]/1000, xmin=weigenfunction[0]/max(abs(np.array(weigenfunction))), xmax=0, color=&#x27;k&#x27;,</span><br><span class="line">                #            linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">                plt.plot([weigenfunction[0] / max(abs(np.array(weigenfunction))), 0],</span><br><span class="line">                         [wradius[0] / 1000, wradius[0] / 1000], &#x27;k-&#x27;)</span><br><span class="line">            else:</span><br><span class="line">                # plt.axhline(y=wradius[0]/1000, xmin=0, xmax=weigenfunction[0] / max(abs(np.array(weigenfunction))), color=&#x27;k&#x27;,</span><br><span class="line">                #            linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">                plt.plot([0, weigenfunction[0] / max(abs(np.array(weigenfunction)))],</span><br><span class="line">                         [wradius[0] / 1000, wradius[0] / 1000], &#x27;k-&#x27;)</span><br><span class="line">            plt.text(-1, wradius[0]/1000, &#x27;CMB&#x27;)</span><br><span class="line">            plt.text(-1, max(wradius)/1000 - 670, &#x27;670&#x27;)</span><br><span class="line">            plt.plot([-1,-0.7], [max(wradius) / 1000 - 670, max(wradius) / 1000 - 670], &#x27;k-&#x27;)</span><br><span class="line"></span><br><span class="line">            if weigenfunction[len(weigenfunction) - 1] &lt; 0:</span><br><span class="line">                # plt.axhline(y=wradius[len(wradius)-1]/1000, xmin=weigenfunction[len(weigenfunction) - 1] / max(abs(np.array(weigenfunction))),</span><br><span class="line">                #             xmax=0, color=&#x27;k&#x27;, linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">                plt.plot([weigenfunction[len(weigenfunction) - 1] / max(abs(np.array(weigenfunction))), 0],</span><br><span class="line">                         [wradius[len(wradius)-1]/1000, wradius[len(wradius)-1]/1000], &#x27;k-&#x27;)</span><br><span class="line">            else:</span><br><span class="line">                # plt.axhline(y=wradius[len(wradius)-1]/1000, xmin=0,</span><br><span class="line">                 #            xmax=weigenfunction[len(weigenfunction) - 1] / max(abs(np.array(weigenfunction))),</span><br><span class="line">                 #            color=&#x27;k&#x27;, linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)\</span><br><span class="line">                plt.plot([0, weigenfunction[len(weigenfunction) - 1]]/ max(abs(np.array(weigenfunction))),</span><br><span class="line">                         [wradius[len(wradius)-1]/1000, wradius[len(wradius)-1]/1000], &#x27;k-&#x27;)</span><br><span class="line">        if ifaxis == 1:</span><br><span class="line">            plt.text(-1, wradius[len(wradius)-1]/1000, &#x27;0&#x27;)</span><br><span class="line"></span><br><span class="line">    else: # 不进行归一化</span><br><span class="line">        if ifreverse == False:</span><br><span class="line">            if if_radius_normalized == False:</span><br><span class="line">                plt.plot(np.array(weigenfunction), np.array(wradius)/1000, linecolorsytle, linewidth=linewidth)</span><br><span class="line">            else:</span><br><span class="line">                plt.plot(np.array(weigenfunction), np.array(wradius) / max(np.array(wradius)), linecolorsytle, linewidth=linewidth)</span><br><span class="line">        else:</span><br><span class="line">            if if_radius_normalized == False:</span><br><span class="line">                plt.plot(np.array(wradius) / 1000, np.array(weigenfunction),</span><br><span class="line">                     linecolorsytle, linewidth=linewidth)</span><br><span class="line">            else:</span><br><span class="line">                plt.plot(np.array(wradius) / max(np.array(wradius)), np.array(weigenfunction),</span><br><span class="line">                         linecolorsytle, linewidth=linewidth)</span><br><span class="line"></span><br><span class="line">        if ifaxis == 1:</span><br><span class="line">            plt.text(-1, wradius[0]/1000, &#x27;CMB&#x27;)</span><br><span class="line">            plt.text(-1, max(wradius)/1000 - 670, &#x27;670&#x27;)</span><br><span class="line">            plt.plot([-1,-0.7], [max(wradius) / 1000 - 670, max(wradius) / 1000 - 670], &#x27;k-&#x27;)</span><br><span class="line"></span><br><span class="line">            if weigenfunction[0] &lt; 0:</span><br><span class="line">                # plt.axhline(y=wradius[0]/1000, xmin=weigenfunction[0]/max(abs(np.array(weigenfunction))), xmax=0, color=&#x27;k&#x27;,</span><br><span class="line">                #            linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">                plt.plot([weigenfunction[0] / max(abs(np.array(weigenfunction))), 0],</span><br><span class="line">                         [wradius[0] / 1000, wradius[0] / 1000], &#x27;k-&#x27;)</span><br><span class="line">            else:</span><br><span class="line">                # plt.axhline(y=wradius[0]/1000, xmin=0, xmax=weigenfunction[0] / max(abs(np.array(weigenfunction))), color=&#x27;k&#x27;,</span><br><span class="line">                #            linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">                plt.plot([0, weigenfunction[0] / max(abs(np.array(weigenfunction)))],</span><br><span class="line">                         [wradius[0] / 1000, wradius[0] / 1000], &#x27;k-&#x27;)</span><br><span class="line"></span><br><span class="line">            if weigenfunction[len(weigenfunction) - 1] &lt; 0:</span><br><span class="line">                # plt.axhline(y=wradius[len(wradius)-1]/1000, xmin=weigenfunction[len(weigenfunction) - 1] / max(abs(np.array(weigenfunction))),</span><br><span class="line">                #             xmax=0, color=&#x27;k&#x27;, linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)</span><br><span class="line">                plt.plot([weigenfunction[len(weigenfunction) - 1] / max(abs(np.array(weigenfunction))), 0],</span><br><span class="line">                         [wradius[len(wradius)-1]/1000, wradius[len(wradius)-1]/1000], &#x27;k-&#x27;)</span><br><span class="line">            else:</span><br><span class="line">                # plt.axhline(y=wradius[len(wradius)-1]/1000, xmin=0,</span><br><span class="line">                 #            xmax=weigenfunction[len(weigenfunction) - 1] / max(abs(np.array(weigenfunction))),</span><br><span class="line">                 #            color=&#x27;k&#x27;, linestyle=&#x27;-&#x27;, linewidth=1, alpha=1)\</span><br><span class="line">                plt.plot([0, weigenfunction[len(weigenfunction) - 1]]/ max(abs(np.array(weigenfunction))),</span><br><span class="line">                         [wradius[len(wradius)-1]/1000, wradius[len(wradius)-1]/1000], &#x27;k-&#x27;)</span><br><span class="line">        if ifaxis == 1:</span><br><span class="line">            plt.text(-1, wradius[len(wradius)-1]/1000, &#x27;0&#x27;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2024/05/27/%E8%8B%B1%E8%AF%AD%E5%86%99%E4%BD%9C/" rel="next" title="英语写作">
+                <i class="fa fa-chevron-left"></i> 英语写作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/log.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZhiyuanShi1901" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:Shizhiyuan2001@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ShiZhiyuan_Seis" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/@user-bu6jx5vo6b" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/@dshi78066" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/shi-zhi-yuan-84" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.researchgate.net/profile/Zhiyuan-Shi-11" target="_blank" title="ResearchGate">
+                      
+                        <i class="fa fa-fw fa-ResearchGate"></i>ResearchGate</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/13800501" target="_blank" title="Bilibili">
+                      
+                        <i class="fa fa-fw fa-bilibili"></i>Bilibili</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BA%E7%9B%B8%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">模型创建相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Obspy-taup%E5%88%9B%E5%BB%BAnpz%E6%A8%A1%E5%9E%8B%E4%BB%A5%E4%BE%9BTaup%E7%BB%98%E5%9B%BE%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">使用Obspy.taup创建npz模型以供Taup绘图使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%B7%B2%E6%9C%89%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%B9%B3%E5%9D%87%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text">通过已有模型进行平均化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96MINEOS%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">2.3.</span> <span class="nav-text">读取MINEOS模型的相关内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86MINEOS%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BAnd%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.4.</span> <span class="nav-text">将MINEOS模型转化为nd模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%88%B6MINEOS%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.5.</span> <span class="nav-text">绘制MINEOS模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MINEOS%E8%BE%93%E5%87%BA%E5%86%85%E5%AE%B9%E8%AF%BB%E5%8F%96"><span class="nav-number">3.</span> <span class="nav-text">MINEOS输出内容读取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%AF%E5%9E%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="nav-number">3.1.</span> <span class="nav-text">振型文件读取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E5%9E%8B%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%86%85%E5%AE%B9%E7%BB%98%E5%9B%BE%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">振型文件读取内容绘图示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%BE%81%E5%87%BD%E6%95%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="nav-number">3.2.</span> <span class="nav-text">本征函数文件读取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SPECNM%E8%BE%93%E5%87%BA%E5%86%85%E5%AE%B9%E8%AF%BB%E5%8F%96"><span class="nav-number">4.</span> <span class="nav-text">SPECNM输出内容读取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%AF%E5%9E%8B%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="nav-number">4.1.</span> <span class="nav-text">振型相关文件的读取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%B9%B6%E7%BB%98%E5%88%B6%E6%9C%AC%E5%BE%81%E5%87%BD%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">读取并绘制本征函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%8D%95%E4%B8%AA%E6%9C%AC%E5%BE%81%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F"><span class="nav-number">4.2.1.</span> <span class="nav-text">绘制单个本征函数图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E6%9C%AC%E5%BE%81%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F"><span class="nav-number">4.2.2.</span> <span class="nav-text">绘制本征函数图像</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2022 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shi Zhiyuan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.0"></script>
+
+
+  
+
+</body>
+</html>

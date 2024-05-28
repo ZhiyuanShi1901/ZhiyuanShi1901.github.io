@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/22/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/12/22/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" itemprop="url">Mineos安装与使用</a></h1>
+                <a class="post-title-link" href="/2022/12/27/Mineos-%E7%A8%8B%E5%BA%8F%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A/" itemprop="url">Mineos 程序参数解释</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-22T21:57:37+08:00">2022-12-22</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-27T18:22:10+08:00">2022-12-27</time>
             
 
             
@@ -396,216 +396,1418 @@
       
         
           
-            <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://github.com/geodynamics/mineos">Mineos官方文档</a><br><a target="_blank" rel="noopener" href="https://www.eas.slu.edu/eqc/eqc_cps/TUTORIAL/SPHERICITY/MINEOS/HTML/index.html">Hermann_Mineos安装</a></p>
-<h1 id="Mineos简介"><a href="#Mineos简介" class="headerlink" title="Mineos简介"></a>Mineos简介</h1><p>这一部分是官方文档中的第一章，此处进行翻译。</p>
-<h2 id="本征函数系统"><a href="#本征函数系统" class="headerlink" title="本征函数系统"></a>本征函数系统</h2><p>minos_bran是Mineos软件包的核心程序。通过频率范围(fmin, fmax)和简正振型(nmin,nmax,lmin,lmax)，<br>minos_bran输出的大小取决于fmax，即设定的最高频率，以及输入模型的径向节点数量。如果设定的周期为6s，选择所有离散分支，则计算的本征函数和本征频率数量为：球振振型150,000个、环振振型100,000个。</p>
-<p>eigcon程序执行两个主要步骤。首先对本征函数进行重归一化，截断表格数据，只延伸到考虑的最深的地震深度。即输入的max deepth参数。<br>这种截断大大减小了本征函数文件的大小，加快了格林函数计算速度。此外，eigcon重构了输出的本征函数文件为二进制文件，相比于minos_bran输出的本征函数文件独立于计算机功能结构。</p>
-<p>最终的输出基于.eigen关系，指向磁盘中的本征函数文件。详细关系见[Mineos程序参数解释].eigen关系表。</p>
-<p>获取.site和.sitechan文件的方式：申请SEED文件，例如IRIS DMC，然后使用rdseed或者antelope（例如sd2de seed2db)转换得到这两个文件。</p>
-<p>antelope可以用来查看格林函数。</p>
-<h2 id="Mineos局限性"><a href="#Mineos局限性" class="headerlink" title="Mineos局限性"></a>Mineos局限性</h2><ul>
-<li><p>当前版本的Mineos使用与低频应用，而周期为几秒（即0.nHz）情况下不适用。</p>
-</li>
-<li><p>尝试制作衍射P波合成记录时发现内核振型（尤其是能量积分）不能够被准确计算。不确定在内核中添加节点是否能解决问题。已发表的成功事例表明：通过使用不同方式进行能量积分能够解决这个问题，这种方式不依赖于节点间距。</p>
-</li>
-</ul>
-<h1 id="官方安装包安装"><a href="#官方安装包安装" class="headerlink" title="官方安装包安装"></a>官方安装包安装</h1><p>Mineos安装分为如下几步，目前在第二步出现问题，尚未解决。</p>
-<h2 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h2><pre><code>./configure
-</code></pre>
-<p>直接使用这个命令会出现依赖环境问题。例如：<br>    check g77 … no</p>
-<p>使用如下命令可以避免出现这种问题。</p>
-<pre><code>./configure F77=gfortran FFLAGS=-O2
-</code></pre>
-<h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><p>使用命令：</p>
-<pre><code>make
-</code></pre>
-<p>出现错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">make[1]: 进入目录“/home/shizhiyuan/Documents/mineos-1.0.0”</span><br><span class="line">gfortran  -O2 -c -o minos_bran.o minos_bran.f</span><br><span class="line">minos_bran.f:254:32:</span><br><span class="line"></span><br><span class="line">       data tol/1.d-9/,itmax/15/,ichar/&#x27; s&#x27;,&#x27; t&#x27;,&#x27; s&#x27;,&#x27; c&#x27;/</span><br><span class="line">                                1</span><br><span class="line">错误: (1)处 DATA 语句中类型不兼容；试图从 CHARACTER(1) 转换到 INTEGER(4)</span><br><span class="line">make[1]: *** [Makefile:456：minos_bran.o] 错误 1</span><br><span class="line">make[1]: 离开目录“/home/shizhiyuan/Documents/mineos-1.0.0”</span><br><span class="line">make: *** [Makefile:253：all] 错误 2</span><br></pre></td></tr></table></figure>
-<p>DATA 语句中类型不兼容，目前未知解决方法。</p>
-<h1 id="使用Hermann网站提供的修改过minos-bran-f文件的安装包安装更为简便，且能够安装成功。"><a href="#使用Hermann网站提供的修改过minos-bran-f文件的安装包安装更为简便，且能够安装成功。" class="headerlink" title="使用Hermann网站提供的修改过minos_bran.f文件的安装包安装更为简便，且能够安装成功。"></a>使用Hermann网站提供的修改过minos_bran.f文件的安装包安装更为简便，且能够安装成功。</h1><p>环境：Centos8</p>
-<h2 id="依赖环境"><a href="#依赖环境" class="headerlink" title="依赖环境"></a>依赖环境</h2><p>Mineos依赖于:</p>
+            <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>minos内README文件<br><a target="_blank" rel="noopener" href="http://chengxua.com/lishi/Julian_simp.html">儒略日计算器</a><br><a target="_blank" rel="noopener" href="http://quickeditor.top/days.html">日序计算器</a></p>
+<h1 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h1><p>本文主要对mineos软件运行的程序进行了解与描述。<br>内容均源自程序内部解释与运行进程。<br>模型文件为DEMO中具有的PREM等地球模型。</p>
+<h1 id="minos-bran"><a href="#minos-bran" class="headerlink" title="minos_bran"></a>minos_bran</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>包含一个输入：<br>模型文件</p>
+<p>两个输出：<br>1、模型列表和简正振型属性摘要<br>2、本征函数的一个文件</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><h3 id="jcom"><a href="#jcom" class="headerlink" title="jcom"></a>jcom</h3><p>jcom &#x3D; n， 当n为以下值时：</p>
 <ul>
-<li>gcc</li>
-<li>g77</li>
-<li>f77</li>
-<li>gfortran</li>
+<li>1 radial modes 可能是指只有n值（径向振型）。</li>
+<li>2 toroidal modes 环型振型（环振振型）</li>
+<li>3 spheroidal modes 球型振型（球振振型）</li>
+<li>4 inner core toroidal modes 内核环型振型；因为外核为液态，理论上内核有独立的振型。</li>
 </ul>
-<p>一般安装gcc-gfortran即可。</p>
-<pre><code>sudo yum install gcc-gfortran
-</code></pre>
-<h2 id="configure-1"><a href="#configure-1" class="headerlink" title="configure"></a>configure</h2><pre><code>./configure F77=gfortran FFLAGS=-O2
-</code></pre>
-<h2 id="make-1"><a href="#make-1" class="headerlink" title="make"></a>make</h2><pre><code>make
-</code></pre>
-<p>成功的输出:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make  all-am</span><br><span class="line">make[1]: 进入目录“/home/shizhiyuan/Documents/hermann/MINEOS/mineos-1.0.0.rbh”</span><br><span class="line">make[1]: 离开目录“/home/shizhiyuan/Documents/hermann/MINEOS/mineos-1.0.0.rbh”</span><br></pre></td></tr></table></figure>
-
-<h2 id="make-check"><a href="#make-check" class="headerlink" title="make check"></a>make check</h2><p>不知道具体含义，运行后没有输出。可能是指检查某项内容。</p>
-<h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><pre><code>sudo make install
-</code></pre>
-<p>不用sudo可能出现没有权限创建新目录的情况。</p>
-<p>运行成功后的输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">make[1]: 进入目录“/home/shizhiyuan/Documents/hermann/MINEOS/mineos-1.0.0.rbh”</span><br><span class="line">test -z &quot;/usr/local/bin&quot; || /usr/bin/mkdir -p &quot;/usr/local/bin&quot;</span><br><span class="line">  /usr/bin/install -c &#x27;minos_bran&#x27; &#x27;/usr/local/bin/minos_bran&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;syndat&#x27; &#x27;/usr/local/bin/syndat&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;green&#x27; &#x27;/usr/local/bin/green&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;eigcon&#x27; &#x27;/usr/local/bin/eigcon&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;endi&#x27; &#x27;/usr/local/bin/endi&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;eigen2asc&#x27; &#x27;/usr/local/bin/eigen2asc&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;simpledit&#x27; &#x27;/usr/local/bin/simpledit&#x27;</span><br><span class="line">  /usr/bin/install -c &#x27;cucss2sac&#x27; &#x27;/usr/local/bin/cucss2sac&#x27;</span><br><span class="line">test -z &quot;/usr/local/bin&quot; || /usr/bin/mkdir -p &quot;/usr/local/bin&quot;</span><br><span class="line"> /usr/bin/install -c &#x27;scripts/creat_origin&#x27; &#x27;/usr/local/bin/creat_origin&#x27;</span><br><span class="line">test -z &quot;/usr/local/share/mineos&quot; || /usr/bin/mkdir -p &quot;/usr/local/share/mineos&quot;</span><br><span class="line"> /usr/bin/install -c -m 644 &#x27;doc/mineos.pdf&#x27; &#x27;/usr/local/share/mineos/mineos.pdf&#x27;</span><br><span class="line"> /usr/bin/install -c -m 644 &#x27;DEMO/DEMO.tar.gz&#x27; &#x27;/usr/local/share/mineos/DEMO.tar.gz&#x27;</span><br><span class="line"> /usr/bin/install -c -m 644 &#x27;DEMO/README&#x27; &#x27;/usr/local/share/mineos/README&#x27;</span><br><span class="line">make[1]: 离开目录“/home/shizhiyuan/Documents/hermann/MINEOS/mineos-1.0.0.rbh”</span><br></pre></td></tr></table></figure>
-
-<h2 id="补充内容"><a href="#补充内容" class="headerlink" title="补充内容"></a>补充内容</h2><p>运行.csh文件需要安装csh</p>
-<pre><code>sudo yum install csh
-</code></pre>
-<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><p>先将mineos文件内DEMO文件夹中的DEMO压缩包解压。当然更推荐命令操作：</p>
-<pre><code>cd DEMO
-gunzip -c DEMO.tar.gz | tar xf -  # 这一步使用操作界面完成，就是解压的步骤。
-
-export PATH=$HOME/cig/bin:$PATH # 添加变量？运行后没有输出。
-cd DEMO3
-./RUN_MINEOS.sh prem_noocean
-</code></pre>
-<p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br></pre></td><td class="code"><pre><span class="line">Step 1:  minos_bran runs for S modes .....................</span><br><span class="line">============== Program minos_bran ==================</span><br><span class="line"> input model file:</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> output file:</span><br><span class="line"> prem_noocean_S</span><br><span class="line"> eigenfunction file (output):</span><br><span class="line"> eprem_noocean_S</span><br><span class="line"> enter eps and wgrav</span><br><span class="line">   1.0000000000000000E-010   1.0000000000000000     </span><br><span class="line"> enter jcom (1=rad;2=tor;3=sph;4=ictor)</span><br><span class="line">           3</span><br><span class="line"> enter lmin,lmax,wmin,wmax,nmin,nmax</span><br><span class="line">           2        8000   0.0000000000000000        200.00000000000000                0           0</span><br><span class="line"></span><br><span class="line">real	0m1.441s</span><br><span class="line">user	0m1.433s</span><br><span class="line">sys	0m0.006s</span><br><span class="line">Step 2: minos_bran runs for T modes .....................</span><br><span class="line">============== Program minos_bran ==================</span><br><span class="line"> input model file:</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> output file:</span><br><span class="line"> prem_noocean_T</span><br><span class="line"> eigenfunction file (output):</span><br><span class="line"> eprem_noocean_T</span><br><span class="line"> enter eps and wgrav</span><br><span class="line">   1.0000000000000000E-010   1.0000000000000000     </span><br><span class="line"> enter jcom (1=rad;2=tor;3=sph;4=ictor)</span><br><span class="line">           2</span><br><span class="line"> enter lmin,lmax,wmin,wmax,nmin,nmax</span><br><span class="line">           2        8000   0.0000000000000000        200.00000000000000                0           0</span><br><span class="line"></span><br><span class="line">real	0m0.245s</span><br><span class="line">user	0m0.242s</span><br><span class="line">sys	0m0.003s</span><br><span class="line">Step 3: eigen for S .....................................</span><br><span class="line"> ============= Program eigcon ====================</span><br><span class="line">  spheroidals (3) or toroidals (2) or radial (1) or</span><br><span class="line">  inner core toroidals (4) modes</span><br><span class="line">           3</span><br><span class="line">  enter name of model file</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> enter max depth [km] : </span><br><span class="line">   1000.00000    </span><br><span class="line">  enter name of minos_bran output text file</span><br><span class="line"> prem_noocean_S</span><br><span class="line">  minos_bran output binary unformatted file name</span><br><span class="line"> eprem_noocean_S</span><br><span class="line">  enter path/dbase_name or dbase_name to store eigenfunctions:</span><br><span class="line"> test_S</span><br><span class="line"> ====================================================</span><br><span class="line"> eigcon: n,nstart,nrad =          185         119          67</span><br><span class="line"></span><br><span class="line">real	0m0.053s</span><br><span class="line">user	0m0.046s</span><br><span class="line">sys	0m0.007s</span><br><span class="line">Step 4: eigen for T .....................................</span><br><span class="line"> ============= Program eigcon ====================</span><br><span class="line">  spheroidals (3) or toroidals (2) or radial (1) or</span><br><span class="line">  inner core toroidals (4) modes</span><br><span class="line">           2</span><br><span class="line">  enter name of model file</span><br><span class="line"> ../models/prem_noocean.txt</span><br><span class="line"> enter max depth [km] : </span><br><span class="line">   1000.00000    </span><br><span class="line">  enter name of minos_bran output text file</span><br><span class="line"> prem_noocean_T</span><br><span class="line">  minos_bran output binary unformatted file name</span><br><span class="line"> eprem_noocean_T</span><br><span class="line">  enter path/dbase_name or dbase_name to store eigenfunctions:</span><br><span class="line"> test_T</span><br><span class="line"> ====================================================</span><br><span class="line"> eigcon: n,nstart,nrad =          185         119          67</span><br><span class="line"></span><br><span class="line">real	0m0.025s</span><br><span class="line">user	0m0.024s</span><br><span class="line">sys	0m0.000s</span><br><span class="line">Step 5: green functions evaluation .........................</span><br><span class="line"> ============= Program green ====================</span><br><span class="line"> enter path to db with sta &amp; stachan:</span><br><span class="line"> short</span><br><span class="line"> enter name of file within list of nmodes db:</span><br><span class="line"> db_list</span><br><span class="line"> enter input CMT file name:</span><br><span class="line"> china_cmt_event</span><br><span class="line"> min and max frequencies to be considered (mHz) : </span><br><span class="line">   10.0000000       260.000000    </span><br><span class="line"> enter # pts in greens fns .le.        30000  :</span><br><span class="line">        8000</span><br><span class="line"> enter Green functions output db file name:</span><br><span class="line"> green</span><br><span class="line"> ====================================================</span><br><span class="line"> green: Event: B011400F  2000  14 23:37:10.800 lat =   25.390, lon =   101.400</span><br><span class="line"> green:        source depth = 33.0 km</span><br><span class="line"> green: step =    1.000 sec, nsamples =   8000</span><br><span class="line"> green: # sph. modes in band =        2596   must be .le.       300000</span><br><span class="line"> green: # tor. modes in band =        2352   must be .le.       300000</span><br><span class="line"> green: Input dbname : short</span><br><span class="line"> green: Station: ALE      82.5033  -62.3500 , Channels: 3</span><br><span class="line"> green: Channel: #            1   ALE   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   ALE   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   ALE   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     72.020</span><br><span class="line"> green: Azimuth of Source   :     15.433</span><br><span class="line"> green:    1 ALE    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    2 ALE    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    3 ALE    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: ANMO     34.9502 -106.4602 , Channels: 3</span><br><span class="line"> green: Channel: #            1   ANMO  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   ANMO  LH2        10.0000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   ANMO  LH1        280.000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    114.439</span><br><span class="line"> green: Azimuth of Source   :    -27.665</span><br><span class="line"> green:    4 ANMO   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    5 ANMO   LH2     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    6 ANMO   LH1     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BAK      35.3441 -119.1043 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BAK   BHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BAK   BHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BAK   BHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    108.462</span><br><span class="line"> green: Azimuth of Source   :    -38.270</span><br><span class="line"> green:    7 BAK    BHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    8 BAK    BHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:    9 BAK    BHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BDFB    -15.6418  -48.0148 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BDFB  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BDFB  LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BDFB  LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    149.822</span><br><span class="line"> green: Azimuth of Source   :     66.283</span><br><span class="line"> green:   10 BDFB   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   11 BDFB   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   12 BDFB   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BILL     68.0651  166.4524 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BILL  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BILL  LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BILL  LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     57.417</span><br><span class="line"> green: Azimuth of Source   :   -103.266</span><br><span class="line"> green:   13 BILL   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   14 BILL   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   15 BILL   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BJT      40.0183  116.1679 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BJT   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BJT   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BJT   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     19.123</span><br><span class="line"> green: Azimuth of Source   :   -135.267</span><br><span class="line"> green:   16 BJT    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   17 BJT    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   18 BJT    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: BRVK     53.0581   70.2828 , Channels: 3</span><br><span class="line"> green: Channel: #            1   BRVK  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   BRVK  LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   BRVK  LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     36.158</span><br><span class="line"> green: Azimuth of Source   :    127.603</span><br><span class="line"> green:   19 BRVK   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   20 BRVK   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   21 BRVK   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: CASY    -66.2792  110.5364 , Channels: 3</span><br><span class="line"> green: Channel: #            1   CASY  LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   CASY  LHN        180.000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   CASY  LHE        270.000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     91.644</span><br><span class="line"> green: Azimuth of Source   :     -8.261</span><br><span class="line"> green:   22 CASY   LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   23 CASY   LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   24 CASY   LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: CCM      38.0557  -91.2446 , Channels: 3</span><br><span class="line"> green: Channel: #            1   CCM   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   CCM   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   CCM   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :    115.783</span><br><span class="line"> green: Azimuth of Source   :    -12.703</span><br><span class="line"> green:   25 CCM    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   26 CCM    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   27 CCM    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green: Station: TLY      51.6807  103.6438 , Channels: 3</span><br><span class="line"> green: Channel: #            1   TLY   LHZ        0.00000000       0.00000000    </span><br><span class="line"> green: Channel: #            2   TLY   LHN        0.00000000       90.0000000    </span><br><span class="line"> green: Channel: #            3   TLY   LHE        90.0000000       90.0000000    </span><br><span class="line"> green: Epicentral Distance :     26.308</span><br><span class="line"> green: Azimuth of Source   :   -175.417</span><br><span class="line"> green:   28 TLY    LHZ     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   29 TLY    LHN     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"> green:   30 TLY    LHE     2000  14 23:37:10.800    1.000  48000</span><br><span class="line"></span><br><span class="line">real	0m1.470s</span><br><span class="line">user	0m1.458s</span><br><span class="line">sys	0m0.010s</span><br><span class="line">Step 6: synthetic seismogram construction ..................</span><br><span class="line"> ============== Program syndat ==================</span><br><span class="line"> enter input CMT file name:</span><br><span class="line"> china_cmt_event</span><br><span class="line"> enter tensor type: 0 - moment, 1 - nodal plane 1, 2 - nodal plane 2</span><br><span class="line">           0</span><br><span class="line"> enter input dbname</span><br><span class="line"> green</span><br><span class="line"> enter output dbname</span><br><span class="line"> Syndat</span><br><span class="line"> Enter output units: 0 [nm/s/s] 1 [nm/s] 2 [nm]</span><br><span class="line">syndat: CMT solution:</span><br><span class="line">syndat: Event: B011400F 2000  14 23: 37: 10.8, lat/lon =    25.39   101.40,</span><br><span class="line">syndat: depth =   33.0 km, step =    1.000 sec, Duration =  -2.3 sec,</span><br><span class="line">syndat: M0 =   0.833E+25,</span><br><span class="line">syndat: comp:  -0.600E+24 -0.629E+25  0.689E+25 -0.185E+25  0.120E+24 -0.473E+25</span><br><span class="line">syndat: plane1:   27.  78.  -6. plane2:  118.  84.-168.</span><br><span class="line">syndat: Selected moment tensor components:</span><br><span class="line">syndat: -0.600E+24 -0.629E+25  0.689E+25 -0.185E+25  0.120E+24 -0.473E+25</span><br><span class="line"></span><br><span class="line">syndat: Synthetic waveforms: </span><br><span class="line">syndat:    1 ALE    LHZ         1.000    8000</span><br><span class="line">syndat:    2 ALE    LHN         1.000    8000</span><br><span class="line">syndat:    3 ALE    LHE         1.000    8000</span><br><span class="line">syndat:    4 ANMO   LHZ         1.000    8000</span><br><span class="line">syndat:    5 ANMO   LH2         1.000    8000</span><br><span class="line">syndat:    6 ANMO   LH1         1.000    8000</span><br><span class="line">syndat:    7 BAK    BHZ         1.000    8000</span><br><span class="line">syndat:    8 BAK    BHN         1.000    8000</span><br><span class="line">syndat:    9 BAK    BHE         1.000    8000</span><br><span class="line">syndat:   10 BDFB   LHZ         1.000    8000</span><br><span class="line">syndat:   11 BDFB   LHN         1.000    8000</span><br><span class="line">syndat:   12 BDFB   LHE         1.000    8000</span><br><span class="line">syndat:   13 BILL   LHZ         1.000    8000</span><br><span class="line">syndat:   14 BILL   LHN         1.000    8000</span><br><span class="line">syndat:   15 BILL   LHE         1.000    8000</span><br><span class="line">syndat:   16 BJT    LHZ         1.000    8000</span><br><span class="line">syndat:   17 BJT    LHN         1.000    8000</span><br><span class="line">syndat:   18 BJT    LHE         1.000    8000</span><br><span class="line">syndat:   19 BRVK   LHZ         1.000    8000</span><br><span class="line">syndat:   20 BRVK   LHN         1.000    8000</span><br><span class="line">syndat:   21 BRVK   LHE         1.000    8000</span><br><span class="line">syndat:   22 CASY   LHZ         1.000    8000</span><br><span class="line">syndat:   23 CASY   LHN         1.000    8000</span><br><span class="line">syndat:   24 CASY   LHE         1.000    8000</span><br><span class="line">syndat:   25 CCM    LHZ         1.000    8000</span><br><span class="line">syndat:   26 CCM    LHN         1.000    8000</span><br><span class="line">syndat:   27 CCM    LHE         1.000    8000</span><br><span class="line">syndat:   28 TLY    LHZ         1.000    8000</span><br><span class="line">syndat:   29 TLY    LHN         1.000    8000</span><br><span class="line">syndat:   30 TLY    LHE         1.000    8000</span><br><span class="line"></span><br><span class="line">real	0m0.006s</span><br><span class="line">user	0m0.002s</span><br><span class="line">sys	0m0.004s</span><br></pre></td></tr></table></figure>
-
-<h1 id="文件运行初步解析"><a href="#文件运行初步解析" class="headerlink" title="文件运行初步解析"></a>文件运行初步解析</h1><h2 id="运行1"><a href="#运行1" class="headerlink" title="运行1"></a>运行1</h2><pre><code>cd DEMO3
-./RUN_MINEOS.sh prem_noocean
-</code></pre>
-<p>输出如上<code>test</code>。</p>
-<p>以下为 <code>运行1</code> 运行之后前后对比。<br><img src="/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/%E5%B7%A6%E4%BE%A7%E4%B8%BA%E8%BF%90%E8%A1%8C%E5%90%8E%E7%9A%84%E5%8F%B3%E4%BE%A7%E4%B8%BA%E8%BF%90%E8%A1%8C%E5%89%8D%E7%9A%84.png"></p>
-<p>以下进行初步解析。</p>
-<p>据<code>minos_bran.f</code>文件</p>
-<p><em>Files prem_noocean_S. prem_noocean_T, eprem_noocean_S and eprem_noocean_T are output of the minos_bran program.</em></p>
-<p>minos_bran输出的文件为：<code>prem_noocean_S</code>,<code>prem_noocean_T</code>, <code>eprem_noocean_S</code>和<code>eprem_noocean_T</code>。</p>
-<p>以及</p>
-<p><em>The results are stored in test_S and test_T databases (eigenfunctions); in green database (Green functions); and in Syndat (synthetic seismograms).</em></p>
-<p><code>test_S.eigen.dat</code> 、<code>test_T.eigen.dat</code> 是eigenfunctions,即特征函数。但还有两个同名.eigen文件。 <code>green.wfdisc.dat</code>为格林函数，<code>Syndat.wfdisc.dat</code>为理论地震图。</p>
-<h3 id="第一步：运行minos-bran。S-modes-S振型？"><a href="#第一步：运行minos-bran。S-modes-S振型？" class="headerlink" title="第一步：运行minos_bran。S modes S振型？"></a>第一步：运行minos_bran。S modes S振型？</h3><p>输入为：<code>/models/prem_noocean.txt</code>，即prem模型，该模型将海洋处用上地壳填充。</p>
-<p>输出为： <code>prem_noocean_S</code>。</p>
-<p>特征函数文件：<code>eprem_noocean_S</code>。 </p>
-<pre><code>eps： 1e-10 
-wgrav： 1 
-jcom： 为3,表示为球型振型。
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入的参数：</span><br><span class="line">lmin 2</span><br><span class="line">lmax 8000</span><br><span class="line">wmin 0</span><br><span class="line">wmax 200</span><br><span class="line">nmin 0</span><br><span class="line">nmax 0</span><br></pre></td></tr></table></figure>
-
-<p>使用time命令运行minos_bran程序，返回程序运行时间。具体含义可参考Linux系统命令。<br><strong>注：使用time命令可以直接运行当前目录之外的程序。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">real	0m1.450s</span><br><span class="line">user	0m1.441s</span><br><span class="line">sys	0m0.007s</span><br></pre></td></tr></table></figure>
-
-<h3 id="第二步：运行minos-bran-Tmodes-T振型？"><a href="#第二步：运行minos-bran-Tmodes-T振型？" class="headerlink" title="第二步：运行minos_bran Tmodes T振型？"></a>第二步：运行minos_bran Tmodes T振型？</h3><p>屏幕上的输出大意：</p>
-<p>输入同样为<code>/models/prem_noocean.txt</code></p>
-<p>输出为： <code>prem_noocean_T</code></p>
-<p>特征函数文件：<code>eprem_noocean_T</code></p>
-<pre><code>eps： 1e-10
-wgrav： 1
-jcom： 2
-
-输入的参数：
-lmin 2
-lmax 8000
-wmin 0
-wmax 200
-nmin 0
-nmax 0
-
-输出？？？
-real	0m0.243s
-user	0m0.242s
-sys	0m0.000s
-</code></pre>
-<h3 id="第三步-S-model-eigen"><a href="#第三步-S-model-eigen" class="headerlink" title="第三步 S model-eigen"></a>第三步 S model-eigen</h3><p>运行的程序为eigcon，它的功能是：</p>
-<p><em>converts eigenfunction files (output from minos_bran) into .eigen relation containing only info about the upper most<br>dmax km  ( 0 &lt; dmax &lt; Rn), where, RO is radius of the free surface in km. This version works for all modes: spheroidal, toroidal, and radial.</em></p>
-<p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
-<p>这一步读取控制参数。</p>
-<pre><code>读取了输入文件的jcom。
-输入的模型文件名称：``prem_noocean.text``
-输入的最大深度（max depth，km）：``1000``
-minos_bran的输出文件： ``prem_noocean_S``
-minos_bran的输出无格式二进制文件：``eprem_noocean_S``
-</code></pre>
-<p>输入路径或名称，存储特征函数。其中，输入方式为两种：路径<code>path/dbase_name</code>或名称<code>dbase_name</code>。<br>创建的文件为：<code>dbase_name.eigen</code>， 创建的文件夹为<code>dbase_name.eigen.dat</code>，文件夹中有二进制文件<code>eigen</code>。</p>
-<p>在屏幕运行输出仅输出了三个参数：</p>
-<pre><code>n 185
-nstart 119
-nrad 67
-</code></pre>
-<p>结尾有：</p>
-<pre><code>real	0m0.046s
-user	0m0.043s
-sys	0m0.003s
-</code></pre>
-<h3 id="第四步-关于T的eigen，同3。"><a href="#第四步-关于T的eigen，同3。" class="headerlink" title="第四步 关于T的eigen，同3。"></a>第四步 关于T的eigen，同3。</h3><p>记录屏幕上输出的内容：</p>
-<pre><code>jcom 2
-输入的模型文件名称：prem_noocean.text
-输入的最大深度（max depth，km）：1000
-minos_bran的输出文件： prem_noocean_T
-minos_bran的输出无格式二进制文件：eprem_noocean_T
-路径：test_T
-
-n 185
-nstart 119
-nrad 67
-
-real	0m0.024s
-user	0m0.021s
-sys	0m0.003s
-</code></pre>
-<p>输出的<code>test_S.eigen</code> 和<code>test_S.eigen.dat</code>:<br><img src="/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/test_S%E6%96%87%E4%BB%B6%E5%A4%B9.png"><br><img src="/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/test_S.eigen.dat%E6%96%87%E4%BB%B6.png"></p>
-<h4 id="eigen文件格式"><a href="#eigen文件格式" class="headerlink" title="eigen文件格式"></a>eigen文件格式</h4><p>示例其中一行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0       20 S       19        347.66000          5.61667          3.99901        241.43201       67    7    7 f4      34272 test_S.eigen.dat     eigen  -1 04/15/24-20:16:12     </span><br></pre></td></tr></table></figure>
-<p>分别为：</p>
-<p>n， l， 振型类型， eigenfunction id， 本征频率mHz， 相速度， 群速度， 品质因子q，行数nrow， 列数ncol， 参数数no. of parameters, datatype， byte offset， 保存的文件目录，文件名， comment id， 文件创建时间load date</p>
-<h3 id="第五步：格林函数估值（evaluation）"><a href="#第五步：格林函数估值（evaluation）" class="headerlink" title="第五步：格林函数估值（evaluation）"></a>第五步：格林函数估值（evaluation）</h3><p>运行的程序为：green.f</p>
-<p> <em>green program computes for a single event and a given set of stations, the Green functions.</em><br>这个程序计算单个事件和一组给定的台站。</p>
-<p>输入db的路径，结合sta和stachan：short <strong>这两个文件一开始就有</strong><br>short是指<code>shrot.site</code>这个文件和<code>short.sitechan</code>文件，‘结合sta，stachan’可能是指这两个文件。</p>
-<p>文件内容如下：<br><img src="/Mineos%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/short%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png"></p>
-<p>输入nmodes列表的文件名 ：<code>db_list</code> <strong>这个文件一开始就有</strong></p>
-<p>db_list文件内容为：</p>
-<pre><code>test_S
-test_T
-</code></pre>
-<p>输入CMT文件名： <code>china_cmt_event</code> <strong>这个文件一开始就有</strong></p>
-<p>考虑的最小和最大频率（单位mHz）：10 260</p>
-<p>输入pts</p>
-<p>输入格林函数的输出文件名：<code>green</code>。这个程序输出的文件为：<code>green.wfdisc</code><br><strong>这个文件内容与屏幕输出不同，但是其包含的内容一致。均为台站、通道、时间等信息。</strong></p>
-<p>输出依然存在：</p>
-<pre><code>real	0m1.471s
-user	0m1.455s
-sys	0m0.015s
-</code></pre>
-<h3 id="第六步：构建理论地震图"><a href="#第六步：构建理论地震图" class="headerlink" title="第六步：构建理论地震图"></a>第六步：构建理论地震图</h3><p>使用的程序为：<code>syndat.f</code></p>
-<p><em>syndat program makes synthetic seismograms by convolutions of Green<br>functions with the seismic moment tensor of the choosen event.</em></p>
-<p><strong>选择的事件的地震矩张量和格林函数的卷积，得到理论地震图。</strong></p>
-<p>输入CMT文件名：<code>china_cmt_event</code><br>张量类型： 0</p>
-<p>输入dbname： green</p>
-<p>输出dbname：SYndat</p>
-<p>输出单位： 0 [nm&#x2F;s&#x2F;s] 1 [nm&#x2F;s] 2 [nm]<br>（可能并没有选择输出单位？屏幕输出仅为此。）</p>
-<p>该程序最后输出的文件为：<code>syndat.wfdisc</code>。</p>
-<p>也输出了<code>.origin</code>、<code>.site</code>、<code>.sitechan</code>文件。</p>
-<p>也有<code>Syndat.wfdisc.dat</code>，里面应该是理论地震图。</p>
-<p>之后需要运行将理论地震图转换为sac格式的程序。这一步为运行2的内容。</p>
-<h2 id="运行2"><a href="#运行2" class="headerlink" title="运行2"></a>运行2</h2><pre><code>cucss2sac Syndat Syndat_SAC
-</code></pre>
-<p>将理论地震图转化为sac格式，并保存在Syndat_SAC文件夹中。</p>
-<h2 id="运行3"><a href="#运行3" class="headerlink" title="运行3"></a>运行3</h2><pre><code>cucss2sac -a Syndat Syndat_ASC
-</code></pre>
-<p>转化为ASC格式，即ASCII文件。</p>
-<h2 id="运行4"><a href="#运行4" class="headerlink" title="运行4"></a>运行4</h2><pre><code>./RUN_ENDIAN.csh Syndat
-./RUN_ENDIAN.csh  green
-</code></pre>
-<p>把这两个文件波形从LOW_ENDIAN bytes转换到BIG_ENDIAN bytes</p>
-<p>如果有ANTELOPE软件，可以在SUN‘s平台直接看到结果（格林函数和理论地震图）</p>
-<pre><code>dbpick Syndat 
-dbpick green
-</code></pre>
-<p>目前还没有找到软件。</p>
-<h2 id="运行5"><a href="#运行5" class="headerlink" title="运行5"></a>运行5</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eigen2asc 0 0 6 8 test_S test_S_ASC</span><br></pre></td></tr></table></figure>
-
-<p>将eigen文件转化为asc文件。</p>
-<p>使用该方法转换的文件在<code>test_S_ASC</code>文件夹中，文件命名为：“S.radial order.angular order.ASC”</p>
-<p>第一行为文件信息，示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 (n)      20(l) S(mode type)       19 (eigenfunction id)       347.66000(frequency)        5.61667(phase velocity)          3.99901(group velocity)        241.43201(q)       67(行数nrow)    7(列数ncol)</span><br></pre></td></tr></table></figure>
-<p>分别为：<br>n, l, 振型模式, eigenfunction id， 频率（单位mhz）， 相速度， 群速度， q，行数nrow， 列数ncol</p>
-<p>其中，球型振型中的格式为：<br>(r, U, U_dr , V, V_dr , P, P_dr )</p>
-<p>环型振型为：<br>(r, W, W_dr )</p>
-<h1 id="BASH-运行文件（原DEMO3内RUN-MINEOS-csh，经过了修改）"><a href="#BASH-运行文件（原DEMO3内RUN-MINEOS-csh，经过了修改）" class="headerlink" title="BASH 运行文件（原DEMO3内RUN_MINEOS.csh，经过了修改）"></a>BASH 运行文件（原DEMO3内RUN_MINEOS.csh，经过了修改）</h1><ul>
-<li>增加了STEP0，生成.site和.sitechan文件。</li>
-<li>增加了STEP7，内容为将Syndat转化为SAC格式。</li>
-<li>修改了china_cmt_event为xinjiang_cmt_event。内容为另一个地震事件。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line">#</span><br><span class="line"># Example of the synthetic seismogram&#x27;s generation script.</span><br><span class="line">#</span><br><span class="line"># Usage: RUN_MINEOS.sh model_name</span><br><span class="line"># </span><br><span class="line"># Available model names for DEMO version:</span><br><span class="line"># prem_noocean  prem_ocean CPacific NRussia</span><br><span class="line">#----------------------------------------------------------</span><br><span class="line">if( $#argv != 1) then</span><br><span class="line">echo &quot; Usage: RUN_MIN.csh model_name&quot;</span><br><span class="line">exit</span><br><span class="line">endif</span><br><span class="line">alias cp cp</span><br><span class="line">alias rm rm</span><br><span class="line">alias mv mv</span><br><span class="line">set model=$1                # setup 1-D model name</span><br><span class="line"># check model name</span><br><span class="line">set flg=0</span><br><span class="line">foreach f (CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt)</span><br><span class="line">if($f == $1) set flg=1</span><br><span class="line">end</span><br><span class="line">if($flg == 0) then</span><br><span class="line">echo &quot;Model name $1 is wrong, allowed names are:&quot;</span><br><span class="line">echo &quot;CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt&quot;</span><br><span class="line">exit</span><br><span class="line">endif</span><br><span class="line">#----------------------------------------------------------------</span><br><span class="line"># Step 0 </span><br><span class="line"># make .site and .sitechan </span><br><span class="line">time simpledit stations short</span><br><span class="line">#---------------------------------------------------------------------</span><br><span class="line"># 1 run minos_bran for S mpde</span><br><span class="line"># n=0, f 0-200mhz</span><br><span class="line">echo &quot;Step 1:  minos_bran runs for S modes .....................&quot;</span><br><span class="line">echo &quot;============== Program minos_bran ==================&quot;</span><br><span class="line">if( -f $&#123;model&#125;_S) rm -f $&#123;model&#125;_S # 存在的话移除掉</span><br><span class="line">if( -f e$&#123;model&#125;_S) rm -f e$&#123;model&#125;_S</span><br><span class="line">time minos_bran &lt;&lt; EOF</span><br><span class="line">../models/$model.txt</span><br><span class="line">$&#123;model&#125;_S</span><br><span class="line">e$&#123;model&#125;_S</span><br><span class="line">1.0e-10 1</span><br><span class="line">3</span><br><span class="line">2 8000 0.0 200.0 0 0</span><br><span class="line">EOF</span><br><span class="line">#=========================================================</span><br><span class="line"># 2. run minos_bran program for fundamental T  mode,</span><br><span class="line"># where,  n=0, 0 &lt; f &lt;  0.2 Hz,</span><br><span class="line">#</span><br><span class="line">echo &quot;Step 2: minos_bran runs for T modes .....................&quot;</span><br><span class="line">echo &quot;============== Program minos_bran ==================&quot;</span><br><span class="line">if( -f $&#123;model&#125;_T) rm -f $&#123;model&#125;_T</span><br><span class="line">if( -f e$&#123;model&#125;_T) rm -f e$&#123;model&#125;_T</span><br><span class="line">time minos_bran &lt;&lt; EOF</span><br><span class="line">../models/$model.txt</span><br><span class="line">$&#123;model&#125;_T</span><br><span class="line">e$&#123;model&#125;_T</span><br><span class="line">1.0e-10 1</span><br><span class="line">2</span><br><span class="line">2 8000 0.0 200.0 0 0</span><br><span class="line">EOF</span><br><span class="line">#============================================================</span><br><span class="line"># 3. Convert minos_bran results to .eigen relation (S mode)</span><br><span class="line">#</span><br><span class="line">echo &quot;Step 3: eigen for S .....................................&quot;</span><br><span class="line">if( -f test_S.eigen) rm -rf test_S.*</span><br><span class="line">time eigcon &lt;&lt; EOF</span><br><span class="line">3</span><br><span class="line">../models/$model.txt</span><br><span class="line">1000</span><br><span class="line">$&#123;model&#125;_S</span><br><span class="line">e$&#123;model&#125;_S</span><br><span class="line">test_S</span><br><span class="line">EOF</span><br><span class="line">#============================================================</span><br><span class="line"># 4. Convert minos_bran results to .eigen relation (T mode)</span><br><span class="line">echo &quot;Step 4: eigen for T .....................................&quot;</span><br><span class="line">if( -f test_T.eigen) rm -rf test_T.*</span><br><span class="line">time eigcon &lt;&lt; EOF</span><br><span class="line">2</span><br><span class="line">../models/$model.txt</span><br><span class="line">1000</span><br><span class="line">$&#123;model&#125;_T</span><br><span class="line">e$&#123;model&#125;_T</span><br><span class="line">test_T</span><br><span class="line">EOF</span><br><span class="line">#=========================================================</span><br><span class="line"># 5. Evaluate green functions for given sitechan relation</span><br><span class="line">echo &quot;Step 5: green functions evaluation .........................&quot;</span><br><span class="line">if( -f green.wfdisc) rm -rf green.*</span><br><span class="line">time green &lt;&lt; EOF</span><br><span class="line">short</span><br><span class="line">db_list</span><br><span class="line">xinjiang_cmt_event</span><br><span class="line">10 260</span><br><span class="line">8000</span><br><span class="line">green</span><br><span class="line">EOF</span><br><span class="line">cp -p short.site green.site</span><br><span class="line">cp -p short.sitechan green.sitechan</span><br><span class="line"># create origin relation for data base green</span><br><span class="line">creat_origin xinjiang_cmt_event green</span><br><span class="line">#============================================================</span><br><span class="line"># 6. Synthetic data construction</span><br><span class="line">echo &quot;Step 6: synthetic seismogram construction ..................&quot;</span><br><span class="line">if( -f Syndat.wfdisc) rm -rf Syndat.*</span><br><span class="line">time syndat &lt;&lt; EOF</span><br><span class="line">xinjiang_cmt_event</span><br><span class="line">0</span><br><span class="line">green</span><br><span class="line">Syndat</span><br><span class="line">0</span><br><span class="line">EOF</span><br><span class="line"># convert Green functions to BIG_ENDIAN binary numerical storage</span><br><span class="line"># this is ANTELOPE requirement</span><br><span class="line"># $bin/wfendi 0 0 Syndat Syndat</span><br><span class="line"># copy .site, .sitechan relations into database Syndat</span><br><span class="line">cp -p short.site Syndat.site</span><br><span class="line">cp -p short.sitechan Syndat.sitechan</span><br><span class="line">creat_origin xinjiang_cmt_event Syndat</span><br><span class="line"># =====================================================</span><br><span class="line">#7.MAKE SAC TRANSFORM</span><br><span class="line">echo &quot;Step 7: SAC transform&quot;</span><br><span class="line">time cucss2sac Syndat Syndat_SAC</span><br><span class="line">echo &quot;over&quot;</span><br><span class="line">exit</span><br></pre></td></tr></table></figure></li>
+<h3 id="lmin-lmax-wmin-wmax-nmin-nmax"><a href="#lmin-lmax-wmin-wmax-nmin-nmax" class="headerlink" title="lmin lmax wmin wmax nmin nmax"></a>lmin lmax wmin wmax nmin nmax</h3><p><em>lmin - lmax defines the range of angular orders to be computed.<br>if jcom&#x3D;1 this is ignored. wmin - wmax defines the frequency range to be computed (in millihertz)<br>nmin-nmax specifies the branch numbers to be computed – nmin&#x3D;0 is the fundamental mode</em></p>
+<ul>
+<li>lmin lmax 定义角度阶数，l。具体内容见扭振振型与球振振型。jcom为1时忽略</li>
+<li>wmin wmax 定义计算的频率范围 单位：毫赫兹  振型存在一定的频率。频率与n和l组成的图像在（地震学、震源及地球结构概论图2.9-10所示）</li>
+<li>nmin nmax 指定计算的分支编号 nmin&#x3D;0时为基阶振型</li>
 </ul>
+<h3 id="eps-wgrav"><a href="#eps-wgrav" class="headerlink" title="eps wgrav"></a>eps wgrav</h3><p><em>eps controls the accuracy of the runge-kutta integration scheme. the relative accuracy of an eigen frequency will be 2-3 x eps.<br>it also controls the precision with which a root is found and the minimum relative separation of two roots with the same<br>angular order.it is safe to set eps&#x3D;1.d-7.</em></p>
+<p><em>wgrav is the frequency in millihertz above which gravitational<br>terms are neglected-this gives about a factor of 3 increase in speed.</em></p>
+<ul>
+<li>eps： 控制’’runge-kutta integration scheme’’的准确度。本征频率的相对准确度为2-3倍的eps。<br>它还控制找到根的精度以及具有相同角度顺序的两个根的最小相对距离。设置1e-7是安全的。<br>如果周期为5-10s，eps设置为10^(-12)-10^(-10)。</li>
+<li>wgrav：  频率（单位毫赫兹）超过该频率的引力项被忽略。 造成3倍的速度增长。<br>忽略的是重力项；<em>Love 1911年地球的径向振动中考虑了重力的影响，和修订了基阶振型周期为60min。</em>具体的影响还未学习到。</li>
+</ul>
+<h2 id="输入文件（模型文件）"><a href="#输入文件（模型文件）" class="headerlink" title="输入文件（模型文件）"></a>输入文件（模型文件）</h2><h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>模型文件为计算所需的模型，有两种格式：一种为表格数据类型，例如prem模型；另一种格式为多项式格式。</p>
+<h3 id="表格数据类型"><a href="#表格数据类型" class="headerlink" title="表格数据类型"></a>表格数据类型</h3><p>例：prem_noocean.txt</p>
+<h4 id="第一行：标题，限制为80字节长度"><a href="#第一行：标题，限制为80字节长度" class="headerlink" title="第一行：标题，限制为80字节长度"></a>第一行：标题，限制为80字节长度</h4><pre><code>PREM NO OCEAN MODEL: (    0.0000    0.000) anisotropic case
+</code></pre>
+<h4 id="第二行：（按照参数出现顺序排列）"><a href="#第二行：（按照参数出现顺序排列）" class="headerlink" title="第二行：（按照参数出现顺序排列）"></a>第二行：（按照参数出现顺序排列）</h4><pre><code>1    1.00000  1
+</code></pre>
+<ul>
+<li>ifanis 1表示各向异性模型（横向各向同性）；0表示各向同性。</li>
+<li>tref 物理频散校正使用的模型参考周期（单位s）；&lt;0表示无校正</li>
+<li>ifdeck 定义模型类型；1：模型表示为数据表格；0：模型表示为多项式</li>
+</ul>
+<h4 id="第三行："><a href="#第三行：" class="headerlink" title="第三行："></a>第三行：</h4><pre><code>185  33  66
+</code></pre>
+<ul>
+<li>N 模型节点？，N&lt;&#x3D;350，指模型表格行数，表示有N个点。</li>
+<li>nic ICB固态侧的索引？</li>
+<li>noc CMB流体侧的索引？</li>
+</ul>
+<h4 id="第四行-第N-3行：模型表格主体，每一行表示节点在半径r上的模型参数。"><a href="#第四行-第N-3行：模型表格主体，每一行表示节点在半径r上的模型参数。" class="headerlink" title="第四行-第N+3行：模型表格主体，每一行表示节点在半径r上的模型参数。"></a>第四行-第N+3行：模型表格主体，每一行表示节点在半径r上的模型参数。</h4><p>注意：间断面定义为相同半径的不同节点，即两个相邻节点半径相同，但是参数不同。</p>
+<pre><code>0. 13088.50 11262.20  3667.80   1327.7     84.6 11262.20  3667.80  1.00000
+</code></pre>
+<ul>
+<li>r 节点所在球体半径（单位m ），注意：minos_bran小数部分去尾，因此厚度&lt;1m的薄层没有意义。薄层会造成额外的界面？。 如果模型包含液态界面，整个液态界面必须为没有中间节点的单层。半径从0（索引为1）开始，在自由界面结束。从球心开始。</li>
+<li>rho 密度，单位kg&#x2F;m3</li>
+<li>vpv 垂向偏振P波速度，单位m&#x2F;s</li>
+<li>vsv 垂向偏振（极化）S波速度，单位m&#x2F;s</li>
+<li>qkappa 压缩Q（compressional Q）</li>
+<li>qshear 剪切波Q（shear Q）</li>
+<li>vph 水平偏振P波速度，单位m&#x2F;s</li>
+<li>vsh 水平偏振S波速度，单位m&#x2F;s</li>
+<li>eta 横向各向同性模型参数</li>
+</ul>
+<p>注意：如果模型是各向同性的且ifanis&#x3D;1（横向各向同性），则minos_bran读取时会这样处理第四行之后的数据：<br>vph &#x3D; vpv, vsh &#x3D; vsv,  eta &#x3D; 1,<br>格式：(f8.0, 3f9.2, 2f9.1, 2f9.2, f9.5)</p>
+<h3 id="模型类型为多项式类型时（ifdeck-0）"><a href="#模型类型为多项式类型时（ifdeck-0）" class="headerlink" title="模型类型为多项式类型时（ifdeck&#x3D;0）"></a>模型类型为多项式类型时（ifdeck&#x3D;0）</h3><h4 id="第三行：-暂无示例"><a href="#第三行：-暂无示例" class="headerlink" title="第三行： 暂无示例"></a>第三行： 暂无示例</h4><p>nreg 模型中区域的数量<br>nic ICB固态侧的索引？与表格数据类型相同<br>noc CMB流体侧的索引？<br>rx 多项式的归一化半径（normalizing radius） 单位km，通常是6371km。下文的归一化半径（normalized radius）应该为x&#x3D;r&#x2F;rx，</p>
+<h4 id="第四行：暂无示例"><a href="#第四行：暂无示例" class="headerlink" title="第四行：暂无示例"></a>第四行：暂无示例</h4><p>nlay r1到r2区域中使用的层数<br>r1 单位km<br>r2 单位km</p>
+<h4 id="第五行：第4-9或4-12层一般会重复nreg次。各项同性模型4-9行，各向异性模型为4-12行。"><a href="#第五行：第4-9或4-12层一般会重复nreg次。各项同性模型4-9行，各向异性模型为4-12行。" class="headerlink" title="第五行：第4-9或4-12层一般会重复nreg次。各项同性模型4-9行，各向异性模型为4-12行。"></a>第五行：第4-9或4-12层一般会重复nreg次。各项同性模型4-9行，各向异性模型为4-12行。</h4><p>每一行包含五个系数，4阶多项式系数为：a0，a1，a2，a3，a4，x&#x3D;r&#x2F;rx。P（x）&#x3D;a0+a1x+a2x^2+a3x^3+a4x^4。<br>一组5个（各向同性模型）或8个（各向异性模型）多项式用于差值模型参数：密度、速度等。作为第四行定义的区域内归一化半径的函数。</p>
+<ul>
+<li>第五行：密度rho的系数 (g&#x2F;cm3)</li>
+<li>第六行：vpv的系数 (km&#x2F;s)</li>
+<li>第七行：vsv的系数 (km&#x2F;s)</li>
+<li>第八行：qkappa的系数</li>
+<li>第九行：qshear的系数<br>下面三行各向异性模型中：</li>
+<li>第十行：vph的系数 (km&#x2F;s)</li>
+<li>第十一行：vsh的系数 (km&#x2F;s)</li>
+<li>第十二行：eta的系数</li>
+</ul>
+<p><strong>注意：</strong><br>模型创建时需要注意以下几点：</p>
+<ul>
+<li>ICB边界固态侧不能为索引2。因为计算时将其-1作为开始层。因此ICB边界索引必须大于2。</li>
+<li>模型间隔避免太大，即两行之间的半径差值不可太大，可能是由于插值问题导致的。</li>
+<li>严格按照上述格式(f8.0, 3f9.2, 2f9.1, 2f9.2, f9.5)进行创建，否则会导致.eigcon出错。</li>
+<li>前三行标题行格式严格按照Mineos。MODEL注意大写，不要小写，否则会造成寻找定位mode位置时错误。<br>例如：<code>(    0.0000    0.000)</code>中间多了<code>,</code>会出现错误。</li>
+</ul>
+<h2 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="模型列表"><a href="#模型列表" class="headerlink" title="模型列表"></a>模型列表</h3><p>一个ASCII文件，列出了模型和mode properties（振型属性）。</p>
+<p>例如：相速度（km&#x2F;s），频率，周期，群速度（km&#x2F;h），q，一个参数（动能与势能的比值-1）</p>
+<p>在DEMO3示例中，prem_noocean_S文件就是输出的模型列表。<br>它的列表有两个表格，第一个表格是输入模型的数据，即第一部分，<br>此即prem_noocean.txt内的数据，标题为：<br><code>PREM NO OCEAN MODEL: (    0.0000    0.000) anisotropic case                     ref per =   1.0 secs</code><br>表示为PREM 无海洋的模型，采样间隔1s。<br>表头为：<br><code>level    radius        rho         vpv         vph         vsv         vsh         eta         qmu         qkap</code></p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1         0.0    13088.50    11262.20    11262.20     3667.80     3667.80     1.00000       84.60     1327.70</span><br></pre></td></tr></table></figure>
+
+<p>第二个表格（第二部分）表头为：<br><code>integration precision =  0.1000E-09  root precision =  0.1000E-09  gravity cut off =  0.6283E-02 rad/s</code></p>
+<p><code>    mode        phs vel       w(mhz)          t(secs)      grp vel(km/s)        q             raylquo</code> </p>
+<p>integration precision对应参数eps，<br>该表格中的w对应的范围为0-200,但是最后一行超过了200,想必是取值时由于步长原因超出了一点点。</p>
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><h5 id="第一部分：模型表格"><a href="#第一部分：模型表格" class="headerlink" title="第一部分：模型表格"></a>第一部分：模型表格</h5><p>如果使用的是表格数据格式的模型，即上文中ifdeck&#x3D;1，则只是输入模型的拷贝，加入了索引，改变了参数列的排列顺序。<br>对于各向同性模型，执行了上文中表述的数据处理。<br>如果输入的模型为多项式格式，则通过插值转换为表格数据格式。<br>每一个区域程序构造nlay+1个半径步长相同节点。节点总数N&#x3D;nreg*（nlay+1）；</p>
+<ul>
+<li>1-5行 包含模型标题、参考周期tref、模型列表的表头和空行。无格式。</li>
+<li>6-（N+5）行 index、r、rho、vpv、vph、vsv、vsh、eta、qshear、qkappa，示例见上。<br>格式：(3x, i3, f12.1, 5f12.2, f12.5, 2f12.2)</li>
+<li>N+6&#x2F;N+11行 包含具有 Runge-Kutta 精度积分、<br>重力切断频率、空行和简正振型属性表标题（共6行）的文本消息。格式：自由格式</li>
+</ul>
+<h5 id="第二部分：振型属性"><a href="#第二部分：振型属性" class="headerlink" title="第二部分：振型属性"></a>第二部分：振型属性</h5><p>对于固定的径向阶数 n 和角度阶数 l，minos_bran计算本征函数<br>（单独存储）和标量参数（属性）：特征值（频率）、相位和群速度、<br>Q 以及动能与势能之比。这些标量参数存储在简正振型属性表中。<br>此表中的每一行（行）都给出了当前 n 和 l 的属性。<br>第一部分后面的行如下所示：<br>第(N+12)行到最后：</p>
+<ul>
+<li>norder 振型的径向阶数 n</li>
+<li>typeo 振荡的类型：<ul>
+<li>s 球振振型</li>
+<li>t 环振振型</li>
+<li>c 内核环振振型</li>
+</ul>
+</li>
+<li>lorder 振型的角阶数l</li>
+<li>phvel 相速度，单位:km&#x2F;s</li>
+<li>freq 频率（本征值） 单位：mHz</li>
+<li>per 周期，per&#x3D;1000&#x2F;freq 单位:s</li>
+<li>grvel 群速度 单位:km&#x2F;s</li>
+<li>Q 剪切波Q</li>
+<li>raylquo 动能与势能之比减1。<br>如果本征函数准确并且模型中有足够的径向节点允许正交精确完成，<br>则该比率应该很小（EPS 阶）。（对于强指数振型（如斯通利振型），<br>您可能会看到此参数有所下降。）</li>
+</ul>
+<p>格式：(i5, a2, i5, 6g16.7)</p>
+<h3 id="本征函数文件"><a href="#本征函数文件" class="headerlink" title="本征函数文件"></a>本征函数文件</h3><p>在DEMO3中输出的文件为fortran无格式二进制文件eprem_noocean_S。是一个二进制表达的本征函数。<br>这个文件是一个固定记录长度的二进制封装文件，封装类型很大程度上取决于编译器。为了<br>更加方便，eigcon程序将封装移除，并创建一个二进制文件，在不同语言和平台都能够读取。minos_bran程序使用一个write语句输出每一个本征函数。</p>
+<p>文件名为“none”时不再计算本征函数。</p>
+<p>这是一个固定记录长度的二进制文件，每个模式都有一个条目写为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">real*4 abuf(nvec)</span><br><span class="line">......</span><br><span class="line">write(ioeig) (abuf(i),i=1,nvec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>nvec：spheroidal modes（球型振型），值为：5+6<em>N；toroidal or radial modes（环型或径向振型），值为：5+2</em>N。</li>
+<li>abuf的前五个字为：n，l，w，Q和群速度Cg。剩余的包括：<ul>
+<li>toroidal modes（环型振型）：W（1..N）、 W’（1..N）</li>
+<li>球型振型：本征函数和其关于半径的偏导数 U(1..N),U’(1..N),V(1..N),V’(1..N),P(1..N)，P’(1..N)<ul>
+<li>U： 垂直球振振型分量（vertical spheroidal S）本征函数</li>
+<li>V: horizontal S component 水平S分量</li>
+<li>P：重力势</li>
+<li>W：其它振型的常用表示法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>woodhouse和dahlen（1978）表示W,W’,V,V’ 必须除以 sqrt(l*(l+1)).<br><strong>注：（A be devided by B 相当于 A&#x2F;B）</strong></p>
+<p>本征函数的归一化：</p>
+<ul>
+<li>归一化：<br>frequency<strong>2 * integral(rho<em>w</em>w<em>r</em>r) &#x3D; 1 for toroidal modes<br>frequency</strong>2 * integral(rho*(u<em>u+l</em>(l+1)<em>v</em>v)<em>r</em>r) &#x3D; 1 for spheroidal modes<br>模型经过归一化，密度（rho）为：5515 mg&#x2F;m*<em>3 &#x3D; 1；pi</em>g&#x3D;1<br>积分限为0到rn。W与rho为r的函数。</li>
+</ul>
+<p>g为重力常数，地球半径（rn&#x3D;6371000m）为1,归一化结果为：<br>acceleration normalisation（加速度归一化） &#x3D; pi<em>g</em>rhobar*rn</p>
+<p>velocity normalisation（速度归一化）     &#x3D; rn<em>sqrt(pi</em>g*rhobar)&#x3D; vn</p>
+<p>frequency normalization（频率归一化）    &#x3D; vn&#x2F;rn</p>
+<h2 id="运行内容"><a href="#运行内容" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input model file: ../models/模型名称</span><br><span class="line">output file: 输出的相应振型文件名称</span><br><span class="line">eigenfunction file (output):输出的相应振型二进制无格式文件名称，一般是上一个名称前面+e</span><br><span class="line">enter eps and wgrav：1e-10 10  </span><br><span class="line">enter jcom (1=rad;2=tor;3=sph;4=ictor)：3</span><br><span class="line">enter lmin,lmax,wmin,wmax,nmin,nmax：1 6000 0.0 166.0 0 0</span><br></pre></td></tr></table></figure>
+
+<h1 id="eigcon"><a href="#eigcon" class="headerlink" title="eigcon"></a>eigcon</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>将minos_bran的输出文件转换为.eigen，仅包含最上层dmax km ( 0 &lt; dmax &lt; Rn) 的信息。R0是自由界面半径（单位km）。<br>他能够运行于所有振型，自动读取输入文件的振型。</p>
+<p>输入路径或名称，存储本征函数。其中，输入方式为两种：路径path&#x2F;dbase_name或名称dbase_name。</p>
+<p>minos_bran输出的两个文件和模型文件一起被作为输入。<br><strong>eigcon renormalizes the eigen-functions and outputs them to a depth of 1000 km, in this example.</strong><br>这个程序对本征函数进行重归一化，输出在1000km的深度（这个参数可以在程序中设置，即enter max depth中设置。</p>
+<p>创建的文件为：dbase_name.eigen， 创建的文件夹为dbase_name.eigen.dat，文件夹中有二进制文件eigen。<br>这里输出的文件为test_S.eigen,命名的为test</p>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><h3 id="输入参数"><a href="#输入参数" class="headerlink" title="输入参数"></a>输入参数</h3><ul>
+<li>jcom 同minos_bran</li>
+<li>max_depth 输出的本征函数（单位km）的深度。<br>所有输出值只在区间（rn，rn-max_depth）内存在。rn是自由界面的半径（单位km）。<br>即：只保留地表与最大深度之间内的本征函数作为输出。</li>
+</ul>
+<h3 id="程序参数"><a href="#程序参数" class="headerlink" title="程序参数"></a>程序参数</h3><ul>
+<li>rn     : radius at surface  表面的半径</li>
+<li>wn     : frequency normalization 频率归一化？为什么只是一个参数呢？</li>
+<li>vn     : velocity normalisation  速度归一化？</li>
+<li>accn   : acceleration normalisation 加速度归一化</li>
+<li>n      : index of surface grid point 表面网格点索引</li>
+<li>nstart : index of lowest grid point 最低网格点索引</li>
+<li>nrad   : # of gridpoints of reduced eigenfunctions 简化本征函数的网格点？</li>
+</ul>
+<h2 id="输出文件-1"><a href="#输出文件-1" class="headerlink" title="输出文件"></a>输出文件</h2><p>有三个输出文件。关系列表<code>dbname.eigen</code>,一个文件夹<code>dbname.eigen.dat</code>,一个二进制文件<code>dbname.eigen.dat/eigen</code><br>其中二进制文件是存储在文件夹中的，因此用&#x2F;表示。即一个名称为<code>eigen</code>的文件。</p>
+<h3 id="dbname-eigen"><a href="#dbname-eigen" class="headerlink" title="dbname.eigen"></a>dbname.eigen</h3><p>这个列表格式在（原文表6.1）中描述。<br>每一行描述了单个本征函数的模态特性（modal properties），<br>并引用了<code>dbname.dat/eigen</code>文件中的数据段。<br>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 2 S 1 3233.67798 4.95166 6.38945 509.68240 67 7 7 f4  0 test_S.eigen.dat eigen -1 01/03/23-12:10:00</span><br></pre></td></tr></table></figure>
+
+<h3 id="dbname-eigen-dat-eigen"><a href="#dbname-eigen-dat-eigen" class="headerlink" title="dbname.eigen.dat&#x2F;eigen"></a>dbname.eigen.dat&#x2F;eigen</h3><p>包含段（segments）的二进制文件，每一个段存储单个本征振型（n，l）的归一化本征函数。<br>包含4字节长度的单词组成。<br>。大多数计算机体系结构有两种常见的字节顺序：<br>BIG_ENDIAN（直顺序 1-2-3-4）和LOW_ENDIAN（反向顺序 4-3-2-1）。<br>BIG_ENDIAN由SUN和RISC导向的平台使用，<br>LOW_ENDIAN由PC，VAX和DEC硬件使用。<br>eigcon自动检测字节顺序，并将文本字符串“t4”（BIG_ENDIAN）<br>或“f4”（LOW_ENDIAN）放入.eigen关系中的数据类型字段中。</p>
+<p>每一个字段逻辑分为2部分：头部和主体</p>
+<h3 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h3><p>这个部分的段存储模态特性（modal properties）的标量参数和归一化系数。<br>前7个word：</p>
+<ul>
+<li>n integer*4 本征振型径向阶数 n。必须与参考.eigen关系中的<code>norder</code>相同。</li>
+<li>l integer*4 角度阶数（harmonic degree） l。必须与参考关系中的<code>lorder</code>相同。</li>
+<li>w real<em>4 本征振型频率。单位rad&#x2F;s；w&#x3D;2</em>pi&#x2F;per。per是参考关系中的<code>period field</code>。</li>
+<li>q real<em>4 衰减表达中的指数项部分，即exp(-qt)。q&#x3D;0.5</em>w&#x2F;Q,rad&#x2F;sec。</li>
+<li>rn real*4 半径归一化系数，以m为单位的情况下，与模型的自由表面的半径相同。</li>
+<li>vn real<em>4 速度归一化系数。vn &#x3D; rn</em>(pi<em>G</em>rhon)^1&#x2F;2<ul>
+<li>G 引力常数</li>
+<li>rhon 密度归一化系数 5515kg&#x2F;m3</li>
+<li>wn 圆频率归一化系数 wn&#x3D;vn&#x2F;rn</li>
+</ul>
+</li>
+<li>an real<em>4 加速度归一化系数 an&#x3D;10^20&#x2F;(rhon</em>rn^4)</li>
+</ul>
+<h3 id="主体-word8-最后"><a href="#主体-word8-最后" class="headerlink" title="主体 word8-最后"></a>主体 word8-最后</h3><ul>
+<li>E(nrow, ncol) real*4 存储归一化本征函数的矩阵，括号内为行列数。<br>第一列为半径，其他列为本征函数。本征函数数量取决于模态（modal）类型。<ul>
+<li>球振振型 包含7列(r,U,U’,V,V’,P,P’)</li>
+<li>环振振型及其他 3列(r,W,W’)<br>本征函数的归一化见上文。</li>
+</ul>
+</li>
+</ul>
+<h2 id="运行内容-1"><a href="#运行内容-1" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spheroidals (3) or toroidals (2) or radial (1) orinner core toroidals (4) modes: 选择需要的即可。</span><br><span class="line">enter name of model file（输入模型的名称）：（上文中模型的名称）/模型路径/prem_noocean.txt</span><br><span class="line">enter max depth [km] （输入最大深度）:1000</span><br><span class="line">enter name of minos_bran output text file：输入上文minos_bran输出text文件的名称即可，即prem_noocean_S</span><br><span class="line">minos_bran output binary unformatted file name: 输入二进制无格式化文件名，即eprem_noocean_S</span><br><span class="line">enter path/dbase_name or dbase_name to store eigenfunctions(输入存放本征函数的路径或名称):test_S</span><br></pre></td></tr></table></figure>
+<p>之后运行结束。</p>
+<h2 id="运行过程中的信息"><a href="#运行过程中的信息" class="headerlink" title="运行过程中的信息"></a>运行过程中的信息</h2><h3 id="eigcon：-n-nstart-nrad-nnn-mmm-kkk"><a href="#eigcon：-n-nstart-nrad-nnn-mmm-kkk" class="headerlink" title="eigcon： n,nstart,nrad &#x3D; nnn, mmm, kkk"></a>eigcon： n,nstart,nrad &#x3D; nnn, mmm, kkk</h3><ul>
+<li>nnn 本征函数节点的总数量</li>
+<li>mmm 在使用深度截取本征函数之后的开始的节点数</li>
+<li>kkk 截取之后的终止节点数</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eigcon: n,nstart,nrad = 260  119 142</span><br></pre></td></tr></table></figure>
+<p>节点总数为260个，119-142为截取的节点数。</p>
+<h1 id="green"><a href="#green" class="headerlink" title="green"></a>green</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>这个程序计算单个事件和一组给定的台站的格林函数。<br>每个台站，需要输入指定的通道列表。这个程序能够选择计算不同的格林函数：<br>a) 只计算Z分量；b) 计算三分量，使用标准ZNE传感器；c) 计算三分量，使用12Z传感器。<br>建立台站信息需要创建一个数据集，包含<code>.site</code>和<code>.sitechan</code>两个文件。可以使用IRIS的rdseed或者从全球数据库中选择。<br>另一个输入包含环振振型和球振振型的.eigen关系，在下方的输入一行中提到。</p>
+<p>输入：db_list文件，内容为上面eigcon输出的文件列表，不带后缀名。</p>
+<p>输出：名为green的.wfdisc文件等。每个传感器有六个格林函数</p>
+<p><code>.sitechan</code>文件决定那些台站和通道用于构建格林函数。通道方向（位置）在<code>.sitechan</code>文件中，台站方向（位置）在<code>.site</code>文件中。这两个文件需要预处理。</p>
+<p>另一个预处理文件为<code>db_list</code>，包含所有eigenfunction文件。在测试中为eigcon输出的文件，即：test_S和test_T。</p>
+<h2 id="输入参数-1"><a href="#输入参数-1" class="headerlink" title="输入参数"></a>输入参数</h2><h3 id="fmin-fmax"><a href="#fmin-fmax" class="headerlink" title="fmin fmax"></a>fmin fmax</h3><p>定义输入本征函数数据集中选择的频率范围。忽略所有频率超过范围的振型。</p>
+<h3 id="nsamples"><a href="#nsamples" class="headerlink" title="nsamples"></a>nsamples</h3><p>理论地震图中的样本（这里应该是指地震图中的采样点数量）数量，所有理论地震图从震源时间开始。</p>
+<h2 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h2><h3 id="in-dbname-site-sitechan文件"><a href="#in-dbname-site-sitechan文件" class="headerlink" title="in_dbname .site .sitechan文件"></a>in_dbname .site .sitechan文件</h3><p>文件介绍见simpledit程序。<br>使用这些关系文件，green程序为每个台站定义一定数量的通道组，<br>每一个组有两种情况：一种是包含独立的Z分量通道；或是三通道分量。<br>在分组之前，green程序按照(sta,chan)字段对.sitechan文档进行排序，<br>并删除所有重复行。注意：.sitechan关系文件中的chan字段是标准SEED格式的三字符的通道名称，详见台站数据格式。</p>
+<h3 id="db-list"><a href="#db-list" class="headerlink" title="db_list"></a>db_list</h3><p><strong>This file allows joining an unlimited number of eigcon outputs for spheroidal, toroidal, or radial modes. The single requirement is that intersection between these files is null. Each desired eigenfunction must be present and unique in some eigcon output.</strong><br>此文档允许为球振振型、环振振型或径向振型（radial）连接无限数量的eigcon输出。<br>要求：这些文档之间的交集为null，每个的本征函数必须存在并在eigcon的输出中是唯一的。</p>
+<h3 id="cmt-event"><a href="#cmt-event" class="headerlink" title="cmt_event"></a>cmt_event</h3><p>包含一行数据，参考[CMT .ndk与衍生数据格式]</p>
+<h2 id="输出文件-2"><a href="#输出文件-2" class="headerlink" title="输出文件"></a>输出文件</h2><h3 id="wfdisc文件"><a href="#wfdisc文件" class="headerlink" title=".wfdisc文件"></a>.wfdisc文件</h3><p>内部每一行的格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALE LHZ 947893030.80000 1 18 2000014 947941029.80000 48000 1.0000000 1.000000 20.000000 -   g f4 - green.wfdisc.dat                                                 g.00001                                   0       -1 01/03/23-12:10:00</span><br></pre></td></tr></table></figure>
+<p>二进制文件包含六个格林函数，按照顺序对应于张量分量：Mrr，Mθθ，Mφφ，Mrθ，Mrφ，Mθφ，总长度：nsamp</p>
+<h3 id="wfdisc-dat文件"><a href="#wfdisc-dat文件" class="headerlink" title=".wfdisc.dat文件"></a>.wfdisc.dat文件</h3><p>内部存在对应通道数量的文件。</p>
+<h2 id="运行内容-2"><a href="#运行内容-2" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enter path to db with sta &amp; stachan（输入包含台站等信息的文件路径）:.site和.sitechan的文件名。输入文件名即可。示例为short。</span><br><span class="line">enter name of file within list of nmodes db: dblist 由eigcon程序得到的文件列表。即存放本征函数的路径名列表。示例为db_list</span><br><span class="line">enter input CMT file name(输入CMT文件名称):china_cmt_event</span><br><span class="line">min and max frequencies to be considered (mHz) （需要考虑的频率范围）:10 260</span><br><span class="line">enter # pts in greens fns .le.        30000  （输入格林fns的pts？？？小于30000）: 8000</span><br><span class="line">enter Green functions output db file name（输出文件名）:green</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出信息"><a href="#输出信息" class="headerlink" title="输出信息"></a>输出信息</h2><h3 id="sph-modes-in-band-nnn-must-be-le-meig"><a href="#sph-modes-in-band-nnn-must-be-le-meig" class="headerlink" title="sph. modes in band &#x3D;  nnn   must be .le.  meig"></a>sph. modes in band &#x3D;  nnn   must be .le.  meig</h3><ul>
+<li>nnn 所有输入数据集的球振振型的总数。</li>
+<li>meig 允许的最大数量（max allowed number）的球振振型，是一个限定值，限制nnn的数量。<br>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sph. modes in band = 1918 must be .le. 300000</span><br></pre></td></tr></table></figure>
+此时需要修改green.h中的信息。修改后删除&#x2F;usr&#x2F;local&#x2F;bin中与mineos相关的程序，重新编译安装（最好使用原版。</li>
+</ul>
+<h3 id="tor-modes-in-band-nnn-must-be-le-meig"><a href="#tor-modes-in-band-nnn-must-be-le-meig" class="headerlink" title="tor. modes in band &#x3D;  nnn   must be .le.  meig"></a>tor. modes in band &#x3D;  nnn   must be .le.  meig</h3><p>同上，但是是环振振型。</p>
+<h3 id="cmt-event文件：事件信息"><a href="#cmt-event文件：事件信息" class="headerlink" title="cmt_event文件：事件信息"></a>cmt_event文件：事件信息</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Event: evid  date&amp;time lat =  ±dd.ddd, lon = ±ddd.ddd</span><br><span class="line">        source depth = ddd.d km</span><br><span class="line">step = d.ddd sec, nsamples =  ddddd</span><br></pre></td></tr></table></figure>
+<p>第一行为事件信息数据； 第二行为时间深度； 第三行为格林函数的时间步长和采样点数量。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Event: B011400F  2000  14 23:37:10.800 lat =   25.390, lon =   101.400</span><br><span class="line">       source depth = 33.0 km</span><br><span class="line">step =    1.000 sec, nsamples =   8000</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入的-site和-sitechan文件名"><a href="#输入的-site和-sitechan文件名" class="headerlink" title="输入的.site和.sitechan文件名"></a>输入的.site和.sitechan文件名</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input dbname : xxxxx</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input dbname : short</span><br></pre></td></tr></table></figure>
+
+<h3 id="台站信息"><a href="#台站信息" class="headerlink" title="台站信息"></a>台站信息</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Station: code lat lon , Channels: nnn</span><br></pre></td></tr></table></figure>
+<p>台站码、位置坐标、选择的传感器组的通道数量</p>
+<h3 id="通道信息"><a href="#通道信息" class="headerlink" title="通道信息"></a>通道信息</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Channel: #  nnn code chan hang vang</span><br></pre></td></tr></table></figure>
+<ul>
+<li>nnn current number in the group 当前组中通道的编号,这个编号可能只是一个表示不同分量的标号。</li>
+<li>code 台站码</li>
+<li>chan hang vang 通道码、以及对应的水平角和垂直角</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Channel: # 1   BDFB  LHZ  0.00000000   0.00000000 </span><br><span class="line">Channel: # 2   BDFB  LHN  0.00000000   90.0000000    </span><br><span class="line">Channel: # 3   BDFB  LHE  90.0000000   90.0000000   </span><br></pre></td></tr></table></figure>
+<h3 id="震中距"><a href="#震中距" class="headerlink" title="震中距"></a>震中距</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Epicentral Distance :  ddd.ddd</span><br></pre></td></tr></table></figure>
+<p>可以得到台站的震中距</p>
+<h3 id="震源方位角"><a href="#震源方位角" class="headerlink" title="震源方位角"></a>震源方位角</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Azimuth of Source : ddd.ddd</span><br></pre></td></tr></table></figure>
+<p>台站到震源的方位角。</p>
+<h3 id="格林函数的"><a href="#格林函数的" class="headerlink" title="格林函数的"></a>格林函数的</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nnn code chan date&amp;time step mmm</span><br></pre></td></tr></table></figure>
+<ul>
+<li>nnn 通道索引。范围为1-通道总数，是这个通道在这个.sitechan文件中的索引。</li>
+<li>code 台站名</li>
+<li>chan 通道码</li>
+<li>date&amp;time 发震时间</li>
+<li>step 格林函数采样时间间隔，单位s</li>
+<li>mmm 六个格林函数块的采样点总数，采样点数 nsamples*6<br>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13 BILL LHZ 2000 14 23:37:10.800 1.000  48000</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="syndat-f"><a href="#syndat-f" class="headerlink" title="syndat.f"></a>syndat.f</h1><h2 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h2><p>构建理论地震图使用的程序。选择的事件的地震矩张量和格林函数的卷积，得到理论地震图。<br>最终输出的文件为Syndat.wfdisc.dat，内部为理论地震图。</p>
+<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><h3 id="plane-输入张量类型"><a href="#plane-输入张量类型" class="headerlink" title="plane 输入张量类型"></a>plane 输入张量类型</h3><ul>
+<li>0 moment 张量分量直接从cmt_file中获取</li>
+<li>1 nodal plane 1 即从节面1（cmt文件中的倒数6-4个数据）获取角度数据及标量距M0计算矩张量分量</li>
+<li>2 nodal plane 2 从节面2获取相应数据计算，同上。</li>
+</ul>
+<h3 id="datatype-数据类型"><a href="#datatype-数据类型" class="headerlink" title="datatype 数据类型"></a>datatype 数据类型</h3><ul>
+<li>0 输出的地震波形为加速度地震图，单位nm&#x2F;s2</li>
+<li>1 输出速度图，单位nm&#x2F;s</li>
+<li>2 输出位移图，单位nm</li>
+</ul>
+<h2 id="输入文件-1"><a href="#输入文件-1" class="headerlink" title="输入文件"></a>输入文件</h2><h3 id="输入格林函数文件"><a href="#输入格林函数文件" class="headerlink" title="输入格林函数文件"></a>输入格林函数文件</h3><p>即green程序输出的.wfdisc关系文件。</p>
+<h2 id="输出文件-3"><a href="#输出文件-3" class="headerlink" title="输出文件"></a>输出文件</h2><p>地震图文件，可以通过程序cucss2sac转化为sac格式的地震图。</p>
+<h2 id="运行内容-3"><a href="#运行内容-3" class="headerlink" title="运行内容"></a>运行内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enter input CMT file name(输入CMT文件名称)：示例为china_cmt_event</span><br><span class="line">enter tensor type(输入张量类型)：0-moment；1-nodal plane1；2-nodal plane2</span><br><span class="line">enter input dbname(输入文件的dbname)：上文格林函数程序运行的输出名。即green</span><br><span class="line">enter output dbname（输出文件的dbname）：设置输出文件名，可以设置为syndat</span><br><span class="line">Enter output units（输入输出单位）： 0 [nm/s/s] 1 [nm/s] 2 [nm]</span><br></pre></td></tr></table></figure>
+
+<h1 id="cucss2sac"><a href="#cucss2sac" class="headerlink" title="cucss2sac"></a>cucss2sac</h1><h2 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h2><p>将理论地震图转化为其他格式的数据。例如sac格式和asc格式（ASCII）。</p>
+<h2 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h2><p>cucss2sac是为了解决IRIS css2sac中的bug而特别为mineos设计的。它并不是标准css2sac的平替，例如：cucss2sac仅支持CSS3.0架构和如下两种CSS输入二进制数据格式：</p>
+<ul>
+<li>“t4”(BIG_ENDIAN, single precision floating point)</li>
+<li>“f4”(LOW_ENDIAN, single precision floating point)<br>cucss2sac转换CSS二进制数据，不进行校正和修改。在Mineos中，它用于格林函数和理论地震图格式转化。</li>
+</ul>
+<p>一个CSS数据集名称db_name必须至少包含一个db_name.wfdisc文件，包含波形的CSS格式信息。并且需要包含数据集：.origin和.site关系列表（文件db_name.origin db_name.site)来获取完全的SAC头信息。</p>
+<ul>
+<li>.origin文件 包含事件位置信息</li>
+<li>.site文件 包含台站位置信息</li>
+</ul>
+<h2 id="生成的SAC文件"><a href="#生成的SAC文件" class="headerlink" title="生成的SAC文件"></a>生成的SAC文件</h2><p>如果在数据集中.origin出现，cucss2sac只使用这个文件的第一行。在ASCII输出的情况下，所有的参数符合ASCII头信息–文件的前三行。例如一个理论地震图的输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">EVENT: 2000(014)-23:37:10.800 947893030.80000 25.3900 101.4000 33.0000</span><br><span class="line">STATION: ALE LHE 82.5033 -62.3500 0.0000</span><br><span class="line">DATA: 2000(014)-23:37:10.800 947893030.80000 8000 1.000000</span><br><span class="line"></span><br><span class="line">0.0000000E+00 5.7025738E+00</span><br><span class="line">1.0000000E+00 1.9508668E+00</span><br><span class="line">2.0000000E+00 -4.1160989E+00</span><br><span class="line">3.0000000E+00 -4.1094885E+00</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">7.9970000E+03 1.5211651E+01</span><br><span class="line">7.9980000E+03 2.7408613E+01</span><br><span class="line">7.9990000E+03 3.5795624E+01</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>EVENT：包含发震事件（origin time）（human and epoch） 纬度(deg) 经度 震源深度(km)</li>
+<li>STATION：台站名，通道码，纬度，经度，深度&#x3D;0</li>
+<li>DATA：波形开始时间（waveform starting time）（human and epoch），采样点数量，采样间隔（sec）</li>
+<li>数据体：为两列，第一列为相对波形开始的时间（sec），第二列为波形点的值，按照选择有nm（位移），nm&#x2F;s（速度），nm&#x2F;s&#x2F;s（加速度），取决于生成地震图时的选择。</li>
+</ul>
+<p>如果不需要头部信息，使用-n。</p>
+<h2 id="生成的ASCII文件"><a href="#生成的ASCII文件" class="headerlink" title="生成的ASCII文件"></a>生成的ASCII文件</h2><p>输出的ASCII文件与SAC不同。头部文件相同，但是数据不同。是一个7列的数据表格。第一列为相对时间，剩下6列为选择的格林函数分量–垂直或一些水平方向。(G rr , G θθ , G φφ , G rθ , G rφ , G θφ )<br>分量的结束和syndat程序中地震矩张量分量Mij的阶数相同，因此相对理论地震图S：</p>
+<p>S&#x3D;10E−18*sum（Gij Mij）</p>
+<p>其中，Mij单位为dyne*cm， ij&#x3D;rr，θθ，φφ, rθ, rφ, θφ</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code>cucss2sac [-a [-n]] db_name 输出的sac文件路径的名称
+</code></pre>
+<p>[]内的内容：</p>
+<ul>
+<li><p>无，输出sac文件</p>
+</li>
+<li><p>-a 输出ASC文件</p>
+</li>
+<li><p>-n 按照ASCII表格表头输出，必须和-a一起使用。</p>
+</li>
+<li><p>dbname：该文件必须包括.wfdisc;.origin;.site文件，才能完成SAC标题的构建。这个文件为之前green函数生成的三个文件。</p>
+</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cucss2sac Syndat Syndat_SAC</span><br><span class="line">cucss2sac green green_SAC</span><br><span class="line">cucss2sac -a Syndat Syndat_ASC</span><br><span class="line">cucss2sac -a -n Syndat Syndat_ASC_NOHEADER</span><br></pre></td></tr></table></figure>
+
+<h1 id="eigen2asc"><a href="#eigen2asc" class="headerlink" title="eigen2asc"></a>eigen2asc</h1><h2 id="简介-5"><a href="#简介-5" class="headerlink" title="简介"></a>简介</h2><p>将本征函数的.eigen文件转化为asc文件。</p>
+<h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>eigen2asc功能转换部分或者全部.eigen关系到一系列ASCII文件。程序eigen2sac在db_name.eigen文件中寻找所有符合振型参数n，l的本征函数：其中，nmin&lt;n&lt;nmax,lmin&lt;l&lt;lmax。并且转换本征函数到ASCII文件。输出文件在out_dir。每一个输出文件包含头部信息和文件内容。<br>头部信息：一行包含.eigen关系的前10个字段，见表6.1（mineos官方手册）。选项 -n 包含头部输出。数据体为三列（包含径向、环型振型（radial toroidal modes））或者七列（球型振型）表格。第一列为半径（单位m），其他列包含本征函数和他们关于半径的导数-U，U‘，V，V’，P，P‘(球型振型)和W，W‘(其他振型)。更多内容见章节4.1（即上面的cucss2sac描述）。输出文件名格式为：X.NNNNNNN.MMMMMMM.ASC；</p>
+<p>X：S球型振型，T环型振型。<br>nnnnnnn：数字n<br>mmmmmmm：数字l。</p>
+<h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><pre><code>eigen2asc nmin nmax lmin lmax db_name out_dir
+</code></pre>
+<ul>
+<li>nmin, nmax - mininal and maximal values of the radial mode number n（径向振型数n）</li>
+<li>lmin, lmax - mininal and maximal values of the lateral mode number l（l）</li>
+<li>db_name    - data base name, must include .eigen relation;（.eigen文件）</li>
+<li>out_dir    - output directory for ASCII files（输出ASCII文件路径）</li>
+</ul>
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><pre><code>eigen2asc 0 0 6 8 test_S test_S_ASC
+eigen2asc 0 1 2 500 test_S Eigen_S_ASC
+eigen2asc -n 0 1 2 500 test_S Eigen_S_no_headers_ASC
+</code></pre>
+<h1 id="endi"><a href="#endi" class="headerlink" title="endi"></a>endi</h1><h2 id="简介-6"><a href="#简介-6" class="headerlink" title="简介"></a>简介</h2><p>In-place file swapping with fixed width</p>
+<h2 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h2><p><em>This utility is used when you transfer binary files of<br>.wfdisc or .eigen relations to a platform with a<br>different byte order. The utility changes the byte<br>order from BIG_ENDIAN to LOW_ENDIAN and vice versa.<br>endi sequentially reads the file from the list<br>file1 [ file2 … filen] into memory as an unsigned<br>character string, swaps sequential groups of nw<br>bytes long starting from the beginning of the file,<br>and stores the swapped data<br>into the same place as before (swapping in-place).<br>If the last group has a length less than nw,<br>it stays unswapped.</em></p>
+<p>这个程序用于转换二进制文件</p>
+<p>这个程序改变byte order，从BIG_ENDIAN到LOW_ENDIAN，反之亦然。<br>endi以无符号character string类型顺序读取file1,file2 … 到内存中，交换</p>
+<h2 id="运行-2"><a href="#运行-2" class="headerlink" title="运行"></a>运行</h2><pre><code>endi nw file1 [file2 ... filen]
+</code></pre>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p>w.00001和w.00002都是来源于在PC上产生的一些.wfdisc关系二进制real*4数据文件。这些文件<br><em>These files have internal LOW_ENDIAN data representation created, e.g., by a direct<br>access FORTRAN WRITE statement.</em></p>
+<pre><code>endi 4 w.00001 w.00002
+</code></pre>
+<p>we change the order of 4-byte words to BIG_ENDIAN for transferring these files on a computer with BIG_ENDIAN byte order, e.g., a SUN Ultra machine, where we may use a direct access READ statement to read data as real*4 variables.</p>
+<h1 id="simpledit"><a href="#simpledit" class="headerlink" title="simpledit"></a>simpledit</h1><h2 id="简介-7"><a href="#简介-7" class="headerlink" title="简介"></a>简介</h2><p>从一个输入的ASCII文件创建.site和.sitechan CSS关系</p>
+<h2 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h2><p>将手动创建的具有台站和通道信息的无格式ASCII文件 ascii_file 转换为 CSS3.0 db_name.site和db_name.sitechan关系列表（文件）。 db_name来自于命令行，是数据文件的名称。<br>对于真实数据的另一种创建方法：使用IRIS的rdseed程序创建。<br>注意，CSS格式定义严格，不要人工创建.site和.sitechan文件，这可能造成数值格式错误，造成mineos程序崩溃。<br>对于大量的台站数据，更好的解决方式是写一个直接创建ascii_file或者.site .sitechan文件的程序。</p>
+<h2 id="需要预处理的ASCII文件"><a href="#需要预处理的ASCII文件" class="headerlink" title="需要预处理的ASCII文件"></a>需要预处理的ASCII文件</h2><p>这个文件是ASCII格式集，每一行描述了一个单独的台站或者通道。所有列在台站行之后的通道行隶属于这个台站。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ANMO 34.9502 -106.4602 1.6890 ’Albuquerque, New Mexico, USA’</span><br><span class="line">@ LH1 150.0000 280.0 90.0</span><br><span class="line">@ LH2 150.0000 10.0 90.0</span><br><span class="line">@ LHZ 89.3000 0.0 0.0</span><br><span class="line">BJT 40.0183 116.1679 0.1370 ’Baijiatuan, Beijing, China’</span><br><span class="line">@ LHE 60.0000 90.0 90.0</span><br><span class="line">@ LHN 60.0000 0.0 90.0</span><br><span class="line">@ LHZ 60.0000 0.0 0.0</span><br><span class="line">@ BHE 60.0000 90.0 90.0</span><br><span class="line">@ BHN 60.0000 0.0 90.0</span><br><span class="line">@ BHZ 60.0000 0.0 180.0</span><br><span class="line">BILL 68.0651 166.4524 0.2990 ’Bilibino, Russia’</span><br><span class="line">@ LHZ 0.0000 0.0 0.0</span><br><span class="line">CCM 38.0557 -91.2446 0.1710 ’Cathedral Cave, Missouri, USA’</span><br><span class="line">@ LHE 51.0000 90.0 90.0</span><br><span class="line">@ LHN 51.0000 0.0 90.0</span><br><span class="line">@ LHZ 51.0000 0.0 0.0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>台站行包含：台站代码sta 纬度lat 经度lon 海拔elev 台站名staname<br>  见表格6.3 .site关系表</li>
+<li>通道行：以@开始，其他内容为：通道码chan 传感器edepth hang vang<br>  见表格6.4 .sitechan关系表</li>
+</ul>
+<p>标准格式为：</p>
+<pre><code>@ XXE dd.dddd 90.0 90.0
+@ XXN dd.dddd 0.0 90.0
+@ XXZ dd.dddd 0.0 0.0
+</code></pre>
+<ul>
+<li>dd.dddd：传感器的edepth。</li>
+<li>注意：通道的order不重要。</li>
+</ul>
+<h2 id="运行-3"><a href="#运行-3" class="headerlink" title="运行"></a>运行</h2><pre><code>simpledit ascii_file db_name
+</code></pre>
+<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h2><p>将上述示例保存为普通text文件即可，命名为stations，输入命令：</p>
+<pre><code>time simpledit stations short
+</code></pre>
+<p>即可得到short.site short.sitechan两个文件。</p>
+<h1 id="create-origin"><a href="#create-origin" class="headerlink" title="create_origin"></a>create_origin</h1><h2 id="简介-8"><a href="#简介-8" class="headerlink" title="简介"></a>简介</h2><p>转换一个事件text文件为CSS3.0 .origin关系。</p>
+<h2 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h2><p>create_origin是一个shell脚本，从cmt_event ASCII文件中读取green程序输入文件cmt_event第一行,<br>将震源时间和位置信息转换为一行CSS3.0关系表，并将其写入db_name.origin文件。<br>这个脚本只填写.origin关系表中的字段：lat,lon,depth,time,orid,jdate,auth和lddate。其他的字段对于mineos并不重要，<br>由默认值填充。更多信息见下面所示表4.1。</p>
+<h2 id="运行-4"><a href="#运行-4" class="headerlink" title="运行"></a>运行</h2><pre><code>create_origin cmt_event db_name
+</code></pre>
+<h1 id="关系-relation-表"><a href="#关系-relation-表" class="headerlink" title="关系(relation)表"></a>关系(relation)表</h1><h2 id="origin-震源关系"><a href="#origin-震源关系" class="headerlink" title=".origin 震源关系"></a>.origin 震源关系</h2><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-7.2800  125.9900  473.4000   393567535.30000 1 -1 1982173 -1 -1 -1 -1 -1 - -999.0000 - -999.00 -1 -999.00 -1 -999.00 -1 - PDE &amp; Hvd CMT -1 -1 </span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">lat</td>
+<td align="center">估算的纬度</td>
+<td align="center">不允许</td>
+<td align="center">-90.0≤lat≤90.0</td>
+<td align="center">纬度，地理纬度，北半球为正；即cmt文件中的纬度</td>
+<td align="center">度 ° degrees</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">lon</td>
+<td align="center">估算的经度</td>
+<td align="center">不允许</td>
+<td align="center">-180.0≤lon≤180.0</td>
+<td align="center">地理经度，本初子午线以东为正；即cmt文件中的经度</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">depth</td>
+<td align="center">震源深度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">cmt文件中的震源深度</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">time</td>
+<td align="center">发震时间</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">发震时间为儒略日时间</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">orid</td>
+<td align="center">震源原始id代码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">evid</td>
+<td align="center">事件代码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">jdate</td>
+<td align="center">日期</td>
+<td align="center">-1</td>
+<td align="center">yyyyddd,必须与time属性一致</td>
+<td align="center">年份和一年第几天 。具体内容：公元前(B.C.E)日期为负。例如没有0000000.仅用于估计S,T,C振型（Evaluated only for S,T,C）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">ndef</td>
+<td align="center">定位（locating）震相索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">ndp</td>
+<td align="center">深度（depth）震相索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">grn</td>
+<td align="center">地理区域索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">srn</td>
+<td align="center">地震区域索引</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">etype</td>
+<td align="center">事件类型</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">depdp</td>
+<td align="center">源自深度震相的估计深度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.0000</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">dtype</td>
+<td align="center">使用的深度方法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">mb</td>
+<td align="center">体波震级</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.00</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">mbid</td>
+<td align="center">mb 编号（magid）？</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">ms</td>
+<td align="center">面波震级</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.00</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">msid</td>
+<td align="center">ms magid 纬度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">ml</td>
+<td align="center">近震（local）震级</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-999.00</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="center">mlid</td>
+<td align="center">ml magid</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">algorithm</td>
+<td align="center">使用的定位算法</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">auth</td>
+<td align="center">source&#x2F;originator</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">震中参考地震记录 &amp; 震源信息来源</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">commid</td>
+<td align="center">comment id</td>
+<td align="center">-1 No any remarks</td>
+<td align="center">≥0</td>
+<td align="center">数据文件。注释标识。这是用于指向预定义备注列表中的自由格式注释的整数键。尚未实施。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><em>注： -1、-999.00、- 可能是该项没有值或者未知。</em><br><em>6号evid为1可能是由于只有一个地震事件。目前还未尝试是否有多个地震事件的计算方式。</em></p>
+<h2 id="eigen-本征关系"><a href="#eigen-本征关系" class="headerlink" title=".eigen 本征关系"></a>.eigen 本征关系</h2><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 44 S 1 197.56850 4.55313 3.58608 151.39850 67 7 7 f4 0 test_S.eigen.dat                                                 eigen                                  -1 01/09/23-21:11:33</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">norder</td>
+<td align="center">径向阶数 n</td>
+<td align="center">-1</td>
+<td align="center">未给出</td>
+<td align="center">本征振型的径向阶数n</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">lorder</td>
+<td align="center">角度阶数 l</td>
+<td align="center">-1</td>
+<td align="center">未给出</td>
+<td align="center">简正振型的角阶数l，也称 harmonic degree</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">typeo</td>
+<td align="center">振型类型</td>
+<td align="center">不允许</td>
+<td align="center">未给出</td>
+<td align="center">二进制数据类型。这个字符表示数据类型。R：radial径向振型；S：球振振型；T：环振振型；C：内核环振振型；P：表示数据包括常熟（constants）、归一化参数（normalization）和半径采样点（radius samples）。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">eigid</td>
+<td align="center">eigen id</td>
+<td align="center">不允许</td>
+<td align="center"></td>
+<td align="center">本征函数索引，这个关键字段是一个由n l和振型类型定义的本征函数数据独一无二的标识</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">per</td>
+<td align="center">本征频率 周期表示</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">对应的本征频率。频率为w&#x3D;2*pi&#x2F;per；w的归一化值位于关联的二进制文件中。</td>
+<td align="center">秒 s</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">phvel</td>
+<td align="center">相速度</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">该振型对应的本征频率（per）的相速度。见typeo</td>
+<td align="center">km&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">grvel</td>
+<td align="center">群速度</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">群速度。给出属性per（本征频率）对应的量级值的群速度。仅评估S,T和C振型，见typeo</td>
+<td align="center">km&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">attn</td>
+<td align="center">衰减</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">衰减系数Q（品质因子）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">nrow</td>
+<td align="center">行号</td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">二进制文件中存储的本征函数网格（grid）的行号</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">ncol</td>
+<td align="center">列号</td>
+<td align="center">-1</td>
+<td align="center">未说明</td>
+<td align="center">二进制文件中存储的本征函数网格（grid）的列号</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">npar</td>
+<td align="center">参数序号</td>
+<td align="center">0</td>
+<td align="center">&gt;0</td>
+<td align="center">？二进制文件中存储的参数的序号</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">datatype</td>
+<td align="center">数值存储</td>
+<td align="center">不允许</td>
+<td align="center">t4或f4</td>
+<td align="center">数值存储数据。该属性指定文档系统中数据序列的格式。属性用于在必要时以实数交换四个字节。f4用于PC、DEC、VAX IEEE，单精度实型；t4用于SUN IEEE，单精度实型</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">foff</td>
+<td align="center">字节偏移量</td>
+<td align="center">不允许</td>
+<td align="center">≥0</td>
+<td align="center">这是数据文档中特征函数段的字节偏移量。见dir和dfile</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">dir</td>
+<td align="center">所在目录</td>
+<td align="center">不允许</td>
+<td align="center">任意64个字符的字符串</td>
+<td align="center">路径名的目录部分，包含特征关系的当前目录的相对路径</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">dfile</td>
+<td align="center">文件名称</td>
+<td align="center">不允许</td>
+<td align="center">任意32个字符的字符串</td>
+<td align="center">数据文件。指多路特征函数文件。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">commid</td>
+<td align="center">注释标识（comment id）</td>
+<td align="center">-1 No any remarks</td>
+<td align="center">≥0</td>
+<td align="center">数据文件。注释标识。这是用于指向预定义备注列表中的自由格式注释的整数键。尚未实施。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="site-台站位置信息"><a href="#site-台站位置信息" class="headerlink" title=".site 台站位置信息"></a>.site 台站位置信息</h2><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO 1960001 -1 34.9462 -106.4567 1.7400 Albuquerque, New Mexico, USA - - 0.0000 0.0000 01/08/23-21:43:39</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">ondate</td>
+<td align="center">儒略开始日期</td>
+<td align="center">不允许</td>
+<td align="center">yyyyddd</td>
+<td align="center">台站或者传感器其实日期。台站经常移动，但是台站码不变。该日期使得能够选择当时正确的台站lat，lon和elev。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">offdate</td>
+<td align="center">儒略终止日期</td>
+<td align="center">-1</td>
+<td align="center">yyyyddd</td>
+<td align="center">台站或者传感器关闭、取消或移除的时间。见ondate</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">lat</td>
+<td align="center">纬度</td>
+<td align="center">不允许</td>
+<td align="center">-90.0≤lat≤90.0</td>
+<td align="center">纬度，地理纬度，北半球为正；即cmt文件中的纬度</td>
+<td align="center">度 ° degrees</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">lon</td>
+<td align="center">经度</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">elev</td>
+<td align="center">海拔</td>
+<td align="center">-999.0</td>
+<td align="center">-10.0≤elev≤10.0</td>
+<td align="center">地震台站相对于平均海平面的海拔</td>
+<td align="center">千米 km</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">staname</td>
+<td align="center">台站描述</td>
+<td align="center">-</td>
+<td align="center">50个字符以内的大写字符串</td>
+<td align="center">sta所描述台站的全名</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">statype</td>
+<td align="center">台站类型：但台站，台阵等等</td>
+<td align="center">-</td>
+<td align="center">ss ar （小写）</td>
+<td align="center">台站类型。ss：单个台站；ar：台阵</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">refsta</td>
+<td align="center">台站相对台阵编号</td>
+<td align="center">-</td>
+<td align="center">任意site关系中的sta</td>
+<td align="center">参考台站。这个字符串指定使用的阵列（这个site文件中的所有台站）的参考台站。?见deast，dnorth</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">dnorth</td>
+<td align="center">台阵参考偏移距</td>
+<td align="center">0.0</td>
+<td align="center">-20000.00≤dnorth≤20000.00</td>
+<td align="center">北向距离。给出台阵（array element）元素北向或相对位置，位于由refsta值指定的台阵中心以北。见deast</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">deast</td>
+<td align="center">台阵参考偏移距</td>
+<td align="center">0.0</td>
+<td align="center">-20000.00≤deast≤20000.00</td>
+<td align="center">向东距离。此属性给出台阵元素的“东向”或相对位置，位于由 refsta 值指定的台阵中心以东。见dnorth。</td>
+<td align="center">千米 km</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="sitechan-台站通道信息"><a href="#sitechan-台站通道信息" class="headerlink" title=".sitechan 台站通道信息"></a>.sitechan 台站通道信息</h2><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO LHE 1960001 -1 -1 n 100.0000 90.0 90.0 - 01/08/23-21:43:39</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">chan</td>
+<td align="center">通道码</td>
+<td align="center">需要有效值</td>
+<td align="center">3个大写字母</td>
+<td align="center">通道码，具体可在搜索中查找</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">ondate</td>
+<td align="center">儒略开始日期</td>
+<td align="center">不允许</td>
+<td align="center">yyyyddd</td>
+<td align="center">台站或者传感器其实日期。台站经常移动，但是台站码不变。该日期使得能够选择当时正确的台站lat，lon和elev。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">chanid</td>
+<td align="center">通道id</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">通道记录标识。是一个独立标识一个特殊记录的代理键（surrogate key）。作为单个标识符，表示sta、chan、time更加方便。但是这三个值对处理人员更加直观。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">offdate</td>
+<td align="center">儒略结束日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">ctype</td>
+<td align="center">通道类型</td>
+<td align="center">-</td>
+<td align="center">小写字母n或b或i</td>
+<td align="center">表示数据通道类型。n：正常仪器响应；b：台阵数据确定的相干波形？；i：能量叠加的非相干波形？</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">edepth</td>
+<td align="center">安置深度</td>
+<td align="center">不允许</td>
+<td align="center">≥0.0</td>
+<td align="center">仪器位置的深度，相对于site关系中的elev（台站海拔）</td>
+<td align="center">千米 km</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">hang</td>
+<td align="center">水平角</td>
+<td align="center">不允许</td>
+<td align="center">0.0≤hang≤360.0</td>
+<td align="center">地震仪的水平方向。给出地震仪在水平平面上的指向，由正北顺时针。NS走向地震仪指向北，为0；WE走向地震仪指向西，为270</td>
+<td align="center">度，° degrees</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">vang</td>
+<td align="center">垂直角</td>
+<td align="center">不允许</td>
+<td align="center">0.0≤vang≤90.0</td>
+<td align="center">地震仪的垂向指向。此属性测量地震仪的敏感轴与向外垂直方向之间的角度。对于垂直走向地震仪，vang&#x3D;0；水平走向地震仪，vang&#x3D;90</td>
+<td align="center">度 ° degrees</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">descrip</td>
+<td align="center">通道描述</td>
+<td align="center">-</td>
+<td align="center">50字节长度的任意格式字符串</td>
+<td align="center">通道描述，数据通道的描述。对于非仪器通道（例如beams）这是在核心列表的通道选择中仅有的定量描述</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="wfdisc-波形文件头信息和描述信息"><a href="#wfdisc-波形文件头信息和描述信息" class="headerlink" title="wfdisc 波形文件头信息和描述信息"></a>wfdisc 波形文件头信息和描述信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANMO SHZ 393567535.30000 1 6 1982173 393615534.30000 48000 1.0000000 1.000000 20.000000 - g f4 - green.wfdisc.dat g.00001 0 -1 01/09/23-21:11:33</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">字节索引</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+<th align="center">NA值</th>
+<th align="center">取值范围</th>
+<th align="center">备注</th>
+<th align="center">单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">sta</td>
+<td align="center">台站码</td>
+<td align="center">需要有效输入</td>
+<td align="center">6个字符的大写字符串</td>
+<td align="center">台站码，或者地震台的common code name。通常为3或4个字符</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">chan</td>
+<td align="center">通道码</td>
+<td align="center">需要有效值</td>
+<td align="center">3个大写字母</td>
+<td align="center">通道码，具体可在搜索中查找</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">time</td>
+<td align="center">文件中第一个采样点的地质时间（epoch time）</td>
+<td align="center">不允许</td>
+<td align="center">未说明</td>
+<td align="center">从1970年1月1日0时为起始点计算的秒数。存储为双精度浮点型，允许15个十进制数字。范围可达3*10^4年。</td>
+<td align="center">秒s</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">wfid</td>
+<td align="center">波形id，这里是一个索引值，相当于行数</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">chanid</td>
+<td align="center">通道操作id</td>
+<td align="center">-1</td>
+<td align="center">&gt;0</td>
+<td align="center">通道记录标识。是一个独立标识一个特殊记录的代理键（surrogate key）。作为单个标识符，表示sta、chan、time更加方便。但是这三个值对处理人员更加直观。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">jdate</td>
+<td align="center">儒略（julian）日期</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">endtime</td>
+<td align="center">注意！详细查看备注time*(nsamp-1)&#x2F;samprate</td>
+<td align="center">+9999999999（10个9）.999</td>
+<td align="center">endtime&gt;time</td>
+<td align="center">endtime&#x3D;time+（nsamp-1）&#x2F;samprate（这里与前面的含义不一样，源文档如此。这里认为此处+为正确）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">nsamp</td>
+<td align="center">采样点个数</td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">采样点个数，波形段的采样点数量</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">samprate</td>
+<td align="center">采样率，单位s^-1</td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">samples&#x2F;second。该值可能与标称值略有不同，以反映时钟漂移。？</td>
+<td align="center">s^-1</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">calib</td>
+<td align="center">标称校准</td>
+<td align="center">不允许</td>
+<td align="center">任意非0浮点数</td>
+<td align="center">校准系数，即映射数字数据到地球位移的转换系数。该系数在属性calper规定的自由振荡周期内成立。正值表示分量方向的地面位移增量（分量方向，如z、n、e）由增值表示（），负值相反。该值通常反映记录时可用的最佳校准信息。</td>
+<td align="center">nanometers或digital count</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">calper</td>
+<td align="center">标称较准周期</td>
+<td align="center">不允许</td>
+<td align="center">&gt;0</td>
+<td align="center">calib有效时规定周期。</td>
+<td align="center">秒，s</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">instype</td>
+<td align="center">仪器码</td>
+<td align="center">-</td>
+<td align="center">大写字母，不计数。详见Ganse and Hutt,1982</td>
+<td align="center">标识仪器类型，例如SRO、ASRO以及S-750</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">segtype</td>
+<td align="center">标引（indexing）方法</td>
+<td align="center">-</td>
+<td align="center">o v s d g w</td>
+<td align="center">segment type。段类型。波形为：o（original）原始；v（virtual）虚拟的；s（segmented）分离的？；d（duplicate）副本；g（Green’s function）格林函数；w（synthetic）合成记录</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">datatype</td>
+<td align="center">数值存储</td>
+<td align="center">不允许</td>
+<td align="center">t4或f4</td>
+<td align="center">数值存储数据。该属性指定文档系统中数据序列的格式。属性用于在必要时以实数交换四个字节。f4用于PC、DEC、VAX IEEE，单精度实型；t4用于SUN IEEE，单精度实型</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">clip</td>
+<td align="center">削减（clipped）标志</td>
+<td align="center">-</td>
+<td align="center">{c n} 小写字母</td>
+<td align="center">一个字符指示数据是否削减。c表示是，n表示否</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">dir</td>
+<td align="center">所在文件夹</td>
+<td align="center">不允许</td>
+<td align="center">任意64个字符的字符串</td>
+<td align="center">路径名的目录部分，包含特征关系的当前目录的相对路径</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">dfile</td>
+<td align="center">文件名</td>
+<td align="center">不允许</td>
+<td align="center">任意32个字符长度的字符串</td>
+<td align="center">disk waveform？的名称或者单分量格林函数的名称。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">foff</td>
+<td align="center">字节偏移量</td>
+<td align="center">不允许</td>
+<td align="center">≥0</td>
+<td align="center">这是数据文档中特征函数段的字节偏移量。见dir和dfile</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">commid</td>
+<td align="center">注释标识（comment id）</td>
+<td align="center">-1 No any remarks</td>
+<td align="center">≥0</td>
+<td align="center">数据文件。注释标识。这是用于指向预定义备注列表中的自由格式注释的整数键。尚未实施。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">lddate</td>
+<td align="center">载入时间</td>
+<td align="center">未说明</td>
+<td align="center">任意值</td>
+<td align="center">记录创建的时间，not implemented yet？</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="振型计算数量"><a href="#振型计算数量" class="headerlink" title="振型计算数量"></a>振型计算数量</h1><p>由模型文件prem_S等得到S与T振型w范围为5-200mHz下的计算数量。目前统计到n&#x3D;19的情况。<br>计算数量与w范围有关，即计算振型的频率范围有关。</p>
+<h2 id="S-振型"><a href="#S-振型" class="headerlink" title="S 振型"></a>S 振型</h2><table>
+<thead>
+<tr>
+<th align="center">n</th>
+<th align="center">lmin</th>
+<th align="center">lmax</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">44</td>
+<td align="center">4653</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">28</td>
+<td align="center">2566</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">24</td>
+<td align="center">1945</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">23</td>
+<td align="center">1792</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">18</td>
+<td align="center">1775</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">14</td>
+<td align="center">1760</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">13</td>
+<td align="center">1742</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">12</td>
+<td align="center">1721</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">1695</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">8</td>
+<td align="center">1667</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">7</td>
+<td align="center">1643</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">5</td>
+<td align="center">1627</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">4</td>
+<td align="center">1611</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">3</td>
+<td align="center">1597</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">2</td>
+<td align="center">1582</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">1566</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">1</td>
+<td align="center">1549</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">1</td>
+<td align="center">1530</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">1</td>
+<td align="center">1510</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">1</td>
+<td align="center">1491</td>
+</tr>
+</tbody></table>
+<h2 id="T-振型"><a href="#T-振型" class="headerlink" title="T 振型"></a>T 振型</h2><table>
+<thead>
+<tr>
+<th align="center">n</th>
+<th align="center">lmin</th>
+<th align="center">lmax</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">41</td>
+<td align="center">2410</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">27</td>
+<td align="center">1903</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">20</td>
+<td align="center">1745</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">16</td>
+<td align="center">1735</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">12</td>
+<td align="center">1722</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">1706</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">1685</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">1</td>
+<td align="center">1661</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">1</td>
+<td align="center">1640</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">1</td>
+<td align="center">1627</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center">1611</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">1</td>
+<td align="center">1597</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">1</td>
+<td align="center">1584</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">1</td>
+<td align="center">1569</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">1</td>
+<td align="center">1552</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">1535</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">1</td>
+<td align="center">1515</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">1</td>
+<td align="center">1495</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">1</td>
+<td align="center">1477</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">1</td>
+<td align="center">1460</td>
+</tr>
+</tbody></table>
 
           
         
@@ -645,7 +1847,7 @@ dbpick green
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/26/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/default-index/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/64/">64</a><a class="extend next" rel="next" href="/default-index/page/28/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/26/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/default-index/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/65/">65</a><a class="extend next" rel="next" href="/default-index/page/28/">&gt;</a>
   </nav>
 
 
@@ -695,7 +1897,7 @@ dbpick green
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

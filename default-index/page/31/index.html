@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/12/WSL%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/12/12/WSL%E5%AE%89%E8%A3%85/" itemprop="url">WSL安装</a></h1>
+                <a class="post-title-link" href="/2022/12/13/CentOS8%E5%AE%89%E8%A3%85%E4%B8%AD%E5%9B%BD%E7%89%88Firefox/" itemprop="url">CentOS8安装中国版Firefox</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-12T12:13:17+08:00">2022-12-12</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-13T12:57:20+08:00">2022-12-13</time>
             
 
             
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux学习</span>
                   </a>
                 </span>
 
@@ -396,21 +396,17 @@
       
         
           
-            <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[WSL安装]<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install">https://learn.microsoft.com/zh-cn/windows/wsl/install</a><br>[运行出现——占位程序接收到错误数据]<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32461955/article/details/127858827">https://blog.csdn.net/qq_32461955/article/details/127858827</a></p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>WSL是windows平台使用Linux系统的方式之一。通过安装子系统，使用命令行操作Linux。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>使用管理员身份运行power shell。</p>
-<p>运行：</p>
-<pre><code>wsl --install
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装类似于Ubuntu安装方法。在desktop文件中有所差别。</p>
+<p>首先将提取的包移动到相应位置</p>
+<pre><code>sudo mv firefox /usr/local
 </code></pre>
-<p>重启后即可。</p>
-<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>点击开始菜单中的Ubuntu即可运行。（默认安装Ubuntu）</p>
-<h2 id="查看wsl版本"><a href="#查看wsl版本" class="headerlink" title="查看wsl版本"></a>查看wsl版本</h2><pre><code>wsl -l -v
+<p>然后创建desktop文件，命名为firefox.desktop：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=firefox</span><br><span class="line">Version=1.0</span><br><span class="line">Name[zh_CN]=火狐浏览器</span><br><span class="line">GenericName=Web Browser</span><br><span class="line">Comment=火狐浏览器</span><br><span class="line">Exec=/usr/local/firefox/firefox # 软件安装位置</span><br><span class="line">Icon=/usr/local/firefox/browser/chrome/icons/default/default128.png # 图标所在位置</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;</span><br><span class="line">StartupNotify=true</span><br><span class="line">Categories=Network;WebBrowser;</span><br><span class="line">Encoding=UTF-8</span><br></pre></td></tr></table></figure>
+
+<p>将desktop文件移动到<code>/usr/share</code>下的<code>/applications</code>文件夹。</p>
+<pre><code>sudo cp firefox.desktop /usr/share/applicaions
 </code></pre>
-<h1 id="出现过的问题"><a href="#出现过的问题" class="headerlink" title="出现过的问题"></a>出现过的问题</h1><h2 id="占位程序接收到错误数据"><a href="#占位程序接收到错误数据" class="headerlink" title="占位程序接收到错误数据"></a>占位程序接收到错误数据</h2><p>显示：Error code: Wsl&#x2F;Service&#x2F;0x800706f7</p>
-<p>解决方法：管理员身份运行power shell<br>输入：</p>
-<pre><code>netsh winsock reset
-</code></pre>
-<p>即可解决。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://wjhsh.net/szwmd778-p-9944992.html">http://wjhsh.net/szwmd778-p-9944992.html</a></p>
 
           
         
@@ -450,7 +446,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/30/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/default-index/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/64/">64</a><a class="extend next" rel="next" href="/default-index/page/32/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/30/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/default-index/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/65/">65</a><a class="extend next" rel="next" href="/default-index/page/32/">&gt;</a>
   </nav>
 
 
@@ -500,7 +496,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

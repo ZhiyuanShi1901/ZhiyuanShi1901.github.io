@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/13/CentOS%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/12/13/CentOS%E5%AE%89%E8%A3%85/" itemprop="url">CentOS安装</a></h1>
+                <a class="post-title-link" href="/2022/12/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/" itemprop="url">CentOS服务器部署x-ui与v2rayn</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-13T13:28:36+08:00">2022-12-13</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-21T21:09:15+08:00">2022-12-21</time>
             
 
             
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux学习</span>
+                  <a href="/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux服务器实践</span>
                   </a>
                 </span>
 
@@ -396,25 +396,55 @@
       
         
           
-            <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglailea/article/details/105602902">https://blog.csdn.net/fenglailea/article/details/105602902</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chy555chy/article/details/113747253">https://blog.csdn.net/chy555chy/article/details/113747253</a></p>
-<h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
-<pre><code>....
-kernel panic: not syncing: Fatal exception
-Kernel Offset: ........
-...
+            <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">v2rayN_github</a><br><a target="_blank" rel="noopener" href="https://v2rayn.org/">v2rayN官网</a><br><a target="_blank" rel="noopener" href="https://v2rayng.org/">移动端v2rayNG官网</a><br><a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui">x-ui</a><br><a target="_blank" rel="noopener" href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
+<p><strong>注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。</strong></p>
+<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
+<h1 id="连接服务器并进行配置"><a href="#连接服务器并进行配置" class="headerlink" title="连接服务器并进行配置"></a>连接服务器并进行配置</h1><p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>yum install git
 </code></pre>
-<p>以上为部分错误。<br>硬件：<br>CPU: Ryzen 5600G<br>主板: Minisforum B550</p>
-<p>不确定是否为硬件问题，但是显示内核错误。<br>可能是使用Windows平台烧录软件造成的问题，包括Deepin官方烧录软件和rufus均出现这个问题。<br>目前未尝试Linux平台烧录软件。</p>
-<h1 id="CentOS-8-安装"><a href="#CentOS-8-安装" class="headerlink" title="CentOS 8 安装"></a>CentOS 8 安装</h1><p>CentOS 8 安装之前，在<code>Install CentOS 8</code>处点击键盘 <code>E</code> 按键，将第一行的：</p>
-<pre><code>LABEL=CentOS\...... quiet
+<h2 id="clone-V-install库"><a href="#clone-V-install库" class="headerlink" title="clone V-install库"></a>clone V-install库</h2><pre><code>git clone --depth=1 https://github.com/bedefaced/vpn-install.git
 </code></pre>
-<p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
-<p>如果无法进入图形界面，在<code>quite</code>前面加上 <code>nomodeset</code></p>
-<p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
-<h1 id="centos使用前的环境配置"><a href="#centos使用前的环境配置" class="headerlink" title="centos使用前的环境配置"></a>centos使用前的环境配置</h1><pre><code>yum -y update #升级所有包，改变软件设置和系统设置,系统版本内核都升级
+<h2 id="安装V-install"><a href="#安装V-install" class="headerlink" title="安装V-install"></a>安装V-install</h2><p>分别安装PPTP、openvpn和IPSEC。</p>
+<pre><code>vpn-install/pptp/install.sh
+vpn-install/openvpn/install.sh
+vpn-install/ipsec/install.sh
 </code></pre>
-<h2 id="无法使用ntfs格式移动硬盘"><a href="#无法使用ntfs格式移动硬盘" class="headerlink" title="无法使用ntfs格式移动硬盘"></a>无法使用ntfs格式移动硬盘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install ntfs-3g</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「福州司马懿」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/chy555chy/article/details/113747253</span><br></pre></td></tr></table></figure>
+<p>安装过程中进行配置。不知道的直接输入1或者回车就可以，不用单独设置。<br>用户名、密码和PSK需要自行设置，并且需要牢记。</p>
+<h2 id="安装x-ui"><a href="#安装x-ui" class="headerlink" title="安装x-ui"></a>安装x-ui</h2><p>运行：</p>
+<pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+</code></pre>
+<p>安装过程中需要设置面板端口，随便输入一个1到65535数字即可。<br>面板端口牢记，之后会用到。例如这里设置为8888（宝塔面板的端口），以下示例中端口改为自行设置的端口，不推荐设置8888。</p>
+<h1 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h1><p>如果端口不在防火墙白名单里，则不能连接。在阿里云控制台中配置防火墙。</p>
+<p>在控制台左侧，安全-防火墙一栏中，预设有三个可通过防火墙的端口。<br>点击<code>添加规则</code>，依次选择：</p>
+<ul>
+<li>应用类型：自定义，</li>
+<li>协议：TCP</li>
+<li>端口范围： 8888</li>
+<li>限制IP来源：不要修改</li>
+<li>备注：按照自己的想法填写即可</li>
+</ul>
+<p>点击确定后，这个端口不会被拦截。</p>
+<h1 id="配置x-ui面板"><a href="#配置x-ui面板" class="headerlink" title="配置x-ui面板"></a>配置x-ui面板</h1><p>在浏览器官网输入：公网IP:x-ui设置的端口，例如：192.168.0.1:8888。<br>其中，192.168.0.1为公网IP，8888为设置的端口，便可进入到x-ui面板。</p>
+<p><strong>注：公网IP地址在控制台<code>概览</code>页面。</strong></p>
+<p>如果无法进入，很可能是防火墙设置不正确，或者服务器中x-ui未运行。</p>
+<p>点击<code>入站列表</code>，左上角的蓝色加号。</p>
+<p><img src="/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2x-ui%E4%B8%8Ev2rayn/%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9.png" alt="节点"></p>
+<ul>
+<li>备注：填写节点的名称，选择一个好记又方便的名称即可。</li>
+<li>协议：默认选择vmess即可，也可以选择其他的。因水平有限未进行测试。</li>
+<li>端口：可以随意修改，但是注意要在防火墙开放，具体操作在配置防火墙一栏。</li>
+<li>传输：默认使用tcp即可，也可以使用ws，但是可能需要额外设置。因水平有限未进行测试。</li>
+<li>其余选项可以默认不修改。总流量设置可以设置限制。</li>
+</ul>
+<p>点击添加即可。</p>
+<p>完成后，点击操作，二维码。保存这个二维码，亦可以不保存进入网站查找。</p>
+<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。<br>下载地址：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a><br>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
+<p>然后对服务器一栏右键，点击<code>设为活动服务器</code></p>
+<p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br><code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
+<p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>阿里云轻量应用服务器-新加坡服务器实测延迟足够使用，在80ms以内。<br>目前该操作仅适用于Windows PC。</p>
+<p>由于该操作使用的服务器只有命令行界面，因此需要一定的Linux基础。</p>
+<p>使用过程中发现去掉图形化界面的Linux十分轻快简洁，如果有必要可以在Linux PC去除图形界面操作。</p>
 
           
         
@@ -454,7 +484,7 @@ Kernel Offset: ........
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/28/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/default-index/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/64/">64</a><a class="extend next" rel="next" href="/default-index/page/30/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/28/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/default-index/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/65/">65</a><a class="extend next" rel="next" href="/default-index/page/30/">&gt;</a>
   </nav>
 
 
@@ -504,7 +534,7 @@ Kernel Offset: ........
               
                 <a href="/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
