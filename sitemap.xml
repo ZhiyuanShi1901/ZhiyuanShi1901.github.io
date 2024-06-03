@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shizhiyuan.work/2024/05/27/%E8%8B%B1%E8%AF%AD%E5%86%99%E4%BD%9C/</loc>
+    
+    <lastmod>2024-06-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://shizhiyuan.work/2024/04/14/SPECNM-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2024-05-28</lastmod>
@@ -14,15 +23,6 @@
     <loc>https://shizhiyuan.work/2024/05/28/Python%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/</loc>
     
     <lastmod>2024-05-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shizhiyuan.work/2024/05/27/%E8%8B%B1%E8%AF%AD%E5%86%99%E4%BD%9C/</loc>
-    
-    <lastmod>2024-05-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -670,7 +670,7 @@
 
   <url>
     <loc>https://shizhiyuan.work/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -678,245 +678,245 @@
   
   <url>
     <loc>https://shizhiyuan.work/tags/CMT/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/CPS/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/CentOS/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Linux/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Conda/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E8%A1%8C%E6%98%9F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Fortran/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Git/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/GMT/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Introduction-to-Seismology/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/MATLAB/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Mineos/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Obspy/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/SAC/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Python/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Rdseed/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/SPECNM/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/TauP/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Linux%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Windows%E5%AD%90%E7%B3%BB%E7%BB%9FLinux/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Vista/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E5%9C%B0%E9%9C%87%E5%8B%98%E6%8E%A2/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Dune/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E9%87%8D%E5%8A%9B%E5%8B%98%E6%8E%A2/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E6%96%87%E5%AD%A6%E4%B9%A6%E7%B1%8D/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E6%95%B0%E5%AD%97%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E5%8F%8D%E6%BC%94/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/seismic-exploration/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/Tensorflow/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/tags/%E8%8B%B1%E8%AF%AD%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -925,126 +925,126 @@
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/Linux%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E4%BD%9C%E4%B8%9A%E5%B8%83%E7%BD%AE/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E7%A8%8B%E5%BA%8F%E5%87%BD%E6%95%B0%E5%BA%93%E6%B1%87%E6%80%BB/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/Linux/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E5%9C%B0%E9%9C%87%E5%8B%98%E6%8E%A2/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E6%9D%82%E8%B0%88/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E7%89%A9%E7%90%86%E5%AD%A6/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shizhiyuan.work/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-05-28</lastmod>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
