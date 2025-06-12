@@ -82,8 +82,8 @@
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2025-06-12T12:55:57.692Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:22.135Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2023/05/03/MATLAB%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://shizhiyuan.work/2023/09/10/Deglitches/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/05/03/MATLAB%E5%87%BD%E6%95%B0/" itemprop="url">MATLAB函数</a></h1>
+                <a class="post-title-link" href="/2023/09/10/Deglitches/" itemprop="url">Deglitches</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-05-03T08:28:34+08:00">2023-05-03</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-09-10T14:20:18+08:00">2023-09-10</time>
             
 
             
@@ -357,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%87%BD%E6%95%B0%E5%BA%93%E6%B1%87%E6%80%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">程序函数库汇总</span>
+                  <a href="/categories/%E5%9C%B0%E9%9C%87%E5%AD%A6%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">地震学常用软件</span>
                   </a>
                 </span>
 
@@ -396,20 +396,28 @@
       
         
           
-            <h1 id="meshgrid"><a href="#meshgrid" class="headerlink" title="meshgrid"></a>meshgrid</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47017197/article/details/125906313">https://blog.csdn.net/m0_47017197/article/details/125906313</a><br>meshgrid 函数用来生成网格矩阵，可以是二维网格矩阵。</p>
-<pre><code>[XX,YY]=meshgrid(X, Y)
+            <h1>来源</h1>
+<p>Deglitches软件包来源于[1]。可以在<a target="_blank" rel="noopener" href="https://pss-gitlab.math.univ-paris-diderot.fr/data-processing-wg/seisglitch/-/tree/master">https://pss-gitlab.math.univ-paris-diderot.fr/data-processing-wg/seisglitch/-/tree/master</a>中下载。</p>
+<p>使用教程在<a target="_blank" rel="noopener" href="https://seisglitch.readthedocs.io/en/latest/index.html">https://seisglitch.readthedocs.io/en/latest/index.html</a>中</p>
+<p>[1]. Scholz, J.-R., Widmer-Schnidrig, R., Davis, P., Lognonné, P., Pinot, B., Garcia, R. F., et al. (2020). Detection, analysis, and removal of glitches from InSight’s seismic data from Mars. Earth and Space Science, 7, e2020EA001317. <a target="_blank" rel="noopener" href="https://doi.org/10.1029/2020EA001317">https://doi.org/10.1029/2020EA001317</a></p>
+<p>[2]. Lognonné, P., Schimmel, M., Stutzmann, E., Davis, P., Drilleau, M., Sainton, G., et al. (2023). Detection of Mars normal modes from S1222a event and seismic hum. Geophysical Research Letters, 50, e2023GL103205. <a target="_blank" rel="noopener" href="https://doi.org/10.1029/2023GL103205">https://doi.org/10.1029/2023GL103205</a></p>
+<h1>简介</h1>
+<p>该软件包是为了去除由于温度剧烈变化等原因导致地震仪出现的极大峰值噪声。这种噪声普遍呈现在火星地震仪上，且无法通过滤波消除（Lognonne, et al, 2023）。</p>
+<h1>config.yml文件</h1>
+<p>该文件是进行Glitch操作的控制文件，即每一步运行的输入文件。它控制所有方法的参数。因此该文件的参数设置十分重要。</p>
+<h1>Glitch探测</h1>
+<p>使用’detect’方法进行Glitch探测。该方法将生成一个txt文件，表述Glitch出现的各种参数，如时间、数量等。</p>
+<p>该方法是进行Glitch去除的一个重要步骤，运行方式如下：</p>
+<pre><code>seisglitch detect path/to/config.yml
 </code></pre>
-<p>生成Y元素个数为行，X元素个数为列的网格，其中XX为扩充为Y的个数的行：</p>
-<p>X&#x3D;[1,2,3];Y&#x3D;[4,5]</p>
-<p>XX&#x3D;[1,2,3;1,2,3]<br>YY&#x3D;[4,5;4,5;4,5]</p>
-<h1 id="surf"><a href="#surf" class="headerlink" title="surf"></a>surf</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44044161/article/details/116741630">https://blog.csdn.net/weixin_44044161/article/details/116741630</a></p>
-<pre><code>surf(XX,YY,ZZ)
+<h1>Glitch去除</h1>
+<p>使用’remove’方法去除Glitch。该方法将原始数据去除Glitch，生成deGlitch后的数据与Glitch数据。</p>
+<pre><code>seisglitch remove path/to/config.yml
 </code></pre>
-<p>生成三维图像。</p>
-<h1 id="shading-interp"><a href="#shading-interp" class="headerlink" title="shading interp"></a>shading interp</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mxr2026588745/article/details/108928622">https://blog.csdn.net/mxr2026588745/article/details/108928622</a><br>对曲面图行进行色彩差值处理。使得色彩平滑过渡</p>
-<h1 id="view"><a href="#view" class="headerlink" title="view"></a>view</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fightclub_/article/details/126498319">https://blog.csdn.net/fightclub_/article/details/126498319</a></p>
-<p>从不同的方位角和视角查看图像。<br>view(方位角，仰角)</p>
-<p>方位角：视线与Y轴正向方向在xOy平面夹角。视线看向x轴正方向为正<br>仰角：视线与Y轴正向方向在yOz平面夹角。视线看向z轴负向方向为正。<br>view(0, 90) 方位角0度，仰角90度，从上面俯视xOz平面。</p>
+<h1>Glitch绘制</h1>
+<p>进行Glitch的绘图。该方法将数据中的Glitch使用细直线标记出来。</p>
+<pre><code>seisglitch plot path/to/config.yml
+</code></pre>
 
           
         
@@ -449,7 +457,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/9/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/default-index/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/65/">65</a><a class="extend next" rel="next" href="/default-index/page/11/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/default-index/page/9/">&lt;</a><a class="page-number" href="/default-index/">1</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/default-index/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/66/">66</a><a class="extend next" rel="next" href="/default-index/page/11/">&gt;</a>
   </nav>
 
 
@@ -499,7 +507,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

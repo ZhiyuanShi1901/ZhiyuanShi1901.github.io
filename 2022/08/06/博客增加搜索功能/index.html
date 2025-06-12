@@ -82,8 +82,8 @@
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2025-06-12T12:55:57.692Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:22.135Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -394,13 +394,15 @@
         <p>hexo博客可以使用本地搜索实现搜索服务。</p>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyq55917/article/details/125278500">https://blog.csdn.net/zyq55917/article/details/125278500</a></p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>在blog根目录下git bash：</p>
+<h1>安装插件</h1>
+<p>在blog根目录下git bash：</p>
 <pre><code>npm install hexo-generator-searchdb
 </code></pre>
-<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><p>在blog根目录下的_config.yml中增加内容：</p>
+<h1>hexo配置</h1>
+<p>在blog根目录下的_config.yml中增加内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    content: true</span><br><span class="line">    format: html</span><br></pre></td></tr></table></figure>
-
-<h1 id="next配置"><a href="#next配置" class="headerlink" title="next配置"></a>next配置</h1><p>在主题之下的_config.yml文件中启用search服务。</p>
+<h1>next配置</h1>
+<p>在主题之下的_config.yml文件中启用search服务。</p>
 <p>只要将<code>enable</code>修改为<code>true</code>即可。</p>
 <p>可以选择auto自动搜索或者manual按回车搜索。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -521,7 +523,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -628,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">hexo配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">next配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">hexo配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">next配置</span></a></li></ol></div>
             
 
           </div>

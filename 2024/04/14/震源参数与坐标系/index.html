@@ -82,8 +82,8 @@
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2025-06-12T12:55:57.692Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:22.135Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -391,10 +391,10 @@
       
 
       
-        <p>本文简介一些软件&#x2F;数据中关于震源参数的计算与坐标系问题。</p>
-<h1 id="1-CMT-ndk格式数据"><a href="#1-CMT-ndk格式数据" class="headerlink" title="1 CMT .ndk格式数据"></a>1 CMT .ndk格式数据</h1><p>Global CMT网站提供了详细的地震矩张量和断层参数。</p>
+        <p>本文简介一些软件/数据中关于震源参数的计算与坐标系问题。</p>
+<h1>1 CMT .ndk格式数据</h1>
+<p>Global CMT网站提供了详细的地震矩张量和断层参数。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The six moment-tensor elements: Mrr, Mtt, Mpp, Mrt, Mrp, Mtp, where r</span><br><span class="line">is up, t is south, and p is east. See Aki and Richards for conversions</span><br><span class="line">to other coordinate systems. The value of each moment-tensor</span><br><span class="line">element is followed by its estimated standard error. See note (4)</span><br><span class="line">below for cases in which some elements are constrained in the inversion.</span><br></pre></td></tr></table></figure>
-
 <p>断层参数一般有两组，其对应的矩张量相同：（此处暂留疑问：正北方向为地理正北or地磁正北？） 见（《地震学、震源及地球结构概论》 P206 图4.2-2）</p>
 <ul>
 <li>strike 走向：断层延伸方向与正北方向夹角 0-360度</li>
@@ -404,11 +404,15 @@
 </ul>
 <p>矩张量使用的坐标系为（Up, South, East）,即（r, θ, φ）。参考（Aki, Quantitative Seismology, P113）。</p>
 <p>注意：使用（Aki, Quantitative Seismology, P112）公式，并进行坐标变换之后，计算值与Global CMT给出的矩张量分量不同，目前未知原因。</p>
-<h1 id="MINEOS-使用的坐标系"><a href="#MINEOS-使用的坐标系" class="headerlink" title="MINEOS 使用的坐标系"></a>MINEOS 使用的坐标系</h1><p>坐标系与<code>1 CMT .ndk</code>格式数据相同。</p>
-<h1 id="Instaseis-使用的坐标系"><a href="#Instaseis-使用的坐标系" class="headerlink" title="Instaseis 使用的坐标系"></a>Instaseis 使用的坐标系</h1><p>参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
+<h1>MINEOS 使用的坐标系</h1>
+<p>坐标系与<code>1 CMT .ndk</code>格式数据相同。</p>
+<h1>Instaseis 使用的坐标系</h1>
+<p>参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
 <p>Python包 <code>instaseis</code> 使用 <code>Source</code> 属性计算震源参数、使用<code>Reveiver</code>归纳台站参数。</p>
 <p>其可以使用多重方式给出震源参数。</p>
-<h2 id="Source-源"><a href="#Source-源" class="headerlink" title="Source 源"></a>Source 源</h2><h3 id="直接给出矩张量"><a href="#直接给出矩张量" class="headerlink" title="直接给出矩张量"></a>直接给出矩张量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source(latitude, longitude, depth_in_m=None, m_rr=0.0, m_tt=0.0, m_pp=0.0, m_rt=0.0, m_rp=0.0, m_tp=0.0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
+<h2 id="Source-源">Source 源</h2>
+<h3 id="直接给出矩张量">直接给出矩张量</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source(latitude, longitude, depth_in_m=None, m_rr=0.0, m_tt=0.0, m_pp=0.0, m_rt=0.0, m_rp=0.0, m_tp=0.0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">M=np.zeros(6)</span><br><span class="line">M[0] = 1.E18</span><br><span class="line">src = instaseis.Source(latitude=0., longitude=0., depth_in_m=10e4, m_rr=M[0], m_tt=M[1], m_pp=M[2], m_rt=M[3],</span><br><span class="line">                 m_rp=M[4], m_tp=M[5])</span><br></pre></td></tr></table></figure>
 <p>其中，Source的参数为：（可以通过<code>source.参数名</code>调取，下同）</p>
@@ -427,7 +431,8 @@
 <li>dt – sampling of the source time function</li>
 <li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
 </ul>
-<h3 id="给出震源断层参数"><a href="#给出震源断层参数" class="headerlink" title="给出震源断层参数"></a>给出震源断层参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source.from_strike_dip_rake(latitude, longitude, depth_in_m, strike, dip, rake, M0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
+<h3 id="给出震源断层参数">给出震源断层参数</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.Source.from_strike_dip_rake(latitude, longitude, depth_in_m, strike, dip, rake, M0, time_shift=None, sliprate=None, dt=None, origin_time=UTCDateTime(1970, 1, 1, 0, 0))</span><br></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.from_strike_dip_rake(</span><br><span class="line">    latitude=10.0, longitude=12.0, depth_in_m=1000, strike=strike, dip=dip, rake=rake, M0=M0)</span><br></pre></td></tr></table></figure>
 <p>参数为：</p>
@@ -444,10 +449,16 @@
 <li>dt – sampling of the source time function</li>
 <li>origin_time – The origin time of the source. If you don’t reconvolve with another source time function this time is the peak of the source time function used to generate the database. If you reconvolve with another source time function this time is the time of the first sample of the final seismogram.</li>
 </ul>
-<h3 id="给出parse文件"><a href="#给出parse文件" class="headerlink" title="给出parse文件"></a>给出parse文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.parse(quakeml_file)</span><br></pre></td></tr></table></figure>
-<p>quakeml_file: </p>
-<h3 id="Source-返回值具有的属性："><a href="#Source-返回值具有的属性：" class="headerlink" title="Source 返回值具有的属性："></a>Source 返回值具有的属性：</h3><h4 id="上述的所有参数"><a href="#上述的所有参数" class="headerlink" title="上述的所有参数"></a>上述的所有参数</h4><h4 id="tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp"><a href="#tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp" class="headerlink" title="tensor 包含六个矩张量的List，分量为[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]"></a>tensor 包含六个矩张量的List，分量为<code>[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</code></h4><h4 id="tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp"><a href="#tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp" class="headerlink" title="tensor_voigt，进行了坐标旋转，分量为[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]"></a>tensor_voigt，进行了坐标旋转，分量为<code>[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</code></h4><h2 id="ForceSource-力源"><a href="#ForceSource-力源" class="headerlink" title="ForceSource 力源"></a>ForceSource 力源</h2><h3 id="给出牵引力三分量"><a href="#给出牵引力三分量" class="headerlink" title="给出牵引力三分量"></a>给出牵引力三分量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ForceSource(latitude, longitude, depth_in_m=None, f_r=0.0, f_t=0.0, f_p=0.0, origin_time=UTCDateTime(1970, 1, 1, 0, 0), sliprate=None, time_shift=None, dt=None)</span><br></pre></td></tr></table></figure>
-
+<h3 id="给出parse文件">给出parse文件</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.Source.parse(quakeml_file)</span><br></pre></td></tr></table></figure>
+<p>quakeml_file:</p>
+<h3 id="Source-返回值具有的属性：">Source 返回值具有的属性：</h3>
+<h4 id="上述的所有参数">上述的所有参数</h4>
+<h4 id="tensor-包含六个矩张量的List，分量为-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp">tensor 包含六个矩张量的List，分量为<code>[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</code></h4>
+<h4 id="tensor-voigt，进行了坐标旋转，分量为-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp">tensor_voigt，进行了坐标旋转，分量为<code>[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</code></h4>
+<h2 id="ForceSource-力源">ForceSource 力源</h2>
+<h3 id="给出牵引力三分量">给出牵引力三分量</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ForceSource(latitude, longitude, depth_in_m=None, f_r=0.0, f_t=0.0, f_p=0.0, origin_time=UTCDateTime(1970, 1, 1, 0, 0), sliprate=None, time_shift=None, dt=None)</span><br></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source = instaseis.ForceSource(latitude=12.34, longitude=12.34, f_r=1E10)</span><br></pre></td></tr></table></figure>
 <p>参数为：</p>
@@ -463,9 +474,14 @@
 <li>time_shift – correction of the origin time in seconds. Useful in the context of finite source or user defined source time functions.</li>
 <li>dt – sampling of the source time function</li>
 </ul>
-<h3 id="ForceSource-返回值具有的属性："><a href="#ForceSource-返回值具有的属性：" class="headerlink" title="ForceSource 返回值具有的属性："></a>ForceSource 返回值具有的属性：</h3><h4 id="上述的所有参数-1"><a href="#上述的所有参数-1" class="headerlink" title="上述的所有参数"></a>上述的所有参数</h4><h4 id="force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p"><a href="#force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p" class="headerlink" title="force_rtp 包含三个牵引力分量的List，分量为[f_r, f_t, f_p]"></a>force_rtp 包含三个牵引力分量的List，分量为<code>[f_r, f_t, f_p]</code></h4><h4 id="force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r"><a href="#force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r" class="headerlink" title="force_tpr，进行了坐标旋转，分量为[f_t, f_p, f_r]"></a>force_tpr，进行了坐标旋转，分量为<code>[f_t, f_p, f_r]</code></h4><h2 id="FiniteSource-有限源"><a href="#FiniteSource-有限源" class="headerlink" title="FiniteSource 有限源"></a>FiniteSource 有限源</h2><p>相关内容详见参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
-<h3 id="给出点源"><a href="#给出点源" class="headerlink" title="给出点源"></a>给出点源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.source.FiniteSource(pointsources=None, CMT=None, magnitude=None, event_duration=None, hypocenter_longitude=None, hypocenter_latitude=None, hypocenter_depth_in_m=None)</span><br></pre></td></tr></table></figure>
-
+<h3 id="ForceSource-返回值具有的属性：">ForceSource 返回值具有的属性：</h3>
+<h4 id="上述的所有参数-2">上述的所有参数</h4>
+<h4 id="force-rtp-包含三个牵引力分量的List，分量为-f-r-f-t-f-p">force_rtp 包含三个牵引力分量的List，分量为<code>[f_r, f_t, f_p]</code></h4>
+<h4 id="force-tpr，进行了坐标旋转，分量为-f-t-f-p-f-r">force_tpr，进行了坐标旋转，分量为<code>[f_t, f_p, f_r]</code></h4>
+<h2 id="FiniteSource-有限源">FiniteSource 有限源</h2>
+<p>相关内容详见参考<a target="_blank" rel="noopener" href="https://instaseis.net/source.html#instaseis.source.ForceSource">https://instaseis.net/source.html#instaseis.source.ForceSource</a></p>
+<h3 id="给出点源">给出点源</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instaseis.source.FiniteSource(pointsources=None, CMT=None, magnitude=None, event_duration=None, hypocenter_longitude=None, hypocenter_latitude=None, hypocenter_depth_in_m=None)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>pointsources (list of Source objects) – The points sources making up the finite source.</li>
 <li>CMT (Source, optional) – The centroid of the finite source.</li>
@@ -475,7 +491,8 @@
 <li>hypocenter_latitude (float, optional) – The hypocentral latitude.</li>
 <li>hypocenter_depth_in_m (float, optional) – The hypocentral depth in m.</li>
 </ul>
-<h2 id="Receiver-台站"><a href="#Receiver-台站" class="headerlink" title="Receiver 台站"></a>Receiver 台站</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Receiver(latitude, longitude, network=None, station=None, location=None, depth_in_m=None)</span><br></pre></td></tr></table></figure>
+<h2 id="Receiver-台站">Receiver 台站</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Receiver(latitude, longitude, network=None, station=None, location=None, depth_in_m=None)</span><br></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rec = Receiver(latitude=12.34, longitude=56.78, network=&quot;AB&quot;,</span><br><span class="line">               station=&quot;CDE&quot;, location=&quot;SY&quot;)</span><br></pre></td></tr></table></figure>
 <p>参数：</p>
@@ -487,7 +504,8 @@
 <li>station (str, optional) – The station id of the receiver.</li>
 <li>location (str) – The location code of the receiver.</li>
 </ul>
-<h1 id="SPECNM-使用的坐标系"><a href="#SPECNM-使用的坐标系" class="headerlink" title="SPECNM 使用的坐标系"></a>SPECNM 使用的坐标系</h1><p>与 <code>Instaseis 使用的坐标系</code> 相同，使用 instaseis.Source 与 instaseis.Receiver 创建相关震源、台站信息。</p>
+<h1>SPECNM 使用的坐标系</h1>
+<p>与 <code>Instaseis 使用的坐标系</code> 相同，使用 instaseis.Source 与 instaseis.Receiver 创建相关震源、台站信息。</p>
 
       
     </div>
@@ -611,7 +629,7 @@
               
                 <a href="/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -718,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-CMT-ndk%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text">1 CMT .ndk格式数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MINEOS-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">MINEOS 使用的坐标系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Instaseis-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">Instaseis 使用的坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-%E6%BA%90"><span class="nav-number">3.1.</span> <span class="nav-text">Source 源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E7%BB%99%E5%87%BA%E7%9F%A9%E5%BC%A0%E9%87%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">直接给出矩张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E9%9C%87%E6%BA%90%E6%96%AD%E5%B1%82%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.2.</span> <span class="nav-text">给出震源断层参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BAparse%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.3.</span> <span class="nav-text">给出parse文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%85%B7%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.1.4.</span> <span class="nav-text">Source 返回值具有的属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">上述的所有参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor-%E5%8C%85%E5%90%AB%E5%85%AD%E4%B8%AA%E7%9F%A9%E5%BC%A0%E9%87%8F%E7%9A%84List%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">tensor 包含六个矩张量的List，分量为[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor-voigt%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%9D%90%E6%A0%87%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">tensor_voigt，进行了坐标旋转，分量为[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ForceSource-%E5%8A%9B%E6%BA%90"><span class="nav-number">3.2.</span> <span class="nav-text">ForceSource 力源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E7%89%B5%E5%BC%95%E5%8A%9B%E4%B8%89%E5%88%86%E9%87%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">给出牵引力三分量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ForceSource-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%85%B7%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">ForceSource 返回值具有的属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0-1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">上述的所有参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#force-rtp-%E5%8C%85%E5%90%AB%E4%B8%89%E4%B8%AA%E7%89%B5%E5%BC%95%E5%8A%9B%E5%88%86%E9%87%8F%E7%9A%84List%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-f-r-f-t-f-p"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">force_rtp 包含三个牵引力分量的List，分量为[f_r, f_t, f_p]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#force-tpr%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%9D%90%E6%A0%87%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-f-t-f-p-f-r"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">force_tpr，进行了坐标旋转，分量为[f_t, f_p, f_r]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FiniteSource-%E6%9C%89%E9%99%90%E6%BA%90"><span class="nav-number">3.3.</span> <span class="nav-text">FiniteSource 有限源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E7%82%B9%E6%BA%90"><span class="nav-number">3.3.1.</span> <span class="nav-text">给出点源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Receiver-%E5%8F%B0%E7%AB%99"><span class="nav-number">3.4.</span> <span class="nav-text">Receiver 台站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SPECNM-%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">4.</span> <span class="nav-text">SPECNM 使用的坐标系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1 CMT .ndk格式数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">MINEOS 使用的坐标系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Instaseis 使用的坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-%E6%BA%90"><span class="nav-number">3.1.</span> <span class="nav-text">Source 源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E7%BB%99%E5%87%BA%E7%9F%A9%E5%BC%A0%E9%87%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">直接给出矩张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E9%9C%87%E6%BA%90%E6%96%AD%E5%B1%82%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.2.</span> <span class="nav-text">给出震源断层参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BAparse%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.3.</span> <span class="nav-text">给出parse文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%85%B7%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.1.4.</span> <span class="nav-text">Source 返回值具有的属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">上述的所有参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor-%E5%8C%85%E5%90%AB%E5%85%AD%E4%B8%AA%E7%9F%A9%E5%BC%A0%E9%87%8F%E7%9A%84List%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-m-rr-m-tt-m-pp-m-rt-m-rp-m-tp"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">tensor 包含六个矩张量的List，分量为[m_rr, m_tt, m_pp, m_rt, m_rp, m_tp]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensor-voigt%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%9D%90%E6%A0%87%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-m-tt-m-pp-m-rr-m-rp-m-rt-m-tp"><span class="nav-number">3.1.4.3.</span> <span class="nav-text">tensor_voigt，进行了坐标旋转，分量为[m_tt, m_pp, m_rr, m_rp, m_rt, m_tp]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ForceSource-%E5%8A%9B%E6%BA%90"><span class="nav-number">3.2.</span> <span class="nav-text">ForceSource 力源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E7%89%B5%E5%BC%95%E5%8A%9B%E4%B8%89%E5%88%86%E9%87%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">给出牵引力三分量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ForceSource-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%85%B7%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">ForceSource 返回值具有的属性：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E8%BF%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%8F%82%E6%95%B0-2"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">上述的所有参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#force-rtp-%E5%8C%85%E5%90%AB%E4%B8%89%E4%B8%AA%E7%89%B5%E5%BC%95%E5%8A%9B%E5%88%86%E9%87%8F%E7%9A%84List%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-f-r-f-t-f-p"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">force_rtp 包含三个牵引力分量的List，分量为[f_r, f_t, f_p]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#force-tpr%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%9D%90%E6%A0%87%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%88%86%E9%87%8F%E4%B8%BA-f-t-f-p-f-r"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">force_tpr，进行了坐标旋转，分量为[f_t, f_p, f_r]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FiniteSource-%E6%9C%89%E9%99%90%E6%BA%90"><span class="nav-number">3.3.</span> <span class="nav-text">FiniteSource 有限源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E7%82%B9%E6%BA%90"><span class="nav-number">3.3.1.</span> <span class="nav-text">给出点源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Receiver-%E5%8F%B0%E7%AB%99"><span class="nav-number">3.4.</span> <span class="nav-text">Receiver 台站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">SPECNM 使用的坐标系</span></a></li></ol></div>
             
 
           </div>

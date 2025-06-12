@@ -82,8 +82,8 @@
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2025-06-12T12:55:57.692Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:22.135Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -391,25 +391,35 @@
       
 
       
-        <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglailea/article/details/105602902">https://blog.csdn.net/fenglailea/article/details/105602902</a></p>
+        <h1>参考</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglailea/article/details/105602902">https://blog.csdn.net/fenglailea/article/details/105602902</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chy555chy/article/details/113747253">https://blog.csdn.net/chy555chy/article/details/113747253</a></p>
-<h1 id="CentOS-7-安装"><a href="#CentOS-7-安装" class="headerlink" title="CentOS 7 安装"></a>CentOS 7 安装</h1><p>CentOS7 安装会出现一群企鹅，以及：</p>
+<h1>CentOS 7 安装</h1>
+<p>CentOS7 安装会出现一群企鹅，以及：</p>
 <pre><code>....
 kernel panic: not syncing: Fatal exception
 Kernel Offset: ........
 ...
 </code></pre>
-<p>以上为部分错误。<br>硬件：<br>CPU: Ryzen 5600G<br>主板: Minisforum B550</p>
-<p>不确定是否为硬件问题，但是显示内核错误。<br>可能是使用Windows平台烧录软件造成的问题，包括Deepin官方烧录软件和rufus均出现这个问题。<br>目前未尝试Linux平台烧录软件。</p>
-<h1 id="CentOS-8-安装"><a href="#CentOS-8-安装" class="headerlink" title="CentOS 8 安装"></a>CentOS 8 安装</h1><p>CentOS 8 安装之前，在<code>Install CentOS 8</code>处点击键盘 <code>E</code> 按键，将第一行的：</p>
+<p>以上为部分错误。<br>
+硬件：<br>
+CPU: Ryzen 5600G<br>
+主板: Minisforum B550</p>
+<p>不确定是否为硬件问题，但是显示内核错误。<br>
+可能是使用Windows平台烧录软件造成的问题，包括Deepin官方烧录软件和rufus均出现这个问题。<br>
+目前未尝试Linux平台烧录软件。</p>
+<h1>CentOS 8 安装</h1>
+<p>CentOS 8 安装之前，在<code>Install CentOS 8</code>处点击键盘 <code>E</code> 按键，将第一行的：</p>
 <pre><code>LABEL=CentOS\...... quiet
 </code></pre>
 <p>其中，<code>CentOS\...</code> 改为使用的U盘名称。</p>
 <p>如果无法进入图形界面，在<code>quite</code>前面加上 <code>nomodeset</code></p>
 <p>使用 <code>Ctrl</code> + <code>X</code> 重新加载即可。</p>
-<h1 id="centos使用前的环境配置"><a href="#centos使用前的环境配置" class="headerlink" title="centos使用前的环境配置"></a>centos使用前的环境配置</h1><pre><code>yum -y update #升级所有包，改变软件设置和系统设置,系统版本内核都升级
+<h1>centos使用前的环境配置</h1>
+<pre><code>yum -y update #升级所有包，改变软件设置和系统设置,系统版本内核都升级
 </code></pre>
-<h2 id="无法使用ntfs格式移动硬盘"><a href="#无法使用ntfs格式移动硬盘" class="headerlink" title="无法使用ntfs格式移动硬盘"></a>无法使用ntfs格式移动硬盘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install ntfs-3g</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「福州司马懿」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/chy555chy/article/details/113747253</span><br></pre></td></tr></table></figure>
+<h2 id="无法使用ntfs格式移动硬盘">无法使用ntfs格式移动硬盘</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install ntfs-3g</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「福州司马懿」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/chy555chy/article/details/113747253</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -533,7 +543,7 @@ Kernel Offset: ........
               
                 <a href="/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -640,7 +650,7 @@ Kernel Offset: ........
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS-7-%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">CentOS 7 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS-8-%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">CentOS 8 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos%E4%BD%BF%E7%94%A8%E5%89%8D%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">centos使用前的环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ntfs%E6%A0%BC%E5%BC%8F%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98"><span class="nav-number">4.1.</span> <span class="nav-text">无法使用ntfs格式移动硬盘</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">CentOS 7 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">CentOS 8 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">centos使用前的环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8ntfs%E6%A0%BC%E5%BC%8F%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98"><span class="nav-number">4.1.</span> <span class="nav-text">无法使用ntfs格式移动硬盘</span></a></li></ol></li></ol></div>
             
 
           </div>

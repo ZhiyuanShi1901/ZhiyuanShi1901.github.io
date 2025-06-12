@@ -82,8 +82,8 @@
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2025-06-12T12:55:57.692Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:22.135Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -393,40 +393,55 @@
       
         <p>参考：</p>
 <p>邓淼磊,马宏琳.Ubuntu Linux基础教程：微课版[M].北京:清华大学出版社,2021</p>
-<h1 id="创建、挂载、卸载文件系统"><a href="#创建、挂载、卸载文件系统" class="headerlink" title="创建、挂载、卸载文件系统"></a>创建、挂载、卸载文件系统</h1><p>由于不常用，因此忽略。</p>
-<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h2 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h2><h3 id="Shell程序启动"><a href="#Shell程序启动" class="headerlink" title="Shell程序启动"></a>Shell程序启动</h3><p>Ctrl+Alt+T 混合键启动</p>
-<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p>命令名 [-选项…][参数…]</p>
-<h2 id="目录操作基本命令"><a href="#目录操作基本命令" class="headerlink" title="目录操作基本命令"></a>目录操作基本命令</h2><h3 id="ls命令：-显示目录下的列表"><a href="#ls命令：-显示目录下的列表" class="headerlink" title="ls命令： 显示目录下的列表"></a>ls命令： 显示目录下的列表</h3><pre><code>ls //当前目录下所有文件及子目录
+<h1>创建、挂载、卸载文件系统</h1>
+<p>由于不常用，因此忽略。</p>
+<h1>Linux常用命令</h1>
+<h2 id="Linux命令">Linux命令</h2>
+<h3 id="Shell程序启动">Shell程序启动</h3>
+<p>Ctrl+Alt+T 混合键启动</p>
+<h3 id="命令格式">命令格式</h3>
+<p>命令名 [-选项…][参数…]</p>
+<h2 id="目录操作基本命令">目录操作基本命令</h2>
+<h3 id="ls命令：-显示目录下的列表">ls命令： 显示目录下的列表</h3>
+<pre><code>ls //当前目录下所有文件及子目录
 ls 文件名 //显示文件的信息
 ls [-l] 文件名 //显示文件的详细信息
 ls /home //显示目录home下的内容
 </code></pre>
-<h3 id="cd命令：-转换所在目录"><a href="#cd命令：-转换所在目录" class="headerlink" title="cd命令： 转换所在目录"></a>cd命令： 转换所在目录</h3><pre><code>cd [路径名] 
+<h3 id="cd命令：-转换所在目录">cd命令： 转换所在目录</h3>
+<pre><code>cd [路径名] 
 </code></pre>
-<p>特殊用法： </p>
+<p>特殊用法：</p>
 <p>. ：当前目录</p>
-<p>.. ：上层目录</p>
+<p>… ：上层目录</p>
 <p>~ ：当前用户的宿主目录</p>
-<p><del>用户名 ：进入</del>后用户的宿主目录</p>
-<p>&#x2F; ：回到根目录</p>
+<p>~用户名 ：进入~后用户的宿主目录</p>
+<p>/ ：回到根目录</p>
 <p>-：代表前一目录</p>
-<h3 id="pwd命令：-显示当前目录的绝对路径"><a href="#pwd命令：-显示当前目录的绝对路径" class="headerlink" title="pwd命令： 显示当前目录的绝对路径"></a>pwd命令： 显示当前目录的绝对路径</h3><pre><code>pwd
+<h3 id="pwd命令：-显示当前目录的绝对路径">pwd命令： 显示当前目录的绝对路径</h3>
+<pre><code>pwd
 </code></pre>
-<h3 id="mkdir命令：-创建一个新目录"><a href="#mkdir命令：-创建一个新目录" class="headerlink" title="mkdir命令： 创建一个新目录"></a>mkdir命令： 创建一个新目录</h3><pre><code>mkdir [选项] 目录名
+<h3 id="mkdir命令：-创建一个新目录">mkdir命令： 创建一个新目录</h3>
+<pre><code>mkdir [选项] 目录名
 -m //权限 对新建目录设置存取权限
 -p //一次性建立多级目录，以递归形式建立目录
 </code></pre>
-<h3 id="rmdir命令：-删除一个空目录"><a href="#rmdir命令：-删除一个空目录" class="headerlink" title="rmdir命令： 删除一个空目录"></a>rmdir命令： 删除一个空目录</h3><pre><code>rmdir [-p] 目录名 // -p指递归删除各级空目录
+<h3 id="rmdir命令：-删除一个空目录">rmdir命令： 删除一个空目录</h3>
+<pre><code>rmdir [-p] 目录名 // -p指递归删除各级空目录
 </code></pre>
-<h2 id="文件操作基本命令"><a href="#文件操作基本命令" class="headerlink" title="文件操作基本命令"></a>文件操作基本命令</h2><h3 id="touch命令：-创建空文件"><a href="#touch命令：-创建空文件" class="headerlink" title="touch命令： 创建空文件"></a>touch命令： 创建空文件</h3><pre><code>touch 文件名
+<h2 id="文件操作基本命令">文件操作基本命令</h2>
+<h3 id="touch命令：-创建空文件">touch命令： 创建空文件</h3>
+<pre><code>touch 文件名
 </code></pre>
-<h3 id="cat命令：-显示文件内容、合并文件"><a href="#cat命令：-显示文件内容、合并文件" class="headerlink" title="cat命令： 显示文件内容、合并文件"></a>cat命令： 显示文件内容、合并文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat [选项] [文件名]</span><br><span class="line">-A 显示所有字符</span><br><span class="line">-n 所有行编号并显示行号</span><br><span class="line">-b 除了空行不编号，对文件中其他行都进行编号并显示行号</span><br><span class="line">-s 将连续的空行压缩为一个空行</span><br></pre></td></tr></table></figure>
+<h3 id="cat命令：-显示文件内容、合并文件">cat命令： 显示文件内容、合并文件</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat [选项] [文件名]</span><br><span class="line">-A 显示所有字符</span><br><span class="line">-n 所有行编号并显示行号</span><br><span class="line">-b 除了空行不编号，对文件中其他行都进行编号并显示行号</span><br><span class="line">-s 将连续的空行压缩为一个空行</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; 新文件名  //重导向，将键盘输入文本保存到文件</span><br><span class="line">cat 文件名1 文件名2 &gt; 文件名3  //将1、2文件合并到3文件</span><br><span class="line">cat 文件名2 &gt;&gt; 文件名1  //把文件2的全部内容追加到文件1末尾 </span><br></pre></td></tr></table></figure>
-
-<h3 id="cp命令：-复制文件"><a href="#cp命令：-复制文件" class="headerlink" title="cp命令： 复制文件"></a>cp命令： 复制文件</h3><pre><code>cp [-选项] 源文件 目标
+<h3 id="cp命令：-复制文件">cp命令： 复制文件</h3>
+<pre><code>cp [-选项] 源文件 目标
 -i //以安全询问方式进行复制 y确认，n否认
 </code></pre>
-<h3 id="rm命令：-删除指定文件"><a href="#rm命令：-删除指定文件" class="headerlink" title="rm命令： 删除指定文件"></a>rm命令： 删除指定文件</h3><pre><code>rm [选项] [文件名或目录名]
+<h3 id="rm命令：-删除指定文件">rm命令： 删除指定文件</h3>
+<pre><code>rm [选项] [文件名或目录名]
 -i  //安全询问
 -r/-R  //递归处理，目录与子目录中所有文件一并删除
 -f  //强制删除文件或目录
@@ -434,9 +449,11 @@ ls /home //显示目录home下的内容
 -d  //直接把删除的目录硬连接数据修改为0
 * // 通配符，删除多个文件。例如tr*为删除首为tr开头的所有文件
 </code></pre>
-<h3 id="mv命令：-文件移动"><a href="#mv命令：-文件移动" class="headerlink" title="mv命令： 文件移动"></a>mv命令： 文件移动</h3><pre><code>mv 文件名 路径名
+<h3 id="mv命令：-文件移动">mv命令： 文件移动</h3>
+<pre><code>mv 文件名 路径名
 </code></pre>
-<h3 id="chmod命令：-修改文件的权限和文件属性"><a href="#chmod命令：-修改文件的权限和文件属性" class="headerlink" title="chmod命令： 修改文件的权限和文件属性"></a>chmod命令： 修改文件的权限和文件属性</h3><pre><code>chmod [文件使用者-/+/=权限类型] 文件名1 文件名2
+<h3 id="chmod命令：-修改文件的权限和文件属性">chmod命令： 修改文件的权限和文件属性</h3>
+<pre><code>chmod [文件使用者-/+/=权限类型] 文件名1 文件名2
 </code></pre>
 <p>文件使用者类型：</p>
 <ul>
@@ -445,11 +462,11 @@ ls /home //显示目录home下的内容
 <li>o：其他用户</li>
 <li>a：所有用户</li>
 </ul>
-<p>+&#x2F;-&#x2F;&#x3D;：</p>
+<p>+/-/=：</p>
 <ul>
 <li>+：增加权限</li>
 <li>-：取消权限</li>
-<li>&#x3D;：赋予指定的权限并取消其他权限</li>
+<li>=：赋予指定的权限并取消其他权限</li>
 </ul>
 <p>权限类型：</p>
 <ul>
@@ -458,58 +475,74 @@ ls /home //显示目录home下的内容
 <li>x：可执行权限</li>
 </ul>
 <p>数字表示：</p>
-<p>4：读权限&emsp;2：写权限&emsp;1：执行权限&emsp;0：没有权限</p>
+<p>4：读权限 2：写权限 1：执行权限 0：没有权限</p>
 <pre><code>chmod a=rwx filename
 chomd 777 filename 
 </code></pre>
 <p>二者等价</p>
-<h2 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h2><h3 id="grep命令：-制定的文件中查找某个特定的字符串"><a href="#grep命令：-制定的文件中查找某个特定的字符串" class="headerlink" title="grep命令： 制定的文件中查找某个特定的字符串"></a>grep命令： 制定的文件中查找某个特定的字符串</h3><pre><code>grep [选项] 关键字 文件名
+<h2 id="文件处理命令">文件处理命令</h2>
+<h3 id="grep命令：-制定的文件中查找某个特定的字符串">grep命令： 制定的文件中查找某个特定的字符串</h3>
+<pre><code>grep [选项] 关键字 文件名
 -i  //不区分大小写
 </code></pre>
-<h3 id="head命令：-查看文件开头部分的内容"><a href="#head命令：-查看文件开头部分的内容" class="headerlink" title="head命令： 查看文件开头部分的内容"></a>head命令： 查看文件开头部分的内容</h3><pre><code>head [数字选项] 文件名 //数字表示显示几行
+<h3 id="head命令：-查看文件开头部分的内容">head命令： 查看文件开头部分的内容</h3>
+<pre><code>head [数字选项] 文件名 //数字表示显示几行
 </code></pre>
-<h3 id="tail命令：-查看文件结尾部分的内容"><a href="#tail命令：-查看文件结尾部分的内容" class="headerlink" title="tail命令： 查看文件结尾部分的内容"></a>tail命令： 查看文件结尾部分的内容</h3><pre><code>tail [数字选项] 文件名
+<h3 id="tail命令：-查看文件结尾部分的内容">tail命令： 查看文件结尾部分的内容</h3>
+<pre><code>tail [数字选项] 文件名
 </code></pre>
-<h3 id="wc命令：-对文件的行数、单词数、字符数进行统计"><a href="#wc命令：-对文件的行数、单词数、字符数进行统计" class="headerlink" title="wc命令： 对文件的行数、单词数、字符数进行统计"></a>wc命令： 对文件的行数、单词数、字符数进行统计</h3><pre><code>wc [选项] 文件名
+<h3 id="wc命令：-对文件的行数、单词数、字符数进行统计">wc命令： 对文件的行数、单词数、字符数进行统计</h3>
+<pre><code>wc [选项] 文件名
 -l //显示行数
 -w //显示单词数
 -m //显示字符数
 </code></pre>
-<h3 id="sort命令：-对文件内容或者查询结果进行排序"><a href="#sort命令：-对文件内容或者查询结果进行排序" class="headerlink" title="sort命令： 对文件内容或者查询结果进行排序"></a>sort命令： 对文件内容或者查询结果进行排序</h3><pre><code>sort [选项] 文件名
+<h3 id="sort命令：-对文件内容或者查询结果进行排序">sort命令： 对文件内容或者查询结果进行排序</h3>
+<pre><code>sort [选项] 文件名
 //有很多选项，部分如下：
 -f // 忽略大小写
 -r //反向排序
 -t //指定分隔符
 -i //只考虑可以打印的字符
 </code></pre>
-<h3 id="find命令：-查找文件或者目录"><a href="#find命令：-查找文件或者目录" class="headerlink" title="find命令： 查找文件或者目录"></a>find命令： 查找文件或者目录</h3><pre><code>find 文件名/目录名
+<h3 id="find命令：-查找文件或者目录">find命令： 查找文件或者目录</h3>
+<pre><code>find 文件名/目录名
 </code></pre>
-<h3 id="which命令：-按路径查找相应命令，显示命令的绝对路径"><a href="#which命令：-按路径查找相应命令，显示命令的绝对路径" class="headerlink" title="which命令： 按路径查找相应命令，显示命令的绝对路径"></a>which命令： 按路径查找相应命令，显示命令的绝对路径</h3><pre><code>which 命令名
+<h3 id="which命令：-按路径查找相应命令，显示命令的绝对路径">which命令： 按路径查找相应命令，显示命令的绝对路径</h3>
+<pre><code>which 命令名
 </code></pre>
-<h3 id="whereis命令：查找命令、查找Ubuntu资料库中记载的文件"><a href="#whereis命令：查找命令、查找Ubuntu资料库中记载的文件" class="headerlink" title="whereis命令：查找命令、查找Ubuntu资料库中记载的文件"></a>whereis命令：查找命令、查找Ubuntu资料库中记载的文件</h3><pre><code>whereis [选项] 文件名
+<h3 id="whereis命令：查找命令、查找Ubuntu资料库中记载的文件">whereis命令：查找命令、查找Ubuntu资料库中记载的文件</h3>
+<pre><code>whereis [选项] 文件名
 -b //只查找二进制文件
 -w //只查找manual路径下的文件
 </code></pre>
-<h3 id="locate命令：所有与被查询的文件名相同的文件查找出来"><a href="#locate命令：所有与被查询的文件名相同的文件查找出来" class="headerlink" title="locate命令：所有与被查询的文件名相同的文件查找出来"></a>locate命令：所有与被查询的文件名相同的文件查找出来</h3><pre><code>locate 文件名
+<h3 id="locate命令：所有与被查询的文件名相同的文件查找出来">locate命令：所有与被查询的文件名相同的文件查找出来</h3>
+<pre><code>locate 文件名
 </code></pre>
-<h2 id="压缩备份基本命令"><a href="#压缩备份基本命令" class="headerlink" title="压缩备份基本命令"></a>压缩备份基本命令</h2><h3 id="bzip2和bunzip2命令：-压缩与解压-bz2"><a href="#bzip2和bunzip2命令：-压缩与解压-bz2" class="headerlink" title="bzip2和bunzip2命令： 压缩与解压 .bz2"></a>bzip2和bunzip2命令： 压缩与解压 .bz2</h3><pre><code>bzip2 文件名1 [文件名2] ……
+<h2 id="压缩备份基本命令">压缩备份基本命令</h2>
+<h3 id="bzip2和bunzip2命令：-压缩与解压-bz2">bzip2和bunzip2命令： 压缩与解压 .bz2</h3>
+<pre><code>bzip2 文件名1 [文件名2] ……
 bunzip2 文件名1 [文件名2] ……
 </code></pre>
 <p>压缩文件后，拓展名为.bz2，且必须用<code>bunzip2</code>命令解压。</p>
-<h3 id="gzip命令：-常用压缩命令-gz"><a href="#gzip命令：-常用压缩命令-gz" class="headerlink" title="gzip命令： 常用压缩命令 .gz"></a>gzip命令： 常用压缩命令 .gz</h3><pre><code>gzip [-选项] 文件名
+<h3 id="gzip命令：-常用压缩命令-gz">gzip命令： 常用压缩命令 .gz</h3>
+<pre><code>gzip [-选项] 文件名
 -d //解压
 -n //制定压缩级别（1-9） 9压缩级别最高 默认为6
 </code></pre>
-<h3 id="unzip命令：-解压命令-zip"><a href="#unzip命令：-解压命令-zip" class="headerlink" title="unzip命令： 解压命令 .zip"></a>unzip命令： 解压命令 .zip</h3><pre><code>unzip [选项] 文件名
+<h3 id="unzip命令：-解压命令-zip">unzip命令： 解压命令 .zip</h3>
+<pre><code>unzip [选项] 文件名
 -d //文件解压到指定目录
 -n //不覆盖已存在的同名文件
 -v //查看文件目录列表但不解压
 -o //以默认方式覆盖已经存在的同名文件
 </code></pre>
-<h3 id="zcat-bzcat命令：-查看压缩文件内容"><a href="#zcat-bzcat命令：-查看压缩文件内容" class="headerlink" title="zcat bzcat命令： 查看压缩文件内容"></a>zcat bzcat命令： 查看压缩文件内容</h3><pre><code>zcat 文件名  //查看.gz
+<h3 id="zcat-bzcat命令：-查看压缩文件内容">zcat bzcat命令： 查看压缩文件内容</h3>
+<pre><code>zcat 文件名  //查看.gz
 bzcat 文件名  //查看.bz2
 </code></pre>
-<h3 id="tar命令：-对文件或者目录进行打包备份和解包操作"><a href="#tar命令：-对文件或者目录进行打包备份和解包操作" class="headerlink" title="tar命令： 对文件或者目录进行打包备份和解包操作"></a>tar命令： 对文件或者目录进行打包备份和解包操作</h3><pre><code>tar [-选项] [备份包的文件名] [要打包（或者解包）的文件或者目录]
+<h3 id="tar命令：-对文件或者目录进行打包备份和解包操作">tar命令： 对文件或者目录进行打包备份和解包操作</h3>
+<pre><code>tar [-选项] [备份包的文件名] [要打包（或者解包）的文件或者目录]
 -c //创建新的打包文件
 -x //抽取.tar内的内容
 -z //打包后直接用gzip命令压缩或者解压文件
@@ -518,29 +551,44 @@ bzcat 文件名  //查看.bz2
 -f //使用文件或设备
 -v //打包或解包后将文件的详细清单显示出来
 </code></pre>
-<h2 id="磁盘操作命令"><a href="#磁盘操作命令" class="headerlink" title="磁盘操作命令"></a>磁盘操作命令</h2><p>由于在图形界面下不常用，因此不进行详细记录。具体参考相关书籍</p>
-<h3 id="mount命令：-挂载"><a href="#mount命令：-挂载" class="headerlink" title="mount命令： 挂载"></a>mount命令： 挂载</h3><h3 id="umount命令：-卸载一个文件系统"><a href="#umount命令：-卸载一个文件系统" class="headerlink" title="umount命令： 卸载一个文件系统"></a>umount命令： 卸载一个文件系统</h3><h3 id="df命令：-查看当前硬盘的分区信息"><a href="#df命令：-查看当前硬盘的分区信息" class="headerlink" title="df命令： 查看当前硬盘的分区信息"></a>df命令： 查看当前硬盘的分区信息</h3><pre><code>df [选项]
+<h2 id="磁盘操作命令">磁盘操作命令</h2>
+<p>由于在图形界面下不常用，因此不进行详细记录。具体参考相关书籍</p>
+<h3 id="mount命令：-挂载">mount命令： 挂载</h3>
+<h3 id="umount命令：-卸载一个文件系统">umount命令： 卸载一个文件系统</h3>
+<h3 id="df命令：-查看当前硬盘的分区信息">df命令： 查看当前硬盘的分区信息</h3>
+<pre><code>df [选项]
 </code></pre>
-<h3 id="du命令：-查看当前目录下的所有文件及目录信息"><a href="#du命令：-查看当前目录下的所有文件及目录信息" class="headerlink" title="du命令： 查看当前目录下的所有文件及目录信息"></a>du命令： 查看当前目录下的所有文件及目录信息</h3><pre><code>du [选项]
+<h3 id="du命令：-查看当前目录下的所有文件及目录信息">du命令： 查看当前目录下的所有文件及目录信息</h3>
+<pre><code>du [选项]
 </code></pre>
-<h3 id="fsk命令：-硬盘检测，只能由root用户执行"><a href="#fsk命令：-硬盘检测，只能由root用户执行" class="headerlink" title="fsk命令： 硬盘检测，只能由root用户执行"></a>fsk命令： 硬盘检测，只能由root用户执行</h3><pre><code>fsk 分区名
+<h3 id="fsk命令：-硬盘检测，只能由root用户执行">fsk命令： 硬盘检测，只能由root用户执行</h3>
+<pre><code>fsk 分区名
 </code></pre>
-<h2 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h2><h3 id="shutdown命令：-安全关机"><a href="#shutdown命令：-安全关机" class="headerlink" title="shutdown命令： 安全关机"></a>shutdown命令： 安全关机</h3><pre><code>shutdown [选项] [时间] [警告信息]
+<h2 id="关机重启">关机重启</h2>
+<h3 id="shutdown命令：-安全关机">shutdown命令： 安全关机</h3>
+<pre><code>shutdown [选项] [时间] [警告信息]
 -h // 停止系统服务
 -k // 不真正关机，发出警告信息
 -r // 停止系统服务，然后安全重启
 -t // 规定的时间后关机
 </code></pre>
-<h3 id="halt命令：-关机"><a href="#halt命令：-关机" class="headerlink" title="halt命令： 关机"></a>halt命令： 关机</h3><pre><code>halt [选项]
+<h3 id="halt命令：-关机">halt命令： 关机</h3>
+<pre><code>halt [选项]
 -f //强制关机
 </code></pre>
-<h3 id="poweroff命令：关机"><a href="#poweroff命令：关机" class="headerlink" title="poweroff命令：关机"></a>poweroff命令：关机</h3><h3 id="reboot命令：-重启"><a href="#reboot命令：-重启" class="headerlink" title="reboot命令： 重启"></a>reboot命令： 重启</h3><h3 id="init命令：切换Ubuntu的运行级别"><a href="#init命令：切换Ubuntu的运行级别" class="headerlink" title="init命令：切换Ubuntu的运行级别"></a>init命令：切换Ubuntu的运行级别</h3><pre><code>init [运行级别]
+<h3 id="poweroff命令：关机">poweroff命令：关机</h3>
+<h3 id="reboot命令：-重启">reboot命令： 重启</h3>
+<h3 id="init命令：切换Ubuntu的运行级别">init命令：切换Ubuntu的运行级别</h3>
+<pre><code>init [运行级别]
 </code></pre>
 <p>运行级别共有7级：0为关机，6为重启。</p>
-<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="echo命令：-显示命令行中的字符串，用于输出提示信息"><a href="#echo命令：-显示命令行中的字符串，用于输出提示信息" class="headerlink" title="echo命令： 显示命令行中的字符串，用于输出提示信息"></a>echo命令： 显示命令行中的字符串，用于输出提示信息</h3><pre><code>echo [选项] [字符串]
+<h2 id="其他命令">其他命令</h2>
+<h3 id="echo命令：-显示命令行中的字符串，用于输出提示信息">echo命令： 显示命令行中的字符串，用于输出提示信息</h3>
+<pre><code>echo [选项] [字符串]
 -n //表示输出字符串后光标不换行
 </code></pre>
-<h3 id="more、less命令：将文件内容或者查询结果分屏显示"><a href="#more、less命令：将文件内容或者查询结果分屏显示" class="headerlink" title="more、less命令：将文件内容或者查询结果分屏显示"></a>more、less命令：将文件内容或者查询结果分屏显示</h3><pre><code>more [选项] 文件名 
+<h3 id="more、less命令：将文件内容或者查询结果分屏显示">more、less命令：将文件内容或者查询结果分屏显示</h3>
+<pre><code>more [选项] 文件名 
 -p //不滚屏，清屏
 -s //连续空行压缩为一个空行
 +n //从第n行开始显示
@@ -549,16 +597,19 @@ bzcat 文件名  //查看.bz2
 less [选项] 文件名 
 </code></pre>
 <p>more：命令将屏幕信息分屏显示，空格下翻一页，B上翻一页，Q退出。</p>
-<p>less：Page up&#x2F;down或者上下箭头实现翻行</p>
-<h3 id="help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容"><a href="#help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容" class="headerlink" title="help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容"></a>help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容</h3><pre><code>help 命令名
+<p>less：Page up/down或者上下箭头实现翻行</p>
+<h3 id="help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容">help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容</h3>
+<pre><code>help 命令名
 man 命令名  //使用范围更广
 </code></pre>
-<h3 id="cal命令：-显示日历"><a href="#cal命令：-显示日历" class="headerlink" title="cal命令： 显示日历"></a>cal命令： 显示日历</h3><pre><code>cal [选项] [[月]年]
+<h3 id="cal命令：-显示日历">cal命令： 显示日历</h3>
+<pre><code>cal [选项] [[月]年]
 -m //以周一为每周第一天显示
 -j //以凯撒历显示
 -y //显示今年年历
 </code></pre>
-<h3 id="date命令：显示及设定系统时间"><a href="#date命令：显示及设定系统时间" class="headerlink" title="date命令：显示及设定系统时间"></a>date命令：显示及设定系统时间</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date [选项]+显示时间的格式</span><br><span class="line">-u //使用格林尼治时间</span><br><span class="line">-r //最后一次修改文件的时间</span><br></pre></td></tr></table></figure>
+<h3 id="date命令：显示及设定系统时间">date命令：显示及设定系统时间</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date [选项]+显示时间的格式</span><br><span class="line">-u //使用格林尼治时间</span><br><span class="line">-r //最后一次修改文件的时间</span><br></pre></td></tr></table></figure>
 <p>date命令常用的时间格式参考书。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date 设定的系统时间 //修改系统时间时，采用MMDDhhmmYYYY.ss的格式</span><br><span class="line">clock -w //将系统时间写入CMOS，系统重启后会显示正确时间</span><br></pre></td></tr></table></figure>
 
@@ -684,7 +735,7 @@ man 命令名  //使用范围更广
               
                 <a href="/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -791,7 +842,7 @@ man 命令名  //使用范围更广
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E3%80%81%E6%8C%82%E8%BD%BD%E3%80%81%E5%8D%B8%E8%BD%BD%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">创建、挂载、卸载文件系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">Shell程序启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">命令格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">目录操作基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E5%88%97%E8%A1%A8"><span class="nav-number">2.2.1.</span> <span class="nav-text">ls命令： 显示目录下的列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd%E5%91%BD%E4%BB%A4%EF%BC%9A-%E8%BD%AC%E6%8D%A2%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">cd命令： 转换所在目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pwd%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">2.2.3.</span> <span class="nav-text">pwd命令： 显示当前目录的绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.4.</span> <span class="nav-text">mkdir命令： 创建一个新目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.5.</span> <span class="nav-text">rmdir命令： 删除一个空目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">文件操作基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#touch%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%9B%E5%BB%BA%E7%A9%BA%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.1.</span> <span class="nav-text">touch命令： 创建空文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E3%80%81%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">cat命令： 显示文件内容、合并文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cp%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.3.</span> <span class="nav-text">cp命令： 复制文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.4.</span> <span class="nav-text">rm命令： 删除指定文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mv%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.3.5.</span> <span class="nav-text">mv命令： 文件移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod%E5%91%BD%E4%BB%A4%EF%BC%9A-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%83%E9%99%90%E5%92%8C%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.6.</span> <span class="nav-text">chmod命令： 修改文件的权限和文件属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.4.</span> <span class="nav-text">文件处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grep%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%B6%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E7%89%B9%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.4.1.</span> <span class="nav-text">grep命令： 制定的文件中查找某个特定的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">head命令： 查看文件开头部分的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tail%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">tail命令： 查看文件结尾部分的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wc%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%8C%E6%95%B0%E3%80%81%E5%8D%95%E8%AF%8D%E6%95%B0%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E8%BF%9B%E8%A1%8C%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.4.4.</span> <span class="nav-text">wc命令： 对文件的行数、单词数、字符数进行统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AF%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%88%96%E8%80%85%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F"><span class="nav-number">2.4.5.</span> <span class="nav-text">sort命令： 对文件内容或者查询结果进行排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95"><span class="nav-number">2.4.6.</span> <span class="nav-text">find命令： 查找文件或者目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#which%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%8C%89%E8%B7%AF%E5%BE%84%E6%9F%A5%E6%89%BE%E7%9B%B8%E5%BA%94%E5%91%BD%E4%BB%A4%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">2.4.7.</span> <span class="nav-text">which命令： 按路径查找相应命令，显示命令的绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#whereis%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E3%80%81%E6%9F%A5%E6%89%BEUbuntu%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%AD%E8%AE%B0%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.8.</span> <span class="nav-text">whereis命令：查找命令、查找Ubuntu资料库中记载的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locate%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%80%E6%9C%89%E4%B8%8E%E8%A2%AB%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D%E7%9B%B8%E5%90%8C%E7%9A%84%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE%E5%87%BA%E6%9D%A5"><span class="nav-number">2.4.9.</span> <span class="nav-text">locate命令：所有与被查询的文件名相同的文件查找出来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.5.</span> <span class="nav-text">压缩备份基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzip2%E5%92%8Cbunzip2%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B-bz2"><span class="nav-number">2.5.1.</span> <span class="nav-text">bzip2和bunzip2命令： 压缩与解压 .bz2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gzip%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4-gz"><span class="nav-number">2.5.2.</span> <span class="nav-text">gzip命令： 常用压缩命令 .gz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unzip%E5%91%BD%E4%BB%A4%EF%BC%9A-%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4-zip"><span class="nav-number">2.5.3.</span> <span class="nav-text">unzip命令： 解压命令 .zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zcat-bzcat%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.5.4.</span> <span class="nav-text">zcat bzcat命令： 查看压缩文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AF%B9%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95%E8%BF%9B%E8%A1%8C%E6%89%93%E5%8C%85%E5%A4%87%E4%BB%BD%E5%92%8C%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C"><span class="nav-number">2.5.5.</span> <span class="nav-text">tar命令： 对文件或者目录进行打包备份和解包操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.6.</span> <span class="nav-text">磁盘操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mount%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%8C%82%E8%BD%BD"><span class="nav-number">2.6.1.</span> <span class="nav-text">mount命令： 挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#umount%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%8D%B8%E8%BD%BD%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.6.2.</span> <span class="nav-text">umount命令： 卸载一个文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%A1%AC%E7%9B%98%E7%9A%84%E5%88%86%E5%8C%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.6.3.</span> <span class="nav-text">df命令： 查看当前硬盘的分区信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#du%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%AE%E5%BD%95%E4%BF%A1%E6%81%AF"><span class="nav-number">2.6.4.</span> <span class="nav-text">du命令： 查看当前目录下的所有文件及目录信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fsk%E5%91%BD%E4%BB%A4%EF%BC%9A-%E7%A1%AC%E7%9B%98%E6%A3%80%E6%B5%8B%EF%BC%8C%E5%8F%AA%E8%83%BD%E7%94%B1root%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C"><span class="nav-number">2.6.5.</span> <span class="nav-text">fsk命令： 硬盘检测，只能由root用户执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF"><span class="nav-number">2.7.</span> <span class="nav-text">关机重启</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shutdown%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AE%89%E5%85%A8%E5%85%B3%E6%9C%BA"><span class="nav-number">2.7.1.</span> <span class="nav-text">shutdown命令： 安全关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#halt%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%85%B3%E6%9C%BA"><span class="nav-number">2.7.2.</span> <span class="nav-text">halt命令： 关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poweroff%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%85%B3%E6%9C%BA"><span class="nav-number">2.7.3.</span> <span class="nav-text">poweroff命令：关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reboot%E5%91%BD%E4%BB%A4%EF%BC%9A-%E9%87%8D%E5%90%AF"><span class="nav-number">2.7.4.</span> <span class="nav-text">reboot命令： 重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%88%87%E6%8D%A2Ubuntu%E7%9A%84%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="nav-number">2.7.5.</span> <span class="nav-text">init命令：切换Ubuntu的运行级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">2.8.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#echo%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%BE%93%E5%87%BA%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.8.1.</span> <span class="nav-text">echo命令： 显示命令行中的字符串，用于输出提示信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more%E3%80%81less%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%B0%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%88%96%E8%80%85%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA"><span class="nav-number">2.8.2.</span> <span class="nav-text">more、less命令：将文件内容或者查询结果分屏显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#help%E3%80%81man%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%98%BE%E7%A4%BA%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%92%8C%E7%94%A8%E6%B3%95%E3%80%81%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%8B%E5%86%8C%EF%BC%88manual%EF%BC%89%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.8.3.</span> <span class="nav-text">help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cal%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86"><span class="nav-number">2.8.4.</span> <span class="nav-text">cal命令： 显示日历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%98%BE%E7%A4%BA%E5%8F%8A%E8%AE%BE%E5%AE%9A%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4"><span class="nav-number">2.8.5.</span> <span class="nav-text">date命令：显示及设定系统时间</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">创建、挂载、卸载文件系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">Shell程序启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">命令格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">目录操作基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E5%88%97%E8%A1%A8"><span class="nav-number">2.2.1.</span> <span class="nav-text">ls命令： 显示目录下的列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd%E5%91%BD%E4%BB%A4%EF%BC%9A-%E8%BD%AC%E6%8D%A2%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">cd命令： 转换所在目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pwd%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">2.2.3.</span> <span class="nav-text">pwd命令： 显示当前目录的绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.4.</span> <span class="nav-text">mkdir命令： 创建一个新目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E7%A9%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.5.</span> <span class="nav-text">rmdir命令： 删除一个空目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">文件操作基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#touch%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%9B%E5%BB%BA%E7%A9%BA%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.1.</span> <span class="nav-text">touch命令： 创建空文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E3%80%81%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">cat命令： 显示文件内容、合并文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cp%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.3.</span> <span class="nav-text">cp命令： 复制文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.4.</span> <span class="nav-text">rm命令： 删除指定文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mv%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.3.5.</span> <span class="nav-text">mv命令： 文件移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod%E5%91%BD%E4%BB%A4%EF%BC%9A-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%83%E9%99%90%E5%92%8C%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.6.</span> <span class="nav-text">chmod命令： 修改文件的权限和文件属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.4.</span> <span class="nav-text">文件处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grep%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%88%B6%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E7%89%B9%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.4.1.</span> <span class="nav-text">grep命令： 制定的文件中查找某个特定的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">head命令： 查看文件开头部分的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tail%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">tail命令： 查看文件结尾部分的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wc%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%8C%E6%95%B0%E3%80%81%E5%8D%95%E8%AF%8D%E6%95%B0%E3%80%81%E5%AD%97%E7%AC%A6%E6%95%B0%E8%BF%9B%E8%A1%8C%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.4.4.</span> <span class="nav-text">wc命令： 对文件的行数、单词数、字符数进行统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AF%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%88%96%E8%80%85%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F"><span class="nav-number">2.4.5.</span> <span class="nav-text">sort命令： 对文件内容或者查询结果进行排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95"><span class="nav-number">2.4.6.</span> <span class="nav-text">find命令： 查找文件或者目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#which%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%8C%89%E8%B7%AF%E5%BE%84%E6%9F%A5%E6%89%BE%E7%9B%B8%E5%BA%94%E5%91%BD%E4%BB%A4%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E7%9A%84%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">2.4.7.</span> <span class="nav-text">which命令： 按路径查找相应命令，显示命令的绝对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#whereis%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E3%80%81%E6%9F%A5%E6%89%BEUbuntu%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%AD%E8%AE%B0%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.8.</span> <span class="nav-text">whereis命令：查找命令、查找Ubuntu资料库中记载的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locate%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%80%E6%9C%89%E4%B8%8E%E8%A2%AB%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D%E7%9B%B8%E5%90%8C%E7%9A%84%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE%E5%87%BA%E6%9D%A5"><span class="nav-number">2.4.9.</span> <span class="nav-text">locate命令：所有与被查询的文件名相同的文件查找出来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.5.</span> <span class="nav-text">压缩备份基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzip2%E5%92%8Cbunzip2%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B-bz2"><span class="nav-number">2.5.1.</span> <span class="nav-text">bzip2和bunzip2命令： 压缩与解压 .bz2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gzip%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4-gz"><span class="nav-number">2.5.2.</span> <span class="nav-text">gzip命令： 常用压缩命令 .gz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unzip%E5%91%BD%E4%BB%A4%EF%BC%9A-%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4-zip"><span class="nav-number">2.5.3.</span> <span class="nav-text">unzip命令： 解压命令 .zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zcat-bzcat%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.5.4.</span> <span class="nav-text">zcat bzcat命令： 查看压缩文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AF%B9%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95%E8%BF%9B%E8%A1%8C%E6%89%93%E5%8C%85%E5%A4%87%E4%BB%BD%E5%92%8C%E8%A7%A3%E5%8C%85%E6%93%8D%E4%BD%9C"><span class="nav-number">2.5.5.</span> <span class="nav-text">tar命令： 对文件或者目录进行打包备份和解包操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.6.</span> <span class="nav-text">磁盘操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mount%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%8C%82%E8%BD%BD"><span class="nav-number">2.6.1.</span> <span class="nav-text">mount命令： 挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#umount%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%8D%B8%E8%BD%BD%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.6.2.</span> <span class="nav-text">umount命令： 卸载一个文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%A1%AC%E7%9B%98%E7%9A%84%E5%88%86%E5%8C%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.6.3.</span> <span class="nav-text">df命令： 查看当前硬盘的分区信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#du%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%AE%E5%BD%95%E4%BF%A1%E6%81%AF"><span class="nav-number">2.6.4.</span> <span class="nav-text">du命令： 查看当前目录下的所有文件及目录信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fsk%E5%91%BD%E4%BB%A4%EF%BC%9A-%E7%A1%AC%E7%9B%98%E6%A3%80%E6%B5%8B%EF%BC%8C%E5%8F%AA%E8%83%BD%E7%94%B1root%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C"><span class="nav-number">2.6.5.</span> <span class="nav-text">fsk命令： 硬盘检测，只能由root用户执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF"><span class="nav-number">2.7.</span> <span class="nav-text">关机重启</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shutdown%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%AE%89%E5%85%A8%E5%85%B3%E6%9C%BA"><span class="nav-number">2.7.1.</span> <span class="nav-text">shutdown命令： 安全关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#halt%E5%91%BD%E4%BB%A4%EF%BC%9A-%E5%85%B3%E6%9C%BA"><span class="nav-number">2.7.2.</span> <span class="nav-text">halt命令： 关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poweroff%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%85%B3%E6%9C%BA"><span class="nav-number">2.7.3.</span> <span class="nav-text">poweroff命令：关机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reboot%E5%91%BD%E4%BB%A4%EF%BC%9A-%E9%87%8D%E5%90%AF"><span class="nav-number">2.7.4.</span> <span class="nav-text">reboot命令： 重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%88%87%E6%8D%A2Ubuntu%E7%9A%84%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="nav-number">2.7.5.</span> <span class="nav-text">init命令：切换Ubuntu的运行级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">2.8.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#echo%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%BE%93%E5%87%BA%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.8.1.</span> <span class="nav-text">echo命令： 显示命令行中的字符串，用于输出提示信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more%E3%80%81less%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%B0%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%88%96%E8%80%85%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA"><span class="nav-number">2.8.2.</span> <span class="nav-text">more、less命令：将文件内容或者查询结果分屏显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#help%E3%80%81man%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%98%BE%E7%A4%BA%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%92%8C%E7%94%A8%E6%B3%95%E3%80%81%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%8B%E5%86%8C%EF%BC%88manual%EF%BC%89%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.8.3.</span> <span class="nav-text">help、man命令：显示内建命令的格式和用法、显示系统手册（manual）中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cal%E5%91%BD%E4%BB%A4%EF%BC%9A-%E6%98%BE%E7%A4%BA%E6%97%A5%E5%8E%86"><span class="nav-number">2.8.4.</span> <span class="nav-text">cal命令： 显示日历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%98%BE%E7%A4%BA%E5%8F%8A%E8%AE%BE%E5%AE%9A%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4"><span class="nav-number">2.8.5.</span> <span class="nav-text">date命令：显示及设定系统时间</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

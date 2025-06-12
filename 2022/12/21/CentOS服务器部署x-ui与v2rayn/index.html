@@ -82,8 +82,8 @@
 <meta property="og:site_name" content="Seismology Learning">
 <meta property="og:description" content="34e895a3fd0bee1dadbd8358d3b14d24">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-26T11:55:03.443Z">
-<meta property="article:modified_time" content="2024-04-26T11:54:20.806Z">
+<meta property="article:published_time" content="2025-06-12T12:55:57.692Z">
+<meta property="article:modified_time" content="2024-04-26T11:54:22.135Z">
 <meta property="article:author" content="Shi Zhiyuan">
 <meta name="twitter:card" content="summary">
 
@@ -391,26 +391,42 @@
       
 
       
-        <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[阿帅同学分享的不知名来源的教程]<br><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">v2rayN_github</a><br><a target="_blank" rel="noopener" href="https://v2rayn.org/">v2rayN官网</a><br><a target="_blank" rel="noopener" href="https://v2rayng.org/">移动端v2rayNG官网</a><br><a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui">x-ui</a><br><a target="_blank" rel="noopener" href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
+        <h1>参考：</h1>
+<p>[阿帅同学分享的不知名来源的教程]<br>
+<a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases">v2rayN_github</a><br>
+<a target="_blank" rel="noopener" href="https://v2rayn.org/">v2rayN官网</a><br>
+<a target="_blank" rel="noopener" href="https://v2rayng.org/">移动端v2rayNG官网</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/vaxilu/x-ui">x-ui</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/bedefaced/vpn-install">V-Install</a></p>
 <p><strong>注意：以下服务器配置过程均在服务器中进行，请勿在PC上进行，具体后果未知。</strong></p>
-<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
-<h1 id="连接服务器并进行配置"><a href="#连接服务器并进行配置" class="headerlink" title="连接服务器并进行配置"></a>连接服务器并进行配置</h1><p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
-<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>yum install git
+<h1>购买服务器</h1>
+<p>使用阿里云轻量应用服务器即可，最低配置每月仅24元。此处选用新加坡的服务器（香港优先，但是已经售罄）。</p>
+<h1>连接服务器并进行配置</h1>
+<p>推荐使用root用户登录。可以不使用<code>sudo</code>命令。</p>
+<h2 id="安装git">安装git</h2>
+<pre><code>yum install git
 </code></pre>
-<h2 id="clone-V-install库"><a href="#clone-V-install库" class="headerlink" title="clone V-install库"></a>clone V-install库</h2><pre><code>git clone --depth=1 https://github.com/bedefaced/vpn-install.git
+<h2 id="clone-V-install库">clone V-install库</h2>
+<pre><code>git clone --depth=1 https://github.com/bedefaced/vpn-install.git
 </code></pre>
-<h2 id="安装V-install"><a href="#安装V-install" class="headerlink" title="安装V-install"></a>安装V-install</h2><p>分别安装PPTP、openvpn和IPSEC。</p>
+<h2 id="安装V-install">安装V-install</h2>
+<p>分别安装PPTP、openvpn和IPSEC。</p>
 <pre><code>vpn-install/pptp/install.sh
 vpn-install/openvpn/install.sh
 vpn-install/ipsec/install.sh
 </code></pre>
-<p>安装过程中进行配置。不知道的直接输入1或者回车就可以，不用单独设置。<br>用户名、密码和PSK需要自行设置，并且需要牢记。</p>
-<h2 id="安装x-ui"><a href="#安装x-ui" class="headerlink" title="安装x-ui"></a>安装x-ui</h2><p>运行：</p>
+<p>安装过程中进行配置。不知道的直接输入1或者回车就可以，不用单独设置。<br>
+用户名、密码和PSK需要自行设置，并且需要牢记。</p>
+<h2 id="安装x-ui">安装x-ui</h2>
+<p>运行：</p>
 <pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 </code></pre>
-<p>安装过程中需要设置面板端口，随便输入一个1到65535数字即可。<br>面板端口牢记，之后会用到。例如这里设置为8888（宝塔面板的端口），以下示例中端口改为自行设置的端口，不推荐设置8888。</p>
-<h1 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h1><p>如果端口不在防火墙白名单里，则不能连接。在阿里云控制台中配置防火墙。</p>
-<p>在控制台左侧，安全-防火墙一栏中，预设有三个可通过防火墙的端口。<br>点击<code>添加规则</code>，依次选择：</p>
+<p>安装过程中需要设置面板端口，随便输入一个1到65535数字即可。<br>
+面板端口牢记，之后会用到。例如这里设置为8888（宝塔面板的端口），以下示例中端口改为自行设置的端口，不推荐设置8888。</p>
+<h1>配置防火墙</h1>
+<p>如果端口不在防火墙白名单里，则不能连接。在阿里云控制台中配置防火墙。</p>
+<p>在控制台左侧，安全-防火墙一栏中，预设有三个可通过防火墙的端口。<br>
+点击<code>添加规则</code>，依次选择：</p>
 <ul>
 <li>应用类型：自定义，</li>
 <li>协议：TCP</li>
@@ -419,7 +435,9 @@ vpn-install/ipsec/install.sh
 <li>备注：按照自己的想法填写即可</li>
 </ul>
 <p>点击确定后，这个端口不会被拦截。</p>
-<h1 id="配置x-ui面板"><a href="#配置x-ui面板" class="headerlink" title="配置x-ui面板"></a>配置x-ui面板</h1><p>在浏览器官网输入：公网IP:x-ui设置的端口，例如：192.168.0.1:8888。<br>其中，192.168.0.1为公网IP，8888为设置的端口，便可进入到x-ui面板。</p>
+<h1>配置x-ui面板</h1>
+<p>在浏览器官网输入：公网IP:x-ui设置的端口，例如：192.168.0.1:8888。<br>
+其中，192.168.0.1为公网IP，8888为设置的端口，便可进入到x-ui面板。</p>
 <p><strong>注：公网IP地址在控制台<code>概览</code>页面。</strong></p>
 <p>如果无法进入，很可能是防火墙设置不正确，或者服务器中x-ui未运行。</p>
 <p>点击<code>入站列表</code>，左上角的蓝色加号。</p>
@@ -433,11 +451,19 @@ vpn-install/ipsec/install.sh
 </ul>
 <p>点击添加即可。</p>
 <p>完成后，点击操作，二维码。保存这个二维码，亦可以不保存进入网站查找。</p>
-<h1 id="设置v2rayN"><a href="#设置v2rayN" class="headerlink" title="设置v2rayN"></a>设置v2rayN</h1><p>注：一定要下载core版本，否则可能无法使用。<br>下载地址：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a><br>在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
+<h1>设置v2rayN</h1>
+<p>注：一定要下载core版本，否则可能无法使用。<br>
+下载地址：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a><br>
+在中间列表空白处点击右键，选择<code>扫描屏幕上的二维码</code>。点击之前，<br>
+先调出上一步得到的二维码。此时可以自动将服务器导入。</p>
 <p>然后对服务器一栏右键，点击<code>设为活动服务器</code></p>
-<p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br><code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
-<p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>阿里云轻量应用服务器-新加坡服务器实测延迟足够使用，在80ms以内。<br>目前该操作仅适用于Windows PC。</p>
+<p>在右下角的最小化软件图标，点击右键，设置<code>系统代理</code>-<code>自动配置系统代理</code>（此时图标由蓝色变红色）；<br>
+<code>路由</code>-<code>Whitelist</code>；即可使用科学上网。</p>
+<p><code>系统代理</code>-<code>清除系统代理</code>：即可关闭科学上网。<br>
+注意： 如上操作<code>系统代理</code>实测可以实现科学上网的开启与关闭，但是不了解具体含义。</p>
+<h1>总结</h1>
+<p>阿里云轻量应用服务器-新加坡服务器实测延迟足够使用，在80ms以内。<br>
+目前该操作仅适用于Windows PC。</p>
 <p>由于该操作使用的服务器只有命令行界面，因此需要一定的Linux基础。</p>
 <p>使用过程中发现去掉图形化界面的Linux十分轻快简洁，如果有必要可以在Linux PC去除图形界面操作。</p>
 
@@ -563,7 +589,7 @@ vpn-install/ipsec/install.sh
               
                 <a href="/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -670,7 +696,7 @@ vpn-install/ipsec/install.sh
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">购买服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">连接服务器并进行配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85git"><span class="nav-number">3.1.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clone-V-install%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">clone V-install库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85V-install"><span class="nav-number">3.3.</span> <span class="nav-text">安装V-install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85x-ui"><span class="nav-number">3.4.</span> <span class="nav-text">安装x-ui</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">4.</span> <span class="nav-text">配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEx-ui%E9%9D%A2%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">配置x-ui面板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEv2rayN"><span class="nav-number">6.</span> <span class="nav-text">设置v2rayN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">购买服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">连接服务器并进行配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85git"><span class="nav-number">3.1.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clone-V-install%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">clone V-install库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85V-install"><span class="nav-number">3.3.</span> <span class="nav-text">安装V-install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85x-ui"><span class="nav-number">3.4.</span> <span class="nav-text">安装x-ui</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">配置x-ui面板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">设置v2rayN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
