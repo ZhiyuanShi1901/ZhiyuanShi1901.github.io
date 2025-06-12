@@ -1,3 +1,4 @@
+https://shizhiyuan.work/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/
 https://shizhiyuan.work/2025/03/19/Nascab%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/
 https://shizhiyuan.work/2024/05/28/Python%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/
 https://shizhiyuan.work/2024/04/14/SPECNM-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/
@@ -53,7 +54,6 @@ https://shizhiyuan.work/2022/11/21/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%9D
 https://shizhiyuan.work/2022/11/19/%E3%80%8A%E6%B2%99%E4%B8%98%E3%80%8B%E8%AE%B0%E5%BD%95/
 https://shizhiyuan.work/2022/11/11/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84Obspy/
 https://shizhiyuan.work/2022/07/31/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E7%AC%94%E8%AE%B0/
-https://shizhiyuan.work/2022/11/11/%E5%9C%B0%E9%9C%87%E8%B5%84%E6%96%99%E8%A7%A3%E9%87%8A%E5%9F%BA%E7%A1%80%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/
 https://shizhiyuan.work/2022/11/03/Introduction-to-Seismology%E4%B9%A0%E9%A2%98/
 https://shizhiyuan.work/2022/11/04/Obspy%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/
 https://shizhiyuan.work/2022/07/30/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
